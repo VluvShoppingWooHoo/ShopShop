@@ -13,9 +13,9 @@
     <form id="form1" runat="server">
     <div>
         <center>  
-        <table>
-            <tr>
-                <td>                    
+            <table>
+                <tr>
+                    <td>                    
                         <table class="HeadMaster">
                             <tr>
                                 <td class="td" style="height:120px;">
@@ -32,17 +32,16 @@
                                     <uc1:ucMenubar ID="Menubar" runat="server" />
                                 </td>                    
                             </tr>
-                        </table>
-                     
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
-                    </asp:ContentPlaceHolder>
-                </td>
-            </tr>
-        </table>  
+                        </table>                     
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>  
         </center>             
     </div>
     </form>
