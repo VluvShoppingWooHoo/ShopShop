@@ -62,6 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\th1\css.css" />
+    <Content Include="Customer\ContactUs.aspx" />
+    <Content Include="Customer\AboutUs.aspx" />
+    <Content Include="Customer\HowTo.aspx" />
+    <Content Include="Customer\Member.aspx" />
+    <Content Include="Customer\News.aspx" />
+    <Content Include="Customer\Order.aspx" />
+    <Content Include="Customer\Promotion.aspx" />
     <Content Include="Images\demo\logo_all_company.png" />
     <Content Include="Index.aspx" />
     <Content Include="UserControls\ucMenuBar.ascx" />
@@ -69,6 +76,55 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer\ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\HowTo.aspx.cs">
+      <DependentUpon>HowTo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\HowTo.aspx.designer.cs">
+      <DependentUpon>HowTo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Member.aspx.cs">
+      <DependentUpon>Member.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Member.aspx.designer.cs">
+      <DependentUpon>Member.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Order.aspx.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Order.aspx.designer.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Promotion.aspx.cs">
+      <DependentUpon>Promotion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Promotion.aspx.designer.cs">
+      <DependentUpon>Promotion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,7 +168,6 @@
   <ItemGroup>
     <Folder Include="Administrator\" />
     <Folder Include="App_GlobalResources\" />
-    <Folder Include="Customer\" />
     <Folder Include="Pages\" />
   </ItemGroup>
   <PropertyGroup>
