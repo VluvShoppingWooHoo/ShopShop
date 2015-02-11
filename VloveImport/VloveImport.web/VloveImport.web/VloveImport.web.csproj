@@ -110,7 +110,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Administrator\" />
     <Folder Include="App_GlobalResources\" />
+    <Folder Include="Customer\" />
     <Folder Include="Pages\" />
   </ItemGroup>
   <PropertyGroup>

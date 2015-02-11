@@ -9,6 +9,19 @@
             </td>
         </tr>
         <tr>
+            <td class="td">
+                Exchange Rate
+            </td>
+            <td class="td">
+                Login
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="td">
+                Item Category
+            </td>
+        </tr>
+        <tr>
             <td class="promotion">
                 Promotion
             </td>
