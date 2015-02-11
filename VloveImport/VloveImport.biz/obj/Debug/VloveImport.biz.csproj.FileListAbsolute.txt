@@ -1,0 +1,12 @@
+D:\Work\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.dll
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.pdb
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.dll
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.dll
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.dll
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.pdb
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.pdb
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.pdb
+D:\Work\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
+D:\Work\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
+D:\Work\VloveImport\VloveImport.biz\bin\Debug\EncrypDLL.dll
