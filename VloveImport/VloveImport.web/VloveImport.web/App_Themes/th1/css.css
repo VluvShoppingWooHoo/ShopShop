@@ -1,2 +1,43 @@
 ﻿body {
 }
+
+.HeadMaster
+{
+	width:900px;
+	height:200px;
+	background-color:gray;
+	
+	border-style:solid;	
+	border-width:medium;
+	border-color:red;
+}
+.td
+{
+	border-style:solid;	
+	border-width:medium;
+	border-color:blue;
+}
+.banner
+{
+	width:890px;
+	height:150px;
+	border-style:solid;	
+	border-width:medium;
+	border-color:blue;
+}
+.promotion
+{
+	width:700px;
+	height:300px;
+	border-style:solid;	
+	border-width:medium;
+	border-color:blue;
+}
+.news
+{
+	width:180px;
+	height:300px;
+	border-style:solid;	
+	border-width:medium;
+	border-color:blue;
+}

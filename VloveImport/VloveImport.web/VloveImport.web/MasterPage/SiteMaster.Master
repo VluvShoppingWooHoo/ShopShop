@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
+<%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="../App_Themes/th1/css.css" rel="stylesheet" />
+    <title></title>    
+    <asp:ContentPlaceHolder ID="head" runat="server">        
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <center>  
+        <table>
+            <tr>
+                <td>                    
+                        <table class="HeadMaster">
+                            <tr>
+                                <td class="td" style="height:120px;">
+                                    Logo Header
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td">
+                                    Search for popup
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td">
+                                    <uc1:ucMenubar ID="Menubar" runat="server" />
+                                </td>                    
+                            </tr>
+                        </table>
+                     
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>  
+        </center>             
+    </div>
+    </form>
+</body>
+</html>
