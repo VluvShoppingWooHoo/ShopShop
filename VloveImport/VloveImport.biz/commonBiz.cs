@@ -17,8 +17,9 @@ namespace VloveImport.biz
 
         public DataSet GETDATA(string Search1)
         {
-            commonDal ProEADDAL = new commonDal();
-            return ProEADDAL.GETDATA(Search1);
+            return null;
+            //commonDal ProEADDAL = new commonDal();
+            //return ProEADDAL.GETDATA(Search1);
         }
 
     }
