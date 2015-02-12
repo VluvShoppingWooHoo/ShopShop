@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,8 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandData.cs" />
+    <Compile Include="Commondal.cs" />
     <Compile Include="LogonDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VloveImport.data\VloveImport.data.csproj">
+      <Project>{308666b1-0885-4bec-bed4-70a848f38fdd}</Project>
+      <Name>VloveImport.data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VloveImport.util\VloveImport.util.csproj">
+      <Project>{df16252c-980a-4151-b87c-16e2551fbc55}</Project>
+      <Name>VloveImport.util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

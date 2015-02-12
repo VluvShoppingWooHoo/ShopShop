@@ -14,7 +14,7 @@ namespace VloveImport.dal
         private SqlTransaction Trans;
 
         private string SqlCon { get; set; }
-        private string SqlConnectionName { get; set; }
+        public string SqlConnectionName { get; set; }
 
 
         public CommandData(string ConnectionName)

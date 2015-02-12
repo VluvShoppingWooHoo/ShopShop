@@ -7,3 +7,13 @@ D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.
 D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.pdb
 D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.dll
 D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.pdb
+D:\Work\VloveImport\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.dll
+D:\Work\VloveImport\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.pdb
+D:\Work\VloveImport\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.csprojResolveAssemblyReference.cache
+D:\Work\VloveImport\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.dll
+D:\Work\VloveImport\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.pdb
+D:\Work\VloveImport\VloveImport\VloveImport.dal\bin\Debug\VloveImport.data.dll
+D:\Work\VloveImport\VloveImport\VloveImport.dal\bin\Debug\VloveImport.util.dll
+D:\Work\VloveImport\VloveImport\VloveImport.dal\bin\Debug\EncrypDLL.dll
+D:\Work\VloveImport\VloveImport\VloveImport.dal\bin\Debug\VloveImport.data.pdb
+D:\Work\VloveImport\VloveImport\VloveImport.dal\bin\Debug\VloveImport.util.pdb
