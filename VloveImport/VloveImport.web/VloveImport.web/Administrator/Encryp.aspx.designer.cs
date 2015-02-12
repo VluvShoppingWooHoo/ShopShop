@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VloveImport.web.MasterPage {
+namespace VloveImport.web.Administrator {
     
     
-    public partial class SiteMaster {
-        
-        /// <summary>
-        /// head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+    public partial class Encryp {
         
         /// <summary>
         /// form1 control.
@@ -31,30 +22,30 @@ namespace VloveImport.web.MasterPage {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ucCustomerStatus control.
+        /// btnEncryp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucCustomerStatus ucCustomerStatus;
+        protected global::System.Web.UI.WebControls.Button btnEncryp;
         
         /// <summary>
-        /// Menubar control.
+        /// btnDecryp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucMenuBar Menubar;
+        protected global::System.Web.UI.WebControls.Button btnDecryp;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.TextBox txt;
     }
 }

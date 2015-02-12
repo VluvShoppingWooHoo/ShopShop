@@ -61,10 +61,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrator\Encryp.aspx" />
     <Content Include="App_Themes\th1\css.css" />
     <Content Include="Customer\ContactUs.aspx" />
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\HowTo.aspx" />
+    <Content Include="Customer\Login.aspx" />
     <Content Include="Customer\News.aspx" />
     <Content Include="Customer\Order.aspx" />
     <Content Include="Customer\Promotion.aspx" />
@@ -72,11 +74,19 @@
     <Content Include="Customer\TourMarket.aspx" />
     <Content Include="Images\demo\logo_all_company.png" />
     <Content Include="Index.aspx" />
+    <Content Include="UserControls\ucCustomerStatus.ascx" />
     <Content Include="UserControls\ucMenuBar.ascx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator\Encryp.aspx.cs">
+      <DependentUpon>Encryp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\Encryp.aspx.designer.cs">
+      <DependentUpon>Encryp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer\ContactUs.aspx.cs">
       <DependentUpon>ContactUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -97,6 +107,13 @@
     </Compile>
     <Compile Include="Customer\HowTo.aspx.designer.cs">
       <DependentUpon>HowTo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\News.aspx.cs">
       <DependentUpon>News.aspx</DependentUpon>
@@ -148,6 +165,13 @@
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ucCustomerStatus.ascx.cs">
+      <DependentUpon>ucCustomerStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucCustomerStatus.ascx.designer.cs">
+      <DependentUpon>ucCustomerStatus.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucMenuBar.ascx.cs">
       <DependentUpon>ucMenuBar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -174,9 +198,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administrator\" />
     <Folder Include="App_GlobalResources\" />
     <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\VloveImport.util\VloveImport.util.csproj">
+      <Project>{df16252c-980a-4151-b87c-16e2551fbc55}</Project>
+      <Name>VloveImport.util</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

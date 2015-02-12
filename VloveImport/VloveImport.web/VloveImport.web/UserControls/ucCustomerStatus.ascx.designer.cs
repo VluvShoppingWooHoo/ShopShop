@@ -7,54 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VloveImport.web.MasterPage {
+namespace VloveImport.web.UserControls {
     
     
-    public partial class SiteMaster {
+    public partial class ucCustomerStatus {
         
         /// <summary>
-        /// head control.
+        /// hlLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.HyperLink hlLogin;
         
         /// <summary>
-        /// form1 control.
+        /// hlRegis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.HyperLink hlRegis;
         
         /// <summary>
-        /// ucCustomerStatus control.
+        /// lbCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucCustomerStatus ucCustomerStatus;
+        protected global::System.Web.UI.WebControls.Label lbCustomer;
         
         /// <summary>
-        /// Menubar control.
+        /// hlLogout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucMenuBar Menubar;
-        
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.HyperLink hlLogout;
     }
 }

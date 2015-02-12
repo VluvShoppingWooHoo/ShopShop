@@ -7,7 +7,7 @@ using EncrypDLL;
 
 namespace VloveImport.util
 {
-    public class Encryp
+    public class EncrypUtil
     {
 
         public string EncrypData(string strText)
