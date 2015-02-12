@@ -5,22 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VloveImport.dal;
+using System.Data.SqlClient;
+using System.Data;
+using VloveImport.util;
 
 namespace VloveImport.biz
 {
     public class commonBiz
     {
-        public commonBiz()
-        {
+       
 
-        }
 
-        public DataSet GETDATA(string Search1)
-        {
-            return null;
-            //commonDal ProEADDAL = new commonDal();
-            //return ProEADDAL.GETDATA(Search1);
-        }
 
     }
 }
