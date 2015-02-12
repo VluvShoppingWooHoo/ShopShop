@@ -202,6 +202,10 @@
     <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\VloveImport.biz\VloveImport.biz.csproj">
+      <Project>{511f9a87-81a9-44c5-bc51-273efa006bf0}</Project>
+      <Name>VloveImport.biz</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\VloveImport.util\VloveImport.util.csproj">
       <Project>{df16252c-980a-4151-b87c-16e2551fbc55}</Project>
       <Name>VloveImport.util</Name>
