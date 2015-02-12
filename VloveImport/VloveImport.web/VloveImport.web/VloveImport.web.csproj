@@ -69,6 +69,8 @@
     <Content Include="Customer\News.aspx" />
     <Content Include="Customer\Order.aspx" />
     <Content Include="Customer\Promotion.aspx" />
+    <Content Include="Customer\Recommend.aspx" />
+    <Content Include="Customer\TourMarket.aspx" />
     <Content Include="Images\demo\logo_all_company.png" />
     <Content Include="Index.aspx" />
     <Content Include="UserControls\ucMenuBar.ascx" />
@@ -124,6 +126,20 @@
     </Compile>
     <Compile Include="Customer\Promotion.aspx.designer.cs">
       <DependentUpon>Promotion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Recommend.aspx.cs">
+      <DependentUpon>Recommend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Recommend.aspx.designer.cs">
+      <DependentUpon>Recommend.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\TourMarket.aspx.cs">
+      <DependentUpon>TourMarket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\TourMarket.aspx.designer.cs">
+      <DependentUpon>TourMarket.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
