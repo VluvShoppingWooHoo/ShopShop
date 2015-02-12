@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
+using VloveImport.data;
 
 namespace VloveImport.web.Customer
 {
@@ -30,11 +31,11 @@ namespace VloveImport.web.Customer
             }
 
             LogonBiz Logon = new LogonBiz();
-            DataTable dt = new DataTable();
-            dt = Logon.LogonDBUser(txtUser.Text, txtPass.Text);
-            if (dt != null && dt.Rows.Count > 0)
+            CustomerData Cust = new CustomerData();
+            Cust = Logon.LogonDBCustomer(txtUser.Text, txtPass.Text);
+            if (Cust != null)
             {
-
+                Response.Redirect("~/Index.aspx");
             }
         }
     }

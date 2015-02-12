@@ -206,6 +206,10 @@
       <Project>{511f9a87-81a9-44c5-bc51-273efa006bf0}</Project>
       <Name>VloveImport.biz</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\VloveImport.data\VloveImport.data.csproj">
+      <Project>{308666b1-0885-4bec-bed4-70a848f38fdd}</Project>
+      <Name>VloveImport.data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\VloveImport.util\VloveImport.util.csproj">
       <Project>{df16252c-980a-4151-b87c-16e2551fbc55}</Project>
       <Name>VloveImport.util</Name>
