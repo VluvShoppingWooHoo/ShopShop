@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ScrapingData.cs" />
     <Compile Include="CustomerData.cs" />
     <Compile Include="MasterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

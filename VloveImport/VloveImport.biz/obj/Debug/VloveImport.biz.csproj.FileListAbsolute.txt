@@ -22,3 +22,15 @@ D:\Striker\Project\P'Bow\Phase 1\Source\VloveImport\ShopShop\VloveImport\VloveIm
 D:\Striker\Project\P'Bow\Phase 1\Source\VloveImport\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
 D:\Striker\Project\P'Bow\Phase 1\Source\VloveImport\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
 D:\Striker\Project\P'Bow\Phase 1\Source\VloveImport\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.dll
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.pdb
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.dll
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.dll
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.dll
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\EncrypDLL.dll
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.pdb
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.pdb
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.pdb
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
+D:\Work\VluvShopping\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb

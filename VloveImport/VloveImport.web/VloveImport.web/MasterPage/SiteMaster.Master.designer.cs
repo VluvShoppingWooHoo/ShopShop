@@ -40,6 +40,42 @@ namespace VloveImport.web.MasterPage {
         protected global::VloveImport.web.UserControls.ucCustomerStatus ucCustomerStatus;
         
         /// <summary>
+        /// hlIndex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlIndex;
+        
+        /// <summary>
+        /// hlBasket control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlBasket;
+        
+        /// <summary>
+        /// hlWallet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlWallet;
+        
+        /// <summary>
+        /// ucSeachBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VloveImport.web.UserControls.ucSeachBox ucSeachBox;
+        
+        /// <summary>
         /// Menubar control.
         /// </summary>
         /// <remarks>
