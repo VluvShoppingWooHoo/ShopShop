@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using System.Web.Configuration;
 
 namespace VloveImport.dal
 {
     public class CommandData
     {
+        #region Comment
+
         private SqlCommand command;
         private SqlConnection objConn;
         private SqlTransaction Trans;
@@ -215,12 +218,12 @@ namespace VloveImport.dal
             command.CommandType = System.Data.CommandType.Text;
         }
 
-        public void SetParameter(string parameterName, SqlDbType dbType, System.Data.ParameterDirection direction)
+        public void SetParameter(string parameterName, SqlDbType dbType, ParameterDirection direction)
         {
             SetParameter(parameterName, dbType, direction, null);
         }
 
-        public void SetParameter_Input_INT(string parameterName, SqlDbType dbType, System.Data.ParameterDirection direction, object vals)
+        public void SetParameter_Input_INT(string parameterName, SqlDbType dbType, ParameterDirection direction, object vals)
         {
             SqlParameter param = new SqlParameter(parameterName, dbType);
             param.Direction = direction;
@@ -228,7 +231,7 @@ namespace VloveImport.dal
             command.Parameters.Add(param);
         }
 
-        public void SetParameter(string parameterName, SqlDbType dbType, System.Data.ParameterDirection direction, object vals)
+        public void SetParameter(string parameterName, SqlDbType dbType, ParameterDirection direction, object vals)
         {
             SqlParameter param = new SqlParameter(parameterName, dbType);
             param.Direction = direction;
@@ -236,7 +239,7 @@ namespace VloveImport.dal
             command.Parameters.Add(param);
         }
 
-        public void SetParameter(string parameterName, SqlDbType dbType, System.Data.ParameterDirection direction, int size)
+        public void SetParameter(string parameterName, SqlDbType dbType, ParameterDirection direction, int size)
         {
             SqlParameter param = new SqlParameter(parameterName, dbType);
             param.Direction = direction;
@@ -278,11 +281,31 @@ namespace VloveImport.dal
             try
             {
                 string conString = "";
-                //EncryptUtil Encryp = new EncryptUtil();
-                // conString = Encryp.DecryptData(ConfigurationManager.ConnectionStrings[connectionName].ConnectionString);
+                util.EncrypUtil Encryp = new util.EncrypUtil();
+                conString = Encryp.DecryptData(WebConfigurationManager.AppSettings[connectionName].ToString());
                 return conString;
             }
             catch (Exception ex) { throw ex; }
+        }
+
+        #endregion
+
+
+        public DataSet ExecuteDataSet(SqlCommand SqlCmd)
+        {
+            DataSet ds = new DataSet();
+
+            try
+            {
+                IDbDataAdapter dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = SqlCmd;
+                dataAdapter.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ExecuteDataSet: " + ex.Message);
+            }
+            return ds;
         }
 
     }
