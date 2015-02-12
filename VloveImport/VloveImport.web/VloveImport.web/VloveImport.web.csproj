@@ -65,7 +65,6 @@
     <Content Include="Customer\ContactUs.aspx" />
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\HowTo.aspx" />
-    <Content Include="Customer\Member.aspx" />
     <Content Include="Customer\News.aspx" />
     <Content Include="Customer\Order.aspx" />
     <Content Include="Customer\Promotion.aspx" />
@@ -98,13 +97,6 @@
     </Compile>
     <Compile Include="Customer\HowTo.aspx.designer.cs">
       <DependentUpon>HowTo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Customer\Member.aspx.cs">
-      <DependentUpon>Member.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Customer\Member.aspx.designer.cs">
-      <DependentUpon>Member.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\News.aspx.cs">
       <DependentUpon>News.aspx</DependentUpon>
