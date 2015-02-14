@@ -282,6 +282,7 @@ namespace VloveImport.dal
             {
                 string conString = "";
                 util.EncrypUtil Encryp = new util.EncrypUtil();
+                //conString = Encryp.DecryptData(WebConfigurationManager.ConnectionStrings);
                 conString = Encryp.DecryptData(WebConfigurationManager.AppSettings[connectionName].ToString());
                 return conString;
             }

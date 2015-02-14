@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <td class="td">
-                Exchange Rate
+                Exchange Rate 
             </td>
             <td class="td">
                 Login

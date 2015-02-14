@@ -14,8 +14,9 @@ namespace VloveImport.biz
         public CustomerData LogonDBCustomer(string User, string Pass)
         {
             CustomerData Cust = new CustomerData();
-            LogonDal dal = new LogonDal("");
-            DataTable dt = dal.LogonUser(User, Pass);
+            LogonDal dal = new LogonDal("LocalConnection");
+            DataTable dt = new DataTable();
+            dt = dal.GetData(User);
             if (dt != null && dt.Rows.Count > 0)
             {
                 SaveSessionCustomer(Cust);

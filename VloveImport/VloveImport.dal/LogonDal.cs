@@ -11,17 +11,31 @@ namespace VloveImport.dal
     public class LogonDal
     {
         #region Constructor  
-        public SqlCommand Sql_commandData;
+        public CommandData SqlCommandData;
         public LogonDal(string strConnection)
         {
-            Sql_commandData = new SqlCommand(strConnection);
+            SqlCommandData = new CommandData(strConnection);
         }
         #endregion
 
-        public DataTable LogonUser(string User, string Pass)
+        public DataTable LogonUser(string UserName)
         {
-            DataTable dt = new DataTable();
-            return dt;
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GetLogOnCustomer");
+
+                SqlCommandData.SetParameter("UserName", SqlDbType.VarChar, ParameterDirection.Input, UserName);
+                DataSet ds = new DataSet();
+                ds = SqlCommandData.ExecuteDataSet();
+                if (ds != null && ds.Tables.Count > 0)
+                    return ds.Tables[0];
+                else
+                    return new DataTable();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("LogonUser -> msg : " + ex.Message);
+            }
         }
     }
 }
