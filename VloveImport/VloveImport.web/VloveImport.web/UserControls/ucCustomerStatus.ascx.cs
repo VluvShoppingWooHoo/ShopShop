@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VloveImport.data;
 
 namespace VloveImport.web.UserControls
 {
@@ -13,5 +14,10 @@ namespace VloveImport.web.UserControls
         {
 
         }
+
+        public void CheckLogin(bool Check)
+        {
+            
+        }        
     }
 }
