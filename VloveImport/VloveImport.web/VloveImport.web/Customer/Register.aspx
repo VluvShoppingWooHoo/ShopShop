@@ -49,5 +49,15 @@
                 <asp:TextBox ID="txtMobile" runat="server" ></asp:TextBox>
             </td>
         </tr>
+        <tr>
+            <td>
+                รหัสผู้แนะนำ
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:TextBox ID="txtRefCust" runat="server" ></asp:TextBox>
+            </td>
+        </tr>
     </table>
 </asp:Content>
