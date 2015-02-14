@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonData.cs" />
     <Compile Include="ScrapingData.cs" />
     <Compile Include="CustomerData.cs" />
     <Compile Include="MasterData.cs" />

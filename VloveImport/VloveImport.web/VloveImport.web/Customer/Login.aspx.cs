@@ -19,23 +19,24 @@ namespace VloveImport.web.Customer
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUser.Text == "")
-            {
-                txtUser.Focus();
-                return;
-            }
-            if (txtPass.Text == "")
-            {
-                txtPass.Focus();
-                return;
-            }
+            //if (txtUser.Text == "")
+            //{
+            //    txtUser.Focus();
+            //    return;
+            //}
+            //if (txtPass.Text == "")
+            //{
+            //    txtPass.Focus();
+            //    return;
+            //}
 
             LogonBiz Logon = new LogonBiz();
             CustomerData Cust = new CustomerData();
             Cust = Logon.LogonDBCustomer(txtUser.Text, txtPass.Text);
             if (Cust != null)
             {
-                Response.Redirect("~/Index.aspx");
+                Session["User"] = Cust;
+                Response.Redirect("~/Index.aspx");                
             }
         }
     }
