@@ -13,15 +13,6 @@ namespace VloveImport.web.UserControls {
     public partial class ucCustomerStatus {
         
         /// <summary>
-        /// Logout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell Logout;
-        
-        /// <summary>
         /// hlLogin control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace VloveImport.web.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlRegis;
-        
-        /// <summary>
-        /// Login control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell Login;
         
         /// <summary>
         /// lbCustomer control.

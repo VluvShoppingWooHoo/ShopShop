@@ -11,13 +11,18 @@ namespace VloveImport.web.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            CheckSessionUser();
         }
+
         private void CheckSessionUser()
         {
             if (Session["User"] == null)
             {
                 ucCustomerStatus.CheckLogin(false);
+            }
+            else
+            {
+                ucCustomerStatus.CheckLogin(true);
             }
 
         }

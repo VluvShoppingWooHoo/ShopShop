@@ -31,6 +31,24 @@ namespace VloveImport.web.MasterPage {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// sm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager sm;
+        
+        /// <summary>
+        /// up control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.UpdatePanelAnimationExtender up;
+        
+        /// <summary>
         /// ucCustomerStatus control.
         /// </summary>
         /// <remarks>

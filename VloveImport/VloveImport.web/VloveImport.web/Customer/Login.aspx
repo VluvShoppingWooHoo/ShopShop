@@ -8,7 +8,7 @@
                 User                
             </td>
             <td>
-                <asp:TextBox ID="txtUser" runat="server" ></asp:TextBox>
+                <asp:TextBox ID="txtUser" runat="server" >eakkarat_5@hotmail.com</asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -16,7 +16,7 @@
                 Pass
             </td>
             <td>
-                <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtPass" runat="server" TextMode="Password">123</asp:TextBox>
             </td>
         </tr>
         <tr>

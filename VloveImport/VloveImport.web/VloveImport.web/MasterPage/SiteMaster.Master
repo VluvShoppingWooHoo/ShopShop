@@ -2,6 +2,7 @@
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/ucCustomerStatus.ascx" TagName="ucCustomerStatus" TagPrefix="uc2" %>
 <%@ Register Src="~/UserControls/ucSeachBox.ascx" TagName="ucSeachBox" TagPrefix="uc3" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="Ajax" %>
 
 <!DOCTYPE html>
 
@@ -21,49 +22,50 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <center>  
-            <table>
-                <tr>
-                    <td>                    
-                        <table class="HeadMaster">
-                            <tr>
-                                <td class="td" style="height:20px;">
-                                    <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
-                                </td> 
-                                <td>
-                                    <asp:HyperLink ID="hlIndex" runat="server" Text="หน้าหลัก" NavigateUrl="~/Index.aspx" ></asp:HyperLink> |
-                                    <asp:HyperLink ID="hlBasket" runat="server" Text="ตะกร้า"></asp:HyperLink> |
-                                    <asp:HyperLink ID="hlWallet" runat="server" Text="กระเป๋าเงินของฉัน"></asp:HyperLink>   
-                                </td> 
-                            </tr>
-                            <tr>                      
-                                <td class="td" colspan="2" style="height:120px;">
-                                    Logo Header
-                                </td>
-                            </tr>                     
-                            <tr>
-                                <td class="td">
-                                    Search for popup
-                                    <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
-                                </td> 
+        <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>            
+            <center>  
+                <table>
+                    <tr>
+                        <td>                    
+                            <table class="HeadMaster">
+                                <tr>
+                                    <td class="td" style="height:20px;">
+                                        <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
+                                    </td> 
+                                    <td>
+                                        <asp:HyperLink ID="hlIndex" runat="server" Text="หน้าหลัก" NavigateUrl="~/Index.aspx" ></asp:HyperLink> |
+                                        <asp:HyperLink ID="hlBasket" runat="server" Text="ตะกร้า"></asp:HyperLink> |
+                                        <asp:HyperLink ID="hlWallet" runat="server" Text="กระเป๋าเงินของฉัน"></asp:HyperLink>   
+                                    </td> 
+                                </tr>
+                                <tr>                      
+                                    <td class="td" colspan="2" style="height:120px;">
+                                        Logo Header
+                                    </td>
+                                </tr>                     
+                                <tr>
+                                    <td class="td">
+                                        Search for popup
+                                        <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
+                                    </td> 
                                                          
-                            </tr>
-                            <tr>
-                                <td class="td" colspan="2">
-                                    <uc1:ucMenubar ID="Menubar" runat="server" />
-                                </td>                    
-                            </tr>
-                        </table>                     
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
-                        </asp:ContentPlaceHolder>
-                    </td>
-                </tr>
-            </table>  
-        </center>             
+                                </tr>
+                                <tr>
+                                    <td class="td" colspan="2">
+                                        <uc1:ucMenubar ID="Menubar" runat="server" />
+                                    </td>                    
+                                </tr>
+                            </table>                     
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
+                            </asp:ContentPlaceHolder>
+                        </td>
+                    </tr>
+                </table>  
+            </center>       
     </div>
     </form>
 
