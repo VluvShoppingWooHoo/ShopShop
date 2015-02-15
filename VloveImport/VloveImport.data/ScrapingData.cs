@@ -8,8 +8,12 @@ namespace VloveImport.data
 {
     public class ScrapingDataModel
     {
-        public int ItemID { get; set; }
+        public string ItemID { get; set; }
         public string ItemName { get; set; }
-        public string DESC { get; set; }        
+        public string DESC { get; set; }
+        public string picURL { get; set; }
+        public string Price { get; set; }
+        public string ProPrice { get; set; }         
+      
     }
 }

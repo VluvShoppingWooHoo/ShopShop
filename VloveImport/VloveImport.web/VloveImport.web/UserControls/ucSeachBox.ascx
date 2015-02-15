@@ -7,11 +7,34 @@
       </div>
     </div>
     <div class="col s3">
-        <button class="btn waves-effect waves-light" type="submit" name="action">
+        <button id="btnSearch" class="btn waves-effect waves-light" name="action">
             SEARCH
    
             <i class="mdi-action-bookmark right"></i>
         </button>
     </div>
 </div>
+<script type="text/javascript">    
+    $(function () {
+        $('#btnSearch').click(function () {
+            var param = { "txt": $('#txtSearch').val() };
+            $.ajax({
+                type: 'POST',
+                url: "../Index.aspx/GetModelFromURL",
+                data: JSON.stringify(param),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response) {
+                    alert('YESS');
+                },
+                error: function (err) {
+                    alert('gs');
+                }
+            });
+        });
+    });
+</script>
+
+
+
 
