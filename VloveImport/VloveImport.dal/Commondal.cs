@@ -164,21 +164,21 @@ namespace VloveImport.dal
         //}
 
         //public DataSet GetData_District(int DISTRICT_ID = -1, string SUB_DISTRICT_NAME = "", int SUB_DISTRICT_STATUS = 1)
-        {
-            try
-            {
-                SqlCommandData.SetStoreProcedure("GetData_Master_Province");
+        //{
+        //    try
+        //    {
+        //        SqlCommandData.SetStoreProcedure("GetData_Master_Province");
 
-                SqlCommandData.SetParameter("DISTRICT_ID", SqlDbType.VarChar, ParameterDirection.Input, DISTRICT_ID);
-                SqlCommandData.SetParameter("SUB_DISTRICT_NAME", SqlDbType.VarChar, ParameterDirection.Input, SUB_DISTRICT_NAME);
-                SqlCommandData.SetParameter("SUB_DISTRICT_STATUS", SqlDbType.VarChar, ParameterDirection.Input, SUB_DISTRICT_STATUS);
-                return SqlCommandData.ExecuteDataSet();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("GetData_District -> msg : " + ex.Message);
-            }
-        }
+        //        SqlCommandData.SetParameter("DISTRICT_ID", SqlDbType.VarChar, ParameterDirection.Input, DISTRICT_ID);
+        //        SqlCommandData.SetParameter("SUB_DISTRICT_NAME", SqlDbType.VarChar, ParameterDirection.Input, SUB_DISTRICT_NAME);
+        //        SqlCommandData.SetParameter("SUB_DISTRICT_STATUS", SqlDbType.VarChar, ParameterDirection.Input, SUB_DISTRICT_STATUS);
+        //        return SqlCommandData.ExecuteDataSet();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("GetData_District -> msg : " + ex.Message);
+        //    }
+        //}
 
 
         #endregion
