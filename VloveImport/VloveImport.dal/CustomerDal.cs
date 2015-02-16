@@ -19,6 +19,8 @@ namespace VloveImport.dal
         }
         #endregion
 
+        #region CUSTOMER ADDRESS
+
         public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME)
         {
             try
@@ -39,7 +41,7 @@ namespace VloveImport.dal
             }
         }
 
-        public string INS_UPD_Customer_Address(CustomerData EnCus,string Act)
+        public string INS_UPD_Customer_Address(CustomerData EnCus, string Act)
         {
             try
             {
@@ -70,6 +72,8 @@ namespace VloveImport.dal
                 return ("Insert_Customer_Address -> msg : " + ex.Message);
             }
         }
+
+        #endregion
 
 
     }
