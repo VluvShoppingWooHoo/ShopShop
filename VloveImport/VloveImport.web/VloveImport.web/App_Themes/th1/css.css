@@ -58,3 +58,25 @@
     /*background-color: #b0e0e6;
 }*/
 
+.trLogin_LEFT
+{
+    background: url("../../Images/icon/l_box.png") no-repeat;
+	height :43px;
+}
+
+.trLogin_RIGHT
+{
+    background: url("../../Images/icon/r_box.png") no-repeat;
+}
+
+.trLogin_CENTER
+{
+    background: url("../../Images/icon/c_box.png");
+}
+
+.modalBackground
+{
+    background-color: Gray;
+    filter: alpha(opacity=80);
+    opacity: 0.9;
+}

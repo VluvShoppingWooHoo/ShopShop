@@ -81,6 +81,13 @@
     <Content Include="Customer\Register.aspx" />
     <Content Include="Customer\TourMarket.aspx" />
     <Content Include="Images\demo\logo_all_company.png" />
+    <Content Include="Images\icon\Close-2-icon.png" />
+    <Content Include="Images\icon\close-icon.png" />
+    <Content Include="Images\icon\Close.png" />
+    <Content Include="Images\icon\c_box.png" />
+    <Content Include="Images\icon\l_box.png" />
+    <Content Include="Images\icon\r_box.png" />
+    <Content Include="Images\icon\Sign-Close-icon.png" />
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Script\Script Init.sql" />
