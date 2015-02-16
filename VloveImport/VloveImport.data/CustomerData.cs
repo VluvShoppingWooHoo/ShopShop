@@ -25,5 +25,46 @@ namespace VloveImport.data
         public int Cus_Active { get; set; }
         public int Cus_Status { get; set; }
         public DateTime Activate_Date { get; set; }
+
+        #region TB_CUSTOMER_ADDRESS
+
+        public int CUS_ADD_ID { get; set; }
+        public string CUS_ADD_CUS_NAME { get; set; }
+        public string CUS_ADD_ADDRESS_TEXT { get; set; }
+        public int CUS_ADD_ZIPCODE { get; set; }
+        public int CUS_ADD_STATUS { get; set; }
+
+        #endregion
+
+        #region TB_CUSTOMER_ACC_NAME
+
+        public int CUS_ACC_NAME_ID { get; set; }
+        public string CUS_ACC_NAME_NO { get; set; }
+        public string CUS_ACC_NAME_BRANCH { get; set; }
+        public string CUS_ACC_NAME_REMARK { get; set; }
+        public int CUS_ACC_NAME_STAUTS { get; set; }
+
+        #endregion
+
+        #region TB_CUSTOMER_FAVORIT_SHOP
+
+        public int CUS_SHOP_ID { get; set; }
+        public string CUS_SHOP_NAME { get; set; }
+        public string CUS_SHOP_LINK { get; set; }
+        public string CUS_SHOP_REMARK { get; set; }
+        public int CUS_SHOP_STATUS { get; set; }
+
+        #endregion
+
+        #region TB_CUSTOMER_BASKET
+
+        public int CUS_ID { get; set; }
+        public string PROD_ID { get; set; }
+        public string CUS_BK_NUMBER { get; set; }
+        public string CUS_BK_PRICE { get; set; }
+        public int CUS_BK_REMARK { get; set; }
+
+        #endregion
+
     }
 }
