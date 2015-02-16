@@ -204,6 +204,12 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPage\master_page_batt.Master.cs">
+      <DependentUpon>master_page_batt.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\master_page_batt.Master.designer.cs">
+      <DependentUpon>master_page_batt.Master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage\SiteMaster.Master.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -252,6 +258,7 @@
     <Content Include="App_Themes\font\roboto\Roboto-Medium.ttf" />
     <Content Include="App_Themes\font\roboto\Roboto-Regular.ttf" />
     <Content Include="App_Themes\font\roboto\Roboto-Thin.ttf" />
+    <Content Include="MasterPage\master_page_batt.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

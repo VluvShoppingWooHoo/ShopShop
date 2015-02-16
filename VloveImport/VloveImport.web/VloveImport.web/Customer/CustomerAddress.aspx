@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerAddress.aspx.cs" Inherits="VloveImport.web.Customer.CustomerAddress" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/master_page_batt.Master" AutoEventWireup="true" CodeBehind="CustomerAddress.aspx.cs" Inherits="VloveImport.web.Customer.CustomerAddress" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -20,6 +20,9 @@
             <asp:BoundField HeaderText="ที่อยู่" />
             <asp:BoundField HeaderText="จังหวัด" />
         </Columns>
+        <EmptyDataTemplate>
+            คุณยังไม่มีรายการที่อยู่
+        </EmptyDataTemplate>
     </asp:GridView>
 </div>
 
