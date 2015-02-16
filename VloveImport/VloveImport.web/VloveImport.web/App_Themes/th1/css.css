@@ -3,9 +3,9 @@
 
 .HeadMaster
 {
-	width:900px;
-	height:200px;
-	background-color:gray;
+	/*width:900px;
+	height:200px;*/
+	/*background-color:gray;*/
 	
 	border-style:solid;	
 	border-width:medium;
@@ -41,3 +41,20 @@
 	border-width:medium;
 	border-color:blue;
 }
+.center-Preload-Circle {
+    margin-top: 20% !important;
+    margin-left: 45% !important;
+}
+.center-Preload-Line {
+    margin-top: 15% !important;
+}
+/*.centerModal {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    height: 70% !important;
+    width: 70% !important;
+    /*background-color: #b0e0e6;
+}*/
+
