@@ -35,7 +35,7 @@ namespace VloveImport.dal
             }
         }
 
-        public string Insert_Customer_Address(CustomerData EnCus)
+        public string Insert_Customer_Address(CustomerData EnCus,string Act)
         {
             try
             {
@@ -43,10 +43,18 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("Insert_Customer_Address");
 
-                SqlCommandData.SetParameter("CUS_ID", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ID);
-                SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_Password);
-                SqlCommandData.SetParameter("Cus_Mobile", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_Mobile);
-                SqlCommandData.SetParameter_Input_INT("Cus_Ref_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_Ref_ID);
+                SqlCommandData.SetParameter("CUS_ID", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_ID);
+
+                SqlCommandData.SetParameter("CUS_ADD_CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_CUS_NAME);
+                SqlCommandData.SetParameter("CUS_ADD_ADDRESS_TEXT", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_ADDRESS_TEXT);
+                SqlCommandData.SetParameter("CUS_ADD_ZIPCODE", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_ZIPCODE);
+                SqlCommandData.SetParameter("CUS_ADD_STATUS", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_STATUS);
+                SqlCommandData.SetParameter("REGION_ID", SqlDbType.VarChar, ParameterDirection.Input, EnCus.REGION_ID);
+                SqlCommandData.SetParameter("PROVINCE_ID", SqlDbType.VarChar, ParameterDirection.Input, EnCus.PROVINCE_ID);
+                SqlCommandData.SetParameter("DISTRICT_ID", SqlDbType.VarChar, ParameterDirection.Input, EnCus.DISTRICT_ID);
+                SqlCommandData.SetParameter("SUB_DISTRICT_ID", SqlDbType.VarChar, ParameterDirection.Input, EnCus.SUB_DISTRICT_ID);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
@@ -56,7 +64,7 @@ namespace VloveImport.dal
             {
                 //throw new Exception("LogonUser -> msg : " + ex.Message);
                 SqlCommandData.RollBack();
-                return ("InsertRegisCustomer -> msg : " + ex.Message);
+                return ("Insert_Customer_Address -> msg : " + ex.Message);
             }
         }
 

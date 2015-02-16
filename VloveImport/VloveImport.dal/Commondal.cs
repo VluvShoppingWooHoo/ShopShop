@@ -23,6 +23,8 @@ namespace VloveImport.dal
             SqlCommandData = new CommandData(strConnection);
         }
 
+        #region Example
+
         public DataSet GetData(string ProcName)
         {
             try
@@ -68,6 +70,28 @@ namespace VloveImport.dal
 
             return IsReturn;
         }
+
+        #endregion
+
+        #region Binding Data Address
+
+        public DataSet GetData_Region(string REGION_NAME = "", int REGION_STATUS = 1)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GetData_Master_Region");
+
+                SqlCommandData.SetParameter("REGION_NAME", SqlDbType.VarChar, ParameterDirection.Input, REGION_NAME);
+                SqlCommandData.SetParameter("REGION_STATUS", SqlDbType.VarChar, ParameterDirection.Input, REGION_STATUS);
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetData -> msg : " + ex.Message);
+            }
+        }
+
+        #endregion
 
     }
 
