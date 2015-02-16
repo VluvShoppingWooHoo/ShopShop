@@ -58,7 +58,6 @@ namespace VloveImport.data
 
         #region TB_CUSTOMER_BASKET
 
-        public int CUS_ID { get; set; }
         public string PROD_ID { get; set; }
         public string CUS_BK_NUMBER { get; set; }
         public string CUS_BK_PRICE { get; set; }
