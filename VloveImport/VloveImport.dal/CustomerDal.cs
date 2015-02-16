@@ -26,10 +26,10 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("GetData_Customer_Address");
 
                 SqlCommandData.SetParameter("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
-                SqlCommandData.SetParameter("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ADD_ID);
+                SqlCommandData.SetParameter("CUS_ADD_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ADD_ID);
 
                 SqlCommandData.SetParameter("CUS_ADDRESS_STATUS", SqlDbType.Int, ParameterDirection.Input, CUS_ADDRESS_STATUS);
-                SqlCommandData.SetParameter("CUS_ADDRESS_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADDRESS_NAME);
+                SqlCommandData.SetParameter("CUS_ADDRESS_NAME", SqlDbType.VarChar, ParameterDirection.Input, CUS_ADDRESS_NAME);
 
                 return SqlCommandData.ExecuteDataSet();
             }
