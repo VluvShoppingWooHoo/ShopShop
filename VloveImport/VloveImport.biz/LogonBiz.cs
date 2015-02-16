@@ -51,11 +51,19 @@ namespace VloveImport.biz
             return Cust;
         }
 
-        public string InsertCustomer(CustomerData Cust)
+        public string InsertRegisCustomer(CustomerData Cust)
         {
             string Result = "";            
             LogonDal dal = new LogonDal("LocalConnection");
+            Result = dal.InsertRegisCustomer(Cust);
+            return Result;
+        }
 
+        public string UpdateActivateCustomer(CustomerData Cust)
+        {
+            string Result = "";
+            LogonDal dal = new LogonDal("LocalConnection");
+            Result = dal.UpdateActivateCustomer(Cust);
             return Result;
         }
     }

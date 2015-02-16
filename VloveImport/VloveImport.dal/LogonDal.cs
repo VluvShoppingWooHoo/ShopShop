@@ -35,38 +35,55 @@ namespace VloveImport.dal
             }
             catch (Exception ex)
             {
-                throw new Exception("LogonUser -> msg : " + ex.Message);
+                throw new Exception("LogonUser -> msg : " + ex.Message);                
             }
         }
 
-        public string InsertCustomer(CustomerData Cust)
+        public string InsertRegisCustomer(CustomerData Cust)
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("InsertCustomer");
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("InsertRegisCustomer");
 
-                SqlCommandData.SetParameter("Cus_Name", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
-                SqlCommandData.SetParameter("Cus_LName", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_LName);
-                SqlCommandData.SetParameter("Cus_Gender", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Gender);
-                SqlCommandData.SetParameter("Cus_Birthday", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Birthday);
-                SqlCommandData.SetParameter("Cus_Telephone", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
-                SqlCommandData.SetParameter("Cus_Mobile", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
-                SqlCommandData.SetParameter("Cus_Fax", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
-                SqlCommandData.SetParameter("Cus_Email", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
-                SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
-                SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
-                SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
-
-                DataSet ds = new DataSet();
-                ds = SqlCommandData.ExecuteDataSet();
-                if (ds != null && ds.Tables.Count > 0)
-                    return ds.Tables[0];
-                else
-                    return new DataTable();
+                SqlCommandData.SetParameter("Cus_Email", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Email);
+                SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Password);
+                SqlCommandData.SetParameter("Cus_Mobile", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Mobile);
+                SqlCommandData.SetParameter_Input_INT("Cus_Ref_ID", SqlDbType.Int, ParameterDirection.Input, Cust.Cus_Ref_ID);
+                                
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
             }
             catch (Exception ex)
             {
-                throw new Exception("LogonUser -> msg : " + ex.Message);
+                //throw new Exception("LogonUser -> msg : " + ex.Message);
+                SqlCommandData.RollBack();
+                return ("InsertRegisCustomer -> msg : " + ex.Message);
+            }            
+        }
+
+        public string UpdateActivateCustomer(CustomerData Cust)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("UpdateActivateCustomer");
+
+                SqlCommandData.SetParameter("Cus_Email", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Email);
+                SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Password);                
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("LogonUser -> msg : " + ex.Message);
+                SqlCommandData.RollBack();
+                return ("UpdateActivateCustomer -> msg : " + ex.Message);
             }
         }
     }

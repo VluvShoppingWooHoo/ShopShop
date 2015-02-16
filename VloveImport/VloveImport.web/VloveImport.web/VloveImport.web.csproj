@@ -69,6 +69,7 @@
     <Content Include="App_Themes\js\materialize.js" />
     <Content Include="App_Themes\js\materialize.min.js" />
     <Content Include="App_Themes\th1\css.css" />
+    <Content Include="Customer\Activate.aspx" />
     <Content Include="Customer\ContactUs.aspx" />
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\HowTo.aspx" />
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="Administrator\Encryp.aspx.designer.cs">
       <DependentUpon>Encryp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Activate.aspx.cs">
+      <DependentUpon>Activate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Activate.aspx.designer.cs">
+      <DependentUpon>Activate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\ContactUs.aspx.cs">
       <DependentUpon>ContactUs.aspx</DependentUpon>

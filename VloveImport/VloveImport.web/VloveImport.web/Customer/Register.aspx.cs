@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VloveImport.biz;
+using VloveImport.data;
 
 namespace VloveImport.web.Customer
 {
@@ -16,14 +18,29 @@ namespace VloveImport.web.Customer
 
         protected void btnRegis_Click(object sender, EventArgs e)
         {
-            Insert();
+            string Result = Insert();
+            if (Result == "")
+            {
+                mView.ActiveViewIndex = 1;
+            }
+            else
+            {
+                lbMessage.Text = "Error";
+            }
         }
 
-        protected void Insert()
+        protected string Insert()
         {
+            LogonBiz Log = new LogonBiz();
+            CustomerData Cust = new CustomerData();                        
 
-        }
+            Cust.Cus_Email = txtEmail.Text;
+            Cust.Cus_Password = txtPassword.Text;
+            Cust.Cus_Mobile = txtMobile.Text;
+            Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
 
-        
+            string Result = Log.InsertRegisCustomer(Cust);
+            return Result;
+        }        
     }
 }

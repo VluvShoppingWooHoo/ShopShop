@@ -13,6 +13,24 @@ namespace VloveImport.web.Customer {
     public partial class Register {
         
         /// <summary>
+        /// mView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView mView;
+        
+        /// <summary>
+        /// vRegis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View vRegis;
+        
+        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtRefCust;
         
         /// <summary>
+        /// hddRefCust control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hddRefCust;
+        
+        /// <summary>
         /// btnRegis control.
         /// </summary>
         /// <remarks>
@@ -83,5 +110,14 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbMessage;
+        
+        /// <summary>
+        /// vSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View vSuccess;
     }
 }
