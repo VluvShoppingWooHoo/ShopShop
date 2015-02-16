@@ -50,6 +50,13 @@ namespace VloveImport.biz
             }
             return Cust;
         }
-      
+
+        public string InsertCustomer(CustomerData Cust)
+        {
+            string Result = "";            
+            LogonDal dal = new LogonDal("LocalConnection");
+
+            return Result;
+        }
     }
 }

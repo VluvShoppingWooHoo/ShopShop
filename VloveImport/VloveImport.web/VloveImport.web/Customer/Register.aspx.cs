@@ -13,5 +13,17 @@ namespace VloveImport.web.Customer
         {
 
         }
+
+        protected void btnRegis_Click(object sender, EventArgs e)
+        {
+            Insert();
+        }
+
+        protected void Insert()
+        {
+
+        }
+
+        
     }
 }

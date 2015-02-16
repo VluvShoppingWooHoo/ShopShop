@@ -59,5 +59,11 @@
                 <asp:TextBox ID="txtRefCust" runat="server" ></asp:TextBox>
             </td>
         </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnRegis" runat="server" Text="สมัครสมาชิก" OnClick="btnRegis_Click" />
+                <asp:Label ID="lbMessage" runat="server" ForeColor="Red"></asp:Label>
+            </td>
+        </tr>
     </table>
 </asp:Content>
