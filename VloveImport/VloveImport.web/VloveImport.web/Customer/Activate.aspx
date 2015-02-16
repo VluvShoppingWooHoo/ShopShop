@@ -2,11 +2,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table>
-        <tr>
-            <td>
-
-            </td>
-        </tr>
-    </table>
+    <asp:MultiView ID="mView" runat="server" ActiveViewIndex="0">        
+        <asp:View ID="vSuccess" runat="server">
+            <table>
+                <tr>
+                    <td>
+                        Verify Success
+                    </td>
+                </tr>
+            </table>
+        </asp:View>
+        <asp:View ID="vError" runat="server">
+            <table>
+                <tr>
+                    <td>
+                        I have some Problem
+                    </td>
+                </tr>
+            </table>
+        </asp:View>
+    </asp:MultiView>    
 </asp:Content>

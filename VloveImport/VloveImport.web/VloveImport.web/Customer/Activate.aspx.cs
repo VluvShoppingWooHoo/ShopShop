@@ -22,7 +22,16 @@ namespace VloveImport.web.Customer
         protected void UpdateActivateCustomer(string Email, string Pass)
         {
             LogonBiz Logon = new LogonBiz();
-            Logon.UpdateActivateCustomer(Email, Pass);
+            string Result = "";
+            Result = Logon.UpdateActivateCustomer(Email, Pass);
+            if (Result == "")
+            {
+                mView.ActiveViewIndex = 0;
+            }
+            else
+            {
+                mView.ActiveViewIndex = 0;
+            }
         }
     }
 }
