@@ -9,7 +9,7 @@
     ที่อยุ่
 
     <asp:Button ID="btnAdd" runat="server" Text="Add Address" OnClick="btnAdd_Click" />
-
+         
     <hr style="width:100%; text-align:left; background-color :#FFD700; height:5px; color: #6ACAE1; border :0;"/>
 
     <asp:GridView ID="gv_cus_address" runat="server">
