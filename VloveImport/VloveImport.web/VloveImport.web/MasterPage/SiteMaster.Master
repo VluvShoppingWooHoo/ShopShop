@@ -91,7 +91,7 @@
                         <td>                    
                             <table class="HeadMaster">
                                 <tr>
-                                    <td class="td" style="height:20px;">
+                                    <td class="td">
                                         <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
                                     </td> 
                                     <td>
