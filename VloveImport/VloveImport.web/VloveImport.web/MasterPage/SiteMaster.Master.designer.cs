@@ -40,6 +40,15 @@ namespace VloveImport.web.MasterPage {
         protected global::AjaxControlToolkit.ToolkitScriptManager sm;
         
         /// <summary>
+        /// ucCustomerStatus1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VloveImport.web.UserControls.ucCustomerStatus ucCustomerStatus1;
+        
+        /// <summary>
         /// ucCustomerStatus control.
         /// </summary>
         /// <remarks>
