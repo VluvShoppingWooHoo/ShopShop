@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerAddress.aspx.cs" Inherits="VloveImport.web.Customer.CustomerAddress" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerAddress.aspx.cs" Inherits="VloveImport.web.Customer.CustomerAddress" StylesheetTheme = "th1" Theme ="th1" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -12,13 +12,14 @@
          
     <hr style="width:100%; text-align:left; background-color :#FFD700; height:5px; color: #6ACAE1; border :0;"/>
 
-    <asp:GridView ID="gv_cus_address" runat="server">
+    <asp:GridView ID="gv_cus_address" runat="server" AutoGenerateColumns="False">
         <Columns>
             <asp:BoundField HeaderText="ลำดับ" />
             <asp:BoundField HeaderText="ชื่อลูกค้า" />
             <asp:BoundField HeaderText="รายละเอียด" />
             <asp:BoundField HeaderText="ที่อยู่" />
             <asp:BoundField HeaderText="จังหวัด" />
+            <asp:BoundField HeaderText="ภาค" />
         </Columns>
         <EmptyDataTemplate>
             คุณยังไม่มีรายการที่อยู่
@@ -28,12 +29,12 @@
 
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
-        <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" BackgroundCssClass=""
+        <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" BackgroundCssClass="modalBackground"
             PopupControlID="Panel1" TargetControlID="lblheader">
         </asp:ModalPopupExtender>
 
         <asp:Panel ID="Panel1" Height="400px" Width="600px" runat="server" Style="display: none;">
-            <table width="600px" cellpadding="0" cellspacing="0" border="0">
+            <table width="600px" style ="border-collapse:separate;" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_LEFT"></td>
                     <td align="left" class="trLogin_CENTER" style ="padding:0px 0px;">
@@ -43,7 +44,7 @@
                     </td>
                     <td align="right" width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_RIGHT">
                         <div style="text-align:right;margin-right: 10px; margin-top: 5px;">
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/testbatt/img/Close.png" Width="20px" Height="20px" />
+                            <asp:ImageButton ID="BtnImgClose" runat="server" ImageUrl="~/Images/icon/Close.png" Width="20px" Height="20px" />
                         </div>
                     </td>
                 </tr>
@@ -51,9 +52,42 @@
                     <td style ="text-align:center; padding:0px 0px;" colspan="3">
                         <center>
                             <asp:Panel Width="96%" Height="350px" ID="Panel2" runat="server" BackColor="#FFFFFF">
-                                <table>
+                                <table width ="100%">
                                     <tr>
-                                        <td>dxfdsf</td>
+                                        <td Width ="25%">ชื่อลูกค้า : </td>
+                                        <td Width ="75%">
+                                            <asp:TextBox ID="txt_Cusname" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>รายละเอียด :</td>
+                                        <td>
+                                            <asp:TextBox ID="txt_CusDetail" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>ภาค : </td>
+                                        <td>
+                                            <asp:DropDownList ID="dll_region" runat="server"></asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>จังหวัด : </td>
+                                        <td>
+                                            <asp:DropDownList ID="dll_province" runat="server"></asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>เขต/อำเภอ</td>
+                                        <td>
+                                            <asp:DropDownList ID="dll_District" runat="server"></asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>แขวง/ตำบล</td>
+                                        <td>
+                                            <asp:DropDownList ID="dll_Sub_District" runat="server"></asp:DropDownList>
+                                        </td>
                                     </tr>
                                 </table>
                             </asp:Panel>
