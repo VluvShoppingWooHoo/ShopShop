@@ -2337,7 +2337,8 @@ span.badge {
   height: 4px;
   display: block;
   width: 100%;
-  background-color: #acece6;
+  /*background-color: #acece6;*/
+  background-color: #ffc107;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -2349,14 +2350,16 @@ span.badge {
     background-color: inherit;
     top: 0;
     bottom: 0;
-    background-color: #26a69a;
+    /*background-color: #26a69a;*/
+    background-color: #ff9800;
     -webkit-transition: width 0.3s linear;
     -moz-transition: width 0.3s linear;
     -o-transition: width 0.3s linear;
     -ms-transition: width 0.3s linear;
     transition: width 0.3s linear; }
   .progress .indeterminate {
-    background-color: #26a69a; }
+    /*background-color: #26a69a;*/
+    background-color: #ff9800; }
     .progress .indeterminate:before {
       content: '';
       position: absolute;
@@ -6841,6 +6844,12 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 .spinner-green {
   border-color: #0f9d58; }
 
+.spinner-orange{
+	border-color:#ff9800; }
+
+/*.spinner-deep-orange {
+  border-color: #ff5722; }*/
+
 /**
  * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
  *
@@ -6873,6 +6882,14 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
   /* durations: 4 * ARCTIME */
   -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both; }
+
+.active .spinner-layer.spinner-orange{
+  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, orange-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, orange-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both; }
+
+/*.active .spinner-layer.spinner-deep-orange{
+  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, deep-orange-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, deep-orange-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both; }*/
 
 @-webkit-keyframes fill-unfill-rotate {
   /* 0.5 * ARCSIZE */
@@ -7073,6 +7090,70 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 
   100% {
     opacity: 0; } }
+
+@-webkit-keyframes orange-fade-in-out{
+  from {
+    opacity: 0; }
+
+  65% {
+    opacity: 0; }
+
+  75% {
+    opacity: 1; }
+
+  90% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+
+@keyframes orange-fade-in-out{
+  from {
+    opacity: 0; }
+
+  65% {
+    opacity: 0; }
+
+  75% {
+    opacity: 1; }
+
+  90% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+
+/*@-webkit-keyframes deep-orange-fade-in-out{
+  from {
+    opacity: 0; }
+
+  65% {
+    opacity: 0; }
+
+  75% {
+    opacity: 1; }
+
+  90% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+
+@keyframes deep-orange-fade-in-out{
+  from {
+    opacity: 0; }
+
+  65% {
+    opacity: 0; }
+
+  75% {
+    opacity: 1; }
+
+  90% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }*/
 
 /**
  * Patch the gap that appear between the two adjacent div.circle-clipper while the
