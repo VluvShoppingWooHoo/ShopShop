@@ -72,6 +72,8 @@
         </asp:View>
         <asp:View ID="vSuccess" runat="server">
             Register Complete
+
+            <asp:HyperLink ID="hplActivate" runat="server"></asp:HyperLink>
         </asp:View>
     </asp:MultiView>
 </asp:Content>

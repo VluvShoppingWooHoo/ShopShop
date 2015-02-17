@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
+using VloveImport.util;
 
 namespace VloveImport.web.Customer
 {
@@ -13,15 +14,16 @@ namespace VloveImport.web.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnRegis_Click(object sender, EventArgs e)
         {
-            string Result = Insert();
+            string Result = "";// Insert();
             if (Result == "")
             {
                 mView.ActiveViewIndex = 1;
+                SetActivate();                
             }
             else
             {
@@ -41,6 +43,16 @@ namespace VloveImport.web.Customer
 
             string Result = Log.InsertRegisCustomer(Cust);
             return Result;
-        }        
+        }
+
+        protected void SetActivate()
+        {
+            EncrypUtil en = new EncrypUtil();
+            string e = "", c = "";
+            e = en.EncrypData(txtEmail.Text);
+            c = en.EncrypData(txtPassword.Text);
+            hplActivate.Text = "ActivateHere";
+            hplActivate.NavigateUrl = "Activate.aspx?e=" + Server.UrlEncode(e) + "&c=" + Server.UrlEncode(c);
+        }
     }
 }
