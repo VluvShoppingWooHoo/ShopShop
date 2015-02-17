@@ -84,13 +84,16 @@
     <form id="form1" runat="server">
         <div>
             <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
+            <div style="line-height:0px;">
+                <uc2:ucCustomerStatus ID="ucCustomerStatus1" runat="server" />
+            </div>
             <center>  
                 <table>
                     <tr>
                         <td>                  
                             <table class="HeadMaster center" style="width: 900px">
-                                <tr>
-                                    <td class="td">
+                                <tr style="margin:2px 2px; padding: 2px 2px;">
+                                    <td class="td" style="margin:0px 0px; padding: 0px 0px;">
                                         <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
                                     </td> 
                                     <td>

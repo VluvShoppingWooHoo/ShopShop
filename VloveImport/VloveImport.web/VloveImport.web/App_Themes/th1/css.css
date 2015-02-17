@@ -74,8 +74,8 @@
     background: url("../../Images/icon/c_box.png");
 }
 
-.modalBackground
-{
+.modalBackground {
     background-color: Gray;
     filter: alpha(opacity=80);
-    opacity: 0.9;
+    opacity: 0.9;
+}
