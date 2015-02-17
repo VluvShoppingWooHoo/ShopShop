@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerAddress.aspx.cs" Inherits="VloveImport.web.Customer.CustomerAddress" StylesheetTheme = "th1" Theme ="th1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/master_page_batt.Master" AutoEventWireup="true" CodeBehind="CustomerAddress.aspx.cs" Inherits="VloveImport.web.Customer.CustomerAddress" StylesheetTheme = "th1" Theme ="th1" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -12,19 +12,31 @@
          
     <hr style="width:100%; text-align:left; background-color :#FFD700; height:5px; color: #6ACAE1; border :0;"/>
 
-    <asp:GridView ID="gv_cus_address" runat="server" AutoGenerateColumns="False">
-        <Columns>
-            <asp:BoundField HeaderText="ลำดับ" />
-            <asp:BoundField HeaderText="ชื่อลูกค้า" />
-            <asp:BoundField HeaderText="รายละเอียด" />
-            <asp:BoundField HeaderText="ที่อยู่" />
-            <asp:BoundField HeaderText="จังหวัด" />
-            <asp:BoundField HeaderText="ภาค" />
-        </Columns>
-        <EmptyDataTemplate>
-            คุณยังไม่มีรายการที่อยู่
-        </EmptyDataTemplate>
-    </asp:GridView>
+<table width ="100%">
+    <tr>
+        <td align ="center">
+            <asp:GridView ID="gv_cus_address" runat="server" AutoGenerateColumns="False" Width ="90%">
+                <Columns>
+                    <asp:BoundField HeaderText="ลำดับ" />
+                    <asp:BoundField HeaderText="ชื่อลูกค้า" />
+                    <asp:BoundField HeaderText="รายละเอียด" />
+                    <asp:BoundField HeaderText="ที่อยู่" />
+                    <asp:BoundField HeaderText="จังหวัด" />
+                    <asp:BoundField HeaderText="ภาค" />
+                    <asp:TemplateField HeaderText="Tools">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="btnImgEdit" runat="server" />&nbsp;&nbsp;
+                            <asp:ImageButton ID="btnImgDelete" runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <EmptyDataTemplate>
+                    คุณยังไม่มีรายการที่อยู่
+                </EmptyDataTemplate>
+            </asp:GridView>
+        </td>
+    </tr>
+</table>
 </div>
 
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -87,6 +99,18 @@
                                         <td>แขวง/ตำบล</td>
                                         <td>
                                             <asp:DropDownList ID="dll_Sub_District" runat="server"></asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>รหัสไปรษณีย์</td>
+                                        <td>
+                                            <asp:TextBox ID="txt_ZipCode" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan ="2">
+                                            <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล"></asp:Button>&nbsp;&nbsp;
+                                            <asp:Button ID="btnReset" runat="server" Text="ล้างข้อมูล"></asp:Button>
                                         </td>
                                     </tr>
                                 </table>
