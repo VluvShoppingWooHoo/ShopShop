@@ -15,7 +15,7 @@
 </div>
 
 <!-- Modal Structure -->
-<div id="modalItem" class="modal modal-fixed-footer row">    
+<div id="modalItem" class="modal modal-fixed-footer row">
     <div id="loadingCircle" class="preloader-wrapper big active center-Preload-Circle">
         <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
@@ -68,8 +68,8 @@
     <div id="showData" class="modal-content row">
         <h5 id="lblItemName">Modal Header</h5>
         <div class="card-image col s6">
-            <%--<img id="imgpicURL" height="200">--%>
-            <img id="imgpicURL" src="http://img04.taobaocdn.com/bao/uploaded/i4/TB12EHiGVXXXXX6XXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" height="200">
+            <img id="imgpicURL" height="200">
+            <%--<img id="imgpicURL" src="http://img04.taobaocdn.com/bao/uploaded/i4/TB12EHiGVXXXXX6XXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" height="200">--%>
         </div>
         <div class="col s6">
             <div class="row">
@@ -89,43 +89,43 @@
             <div class="col s2"></div>
         </div>
     </div>
-<div id="footer" class="modal-footer">
-    <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
+    <div id="footer" class="modal-footer">
+        <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
 
 
-        <i class="mdi-action-shopping-cart"></i>
-    </button>
-    <%--<a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>--%>
-</div>
+            <i class="mdi-action-shopping-cart"></i>
+        </button>
+        <%--<a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>--%>
+    </div>
 </div>
 
 <script type="text/javascript">
     $(function () {
 
         $('#btnSearch').click(function () {
-            //$('#loadingCircle').show();
-            //$('#loadingLine').show();
-            //$('#showData').hide();
-            //$('#footer').hide();
+            $('#loadingCircle').show();
+            $('#loadingLine').show();
+            $('#showData').hide();
+            $('#footer').hide();
             $('#modalItem').openModal();
-            //var param = { "txt": $('#txtSearch').val() };
-            //$.ajax({
-            //    type: 'POST',
-            //    url: "../Index.aspx/GetModelFromURL",
-            //    data: JSON.stringify(param),
-            //    contentType: 'application/json; charset=utf-8',
-            //    dataType: 'json',
-            //    success: function (data) {
-            //        bindModal(data);
-            //$('#loadingCircle').hide();
-            //$('#loadingLine').hide();
-            $('#showData').show();
-            $('#footer').show();
-            //    },
-            //    error: function (err) {
-            //        alert('gs');
-            //    }
-            //});
+            var param = { "txt": $('#txtSearch').val() };
+            $.ajax({
+                type: 'POST',
+                url: "../Index.aspx/GetModelFromURL",
+                data: JSON.stringify(param),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    bindModal(data);
+                    $('#loadingCircle').hide();
+                    $('#loadingLine').hide();
+                    $('#showData').show();
+                    $('#footer').show();
+                },
+                error: function (err) {
+                    alert('gs');
+                }
+            });
         });
     });
 

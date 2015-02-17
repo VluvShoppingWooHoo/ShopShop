@@ -13,7 +13,8 @@ namespace VloveImport.data
         public string DESC { get; set; }
         public string picURL { get; set; }
         public string Price { get; set; }
-        public string ProPrice { get; set; }         
-      
+        public string ProPrice { get; set; }
+        public string Color { get; set; }
+        public string Size { get; set; }      
     }
 }

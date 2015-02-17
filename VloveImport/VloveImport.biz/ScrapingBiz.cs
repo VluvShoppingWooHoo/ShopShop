@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using VloveImport.data;
+using VloveImport.data.Extension;
 
 namespace VloveImport.biz
 {
@@ -32,23 +33,29 @@ namespace VloveImport.biz
                 {
                     switch (propertyInfo.Name)
                     {
-                        case "ItemID":
+                        case Constant.ScrapModel.ItemID:
                             model.ItemID = GetItemID(html, web, doc);
                             break;
-                        case "ItemName":
+                        case Constant.ScrapModel.ItemName:
                             model.ItemName = GetItemName(html, web, doc);
                             break;
-                        case "DESC":
+                        case Constant.ScrapModel.DESC:
                             model.DESC = GetDESC(html, web, doc);
                             break;
-                        case "picURL":
+                        case Constant.ScrapModel.picURL:
                             model.picURL = GetpicURL(html, web, doc);
                             break;
-                        case "Price":
+                        case Constant.ScrapModel.Price:
                             model.Price = GetPrice(html, web, doc);
                             break;
-                        case "ProPrice":
+                        case Constant.ScrapModel.ProPrice:
                             model.ProPrice = GetProPrice(html, web, doc);
+                            break;
+                        case Constant.ScrapModel.Color:
+                            model.Color = GetColor(html, web, doc);
+                            break;
+                        case Constant.ScrapModel.Size:
+                            model.Size = GetSize(html, web, doc);
                             break;
                         default:
                             model = null;
@@ -217,6 +224,70 @@ namespace VloveImport.biz
             }
             catch (Exception ex) { }
             return ProPrice;
+        }
+        private string GetColor(string html, int web, HtmlAgilityPack.HtmlDocument doc)
+        {
+            string Color = string.Empty;
+            try
+            {
+                switch (web)
+                {
+                    case 1:
+                        //HtmlNode node = doc.GetElementbyId("J_Prop_Color");
+                        var result = doc.DocumentNode.Descendants("dl").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("J_Prop_Color"));
+                        HtmlNode node = result.FirstOrDefault().ChildNodes[3].ChildNodes[1];
+                        //Can't use foreach
+                        for (int i = 0; i < node.ChildNodes.Count; i++)
+                        {
+                            if (node.ChildNodes[i].Name.Contains("li"))
+                            {
+                                HtmlNode item = node.ChildNodes[i];
+                                Color += item.InnerHtml + "||";
+                            }
+                        }
+                        //Color = Color.
+                        break;
+                    case 2:
+                        Color = string.Empty;
+                        break;
+                    case 3:
+                        Color = string.Empty;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex) { }
+            return Color;
+        }
+        private string GetSize(string html, int web, HtmlAgilityPack.HtmlDocument doc)
+        {
+            string Size = string.Empty;
+            try
+            {
+                switch (web)
+                {
+                    case 1:
+                        var node = doc.DocumentNode.Descendants("dl").Where(d =>
+                            d.Attributes.Contains("class") &&
+                            d.Attributes["class"].Value.Contains("J_TMySizeProp"));
+                        //HtmlNode node = doc.G("J_TMySizeProp");
+                        //Size = node.InnerText;
+                        break;
+                    case 2:
+                        Size = string.Empty;
+                        break;
+                    case 3:
+                        Size = string.Empty;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex) { }
+            return Size;
         }
         #endregion
         //internal static string RemoveUnwantedTags(string data)
