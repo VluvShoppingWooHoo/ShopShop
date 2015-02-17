@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using VloveImport.data;
 using VloveImport.util;
 using VloveImport.biz;
+using VloveImport.data.Extension;
 
 namespace VloveImport.web
 {
@@ -29,7 +30,14 @@ namespace VloveImport.web
             JavaScriptSerializer js = new JavaScriptSerializer();
             try
             {
-                int webMode = 1;
+                int webMode = 0;
+                if (txt.Contains("taobao.com"))
+                    webMode = Constant.Web.WTaoBao;
+                else if (txt.Contains("tmall.com"))
+                    webMode = Constant.Web.WTmall;
+                else
+                    webMode = Constant.Web.W1688;
+
                 data = sc.Handle(txt, webMode);
             }
             catch (Exception ex) { }
