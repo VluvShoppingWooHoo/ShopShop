@@ -14,9 +14,24 @@ namespace VloveImport.web.Customer
 
         }
 
+        public void BinddataRegion()
+        { 
+            
+        }
+
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             ModalPopupExtender1.Show();
+        }
+
+        protected void btnImgEdit_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void btnImgDelete_Click(object sender, ImageClickEventArgs e)
+        {
+
         }
     }
 }

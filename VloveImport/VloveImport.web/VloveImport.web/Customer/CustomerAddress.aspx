@@ -17,17 +17,30 @@
         <td align ="center">
             <asp:GridView ID="gv_cus_address" runat="server" AutoGenerateColumns="False" Width ="90%">
                 <Columns>
-                    <asp:BoundField HeaderText="ลำดับ" />
-                    <asp:BoundField HeaderText="ชื่อลูกค้า" />
-                    <asp:BoundField HeaderText="รายละเอียด" />
-                    <asp:BoundField HeaderText="ที่อยู่" />
-                    <asp:BoundField HeaderText="จังหวัด" />
-                    <asp:BoundField HeaderText="ภาค" />
+                    <asp:BoundField HeaderText="ลำดับ" DataField="Index" >
+                    <ItemStyle HorizontalAlign="Right" Width="5%" />
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="ชื่อลูกค้า" DataField="CUS_ADD_CUS_NAME" >
+                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="รายละเอียด" DataField="CUS_ADD_ADDRESS_TEXT" >
+                    <ItemStyle HorizontalAlign="Left" Width="20%" />
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="ที่อยู่" >
+                    <ItemStyle HorizontalAlign="Left" Width="30%" />
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="จังหวัด" DataField="PROVINCE_NAME" >
+                    <ItemStyle HorizontalAlign="Left" Width="10%" />
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="ภาค" DataField="REGION_NAME" >
+                    <ItemStyle HorizontalAlign="Left" Width="10%" />
+                    </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
-                            <asp:ImageButton ID="btnImgEdit" runat="server" />&nbsp;&nbsp;
-                            <asp:ImageButton ID="btnImgDelete" runat="server" />
+                            <asp:ImageButton ID="btnImgEdit" runat="server" ImageUrl="~/Images/icon/b_edit.png" OnClick="btnImgEdit_Click" />&nbsp;&nbsp;
+                            <asp:ImageButton ID="btnImgDelete" runat="server" Height="15px" ImageUrl="~/Images/icon/Close-2-icon.png" OnClick="btnImgDelete_Click" Width="15px" />
                         </ItemTemplate>
+                        <ItemStyle Width="10%" />
                     </asp:TemplateField>
                 </Columns>
                 <EmptyDataTemplate>
