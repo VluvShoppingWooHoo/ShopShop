@@ -48,15 +48,15 @@
 .center-Preload-Line {
     margin-top: 15% !important;
 }
-/*.centerModal {
+.center {
     margin-left: auto !important;
     margin-right: auto !important;
-    margin-top: auto !important;
+    /*margin-top: auto !important;
     margin-bottom: auto !important;
     height: 70% !important;
-    width: 70% !important;
-    /*background-color: #b0e0e6;
-}*/
+    width: 70% !important;*/
+    /*background-color: #b0e0e6;*/
+}
 
 .trLogin_LEFT
 {
@@ -78,5 +78,4 @@
 {
     background-color: Gray;
     filter: alpha(opacity=80);
-    opacity: 0.9;
-}
+    opacity: 0.9;

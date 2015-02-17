@@ -81,15 +81,14 @@
             <div class="indeterminate"></div>
         </div>
     </div>--%>
-    <div class="container" style="width: 900px">
-        <form id="form1" runat="server">
-            <div>
-                <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
-                <center>  
+    <form id="form1" runat="server">
+        <div>
+            <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
+            <center>  
                 <table>
                     <tr>
-                        <td>                    
-                            <table class="HeadMaster">
+                        <td>                  
+                            <table class="HeadMaster center" style="width: 900px">
                                 <tr>
                                     <td class="td">
                                         <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
@@ -117,20 +116,21 @@
                                         <uc1:ucMenubar ID="Menubar" runat="server" />
                                     </td>                    
                                 </tr>
-                            </table>                     
+                            </table>                
                         </td>
                     </tr>
                     <tr>
                         <td>
+    <div class="container">
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
                             </asp:ContentPlaceHolder>
+    </div>
                         </td>
                     </tr>
                 </table>  
             </center>
-            </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </body>
 </html>
 

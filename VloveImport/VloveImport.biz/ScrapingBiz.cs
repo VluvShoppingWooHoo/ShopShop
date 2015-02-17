@@ -244,7 +244,9 @@ namespace VloveImport.biz
                             if (node.ChildNodes[i].Name.Contains("li"))
                             {
                                 HtmlNode item = node.ChildNodes[i];
-                                Color += item.InnerHtml + "||";
+                                int start = item.InnerHtml.IndexOf('(') + 1;
+                                int end = item.InnerHtml.IndexOf(')');
+                                Color += item.InnerHtml.Substring(start, (end - start)) + "||";
                             }
                         }
                         //Color = Color.
