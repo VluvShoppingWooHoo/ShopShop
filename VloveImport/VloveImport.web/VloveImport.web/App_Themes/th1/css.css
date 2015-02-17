@@ -1,54 +1,64 @@
-﻿body {
+﻿body
+{
 }
 
 .HeadMaster
 {
-	/*width:900px;
+    /*width:900px;
 	height:200px;*/
-	/*background-color:gray;*/
-	
-	border-style:solid;	
-	border-width:medium;
-	border-color:red;
+    /*background-color:gray;*/
+    border-style: solid;
+    border-width: medium;
+    border-color: red;
 }
+
 .td
 {
-	border-style:solid;	
-	border-width:medium; 
-	border-color:blue;
+    border-style: solid;
+    border-width: medium;
+    border-color: blue;
 }
+
 .banner
 {
-	width:890px;
-	height:150px;
-	border-style:solid;	
-	border-width:medium;
-	border-color:blue;
+    width: 890px;
+    height: 150px;
+    border-style: solid;
+    border-width: medium;
+    border-color: blue;
 }
+
 .promotion
 {
-	width:700px;
-	height:300px;
-	border-style:solid;	
-	border-width:medium;
-	border-color:blue;
+    width: 700px;
+    height: 300px;
+    border-style: solid;
+    border-width: medium;
+    border-color: blue;
 }
+
 .news
 {
-	width:180px;
-	height:300px;
-	border-style:solid;	
-	border-width:medium;
-	border-color:blue;
+    width: 180px;
+    height: 300px;
+    border-style: solid;
+    border-width: medium;
+    border-color: blue;
 }
-.center-Preload-Circle {
+
+.center-Preload-Circle
+{
     margin-top: 20% !important;
     margin-left: 45% !important;
 }
-.center-Preload-Line {
+
+.center-Preload-Line
+{
     margin-top: 15% !important;
 }
-.center {
+
+.center
+{
     margin-left: auto !important;
     margin-right: auto !important;
     /*margin-top: auto !important;
@@ -61,7 +71,7 @@
 .trLogin_LEFT
 {
     background: url("../../Images/icon/l_box.png") no-repeat;
-	height :43px;
+    height: 43px;
 }
 
 .trLogin_RIGHT
@@ -74,7 +84,19 @@
     background: url("../../Images/icon/c_box.png");
 }
 
-.modalBackground {
+.modalBackground
+{
     background-color: Gray;
     filter: alpha(opacity=80);
-    opacity: 0.9;}
+    opacity: 0.9;
+}
+
+.input-field
+{
+    color: black !important;
+}
+
+.label
+{
+    color: black !important;
+}

@@ -3,7 +3,7 @@
     <div class="col s9">
         <div class="input-field orange-text row">
             <input id="txtSearch" type="text" class="validate">
-            <label for="lbSearch" class=" orange-text">Place web site here.</label>
+            <label for="lbSearch" class="">Place web site here.</label>
         </div>
     </div>
     <div class="col s3">
