@@ -78,12 +78,27 @@
             <div class="row">
                 <p id="lblProPrice">A bunch of t1ext</p>
             </div>
+            <div class="row">                
+                <div id="liSize" class="">
+                </div>
+                <%--<select id="liSize">
+                    <option value="" disabled selected>Choose your option</option>
+                </select>--%>
+            </div>
+            <div class="row">
+                <%--<select id="liColor">
+                    <option value="" disabled selected>Choose your option</option>
+                </select>--%>
+                <div id="liColor" class="">
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col s2"></div>
             <div class="input-field col s8">
                 <i class="mdi-editor-mode-edit orange-text prefix"></i>
-                <textarea id="txtRemark" class="materialize-textarea"></textarea>
+                <input id="txtRemark" type="text" class="validate">
+                <%--<textarea id="txtRemark" class="materialize-textarea"></textarea>--%>
                 <label for="txtRemark">Remark</label>
             </div>
             <div class="col s2"></div>
@@ -135,7 +150,19 @@
         $("#imgpicURL").attr("src", obj.picURL);
         $("#lblPrice").html(obj.Price);
         $("#lblProPrice").html(obj.ProPrice);
+        var arraySize = obj.Size.split("||");
+        var arrayColor = obj.Color.split("||");
+        for (var i = 0; i < arraySize.length; i++) {
+            //$("#liSize").append('<span>' + arraySize[i] + '</span>');
+            $("#liSize").append('<a class="waves-effect white orange-text waves-light btn" style="padding:0 ; margin-right:10px">' + arraySize[i] + '</a>');
+        }
+        for (var i = 0; i < arrayColor.length; i++) {
+            //$("#liColor").append('<option value=""> ' + arrayColor[i] + ' </option>');
+            //$("#liColor").append('<img src="' + arrayColor[i] + '">');
+            $("#liColor").append('<a class="waves-effect white orange-text waves-light btn" style="padding:0 ; margin-right:10px"><img src="' + arrayColor[i] + '"></a>');
+        }
 
+        //'<li><a href="/user/messages"><span class="tab">Message Center</span></a></li>');
         //alert(data.d);
     }
 </script>

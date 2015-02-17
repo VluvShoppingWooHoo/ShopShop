@@ -249,7 +249,7 @@ namespace VloveImport.biz
                                 Color += item.InnerHtml.Substring(start, (end - start)) + "||";
                             }
                         }
-                        //Color = Color.
+                        Color = Color.Remove(Color.Length - 2, 2);
                         break;
                     case 2:
                         Color = string.Empty;
@@ -272,11 +272,23 @@ namespace VloveImport.biz
                 switch (web)
                 {
                     case 1:
-                        var node = doc.DocumentNode.Descendants("dl").Where(d =>
-                            d.Attributes.Contains("class") &&
-                            d.Attributes["class"].Value.Contains("J_TMySizeProp"));
-                        //HtmlNode node = doc.G("J_TMySizeProp");
-                        //Size = node.InnerText;
+                        //HtmlNode node = doc.GetElementbyId("J_Prop_Color");
+                        var result = doc.DocumentNode.Descendants("dl").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("J_TMySizeProp"));
+                        HtmlNode node = result.FirstOrDefault().ChildNodes[3].ChildNodes[1];
+                        //Can't use foreach
+                        for (int i = 0; i < node.ChildNodes.Count; i++)
+                        {
+                            if (node.ChildNodes[i].Name.Contains("li"))
+                            {
+                                HtmlNode item = node.ChildNodes[i];
+                                int start = item.InnerHtml.IndexOf("<span>") + 6;
+                                int end = item.InnerHtml.IndexOf("</span>");
+                                Size += item.InnerHtml.Substring(start, (end - start)) + "||";
+                            }
+                        }
+                        Size = Size.Remove(Size.Length - 2, 2);
                         break;
                     case 2:
                         Size = string.Empty;
