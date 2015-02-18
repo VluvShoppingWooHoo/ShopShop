@@ -1,9 +1,7 @@
-﻿body
-{
+body {
 }
 
-.HeadMaster
-{
+.HeadMaster {
     /*width:900px;
 	height:200px;*/
     /*background-color:gray;*/
@@ -12,15 +10,13 @@
     border-color: red;
 }
 
-.td
-{
+.td {
     border-style: solid;
     border-width: medium;
     border-color: blue;
 }
 
-.banner
-{
+.banner {
     width: 890px;
     height: 150px;
     border-style: solid;
@@ -28,8 +24,7 @@
     border-color: blue;
 }
 
-.promotion
-{
+.promotion {
     width: 700px;
     height: 300px;
     border-style: solid;
@@ -37,8 +32,7 @@
     border-color: blue;
 }
 
-.news
-{
+.news {
     width: 180px;
     height: 300px;
     border-style: solid;
@@ -46,19 +40,16 @@
     border-color: blue;
 }
 
-.center-Preload-Circle
-{
+.center-Preload-Circle {
     margin-top: 20% !important;
     margin-left: 45% !important;
 }
 
-.center-Preload-Line
-{
+.center-Preload-Line {
     margin-top: 15% !important;
 }
 
-.center
-{
+.center {
     margin-left: auto !important;
     margin-right: auto !important;
     /*margin-top: auto !important;
@@ -68,35 +59,35 @@
     /*background-color: #b0e0e6;*/
 }
 
-.trLogin_LEFT
-{
+.trLogin_LEFT {
     background: url("../../Images/icon/l_box.png") no-repeat;
     height: 43px;
 }
 
-.trLogin_RIGHT
-{
+.trLogin_RIGHT {
     background: url("../../Images/icon/r_box.png") no-repeat;
 }
 
-.trLogin_CENTER
-{
+.trLogin_CENTER {
     background: url("../../Images/icon/c_box.png");
 }
 
-.modalBackground
-{
+.modalBackground {
     background-color: Gray;
     filter: alpha(opacity=80);
     opacity: 0.9;
 }
 
-.input-field
-{
+.input-field {
     color: black !important;
 }
 
-.label
-{
+.label {
     color: black !important;
+}
+
+.selectedBorder {
+    border-style: solid;
+    border-width: 1px;
+    border-color: orange;
 }
