@@ -34,10 +34,11 @@ namespace VloveImport.web.Customer
         protected string Insert()
         {
             LogonBiz Log = new LogonBiz();
-            CustomerData Cust = new CustomerData();                        
+            CustomerData Cust = new CustomerData();
+            EncrypUtil en = new EncrypUtil();
 
             Cust.Cus_Email = txtEmail.Text;
-            Cust.Cus_Password = txtPassword.Text;
+            Cust.Cus_Password = en.EncrypData(txtPassword.Text);
             Cust.Cus_Mobile = txtMobile.Text;
             Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
 
