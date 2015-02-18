@@ -78,19 +78,19 @@
             <div class="row">
                 <p id="lblProPrice">A bunch of t1ext</p>
             </div>
-            <div class="row">                
-                <div id="liSize" class="">
-                </div>
+            <div id="liSize" class="row">                
+                <%--<div id="liSize" class="">
+                </div>--%>
                 <%--<select id="liSize">
                     <option value="" disabled selected>Choose your option</option>
                 </select>--%>
             </div>
-            <div class="row">
+            <div id="liColor" class="row">
                 <%--<select id="liColor">
                     <option value="" disabled selected>Choose your option</option>
                 </select>--%>
-                <div id="liColor" class="">
-                </div>
+                <%--<div id="liColor" class="">
+                </div>--%>
             </div>
         </div>
         <div class="row">
@@ -105,6 +105,7 @@
         </div>
     </div>
     <div id="footer" class="modal-footer">
+        <input type="hidden" id="hdWeb">
         <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
 
 
@@ -116,6 +117,7 @@
 
 <script type="text/javascript">
     $(function () {
+        //$('.childliSize').addClass('orange white-text');
 
         $('#btnSearch').click(function () {
             $('#loadingCircle').show();
@@ -145,6 +147,8 @@
     });
 
     function bindModal(data) {
+        $(".childliSize").remove();
+        $(".childliColor").remove();
         var obj = JSON.parse(data.d);
         $("#lblItemName").html(obj.ItemName);
         $("#imgpicURL").attr("src", obj.picURL);
@@ -152,21 +156,35 @@
         $("#lblProPrice").html(obj.ProPrice);
         var arraySize = obj.Size.split("||");
         var arrayColor = obj.Color.split("||");
+        $("#hdWeb").val(obj.Web);
         for (var i = 0; i < arraySize.length; i++) {
             //$("#liSize").append('<span>' + arraySize[i] + '</span>');
-            $("#liSize").append('<a class="waves-effect white orange-text waves-light btn" style="padding:0 ; margin-right:10px">' + arraySize[i] + '</a>');
+            $("#liSize").append('<div class="col s2"><a id="aSize' + i + '" onclick="selectSize(' + i + ')" class="waves-effect white orange-text waves-light btn childliSize" style="padding:0 ; margin-right:10px">' + arraySize[i] + '</a></div>');
         }
         for (var i = 0; i < arrayColor.length; i++) {
             //$("#liColor").append('<option value=""> ' + arrayColor[i] + ' </option>');
             //$("#liColor").append('<img src="' + arrayColor[i] + '">');
-            $("#liColor").append('<a class="waves-effect white orange-text waves-light btn" style="padding:0 ; margin-right:10px"><img src="' + arrayColor[i] + '"></a>');
+            $("#liColor").append('<div class="col s1"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect white orange-text waves-light btn childliColor" style="padding:0 ; margin-right:10px ; height:30px; width:30px;"><img src="' + arrayColor[i] + '"></a></div>');
         }
 
         //'<li><a href="/user/messages"><span class="tab">Message Center</span></a></li>');
         //alert(data.d);
     }
+
+    function selectColor(e) {
+        $('#liColor div a').removeClass('selectedBorder');
+        $('#aColor' + e).addClass('selectedBorder');
+        var url = $('#aColor' + e + ' img').attr('src');
+        if ($("#hdWeb").val() == 1) {
+            $("#imgpicURL").attr("src", url.replace('30x30' , '400x400'));
+        }
+    }
+
+    function selectSize(e) {
+        $('#liSize div a').addClass('white orange-text');
+        $('#liSize div a').removeClass('orange white-text');
+        $('#aSize' + e).removeClass('white orange-text');
+        $('#aSize' + e).addClass('orange white-text');
+    }
+
 </script>
-
-
-
-
