@@ -6,7 +6,7 @@
             <label for="lbSearch" class="">Place web site here.</label>
         </div>
     </div>
-    <div class="col s3">
+    <div class="col s3" style="line-height:5">
         <button id="btnSearch" type="button" class="btn waves-effect orange waves-light" name="action">
             SEARCH     
             <i class="mdi-action-search right"></i>
