@@ -79,7 +79,7 @@ namespace VloveImport.dal
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("GetData_Master_Region");
+                SqlCommandData.SetStoreProcedure("GET_DATA_MASTER_ADDRESS");
 
                 SqlCommandData.SetParameter("ADD_ID", SqlDbType.Int, ParameterDirection.Input, ADD_ID);
                 SqlCommandData.SetParameter("ADD_NAME", SqlDbType.VarChar, ParameterDirection.Input, ADD_NAME);
