@@ -75,16 +75,16 @@ namespace VloveImport.dal
 
         #region Binding Data Address
 
-        public DataSet GetData_Region(int ADD_ID ,string ADD_NAME = "", int ADD_STATUS = 1,string Act = "")
+        public DataSet GetData_Region(int ADD_ID ,string ADD_NAME, int ADD_STATUS,string Act)
         {
             try
             {
                 SqlCommandData.SetStoreProcedure("GET_DATA_MASTER_ADDRESS");
 
-                SqlCommandData.SetParameter("ADD_ID", SqlDbType.Int, ParameterDirection.Input, ADD_ID);
+                SqlCommandData.SetParameter_Input_INT("ADD_ID", SqlDbType.Int, ParameterDirection.Input, ADD_ID);
                 SqlCommandData.SetParameter("ADD_NAME", SqlDbType.VarChar, ParameterDirection.Input, ADD_NAME);
-                SqlCommandData.SetParameter("ADD_STATUS", SqlDbType.Int, ParameterDirection.Input, ADD_STATUS);
-                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, ADD_STATUS);
+                SqlCommandData.SetParameter_Input_INT("ADD_STATUS", SqlDbType.Int, ParameterDirection.Input, ADD_STATUS);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 return SqlCommandData.ExecuteDataSet();
             }

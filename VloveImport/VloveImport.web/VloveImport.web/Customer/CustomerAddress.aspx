@@ -58,7 +58,7 @@
             PopupControlID="Panel1" TargetControlID="lblheader">
         </asp:ModalPopupExtender>
 
-        <asp:Panel ID="Panel1" Height="400px" Width="600px" runat="server" Style="display: none;">
+        <asp:Panel ID="Panel1" Height="400px" Width="600px" runat="server" ><%--Style="display: none;"--%>
             <table width="600px" style ="border-collapse:separate;" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_LEFT"></td>
@@ -69,7 +69,7 @@
                     </td>
                     <td align="right" width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_RIGHT">
                         <div style="text-align:right;margin-right: 10px; margin-top: 5px;">
-                            <asp:ImageButton ID="BtnImgClose" runat="server" ImageUrl="~/Images/icon/Close.png" Width="20px" Height="20px" />
+                            <asp:ImageButton ID="BtnImgClose" runat="server" ImageUrl="~/Images/icon/Close.png" Width="20px" Height="20px" OnClick="BtnImgClose_Click" />
                         </div>
                     </td>
                 </tr>
@@ -93,25 +93,25 @@
                                     <tr>
                                         <td>ภาค : </td>
                                         <td>
-                                            <asp:DropDownList ID="dll_region" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList ID="dll_region" runat="server" Width ="140px" AutoPostBack="True" OnSelectedIndexChanged="dll_region_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>จังหวัด : </td>
                                         <td>
-                                            <asp:DropDownList ID="dll_province" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList ID="dll_province" runat="server" Width ="140px" AutoPostBack="True" OnSelectedIndexChanged="dll_province_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>เขต/อำเภอ</td>
                                         <td>
-                                            <asp:DropDownList ID="dll_District" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList ID="dll_District" runat="server" Width ="140px" AutoPostBack="True" OnSelectedIndexChanged="dll_District_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>แขวง/ตำบล</td>
                                         <td>
-                                            <asp:DropDownList ID="dll_Sub_District" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList ID="dll_Sub_District" runat="server" Width ="140px"></asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
@@ -122,8 +122,8 @@
                                     </tr>
                                     <tr>
                                         <td colspan ="2">
-                                            <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล"></asp:Button>&nbsp;&nbsp;
-                                            <asp:Button ID="btnReset" runat="server" Text="ล้างข้อมูล"></asp:Button>
+                                            <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล" OnClick="btnSave_Click"></asp:Button>&nbsp;&nbsp;
+                                            <asp:Button ID="btnReset" runat="server" Text="ล้างข้อมูล" OnClick="btnReset_Click"></asp:Button>
                                         </td>
                                     </tr>
                                 </table>
