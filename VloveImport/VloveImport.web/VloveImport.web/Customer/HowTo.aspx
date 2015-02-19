@@ -26,9 +26,10 @@
 7. สินค้าเหมาคิวหรือเหมาตู้
 สินค้าที่เหมามาเป็นตู้คอนเทนเนอร์
                     </td>
-                </tr>
+                </tr>                
             </table>
+                <img src="../Images/pic/RateImport-Q.gif" />
         </asp:View>
-
+        
     </asp:MultiView>
 </asp:Content>
