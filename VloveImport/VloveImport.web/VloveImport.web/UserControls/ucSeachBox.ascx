@@ -159,12 +159,12 @@
         $("#hdWeb").val(obj.Web);
         for (var i = 0; i < arraySize.length; i++) {
             //$("#liSize").append('<span>' + arraySize[i] + '</span>');
-            $("#liSize").append('<div class="col s2"><a id="aSize' + i + '" onclick="selectSize(' + i + ')" class="waves-effect white orange-text waves-light btn childliSize" style="padding:0 ; margin-right:10px">' + arraySize[i] + '</a></div>');
+            $("#liSize").append('<div class="col s3"><a id="aSize' + i + '" onclick="selectSize(' + i + ')" class="waves-effect white orange-text waves-light btn childliSize" style="padding:0 ; margin-right:10px">' + arraySize[i] + '</a></div>');
         }
         for (var i = 0; i < arrayColor.length; i++) {
             //$("#liColor").append('<option value=""> ' + arrayColor[i] + ' </option>');
             //$("#liColor").append('<img src="' + arrayColor[i] + '">');
-            $("#liColor").append('<div class="col s1"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect white orange-text waves-light btn childliColor" style="padding:0 ; margin-right:10px ; height:30px; width:30px;"><img src="' + arrayColor[i] + '"></a></div>');
+            $("#liColor").append('<div class="col s2"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect white orange-text waves-light btn childliColor" style="padding:0 ; margin-right:10px ; height:30px; width:30px;"><img src="' + arrayColor[i] + '"></a></div>');
         }
 
         //'<li><a href="/user/messages"><span class="tab">Message Center</span></a></li>');

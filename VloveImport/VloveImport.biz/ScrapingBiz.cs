@@ -24,42 +24,52 @@ namespace VloveImport.biz
             #region HTML Agility
             HtmlNode.ElementsFlags.Remove("form");
             //HtmlNode.ElementsFlags.Remove("em");
-            HtmlAgilityPack.HtmlWeb HtmlWeb = new HtmlWeb();
+            //HtmlAgilityPack.HtmlWeb HtmlWeb = new HtmlWeb();
+            var HtmlWeb = new HtmlWeb
+            {
+                AutoDetectEncoding = false,
+                OverrideEncoding = System.Text.Encoding.GetEncoding(54936)
+            };
             HtmlAgilityPack.HtmlDocument doc = HtmlWeb.Load(html);
+            //doc.Encoding.
+            //doc. = Encoding.Default;
             #endregion
             foreach (PropertyInfo propertyInfo in model.GetType().GetProperties())
             {
                 if (propertyInfo.CanRead)
                 {
-                    switch (propertyInfo.Name)
+                    if (propertyInfo.Name != Constant.ScrapModel.Web)
                     {
-                        case Constant.ScrapModel.ItemID:
-                            model.ItemID = GetItemID(html, web, doc);
-                            break;
-                        case Constant.ScrapModel.ItemName:
-                            model.ItemName = GetItemName(html, web, doc);
-                            break;
-                        case Constant.ScrapModel.DESC:
-                            model.DESC = GetDESC(html, web, doc);
-                            break;
-                        case Constant.ScrapModel.picURL:
-                            model.picURL = GetpicURL(html, web, doc);
-                            break;
-                        case Constant.ScrapModel.Price:
-                            model.Price = GetPrice(html, web, doc);
-                            break;
-                        case Constant.ScrapModel.ProPrice:
-                            model.ProPrice = GetProPrice(html, web, doc);
-                            break;
-                        case Constant.ScrapModel.Color:
-                            model.Color = GetColor(html, web, doc);
-                            break;
-                        case Constant.ScrapModel.Size:
-                            model.Size = GetSize(html, web, doc);
-                            break;
-                        default:
-                            model = null;
-                            break;
+                        switch (propertyInfo.Name)
+                        {
+                            case Constant.ScrapModel.ItemID:
+                                model.ItemID = GetItemID(html, web, doc);
+                                break;
+                            case Constant.ScrapModel.ItemName:
+                                model.ItemName = GetItemName(html, web, doc);
+                                break;
+                            case Constant.ScrapModel.DESC:
+                                model.DESC = GetDESC(html, web, doc);
+                                break;
+                            case Constant.ScrapModel.picURL:
+                                model.picURL = GetpicURL(html, web, doc);
+                                break;
+                            case Constant.ScrapModel.Price:
+                                model.Price = GetPrice(html, web, doc);
+                                break;
+                            case Constant.ScrapModel.ProPrice:
+                                model.ProPrice = GetProPrice(html, web, doc);
+                                break;
+                            case Constant.ScrapModel.Color:
+                                model.Color = GetColor(html, web, doc);
+                                break;
+                            case Constant.ScrapModel.Size:
+                                model.Size = GetSize(html, web, doc);
+                                break;
+                            default:
+                                model = null;
+                                break;
+                        }
                     }
                 }
             }
