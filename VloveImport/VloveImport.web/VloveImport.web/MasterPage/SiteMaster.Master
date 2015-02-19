@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
 
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/ucCustomerStatus.ascx" TagName="ucCustomerStatus" TagPrefix="uc2" %>
@@ -43,10 +43,10 @@
                     <div class="col s1">
                         &nbsp;
                     </div>
-                    <div class="col s2" style="line-height: 5">
+                    <%--<div class="col s2" style="line-height: 5">
                         Search for popup
-                    </div>
-                    <div class="col s8">
+                    </div>--%>
+                    <div class="col s11">
                         <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
                     </div>
                     <div class="col s1">
