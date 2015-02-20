@@ -27,10 +27,10 @@ namespace VloveImport.dal
             {
                 SqlCommandData.SetStoreProcedure("GET_CUSTOMER_ADDRESS");
 
-                SqlCommandData.SetParameter("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
-                SqlCommandData.SetParameter("CUS_ADD_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ADD_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ADD_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ADD_ID);
 
-                SqlCommandData.SetParameter("CUS_ADDRESS_STATUS", SqlDbType.Int, ParameterDirection.Input, CUS_ADDRESS_STATUS);
+                SqlCommandData.SetParameter_Input_INT("CUS_ADDRESS_STATUS", SqlDbType.Int, ParameterDirection.Input, CUS_ADDRESS_STATUS);
                 SqlCommandData.SetParameter("CUS_ADDRESS_NAME", SqlDbType.VarChar, ParameterDirection.Input, CUS_ADDRESS_NAME);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
@@ -51,16 +51,17 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("INS_UPD_CUSTOMER_ADDRESS");
 
-                SqlCommandData.SetParameter("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ADD_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_ADD_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
 
                 SqlCommandData.SetParameter("CUS_ADD_CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_CUS_NAME);
                 SqlCommandData.SetParameter("CUS_ADD_ADDRESS_TEXT", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_ADDRESS_TEXT);
-                SqlCommandData.SetParameter("CUS_ADD_ZIPCODE", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_ADD_ZIPCODE);
-                SqlCommandData.SetParameter("CUS_ADD_STATUS", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_ADD_STATUS);
-                SqlCommandData.SetParameter("REGION_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.REGION_ID);
-                SqlCommandData.SetParameter("PROVINCE_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.PROVINCE_ID);
-                SqlCommandData.SetParameter("DISTRICT_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.DISTRICT_ID);
-                SqlCommandData.SetParameter("SUB_DISTRICT_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.SUB_DISTRICT_ID);
+                SqlCommandData.SetParameter("CUS_ADD_ZIPCODE", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_ZIPCODE.ToString());
+                SqlCommandData.SetParameter_Input_INT("CUS_ADD_STATUS", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_ADD_STATUS);
+                SqlCommandData.SetParameter_Input_INT("REGION_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.REGION_ID);
+                SqlCommandData.SetParameter_Input_INT("PROVINCE_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.PROVINCE_ID);
+                SqlCommandData.SetParameter_Input_INT("DISTRICT_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.DISTRICT_ID);
+                SqlCommandData.SetParameter_Input_INT("SUB_DISTRICT_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.SUB_DISTRICT_ID);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 

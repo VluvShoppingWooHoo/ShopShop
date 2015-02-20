@@ -17,12 +17,19 @@ namespace VloveImport.biz
         public string INS_UPD_Customer_Address(CustomerData EnCus, string Act)
         {
             string Result = "";
-            CustomerDal dal = new CustomerDal("LocalConnection");
-            Result = dal.INS_UPD_Customer_Address(EnCus, Act);
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.INS_UPD_Customer_Address(EnCus, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
             return Result;
         }
 
-        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME,string Act)
+        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME, string Act)
         {
             DataSet ds = new DataSet();
             CustomerDal dal = new CustomerDal("LocalConnection");
