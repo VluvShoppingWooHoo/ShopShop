@@ -11,7 +11,7 @@ namespace VloveImport.dal
 {
     public class CustomerDal
     {
-        #region Constructor  
+        #region Constructor
         public CommandData SqlCommandData;
         public CustomerDal(string strConnection)
         {
@@ -21,17 +21,19 @@ namespace VloveImport.dal
 
         #region CUSTOMER ADDRESS
 
-        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME)
+        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME,string Act)
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("GetData_Customer_Address");
+                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_ADDRESS");
 
                 SqlCommandData.SetParameter("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
                 SqlCommandData.SetParameter("CUS_ADD_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ADD_ID);
 
                 SqlCommandData.SetParameter("CUS_ADDRESS_STATUS", SqlDbType.Int, ParameterDirection.Input, CUS_ADDRESS_STATUS);
                 SqlCommandData.SetParameter("CUS_ADDRESS_NAME", SqlDbType.VarChar, ParameterDirection.Input, CUS_ADDRESS_NAME);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
 
                 return SqlCommandData.ExecuteDataSet();
             }
@@ -47,7 +49,7 @@ namespace VloveImport.dal
             {
                 SqlCommandData.OpenConnection();
                 SqlCommandData.BeginTransaction();
-                SqlCommandData.SetStoreProcedure("INS_UPD_Customer_Address");
+                SqlCommandData.SetStoreProcedure("INS_UPD_CUSTOMER_ADDRESS");
 
                 SqlCommandData.SetParameter("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
 
