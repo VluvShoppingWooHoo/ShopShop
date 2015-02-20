@@ -14,7 +14,7 @@ namespace VloveImport.biz
 
         #region CUSTOMER ADDRESS
 
-        public string InsertRegisCustomer(CustomerData EnCus, string Act)
+        public string INS_UPD_Customer_Address(CustomerData EnCus, string Act)
         {
             string Result = "";
             CustomerDal dal = new CustomerDal("LocalConnection");
