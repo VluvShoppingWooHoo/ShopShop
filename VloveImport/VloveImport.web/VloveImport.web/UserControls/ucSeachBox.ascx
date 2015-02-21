@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucSeachBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucSeachBox" %>
 <div class="row">
-    <div class="col s9">
+    <div class="col s9 m9 l9">
         <div class="input-field orange-text row">
             <input id="txtSearch" type="text" class="validate">
             <label for="lbSearch" class="">Place web site here.</label>
@@ -67,11 +67,11 @@
     </div>
     <div id="showData" class="modal-content row">
         <h5 id="lblItemName">Modal Header</h5>
-        <div class="card-image col s6">
+        <div class="card-image col s6 m6 l6">
             <img id="imgpicURL" height="200">
             <%--<img id="imgpicURL" src="http://img04.taobaocdn.com/bao/uploaded/i4/TB12EHiGVXXXXX6XXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" height="200">--%>
         </div>
-        <div class="col s6">
+        <div class="col s6 m6 l6">
             <div class="row">
                 <p id="lblPrice">A bunch of tex2t</p>
             </div>
@@ -95,7 +95,7 @@
         </div>
         <div class="row">
             <div class="col s2"></div>
-            <div class="input-field col s8">
+            <div class="input-field col s8 m8 l8">
                 <i class="mdi-editor-mode-edit orange-text prefix"></i>
                 <input id="txtRemark" type="text" class="validate">
                 <%--<textarea id="txtRemark" class="materialize-textarea"></textarea>--%>

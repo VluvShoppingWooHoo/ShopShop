@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucCustomerStatus.ascx.cs" Inherits="VloveImport.web.UserControls.ucCustomerStatus" %>
 <nav>
     <div class="nav-wrapper orange">
-        <a href="#" class="brand-logo">Logo</a>
+        <a href="../Index.aspx" class="brand-logo"><i class="mdi-device-airplanemode-on"></i>  LOGO</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
                 <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="เข้าสู่ระบบ" ID="hlLogin" runat="server" NavigateUrl="~/Customer/Login.aspx">&nbsp;

@@ -11,23 +11,5 @@ namespace VloveImport.web.Customer {
     
     
     public partial class HowTo {
-        
-        /// <summary>
-        /// mView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView mView;
-        
-        /// <summary>
-        /// vRateImport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View vRateImport;
     }
 }
