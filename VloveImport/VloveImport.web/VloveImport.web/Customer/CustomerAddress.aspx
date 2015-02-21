@@ -5,6 +5,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
+
     <div >
     ที่อยุ่
 
@@ -15,19 +18,16 @@
 <table width ="100%">
     <tr>
         <td align ="center">
-            <asp:GridView ID="gv_cus_address" runat="server" AutoGenerateColumns="False" Width ="90%">
+            <asp:GridView ID="gv_cus_address" runat="server" AutoGenerateColumns="False" Width ="90%" DataKeyNames="CUS_ADD_ID" OnRowCreated="gv_cus_address_RowCreated">
                 <Columns>
-                    <asp:BoundField HeaderText="ลำดับ" DataField="Index" >
+                    <asp:BoundField HeaderText="ลำดับ" DataField="ROW_INDEX" >
                     <ItemStyle HorizontalAlign="Right" Width="5%" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="ชื่อลูกค้า" DataField="CUS_ADD_CUS_NAME" >
                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="รายละเอียด" DataField="CUS_ADD_ADDRESS_TEXT" >
-                    <ItemStyle HorizontalAlign="Left" Width="20%" />
-                    </asp:BoundField>
-                    <asp:BoundField HeaderText="ที่อยู่" >
-                    <ItemStyle HorizontalAlign="Left" Width="30%" />
+                    <asp:BoundField HeaderText="ที่อยู่" DataField="ADDRESS_FULL">
+                    <ItemStyle HorizontalAlign="Left" Width="50%" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="จังหวัด" DataField="PROVINCE_NAME" >
                     <ItemStyle HorizontalAlign="Left" Width="10%" />
@@ -40,25 +40,28 @@
                             <asp:ImageButton ID="btnImgEdit" runat="server" ImageUrl="~/Images/icon/b_edit.png" OnClick="btnImgEdit_Click" />&nbsp;&nbsp;
                             <asp:ImageButton ID="btnImgDelete" runat="server" Height="15px" ImageUrl="~/Images/icon/Close-2-icon.png" OnClick="btnImgDelete_Click" Width="15px" />
                         </ItemTemplate>
-                        <ItemStyle Width="10%" />
+                        <ItemStyle Width="10%" HorizontalAlign="Center" />
                     </asp:TemplateField>
                 </Columns>
                 <EmptyDataTemplate>
-                    คุณยังไม่มีรายการที่อยู่
+                    <table cellpadding="0" cellspacing="0" border="0" align="left" width="100%" height="275" bgcolor="#fbfbfb">
+                        <tr>
+                            <td width="100%" align="center">
+                                <b>Data not found.</b>
+                            </td>
+                        </tr>
+                    </table>
                 </EmptyDataTemplate>
             </asp:GridView>
         </td>
     </tr>
 </table>
 </div>
-
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-    <ContentTemplate>
         <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" BackgroundCssClass="modalBackground"
             PopupControlID="Panel1" TargetControlID="lblheader">
         </asp:ModalPopupExtender>
 
-        <asp:Panel ID="Panel1" Height="400px" Width="600px" runat="server" ><%--Style="display: none;"--%>
+        <asp:Panel ID="Panel1" Height="400px" Width="600px" runat="server" Style="display: none;"><%--Style="display: none;"--%>
             <table width="600px" style ="border-collapse:separate;" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_LEFT"></td>
@@ -79,45 +82,45 @@
                             <asp:Panel Width="96%" Height="350px" ID="Panel2" runat="server" BackColor="#FFFFFF">
                                 <table width ="100%">
                                     <tr>
-                                        <td Width ="25%">ชื่อลูกค้า : </td>
-                                        <td Width ="75%">
-                                            <asp:TextBox ID="txt_Cusname" runat="server"></asp:TextBox>
+                                        <td align ="left" Width ="25%">ชื่อลูกค้า : </td>
+                                        <td align ="left" Width ="75%">
+                                            <asp:TextBox ID="txt_Cusname" runat="server" Width ="300px"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>รายละเอียด :</td>
-                                        <td>
-                                            <asp:TextBox ID="txt_CusDetail" runat="server"></asp:TextBox>
+                                        <td align ="left">ที่อยู่ :</td>
+                                        <td align ="left">
+                                            <asp:TextBox ID="txt_CusDetail" runat="server" TextMode = "MultiLine" Width ="300px" Height ="50px"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>ภาค : </td>
-                                        <td>
-                                            <asp:DropDownList ID="dll_region" runat="server" Width ="140px" AutoPostBack="True" OnSelectedIndexChanged="dll_region_SelectedIndexChanged"></asp:DropDownList>
+                                        <td align ="left">ภาค : </td>
+                                        <td align ="left">
+                                            <asp:DropDownList ID="dll_region" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_region_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>จังหวัด : </td>
-                                        <td>
-                                            <asp:DropDownList ID="dll_province" runat="server" Width ="140px" AutoPostBack="True" OnSelectedIndexChanged="dll_province_SelectedIndexChanged"></asp:DropDownList>
+                                        <td align ="left">จังหวัด : </td>
+                                        <td align ="left">
+                                            <asp:DropDownList ID="dll_province" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_province_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>เขต/อำเภอ</td>
-                                        <td>
-                                            <asp:DropDownList ID="dll_District" runat="server" Width ="140px" AutoPostBack="True" OnSelectedIndexChanged="dll_District_SelectedIndexChanged"></asp:DropDownList>
+                                        <td align ="left">เขต/อำเภอ</td>
+                                        <td align ="left">
+                                            <asp:DropDownList ID="dll_District" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_District_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>แขวง/ตำบล</td>
-                                        <td>
-                                            <asp:DropDownList ID="dll_Sub_District" runat="server" Width ="140px"></asp:DropDownList>
+                                        <td align ="left">แขวง/ตำบล</td>
+                                        <td align ="left">
+                                            <asp:DropDownList ID="dll_Sub_District" runat="server" Width ="300px"></asp:DropDownList>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>รหัสไปรษณีย์</td>
-                                        <td>
-                                            <asp:TextBox ID="txt_ZipCode" runat="server"></asp:TextBox>
+                                        <td align ="left">รหัสไปรษณีย์</td>
+                                        <td align ="left">
+                                            <asp:TextBox ID="txt_ZipCode" runat="server" Width ="300px" MaxLength ="5"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>

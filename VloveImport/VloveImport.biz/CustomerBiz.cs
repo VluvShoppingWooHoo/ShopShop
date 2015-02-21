@@ -14,19 +14,26 @@ namespace VloveImport.biz
 
         #region CUSTOMER ADDRESS
 
-        public string InsertRegisCustomer(CustomerData EnCus, string Act)
+        public string INS_UPD_Customer_Address(CustomerData EnCus, string Act)
         {
             string Result = "";
-            CustomerDal dal = new CustomerDal("LocalConnection");
-            Result = dal.INS_UPD_Customer_Address(EnCus, Act);
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.INS_UPD_Customer_Address(EnCus, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
             return Result;
         }
 
-        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME)
+        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME, string Act)
         {
             DataSet ds = new DataSet();
             CustomerDal dal = new CustomerDal("LocalConnection");
-            ds = dal.GetData_Customer_Address(CUS_ID, CUS_ADD_ID, CUS_ADDRESS_STATUS, CUS_ADDRESS_NAME);
+            ds = dal.GetData_Customer_Address(CUS_ID, CUS_ADD_ID, CUS_ADDRESS_STATUS, CUS_ADDRESS_NAME, Act);
             return ds;
         }
 

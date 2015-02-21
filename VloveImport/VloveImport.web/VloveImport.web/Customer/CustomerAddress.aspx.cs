@@ -6,16 +6,39 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
+using VloveImport.data;
 
 namespace VloveImport.web.Customer
 {
     public partial class CustomerAddress : System.Web.UI.Page
     {
+        public int _VS_CUS_ADD_ID
+        {
+            get { return Convert.ToInt32(ViewState["__VS_CUS_ADD_ID"]); }
+            set { ViewState["__VS_CUS_ADD_ID"] = value; }
+        }
+
+        public int _VS_CUS_ID
+        {
+            get { return Convert.ToInt32(ViewState["__VS_CUS_ID"]); }
+            set { ViewState["__VS_CUS_ID"] = value; }
+        }
+
+        public string _VS_ACT
+        {
+            get { return ViewState["__VS_ACT"].ToString(); }
+            set { ViewState["__VS_ACT"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                CustomerData CusData = new CustomerData();
+                CusData = (CustomerData)Session["User"];
+                this._VS_CUS_ID = 1;//CusData.Cus_ID;
                 BinddataRegion("");
+                BindData();
             }
         }
 
@@ -211,6 +234,35 @@ namespace VloveImport.web.Customer
 
         #endregion
 
+        public void BindData()
+        {
+            DataSet ds = new DataSet();
+            CustomerBiz CusBiz = new CustomerBiz();
+            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, -1, 1, "", "BINDDATA");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                gv_cus_address.DataSource = ds.Tables[0];
+                gv_cus_address.DataBind();
+            }
+            else
+            {
+                gv_cus_address.DataSource = null;
+                gv_cus_address.DataBind();
+            }
+
+        }
+
+        public void ShowMessageBox(string message, Page currentPage)
+        {
+            string msgboxScript = "alert('" + message + "');";
+
+            if ((ScriptManager.GetCurrent(currentPage) != null))
+            {
+                ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+            }
+        }
+
         public void ClearData()
         {
             txt_Cusname.Text = "";
@@ -222,28 +274,113 @@ namespace VloveImport.web.Customer
             dll_Sub_District.SelectedIndex = 0;
         }
 
+        public CustomerData SetData()
+        {
+            CustomerData EnCus = new CustomerData();
+            EnCus.CUS_ADD_ID = this._VS_CUS_ADD_ID;
+            if (this._VS_ACT != "DEL")
+            {
+                EnCus.CUS_ADD_CUS_NAME = txt_Cusname.Text.Trim();
+                EnCus.CUS_ADD_ADDRESS_TEXT = txt_CusDetail.Text.Trim();
+                EnCus.CUS_ADD_ZIPCODE = Convert.ToInt32(txt_ZipCode.Text.Trim());
+                EnCus.CUS_ADD_STATUS = 1;
+                EnCus.Cus_ID = this._VS_CUS_ID;
+                EnCus.REGION_ID = Convert.ToInt32(dll_region.SelectedValue);
+                EnCus.PROVINCE_ID = Convert.ToInt32(dll_province.SelectedValue);
+                EnCus.DISTRICT_ID = Convert.ToInt32(dll_District.SelectedValue);
+                EnCus.SUB_DISTRICT_ID = Convert.ToInt32(dll_Sub_District.SelectedValue);
+                EnCus.Create_User = "Batt";
+            }
+            return EnCus;
+        }
+
+        public bool CheckInput()
+        {
+            bool IsReturn = false;
+
+            if (txt_Cusname.Text.Trim() == "")
+            {
+
+            }
+
+            return IsReturn;
+        }
+
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             if (dll_region.Items.Count == 1)
                 BinddataRegion("REGION");
 
             ClearData();
+            _VS_ACT = "INS";
             ModalPopupExtender1.Show();
         }
 
         protected void btnImgEdit_Click(object sender, ImageClickEventArgs e)
         {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string DataKeys_ID = this.gv_cus_address.DataKeys[rowIndex].Values[0].ToString();
 
+            this._VS_CUS_ADD_ID = Convert.ToInt32(DataKeys_ID);
+            this._VS_ACT = "UPD";
+
+            DataSet ds = new DataSet();
+            CustomerBiz CusBiz = new CustomerBiz();
+            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, this._VS_CUS_ADD_ID, 1, "", "BINDDATA");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                txt_Cusname.Text = ds.Tables[0].Rows[0]["CUS_ADD_CUS_NAME"].ToString();
+                txt_CusDetail.Text = ds.Tables[0].Rows[0]["CUS_ADD_ADDRESS_TEXT"].ToString();
+                txt_ZipCode.Text = ds.Tables[0].Rows[0]["CUS_ADD_ZIPCODE"].ToString();
+                BinddataRegion("REGION");
+                dll_region.SelectedValue = ds.Tables[0].Rows[0]["REGION_ID"].ToString();
+                BinddataRegion("PROVINCE");
+                dll_province.SelectedValue = ds.Tables[0].Rows[0]["PROVINCE_ID"].ToString();
+                BinddataRegion("DISTRICT");
+                dll_District.SelectedValue = ds.Tables[0].Rows[0]["DISTRICT_ID"].ToString();
+                BinddataRegion("SUB_DISTRICT");
+                dll_Sub_District.SelectedValue = ds.Tables[0].Rows[0]["SUB_DISTRICT_ID"].ToString();
+            }
+
+            ModalPopupExtender1.Show();
         }
 
         protected void btnImgDelete_Click(object sender, ImageClickEventArgs e)
         {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string DataKeys_ID = this.gv_cus_address.DataKeys[rowIndex].Values[0].ToString();
+            this._VS_CUS_ADD_ID = Convert.ToInt32(DataKeys_ID);
+            this._VS_ACT = "DEL";
 
+            CustomerBiz CusBiz = new CustomerBiz();
+            string IsReturn = "";
+            IsReturn = CusBiz.INS_UPD_Customer_Address(SetData(), this._VS_ACT);
+            if (IsReturn != "")
+            {
+                ShowMessageBox(IsReturn, this.Page);
+            }
+            else
+            {
+                BindData();
+                ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page);
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
+            CustomerBiz CusBiz = new CustomerBiz();
+            string IsReturn = "";
+            IsReturn = CusBiz.INS_UPD_Customer_Address(SetData(), this._VS_ACT);
+            if (IsReturn != "")
+            {
+                ShowMessageBox(IsReturn, this.Page);
+            }
+            else
+            {
+                BindData();
+                ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page);
+            }
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
@@ -254,6 +391,14 @@ namespace VloveImport.web.Customer
         protected void BtnImgClose_Click(object sender, ImageClickEventArgs e)
         {
             ClearData();
+        }
+
+        protected void gv_cus_address_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                ((ImageButton)e.Row.FindControl("btnImgDelete")).Attributes.Add("onClick", "javascript:return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')");
+            }
         }
 
     }
