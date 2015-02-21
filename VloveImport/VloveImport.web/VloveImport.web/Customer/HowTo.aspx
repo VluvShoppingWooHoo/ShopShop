@@ -28,8 +28,10 @@
                     </td>
                 </tr>                
             </table>
-                <img src="../Images/pic/RateImport-Q.gif" />
+            <div>
+                <img src="../Images/pic/RateImport-Q.gif" style="width:500px; height:300px;"/>
+            </div>                
         </asp:View>
-        
+        <asp:View ID="vOrder" runat="server"></asp:View>
     </asp:MultiView>
 </asp:Content>
