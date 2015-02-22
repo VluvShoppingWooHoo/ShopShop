@@ -3,11 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="row card-image small center maxheight300px">
+        <img class="ImgheaderBanner maxheight300px" src="Images/pic/Banner1.png" />
+    </div>
     <table>
-        <tr>
-            <td colspan="2" class="banner">banner
-            </td>
-        </tr>
         <tr>
             <td class="td">Exchange Rate 
             </td>
