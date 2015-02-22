@@ -36,7 +36,7 @@ namespace VloveImport.biz
                     Cust.Cus_Mobile = dt.Rows[0]["Cus_Mobile"].ToString();
                     Cust.Cus_Fax = dt.Rows[0]["Cus_Fax"].ToString();
                     Cust.Cus_Email = dt.Rows[0]["Cus_Email"].ToString();
-                    //Cust.Cus_Password = dt.Rows[0]["Cus_Password"].ToString();
+                    Cust.Cus_Password = dt.Rows[0]["Cus_Password"].ToString();
                     Cust.Cus_Withdraw_Code = dt.Rows[0]["Cus_Withdraw_Code"].ToString();
                     Cust.Cus_Link_Shop = dt.Rows[0]["Cus_Link_Shop"].ToString();
 
