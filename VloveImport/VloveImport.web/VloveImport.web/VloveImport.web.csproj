@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administrator\Encryp.aspx" />
+    <Content Include="Administrator\page_ms_bank.aspx" />
     <Content Include="App_Themes\css\materialize.css" />
     <Content Include="App_Themes\css\materialize.min.css" />
     <Content Include="App_Themes\font\material-design-icons\LICENSE.txt" />
@@ -111,6 +112,13 @@
     </Compile>
     <Compile Include="Administrator\Encryp.aspx.designer.cs">
       <DependentUpon>Encryp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\page_ms_bank.aspx.cs">
+      <DependentUpon>page_ms_bank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\page_ms_bank.aspx.designer.cs">
+      <DependentUpon>page_ms_bank.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\Activate.aspx.cs">
       <DependentUpon>Activate.aspx</DependentUpon>
