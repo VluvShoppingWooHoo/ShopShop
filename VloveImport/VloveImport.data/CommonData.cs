@@ -22,7 +22,19 @@ namespace VloveImport.data
         public int PROVINCE_ID { get; set; }
         public int DISTRICT_ID { get; set; }
         public int SUB_DISTRICT_ID { get; set; }
+
+        #region DATA BANK
         public int BANK_ID { get; set; }
+        public string BANK_NAME { get; set; }
+        public string BANK_ACCOUNT_NO { get; set; }
+        public string BANK_REMARK { get; set; }
+        public int BANK_STATUS { get; set; }
+        #endregion
+
+
+
+
+        
 
     }
 }

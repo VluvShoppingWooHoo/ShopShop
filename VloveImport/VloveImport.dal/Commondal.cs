@@ -10,6 +10,7 @@ using System.Data;
 using VloveImport.util;
 using System.Web;
 using System.Web.Configuration;
+using VloveImport.data;
 
 namespace VloveImport.dal
 {
@@ -183,6 +184,55 @@ namespace VloveImport.dal
 
         #endregion
 
+
+        #endregion
+
+        #region Data Bank
+
+        public DataSet GET_DATA_MASTER_BANK(int BANK_ID, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_DATA_MASTER_BANK");
+
+                SqlCommandData.SetParameter_Input_INT("BANK_ID", SqlDbType.Int, ParameterDirection.Input, BANK_ID);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_DATA_MASTER_BANK -> msg : " + ex.Message);
+            }
+        }
+
+        public string INS_UPD_DATA_MASTER_BANK(CommonData EnBank, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_UPD_DATA_MASTER_BANK");
+
+                SqlCommandData.SetParameter_Input_INT("BANK_ID", SqlDbType.Int, ParameterDirection.Input, EnBank.BANK_ID);
+                SqlCommandData.SetParameter("BANK_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnBank.BANK_NAME);
+                SqlCommandData.SetParameter("BANK_ACCOUNT_NO", SqlDbType.VarChar, ParameterDirection.Input, EnBank.BANK_ACCOUNT_NO);
+                SqlCommandData.SetParameter("BANK_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnBank.BANK_REMARK);
+                SqlCommandData.SetParameter_Input_INT("BANK_STATUS", SqlDbType.Int, ParameterDirection.Input, EnBank.BANK_STATUS);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnBank.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("INS_UPD_DATA_MASTER_BANK -> msg : " + ex.Message);
+            }
+        }
 
         #endregion
 
