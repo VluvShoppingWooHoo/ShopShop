@@ -127,6 +127,16 @@ body
     height: 300px;
 }
 
+.maxheight300px
+{
+    max-height: 300px !important;
+}
+
+.maxheight400px
+{
+    max-height: 400px !important;
+}
+
 .ImgheaderBanner
 {
     width: 100%;
@@ -135,7 +145,7 @@ body
 
 .content
 {
-    width: 70% !important;
+    width: 80% !important;
 }
 
 .font15
@@ -151,5 +161,15 @@ body
 .dropdown-content li:hover .red, .dropdown-content li.active .red
 {
     background-color: rgba(255, 0, 0, 1) !important;
+}
+
+.menuBar.red div:hover 
+{
+    background-color: rgba(255, 0, 0, 1) !important;
+}
+
+.row.noafter:after
+{
+    content:none;
 }
 
