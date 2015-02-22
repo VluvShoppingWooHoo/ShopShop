@@ -97,6 +97,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Script\Script Init.sql" />
+    <Content Include="UserControls\ucRecommend.ascx" />
     <Content Include="UserControls\ucSeachBox.ascx" />
     <Content Include="UserControls\ucCustomerStatus.ascx" />
     <Content Include="UserControls\ucMenuBar.ascx" />
@@ -237,6 +238,13 @@
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ucRecommend.ascx.cs">
+      <DependentUpon>ucRecommend.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucRecommend.ascx.designer.cs">
+      <DependentUpon>ucRecommend.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucSeachBox.ascx.cs">
       <DependentUpon>ucSeachBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
