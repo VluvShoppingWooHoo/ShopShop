@@ -21,7 +21,7 @@ namespace VloveImport.web.UserControls
             {
                 hlLogin.Visible = false;
                 hlRegis.Visible = false;
-                lbCustomer.Text = "สวัสดี คุณ" + ((CustomerData)Session["User"]).Cus_Name;
+                lbCustomer.Text = "สวัสดี คุณ " + ((CustomerData)Session["User"]).Cus_Name;
                 lbCustomer.Visible = true;
                 hlLogout.Visible = true;
             }

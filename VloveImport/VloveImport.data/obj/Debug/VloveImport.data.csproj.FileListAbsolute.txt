@@ -12,12 +12,11 @@ D:\Work\VloveImport\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.pdb
 D:\Work\VloveImport\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.csprojResolveAssemblyReference.cache
 D:\Work\VloveImport\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.dll
 D:\Work\VloveImport\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.pdb
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.dll
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.pdb
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.csprojResolveAssemblyReference.cache
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.dll
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.dll
 D:\Work\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.dll
 D:\Work\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.pdb
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.dll
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.pdb
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.dll
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.pdb
