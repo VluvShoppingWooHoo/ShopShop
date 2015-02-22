@@ -21,7 +21,7 @@ namespace VloveImport.dal
 
         #region CUSTOMER ADDRESS
 
-        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME,string Act)
+        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME, string Act)
         {
             try
             {
@@ -78,6 +78,59 @@ namespace VloveImport.dal
 
         #endregion
 
+        #region CUSTOMER BANK
+
+        public DataSet GET_CUSTOMER_ACCOUNT_BANK(int CUS_ID, int CUS_ACC_NAME_ID, int CUS_ACC_NAME_STAUTS, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_ACCOUNT_BANK");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ACC_NAME_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ACC_NAME_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ACC_NAME_STAUTS", SqlDbType.Int, ParameterDirection.Input, CUS_ACC_NAME_STAUTS);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_CUSTOMER_ACCOUNT_BANK -> msg : " + ex.Message);
+            }
+        }
+
+        public string INS_UPD_CUSTOMER_ACCOUNT_BANK(CustomerData EnCus, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_UPD_CUSTOMER_ACCOUNT_BANK");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ACC_NAME_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_ADD_ID);
+                SqlCommandData.SetParameter("CUS_ACC_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_ID);
+                SqlCommandData.SetParameter("CUS_ACC_NAME_NO", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_ID);
+                SqlCommandData.SetParameter("CUS_ACC_NAME_BRANCH", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_ID);
+                SqlCommandData.SetParameter("CUS_ACC_NAME_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ACC_NAME_STAUTS", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_ADD_STATUS);
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.REGION_ID);
+                SqlCommandData.SetParameter_Input_INT("BANK_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.PROVINCE_ID);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("INS_UPD_CUSTOMER_ACCOUNT_BANK -> msg : " + ex.Message);
+            }
+        }
+
+        #endregion
 
     }
 }

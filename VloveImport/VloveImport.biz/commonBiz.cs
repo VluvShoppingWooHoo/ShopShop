@@ -20,6 +20,8 @@ namespace VloveImport.biz
             return Com.GetData_Region(ADD_ID, ADD_NAME, ADD_STATUS, Act);
         }
 
+        #region MASTER BANK
+
         public DataSet GET_DATA_MASTER_BANK(int BANK_ID, string Act)
         {
             Commondal Com = new Commondal("LocalConnection");
@@ -31,6 +33,8 @@ namespace VloveImport.biz
             Commondal Com = new Commondal("LocalConnection");
             return Com.INS_UPD_DATA_MASTER_BANK(EnBank, Act);
         }
+
+        #endregion
 
     }
 }
