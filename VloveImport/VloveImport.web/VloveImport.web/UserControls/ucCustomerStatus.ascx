@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucCustomerStatus.ascx.cs" Inherits="VloveImport.web.UserControls.ucCustomerStatus" %>
 <nav>
-    <div class="nav-wrapper orange">
+    <%--<div class="nav-wrapper orange">--%>
+    <div class="nav-wrapper red white-text">
         <a href="../Index.aspx" class="brand-logo"><i class="mdi-device-airplanemode-on"></i>  LOGO</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
