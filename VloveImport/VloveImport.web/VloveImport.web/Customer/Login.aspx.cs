@@ -39,5 +39,11 @@ namespace VloveImport.web.Customer
                 Response.Redirect("~/Index.aspx");                
             }
         }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            txtUser.Text = "";
+            txtPass.Text = "";
+        }
     }
 }

@@ -9,9 +9,37 @@
     <table>
         <tr>
             <td class="td">              
-                <iframe id="ifrmBanner" scrolling="no" frameborder="0" src="http://www.bangkokbank.com/MajorRates/MainBannerThai.htm" width="170" height="160" ></iframe>
+                <table id="Login" runat="server">
+                    <tr>
+                        <td>
+                            User                
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtUser" runat="server" >eakkarat_5@hotmail.com</asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pass
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtPass" runat="server" TextMode="Password">123</asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button id="btnLogin" runat="server" type="submit" onserverclick="btnLogin_Click" 
+                                name="action" class="btn waves-effect orange waves-light">Login                                
+                            </button>
+                            <button id="btnReset" runat="server" type="submit" onserverclick="btnReset_Click" 
+                                name="action" class="btn waves-effect orange waves-light">Reset                                
+                            </button>                        
+                        </td>
+                    </tr>
+                </table>
             </td>
-            <td class="td">Login
+            <td class="td">
+                <iframe id="ifrmBanner" scrolling="no" frameborder="0" src="http://www.bangkokbank.com/MajorRates/MainBannerThai.htm" width="170" height="160" ></iframe>                
             </td>
         </tr>
         <tr>

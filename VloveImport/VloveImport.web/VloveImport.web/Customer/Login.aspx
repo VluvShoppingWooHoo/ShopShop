@@ -21,8 +21,14 @@
         </tr>
         <tr>
             <td colspan="2">
-                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
-                <asp:Button ID="btnReset" runat="server" Text="Reset" />
+                <button id="btnLogin" runat="server" type="submit" onserverclick="btnLogin_Click" 
+                    name="action" class="btn waves-effect orange waves-light">Login                                
+                </button>
+                <button id="btnReset" runat="server" type="submit" onserverclick="btnReset_Click" 
+                    name="action" class="btn waves-effect orange waves-light">Reset                                
+                </button> 
+                <%--<asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
+                <asp:Button ID="btnReset" runat="server" Text="Reset" />--%>
             </td>
         </tr>
     </table>

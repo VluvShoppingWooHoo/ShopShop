@@ -33,7 +33,7 @@
             <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
             <div class="row content">
                 <div class="row card-image small center maxheight300px">
-                    <img class="ImgheaderBanner maxheight300px" src="../Images/pic/beautiful-art-of-chinese-new-year.jpg" />
+                    <img class="ImgheaderBanner maxheight200px" src="../Images/pic/beautiful-art-of-chinese-new-year.jpg" />
                 </div>
                 <%--<div class="row parallax-container">
                     <div class="col s12 m12 l12 parallax">
