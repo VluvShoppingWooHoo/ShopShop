@@ -42,7 +42,7 @@ namespace VloveImport.biz
 
                     Cust.Cus_Point = dt.Rows[0]["Cus_Point"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["Cus_Point"].ToString());
                     Cust.Cus_Ref_ID = dt.Rows[0]["Cus_Ref_ID"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["Cus_Ref_ID"].ToString());
-                    Cust.Cus_Active = dt.Rows[0]["Cus_Active"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["Cus_Active"].ToString());
+                    Cust.Cus_Active = dt.Rows[0]["Cus_Activate"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["Cus_Activate"].ToString());
                     Cust.Cus_Status = dt.Rows[0]["Cus_Status"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["Cus_Status"].ToString());
                     if (dt.Rows[0]["Activate_Date"].ToString() != "")
                         Cust.Activate_Date = Convert.ToDateTime(dt.Rows[0]["Activate_Date"].ToString());
