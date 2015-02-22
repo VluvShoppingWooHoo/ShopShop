@@ -8,7 +8,8 @@
     </div>
     <table>
         <tr>
-            <td class="td">Exchange Rate 
+            <td class="td">              
+                <iframe id="ifrmBanner" scrolling="no" frameborder="0" src="http://www.bangkokbank.com/MajorRates/MainBannerThai.htm" width="170" height="160" ></iframe>
             </td>
             <td class="td">Login
             </td>
