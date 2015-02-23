@@ -31,6 +31,15 @@ namespace VloveImport.web.UserControls {
         protected global::System.Web.UI.WebControls.HyperLink hlRegis;
         
         /// <summary>
+        /// hlMember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlMember;
+        
+        /// <summary>
         /// lbCustomer control.
         /// </summary>
         /// <remarks>

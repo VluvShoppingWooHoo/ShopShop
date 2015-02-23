@@ -23,6 +23,7 @@ namespace VloveImport.web.UserControls
                 hlRegis.Visible = false;
                 lbCustomer.Text = "สวัสดี คุณ " + ((CustomerData)Session["User"]).Cus_Name;
                 lbCustomer.Visible = true;
+                hlMember.Visible = true;
                 hlLogout.Visible = true;
             }
             else
@@ -31,6 +32,7 @@ namespace VloveImport.web.UserControls
                 hlRegis.Visible = true;
                 lbCustomer.Text = "";
                 lbCustomer.Visible = false;
+                hlMember.Visible = false;
                 hlLogout.Visible = false;
             }
         }        

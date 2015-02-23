@@ -15,6 +15,11 @@
                 </asp:HyperLink>
             </li>
             <li>
+                <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ข้อมูลสมาชิก" ID="hlMember" runat="server" NavigateUrl="~/Customer/CustomerProfile.aspx">&nbsp;
+                    <i class="mdi-action-view-headline center"></i>
+                </asp:HyperLink>
+            </li>
+            <li>
                 <asp:Label ID="lbCustomer" runat="server"></asp:Label>
             </li>
             <li>
