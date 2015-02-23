@@ -127,6 +127,16 @@ body
     height: 300px;
 }
 
+.maxheight100px
+{
+    max-height: 100px !important;
+}
+
+.maxheight150px
+{
+    max-height: 150px !important;
+}
+
 .maxheight200px
 {
     max-height: 200px !important;
