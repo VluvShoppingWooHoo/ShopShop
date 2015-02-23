@@ -241,8 +241,16 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPage\CustomerMasterPage.master.cs">
+      <DependentUpon>CustomerMasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\CustomerMasterPage.master.designer.cs">
+      <DependentUpon>CustomerMasterPage.master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage\master_page_batt.Master.cs">
       <DependentUpon>master_page_batt.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPage\master_page_batt.Master.designer.cs">
       <DependentUpon>master_page_batt.Master</DependentUpon>
@@ -303,6 +311,7 @@
     <Content Include="App_Themes\font\roboto\Roboto-Regular.ttf" />
     <Content Include="App_Themes\font\roboto\Roboto-Thin.ttf" />
     <Content Include="MasterPage\master_page_batt.Master" />
+    <Content Include="MasterPage\CustomerMasterPage.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
