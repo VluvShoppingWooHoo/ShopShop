@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:MultiView ID="mView" runat="server" ActiveViewIndex="0">        
-        <asp:View ID="vRegis" runat="server">
+        <asp:View ID="vRegis" runat="server">            
             <table>
                 <tr>
                     <td>
@@ -64,7 +64,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnRegis" runat="server" Text="สมัครสมาชิก" OnClick="btnRegis_Click" />
+                        <button id="btnRegis" runat="server" type="submit" onserverclick="btnRegis_Click" 
+                            name="action" class="btn waves-effect orange waves-light">Register                                                            
+                        </button>                        
                         <asp:Label ID="lbMessage" runat="server" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>

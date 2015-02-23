@@ -1,5 +1,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="VloveImport.web.Index" %>
 
+<%@ Register Src="~/UserControls/ucRecommend.ascx" TagName="ucRecommend" TagPrefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -50,6 +52,11 @@
             <td class="promotion">Promotion
             </td>
             <td class="news">News
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="td">
+                <uc1:ucRecommend ID="ucRecommend" runat="server" />
             </td>
         </tr>
     </table>
