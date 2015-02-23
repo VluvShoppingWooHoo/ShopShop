@@ -15,7 +15,7 @@
 </div>
 
 <!-- Modal Structure -->
-<div id="modalItem" class="modal modal-fixed-footer row">
+<div id="modalItem" class="modal modal-fixed-footer white row">
     <div id="loadingCircle" class="preloader-wrapper big active center-Preload-Circle">
         <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
