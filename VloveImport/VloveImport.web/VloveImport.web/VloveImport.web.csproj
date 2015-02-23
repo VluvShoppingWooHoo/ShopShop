@@ -74,6 +74,7 @@
     <Content Include="Customer\ContactUs.aspx" />
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\CustomerAddress.aspx" />
+    <Content Include="Customer\CustomerProfile.aspx" />
     <Content Include="Customer\HowTo.aspx" />
     <Content Include="Customer\Login.aspx" />
     <Content Include="Customer\MyBasket.aspx" />
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="Customer\CustomerAddress.aspx.designer.cs">
       <DependentUpon>CustomerAddress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerProfile.aspx.cs">
+      <DependentUpon>CustomerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerProfile.aspx.designer.cs">
+      <DependentUpon>CustomerProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\HowTo.aspx.cs">
       <DependentUpon>HowTo.aspx</DependentUpon>
