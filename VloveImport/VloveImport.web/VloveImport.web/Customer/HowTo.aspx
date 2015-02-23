@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="HowTo.aspx.cs" Inherits="VloveImport.web.Customer.HowTo" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="HowTo.aspx.cs" Inherits="VloveImport.web.Customer.HowTo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -41,16 +41,18 @@
                 ค่าขนส่ง We Love Import
             </div>
         </div>
-        <div class="row">
-            <div class="s12 m12 l12">
-                การขนส่งทางเครื่องบิน<br />
-                นำเข้าสินค้าจากจีนส่งสินค้าจาก กวางโจว – ไทย ทางอากาศ (Air)
+        <ul class="collapsible" data-collapsible="expandable">
+            <li>
+                <div class="row collapsible-header">
+                    <div class="s12 m12 l12">
+                        <i class="mdi-device-airplanemode-on"></i>การขนส่งทางเครื่องบิน<br />
+                    </div>
+                </div>
+                <div class="row collapsible-body">
+                    <div class="s12 m12 l12">
+                        นำเข้าสินค้าจากจีนส่งสินค้าจาก กวางโจว – ไทย ทางอากาศ (Air)
 ทางเครื่องบินปิดตู้ทุกวันระยะเวลาในการขนส่งจากจีนมาไทย 2-3 วันบริการขนส่งสินค้าถึงหน้าบ้านหรือหน้าร้านของลูกค้าด้วยขนส่งเอกชน ทั้งใน กรุงเทพฯ ปริมณฑล และต่างจังหวัด ข้อดีและข้อเสียในการขนส่งทางอากาศมีดังนี้
 ข้อดี คือ รวดเร็ว ใช้เวลา 2-3 วัน ในการขนส่ง จากโกดังที่จีนข้อเสีย คือ ค่าใช้จ่ายค่อนข้างแพงมาก
-            </div>
-        </div>
-        <div class="row">
-            <div class="s12 m12 l12">
                 <table class="centered hoverable">
                     <thead>
                         <tr>
@@ -75,116 +77,122 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="s12 m12 l12">
-                การขนส่งทางรถ<br />
-                นำเข้าสินค้าจากจีนส่งสินค้าจากกวางโจว – ไทย ทางรถ (EK) ทางรถ
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row collapsible-header">
+                    <div class="s12 m12 l12">
+                        <i class="mdi-maps-directions-car"></i>การขนส่งทางรถ<br />
+                    </div>
+                </div>
+                <div class="row collapsible-body">
+                    <div class="s12 m12 l12">
+                        นำเข้าสินค้าจากจีนส่งสินค้าจากกวางโจว – ไทย ทางรถ (EK) ทางรถ
 ปิดตู้ทุกวันและระยะเวลาในการขนส่งจากจีนมาไทย 5 -7 วัน นับจากวันขึ้นตู้เป็นการขนส่งที่ใช้กันอย่างแพร่หลายใน ปัจจุบันค่าใช้จ่ายไม่แพง สะดวกและเร็ว บริการขนส่งสินค้าถึงหน้าบ้านหรือหน้าร้านของลูกค้าด้วยขนส่งเอกชน ทั้งใน กรุงเทพฯ ปริมณฑล และต่างจังหวัด
-            </div>
-        </div>
-        <div class="row">
-            <div class="s12 m12 l12">
-                <table class="centered hoverable">
-                    <thead>
-                        <tr>
-                            <th>น้ำหนัก</th>
-                            <th>สินค้าเสื้อผ้าทั่วไป</th>
-                            <th>สินค้าทั่วไป</th>
-                            <th>คิวบิก</th>
-                            <th>สินค้าแบรน</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1-100  Kg</td>
-                            <td>55  บาท /kg</td>
-                            <td>60 บาท /kg</td>
-                            <td>9000 บาท</td>
-                            <td>ติดต่อสอบถาม</td>
-                        </tr>
-                        <tr>
-                            <td>101 - 500 kg</td>
-                            <td>50 บาท /kg</td>
-                            <td>60 บาท /kg</td>
-                            <td>9000 บาท</td>
-                            <td>ติดต่อสอบถาม</td>
-                        </tr>
-                        <tr>
-                            <td>501-999 kg</td>
-                            <td>45 บาท /kg</td>
-                            <td>60 บาท /kg</td>
-                            <td>9000 บาท</td>
-                            <td>ติดต่อสอบถาม</td>
-                        </tr>
-                        <tr>
-                            <td>1 ตันขึ้นไป</td>
-                            <td>ติดต่อสอบถาม</td>
-                            <td>ติดต่อสอบถาม</td>
-                            <td>ติดต่อสอบถาม</td>
-                            <td>ติดต่อสอบถาม</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="s12 m12 l12">
-                การขนส่งทางเรือ<br />
-                นำเข้าสินค้าจากจีนส่งสินค้าจากกวางโจว – ไทย ทางเรือ (Sea) ทางเรือ
+                    <table class="centered hoverable">
+                        <thead>
+                            <tr>
+                                <th>น้ำหนัก</th>
+                                <th>สินค้าเสื้อผ้าทั่วไป</th>
+                                <th>สินค้าทั่วไป</th>
+                                <th>คิวบิก</th>
+                                <th>สินค้าแบรน</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1-100  Kg</td>
+                                <td>55  บาท /kg</td>
+                                <td>60 บาท /kg</td>
+                                <td>9000 บาท</td>
+                                <td>ติดต่อสอบถาม</td>
+                            </tr>
+                            <tr>
+                                <td>101 - 500 kg</td>
+                                <td>50 บาท /kg</td>
+                                <td>60 บาท /kg</td>
+                                <td>9000 บาท</td>
+                                <td>ติดต่อสอบถาม</td>
+                            </tr>
+                            <tr>
+                                <td>501-999 kg</td>
+                                <td>45 บาท /kg</td>
+                                <td>60 บาท /kg</td>
+                                <td>9000 บาท</td>
+                                <td>ติดต่อสอบถาม</td>
+                            </tr>
+                            <tr>
+                                <td>1 ตันขึ้นไป</td>
+                                <td>ติดต่อสอบถาม</td>
+                                <td>ติดต่อสอบถาม</td>
+                                <td>ติดต่อสอบถาม</td>
+                                <td>ติดต่อสอบถาม</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row collapsible-header">
+                    <div class="s12 m12 l12">
+                        <i class="mdi-maps-directions-ferry"></i>การขนส่งทางเรือ<br />
+                    </div>
+                </div>
+                <div class="row collapsible-body">
+                    <div class="s12 m12 l12">
+                        นำเข้าสินค้าจากจีนส่งสินค้าจากกวางโจว – ไทย ทางเรือ (Sea) ทางเรือ
 ระยะเวลาในการขนส่ง 10 -14 วัน เรืออกทุกอาทิตย์
 ข้อดี คือ ไม่แพง สินค้าที่ไม่มีรูปร่างไม่สัมพันธ์กับรูปร่างจึงเหมาะกับการขนส่งทางเรือ
 ลดต้นทุน (เหมาะกับสินค้าลิขสิทธิ์ สินค้าที่ทำจากเหล็ก มีเหล็กเป็นส่วนประกอบ)
 ข้อเสีย คือ ใช้ระยะเวลาในการขนส่งค่อนข้างนาน
 ยอดขนส่งต่อครั้ง 15,000 บาทขึ้นไป ส่งฟรี ทั่ว กทม ปริมณทล เพิ่ม 300 บาท เท่านั้น
-            </div>
-        </div>
-        <div class="row">
-            <div class="s12 m12 l12">
-                <table class="centered hoverable">
-                    <thead>
-                        <tr>
-                            <th>น้ำหนัก</th>
-                            <th>สินค้าเสื้อผ้าทั่วไป</th>
-                            <th>สินค้าทั่วไป</th>
-                            <th>คิวบิก</th>
-                            <th>สินค้าแบรน</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>50  Kg ขึ้นไป</td>
-                            <td>42  บาท /kg</td>
-                            <td>50 บาท /kg</td>
-                            <td>7500 บาท</td>
-                            <td>ติดต่อสอบถาม</td>
-                        </tr>
-                        <tr>
-                            <td>51 - 500 kg </td>
-                            <td>38  บาท /kg</td>
-                            <td>46 บาท /kg</td>
-                            <td>7500 บาท</td>
-                            <td>ติดต่อสอบถาม</td>
-                        </tr>
-                        <tr>
-                            <td>501-999 kg</td>
-                            <td>34  บาท /kg</td>
-                            <td>42 บาท /kg</td>
-                            <td>7500 บาท</td>
-                            <td>ติดต่อสอบถาม</td>
-                        </tr>
-                        <tr>
-                            <td>1 ตันขึ้นไป</td>
-                            <td>ติดต่อสอบถาม</td>
-                            <td>ติดต่อสอบถาม</td>
-                            <td>ติดต่อสอบถาม</td>
-                            <td>ติดต่อสอบถาม</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                    <table class="centered hoverable">
+                        <thead>
+                            <tr>
+                                <th>น้ำหนัก</th>
+                                <th>สินค้าเสื้อผ้าทั่วไป</th>
+                                <th>สินค้าทั่วไป</th>
+                                <th>คิวบิก</th>
+                                <th>สินค้าแบรน</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>50  Kg ขึ้นไป</td>
+                                <td>42  บาท /kg</td>
+                                <td>50 บาท /kg</td>
+                                <td>7500 บาท</td>
+                                <td>ติดต่อสอบถาม</td>
+                            </tr>
+                            <tr>
+                                <td>51 - 500 kg </td>
+                                <td>38  บาท /kg</td>
+                                <td>46 บาท /kg</td>
+                                <td>7500 บาท</td>
+                                <td>ติดต่อสอบถาม</td>
+                            </tr>
+                            <tr>
+                                <td>501-999 kg</td>
+                                <td>34  บาท /kg</td>
+                                <td>42 บาท /kg</td>
+                                <td>7500 บาท</td>
+                                <td>ติดต่อสอบถาม</td>
+                            </tr>
+                            <tr>
+                                <td>1 ตันขึ้นไป</td>
+                                <td>ติดต่อสอบถาม</td>
+                                <td>ติดต่อสอบถาม</td>
+                                <td>ติดต่อสอบถาม</td>
+                                <td>ติดต่อสอบถาม</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
     <div id="divOrder" class="row" hidden>
         <div class="row">
