@@ -236,6 +236,58 @@ namespace VloveImport.dal
 
         #endregion
 
+        #region TRANSACTION MANAGEMENT
+
+        //public DataSet GET_TRANSACTION_DATA(int CUS_ID, int CUS_SHOP_ID, int CUS_SHOP_STATUS, string Act)
+        //{
+        //    try
+        //    {
+        //        SqlCommandData.SetStoreProcedure("GET_CUSTOMER_FAVORIT_SHOP");
+
+        //        SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+        //        SqlCommandData.SetParameter_Input_INT("CUS_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, CUS_SHOP_ID);
+        //        SqlCommandData.SetParameter_Input_INT("CUS_SHOP_STATUS", SqlDbType.Int, ParameterDirection.Input, CUS_SHOP_STATUS);
+        //        SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+
+        //        return SqlCommandData.ExecuteDataSet();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("GET_CUSTOMER_FAVORIT_SHOP -> msg : " + ex.Message);
+        //    }
+        //}
+
+        //public string INS_UPD_TRANSACTION_DATA(CustomerData EnCus, string Act)
+        //{
+        //    try
+        //    {
+        //        SqlCommandData.OpenConnection();
+        //        SqlCommandData.BeginTransaction();
+        //        SqlCommandData.SetStoreProcedure("INS_UPD_CUSTOMER_FAVORIT_SHOP");
+
+        //        SqlCommandData.SetParameter_Input_INT("CUS_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_SHOP_ID);
+        //        SqlCommandData.SetParameter("CUS_SHOP_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_SHOP_NAME);
+        //        SqlCommandData.SetParameter("CUS_SHOP_LINK", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_SHOP_LINK);
+        //        SqlCommandData.SetParameter("CUS_SHOP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_SHOP_REMARK);
+        //        SqlCommandData.SetParameter("CUS_SHOP_STATUS", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_SHOP_STATUS);
+        //        SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
+        //        SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Create_User);
+        //        SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+        //        SqlCommandData.ExecuteNonQuery();
+        //        SqlCommandData.Commit();
+        //        return "";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        SqlCommandData.RollBack();
+        //        return ("INS_UPD_CUSTOMER_FAVORIT_SHOP -> msg : " + ex.Message);
+        //    }
+        //}
+
+        #endregion
+
     }
 
 
