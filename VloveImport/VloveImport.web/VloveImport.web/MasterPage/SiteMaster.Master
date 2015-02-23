@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
 
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/ucCustomerStatus.ascx" TagName="ucCustomerStatus" TagPrefix="uc2" %>
@@ -28,121 +28,80 @@
 <body>
     <%--<img src="" />--%>
     <form id="form1" runat="server">
-        <div>
+        <div class="grey lighten-2" style="margin-bottom: 0px">
             <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
-            <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
-            <div class="row content">
-                <div class="row card-image small center maxheight300px">
-                    <img class="ImgheaderBanner maxheight200px" src="../Images/pic/beautiful-art-of-chinese-new-year.jpg" />
-                </div>
-                <%--<div class="row parallax-container">
+            <div class="row content" style="margin-bottom: 0px">
+                <div class="white">
+                    <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
+                    <div class="row card-image small center maxheight300px">
+                        <img class="ImgheaderBanner maxheight200px" src="../Images/pic/beautiful-art-of-chinese-new-year.jpg" />
+                    </div>
+                    <%--<div class="row parallax-container">
                     <div class="col s12 m12 l12 parallax">
                         <img src="../Images/pic/beautiful-art-of-chinese-new-year.jpg" /></div>
                 </div>--%>
-                <div class="row noafter">
-                    <div class="col s1 m1 l1">
-                        &nbsp;
-                    </div>
-                    <%--<div class="col s2" style="line-height: 5">
+                    <div class="row noafter">
+                        <div class="col s1 m1 l1">
+                            &nbsp;
+                        </div>
+                        <%--<div class="col s2" style="line-height: 5">
                         Search for popup
                     </div>--%>
-                    <div class="col s10 m10 l10">
-                        <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
-                    </div>
-                    <%--<div class="col s1 m1 l1">
+                        <div class="col s10 m10 l10">
+                            <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
+                        </div>
+                        <%--<div class="col s1 m1 l1">
                         &nbsp;
                     </div>--%>
-                </div>
-                <div class="row" style="margin-bottom: 0px;">
-                    <div class="col s12 m12 l12">
-                        <%-- <table class="responsive-table">
+                    </div>
+                    <div class="row" style="margin-bottom: 0px;">
+                        <div class="col s12 m12 l12">
+                            <%-- <table class="responsive-table">
                             <tr>
                                 <td>--%>
-                        <uc1:ucMenubar ID="Menubar" runat="server" />
-                        <%--    </td>
+                            <uc1:ucMenubar ID="Menubar" runat="server" />
+                            <%--    </td>
                             </tr>
                         </table>--%>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="z-depth-3 col s12 m12 l12">
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                        </asp:ContentPlaceHolder>
-                    </div>
-                </div>
-            </div>
-
-
-            <%--<table>
-                <tr>
-                    <td>
-                        <table class="HeadMaster center" style="width: 900px">
-                            <tr style="margin: 2px 2px; padding: 2px 2px;">
-                                <td class="td" style="margin: 0px 0px; padding: 0px 0px;">
-                                    <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
-                                </td>
-                                <td>
-                                    <asp:HyperLink ID="hlIndex" runat="server" Text="หน้าหลัก" NavigateUrl="~/Index.aspx"></asp:HyperLink>
-                                    |
-                                        <asp:HyperLink ID="hlBasket" runat="server" Text="ตะกร้า"></asp:HyperLink>
-                                    |
-                                        <asp:HyperLink ID="hlWallet" runat="server" Text="กระเป๋าเงินของฉัน"></asp:HyperLink>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td" colspan="2" style="height: 120px;">Logo Header
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td">Search for popup
-                                        <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td class="td" colspan="2">
-                                    <uc1:ucMenubar ID="Menubar" runat="server" />
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="container">
+                    <div class="row" style="margin-bottom: 0px">
+                        <div class="col s12 m12 l12">
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
                         </div>
-                    </td>
-                </tr>
-            </table>--%>
-            <%--<uc1:ucMenubar ID="UcMenubar1" runat="server" />--%>
-        </div>
-        <footer class="page-footer red white-text">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                        <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright red white-text">
-                <div class="container">
-                    © 2015 Copyright Text
+            <div class="row content" style="margin-bottom: 0px; margin-top: 0px">
+                <footer class="page-footer red lighten-1 white-text" style="margin-top: 0px">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col l6 s12">
+                                <h5 class="white-text">Footer Content</h5>
+                                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                            </div>
+                            <div class="col l4 offset-l2 s12">
+                                <h5 class="white-text">Links</h5>
+                                <ul>
+                                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-copyright red white-text">
+                        <div class="container">
+                            © 2015 Copyright Text
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                </div>
+                        </div>
+                    </div>
+                </footer>
+
             </div>
-        </footer>
+        </div>
     </form>
 </body>
 </html>
@@ -153,7 +112,7 @@
         $('.dropdown-button').dropdown();
         $('.parallax').parallax();
         $('ul.tabs').tabs();
-
+        $('.collapsible').collapsible();
         //$('#modalLoading').leanModal({
         //    opacity: 0.1, // Opacity of modal background
         //    //in_duration: 300, // Transition in duration

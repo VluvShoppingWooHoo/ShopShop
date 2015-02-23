@@ -177,4 +177,11 @@ body
 {
     content:none;
 }
+.row {
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
 
+.collapsible-body {
+    padding: 20px !important;
+}
