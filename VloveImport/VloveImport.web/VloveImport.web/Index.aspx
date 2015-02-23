@@ -5,8 +5,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row card-image small center maxheight300px">
-        <img class="ImgheaderBanner maxheight300px" src="Images/pic/Banner1.png" />
+    <div class="row card-image small center maxheight200px">
+        <img class="ImgheaderBanner maxheight200px" src="Images/pic/Banner1.png" width="80%" height="80%" />
     </div>
     <table>
         <tr>
