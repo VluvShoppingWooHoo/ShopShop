@@ -178,6 +178,10 @@ namespace VloveImport.web.Administrator
                     ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page);
                 }
             }
+            else
+            {
+                ModalPopupExtender1.Show();
+            }
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
