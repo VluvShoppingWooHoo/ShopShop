@@ -27,14 +27,41 @@ namespace VloveImport.web.Administrator
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                BindData_MS_BANK();
+                BindData();
+            }
+        }
 
+        public void BindData_MS_BANK()
+        {
+            DataSet ds = new DataSet();
+            commonBiz Biz = new commonBiz();
+            ds = Biz.GET_DATA_MASTER_BANK(Act: "BINDDATA");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                DataRow Data_Row;
+                Data_Row = ds.Tables[0].NewRow();
+
+                Data_Row["BANK_ID"] = -1;
+                Data_Row["BANK_NAME"] = "กรุณาเลือก";
+                ds.Tables[0].Rows.InsertAt(Data_Row, 0);
+
+                ddl_bank_name.DataTextField = "BANK_NAME";
+                ddl_bank_name.DataValueField = "BANK_ID";
+
+                ddl_bank_name.DataSource = ds.Tables[0];
+                ddl_bank_name.DataBind();
+            }
         }
 
         public void BindData()
         {
             DataSet ds = new DataSet();
             commonBiz Biz = new commonBiz();
-            ds = Biz.GET_DATA_MASTER_BANK(this._VS_ID, "BINDDATA");
+            ds = Biz.GET_DATA_BANK_SHOP(this._VS_ID, "BINDDATA");
 
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -50,6 +77,7 @@ namespace VloveImport.web.Administrator
 
         public void ClearData()
         {
+            ddl_bank_name.SelectedIndex = 0;
             txt_acc_name.Text = "";
             txt_acc_no.Text = "";
             txt_remark.Text = "";
@@ -69,13 +97,14 @@ namespace VloveImport.web.Administrator
         public CommonData SetData()
         {
             CommonData En = new CommonData();
-            En.BANK_ID = this._VS_ID;
+            En.BANK_SHOP_ID = this._VS_ID;
             if (this._VS_ACT != "DEL")
             {
-                En.BANK_NAME = txt_acc_name.Text.Trim();
-                En.BANK_ACCOUNT_NO = txt_acc_no.Text.Trim();
-                En.BANK_REMARK = txt_remark.Text.Trim();
-                En.BANK_STATUS = Convert.ToInt32(ddl_Status.SelectedValue);
+                En.BANK_ID = Convert.ToInt32(ddl_bank_name.SelectedValue);
+                En.BANK_SHOP_ACCOUNT_NAME = txt_acc_name.Text.Trim();
+                En.BANK_SHOP_ACCOUNT_NO = txt_acc_no.Text.Trim();
+                En.BANK_SHOP_REMARK = txt_remark.Text.Trim();
+                En.BANK_SHOP_STATUS = Convert.ToInt32(ddl_Status.SelectedValue);
                 En.Create_User = "Batt";
             }
             return En;
@@ -83,11 +112,12 @@ namespace VloveImport.web.Administrator
 
         public bool CheckInput()
         {
-            bool IsReturn = false;
+            bool IsReturn = true;
 
-            if (txt_acc_no.Text.Trim() == "")
+            if (txt_acc_no.Text.Trim() == "" && txt_acc_name.Text == "" && ddl_bank_name.SelectedValue == "-1")
             {
-
+                IsReturn = false;
+                ShowMessageBox("กรุณากรอกข้อมูลในช่องที่มีสัญลักษณ์ *", this.Page);
             }
 
             return IsReturn;
@@ -102,17 +132,20 @@ namespace VloveImport.web.Administrator
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            commonBiz Biz = new commonBiz();
-            string IsReturn = "";
-            IsReturn = Biz.INS_UPD_DATA_MASTER_BANK(SetData(), this._VS_ACT);
-            if (IsReturn != "")
+            if (CheckInput())
             {
-                ShowMessageBox(IsReturn, this.Page);
-            }
-            else
-            {
-                BindData();
-                ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page);
+                commonBiz Biz = new commonBiz();
+                string IsReturn = "";
+                IsReturn = Biz.INS_UPD_DATA_BANK_SHOP(SetData(), this._VS_ACT);
+                if (IsReturn != "")
+                {
+                    ShowMessageBox(IsReturn, this.Page);
+                }
+                else
+                {
+                    BindData();
+                    ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page);
+                }
             }
         }
 
@@ -124,28 +157,22 @@ namespace VloveImport.web.Administrator
         protected void btnImgEdit_Click(object sender, ImageClickEventArgs e)
         {
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
-            string DataKeys_ID = this.gv_cus_address.DataKeys[rowIndex].Values[0].ToString();
+            string DataKeys_ID = this.gv_Deatil.DataKeys[rowIndex].Values[0].ToString();
 
-            this._VS_CUS_ADD_ID = Convert.ToInt32(DataKeys_ID);
+            this._VS_ID = Convert.ToInt32(DataKeys_ID);
             this._VS_ACT = "UPD";
 
             DataSet ds = new DataSet();
-            CustomerBiz CusBiz = new CustomerBiz();
-            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, this._VS_CUS_ADD_ID, 1, "", "BINDDATA_BYID");
+            commonBiz Biz = new commonBiz();
+            ds = Biz.GET_DATA_BANK_SHOP(this._VS_ID, "BINDDATA_BYID");
 
             if (ds.Tables[0].Rows.Count > 0)
             {
-                txt_Cusname.Text = ds.Tables[0].Rows[0]["CUS_ADD_CUS_NAME"].ToString();
-                txt_CusDetail.Text = ds.Tables[0].Rows[0]["CUS_ADD_ADDRESS_TEXT"].ToString();
-                txt_ZipCode.Text = ds.Tables[0].Rows[0]["CUS_ADD_ZIPCODE"].ToString();
-                BinddataRegion("REGION");
-                dll_region.SelectedValue = ds.Tables[0].Rows[0]["REGION_ID"].ToString();
-                BinddataRegion("PROVINCE");
-                dll_province.SelectedValue = ds.Tables[0].Rows[0]["PROVINCE_ID"].ToString();
-                BinddataRegion("DISTRICT");
-                dll_District.SelectedValue = ds.Tables[0].Rows[0]["DISTRICT_ID"].ToString();
-                BinddataRegion("SUB_DISTRICT");
-                dll_Sub_District.SelectedValue = ds.Tables[0].Rows[0]["SUB_DISTRICT_ID"].ToString();
+                ddl_bank_name.SelectedValue = ds.Tables[0].Rows[0]["BANK_ID"].ToString();
+                txt_acc_name.Text = ds.Tables[0].Rows[0]["BANK_SHOP_ACCOUNT_NAME"].ToString();
+                txt_acc_no.Text = ds.Tables[0].Rows[0]["BANK_SHOP_ACCOUNT_NO"].ToString();
+                txt_remark.Text = ds.Tables[0].Rows[0]["BANK_SHOP_REMARK"].ToString();
+                ddl_Status.SelectedValue = ds.Tables[0].Rows[0]["BANK_SHOP_STATUS"].ToString();
             }
 
             ModalPopupExtender1.Show();
@@ -158,9 +185,9 @@ namespace VloveImport.web.Administrator
             this._VS_ID = Convert.ToInt32(DataKeys_ID);
             this._VS_ACT = "DEL";
 
-            CustomerBiz CusBiz = new CustomerBiz();
+            commonBiz Biz = new commonBiz();
             string IsReturn = "";
-            IsReturn = CusBiz.INS_UPD_Customer_Address(SetData(), this._VS_ACT);
+            IsReturn = Biz.INS_UPD_DATA_BANK_SHOP(SetData(), this._VS_ACT);
             if (IsReturn != "")
             {
                 ShowMessageBox(IsReturn, this.Page);
@@ -168,7 +195,7 @@ namespace VloveImport.web.Administrator
             else
             {
                 BindData();
-                ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page);
+                ShowMessageBox("ลบข้อมูลเรียบร้อยแล้ว", this.Page);
             }
         }
 

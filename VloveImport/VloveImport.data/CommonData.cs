@@ -26,9 +26,13 @@ namespace VloveImport.data
         #region DATA BANK
         public int BANK_ID { get; set; }
         public string BANK_NAME { get; set; }
-        public string BANK_ACCOUNT_NO { get; set; }
-        public string BANK_REMARK { get; set; }
-        public int BANK_STATUS { get; set; }
+
+        public int BANK_SHOP_ID { get; set; }
+        public string BANK_SHOP_NAME { get; set; }
+        public string BANK_SHOP_ACCOUNT_NO { get; set; }
+        public string BANK_SHOP_ACCOUNT_NAME { get; set; }
+        public string BANK_SHOP_REMARK { get; set; }
+        public int BANK_SHOP_STATUS { get; set; }
         #endregion
 
 

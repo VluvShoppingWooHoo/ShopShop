@@ -22,16 +22,22 @@ namespace VloveImport.biz
 
         #region MASTER BANK
 
-        public DataSet GET_DATA_MASTER_BANK(int BANK_ID, string Act)
+        public DataSet GET_DATA_MASTER_BANK(string Act, int BANK_ID = -1, string BANK_NAME = "", int BANKL_STATUS = -1)
         {
             Commondal Com = new Commondal("LocalConnection");
-            return Com.GET_DATA_MASTER_BANK(BANK_ID, Act);
+            return Com.GET_DATA_MASTER_BANK(BANK_ID, Act, BANK_NAME, BANKL_STATUS);
         }
 
-        public string INS_UPD_DATA_MASTER_BANK(CommonData EnBank, string Act)
+        public DataSet GET_DATA_BANK_SHOP(int BANK_SHOP_ID, string Act, int BANK_ID = -1, string BANK_SHOP_ACCOUNT_NO = "", string BANK_SHOP_ACCOUNT_NAME = "")
         {
             Commondal Com = new Commondal("LocalConnection");
-            return Com.INS_UPD_DATA_MASTER_BANK(EnBank, Act);
+            return Com.GET_DATA_BANK_SHOP(BANK_SHOP_ID, Act, BANK_ID, BANK_SHOP_ACCOUNT_NO, BANK_SHOP_ACCOUNT_NAME);
+        }
+
+        public string INS_UPD_DATA_BANK_SHOP(CommonData EnBank, string Act)
+        {
+            Commondal Com = new Commondal("LocalConnection");
+            return Com.INS_UPD_DATA_BANK_SHOP(EnBank, Act);
         }
 
         #endregion
