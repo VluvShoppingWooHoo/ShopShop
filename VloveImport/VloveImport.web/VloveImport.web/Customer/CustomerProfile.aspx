@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/CustomerMasterPage.master" AutoEventWireup="true" CodeBehind="CustomerProfile.aspx.cs" Inherits="VloveImport.web.Customer.CustomerProfile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerProfile.aspx.cs" Inherits="VloveImport.web.Customer.CustomerProfile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table>
         <tr>
@@ -8,3 +8,4 @@
         </tr>
     </table>
 </asp:Content>
+

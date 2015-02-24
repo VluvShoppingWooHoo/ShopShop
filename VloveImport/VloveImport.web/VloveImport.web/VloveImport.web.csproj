@@ -75,6 +75,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\CustomerAddress.aspx" />
     <Content Include="Customer\CustomerProfile.aspx" />
+    <Content Include="Customer\dummyCustomer.aspx" />
     <Content Include="Customer\HowTo.aspx" />
     <Content Include="Customer\Login.aspx" />
     <Content Include="Customer\MyBasket.aspx" />
@@ -100,6 +101,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Script\Script Init.sql" />
+    <Content Include="UserControls\ucCustomerMenuBar.ascx" />
     <Content Include="UserControls\ucRecommend.ascx" />
     <Content Include="UserControls\ucSeachBox.ascx" />
     <Content Include="UserControls\ucCustomerStatus.ascx" />
@@ -156,6 +158,13 @@
     </Compile>
     <Compile Include="Customer\CustomerProfile.aspx.designer.cs">
       <DependentUpon>CustomerProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\dummyCustomer.aspx.cs">
+      <DependentUpon>dummyCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\dummyCustomer.aspx.designer.cs">
+      <DependentUpon>dummyCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\HowTo.aspx.cs">
       <DependentUpon>HowTo.aspx</DependentUpon>
@@ -241,13 +250,6 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPage\CustomerMasterPage.master.cs">
-      <DependentUpon>CustomerMasterPage.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPage\CustomerMasterPage.master.designer.cs">
-      <DependentUpon>CustomerMasterPage.master</DependentUpon>
-    </Compile>
     <Compile Include="MasterPage\master_page_batt.Master.cs">
       <DependentUpon>master_page_batt.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -263,6 +265,13 @@
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ucCustomerMenuBar.ascx.cs">
+      <DependentUpon>ucCustomerMenuBar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucCustomerMenuBar.ascx.designer.cs">
+      <DependentUpon>ucCustomerMenuBar.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucRecommend.ascx.cs">
       <DependentUpon>ucRecommend.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -311,7 +320,6 @@
     <Content Include="App_Themes\font\roboto\Roboto-Regular.ttf" />
     <Content Include="App_Themes\font\roboto\Roboto-Thin.ttf" />
     <Content Include="MasterPage\master_page_batt.Master" />
-    <Content Include="MasterPage\CustomerMasterPage.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

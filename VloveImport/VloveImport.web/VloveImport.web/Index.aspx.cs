@@ -70,14 +70,14 @@ namespace VloveImport.web
             {
                 int webMode = 1;
                 #region for use
-                if (txt.Contains("taobao.com"))
-                    webMode = Constant.Web.WTaoBao;
-                else if (txt.Contains("tmall.com"))
-                    webMode = Constant.Web.WTmall;
-                else
-                    webMode = Constant.Web.W1688;
+                //if (txt.Contains("taobao.com"))
+                //    webMode = Constant.Web.WTaoBao;
+                //else if (txt.Contains("tmall.com"))
+                //    webMode = Constant.Web.WTmall;
+                //else
+                //    webMode = Constant.Web.W1688;
 
-                data = sc.Handle(txt, webMode);
+                //data = sc.Handle(txt, webMode);
                 #endregion
                 #region for test
                 //data.Web = webMode;
