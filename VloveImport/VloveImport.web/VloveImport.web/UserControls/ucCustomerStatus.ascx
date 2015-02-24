@@ -1,56 +1,99 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucCustomerStatus.ascx.cs" Inherits="VloveImport.web.UserControls.ucCustomerStatus" %>
-<nav>
-    <%--<div class="nav-wrapper orange">--%>
-    <div class="nav-wrapper red white-text">
-        <a href="../Index.aspx" class="brand-logo"><i class="mdi-device-airplanemode-on"></i>  LOGO</a>
+<%--<div class="row">
+    <div class="col s2 m2 l2"></div>
+    <div class="col s8 m8 l8">--%>
+        <nav class="ucCustomerStatus">
+            <div class="nav-wrapper black white-text">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>
+                        <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="~/Customer/Login.aspx">เข้าสู่ระบบ
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlRegis" runat="server" NavigateUrl="~/Customer/Register.aspx">สมัครสมาชิก
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlMember" runat="server" NavigateUrl="~/Customer/CustomerProfile.aspx">ข้อมูลสมาชิก
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:Label ID="lbCustomer" runat="server"></asp:Label>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlLogout" runat="server" NavigateUrl="~/Logout.aspx">ออกจากระบบ
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlIndex" runat="server" NavigateUrl="~/Index.aspx">หน้าหลัก
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlBasket" runat="server">ตะกร้า
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlWallet" runat="server">กระเป๋าเงินของฉัน
+                        </asp:HyperLink>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+   <%-- </div>
+    <div class="col s2 m2 l2"></div>
+</div>--%>
+<%--<nav class="ucCustomerStatus">
+    <div class="nav-wrapper black white-text">
+        <a href="../Index.aspx" class="brand-logo">
+            <i class="mdi-device-airplanemode-on"></i>  LOGO</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
-                <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="เข้าสู่ระบบ" ID="hlLogin" runat="server" NavigateUrl="~/Customer/Login.aspx">&nbsp;
-                 <i class="mdi-hardware-desktop-windows center"></i>
+                <asp:HyperLink  ID="hlLogin" runat="server" NavigateUrl="~/Customer/Login.aspx">
+                 <i class="mdi-hardware-desktop-windows center"></i>เข้าสู่ระบบ
                 </asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="สมัครสมาชิก" ID="hlRegis" runat="server" NavigateUrl="~/Customer/Register.aspx">&nbsp;
-                 <i class="mdi-social-person-add center"></i>
+                <asp:HyperLink  ID="hlRegis" runat="server" NavigateUrl="~/Customer/Register.aspx">
+                 <i class="mdi-social-person-add center"></i>สมัครสมาชิก
                 </asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ข้อมูลสมาชิก" ID="hlMember" runat="server" NavigateUrl="~/Customer/CustomerProfile.aspx">&nbsp;
-                    <i class="mdi-action-view-headline center"></i>
+                <asp:HyperLink  ID="hlMember" runat="server" NavigateUrl="~/Customer/CustomerProfile.aspx">
+                    <i class="mdi-action-view-headline center"></i>ข้อมูลสมาชิก
                 </asp:HyperLink>
             </li>
             <li>
                 <asp:Label ID="lbCustomer" runat="server"></asp:Label>
             </li>
             <li>
-                <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ออกจากระบบ" ID="hlLogout" runat="server" NavigateUrl="~/Logout.aspx">&nbsp;
-                <i class="mdi-action-exit-to-app center"></i>
+                <asp:HyperLink  ID="hlLogout" runat="server" NavigateUrl="~/Logout.aspx">
+                <i class="mdi-action-exit-to-app center"></i>ออกจากระบบ
                 </asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="หน้าหลัก" ID="hlIndex" runat="server" NavigateUrl="~/Index.aspx">&nbsp;
-                    <i class="mdi-action-home center"></i>
+                <asp:HyperLink  ID="hlIndex" runat="server" NavigateUrl="~/Index.aspx">
+                    <i class="mdi-action-home center"></i>หน้าหลัก
                 </asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ตะกร้า" ID="hlBasket" runat="server">&nbsp;
-                    <i class="mdi-action-shopping-basket center"></i>
+                <asp:HyperLink  ID="hlBasket" runat="server">
+                    <i class="mdi-action-shopping-basket center"></i>ตะกร้า
                 </asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="กระเป๋าเงินของฉัน" ID="hlWallet" runat="server">&nbsp;
-                    <i class="mdi-action-account-balance-wallet center"></i>
+                <asp:HyperLink  ID="hlWallet" runat="server">
+                    <i class="mdi-action-account-balance-wallet center"></i>กระเป๋าเงินของฉัน
                 </asp:HyperLink>
             </li>
         </ul>
     </div>
-</nav>
+</nav>--%>
 <%--<table>
     <tr>
-        <td>            
-            <asp:HyperLink ID="hlLogin" runat="server" Text="เข้าสู่ระบบ" NavigateUrl="~/Customer/Login.aspx"></asp:HyperLink>&nbsp;
+        <td>        
+            <asp:HyperLink ID="hlLogin" runat="server" Text="เข้าสู่ระบบ" NavigateUrl="~/Customer/Login.aspx"></asp:HyperLink>
             <asp:HyperLink ID="hlRegis" runat="server" Text="สมัครสมาชิก" NavigateUrl="~/Customer/Register.aspx"></asp:HyperLink> 
-            <asp:Label ID="lbCustomer" runat="server"></asp:Label>  &nbsp;
+            <asp:Label ID="lbCustomer" runat="server"></asp:Label>  
             <asp:HyperLink ID="hlLogout" runat="server" Text="ออกจากระบบ" NavigateUrl="~/Logout.aspx"></asp:HyperLink> 
         </td>
     </tr>

@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucSeachBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucSeachBox" %>
-<div class="row noafter">
+<div class="row">
     <div class="col s9 m9 l9">
         <div class="input-field orange-text row">
             <input id="txtSearch" type="text" class="validate">
