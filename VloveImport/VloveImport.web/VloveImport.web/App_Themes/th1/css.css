@@ -90,6 +90,11 @@ body
     opacity: 0.9;
 }
 
+*
+{
+    font-size: 12px !important;
+}
+
 .input-field
 {
     color: black !important;
@@ -178,21 +183,71 @@ body
     background-color: rgba(255, 0, 0, 1) !important;
 }
 
-.menuBar.red div:hover 
+.menuBar.red div:hover
 {
     background-color: orange !important;
 }
 
-.row.noafter:after
+/*.row.noafter:after
 {
-    content:none;
-}
-.row {
-    margin-bottom: 0px !important;
-    margin-top: 0px !important;
+    content: none;
+}*/
+
+.row
+{
+    margin-bottom: 0px ;
+    /*margin-top: 0px !important;*/
 }
 
-.collapsible-body {
+.collapsible-body
+{
     padding: 20px !important;
 }
+
+nav
+{
+    line-height: 30px !important;
+}
+
+.ucCustomerStatus
+{
+    max-height: 30px;
+}
+
+    .ucCustomerStatus div ul
+    {
+        max-height: 30px;
+        padding-right: 10%;
+    }
+
+        .ucCustomerStatus div ul li
+        {
+            max-height: 30px;
+        }
+
+            .ucCustomerStatus div ul li a
+            {
+                max-height: 30px;
+                font-size: 12px !important;
+            }
+
+.page-footer
+{
+    border-top: 1px solid #bdbdbd;
+}
+
+.footer-copyright
+{
+    border-top: 1px solid #9e9e9e;
+}
+
+.ucSearchbox
+{
+    height: 1%;
+}
+
+    .ucSearchbox div
+    {
+        margin-top: 1% ;
+    }
 

@@ -24,36 +24,25 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<%--<body style="background-image: url('../Images/pic/beautiful-art-of-chinese-new-year.jpg'); background-attachment: fixed">--%>
 <body>
-    <%--<img src="" />--%>
     <form id="form1" runat="server">
-        <div class="grey lighten-2" style="margin-bottom: 0px">
             <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
+            <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
             <div class="row content" style="margin-bottom: 0px">
                 <div class="white">
-                    <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
-                    <div class="row card-image small center maxheight150px">
-                        <img class="ImgheaderBanner maxheight150px"
-                            src="../Images/pic/beautiful-art-of-chinese-new-year.jpg" />
-                    </div>
-                    <%--<div class="row parallax-container">
-                    <div class="col s12 m12 l12 parallax">
-                        <img src="../Images/pic/beautiful-art-of-chinese-new-year.jpg" /></div>
-                </div>--%>
-                    <div class="row">
-                        <div class="col s1 m1 l1">
+                    <div class="row ucSearchbox">
+                        <div class="col s3 m3 l3">
                             &nbsp;
                         </div>
-                        <div class="col s10 m10 l10">
+                        <div class="col s9 m9 l9">
                             <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
                         </div>
                     </div>
-                    <div class="row red" style="margin-bottom: 0px;">
+                    <%--<div class="row red" style="margin-bottom: 0px;">
                         <div class="col s12 m12 l12">
                             <uc1:ucMenubar ID="Menubar" runat="server" />
                         </div>
-                    </div>
+                    </div>--%>
 
                     <div class="row" style="margin-bottom: 0px">
                         <div class="col s12 m12 l12">
@@ -65,35 +54,32 @@
                     </div>
                 </div>
             </div>
-            <div class="row content" style="margin-bottom: 0px; margin-top: 0px">
-                <footer class="page-footer red lighten-1 white-text" style="margin-top: 0px">
+            <div class="row" style="margin-bottom: 0px; margin-top: 0px">
+                <footer class="page-footer grey lighten-4" style="margin-top: 0px">
                     <div class="container">
                         <div class="row">
                             <div class="col l6 s12">
-                                <h5 class="white-text">Footer Content</h5>
-                                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                                <h5 class="">Footer Content</h5>
+                                <p class="">You can use rows and columns here to organize your footer content.</p>
                             </div>
                             <div class="col l4 offset-l2 s12">
-                                <h5 class="white-text">Links</h5>
+                                <h5 class="">Links</h5>
                                 <ul>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                                    <%--<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>--%>
+                                    <li><a class="black-text" href="#!">Link 1</a></li>
+                                    <li><a class="black-text" href="#!">Link 2</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="footer-copyright red white-text">
+                    <div class="footer-copyright grey lighten-3 black-text">
                         <div class="container">
-                            © 2015 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                            2015 Copyright Text
+            <a class=" black-text right" href="#!">More Links</a>
                         </div>
                     </div>
                 </footer>
 
             </div>
-        </div>
     </form>
 </body>
 </html>
@@ -105,14 +91,6 @@
         $('.parallax').parallax();
         $('ul.tabs').tabs();
         $('.collapsible').collapsible();
-        //$('#modalLoading').leanModal({
-        //    opacity: 0.1, // Opacity of modal background
-        //    //in_duration: 300, // Transition in duration
-        //    //out_duration: 200, // Transition out duration
-        //    //ready: function () { alert('Ready'); }, // Callback for Modal open
-        //    //complete: function () { alert('Closed'); } // Callback for Modal close
-        //});
-        //$('#modalLoading').openModal();
     });
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1);
@@ -124,8 +102,4 @@
             }
         }
     }
-    //function changePageTitle(e) {
-    //    //var d = e;
-    //    $('#pageTitle').html(e.innerText);
-    //}
 </script>
