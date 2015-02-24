@@ -120,6 +120,37 @@ namespace VloveImport.web.Administrator
                 ShowMessageBox("กรุณากรอกข้อมูลในช่องที่มีสัญลักษณ์ *", this.Page);
             }
 
+            commonBiz com = new commonBiz();
+            DataSet ds = new DataSet();
+            ds = com.GET_DATA_BANK_SHOP(-1, "CHECK_DATA", Convert.ToInt32(ddl_bank_name.SelectedValue), txt_acc_no.Text.Trim(), txt_acc_name.Text.Trim());
+
+            if (this._VS_ACT == "INS")
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    IsReturn = false;
+                    ShowMessageBox("ข้อมูลชุดนี้มีอยู่ในระบบแล้วกรุณาตรวจสอบอีกครั้ง !!", this.Page);
+                }
+                else IsReturn = true;
+            }
+            else if (this._VS_ACT == "UPD")
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    if (this._VS_ID.ToString() != ds.Tables[0].Rows[0]["BANK_SHOP_ID"].ToString())
+                    {
+                        IsReturn = false;
+                        ShowMessageBox("ข้อมูลชุดนี้มีอยู่ในระบบแล้วกรุณาตรวจสอบอีกครั้ง !!", this.Page);
+                    }
+                    else IsReturn = true;
+                }
+                else IsReturn = true;
+            }
+            else
+            {
+                IsReturn = false;
+            }          
+
             return IsReturn;
         }
 
