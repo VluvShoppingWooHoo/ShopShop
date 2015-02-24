@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VloveImport.data;
 
 namespace VloveImport.web.Customer
 {
@@ -12,6 +13,24 @@ namespace VloveImport.web.Customer
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            CustomerData Data = GetData();
+
+        }
+
+        protected CustomerData GetData()
+        {
+            CustomerData Data = new CustomerData();
+            Data.Cus_Name = txtName.Text;
+            Data.Cus_Gender = cblGender.SelectedValue;
+            //Data.Cus_BirthDay = txtName.Text;
+            Data.Cus_Email = txtEmail.Text;
+            Data.Cus_Link_Shop = txtEmail.Text;
+
+            return Data;
         }
     }
 }
