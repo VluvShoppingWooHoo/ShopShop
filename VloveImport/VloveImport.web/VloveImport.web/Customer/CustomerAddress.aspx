@@ -125,7 +125,8 @@
                                     </tr>
                                     <tr>
                                         <td colspan ="2">
-                                            <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล" OnClick="btnSave_Click"></asp:Button>&nbsp;&nbsp;
+                                            <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล" OnClick="btnSave_Click"></asp:Button>
+                                            &nbsp;&nbsp;
                                             <asp:Button ID="btnReset" runat="server" Text="ล้างข้อมูล" OnClick="btnReset_Click"></asp:Button>
                                         </td>
                                     </tr>

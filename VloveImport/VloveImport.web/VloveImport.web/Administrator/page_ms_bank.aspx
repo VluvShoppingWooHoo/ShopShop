@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/master_page_batt.Master" AutoEventWireup="true" CodeBehind="page_ms_bank.aspx.cs" Inherits="VloveImport.web.Administrator.page_ms_bank" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,22 +16,22 @@
 <table width ="100%">
     <tr>
         <td align ="center">
-            <asp:GridView ID="gv_cus_bank" runat="server" AutoGenerateColumns="False" Width ="90%" DataKeyNames="CUS_ADD_ID" OnRowCreated="gv_cus_address_RowCreated">
+            <asp:GridView ID="gv_Deatil" runat="server" AutoGenerateColumns="False" Width ="90%" DataKeyNames="CUS_ADD_ID" OnRowCreated="gv_Deatil_RowCreated">
                 <Columns>
                     <asp:BoundField HeaderText="ลำดับ" DataField="ROW_INDEX" >
                     <ItemStyle HorizontalAlign="Right" Width="5%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="ชื่อลูกค้า" DataField="CUS_ADD_CUS_NAME" >
+                    <asp:BoundField HeaderText="เลขที่บัญชี" DataField="BANK_NAME" >
                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="ที่อยู่" DataField="ADDRESS_FULL">
+                    <asp:BoundField HeaderText="ชื่อบัญชี" DataField="BANK_ACCOUNT_NO">
                     <ItemStyle HorizontalAlign="Left" Width="50%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="จังหวัด" DataField="PROVINCE_NAME" >
+                    <asp:BoundField HeaderText="หมายเหตุ" DataField="BANK_REMARK" >
                     <ItemStyle HorizontalAlign="Left" Width="10%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="ภาค" DataField="REGION_NAME" >
-                    <ItemStyle HorizontalAlign="Left" Width="10%" />
+                    <asp:BoundField HeaderText="สถานะ" DataField="BANK_STATUS" >
+                    <ItemStyle HorizontalAlign="Center" Width="10%" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
@@ -52,5 +55,73 @@
     </tr>
 </table>
 </div>
+
+        <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" BackgroundCssClass="modalBackground"
+            PopupControlID="Panel1" TargetControlID="lblheader">
+        </asp:ModalPopupExtender>
+
+        <asp:Panel ID="Panel1" Height="400px" Width="600px" runat="server" ><%--Style="display: none;"--%>
+            <table width="600px" style ="border-collapse:separate;" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_LEFT"></td>
+                    <td align="left" class="trLogin_CENTER" style ="padding:0px 0px;">
+                        <div style ="margin-left:-40px;">
+                            <asp:Label ID="lblheader" runat="server"></asp:Label>
+                        </div>
+                    </td>
+                    <td align="right" width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_RIGHT">
+                        <div style="text-align:right;margin-right: 10px; margin-top: 5px;">
+                            <asp:ImageButton ID="BtnImgClose" runat="server" ImageUrl="~/Images/icon/Close.png" Width="20px" Height="20px" OnClick="BtnImgClose_Click" />
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: #CFCDCD;">
+                    <td style ="text-align:center; padding:0px 0px;" colspan="3">
+                        <center>
+                            <asp:Panel Width="96%" Height="350px" ID="Panel2" runat="server" BackColor="#FFFFFF">
+                                <table width ="100%">
+                                    <tr>
+                                        <td align ="left" Width ="25%">เลขที่บัญชี : </td>
+                                        <td align ="left" Width ="75%">
+                                            <asp:TextBox ID="txt_acc_no" runat="server" Width ="300px"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align ="left">ชื่อบัญชี :</td>
+                                        <td align ="left">
+                                            <asp:TextBox ID="txt_acc_name" runat="server" Width ="300px"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style ="vertical-align:top;" align ="left">หมายเหตุ : </td>
+                                        <td align ="left">
+                                            <asp:TextBox ID="txt_remark" runat="server" Width="300px" Height ="100px" TextMode ="MultiLine"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align ="left">สถานะ : </td>
+                                        <td align ="left">
+                                            <asp:DropDownList ID="ddl_Status" runat="server" Width ="300px">
+                                                <asp:ListItem Value="1">ใช้งาน</asp:ListItem>
+                                                <asp:ListItem Value="0">ไม่ใช้งาน</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan ="2">
+                                            <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล" OnClick="btnSave_Click"></asp:Button>&nbsp;&nbsp;
+                                            <asp:Button ID="btnReset" runat="server" Text="ล้างข้อมูล" OnClick="btnReset_Click"></asp:Button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </asp:Panel>
+                        </center>
+                    </td>
+                </tr>
+                <tr style="background-color: #CFCDCD;">
+                    <td height="15px" style ="padding:0px 0px;" align="center" colspan="3"></td>
+                </tr>
+            </table>
+        </asp:Panel>
 
 </asp:Content>

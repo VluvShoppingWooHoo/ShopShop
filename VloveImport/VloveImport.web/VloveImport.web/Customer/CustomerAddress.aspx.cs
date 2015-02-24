@@ -326,7 +326,7 @@ namespace VloveImport.web.Customer
 
             DataSet ds = new DataSet();
             CustomerBiz CusBiz = new CustomerBiz();
-            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, this._VS_CUS_ADD_ID, 1, "", "BINDDATA");
+            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, this._VS_CUS_ADD_ID, 1, "", "BINDDATA_BYID");
 
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -386,6 +386,7 @@ namespace VloveImport.web.Customer
         protected void btnReset_Click(object sender, EventArgs e)
         {
             ClearData();
+            ModalPopupExtender1.Show();
         }
 
         protected void BtnImgClose_Click(object sender, ImageClickEventArgs e)
