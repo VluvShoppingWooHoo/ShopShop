@@ -58,13 +58,13 @@ namespace VloveImport.web.MasterPage {
         protected global::VloveImport.web.UserControls.ucSeachBox ucSeachBox;
         
         /// <summary>
-        /// Menubar control.
+        /// ucIndexBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucMenuBar Menubar;
+        protected global::VloveImport.web.UserControls.ucIndexBox ucIndexBox;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

@@ -3,6 +3,7 @@
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/ucCustomerStatus.ascx" TagName="ucCustomerStatus" TagPrefix="uc2" %>
 <%@ Register Src="~/UserControls/ucSeachBox.ascx" TagName="ucSeachBox" TagPrefix="uc3" %>
+<%@ Register Src="~/UserControls/ucIndexBox.ascx" TagName="ucIndexBox" TagPrefix="uc4" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="Ajax" %>
 
 <!DOCTYPE html>
@@ -12,13 +13,15 @@
 
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../App_Themes/css/materialize.min.css" media="screen,projection" />
+    <%--<link type="text/css" rel="stylesheet" href="../App_Themes/css/bootstrap.min.css" media="screen,projection" />--%>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../App_Themes/js/materialize.min.js"></script>
-
+    <%--<script type="text/javascript" src="../App_Themes/js/bootstrap.min.js"></script>--%>
+    <%--<script type="text/javascript" src="../App_Themes/js/jssor.slider.mini.js"></script>--%>
     <link href="../App_Themes/th1/css.css" rel="stylesheet" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -38,11 +41,14 @@
                             <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
                         </div>
                     </div>
-                    <%--<div class="row red" style="margin-bottom: 0px;">
+
+                    <div class="row" style="margin-bottom: 0px">
                         <div class="col s12 m12 l12">
-                            <uc1:ucMenubar ID="Menubar" runat="server" />
+                            <div class="card" style="padding: 20px">
+                            <uc4:ucIndexBox runat="server" ID="ucIndexBox" />
+                            </div>
                         </div>
-                    </div>--%>
+                    </div>
 
                     <div class="row" style="margin-bottom: 0px">
                         <div class="col s12 m12 l12">
@@ -86,7 +92,7 @@
 
 <script type="text/javascript">
     $(function () {
-
+        $('.slider').slider({ full_width: false });
         $('.dropdown-button').dropdown();
         $('.parallax').parallax();
         $('ul.tabs').tabs();
