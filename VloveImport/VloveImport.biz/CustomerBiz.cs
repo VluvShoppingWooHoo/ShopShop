@@ -12,20 +12,23 @@ namespace VloveImport.biz
     public class CustomerBiz
     {
         #region CUSTOMER_PROFILE
-        public DataSet GetData_Customer(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME, string Act)
+        public DataTable Get_Customer_Profile(int CUS_ID)
         {
             DataSet ds = new DataSet();
             CustomerDal dal = new CustomerDal("LocalConnection");
-            //ds = dal.GetData_Customer_Address(CUS_ID, CUS_ADD_ID, CUS_ADDRESS_STATUS, Act);
-            return ds;
+            ds = dal.GetData_Customer_Profile(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
         }
-        public string UPDATE_Customer(CustomerData EnCus)
+        public string UPDATE_Customer_Profile(CustomerData EnCus)
         {
             string Result = "";
             try
             {
                 CustomerDal dal = new CustomerDal("LocalConnection");
-                Result = dal.UPDATE_Customer(EnCus);
+                Result = dal.UPDATE_Customer_Profile(EnCus);
             }
             catch (Exception ex)
             {

@@ -19,20 +19,13 @@ namespace VloveImport.dal
         }
         #endregion
         #region CUSTOMER
-        public DataSet GetData_Customer(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME, string Act)
+        public DataSet GetData_Customer_Profile(int CUS_ID)
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_ADDRESS");
-
+                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_PROFILE");
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
-                SqlCommandData.SetParameter_Input_INT("CUS_ADD_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ADD_ID);
-
-                SqlCommandData.SetParameter_Input_INT("CUS_ADDRESS_STATUS", SqlDbType.Int, ParameterDirection.Input, CUS_ADDRESS_STATUS);
-                SqlCommandData.SetParameter("CUS_ADDRESS_NAME", SqlDbType.VarChar, ParameterDirection.Input, CUS_ADDRESS_NAME);
-                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
-
-
+               
                 return SqlCommandData.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -40,13 +33,13 @@ namespace VloveImport.dal
                 throw new Exception("GetData_Customer_Address -> msg : " + ex.Message);
             }
         }
-        public string UPDATE_Customer(CustomerData EnCus)
+        public string UPDATE_Customer_Profile(CustomerData EnCus)
         {
             try
             {
                 SqlCommandData.OpenConnection();
                 SqlCommandData.BeginTransaction();
-                SqlCommandData.SetStoreProcedure("INS_UPD_CUSTOMER_ADDRESS");
+                SqlCommandData.SetStoreProcedure("UPDATE_CUSTOMER_PROFILE");
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
 
