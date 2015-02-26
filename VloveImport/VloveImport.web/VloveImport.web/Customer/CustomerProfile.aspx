@@ -19,10 +19,18 @@
         </tr>
         <tr>
             <td class="td">
-                ชื่อ-นามสกุล
+                ชื่อ
             </td>
             <td class="td">
                 <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="td">
+                นามสกุล
+            </td>
+            <td class="td">
+                <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -38,7 +46,10 @@
                 เพศ
             </td>
             <td class="td">
-                <asp:CheckBoxList ID="cblGender" runat="server" RepeatDirection="Horizontal"></asp:CheckBoxList>
+                <asp:DropDownList ID="ddlGender" runat="server">
+                    <asp:ListItem Text="ชาย"></asp:ListItem>
+                    <asp:ListItem Text="หญิง"></asp:ListItem>
+                </asp:DropDownList>
             </td>
         </tr>
         <tr>

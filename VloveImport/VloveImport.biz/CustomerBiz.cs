@@ -19,13 +19,13 @@ namespace VloveImport.biz
             //ds = dal.GetData_Customer_Address(CUS_ID, CUS_ADD_ID, CUS_ADDRESS_STATUS, Act);
             return ds;
         }
-        public string INS_UPD_Customer(CustomerData EnCus, string Act)
+        public string UPDATE_Customer(CustomerData EnCus)
         {
             string Result = "";
             try
             {
                 CustomerDal dal = new CustomerDal("LocalConnection");
-                Result = dal.INS_UPD_Customer_Address(EnCus, Act);
+                Result = dal.UPDATE_Customer(EnCus);
             }
             catch (Exception ex)
             {

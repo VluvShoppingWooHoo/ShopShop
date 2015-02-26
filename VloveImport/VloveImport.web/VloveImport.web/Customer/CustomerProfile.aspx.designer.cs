@@ -40,6 +40,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
+        /// txtLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLastName;
+        
+        /// <summary>
         /// TextBox1 control.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,13 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// cblGender control.
+        /// ddlGender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblGender;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGender;
         
         /// <summary>
         /// txtEmail control.

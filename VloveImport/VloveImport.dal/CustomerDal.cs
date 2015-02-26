@@ -40,7 +40,7 @@ namespace VloveImport.dal
                 throw new Exception("GetData_Customer_Address -> msg : " + ex.Message);
             }
         }
-        public string INS_UPD_Customer(CustomerData EnCus, string Act)
+        public string UPDATE_Customer(CustomerData EnCus)
         {
             try
             {
@@ -48,7 +48,6 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("INS_UPD_CUSTOMER_ADDRESS");
 
-                SqlCommandData.SetParameter_Input_INT("CUS_ADD_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_ADD_ID);
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
 
                 SqlCommandData.SetParameter("CUS_ADD_CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_CUS_NAME);
@@ -60,7 +59,6 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("DISTRICT_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.DISTRICT_ID);
                 SqlCommandData.SetParameter_Input_INT("SUB_DISTRICT_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.SUB_DISTRICT_ID);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Create_User);
-                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
