@@ -39,6 +39,7 @@ namespace VloveImport.data
         #region TB_CUSTOMER_ACC_NAME
 
         public int CUS_ACC_NAME_ID { get; set; }
+        public string CUS_ACC_NAME { get; set; }
         public string CUS_ACC_NAME_NO { get; set; }
         public string CUS_ACC_NAME_BRANCH { get; set; }
         public string CUS_ACC_NAME_REMARK { get; set; }
