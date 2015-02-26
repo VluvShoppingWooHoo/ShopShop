@@ -46,7 +46,7 @@
                 เพศ
             </td>
             <td class="td">
-                <asp:DropDownList ID="ddlGender" runat="server">
+                <asp:DropDownList ID="ddlGender" runat="server" style="display:block">
                     <asp:ListItem Text="ชาย"></asp:ListItem>
                     <asp:ListItem Text="หญิง"></asp:ListItem>
                 </asp:DropDownList>
