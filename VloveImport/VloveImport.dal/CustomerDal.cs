@@ -50,14 +50,12 @@ namespace VloveImport.dal
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
 
-                SqlCommandData.SetParameter("CUS_ADD_CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_CUS_NAME);
-                SqlCommandData.SetParameter("CUS_ADD_ADDRESS_TEXT", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_ADDRESS_TEXT);
-                SqlCommandData.SetParameter("CUS_ADD_ZIPCODE", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_ADD_ZIPCODE.ToString());
-                SqlCommandData.SetParameter_Input_INT("CUS_ADD_STATUS", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_ADD_STATUS);
-                SqlCommandData.SetParameter_Input_INT("REGION_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.REGION_ID);
-                SqlCommandData.SetParameter_Input_INT("PROVINCE_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.PROVINCE_ID);
-                SqlCommandData.SetParameter_Input_INT("DISTRICT_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.DISTRICT_ID);
-                SqlCommandData.SetParameter_Input_INT("SUB_DISTRICT_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.SUB_DISTRICT_ID);
+                SqlCommandData.SetParameter("CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_Name);
+                SqlCommandData.SetParameter("CUS_LNAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_LName);
+                SqlCommandData.SetParameter("CUS_BIRTHDAY", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_BirthDay);
+                SqlCommandData.SetParameter_Input_INT("CUS_GENDER", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_Gender);
+                SqlCommandData.SetParameter_Input_INT("CUS_EMAIL", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_Email);
+                SqlCommandData.SetParameter_Input_INT("CUS_LINK_SHOP", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_Link_Shop);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Create_User);
 
                 SqlCommandData.ExecuteNonQuery();
