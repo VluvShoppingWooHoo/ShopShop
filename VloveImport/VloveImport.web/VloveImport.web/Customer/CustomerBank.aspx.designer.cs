@@ -112,6 +112,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.TextBox txt_acc_no;
         
         /// <summary>
+        /// txt_acc_no_FilteredTextBoxExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_acc_no_FilteredTextBoxExtender;
+        
+        /// <summary>
         /// txt_acc_branch control.
         /// </summary>
         /// <remarks>

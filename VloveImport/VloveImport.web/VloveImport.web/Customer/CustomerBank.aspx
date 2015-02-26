@@ -9,31 +9,34 @@
     <ContentTemplate>
 
     <div >
-    ที่อยุ่
+    ข้อมูลธนาคาร
 
-    <asp:Button ID="btnAdd" runat="server" Text="Add Address" OnClick="btnAdd_Click" />
+    <asp:Button ID="btnAdd" runat="server" Text="Add Bank" OnClick="btnAdd_Click" />
          
     <hr style="width:100%; text-align:left; background-color :#FFD700; height:5px; color: #6ACAE1; border :0;"/>
 
 <table width ="100%">
     <tr>
         <td align ="center">
-            <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width ="90%" DataKeyNames="CUS_ADD_ID" OnRowCreated="gv_detail_RowCreated">
+            <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width ="90%" DataKeyNames="CUS_ACC_NAME_ID" OnRowCreated="gv_detail_RowCreated">
                 <Columns>
                     <asp:BoundField HeaderText="ลำดับ" DataField="ROW_INDEX" >
                     <ItemStyle HorizontalAlign="Right" Width="5%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="ธนาคาร" DataField="CUS_ADD_CUS_NAME" >
-                    <ItemStyle HorizontalAlign="Left" Width="25%" />
+                    <asp:BoundField HeaderText="ธนาคาร" DataField="BANK_NAME" >
+                    <ItemStyle HorizontalAlign="Left" Width="10%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="ชื่อบัญชี" DataField="CUS_ADD_CUS_NAME" >
+                    <asp:BoundField HeaderText="ชื่อบัญชี" DataField="CUS_ACC_NAME" >
                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="เลขที่บัญชี" DataField="ADDRESS_FULL">
+                    <asp:BoundField HeaderText="เลขที่บัญชี" DataField="CUS_ACC_NAME_NO">
                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="สาขา" DataField="PROVINCE_NAME" >
+                    <asp:BoundField HeaderText="สาขา" DataField="CUS_ACC_NAME_BRANCH" >
                     <ItemStyle HorizontalAlign="Left" Width="20%" />
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="หมายเหตุ" DataField="CUS_ACC_NAME_REMARK" >
+                    <ItemStyle HorizontalAlign="Left" Width="15%" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
@@ -99,7 +102,9 @@
                                         <td align ="left" Width ="25%">เลขที่บัญชี : </td>
                                         <td align ="left" Width ="70%">
                                             <asp:TextBox ID="txt_acc_no" runat="server" Width ="300px"></asp:TextBox>
-                                        </td>
+                                        <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_acc_no" ID="txt_acc_no_FilteredTextBoxExtender" ValidChars ="-1234567890">
+                                        </asp:FilteredTextBoxExtender>
+</td>
                                         <td align ="center" Width ="5%"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
