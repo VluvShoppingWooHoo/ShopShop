@@ -307,10 +307,10 @@ namespace VloveImport.web.Customer
 
             CustomerBiz CusBiz = new CustomerBiz();
             DataSet ds = new DataSet();
-            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, -1, 1, "CHECK_DATA", txt_Cusname.Text, 
+            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, -1, 1, "CHECK_DATA", txt_Cusname.Text.Trim(), 
                                                     Convert.ToInt32(dll_region.SelectedValue), 
-                                                    Convert.ToInt32(dll_province.SelectedValue), 
-                                                    Convert.ToInt32(txt_ZipCode.Text)
+                                                    Convert.ToInt32(dll_province.SelectedValue),
+                                                    Convert.ToInt32(txt_ZipCode.Text.Trim())
                                                 );
             if (this._VS_ACT == "INS")
             {
@@ -350,7 +350,7 @@ namespace VloveImport.web.Customer
             ClearData();
             _VS_ACT = "INS";
 
-            lblheader.Text = "เพิ่มข้อมูที่อยู่";
+            lblheader.Text = "เพิ่มข้อมูลที่อยู่";
 
             ModalPopupExtender1.Show();
         }
@@ -382,7 +382,7 @@ namespace VloveImport.web.Customer
                 dll_Sub_District.SelectedValue = ds.Tables[0].Rows[0]["SUB_DISTRICT_ID"].ToString();
             }
 
-            lblheader.Text = "แก้ไขข้อมูที่อยู่";
+            lblheader.Text = "แก้ไขข้อมูลที่อยู่";
             ModalPopupExtender1.Show();
         }
 
