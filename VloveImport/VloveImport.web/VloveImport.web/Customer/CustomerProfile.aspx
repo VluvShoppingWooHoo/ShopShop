@@ -30,7 +30,7 @@
                 นามสกุล
             </td>
             <td class="td">
-                <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtLName" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
