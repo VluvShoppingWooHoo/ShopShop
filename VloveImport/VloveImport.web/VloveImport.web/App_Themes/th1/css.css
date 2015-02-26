@@ -165,7 +165,7 @@ body
 
 .content
 {
-    width: 80% !important;
+    width: 90% !important;
 }
 
 .font15
@@ -217,7 +217,7 @@ nav
     .ucCustomerStatus div ul
     {
         max-height: 30px;
-        padding-right: 10%;
+        padding-right: 5%;
     }
 
         .ucCustomerStatus div ul li
