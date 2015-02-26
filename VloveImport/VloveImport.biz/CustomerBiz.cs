@@ -53,7 +53,7 @@ namespace VloveImport.biz
             {
                 Result = ex.Message;
             }
-            return Result; 
+            return Result;
         }
 
         public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string Act, string CUS_ADD_CUS_NAME = "", int REGION_ID = -1, int PROVINCE_ID = -1, int CUS_ADD_ZIPCODE = -1)
@@ -66,7 +66,36 @@ namespace VloveImport.biz
 
         #endregion
 
+        #region CUSTOMER BANK
 
+        public string INS_UPD_CUSTOMER_ACCOUNT_BANK(CustomerData EnCus, string Act)
+        {
+            string Result = "";
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.INS_UPD_CUSTOMER_ACCOUNT_BANK(EnCus, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
+        public DataSet GET_CUSTOMER_ACCOUNT_BANK(int CUS_ID, int CUS_ACC_NAME_ID, int CUS_ACC_NAME_STAUTS, string Act
+                                                , string CUS_ACC_NAME = ""
+                                                , string CUS_ACC_NAME_NO = ""
+                                                , string CUS_ACC_NAME_BRANCH = ""
+                                                , int BANK_ID = -1)
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.GET_CUSTOMER_ACCOUNT_BANK(CUS_ID, CUS_ACC_NAME_ID, CUS_ACC_NAME_STAUTS, Act, CUS_ACC_NAME, CUS_ACC_NAME_NO, CUS_ACC_NAME_BRANCH, BANK_ID);
+            return ds;
+        }
+
+        #endregion
 
 
     }
