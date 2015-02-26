@@ -148,6 +148,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.TextBox txt_ZipCode;
         
         /// <summary>
+        /// txt_ZipCode_FilteredTextBoxExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_ZipCode_FilteredTextBoxExtender;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

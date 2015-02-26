@@ -76,7 +76,7 @@ namespace VloveImport.dal
 
         #region CUSTOMER ADDRESS
 
-        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME, string Act)
+        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string Act, string CUS_ADD_CUS_NAME, int REGION_ID, int PROVINCE_ID, int CUS_ADD_ZIPCODE)
         {
             try
             {
@@ -86,7 +86,10 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("CUS_ADD_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ADD_ID);
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ADDRESS_STATUS", SqlDbType.Int, ParameterDirection.Input, CUS_ADDRESS_STATUS);
-                SqlCommandData.SetParameter("CUS_ADDRESS_NAME", SqlDbType.VarChar, ParameterDirection.Input, CUS_ADDRESS_NAME);
+                SqlCommandData.SetParameter("CUS_ADD_CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, CUS_ADD_CUS_NAME);
+                SqlCommandData.SetParameter_Input_INT("REGION_ID", SqlDbType.Int, ParameterDirection.Input, REGION_ID);
+                SqlCommandData.SetParameter_Input_INT("PROVINCE_ID", SqlDbType.Int, ParameterDirection.Input, PROVINCE_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ADD_ZIPCODE", SqlDbType.Int, ParameterDirection.Input, CUS_ADD_ZIPCODE);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
 

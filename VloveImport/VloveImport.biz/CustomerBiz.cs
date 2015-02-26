@@ -16,7 +16,7 @@ namespace VloveImport.biz
         {
             DataSet ds = new DataSet();
             CustomerDal dal = new CustomerDal("LocalConnection");
-            ds = dal.GetData_Customer_Address(CUS_ID, CUS_ADD_ID, CUS_ADDRESS_STATUS, CUS_ADDRESS_NAME, Act);
+            //ds = dal.GetData_Customer_Address(CUS_ID, CUS_ADD_ID, CUS_ADDRESS_STATUS, Act);
             return ds;
         }
         public string INS_UPD_Customer(CustomerData EnCus, string Act)
@@ -50,14 +50,14 @@ namespace VloveImport.biz
             {
                 Result = ex.Message;
             }
-            return Result;
+            return Result; 
         }
 
-        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string CUS_ADDRESS_NAME, string Act)
+        public DataSet GetData_Customer_Address(int CUS_ID, int CUS_ADD_ID, int CUS_ADDRESS_STATUS, string Act, string CUS_ADD_CUS_NAME = "", int REGION_ID = -1, int PROVINCE_ID = -1, int CUS_ADD_ZIPCODE = -1)
         {
             DataSet ds = new DataSet();
             CustomerDal dal = new CustomerDal("LocalConnection");
-            ds = dal.GetData_Customer_Address(CUS_ID, CUS_ADD_ID, CUS_ADDRESS_STATUS, CUS_ADDRESS_NAME, Act);
+            ds = dal.GetData_Customer_Address(CUS_ID, CUS_ADD_ID, CUS_ADDRESS_STATUS, Act, CUS_ADD_CUS_NAME, REGION_ID, PROVINCE_ID, CUS_ADD_ZIPCODE);
             return ds;
         }
 

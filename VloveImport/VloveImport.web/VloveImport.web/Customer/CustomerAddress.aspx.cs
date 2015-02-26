@@ -238,7 +238,7 @@ namespace VloveImport.web.Customer
         {
             DataSet ds = new DataSet();
             CustomerBiz CusBiz = new CustomerBiz();
-            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, -1, 1, "", "BINDDATA");
+            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, -1, 1, "BINDDATA");
 
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -296,11 +296,47 @@ namespace VloveImport.web.Customer
 
         public bool CheckInput()
         {
-            bool IsReturn = false;
+            bool IsReturn = true;
 
-            if (txt_Cusname.Text.Trim() == "")
+            if (txt_Cusname.Text.Trim() == "" || dll_region.SelectedValue == "-1" || dll_province.SelectedValue == "-1" || txt_ZipCode.Text == "")
             {
+                IsReturn = false;
+                ShowMessageBox("กรุณากรอกข้อมูลในช่องที่มีสัญลักษณ์ *", this.Page);
+                return IsReturn;
+            }
 
+            CustomerBiz CusBiz = new CustomerBiz();
+            DataSet ds = new DataSet();
+            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, -1, 1, "CHECK_DATA", txt_Cusname.Text, 
+                                                    Convert.ToInt32(dll_region.SelectedValue), 
+                                                    Convert.ToInt32(dll_province.SelectedValue), 
+                                                    Convert.ToInt32(txt_ZipCode.Text)
+                                                );
+            if (this._VS_ACT == "INS")
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    IsReturn = false;
+                    ShowMessageBox("ข้อมูลชุดนี้มีอยู่ในระบบแล้วกรุณาตรวจสอบอีกครั้ง !!", this.Page);
+                }
+                else IsReturn = true;
+            }
+            else if (this._VS_ACT == "UPD")
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    if (this._VS_CUS_ADD_ID.ToString() != ds.Tables[0].Rows[0]["CUS_ADD_ID"].ToString())
+                    {
+                        IsReturn = false;
+                        ShowMessageBox("ข้อมูลชุดนี้มีอยู่ในระบบแล้วกรุณาตรวจสอบอีกครั้ง !!", this.Page);
+                    }
+                    else IsReturn = true;
+                }
+                else IsReturn = true;
+            }
+            else
+            {
+                IsReturn = false;
             }
 
             return IsReturn;
@@ -313,6 +349,9 @@ namespace VloveImport.web.Customer
 
             ClearData();
             _VS_ACT = "INS";
+
+            lblheader.Text = "เพิ่มข้อมูที่อยู่";
+
             ModalPopupExtender1.Show();
         }
 
@@ -326,7 +365,7 @@ namespace VloveImport.web.Customer
 
             DataSet ds = new DataSet();
             CustomerBiz CusBiz = new CustomerBiz();
-            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, this._VS_CUS_ADD_ID, 1, "", "BINDDATA_BYID");
+            ds = CusBiz.GetData_Customer_Address(this._VS_CUS_ID, this._VS_CUS_ADD_ID, 1, "BINDDATA_BYID");
 
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -343,6 +382,7 @@ namespace VloveImport.web.Customer
                 dll_Sub_District.SelectedValue = ds.Tables[0].Rows[0]["SUB_DISTRICT_ID"].ToString();
             }
 
+            lblheader.Text = "แก้ไขข้อมูที่อยู่";
             ModalPopupExtender1.Show();
         }
 
@@ -369,17 +409,24 @@ namespace VloveImport.web.Customer
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            CustomerBiz CusBiz = new CustomerBiz();
-            string IsReturn = "";
-            IsReturn = CusBiz.INS_UPD_Customer_Address(SetData(), this._VS_ACT);
-            if (IsReturn != "")
+            if (CheckInput())
             {
-                ShowMessageBox(IsReturn, this.Page);
+                CustomerBiz CusBiz = new CustomerBiz();
+                string IsReturn = "";
+                IsReturn = CusBiz.INS_UPD_Customer_Address(SetData(), this._VS_ACT);
+                if (IsReturn != "")
+                {
+                    ShowMessageBox(IsReturn, this.Page);
+                }
+                else
+                {
+                    BindData();
+                    ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page);
+                }
             }
             else
             {
-                BindData();
-                ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page);
+                ModalPopupExtender1.Show();
             }
         }
 

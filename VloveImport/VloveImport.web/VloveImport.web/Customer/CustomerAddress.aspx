@@ -83,45 +83,55 @@
                                 <table width ="100%">
                                     <tr>
                                         <td align ="left" Width ="25%">ชื่อลูกค้า : </td>
-                                        <td align ="left" Width ="75%">
+                                        <td align ="left" Width ="70%">
                                             <asp:TextBox ID="txt_Cusname" runat="server" Width ="300px"></asp:TextBox>
                                         </td>
+                                        <td align ="center" Width ="5%"><span style="color:#F00">*</span></td>
                                     </tr>
-                                    <tr>
-                                        <td align ="left">ที่อยู่ :</td>
+                                    <tr v>
+                                        <td valign="top" align ="left">ที่อยู่ :</td>
                                         <td align ="left">
                                             <asp:TextBox ID="txt_CusDetail" runat="server" TextMode = "MultiLine" Width ="300px" Height ="50px"></asp:TextBox>
                                         </td>
+                                        <td valign="top" align ="center"></td>
                                     </tr>
                                     <tr>
                                         <td align ="left">ภาค : </td>
                                         <td align ="left">
                                             <asp:DropDownList ID="dll_region" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_region_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
+                                        <td align ="center"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
                                         <td align ="left">จังหวัด : </td>
                                         <td align ="left">
                                             <asp:DropDownList ID="dll_province" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_province_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
+                                        <td align ="center"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
                                         <td align ="left">เขต/อำเภอ</td>
                                         <td align ="left">
                                             <asp:DropDownList ID="dll_District" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_District_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
+                                        <td align ="center"></td>
                                     </tr>
                                     <tr>
                                         <td align ="left">แขวง/ตำบล</td>
                                         <td align ="left">
                                             <asp:DropDownList ID="dll_Sub_District" runat="server" Width ="300px"></asp:DropDownList>
                                         </td>
+                                        <td align ="center"></td>
                                     </tr>
                                     <tr>
                                         <td align ="left">รหัสไปรษณีย์</td>
                                         <td align ="left">
                                             <asp:TextBox ID="txt_ZipCode" runat="server" Width ="300px" MaxLength ="5"></asp:TextBox>
+                                            <asp:FilteredTextBoxExtender ID="txt_ZipCode_FilteredTextBoxExtender" runat="server" Enabled="True" ValidChars ="0123456789" TargetControlID="txt_ZipCode">
+                                            </asp:FilteredTextBoxExtender>
+
                                         </td>
+                                        <td align ="center"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
                                         <td colspan ="2">
