@@ -7,6 +7,8 @@
             <li class="divider"></li>
             <li><a class="red white-text font15" href="/Customer/CustomerAddress.aspx">ที่อยู่ของฉัน</a></li>
             <li class="divider"></li>
+            <li><a class="red white-text font15" href="../Customer/CustomerFavShop.aspx">ร้านค้าในดวงใจ</a></li>
+            <li class="divider"></li>
             <li><a class="red white-text font15" href="/Customer/HowTo.aspx?type=order">test</a></li>      
         </ul>
     </div>
