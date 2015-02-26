@@ -125,6 +125,7 @@
     <Compile Include="Administrator\page_ms_bank.aspx.designer.cs">
       <DependentUpon>page_ms_bank.aspx</DependentUpon>
     </Compile>
+    <Content Include="App_Code\BasePage.cs" />
     <Compile Include="Customer\Activate.aspx.cs">
       <DependentUpon>Activate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
