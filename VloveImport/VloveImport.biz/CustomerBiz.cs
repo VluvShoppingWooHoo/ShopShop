@@ -97,6 +97,33 @@ namespace VloveImport.biz
 
         #endregion
 
+        #region  CUSTOMER FAVORIT SHOP
+
+        public string INS_UPD_CUSTOMER_FAVORIT_SHOP(CustomerData EnCus, string Act)
+        {
+            string Result = "";
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.INS_UPD_CUSTOMER_FAVORIT_SHOP(EnCus, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
+        public DataSet GET_CUSTOMER_FAVORIT_SHOP(int CUS_ID, int CUS_SHOP_ID, int CUS_SHOP_STATUS, string Act, string CUS_SHOP_NAME = "")
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.GET_CUSTOMER_FAVORIT_SHOP(CUS_ID, CUS_SHOP_ID, CUS_SHOP_STATUS, Act, CUS_SHOP_NAME);
+            return ds;
+        }
+
+        #endregion
+
 
     }
 }

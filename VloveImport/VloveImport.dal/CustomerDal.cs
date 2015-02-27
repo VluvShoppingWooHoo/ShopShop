@@ -184,7 +184,7 @@ namespace VloveImport.dal
 
         #region CUSTOMER FAVORIT SHOP
 
-        public DataSet GET_CUSTOMER_FAVORIT_SHOP(int CUS_ID, int CUS_SHOP_ID, int CUS_SHOP_STATUS, string Act)
+        public DataSet GET_CUSTOMER_FAVORIT_SHOP(int CUS_ID, int CUS_SHOP_ID, int CUS_SHOP_STATUS, string Act, string CUS_SHOP_NAME)
         {
             try
             {
@@ -192,6 +192,7 @@ namespace VloveImport.dal
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
                 SqlCommandData.SetParameter_Input_INT("CUS_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, CUS_SHOP_ID);
+                SqlCommandData.SetParameter("CUS_SHOP_NAME", SqlDbType.Int, ParameterDirection.Input, CUS_SHOP_NAME);
                 SqlCommandData.SetParameter_Input_INT("CUS_SHOP_STATUS", SqlDbType.Int, ParameterDirection.Input, CUS_SHOP_STATUS);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
