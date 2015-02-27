@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VloveImport.data;
 
 namespace VloveImport.web.MasterPage
 {
@@ -11,7 +12,9 @@ namespace VloveImport.web.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            CustomerData CusData = new CustomerData();
+            CusData.Cus_ID = 1;
+            CusData = (CustomerData)Session["User"];
         }
     }
 }

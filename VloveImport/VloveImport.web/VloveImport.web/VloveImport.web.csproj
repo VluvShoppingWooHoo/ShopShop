@@ -75,6 +75,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\CustomerAddress.aspx" />
     <Content Include="Customer\CustomerBank.aspx" />
+    <Content Include="Customer\CustomerFavoritShop.aspx" />
     <Content Include="Customer\CustomerProfile.aspx" />
     <Content Include="Customer\dummyCustomer.aspx" />
     <Content Include="Customer\HowTo.aspx" />
@@ -160,6 +161,13 @@
     </Compile>
     <Compile Include="Customer\CustomerBank.aspx.designer.cs">
       <DependentUpon>CustomerBank.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerFavoritShop.aspx.cs">
+      <DependentUpon>CustomerFavoritShop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerFavoritShop.aspx.designer.cs">
+      <DependentUpon>CustomerFavoritShop.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerProfile.aspx.cs">
       <DependentUpon>CustomerProfile.aspx</DependentUpon>
