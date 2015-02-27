@@ -85,31 +85,31 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// ddl_bank_name control.
+        /// txt_shop_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_bank_name;
+        protected global::System.Web.UI.WebControls.TextBox txt_shop_name;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txt_shop_link control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txt_shop_link;
         
         /// <summary>
-        /// txt_remark control.
+        /// txt_shop_remark control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_remark;
+        protected global::System.Web.UI.WebControls.TextBox txt_shop_remark;
         
         /// <summary>
         /// btnSave control.

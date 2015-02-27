@@ -78,21 +78,21 @@
                                     <tr>
                                         <td align ="left" Width ="25%">ชื่อร้าน : </td>
                                         <td align ="left" Width ="70%">
-                                            <asp:DropDownList ID="ddl_bank_name" runat="server"></asp:DropDownList>
+                                             <asp:TextBox ID="txt_shop_name" runat="server" Width ="300px" ></asp:TextBox>
                                         </td>
                                         <td align ="center" Width ="5%"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
                                         <td valign="top" align ="left">Link :</td>
                                         <td align ="left">
-                                            <asp:TextBox ID="TextBox1" runat="server" TextMode = "MultiLine" Width ="300px" Height ="50px"></asp:TextBox>
+                                            <asp:TextBox ID="txt_shop_link" runat="server" TextMode = "MultiLine" Width ="300px" Height ="50px"></asp:TextBox>
                                         </td>
                                         <td valign="top" align ="center"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
                                         <td valign="top" align ="left">หมายเหตุ :</td>
                                         <td align ="left">
-                                            <asp:TextBox ID="txt_remark" runat="server" TextMode = "MultiLine" Width ="300px" Height ="50px"></asp:TextBox>
+                                            <asp:TextBox ID="txt_shop_remark" runat="server" TextMode = "MultiLine" Width ="300px" Height ="50px"></asp:TextBox>
                                         </td>
                                         <td valign="top" align ="center"></td>
                                     </tr>
