@@ -11,6 +11,18 @@ namespace VloveImport.biz
 {
     public class CustomerBiz
     {
+        #region CustomerMyAccout
+        public DataTable GET_CUSTOMER_MYACCOUNT(int CUS_ID)
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.GET_CUSTOMER_MYACCOUNT(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+        #endregion
         #region CUSTOMER_PROFILE
         public DataTable Get_Customer_Profile(int CUS_ID)
         {
@@ -37,7 +49,6 @@ namespace VloveImport.biz
             return Result;
         }
         #endregion
-
 
         #region CUSTOMER ADDRESS
 
