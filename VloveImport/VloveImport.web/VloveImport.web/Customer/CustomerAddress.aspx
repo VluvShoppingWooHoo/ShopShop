@@ -9,9 +9,9 @@
     <ContentTemplate>
 
     <div >
-    ที่อยุ่
+    ข้อมูลที่อยุ่
 
-    <asp:Button ID="btnAdd" runat="server" Text="Add Address" OnClick="btnAdd_Click" />
+    <asp:Button ID="btnAdd" runat="server" Text="เพิ่มข้อมูล" OnClick="btnAdd_Click" />
          
     <hr style="width:100%; text-align:left; background-color :#FFD700; height:5px; color: #6ACAE1; border :0;"/>
 
