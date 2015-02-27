@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/master_page_batt.Master" AutoEventWireup="true" CodeBehind="CustomerBank.aspx.cs" Inherits="VloveImport.web.Customer.CustomerBank" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerBank.aspx.cs" Inherits="VloveImport.web.Customer.CustomerBank" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -87,7 +87,7 @@
                                     <tr>
                                         <td align ="left" Width ="25%">ธนาคาร : </td>
                                         <td align ="left" Width ="70%">
-                                            <asp:DropDownList ID="ddl_bank_name" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddl_bank_name" runat="server" style =" display:block;"></asp:DropDownList>
                                         </td>
                                         <td align ="center" Width ="5%"><span style="color:#F00">*</span></td>
                                     </tr>
