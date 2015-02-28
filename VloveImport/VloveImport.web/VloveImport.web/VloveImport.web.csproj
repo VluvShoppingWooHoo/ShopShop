@@ -345,6 +345,7 @@
     <Content Include="App_Themes\font\roboto\Roboto-Regular.ttf" />
     <Content Include="App_Themes\font\roboto\Roboto-Thin.ttf" />
     <Content Include="MasterPage\master_page_batt.Master" />
+    <Content Include="Script\20150228.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
