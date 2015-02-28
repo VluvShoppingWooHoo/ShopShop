@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CommandData.cs" />
     <Compile Include="Commondal.cs" />
+    <Compile Include="ShoppingDal.cs" />
     <Compile Include="CustomerDal.cs" />
     <Compile Include="LogonDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
