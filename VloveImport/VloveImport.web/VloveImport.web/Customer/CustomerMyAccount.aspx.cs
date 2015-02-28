@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
@@ -52,7 +54,7 @@ namespace VloveImport.web.Customer
 
         }
 
-        protected void btnVocher_Click(object sender, EventArgs e)
+        protected void btnVoucher_Click(object sender, EventArgs e)
         {
 
         }

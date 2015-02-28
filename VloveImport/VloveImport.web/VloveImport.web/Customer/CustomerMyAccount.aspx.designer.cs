@@ -40,51 +40,6 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPoint;
         
         /// <summary>
-        /// btnTopup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnTopup;
-        
-        /// <summary>
-        /// btnWithdraw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnWithdraw;
-        
-        /// <summary>
-        /// btnTransLog control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnTransLog;
-        
-        /// <summary>
-        /// btnVocher control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnVocher;
-        
-        /// <summary>
-        /// btnMyPoint control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnMyPoint;
-        
-        /// <summary>
         /// P3 control.
         /// </summary>
         /// <remarks>
