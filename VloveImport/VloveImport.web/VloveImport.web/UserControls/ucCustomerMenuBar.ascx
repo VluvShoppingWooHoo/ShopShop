@@ -3,7 +3,9 @@
     <div class="col s4 m4 l4">
         <a class="red dropdown-button white-text font15 width100px" href="#!" data-activates="dropdown2" style="display:inline-block; width:200px">อื่นๆ<i class="mdi-navigation-arrow-drop-down right"></i></a>
         <ul id="dropdown2" class="dropdown-content width200px">
-            <li><a class="red white-text font15" href="/Customer/CustomerProfile.aspx">ข้อมูลของฉัน</a></li>
+            <li><a class="red white-text font15" href="/Customer/CustomerMyAccount.aspx?Cus_ID=IlhnU8issh7aMXanRnEK5A==">ข้อมูลของฉัน</a></li>
+            <li class="divider"></li>
+            <li><a class="red white-text font15" href="/Customer/CustomerProfile.aspx?Cus_ID=IlhnU8issh7aMXanRnEK5A==">ข้อมูลของฉัน</a></li>
             <li class="divider"></li>
             <li><a class="red white-text font15" href="/Customer/CustomerAddress.aspx">ที่อยู่ของฉัน</a></li>
             <li class="divider"></li>
