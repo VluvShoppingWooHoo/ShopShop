@@ -17,5 +17,10 @@ namespace VloveImport.web.UserControls
         {
 
         }
+
+        public static void AddToCart()
+        {
+
+        }
     }
 }
