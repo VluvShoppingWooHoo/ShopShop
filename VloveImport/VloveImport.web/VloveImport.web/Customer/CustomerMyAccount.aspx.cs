@@ -17,8 +17,8 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                string Cus_ID = Request.QueryString["Cus_id"] == null ? "" : en.DecryptData(Request.QueryString["Cus_id"].ToString());
-                BindData(Cus_ID);
+                //string Cus_ID = Request.QueryString["Cus_id"] == null ? "" : en.DecryptData(Request.QueryString["Cus_id"].ToString());
+                //BindData(Cus_ID);
             }
         }
 
