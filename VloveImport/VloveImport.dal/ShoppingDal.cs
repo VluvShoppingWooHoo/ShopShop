@@ -27,13 +27,16 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("INS_SHOPPINGCART");
 
-                //SqlCommandData.SetParameter_Input_INT("Prod_ID", SqlDbType.Int, ParameterDirection.Input, Shop.PROD_ID);
-                //SqlCommandData.SetParameter_Input_INT("Cus_BK_Number", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_BK_NUMBER);
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_ID);
+                SqlCommandData.SetParameter("CUS_BK_ITEMNAME", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_ITEMNAME);
+                SqlCommandData.SetParameter("CUS_BK_ITEMDESC", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_ITEMDESC);                
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_BK_AMOUNT);
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_PRICE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_PRICE);
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_SIZE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_SIZE);
-                SqlCommandData.SetParameter_Input_INT("CUS_BK_COLOR", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_COLOR);
+                SqlCommandData.SetParameter("CUS_BK_COLOR", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_COLOR);                
                 SqlCommandData.SetParameter("CUS_BK_REMARK", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_REMARK);
+                SqlCommandData.SetParameter("CUS_BK_URL", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_URL);
+                SqlCommandData.SetParameter("CUS_BK_PICURL", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_PICURL);
                 SqlCommandData.SetParameter("CUS_BK_STATUS", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_STATUS);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, Shop.Create_User);
 
@@ -48,31 +51,7 @@ namespace VloveImport.dal
                 return ("AddtoCart -> msg : " + ex.Message);
             }
         }
-
-        public string InsertNewItem(ShoppingData Shop)
-        {
-            try
-            {
-                SqlCommandData.OpenConnection();
-                SqlCommandData.BeginTransaction();
-                SqlCommandData.SetStoreProcedure("INS_NEWITEM");
-
-                //SqlCommandData.SetParameter("Cus_Email", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Email);
-                //SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Password);
-                //SqlCommandData.SetParameter("Cus_Mobile", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Mobile);
-                //SqlCommandData.SetParameter_Input_INT("Cus_Ref_ID", SqlDbType.Int, ParameterDirection.Input, Cust.Cus_Ref_ID);
-                                
-                SqlCommandData.ExecuteNonQuery();
-                SqlCommandData.Commit();
-                return "";
-            }
-            catch (Exception ex)
-            {
-                //throw new Exception("LogonUser -> msg : " + ex.Message);
-                SqlCommandData.RollBack();
-                return ("InsertRegisCustomer -> msg : " + ex.Message);
-            }            
-        }
+        
         
     }
 }

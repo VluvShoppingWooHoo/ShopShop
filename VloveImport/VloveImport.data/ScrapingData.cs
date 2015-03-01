@@ -22,6 +22,8 @@ namespace VloveImport.data
 
         #region TB_BK_Customer_Basket
         public int CUS_ID { get; set; }
+        public string CUS_BK_ITEMNAME { get; set; }
+        public string CUS_BK_ITEMDESC { get; set; }   
         public int CUS_BK_NUMBER { get; set; }
         public int CUS_BK_AMOUNT { get; set; }
         public float CUS_BK_PRICE { get; set; }
@@ -29,7 +31,9 @@ namespace VloveImport.data
         public string CUS_BK_COLOR { get; set; }   
         public string CUS_BK_REMARK { get; set; }
         public string CUS_BK_URL { get; set; }
+        public string CUS_BK_PICURL { get; set; }
         public string CUS_BK_STATUS { get; set; }
         #endregion
     }
 }
+
