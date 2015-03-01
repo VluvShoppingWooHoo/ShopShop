@@ -12,19 +12,11 @@ namespace VloveImport.biz
 {
     public class ShoppingBiz
     {
-        public string AddtoCart(ShoppingData Shop)
+        public string AddtoCart(ScrapingData Shop)
         {            
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             string Result = "";
             Result = dal.AddtoCart(Shop);
-            return Result;
-        }
-
-        public string InsertNewItem(ShoppingData Shop)
-        {
-            string Result = "";
-            ShoppingDal dal = new ShoppingDal("LocalConnection");
-            Result = dal.InsertNewItem(Shop);
             return Result;
         }
 

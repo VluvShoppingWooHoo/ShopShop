@@ -19,7 +19,7 @@ namespace VloveImport.dal
         }
         #endregion
 
-        public string AddtoCart(ShoppingData Shop)
+        public string AddtoCart(ScrapingData Shop)
         {
             try
             {
@@ -27,11 +27,13 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("INS_SHOPPINGCART");
 
-                SqlCommandData.SetParameter_Input_INT("Prod_ID", SqlDbType.Int, ParameterDirection.Input, Shop.PROD_ID);
-                SqlCommandData.SetParameter_Input_INT("Cus_BK_Number", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_BK_NUMBER);
+                //SqlCommandData.SetParameter_Input_INT("Prod_ID", SqlDbType.Int, ParameterDirection.Input, Shop.PROD_ID);
+                //SqlCommandData.SetParameter_Input_INT("Cus_BK_Number", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_BK_NUMBER);
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_BK_AMOUNT);
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_PRICE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_PRICE);
+                SqlCommandData.SetParameter_Input_INT("CUS_BK_SIZE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_SIZE);
                 SqlCommandData.SetParameter("CUS_BK_REMARK", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_REMARK);
+                SqlCommandData.SetParameter("CUS_BK_STATUS", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_STATUS);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, Shop.Create_User);
 
                 SqlCommandData.ExecuteNonQuery();
