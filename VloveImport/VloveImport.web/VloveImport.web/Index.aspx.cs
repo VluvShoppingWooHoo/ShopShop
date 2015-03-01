@@ -64,7 +64,7 @@ namespace VloveImport.web
             //txt = "http://item.taobao.com/item.htm?spm=a215z.1607468.a214yav.11.ssGwcK&id=42865704337";
 
             ScrapingBiz sc = new ScrapingBiz();
-            ScrapingDataModel data = new ScrapingDataModel();
+            ScrapingData data = new ScrapingData();
             JavaScriptSerializer js = new JavaScriptSerializer();
             try
             {
