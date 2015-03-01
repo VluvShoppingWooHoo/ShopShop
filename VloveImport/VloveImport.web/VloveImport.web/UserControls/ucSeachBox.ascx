@@ -7,10 +7,11 @@
         </div>
     </div>
     <div class="col s3" style="line-height: 5">
-        <button id="btnSearch" type="button" class="btn waves-effect orange waves-light" name="action">
+        <button id="btnSearch" type="button" class="btn waves-effect orange waves-light modal-trigger" name="action">
             SEARCH     
             <i class="mdi-action-search right"></i>
         </button>
+        <a href="#modalItem" class="modal-trigger" id="a_link" hidden>content</a>
     </div>
 </div>
 
@@ -66,7 +67,7 @@
         <div class="indeterminate"></div>
     </div>
     <div id="showData" class="modal-content row">
-        <h1 id="lblItemName" class="card">Modal Header</h1>
+        <h1 id="lblItemName" class="card center">Modal Header</h1>
         <div class="row">
             <div class="card-image col s4 m4 l4">
                 <img id="imgpicURL" height="200">
@@ -127,13 +128,20 @@
 <script type="text/javascript">
     $(function () {
         //$('.childliSize').addClass('orange white-text');
+        $('.modal-trigger').leanModal({
+            dismissible: false
+        });
+        $('#btnAddCart').click(function () {
+            $('#modalItem').closeModal();
+        });
 
         $('#btnSearch').click(function () {
             $('#loadingCircle').show();
             $('#loadingLine').show();
             $('#showData').hide();
             $('#footer').hide();
-            $('#modalItem').openModal();
+            //$('#modalItem').openModal();
+            $("#a_link")[0].click();
             var param = { "txt": $('#txtSearch').val() };
             $.ajax({
                 type: 'POST',

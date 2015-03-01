@@ -29,63 +29,63 @@
 </head>
 <body>
     <form id="form1" runat="server">
-            <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
-            <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
-            <div class="row content" style="margin-bottom: 0px">
-                <div class="white">
-                    <div class="row ucSearchbox">
-                        <div class="col s3 m3 l3">
-                            &nbsp;
-                        </div>
-                        <div class="col s9 m9 l9">
-                            <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
-                        </div>
+        <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
+        <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
+        <div class="row content" style="margin-bottom: 0px">
+            <div class="white">
+                <div class="row ucSearchbox">
+                    <div class="col s3 m3 l3">
+                        &nbsp;
                     </div>
+                    <div class="col s9 m9 l9">
+                        <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
+                    </div>
+                </div>
 
-                    <div class="row" style="margin-bottom: 0px">
-                        <div class="col s12 m12 l12">
-                            <div class="card" style="padding: 20px">
+                <div class="row" style="margin-bottom: 0px">
+                    <div class="col s12 m12 l12">
+                        <div class="card" style="padding: 20px">
                             <uc4:ucIndexBox runat="server" ID="ucIndexBox" />
-                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="row" style="margin-bottom: 0px">
-                        <div class="col s12 m12 l12">
-                            <div class="card .z-depth-5" style="padding: 20px">
-                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                                </asp:ContentPlaceHolder>
-                            </div>
+                <div class="row" style="margin-bottom: 0px">
+                    <div class="col s12 m12 l12">
+                        <div class="card .z-depth-5" style="padding: 20px">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-bottom: 0px; margin-top: 0px">
-                <footer class="page-footer grey lighten-4" style="margin-top: 0px">
+        </div>
+        <div class="row" style="margin-bottom: 0px; margin-top: 0px">
+            <footer class="page-footer grey lighten-4" style="margin-top: 0px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12">
+                            <h5 class="">Footer Content</h5>
+                            <p class="">You can use rows and columns here to organize your footer content.</p>
+                        </div>
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class="">Links</h5>
+                            <ul>
+                                <li><a class="black-text" href="#!">Link 1</a></li>
+                                <li><a class="black-text" href="#!">Link 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright grey lighten-3 black-text">
                     <div class="container">
-                        <div class="row">
-                            <div class="col l6 s12">
-                                <h5 class="">Footer Content</h5>
-                                <p class="">You can use rows and columns here to organize your footer content.</p>
-                            </div>
-                            <div class="col l4 offset-l2 s12">
-                                <h5 class="">Links</h5>
-                                <ul>
-                                    <li><a class="black-text" href="#!">Link 1</a></li>
-                                    <li><a class="black-text" href="#!">Link 2</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-copyright grey lighten-3 black-text">
-                        <div class="container">
-                            2015 Copyright Text
+                        2015 Copyright Text
             <a class=" black-text right" href="#!">More Links</a>
-                        </div>
                     </div>
-                </footer>
+                </div>
+            </footer>
 
-            </div>
+        </div>
     </form>
 </body>
 </html>
@@ -97,6 +97,10 @@
         $('.parallax').parallax();
         $('ul.tabs').tabs();
         $('.collapsible').collapsible();
+
+        $('.modal-trigger').leanModal({
+            dismissible: false
+        });
     });
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1);
