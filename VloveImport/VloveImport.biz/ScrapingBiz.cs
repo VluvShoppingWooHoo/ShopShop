@@ -13,9 +13,9 @@ namespace VloveImport.biz
 {
     public class ScrapingBiz
     {
-        public ScrapingDataModel Handle(string URL, int web)
+        public ScrapingData Handle(string URL, int web)
         {
-            ScrapingDataModel model = new ScrapingDataModel();
+            ScrapingData model = new ScrapingData();
             WebClient w = new WebClient();
 
             //string html = w.DownloadString(URL);
