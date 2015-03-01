@@ -25,10 +25,11 @@ namespace VloveImport.data
         public int CUS_BK_NUMBER { get; set; }
         public int CUS_BK_AMOUNT { get; set; }
         public float CUS_BK_PRICE { get; set; }
-        public int CUS_BK_SIZE { get; set; }                
+        public int CUS_BK_SIZE { get; set; }
+        public string CUS_BK_COLOR { get; set; }   
         public string CUS_BK_REMARK { get; set; }
         public string CUS_BK_URL { get; set; }
-        public int CUS_BK_STATUS { get; set; }
+        public string CUS_BK_STATUS { get; set; }
         #endregion
     }
 }

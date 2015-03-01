@@ -32,6 +32,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_BK_AMOUNT);
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_PRICE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_PRICE);
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_SIZE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_SIZE);
+                SqlCommandData.SetParameter_Input_INT("CUS_BK_COLOR", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_COLOR);
                 SqlCommandData.SetParameter("CUS_BK_REMARK", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_REMARK);
                 SqlCommandData.SetParameter("CUS_BK_STATUS", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_STATUS);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, Shop.Create_User);
