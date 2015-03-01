@@ -20,12 +20,10 @@ namespace VloveImport.web.UserControls
         }
 
         public static void AddToCart()
-        {
+        {         
+            ShoppingBiz Biz = new ShoppingBiz();
             ucSeachBox box = new ucSeachBox();
-            box.NewItem();
-
-            ShoppingBiz Biz = new ShoppingBiz();            
-            ShoppingData Data = box.GetData();
+            ScrapingData Data = box.GetData(); //Data For DB
             string Result = Biz.AddtoCart(Data);
             if (Result == "")
             {
@@ -38,15 +36,15 @@ namespace VloveImport.web.UserControls
                 
         }
 
-        protected void NewItem()
+        public ScrapingData GetData()
         {
-            ShoppingBiz Biz = new ShoppingBiz();
-
-        }
-
-        protected ShoppingData GetData()
-        {
-            ShoppingData Data = new ShoppingData();            
+            ScrapingData Data = new ScrapingData();
+            Data.CUS_BK_AMOUNT = 0;
+            Data.CUS_BK_PRICE = 0;
+            Data.CUS_BK_SIZE = 0;
+            Data.CUS_BK_REMARK = "";
+            Data.CUS_BK_STATUS = "";
+            Data.Create_User = "";
             return Data;
         }
 
