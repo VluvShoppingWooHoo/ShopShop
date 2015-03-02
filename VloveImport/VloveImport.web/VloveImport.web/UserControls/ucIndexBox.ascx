@@ -1,7 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
 <div class="row">
     <div class="col s3 m3 l3">
-        Boomya
+        Item Category Side Menu
     </div>
     <div class="col s6 m6 l6">
          <div class="slider">
@@ -19,7 +19,7 @@
   </div>
     </div>
     <div class="col s3 m3 l3">
-        Boomyfga
+        etc.
     </div>
 </div>
 

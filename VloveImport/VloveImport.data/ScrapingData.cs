@@ -16,7 +16,8 @@ namespace VloveImport.data
         public string Price { get; set; }
         public string ProPrice { get; set; }
         public string Color { get; set; }
-        public string Size { get; set; }     
+        public string Size { get; set; }
+        public string URL { get; set; }       
         public int Web { get; set; }
         #endregion
 

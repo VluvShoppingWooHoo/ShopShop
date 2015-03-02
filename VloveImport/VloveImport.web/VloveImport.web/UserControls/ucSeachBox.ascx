@@ -67,6 +67,13 @@
         <div class="indeterminate"></div>
     </div>
     <div id="showData" class="modal-content row">
+        <div class="row card" style="margin-bottom: 15px">
+            <div class="col s1 m1 l1" style="text-align: right">Link:</div>
+            <div id="lblURL" class="col s11 m11 l11" style="overflow-x: auto;">
+                <%--<h5 id="lblURL" class="card">Modal Header</h5>--%>
+            </div>
+        </div>
+
         <h1 id="lblItemName" class="card center">Modal Header</h1>
         <div class="row">
             <div class="card-image col s4 m4 l4">
@@ -75,7 +82,7 @@
             </div>
             <div class="col s8 m8 l8">
                 <div id="divPrice" class="row">
-                    <div class="col s1 m1 l1">Price</div>
+                    <div class="col s1 m1 l1">Price:</div>
                     <div class="col s11 m11 l11">
                         <div id="lblPrice" class="row card center">
                         </div>
@@ -88,14 +95,14 @@
                     </div>
                 </div>--%>
                 <div id="divSize" class="row">
-                    <div class="col s1 m1 l1">Size</div>
+                    <div class="col s1 m1 l1">Size:</div>
                     <div class="col s11 m11 l11">
                         <div id="liSize" class="row card">
                         </div>
                     </div>
                 </div>
                 <div id="divColor" class="row">
-                    <div class="col s1 m1 l1">Color</div>
+                    <div class="col s1 m1 l1">Color:</div>
                     <div class="col s11 m11 l11">
                         <div id="liColor" class="row card">
                         </div>
@@ -117,9 +124,10 @@
     <div id="footer" class="modal-footer">
         <input type="hidden" id="hdWeb">
         <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
-
-
             <i class="mdi-action-shopping-cart"></i>
+        </button>
+        <button id="btnClose" type="button" class="btn waves-effect red white-text waves-light" name="action" style="margin-right: 25px">
+            <i class="mdi-navigation-close"></i>
         </button>
         <%--<a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>--%>
     </div>
@@ -132,6 +140,10 @@
             dismissible: false
         });
         $('#btnAddCart').click(function () {
+            $('#modalItem').closeModal();
+        });
+
+        $('#btnClose').click(function () {
             $('#modalItem').closeModal();
         });
 
@@ -164,6 +176,7 @@
     });
 
     function bindModal(data) {
+
         $("#divPrice").show();
         $("#divSize").show();
         $("#divColor").show();
@@ -174,6 +187,7 @@
         $("#lblItemName").html(obj.ItemName);
         $("#imgpicURL").attr("src", obj.picURL);
         $("#lblPrice").html(obj.Price);
+        $("#lblURL").html(obj.URL);
         //$("#lblProPrice").html(obj.ProPrice);
         var arraySize = obj.Size.split("||");
         var arrayColor = obj.Color.split("||");

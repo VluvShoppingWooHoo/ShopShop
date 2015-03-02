@@ -87,6 +87,7 @@ namespace VloveImport.web
                 //data.Size = "70/32AB||75/34AB||80/36AB";
                 #endregion
                 data.Web = webMode;
+                data.URL = txt;
             }
             catch (Exception ex) { }
             return js.Serialize(data);
