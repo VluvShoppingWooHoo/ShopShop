@@ -1,13 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerMyAccount.aspx.cs" Inherits="VloveImport.web.Customer.CustomerMyAccount" %>
 
-<%@ Register Src="~/UserControls/ucAccountFunction.ascx" TagPrefix="uc1" TagName="ucAccountFunction" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <uc1:ucAccountFunction runat="server" ID="ucAccountFunction" />
+        <div class="col s10 m10 l10">
+            <ul class="tabs">
+                <li class="tab col s3 m3 l3"><a href="#rad">เก็บเงิน</a></li>
+                <li class="tab col s3 m3 l3"><a href="#datepic">เบิกเงิน</a></li>
+                <li class="tab col s3 m3 l3"><a href="#etc">บันทึกการใช้จ่าย</a></li>
+                <li class="tab col s3 m3 l3"><a href="#">บัตรกำนัล</a></li>
+                <li class="tab col s3 m3 l3"><a href="#">คะแนนสะสม</a></li>
+            </ul>
+        </div>
     </div>
    <%-- <div>
         <h5 id="lblWelcome" runat="server"></h5>
