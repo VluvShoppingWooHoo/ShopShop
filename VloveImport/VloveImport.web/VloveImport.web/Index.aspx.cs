@@ -46,7 +46,7 @@ namespace VloveImport.web
         protected void btnReset_Click(object sender, EventArgs e)
         {
             txtUser.Text = "";
-            txtPass.Text = "";         
+            txtPass.Text = "";
         }
 
         private void CheckSession()
@@ -87,7 +87,20 @@ namespace VloveImport.web
                 //data.Size = "70/32AB||75/34AB||80/36AB";
                 #endregion
                 data.Web = webMode;
-                data.URL = txt;
+                #region getID
+                string[] a = txt.Split('?');
+                string[] b = a[1].Split('&');
+
+                foreach (string item in b)
+                {
+                    if (item.IndexOf("id=") == 0)
+                    {
+                        data.URL = a[0] + '?' + item;
+                        txt = item.Replace("id=", "");
+                    }
+                }
+                data.ItemID = txt;
+                #endregion
             }
             catch (Exception ex) { }
             return js.Serialize(data);
