@@ -22,11 +22,11 @@ namespace VloveImport.biz
             string html = URL;
 
             #region HTML Agility
-            HtmlNode.ElementsFlags.Remove("form");
-            HtmlNode.ElementsFlags.Remove("dd");
-            HtmlNode.ElementsFlags.Remove("em");
-            HtmlNode.ElementsFlags.Remove("span");
-            HtmlNode.ElementsFlags.Remove("font");
+            //HtmlNode.ElementsFlags.Remove("form");
+            //HtmlNode.ElementsFlags.Remove("dd");
+            //HtmlNode.ElementsFlags.Remove("em");
+            //HtmlNode.ElementsFlags.Remove("span");
+            //HtmlNode.ElementsFlags.Remove("font");
             
             //HtmlAgilityPack.HtmlWeb HtmlWeb = new HtmlWeb();
             var HtmlWeb = new HtmlWeb

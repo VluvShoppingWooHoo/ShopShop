@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
 <div class="row">
-    <div class="col s3 m3 l3">
+    <div id="sideMenu" class="col s3 m3 l3">
         Item Category Side Menu
     </div>
     <div class="col s6 m6 l6">

@@ -26,7 +26,7 @@
                 <div class="circle"></div>
             </div>
             <div class="circle-clipper right">
-                <div class="circle"></div>
+                <div class="circle"></div>  
             </div>
         </div>
         <div class="spinner-layer spinner-orange">
