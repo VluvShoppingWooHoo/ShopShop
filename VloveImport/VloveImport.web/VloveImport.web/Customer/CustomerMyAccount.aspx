@@ -1,9 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerMyAccount.aspx.cs" Inherits="VloveImport.web.Customer.CustomerMyAccount" %>
+
+<%@ Register Src="~/UserControls/ucAccountFunction.ascx" TagPrefix="uc1" TagName="ucAccountFunction" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <div class="row">
+        <uc1:ucAccountFunction runat="server" ID="ucAccountFunction" />
+    </div>
+   <%-- <div>
         <h5 id="lblWelcome" runat="server"></h5>
         <p id="P1" class="center text-lighten-1 waves-effect orange waves-light" style="width:150px; height:50px;">บัญชีของคุณ</p>
         <p id="lblBalance" runat="server"></p>
@@ -33,7 +39,7 @@
         <p id="P5" class="center text-lighten-1 waves-effect orange waves-light" style="width:150px; height:50px;">สินค้าล่าสุด</p>
         <p id="P6" runat="server"></p>
         <p id="P7" runat="server"></p>
-    </div>
+    </div>--%>
       
     <script type="text/javascript">
         $(function () {

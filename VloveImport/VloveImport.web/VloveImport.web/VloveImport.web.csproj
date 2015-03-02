@@ -106,6 +106,7 @@
     <Content Include="Logout.aspx" />
     <Content Include="Script\Script Init.sql" />
     <Content Include="TestPage.aspx" />
+    <Content Include="UserControls\ucAccountFunction.ascx" />
     <Content Include="UserControls\ucCustomerMenuBar.ascx" />
     <Content Include="UserControls\ucIndexBox.ascx" />
     <Content Include="UserControls\ucRecommend.ascx" />
@@ -305,6 +306,13 @@
     </Compile>
     <Compile Include="TestPage.aspx.designer.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAccountFunction.ascx.cs">
+      <DependentUpon>ucAccountFunction.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAccountFunction.ascx.designer.cs">
+      <DependentUpon>ucAccountFunction.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucCustomerMenuBar.ascx.cs">
       <DependentUpon>ucCustomerMenuBar.ascx</DependentUpon>
