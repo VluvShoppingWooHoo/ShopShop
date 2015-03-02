@@ -67,7 +67,7 @@ namespace VloveImport.biz
                                 model.Size = GetSize(html, web, doc);
                                 break;
                             default:
-                                model = null;
+                                //model = null;
                                 break;
                         }
                     }
@@ -254,9 +254,16 @@ namespace VloveImport.biz
                             if (node.ChildNodes[i].Name.Contains("li"))
                             {
                                 HtmlNode item = node.ChildNodes[i];
-                                int start = item.InnerHtml.IndexOf('(') + 1;
-                                int end = item.InnerHtml.IndexOf(')');
-                                Color += item.InnerHtml.Substring(start, (end - start)) + "||";
+                                int start = 0, end = 0;
+                                if (item.InnerHtml.Contains("background:url"))
+                                {
+                                    start = item.InnerHtml.IndexOf('(') + 1;
+                                    end = item.InnerHtml.IndexOf(')');
+                                    Color += item.InnerHtml.Substring(start, (end - start));
+                                }
+                                else
+                                    Color += item.ChildNodes[1].ChildNodes[1].InnerHtml;
+                                Color += "||";
                             }
                         }
                         Color = Color.Remove(Color.Length - 2, 2);
