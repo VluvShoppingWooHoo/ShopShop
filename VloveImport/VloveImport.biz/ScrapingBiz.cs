@@ -23,7 +23,11 @@ namespace VloveImport.biz
 
             #region HTML Agility
             HtmlNode.ElementsFlags.Remove("form");
-            //HtmlNode.ElementsFlags.Remove("em");
+            HtmlNode.ElementsFlags.Remove("dd");
+            HtmlNode.ElementsFlags.Remove("em");
+            HtmlNode.ElementsFlags.Remove("span");
+            HtmlNode.ElementsFlags.Remove("font");
+            
             //HtmlAgilityPack.HtmlWeb HtmlWeb = new HtmlWeb();
             var HtmlWeb = new HtmlWeb
             {
@@ -31,6 +35,7 @@ namespace VloveImport.biz
                 OverrideEncoding = System.Text.Encoding.GetEncoding(54936)
             };
             HtmlAgilityPack.HtmlDocument doc = HtmlWeb.Load(html);
+            
             //doc.Encoding.
             //doc. = Encoding.Default;
             #endregion
@@ -121,14 +126,19 @@ namespace VloveImport.biz
             string ItemName = string.Empty;
             try
             {
+                HtmlNode node = null;
                 switch (web)
                 {
                     case 1:
-                        HtmlNode node = doc.GetElementbyId("J_Title");
-                        ItemName = node.ChildNodes[1].Attributes[1].Value;
+                        node = doc.GetElementbyId("J_Title");
+                        ItemName = node.ChildNodes[1].Attributes[1].Value.Trim();
                         break;
                     case 2:
-                        ItemName = string.Empty;
+                        var result = doc.DocumentNode.Descendants("div").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("tb-detail-hd"));
+                        node = result.FirstOrDefault().ChildNodes[1].ChildNodes[0];
+                        ItemName = node.InnerText.Trim();
                         break;
                     case 3:
                         ItemName = string.Empty;
@@ -168,14 +178,16 @@ namespace VloveImport.biz
             string picURL = string.Empty;
             try
             {
+                HtmlNode node = null;
                 switch (web)
                 {
                     case 1:
-                        HtmlNode node = doc.GetElementbyId("J_ImgBooth");
+                        node = doc.GetElementbyId("J_ImgBooth");
                         picURL = node.Attributes[1].Value;
                         break;
                     case 2:
-                        picURL = string.Empty;
+                        node = doc.GetElementbyId("J_ImgBooth");
+                        picURL = node.Attributes[2].Value;
                         break;
                     case 3:
                         picURL = string.Empty;
@@ -192,14 +204,20 @@ namespace VloveImport.biz
             string Price = string.Empty;
             try
             {
+                HtmlNode node = null;
                 switch (web)
                 {
                     case 1:
-                        HtmlNode node = doc.GetElementbyId("J_StrPrice");
+                        node = doc.GetElementbyId("J_StrPrice");
                         Price = node.ChildNodes[1].InnerText;
                         break;
                     case 2:
-                        Price = string.Empty;
+                        //var result = doc.DocumentNode.Descendants("dl").Where(l =>
+                        //    l.Attributes.Contains("class") &&
+                        //    l.Attributes["class"].Value.Contains("tm-price-panel"));
+                        //node = result.FirstOrDefault().ChildNodes[1].ChildNodes[0];
+                        node = doc.GetElementbyId("J_StrPrice");
+                        Price = node.ChildNodes[1].InnerText;
                         break;
                     case 3:
                         Price = string.Empty;
@@ -240,6 +258,8 @@ namespace VloveImport.biz
             string Color = string.Empty;
             try
             {
+                HtmlNode node = null;
+                
                 switch (web)
                 {
                     case 1:
@@ -247,7 +267,7 @@ namespace VloveImport.biz
                         var result = doc.DocumentNode.Descendants("dl").Where(l =>
                             l.Attributes.Contains("class") &&
                             l.Attributes["class"].Value.Contains("J_Prop_Color"));
-                        HtmlNode node = result.FirstOrDefault().ChildNodes[3].ChildNodes[1];
+                        node = result.FirstOrDefault().ChildNodes[3].ChildNodes[1];
                         //Can't use foreach
                         for (int i = 0; i < node.ChildNodes.Count; i++)
                         {
@@ -269,7 +289,29 @@ namespace VloveImport.biz
                         Color = Color.Remove(Color.Length - 2, 2);
                         break;
                     case 2:
-                        Color = string.Empty;
+                        var result2 = doc.DocumentNode.Descendants("ul").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("J_TSaleProp tb-img"));
+                        node = result2.FirstOrDefault();
+                        //Can't use foreach
+                        for (int i = 0; i < node.ChildNodes.Count; i++)
+                        {
+                            if (node.ChildNodes[i].Name.Contains("li"))
+                            {
+                                HtmlNode item = node.ChildNodes[i];
+                                int start = 0, end = 0;
+                                if (item.InnerHtml.Contains("background:url"))
+                                {
+                                    start = item.InnerHtml.IndexOf('(') + 1;
+                                    end = item.InnerHtml.IndexOf(')');
+                                    Color += item.InnerHtml.Substring(start, (end - start));
+                                }
+                                else
+                                    Color += item.ChildNodes[1].ChildNodes[1].InnerHtml;
+                                Color += "||";
+                            }
+                        }
+                        Color = Color.Remove(Color.Length - 2, 2);
                         break;
                     case 3:
                         Color = string.Empty;
@@ -286,6 +328,7 @@ namespace VloveImport.biz
             string Size = string.Empty;
             try
             {
+                HtmlNode node = null;
                 switch (web)
                 {
                     case 1:
@@ -293,7 +336,7 @@ namespace VloveImport.biz
                         var result = doc.DocumentNode.Descendants("dl").Where(l =>
                             l.Attributes.Contains("class") &&
                             l.Attributes["class"].Value.Contains("J_TMySizeProp"));
-                        HtmlNode node = result.FirstOrDefault().ChildNodes[3].ChildNodes[1];
+                        node= result.FirstOrDefault().ChildNodes[3].ChildNodes[1];
                         //Can't use foreach
                         for (int i = 0; i < node.ChildNodes.Count; i++)
                         {
@@ -308,7 +351,22 @@ namespace VloveImport.biz
                         Size = Size.Remove(Size.Length - 2, 2);
                         break;
                     case 2:
-                        Size = string.Empty;
+                        var result2 = doc.DocumentNode.Descendants("ul").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("J_TSaleProp"));
+                        node = result2.FirstOrDefault();
+                        //Can't use foreach
+                        for (int i = 0; i < node.ChildNodes.Count; i++)
+                        {
+                            if (node.ChildNodes[i].Name.Contains("li"))
+                            {
+                                HtmlNode item = node.ChildNodes[i];
+                                int start = item.InnerHtml.IndexOf("<span>") + 6;
+                                int end = item.InnerHtml.IndexOf("</span>");
+                                Size += item.InnerHtml.Substring(start, (end - start)) + "||";
+                            }
+                        }
+                        Size = Size.Remove(Size.Length - 2, 2);
                         break;
                     case 3:
                         Size = string.Empty;
