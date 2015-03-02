@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace VloveImport.web.UserControls
 {
-    public partial class ucTopup : System.Web.UI.UserControl
+    public partial class ucAccfuncWithdraw : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

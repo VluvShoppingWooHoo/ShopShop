@@ -1,5 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerMyAccount.aspx.cs" Inherits="VloveImport.web.Customer.CustomerMyAccount" %>
 
+<%@ Register Src="~/UserControls/ucAccFuncTopup.ascx" TagPrefix="uc1" TagName="ucAccFuncTopup" %>
+<%@ Register Src="~/UserControls/ucAccfuncWithdraw.ascx" TagPrefix="uc1" TagName="ucAccfuncWithdraw" %>
+<%@ Register Src="~/UserControls/ucAccfuncMypoint.ascx" TagPrefix="uc1" TagName="ucAccfuncMypoint" %>
+<%@ Register Src="~/UserControls/ucAccfuncTransLog.ascx" TagPrefix="uc1" TagName="ucAccfuncTransLog" %>
+<%@ Register Src="~/UserControls/ucAccfuncVoucher.ascx" TagPrefix="uc1" TagName="ucAccfuncVoucher" %>
+
+
+
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       
 </asp:Content>
@@ -7,12 +18,27 @@
     <div class="row">
         <div class="col s10 m10 l10">
             <ul class="tabs">
-                <li class="tab col s3 m3 l3"><a href="#rad">เก็บเงิน</a></li>
-                <li class="tab col s3 m3 l3"><a href="#datepic">เบิกเงิน</a></li>
-                <li class="tab col s3 m3 l3"><a href="#etc">บันทึกการใช้จ่าย</a></li>
-                <li class="tab col s3 m3 l3"><a href="#">บัตรกำนัล</a></li>
-                <li class="tab col s3 m3 l3"><a href="#">คะแนนสะสม</a></li>
+                <li class="tab col s3 m3 l3"><a href="#topup">เก็บเงิน</a></li>
+                <li class="tab col s3 m3 l3"><a href="#withdraw">เบิกเงิน</a></li>
+                <li class="tab col s3 m3 l3"><a href="#translog">บันทึกการใช้จ่าย</a></li>
+                <li class="tab col s3 m3 l3"><a href="#voucher">บัตรกำนัล</a></li>
+                <li class="tab col s3 m3 l3"><a href="#mypoint">คะแนนสะสม</a></li>
             </ul>
+            <div id="topup" class="row">
+                <uc1:ucAccFuncTopup runat="server" id="ucAccFuncTopup" />
+            </div>
+            <div id="withdraw" class="row">
+                <uc1:ucAccfuncWithdraw runat="server" ID="ucAccfuncWithdraw" />
+            </div>
+            <div id="translog" class="row">
+                <uc1:ucAccfuncTransLog runat="server" id="ucAccfuncTransLog" />
+            </div>
+            <div id="voucher" class="row">
+                <uc1:ucAccfuncVoucher runat="server" id="ucAccfuncVoucher" />
+            </div>
+            <div id="mypoint" class="row">
+                <uc1:ucAccfuncMypoint runat="server" id="ucAccfuncMypoint" />
+            </div>
         </div>
     </div>
    <%-- <div>
