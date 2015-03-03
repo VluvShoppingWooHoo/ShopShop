@@ -67,7 +67,7 @@ namespace VloveImport.web.Customer
 
         public string CallUcWithdraw1(string ddlAccount, string txt_amount, string txt_remark, string txt_Withraw_Password)
         {
-            return ucAccfuncWithdraw1.SaveData(ddlAccount, txt_amount, txt_remark, txt_Withraw_Password);
+            return "";// ucAccfuncWithdraw1.SaveData(ddlAccount, txt_amount, txt_remark, txt_Withraw_Password);
         }
 
 
