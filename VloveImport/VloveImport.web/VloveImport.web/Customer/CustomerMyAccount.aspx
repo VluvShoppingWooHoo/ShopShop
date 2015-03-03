@@ -1,20 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerMyAccount.aspx.cs" Inherits="VloveImport.web.Customer.CustomerMyAccount" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <%@ Register Src="~/UserControls/ucAccFuncTopup.ascx" TagPrefix="uc1" TagName="ucAccFuncTopup" %>
 <%@ Register Src="~/UserControls/ucAccfuncWithdraw.ascx" TagPrefix="uc1" TagName="ucAccfuncWithdraw" %>
 <%--<%@ Register Src="~/UserControls/ucAccfuncMypoint.ascx" TagPrefix="uc1" TagName="ucAccfuncMypoint" %>--%>
 <%@ Register Src="~/UserControls/ucAccfuncTransLog.ascx" TagPrefix="uc1" TagName="ucAccfuncTransLog" %>
 <%@ Register Src="~/UserControls/ucAccfuncVoucher.ascx" TagPrefix="uc1" TagName="ucAccfuncVoucher" %>
 
-
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<%--    <asp:TabContainer ID="TabDown" runat="server" ActiveTabIndex="0" Width = "100%" CssClass ="">
+        <asp:TabPanel ID="TabP_Down" runat="server" HeaderText="งวดเงินดาวน์" CssClass='tab col s3 m3 l3'>
+            <ContentTemplate>
+
+            </ContentTemplate>
+        </asp:TabPanel>
+    </asp:TabContainer>--%>
+
+
     <div class="row">
         <div class="col s10 m10 l10">
             <ul class="tabs">
