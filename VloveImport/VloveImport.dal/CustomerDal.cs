@@ -252,5 +252,50 @@ namespace VloveImport.dal
 
         #endregion
 
+        #region TRANSACTION
+
+        public string INS_UPD_TRANSACTION(TransactionData EnTran, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_UPD_TRANSACTION");
+
+                SqlCommandData.SetParameter_Input_INT("TRAN_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_ID);
+                SqlCommandData.SetParameter_Input_INT("TRAN_TYPE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_TYPE);
+                SqlCommandData.SetParameter_Input_INT("TRAN_TABLE_TYPE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_TABLE_TYPE);
+                SqlCommandData.SetParameter("TRAN_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_DETAIL);
+                SqlCommandData.SetParameter("TRAN_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_REMARK);
+                SqlCommandData.SetParameter_Input_INT("TRAN_AMOUNT", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_AMOUNT);
+
+                SqlCommandData.SetParameter_Input_INT("TRAN_STATUS", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_STATUS);
+                SqlCommandData.SetParameter_Input_INT("TRAN_STATUS_APPROVE", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_STATUS_APPROVE);
+                SqlCommandData.SetParameter_Input_INT("EMP_ID_APPROVE", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_ID_APPROVE);
+                SqlCommandData.SetParameter("EMP_REMARK", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_REMARK);
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.Cus_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ACC_NAME_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.CUS_ACC_NAME_ID);
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.ORDER_ID);
+                SqlCommandData.SetParameter_Input_INT("PAYMENT_TYPE", SqlDbType.Int, ParameterDirection.Input, EnTran.PAYMENT_TYPE);
+                SqlCommandData.SetParameter("PAYMENT_DATE", SqlDbType.Int, ParameterDirection.Input, EnTran.PAYMENT_DATE);
+                SqlCommandData.SetParameter("PAYMENT_TIME", SqlDbType.Int, ParameterDirection.Input, EnTran.PAYMENT_TIME);
+                SqlCommandData.SetParameter_Input_INT("BANK_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.BANK_ID);
+
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("INS_UPD_TRANSACTION -> msg : " + ex.Message);
+            }
+        }
+
+        #endregion
+
     }
 }

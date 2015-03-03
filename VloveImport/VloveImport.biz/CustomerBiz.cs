@@ -135,6 +135,24 @@ namespace VloveImport.biz
 
         #endregion
 
+        #region TRANSACTION
+
+        public string INS_UPD_TRANSACTION(TransactionData EnTran, string Act)
+        {
+            string Result = "";
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.INS_UPD_TRANSACTION(EnTran, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
+        #endregion
 
     }
 }
