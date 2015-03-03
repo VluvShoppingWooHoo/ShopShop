@@ -45,7 +45,8 @@
     </tr>
     <tr>
         <td colspan ="2">
-                <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" name="action">
+                <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" 
+                    name="action" runat="server" onserverclick="btnSaveUcWithdraw_ServerClick">
                     SAVE     
                 </button>
         </td>

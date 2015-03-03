@@ -39,7 +39,7 @@ namespace VloveImport.web.UserControls
                 CustomerData CusData = new CustomerData();
                 CusData = (CustomerData)Session["User"];
                 this._VS_CUS_ID = 1;//CusData.Cus_ID;
-                BindData_BANK();
+                //BindData_BANK();
             }
         }
 
@@ -66,9 +66,9 @@ namespace VloveImport.web.UserControls
             }
         }
 
-        public string SaveData(string ddlAccount, string txt_amount, string txt_remark, string txt_Withraw_Password)
+        protected void btnSaveUcWithdraw_ServerClick(object sender, EventArgs e)
         {
-            return "";
+            //return "";
         }
 
 
