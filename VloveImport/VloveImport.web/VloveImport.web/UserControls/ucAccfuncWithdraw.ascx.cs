@@ -68,7 +68,13 @@ namespace VloveImport.web.UserControls
 
         protected void btnSaveUcWithdraw_ServerClick(object sender, EventArgs e)
         {
+            BindData_BANK();
             //return "";
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            BindData_BANK();
         }
 
 

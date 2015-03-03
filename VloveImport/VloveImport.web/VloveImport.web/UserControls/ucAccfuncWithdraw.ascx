@@ -1,5 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucAccfuncWithdraw.ascx.cs" Inherits="VloveImport.web.UserControls.ucAccfuncWithdraw" %>
 
+<script type="text/javascript">
+
+    function funsubmit()
+    {
+        window.location = "#topup";
+        //document.getElementById('ContentPlaceHolder1_ucAccfuncWithdraw1_Button1').click();
+    }
+
+</script>
 
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
@@ -46,12 +55,15 @@
     <tr>
         <td colspan ="2">
                 <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" 
-                    name="action" runat="server" onserverclick="btnSaveUcWithdraw_ServerClick">
+                    name="action" runat="server" onclick ="return funsubmit();" >
                     SAVE     
                 </button>
         </td>
     </tr>
 </table>
+
+
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" Style="display: none;" />
 
     </ContentTemplate>
 </asp:UpdatePanel>
