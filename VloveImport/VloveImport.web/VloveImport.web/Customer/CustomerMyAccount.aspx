@@ -2,7 +2,7 @@
 
 <%@ Register Src="~/UserControls/ucAccFuncTopup.ascx" TagPrefix="uc1" TagName="ucAccFuncTopup" %>
 <%@ Register Src="~/UserControls/ucAccfuncWithdraw.ascx" TagPrefix="uc1" TagName="ucAccfuncWithdraw" %>
-<%@ Register Src="~/UserControls/ucAccfuncMypoint.ascx" TagPrefix="uc1" TagName="ucAccfuncMypoint" %>
+<%--<%@ Register Src="~/UserControls/ucAccfuncMypoint.ascx" TagPrefix="uc1" TagName="ucAccfuncMypoint" %>--%>
 <%@ Register Src="~/UserControls/ucAccfuncTransLog.ascx" TagPrefix="uc1" TagName="ucAccfuncTransLog" %>
 <%@ Register Src="~/UserControls/ucAccfuncVoucher.ascx" TagPrefix="uc1" TagName="ucAccfuncVoucher" %>
 
@@ -28,7 +28,7 @@
                 <uc1:ucAccFuncTopup runat="server" id="ucAccFuncTopup" />
             </div>
             <div id="withdraw" class="row">
-                <uc1:ucAccfuncWithdraw runat="server" ID="ucAccfuncWithdraw" />
+                <uc1:ucAccfuncWithdraw ID="ucAccfuncWithdraw1" runat="server" />
             </div>
             <div id="translog" class="row">
                 <uc1:ucAccfuncTransLog runat="server" id="ucAccfuncTransLog" />
@@ -37,7 +37,7 @@
                 <uc1:ucAccfuncVoucher runat="server" id="ucAccfuncVoucher" />
             </div>
             <div id="mypoint" class="row">
-                <uc1:ucAccfuncMypoint runat="server" id="ucAccfuncMypoint" />
+               <%-- <uc1:ucAccfuncMypoint runat="server" id="ucAccfuncMypoint" />--%>
             </div>
         </div>
     </div>
@@ -73,6 +73,43 @@
         <p id="P7" runat="server"></p>
     </div>--%>
       
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSaveUcWithdraw").click(function () {
+
+
+            var ddlAccount = $("[id$='ddl_account_name']").val();
+            var txt_amount = $("[id$='txt_amount']").val();
+            var txt_remark = $("[id$='txt_remark']").val(); 
+            var txt_Withraw_Password = $("[id$='txt_Withraw_Password']").val();
+
+            var param = { "ddlAccount": ddlAccount, "txt_amount": txt_amount, "txt_remark": txt_remark, "txt_Withraw_Password": txt_Withraw_Password };
+
+            $.ajax({
+                type: 'POST',
+                //url: form.attr('action'),
+                url: "../Customer/CustomerMyAccount.aspx/btnSave",
+                data: JSON.stringify(param),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    //bindModal(data);
+                    //$('#loadingCircle').hide();
+                    //$('#loadingLine').hide();
+                    //$('#showData').show();
+                    //$('#footer').show();
+                },
+                error: function (err) {
+                    //alert('gs');
+                }
+            });
+        });
+    });
+</script>
+
+
     <script type="text/javascript">
         $(function () {
             $("#btnTopup").click(function () {

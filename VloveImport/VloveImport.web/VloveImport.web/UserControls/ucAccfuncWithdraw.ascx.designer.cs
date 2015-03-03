@@ -7,45 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VloveImport.web.Customer {
+namespace VloveImport.web.UserControls {
     
     
-    public partial class CustomerMyAccount {
+    public partial class ucAccfuncWithdraw {
         
         /// <summary>
-        /// ucAccFuncTopup control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucAccFuncTopup ucAccFuncTopup;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// ucAccfuncWithdraw1 control.
+        /// ddl_account_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucAccfuncWithdraw ucAccfuncWithdraw1;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_account_name;
         
         /// <summary>
-        /// ucAccfuncTransLog control.
+        /// txt_amount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucAccfuncTransLog ucAccfuncTransLog;
+        protected global::System.Web.UI.WebControls.TextBox txt_amount;
         
         /// <summary>
-        /// ucAccfuncVoucher control.
+        /// txt_remark control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucAccfuncVoucher ucAccfuncVoucher;
+        protected global::System.Web.UI.WebControls.TextBox txt_remark;
+        
+        /// <summary>
+        /// txt_Withraw_Password control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_Withraw_Password;
     }
 }

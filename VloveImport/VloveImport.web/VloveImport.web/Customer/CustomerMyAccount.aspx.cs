@@ -64,5 +64,20 @@ namespace VloveImport.web.Customer
 
         }
         #endregion
+
+        public string CallUcWithdraw1(string ddlAccount, string txt_amount, string txt_remark, string txt_Withraw_Password)
+        {
+            return ucAccfuncWithdraw1.SaveData(ddlAccount, txt_amount, txt_remark, txt_Withraw_Password);
+        }
+
+
+        [WebMethod]
+        public static string btnSave(string ddlAccount, string txt_amount, string txt_remark, string txt_Withraw_Password)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            CustomerMyAccount CusPage = new CustomerMyAccount();
+            return js.Serialize(CusPage.CallUcWithdraw1(ddlAccount, txt_amount, txt_remark, txt_Withraw_Password));
+        }
+
     }
 }
