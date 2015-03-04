@@ -127,5 +127,44 @@ namespace VloveImport.web
 
         }
         #endregion
+
+        #region AddToCart
+        public static void btnSearch(string Name, string Desc, string Amount, string Price, string Size,
+            string Color, string Remark, string URL, string Picture)
+        {
+            string Result = "";
+            Index Index = new Index();
+            ScrapingData Data = new ScrapingData();
+            Data.CUS_BK_ITEMNAME = Name;
+            Data.CUS_BK_ITEMDESC = Name;
+            Data.CUS_BK_AMOUNT = Convert.ToInt32(Amount);
+            Data.CUS_BK_PRICE = Convert.ToInt32(Price);
+            Data.CUS_BK_SIZE = Convert.ToInt32(Size);
+            Data.CUS_BK_COLOR = Color;
+            Data.CUS_BK_REMARK = Remark;
+            Data.CUS_BK_URL = URL;
+            Data.CUS_BK_PICURL = Picture;
+            Data.CUS_BK_STATUS = "BASKET";
+            Data.Create_User = "";
+            Result = Index.AddToCart(Data);
+            if (Result != "")
+            {
+                //Alert Contact Admin
+            }
+            else
+            {
+                //Close Popup
+            }
+
+        }
+
+        protected string AddToCart(ScrapingData Data)
+        {
+            string Result = "";
+            ShoppingBiz Biz = new ShoppingBiz();
+            Result = Biz.AddtoCart(Data);
+            return Result;
+        }
+        #endregion
     }
 }
