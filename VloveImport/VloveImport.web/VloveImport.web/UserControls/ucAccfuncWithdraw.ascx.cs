@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using VloveImport.biz;
 using VloveImport.data;
+using System.Globalization;
 
 namespace VloveImport.web.UserControls
 {
@@ -39,8 +40,9 @@ namespace VloveImport.web.UserControls
                 CustomerData CusData = new CustomerData();
                 CusData = (CustomerData)Session["User"];
                 this._VS_CUS_ID = 1;//CusData.Cus_ID;
-                //BindData_BANK();
+                BindData_BANK();
             }
+            lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd", new CultureInfo("en-US"));
         }
 
         public void BindData_BANK()
@@ -66,17 +68,101 @@ namespace VloveImport.web.UserControls
             }
         }
 
-        protected void btnSaveUcWithdraw_ServerClick(object sender, EventArgs e)
+        public void ClearData()
         {
-            BindData_BANK();
-            //return "";
+            ddl_account_name.SelectedIndex = 0;
+            txt_amount.Text = "";
+            txt_remark.Text = "";
+            txt_Withraw_Password.Text = "";
+        }
+
+        public void ShowMessageBox(string message, Page currentPage, string redirectNamePage = "")
+        {
+            string msgboxScript = "alert('" + message + "');";
+
+            if (redirectNamePage == "")
+            {
+                if ((ScriptManager.GetCurrent(currentPage) != null))
+                {
+                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+                }
+            }
+            else
+            {
+                string redirectPage = "window.location.href=\"" + redirectNamePage + "\";";
+
+                if ((ScriptManager.GetCurrent(currentPage) != null))
+                {
+                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript + redirectPage, true);
+                }
+            }
+
+            
+        }
+
+        public TransactionData SetData()
+        {
+            TransactionData EnCus = new TransactionData();
+            EnCus.TRAN_ID = this._VS_ID;
+            EnCus.Cus_ID = this._VS_CUS_ID;
+
+            EnCus.TRAN_TYPE = 2;
+            EnCus.TRAN_TABLE_TYPE = 2;
+            EnCus.TRAN_DETAIL = "รายการถอนเงิน";
+            EnCus.TRAN_AMOUNT = Convert.ToDouble(txt_amount.Text);
+            EnCus.TRAN_REMARK = txt_remark.Text.Trim();
+            EnCus.Cus_Withdraw_Code = txt_Withraw_Password.Text.Trim();
+            EnCus.TRAN_STATUS = 1;
+            EnCus.CUS_ACC_NAME_ID = Convert.ToInt32(ddl_account_name.SelectedValue);
+            EnCus.Create_User = "Batt";
+            return EnCus;
+        }
+
+        public bool CheckInput()
+        {
+            bool IsReturn = true;
+
+            if (ddl_account_name.SelectedValue == "-1" || txt_amount.Text.Trim() == "" || txt_Withraw_Password.Text.Trim() == "")
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณากรอกข้อมูลในช่องที่มีสัญลักษณ์ *", this.Page);
+                return IsReturn;
+            }
+
+            return IsReturn;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            BindData_BANK();
+            if (hd_submit.Value == "S")
+            {
+                SaveData();
+            }
+            else
+            {
+                ClearData();
+            }
+
         }
 
-
+        public void SaveData()
+        {
+            if (CheckInput())
+            {
+                CustomerBiz CusBiz = new CustomerBiz();
+                string IsReturn = "";
+                IsReturn = CusBiz.INS_UPD_TRANSACTION(SetData(), "INS");
+                if (IsReturn != "")
+                {
+                    ShowMessageBox(IsReturn, this.Page);
+                }
+                else
+                {
+                    ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#withdraw");
+                    ClearData();
+                }
+            }
+        }
+        
     }
 }

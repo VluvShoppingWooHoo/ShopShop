@@ -13,13 +13,13 @@ namespace VloveImport.web.UserControls {
     public partial class ucAccfuncWithdraw {
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// lblDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Label lblDate;
         
         /// <summary>
         /// ddl_account_name control.
@@ -38,6 +38,15 @@ namespace VloveImport.web.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_amount;
+        
+        /// <summary>
+        /// txt_amount_FilteredTextBoxExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_amount_FilteredTextBoxExtender;
         
         /// <summary>
         /// txt_remark control.
@@ -65,6 +74,24 @@ namespace VloveImport.web.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnSaveUcWithdraw;
+        
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton Button2;
+        
+        /// <summary>
+        /// hd_submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hd_submit;
         
         /// <summary>
         /// Button1 control.
