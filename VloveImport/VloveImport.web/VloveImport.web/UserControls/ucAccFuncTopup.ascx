@@ -40,9 +40,10 @@
             </div>
             <br />
             <div style = "border:2px solid #959595; background-color:#F5F5F5; height:50px; vertical-align :middle; width:60%; height:70px;">
-                <br />
-                1.เลือกธนาคารที่ท่านสะดวกในการชำระเงิน<br />
-                2.ระบุวิธีการชำระเงิน และจำนวนเงินที่จะชำระ หลังจากนั้น ระบุวิธีการแจ้งการชำระเงิน
+                <div style ="margin-top:15px;">
+                    1.เลือกธนาคารที่ท่านสะดวกในการชำระเงิน<br />
+                    2.ระบุวิธีการชำระเงิน และจำนวนเงินที่จะชำระ หลังจากนั้น ระบุวิธีการแจ้งการชำระเงิน                    
+                </div>
             </div>
             <br />
             <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; height:50px; vertical-align :middle; width:30%; height:50px;">
