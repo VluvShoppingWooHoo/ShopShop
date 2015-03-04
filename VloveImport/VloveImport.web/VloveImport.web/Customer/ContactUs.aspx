@@ -59,4 +59,9 @@
             +8618523502489            
         </div>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>

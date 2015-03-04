@@ -5,5 +5,10 @@
     <button id="btnSearch" runat="server" type="submit" onserverclick="btnSearch_Click" 
         name="action" class="btn waves-effect orange waves-light">Search                                
     </button>
+    <script type="text/javascript">
+        $(function () {
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>
 

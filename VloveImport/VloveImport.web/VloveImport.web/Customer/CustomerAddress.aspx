@@ -152,5 +152,9 @@
         </asp:Panel>
     </ContentTemplate>
 </asp:UpdatePanel>
-
+    <script type="text/javascript">
+        $(function () {
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>

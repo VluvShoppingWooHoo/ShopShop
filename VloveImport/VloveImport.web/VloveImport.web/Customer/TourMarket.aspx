@@ -49,4 +49,9 @@
             หมายเหุต **  การสำรองที่นั่งต้องสำรองที่นั่ง ก่อน 20 วัน ก่อนเดินทางนะคะ
         </div>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>

@@ -6,4 +6,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:ucCustomerMenuBar runat="server" id="ucCustomerMenuBar" />
+    <script type="text/javascript">
+        $(function () {
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>

@@ -22,4 +22,9 @@
             </table>
         </asp:View>
     </asp:MultiView>    
+    <script type="text/javascript">
+        $(function () {
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>

@@ -65,4 +65,9 @@
             </td>
         </tr>
     </table>--%>
+    <script type="text/javascript">
+        $(function () {
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>

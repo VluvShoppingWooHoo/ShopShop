@@ -75,5 +75,10 @@
     <button id="btnSave" runat="server" type="submit" onserverclick="btnSave_Click" 
         name="action" class="btn waves-effect orange waves-light">Save                                
     </button>
+    <script type="text/javascript">
+        $(function () {
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>
 
