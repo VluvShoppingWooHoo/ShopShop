@@ -258,10 +258,11 @@ nav
 
 i
 {
-    font-size:20px !important;
+    font-size: 20px !important;
 }
 
-#masterForm {
+#masterForm
+{
     /*position: fixed;*/
     top: 0;
     right: 0;
@@ -270,3 +271,22 @@ i
     background: #FFF;
     z-index: 9999;
 }
+
+div[class="title clearfix"]
+{
+    max-height: 40px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+div[class="title clearfix"]  div.icon-wrap
+{
+    width: 20%;
+    display: inline-block;
+}
+
+    div[class="title clearfix"] h4
+    {
+        width: 70%;
+        display: inline-block;
+        margin: 0px;
+    }
