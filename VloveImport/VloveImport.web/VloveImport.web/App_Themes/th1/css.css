@@ -290,3 +290,13 @@ div[class="title clearfix"]  div.icon-wrap
         display: inline-block;
         margin: 0px;
     }
+
+div[class="catlist clearfix"]   {
+    /*position: fixed;*/
+    position: absolute;
+    top: 0%;
+    left: 26%;
+    z-index: 10;
+    background: white;
+    /*color: red;*/
+}
