@@ -94,8 +94,8 @@ namespace VloveImport.biz
             //    l.Attributes["class"].Value.Contains("menu-left-category"));
             var result = doc.DocumentNode.Descendants("div").Where(l =>
                 l.Attributes.Contains("class") &&
-                //l.Attributes["class"].Value.Contains("cat-main"));
-                l.Attributes["class"].Value.Contains("cat-l"));
+                l.Attributes["class"].Value.Contains("cat-main"));
+                //l.Attributes["class"].Value.Contains("cat-l"));
             
             HtmlNode node = result.FirstOrDefault();
             return node.OuterHtml;
