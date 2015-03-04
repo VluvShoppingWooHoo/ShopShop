@@ -22,15 +22,6 @@ namespace VloveImport.web.MasterPage {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// sm control.
         /// </summary>
         /// <remarks>
@@ -47,24 +38,6 @@ namespace VloveImport.web.MasterPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::VloveImport.web.UserControls.ucCustomerStatus ucCustomerStatus;
-        
-        /// <summary>
-        /// ucSeachBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::VloveImport.web.UserControls.ucSeachBox ucSeachBox;
-        
-        /// <summary>
-        /// ucIndexBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::VloveImport.web.UserControls.ucIndexBox ucIndexBox;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

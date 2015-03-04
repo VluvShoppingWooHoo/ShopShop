@@ -57,7 +57,7 @@ namespace VloveImport.web
                 Login.Visible = true;
         }
 
-        #region for Scraping Web in ucSearchBox
+        #region for Scraping Web in ucSearchBox & ucIndexBox
         [WebMethod]
         public static string GetModelFromURL(string txt)
         {
@@ -104,6 +104,25 @@ namespace VloveImport.web
             }
             catch (Exception ex) { }
             return js.Serialize(data);
+            //return data;
+
+        }
+
+        [WebMethod]
+        public static string GetSideMenu()
+        {
+            //From weloveshopping
+            ScrapingBiz sc = new ScrapingBiz();
+            //JavaScriptSerializer js = new JavaScriptSerializer();
+            string tag = string.Empty;
+            try
+            {
+                //tag = sc.GetSideMenu("http://portal.weloveshopping.com/");
+                tag = sc.GetSideMenu("http://www.vcanbuy.com/protected/faqs/tree");                
+            }
+            catch (Exception ex) { }
+            return tag;
+            //return js.Serialize(tag);
             //return data;
 
         }

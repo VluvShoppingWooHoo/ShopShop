@@ -2,8 +2,6 @@
 
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/ucCustomerStatus.ascx" TagName="ucCustomerStatus" TagPrefix="uc2" %>
-<%@ Register Src="~/UserControls/ucSeachBox.ascx" TagName="ucSeachBox" TagPrefix="uc3" %>
-<%@ Register Src="~/UserControls/ucIndexBox.ascx" TagName="ucIndexBox" TagPrefix="uc4" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="Ajax" %>
 
 <!DOCTYPE html>
@@ -27,29 +25,12 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
-    <form id="form1" runat="server">
+<body id="masterForm" hidden>
+    <form runat="server">
         <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
         <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
         <div class="row content" style="margin-bottom: 0px">
             <div class="white">
-                <div class="row ucSearchbox">
-                    <div class="col s3 m3 l3">
-                        &nbsp;
-                    </div>
-                    <div class="col s9 m9 l9">
-                        <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
-                    </div>
-                </div>
-
-                <div class="row" style="margin-bottom: 0px">
-                    <div class="col s12 m12 l12">
-                        <div class="card" style="padding: 20px">
-                            <uc4:ucIndexBox runat="server" ID="ucIndexBox" />
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row" style="margin-bottom: 0px">
                     <div class="col s12 m12 l12">
                         <div class="card .z-depth-5" style="padding: 20px">
@@ -101,6 +82,7 @@
         $('.modal-trigger').leanModal({
             dismissible: false
         });
+        //$("#masterForm").fadeOut();
     });
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1);
@@ -111,5 +93,12 @@
                 return sParameterName[1];
             }
         }
+    }
+    function replaceAll(find, replace, str) {
+        //return str.replace(new RegExp(find, 'g'), replace);
+        return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+    }
+    function escapeRegExp(string) {
+        return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
     }
 </script>

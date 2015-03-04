@@ -13,6 +13,24 @@ namespace VloveImport.web {
     public partial class Index {
         
         /// <summary>
+        /// ucSeachBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VloveImport.web.UserControls.ucSeachBox ucSeachBox;
+        
+        /// <summary>
+        /// ucIndexBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VloveImport.web.UserControls.ucIndexBox ucIndexBox;
+        
+        /// <summary>
         /// Login control.
         /// </summary>
         /// <remarks>

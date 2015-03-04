@@ -17,7 +17,6 @@ namespace VloveImport.biz
         {
             ScrapingData model = new ScrapingData();
             WebClient w = new WebClient();
-
             //string html = w.DownloadString(URL);
             string html = URL;
 
@@ -81,8 +80,28 @@ namespace VloveImport.biz
 
             return model;
         }
-
+        public string GetSideMenu(string URL)
+        {
+            //string result = string.Empty;
+            var HtmlWeb = new HtmlWeb
+            {
+                //AutoDetectEncoding = false,
+                //OverrideEncoding = System.Text.Encoding.GetEncoding(54936)
+            };
+            HtmlAgilityPack.HtmlDocument doc = HtmlWeb.Load(URL);
+            //var result = doc.DocumentNode.Descendants("ul").Where(l =>
+            //    l.Attributes.Contains("class") &&
+            //    l.Attributes["class"].Value.Contains("menu-left-category"));
+            var result = doc.DocumentNode.Descendants("div").Where(l =>
+                l.Attributes.Contains("class") &&
+                //l.Attributes["class"].Value.Contains("cat-main"));
+                l.Attributes["class"].Value.Contains("cat-l"));
+            
+            HtmlNode node = result.FirstOrDefault();
+            return node.OuterHtml;
+        }
         #region Function
+        #region Scraping SeacrhBox
         #region Get Property to model
         private string GetItemID(string html, int web, HtmlAgilityPack.HtmlDocument doc)
         {
@@ -379,38 +398,9 @@ namespace VloveImport.biz
             return Size;
         }
         #endregion
-        //internal static string RemoveUnwantedTags(string data)
-        //{
-        //    var document = new HtmlDocument();
-        //    document.LoadHtml(data);
-
-        //    var nodes = new Queue<HtmlNode>(document.DocumentNode.SelectNodes("./*|./text()"));
-        //    while (nodes.Count > 0)
-        //    {
-        //        var node = nodes.Dequeue();
-        //        var parentNode = node.ParentNode;
-
-        //        if (node.Name != "strong" && node.Name != "em" && node.Name != "u" && node.Name != "#text")
-        //        {
-
-        //            var childNodes = node.SelectNodes("./*|./text()");
-
-        //            if (childNodes != null)
-        //            {
-        //                foreach (var child in childNodes)
-        //                {
-        //                    nodes.Enqueue(child);
-        //                    parentNode.InsertBefore(child, node);
-        //                }
-        //            }
-
-        //            parentNode.RemoveChild(node);
-
-        //        }
-        //    }
-
-        //    return document.DocumentNode.InnerHtml;
-        //}
+        #endregion
+        #region Scraping Side Menu
+        #endregion
         #endregion
     }
 }
