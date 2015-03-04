@@ -1686,6 +1686,31 @@
         //        alert('gs');
         //    }
         //});
+
+        $('div[class="title clearfix"]').hover(function () {
+            $('div[class="catlist clearfix"]').hide();
+            $(this).siblings('div[class="catlist clearfix"]').show();
+        }, function () {
+            //var isHovered = $(this).siblings('div[class="catlist clearfix"]').is("hover");
+            //if (!isHovered) {
+            //    $(this).siblings('div[class="catlist clearfix"]').hide();
+            //}
+        }
+);
+
+        $('div[class="catlist clearfix"]').mouseleave(function () {
+            var isHovered = $(this).siblings('div[class="title clearfix"]').is("hover");
+            if (!isHovered) {
+                $(this).hide();
+            }
+            //$('div[class="catlist clearfix"]').hide();
+            //$(this).siblings('div[class="title clearfix"]').show();
+        });
+
+        //var isHovered = $('div[class="title clearfix"]').is("hover");
+        //if (isHovered) {
+        //    $('div[class="catlist clearfix"]').hide();
+        //}
     });
 
     function ManageSideMenu() {
@@ -1718,4 +1743,6 @@
         $('#flaticon14').addClass('flaticon-book122');
         $('.icon').empty();
     }
+    //function AddEvent() {
+    //}
 </script>
