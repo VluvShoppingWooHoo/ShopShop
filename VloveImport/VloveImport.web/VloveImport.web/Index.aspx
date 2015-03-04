@@ -23,9 +23,9 @@
                 </div>
             </div>
         </div>
-        <div class="row card-image small center maxheight200px">
+        <%--<div class="row card-image small center maxheight200px">
             <img class="ImgheaderBanner maxheight200px" src="Images/pic/Banner1.png" width="80%" height="80%" />
-        </div>
+        </div>--%>
         <table>
             <tr>
                 <td class="td">
