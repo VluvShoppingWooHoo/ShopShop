@@ -26,7 +26,9 @@
         <td colspan ="2"></td>
     </tr>
     <tr>
-        <td>Account</td>
+        <td>
+            เลขที่บัญชีโอนเงินกลับ
+        </td>
         <td>
             <asp:DropDownList ID="ddl_account_name" runat="server" style =" display:block;" Width ="400px"></asp:DropDownList>
         </td>
@@ -62,7 +64,7 @@
         <td>
                 <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" 
                     name="action" runat="server" onclick ="return funsubmit('S');" >
-                    SAVE     
+                    SUBMIT
                 </button>
             &nbsp;&nbsp;
                 <button id="Button2" type="button" class="btn waves-effect orange waves-light" 
