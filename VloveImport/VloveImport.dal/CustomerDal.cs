@@ -281,7 +281,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("PAYMENT_TIME", SqlDbType.Int, ParameterDirection.Input, EnTran.PAYMENT_TIME);
                 SqlCommandData.SetParameter_Input_INT("BANK_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.BANK_ID);
 
-                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
+                //SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 SqlCommandData.ExecuteNonQuery();
