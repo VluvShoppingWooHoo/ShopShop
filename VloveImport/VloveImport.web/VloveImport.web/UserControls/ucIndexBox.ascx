@@ -1668,7 +1668,9 @@
 
 <script type="text/javascript">
     $(function () {
-
+        var chk = true;
+        var chk2 = true;
+        var chkFirst = true;
         //$.ajax({
         //    type: 'POST',
         //    url: "../Index.aspx/GetSideMenu",
@@ -1688,23 +1690,31 @@
         //});
 
         $('div[class="title clearfix"]').hover(function () {
+            //chk = true;
+            chk2 = true;
             $('div[class="catlist clearfix"]').hide();
             $(this).siblings('div[class="catlist clearfix"]').show();
         }, function () {
-            //var isHovered = $(this).siblings('div[class="catlist clearfix"]').is("hover");
-            //if (!isHovered) {
-            //    $(this).siblings('div[class="catlist clearfix"]').hide();
+            //chk2 = false;
+            //if (chk2 || chk) {
+            //    if (!chk || chkFirst)
+            //        chkFirst = false;
+            //        //var isShow = $(this).siblings('div[class="catlist clearfix"]').is("show");
+            //        //if (!isHovered) {
+            //        $(this).siblings('div[class="catlist clearfix"]').hide();
+            //    //}
             //}
         }
 );
 
-        $('div[class="catlist clearfix"]').mouseleave(function () {
+        $('div[class="catlist clearfix"]').hover(function () {
+            chk = true
+        }, function () {
+            chk = false;
             var isHovered = $(this).siblings('div[class="title clearfix"]').is("hover");
             if (!isHovered) {
                 $(this).hide();
             }
-            //$('div[class="catlist clearfix"]').hide();
-            //$(this).siblings('div[class="title clearfix"]').show();
         });
 
         //var isHovered = $('div[class="title clearfix"]').is("hover");
