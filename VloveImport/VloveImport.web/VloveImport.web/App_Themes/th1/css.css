@@ -278,11 +278,11 @@ div[class="title clearfix"]
     border-bottom: 1px solid #eeeeee;
 }
 
-div[class="title clearfix"]  div.icon-wrap
-{
-    width: 20%;
-    display: inline-block;
-}
+    div[class="title clearfix"] div.icon-wrap
+    {
+        width: 20%;
+        display: inline-block;
+    }
 
     div[class="title clearfix"] h4
     {
@@ -291,12 +291,30 @@ div[class="title clearfix"]  div.icon-wrap
         margin: 0px;
     }
 
-div[class="catlist clearfix"]   {
+div[class="catlist clearfix"]
+{
     /*position: fixed;*/
+    border: 3px solid #eeeeee;
     position: absolute;
     top: 0%;
     left: 25%;
     z-index: 10;
     background: white;
     /*color: red;*/
+}
+
+div[class="cat-l"]
+{
+    /*border: 1px solid #eeeeee;*/
+    padding-left: 2em;
+    width: 40%;
+    display: inline-block;
+}
+
+div[class="cat-r"]
+{
+    /*border: 1px solid #eeeeee;*/
+    padding-left: 2em;
+    width: 40%;
+    display: inline-block;
 }
