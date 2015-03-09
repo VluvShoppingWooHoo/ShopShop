@@ -61,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrator\frmAdminLogin.aspx" />
     <Content Include="Administrator\frmUser.aspx" />
     <Content Include="Administrator\frmCustomerList.aspx" />
     <Content Include="Administrator\Encryp.aspx" />
@@ -127,6 +128,13 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator\frmAdminLogin.aspx.cs">
+      <DependentUpon>frmAdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\frmAdminLogin.aspx.designer.cs">
+      <DependentUpon>frmAdminLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrator\frmUser.aspx.cs">
       <DependentUpon>frmUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

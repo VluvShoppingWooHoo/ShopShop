@@ -46,6 +46,7 @@
     <Compile Include="CustomerDal.cs" />
     <Compile Include="LogonDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VloveImport.data\VloveImport.data.csproj">

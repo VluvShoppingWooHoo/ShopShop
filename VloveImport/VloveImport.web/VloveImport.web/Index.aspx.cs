@@ -129,9 +129,11 @@ namespace VloveImport.web
         #endregion
 
         #region AddToCart
-        public static void btnSearch(string Name, string Desc, string Amount, string Price, string Size,
+        [WebMethod]
+        public static string btnSearch(string Name, string Desc, string Amount, string Price, string Size,
             string Color, string Remark, string URL, string Picture)
         {
+            JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
             Index Index = new Index();
             ScrapingData Data = new ScrapingData();
@@ -155,7 +157,7 @@ namespace VloveImport.web
             {
                 //Close Popup
             }
-
+            return js.Serialize(Result);
         }
 
         protected string AddToCart(ScrapingData Data)
