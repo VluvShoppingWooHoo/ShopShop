@@ -14,6 +14,9 @@
         <button id="btnSearch" type="button" class="btn waves-effect orange waves-light" name="action">
             SEARCH
         </button>
+        <button id="btnAddUser" type="button" class="btn waves-effect orange waves-light" name="action">
+            Add User
+        </button>
         <br />
         <asp:GridView ID="gvUser" runat="server" AutoGenerateColumns="false">
             <Columns>

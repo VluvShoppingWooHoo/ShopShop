@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace VloveImport.data
 {
-    class UserData
+    public class UserData
     {
+        public int User_ID { get; set; }
+        public string Login { get; set; }
+        public string FirstName { get; set; }
+        public string LastLName { get; set; }
+        public string Password { get; set; }
     }
 }
