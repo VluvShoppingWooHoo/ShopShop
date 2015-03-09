@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administrator\frmAdminLogin.aspx" />
+    <Content Include="Administrator\frmOrderList.aspx" />
     <Content Include="Administrator\frmUser.aspx" />
     <Content Include="Administrator\frmCustomerList.aspx" />
     <Content Include="Administrator\Encryp.aspx" />
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="Administrator\frmAdminLogin.aspx.designer.cs">
       <DependentUpon>frmAdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\frmOrderList.aspx.cs">
+      <DependentUpon>frmOrderList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\frmOrderList.aspx.designer.cs">
+      <DependentUpon>frmOrderList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrator\frmUser.aspx.cs">
       <DependentUpon>frmUser.aspx</DependentUpon>
