@@ -80,11 +80,20 @@ namespace VloveImport.web.UserControls
         {
             string msgboxScript = "alert('" + message + "');";
 
-            if (redirectNamePage == "")
+            if (redirectNamePage == "" && message != "1")
             {
                 if ((ScriptManager.GetCurrent(currentPage) != null))
                 {
                     ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+                }
+            }
+            else if (redirectNamePage != "" && message != "1")
+            {
+                string redirectPage = "window.location.href=\"" + redirectNamePage + "\";";
+
+                if ((ScriptManager.GetCurrent(currentPage) != null))
+                {
+                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript + redirectPage, true);
                 }
             }
             else
@@ -93,7 +102,7 @@ namespace VloveImport.web.UserControls
 
                 if ((ScriptManager.GetCurrent(currentPage) != null))
                 {
-                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript + redirectPage, true);
+                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", redirectPage, true);
                 }
             }
 
@@ -141,6 +150,7 @@ namespace VloveImport.web.UserControls
             else
             {
                 ClearData();
+                ShowMessageBox("1", this.Page, "CustomerMyAccount.aspx#withdraw");
             }
 
         }
@@ -158,8 +168,8 @@ namespace VloveImport.web.UserControls
                 }
                 else
                 {
-                    ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#withdraw");
                     ClearData();
+                    ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#withdraw");
                 }
             }
         }

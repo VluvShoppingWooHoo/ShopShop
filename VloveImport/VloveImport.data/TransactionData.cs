@@ -25,6 +25,7 @@ namespace VloveImport.data
         public int PAYMENT_TYPE { get; set; }
         public Nullable<DateTime> PAYMENT_DATE { get; set; }
         public string PAYMENT_TIME { get; set; }
+        public string TRAN_EMAIL { get; set; }
 
     }
 }

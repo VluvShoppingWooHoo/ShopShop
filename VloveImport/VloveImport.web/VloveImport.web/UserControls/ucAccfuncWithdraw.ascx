@@ -9,7 +9,8 @@
     }
 
 </script>
-
+<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
 <table width ="100%">
     <tr>
         <td colspan ="2"><b>Withraw Request</b></td>

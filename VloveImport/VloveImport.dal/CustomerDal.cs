@@ -267,18 +267,18 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("TRAN_TABLE_TYPE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_TABLE_TYPE);
                 SqlCommandData.SetParameter("TRAN_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_DETAIL);
                 SqlCommandData.SetParameter("TRAN_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_REMARK);
-                SqlCommandData.SetParameter_Input_INT("TRAN_AMOUNT", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_AMOUNT);
+                SqlCommandData.SetParameter_Input_INT("TRAN_AMOUNT", SqlDbType.Float, ParameterDirection.Input, EnTran.TRAN_AMOUNT);
 
                 SqlCommandData.SetParameter_Input_INT("TRAN_STATUS", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_STATUS);
                 SqlCommandData.SetParameter_Input_INT("TRAN_STATUS_APPROVE", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_STATUS_APPROVE);
                 SqlCommandData.SetParameter_Input_INT("EMP_ID_APPROVE", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_ID_APPROVE);
-                SqlCommandData.SetParameter("EMP_REMARK", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_REMARK);
+                SqlCommandData.SetParameter("EMP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_REMARK);
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.Cus_ID);
                 SqlCommandData.SetParameter_Input_INT("CUS_ACC_NAME_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.CUS_ACC_NAME_ID);
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.ORDER_ID);
                 SqlCommandData.SetParameter_Input_INT("PAYMENT_TYPE", SqlDbType.Int, ParameterDirection.Input, EnTran.PAYMENT_TYPE);
-                SqlCommandData.SetParameter("PAYMENT_DATE", SqlDbType.Int, ParameterDirection.Input, EnTran.PAYMENT_DATE);
-                SqlCommandData.SetParameter("PAYMENT_TIME", SqlDbType.Int, ParameterDirection.Input, EnTran.PAYMENT_TIME);
+                SqlCommandData.SetParameter("PAYMENT_DATE", SqlDbType.DateTime, ParameterDirection.Input, EnTran.PAYMENT_DATE);
+                SqlCommandData.SetParameter("PAYMENT_TIME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.PAYMENT_TIME);
                 SqlCommandData.SetParameter_Input_INT("BANK_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.BANK_ID);
 
                 //SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);

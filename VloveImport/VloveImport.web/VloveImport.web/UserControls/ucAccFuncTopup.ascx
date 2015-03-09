@@ -1,5 +1,18 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucAccFuncTopup.ascx.cs" Inherits="VloveImport.web.UserControls.ucAccFuncTopup" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<script type="text/javascript">
+
+    function funsubmitTopUp(obj) {
+        
+        document.getElementById('ContentPlaceHolder1_ucAccFuncTopup_hd_submit').value = obj
+        document.getElementById('ContentPlaceHolder1_ucAccFuncTopup_Button1').click();
+    }
+
+</script>
+
+<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
 <table width ="100%">
     <tr>
         <td colspan ="2"><b>เติมเงิน</b></td>
@@ -75,7 +88,7 @@
         <td>
                 วัน ที่โอนเงิน 
                 <span style ="color:red;">*</span><br />
-                <asp:TextBox ID="TextBox1" runat="server" Width ="400px" ></asp:TextBox>
+                <asp:TextBox ID="txt_tranfer_date" runat="server" Width ="400px" ></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -119,12 +132,12 @@
         <td></td>
         <td>
                 <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" 
-                    name="action" runat="server" onclick ="return funsubmit('S');" >
+                    name="action" runat="server" onclick ="return funsubmitTopUp('S');" >
                     SUBMIT
                 </button>
             &nbsp;&nbsp;
                 <button id="Button2" type="button" class="btn waves-effect orange waves-light" 
-                    name="action" runat="server" onclick ="return funsubmit('C');" >
+                    name="action" runat="server" onclick ="return funsubmitTopUp('C');" >
                     CLEAR     
                 </button>
         </td>
@@ -133,6 +146,5 @@
 
         <asp:HiddenField ID="hd_submit" runat="server" />
         <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" Style="display: none;" />
-
     </ContentTemplate>
 </asp:UpdatePanel>
