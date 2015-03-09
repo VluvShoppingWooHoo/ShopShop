@@ -61,7 +61,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrator\frmUser.aspx" />
+    <Content Include="Administrator\frmCustomerList.aspx" />
     <Content Include="Administrator\Encryp.aspx" />
+    <Content Include="Administrator\frmUserList.aspx" />
     <Content Include="Administrator\page_ms_bank.aspx" />
     <Content Include="App_Themes\font\flaticon\flaticon.css" />
     <Content Include="App_Themes\css\materialize.css" />
@@ -124,12 +127,33 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator\frmUser.aspx.cs">
+      <DependentUpon>frmUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\frmUser.aspx.designer.cs">
+      <DependentUpon>frmUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\frmCustomerList.aspx.cs">
+      <DependentUpon>frmCustomerList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\frmCustomerList.aspx.designer.cs">
+      <DependentUpon>frmCustomerList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrator\Encryp.aspx.cs">
       <DependentUpon>Encryp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Administrator\Encryp.aspx.designer.cs">
       <DependentUpon>Encryp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\frmUserList.aspx.cs">
+      <DependentUpon>frmUserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\frmUserList.aspx.designer.cs">
+      <DependentUpon>frmUserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrator\page_ms_bank.aspx.cs">
       <DependentUpon>page_ms_bank.aspx</DependentUpon>
@@ -295,6 +319,7 @@
     </Compile>
     <Compile Include="MasterPage\MasterAdmin.Master.cs">
       <DependentUpon>MasterAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPage\MasterAdmin.Master.designer.cs">
       <DependentUpon>MasterAdmin.Master</DependentUpon>
@@ -351,12 +376,14 @@
     </Compile>
     <Compile Include="UserControls\ucAdminMenu.ascx.cs">
       <DependentUpon>ucAdminMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserControls\ucAdminMenu.ascx.designer.cs">
       <DependentUpon>ucAdminMenu.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucAdminStatus.ascx.cs">
       <DependentUpon>ucAdminStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserControls\ucAdminStatus.ascx.designer.cs">
       <DependentUpon>ucAdminStatus.ascx</DependentUpon>
