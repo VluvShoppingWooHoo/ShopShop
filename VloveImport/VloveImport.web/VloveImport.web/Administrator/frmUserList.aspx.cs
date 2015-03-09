@@ -13,5 +13,10 @@ namespace VloveImport.web.Administrator
         {
 
         }
+
+        public static void Search(string Login, string Name)
+        {
+            
+        }
     }
 }

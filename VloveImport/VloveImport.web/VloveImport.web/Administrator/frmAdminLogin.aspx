@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
     <div>
         Username : <input id="txtUser" type="text" >
+        <br />
         Password : <input id="txtPass" type="text" >
     </div>
     </form>
