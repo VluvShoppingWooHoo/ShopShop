@@ -111,6 +111,8 @@
     <Content Include="UserControls\ucAccfuncVoucher.ascx" />
     <Content Include="UserControls\ucAccfuncTransLog.ascx" />
     <Content Include="UserControls\ucAccfuncWithdraw.ascx" />
+    <Content Include="UserControls\ucAdminMenu.ascx" />
+    <Content Include="UserControls\ucAdminStatus.ascx" />
     <Content Include="UserControls\ucCustomerMenuBar.ascx" />
     <Content Include="UserControls\ucIndexBox.ascx" />
     <Content Include="UserControls\ucRecommend.ascx" />
@@ -291,6 +293,12 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPage\MasterAdmin.Master.cs">
+      <DependentUpon>MasterAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\MasterAdmin.Master.designer.cs">
+      <DependentUpon>MasterAdmin.Master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage\master_page_batt.Master.cs">
       <DependentUpon>master_page_batt.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -340,6 +348,18 @@
     </Compile>
     <Compile Include="UserControls\ucAccfuncWithdraw.ascx.designer.cs">
       <DependentUpon>ucAccfuncWithdraw.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAdminMenu.ascx.cs">
+      <DependentUpon>ucAdminMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAdminMenu.ascx.designer.cs">
+      <DependentUpon>ucAdminMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAdminStatus.ascx.cs">
+      <DependentUpon>ucAdminStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAdminStatus.ascx.designer.cs">
+      <DependentUpon>ucAdminStatus.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucCustomerMenuBar.ascx.cs">
       <DependentUpon>ucCustomerMenuBar.ascx</DependentUpon>
@@ -414,6 +434,7 @@
     <Content Include="App_Themes\font\flaticon\flaticon.eot" />
     <Content Include="App_Themes\font\flaticon\flaticon.ttf" />
     <Content Include="App_Themes\font\flaticon\flaticon.woff" />
+    <Content Include="MasterPage\MasterAdmin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
