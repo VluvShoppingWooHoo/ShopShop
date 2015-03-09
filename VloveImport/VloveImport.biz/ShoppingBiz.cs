@@ -19,14 +19,23 @@ namespace VloveImport.biz
             Result = dal.AddtoCart(Shop);
             return Result;
         }
-
-
-        #region Admin Manage
         public DataTable GetBasketList(ShoppingData Data)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             DataSet ds = new DataSet();
             ds = dal.GetBasketList(Data);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+
+        #region Admin Manage
+        public DataTable GetOrderList(string Login, string ShopName)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetOrderList(Login, ShopName);
             if (ds != null && ds.Tables.Count > 0)
                 return ds.Tables[0];
             else

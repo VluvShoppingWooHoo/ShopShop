@@ -51,10 +51,6 @@ namespace VloveImport.dal
                 return ("AddtoCart -> msg : " + ex.Message);
             }
         }
-
-
-
-        #region Admin Manage
         public DataSet GetBasketList(ShoppingData Data)
         {
             try
@@ -67,6 +63,24 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 throw new Exception("GET_BASKET_LIST -> msg : " + ex.Message);
+            }
+        }
+
+
+        #region Admin Manage
+        public DataSet GetOrderList(string Login, string ShopName)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_ORDER_LIST");
+                SqlCommandData.SetParameter_Input_INT("LOGIN", SqlDbType.VarChar, ParameterDirection.Input, Login);
+                SqlCommandData.SetParameter_Input_INT("SHOPNAME", SqlDbType.VarChar, ParameterDirection.Input, ShopName);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_ORDER_LIST -> msg : " + ex.Message);
             }
         }
         #endregion
