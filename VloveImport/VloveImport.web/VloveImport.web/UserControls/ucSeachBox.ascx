@@ -26,7 +26,7 @@
                 <div class="circle"></div>
             </div>
             <div class="circle-clipper right">
-                <div class="circle"></div>  
+                <div class="circle"></div>
             </div>
         </div>
         <div class="spinner-layer spinner-orange">
@@ -108,6 +108,17 @@
                         </div>
                     </div>
                 </div>
+                <div id="divQTY" class="row">
+                    <div class="col s1 m1 l1">QTY:</div>
+                    <div class="col s4 m4 l4" style="margin: 0px">
+                        <ul class="pagination" style="margin: 0px">
+                            <li class="" style="display: inline-block"><a href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
+                            <li class="" style="display: inline-block"><a id="aQTY" href="#!" class="">1</a></li>
+                            <li class="" style="display: inline-block"><a href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -139,8 +150,34 @@
         $('.modal-trigger').leanModal({
             dismissible: false
         });
+
         $('#btnAddCart').click(function () {
-            $('#modalItem').closeModal();
+
+            var size = $('#liSize div a.selected').html();
+            var color = '';
+            if ($('#liColor div a.selected img').length > 0) {
+                color = $('#liColor div a.selected img').attr("src");
+            }
+            else {
+                color = $('#liColor div a.selected').html();
+            }
+            var param = {
+                "Name": $("#lblItemName").html(), "Desc": '', "Amount": '5', "Price": $("#lblPrice").html(), "Size": size,
+                "Color": color, "Remark": $("#txtRemark").val(), "URL": $("#lblURL").html(), "Picture": ''
+            };
+            $.ajax({
+                type: 'POST',
+                url: "../Index.aspx/btnSearch",
+                data: JSON.stringify(param),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    $('#modalItem').closeModal();
+                },
+                error: function (err) {
+                    alert('gs');
+                }
+            });
         });
 
         $('#btnClose').click(function () {
@@ -216,8 +253,10 @@
     }
 
     function selectColor(e) {
+        $('#liColor div a').removeClass('selected');
         $('#liColor div a').removeClass('selectedBorder');
         $('#aColor' + e).addClass('selectedBorder');
+        $('#aColor' + e).addClass('selected');
         var url = $('#aColor' + e + ' img').attr('src');
         if ($("#hdWeb").val() == 1) {
             $("#imgpicURL").attr("src", url.replace('30x30', '400x400'));
@@ -227,15 +266,19 @@
     function selectColorText(e) {
         $('#liColor div a').addClass('white orange-text');
         $('#liColor div a').removeClass('orange white-text');
+        $('#liColor div a').removeClass('selected');
         $('#aColor' + e).removeClass('white orange-text');
         $('#aColor' + e).addClass('orange white-text');
+        $('#aColor' + e).addClass('selected');
     }
 
     function selectSize(e) {
         $('#liSize div a').addClass('white orange-text');
         $('#liSize div a').removeClass('orange white-text');
+        $('#liSize div a').removeClass('selected');
         $('#aSize' + e).removeClass('white orange-text');
         $('#aSize' + e).addClass('orange white-text');
+        $('#aSize' + e).addClass('selected');
     }
 
 </script>
