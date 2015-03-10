@@ -487,6 +487,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_GlobalResources\" />
+    <Folder Include="Old_App_Code\" />
     <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>

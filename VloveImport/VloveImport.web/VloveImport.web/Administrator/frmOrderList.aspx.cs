@@ -18,13 +18,24 @@ namespace VloveImport.web.Administrator
         }
 
         [WebMethod]
-        public static void BindData(string login, string shopname)
+        public static void btnSearch(string login, string shopname)
+        {
+            frmOrderList frm = new frmOrderList();
+            frm.BindData(login, shopname);
+        }
+        protected void BindData(string login, string shopname)
         {
             ShoppingBiz Biz = new ShoppingBiz();
             DataTable dt = Biz.GetOrderList(login, shopname);
             if (dt != null && dt.Rows.Count > 0)
             {
                 gvOrder.DataSource = dt;
+                gvOrder.DataBind();
+            }
+            else
+            {
+                gvOrder.DataSource = null;
+                gvOrder.DataBind();
             }
         }
     }

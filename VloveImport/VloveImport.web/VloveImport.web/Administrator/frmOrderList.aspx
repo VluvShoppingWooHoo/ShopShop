@@ -33,7 +33,7 @@
             var param = { "login": login, "shop": shop };
             $.ajax({
                 type: 'POST',
-                url: "frmOrderList.aspx/BindData",
+                url: "frmOrderList.aspx/btnSearch",
                 data: JSON.stringify(param),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
