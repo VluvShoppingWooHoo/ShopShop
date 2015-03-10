@@ -9,11 +9,11 @@
         <input type="text" id="txtLogin" />
         <br />
         ShopName
-        <input type="text" id="txtShopNamae" />
+        <input type="text" id="txtShopName" />
         <br />
         <button id="btnSearch" type="button" class="btn waves-effect orange waves-light" name="action">
             SEARCH
-        </button>
+        </button>        
         <br />
         <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="false">
             <Columns>
@@ -24,3 +24,25 @@
         </asp:GridView>
     </div>
 </asp:Content>
+
+<script type="text/javascript">
+    $(function () {
+        $('#btnSearch').click(function () {
+            var login = $('#txtLogin').val();
+            var shop = $('#txtShopName').val();
+            var param = { "login": login, "shop": shop };
+            $.ajax({
+                type: 'POST',
+                url: "frmOrderList.aspx/BindData",
+                data: JSON.stringify(param),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                },
+                error: function (err) {
+                    alert('gs');
+                }
+            });
+        });
+    });
+</script>

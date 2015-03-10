@@ -4,11 +4,11 @@
 <%@ Register Src="~/UserControls/ucAdminStatus.ascx" TagPrefix="uc1" TagName="ucAdminStatus" %>
 
 
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="../App_Themes/css/materialize.min.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="../App_Themes/font/flaticon/flaticon.css" media="screen,projection" />
