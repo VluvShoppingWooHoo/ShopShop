@@ -41,7 +41,7 @@ namespace VloveImport.web.UserControls
             ScrapingData Data = new ScrapingData();
             Data.CUS_BK_AMOUNT = 0;
             Data.CUS_BK_PRICE = 0;
-            Data.CUS_BK_SIZE = 0;
+            Data.CUS_BK_SIZE = "";
             Data.CUS_BK_REMARK = "";
             Data.CUS_BK_STATUS = "";
             Data.Create_User = "";

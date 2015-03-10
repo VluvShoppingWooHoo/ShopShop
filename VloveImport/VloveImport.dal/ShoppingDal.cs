@@ -32,7 +32,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CUS_BK_ITEMDESC", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_ITEMDESC);                
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_BK_AMOUNT);
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_PRICE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_PRICE);
-                SqlCommandData.SetParameter_Input_INT("CUS_BK_SIZE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_SIZE);
+                SqlCommandData.SetParameter("CUS_BK_SIZE", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_SIZE);
                 SqlCommandData.SetParameter("CUS_BK_COLOR", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_COLOR);                
                 SqlCommandData.SetParameter("CUS_BK_REMARK", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_REMARK);
                 SqlCommandData.SetParameter("CUS_BK_URL", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_URL);
@@ -51,10 +51,6 @@ namespace VloveImport.dal
                 return ("AddtoCart -> msg : " + ex.Message);
             }
         }
-
-
-
-        #region Admin Manage
         public DataSet GetBasketList(ShoppingData Data)
         {
             try
@@ -67,6 +63,24 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 throw new Exception("GET_BASKET_LIST -> msg : " + ex.Message);
+            }
+        }
+
+
+        #region Admin Manage
+        public DataSet GetOrderList(string Login, string ShopName)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_ORDER_LIST");
+                SqlCommandData.SetParameter_Input_INT("LOGIN", SqlDbType.VarChar, ParameterDirection.Input, Login);
+                SqlCommandData.SetParameter_Input_INT("SHOPNAME", SqlDbType.VarChar, ParameterDirection.Input, ShopName);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_ORDER_LIST -> msg : " + ex.Message);
             }
         }
         #endregion
