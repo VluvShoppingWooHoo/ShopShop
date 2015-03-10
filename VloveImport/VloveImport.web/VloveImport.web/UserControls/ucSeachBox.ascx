@@ -112,9 +112,9 @@
                     <div class="col s1 m1 l1">QTY:</div>
                     <div class="col s4 m4 l4" style="margin: 0px">
                         <ul class="pagination" style="margin: 0px">
-                            <li class="" style="display: inline-block"><a href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
+                            <li class="" style="display: inline-block"><a id="aMinus" href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
                             <li class="" style="display: inline-block"><a id="aQTY" href="#!" class="">1</a></li>
-                            <li class="" style="display: inline-block"><a href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
+                            <li class="" style="display: inline-block"><a id="aPlus" href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
                         </ul>
 
                     </div>
@@ -162,7 +162,7 @@
                 color = $('#liColor div a.selected').html();
             }
             var param = {
-                "Name": $("#lblItemName").html(), "Desc": '', "Amount": '5', "Price": $("#lblPrice").html(), "Size": size,
+                "Name": $("#lblItemName").html(), "Desc": '', "Amount": $("#aQTY").html(), "Price": $("#lblPrice").html(), "Size": size,
                 "Color": color, "Remark": $("#txtRemark").val(), "URL": $("#lblURL").html(), "Picture": ''
             };
             $.ajax({
@@ -210,6 +210,20 @@
                 }
             });
         });
+
+        $('#aMinus').on("click", function () {
+            var qty = $('#aQTY').html();
+            if (qty != "1") {
+                qty--;
+                $('#aQTY').html(qty);
+            }
+        })
+
+        $('#aPlus').on("click", function () {
+            var qty = $('#aQTY').html();
+            qty++;
+            $('#aQTY').html(qty);
+        })
     });
 
     function bindModal(data) {

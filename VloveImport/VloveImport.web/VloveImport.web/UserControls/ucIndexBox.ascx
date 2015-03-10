@@ -1668,9 +1668,6 @@
 
 <script type="text/javascript">
     $(function () {
-        var chk = true;
-        var chk2 = true;
-        var chkFirst = true;
         //$.ajax({
         //    type: 'POST',
         //    url: "../Index.aspx/GetSideMenu",
@@ -1689,11 +1686,17 @@
         //    }
         //});
 
-        $('div[class="title clearfix"]').hover(function () {
-            //chk = true;
-            chk2 = true;
-            $('div[class="catlist clearfix"]').hide();
-            $(this).siblings('div[class="catlist clearfix"]').show();
+        $('div[class~="market-cat"').hover(function () {
+        }, function () {
+            $('div[class~="title"]').removeClass('orange white-text');
+            $('div[class~="catlist"]').hide();
+        }
+);
+        $('div[class~="title"]').hover(function () {
+            $('div[class~="title"]').removeClass('orange white-text');
+            $('div[class~="catlist"]').hide();
+            $(this).siblings('div[class~="catlist"]').show();
+            $(this).addClass('orange white-text');
         }, function () {
             //chk2 = false;
             //if (chk2 || chk) {
@@ -1707,11 +1710,9 @@
         }
 );
 
-        $('div[class="catlist clearfix"]').hover(function () {
-            chk = true
+        $('div[class~="catlist"]').hover(function () {
         }, function () {
-            chk = false;
-            var isHovered = $(this).siblings('div[class="title clearfix"]').is("hover");
+            var isHovered = $(this).siblings('div[class~="title"]').is("hover");
             if (!isHovered) {
                 $(this).hide();
             }
@@ -1726,10 +1727,11 @@
     function ManageSideMenu() {
         RemoveThings();
         SetIcons();
+        AddClass();
     }
     function RemoveThings() {
-        $('div[class="market-link clearfix"]').hide();
-        $('div[class="catlist clearfix"]').hide();
+        $('div[class~="market-link"]').hide();
+        $('div[class~="catlist"]').hide();
         $('i[class="shadow"]').remove();
     }
     function SetIcons() {
@@ -1753,6 +1755,10 @@
         $('#flaticon14').addClass('flaticon-book122');
         $('.icon').empty();
     }
-    //function AddEvent() {
-    //}
+    function AddClass() {
+        $('div[class~="catlist"]').addClass('row');
+        $('div[class~="catlist"]').addClass('z-depth-3');
+        $('div[class~="cat-l"]').addClass('col s6 m6 l6');
+        $('div[class~="cat-r"]').addClass('col s6 m6 l6');
+    }
 </script>
