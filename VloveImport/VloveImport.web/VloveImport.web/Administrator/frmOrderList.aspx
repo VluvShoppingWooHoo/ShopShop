@@ -23,26 +23,27 @@
             </Columns>
         </asp:GridView>
     </div>
-</asp:Content>
 
-<script type="text/javascript">
-    $(function () {
-        $('#btnSearch').click(function () {
-            var login = $('#txtLogin').val();
-            var shop = $('#txtShopName').val();
-            var param = { "login": login, "shop": shop };
-            $.ajax({
-                type: 'POST',
-                url: "frmOrderList.aspx/btnSearch",
-                data: JSON.stringify(param),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (data) {
-                },
-                error: function (err) {
-                    alert('gs');
-                }
+    <script type="text/javascript">
+        $(function () {
+            $('#btnSearch').click(function () {
+                var login = $('#txtLogin').val();
+                var shop = $('#txtShopName').val();
+                var param = { "login": login, "shopname": shop };
+                $.ajax({
+                    type: 'POST',
+                    url: "../Administrator/frmOrderList.aspx/btnSearch",
+                    data: JSON.stringify(param),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                    },
+                    error: function (err) {
+                        alert('gs');
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+</asp:Content>
+
