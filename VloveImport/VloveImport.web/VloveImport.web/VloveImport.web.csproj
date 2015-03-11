@@ -478,6 +478,7 @@
     <Content Include="App_Themes\font\flaticon\flaticon.ttf" />
     <Content Include="App_Themes\font\flaticon\flaticon.woff" />
     <Content Include="MasterPage\MasterAdmin.Master" />
+    <Content Include="Script\20150311.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
