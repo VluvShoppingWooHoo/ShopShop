@@ -28,17 +28,17 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("INS_SHOPPINGCART");
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_ID);
-                SqlCommandData.SetParameter("CUS_BK_ITEMNAME", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_ITEMNAME);
-                SqlCommandData.SetParameter("CUS_BK_ITEMDESC", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_ITEMDESC);                
+                SqlCommandData.SetParameter("CUS_BK_ITEMNAME", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_ITEMNAME);
+                SqlCommandData.SetParameter("CUS_BK_ITEMDESC", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_ITEMDESC);                
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Shop.CUS_BK_AMOUNT);
                 SqlCommandData.SetParameter_Input_INT("CUS_BK_PRICE", SqlDbType.Float, ParameterDirection.Input, Shop.CUS_BK_PRICE);
-                SqlCommandData.SetParameter("CUS_BK_SIZE", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_SIZE);
-                SqlCommandData.SetParameter("CUS_BK_COLOR", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_COLOR);                
-                SqlCommandData.SetParameter("CUS_BK_REMARK", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_REMARK);
-                SqlCommandData.SetParameter("CUS_BK_URL", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_URL);
-                SqlCommandData.SetParameter("CUS_BK_PICURL", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_PICURL);
-                SqlCommandData.SetParameter("CUS_BK_STATUS", SqlDbType.VarChar, ParameterDirection.Input, Shop.CUS_BK_STATUS);
-                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, Shop.Create_User);
+                SqlCommandData.SetParameter("CUS_BK_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_SIZE);
+                SqlCommandData.SetParameter("CUS_BK_COLOR", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_COLOR);
+                SqlCommandData.SetParameter("CUS_BK_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_REMARK);
+                SqlCommandData.SetParameter("CUS_BK_URL", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_URL);
+                SqlCommandData.SetParameter("CUS_BK_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_PICURL);
+                SqlCommandData.SetParameter("CUS_BK_STATUS", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_STATUS);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Shop.Create_User);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
