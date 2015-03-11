@@ -1688,8 +1688,8 @@
 
         $('div[class~="market-cat"').hover(function () {
         }, function () {
-            $('div[class~="title"]').removeClass('orange white-text');
-            $('div[class~="catlist"]').hide();
+            //$('div[class~="title"]').removeClass('orange white-text');
+            //$('div[class~="catlist"]').hide();
         }
 );
         $('div[class~="title"]').hover(function () {
@@ -1715,6 +1715,7 @@
             var isHovered = $(this).siblings('div[class~="title"]').is("hover");
             if (!isHovered) {
                 $(this).hide();
+                $('div[class~="title"]').removeClass('orange white-text');
             }
         });
 
@@ -1732,6 +1733,7 @@
     function RemoveThings() {
         $('div[class~="market-link"]').hide();
         $('div[class~="catlist"]').hide();
+        //$('.sublist').hide();
         $('i[class="shadow"]').remove();
     }
     function SetIcons() {

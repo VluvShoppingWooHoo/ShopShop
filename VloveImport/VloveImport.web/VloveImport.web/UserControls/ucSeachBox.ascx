@@ -188,7 +188,9 @@
             $('#loadingCircle').show();
             $('#loadingLine').show();
             $('#showData').hide();
-            $('#footer').hide();
+            //$('#footer').hide();
+            $('#btnAddCart').hide();
+            
             //$('#modalItem').openModal();
             $("#a_link")[0].click();
             var param = { "txt": $('#txtSearch').val() };
@@ -203,7 +205,8 @@
                     $('#loadingCircle').hide();
                     $('#loadingLine').hide();
                     $('#showData').show();
-                    $('#footer').show();
+                    //$('#footer').show();
+                    $('#btnAddCart').show();
                 },
                 error: function (err) {
                     alert('gs');

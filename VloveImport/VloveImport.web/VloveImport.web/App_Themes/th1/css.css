@@ -296,11 +296,12 @@ div[class~="catlist"]
     /*position: fixed;*/
     border: 3px solid #eeeeee;
     position: absolute;
-    top: -15%;
     left: 25%;
     z-index: 10;
     background: white;
-    height: 650px;
+    top: 0%;
+    /*top: -15%;
+    height: 650px;*/
     /*color: red;*/
 }
 
