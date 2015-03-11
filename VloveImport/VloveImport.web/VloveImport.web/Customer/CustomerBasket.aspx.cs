@@ -18,11 +18,21 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                string Cus_ID = Request.QueryString["Cus_id"] == null ? "" : en.DecryptData(Request.QueryString["Cus_id"].ToString());
-                //BindData(Cus_ID);
+                //string Cus_ID = Request.QueryString["Cus_id"] == null ? "" : en.DecryptData(Request.QueryString["Cus_id"].ToString());
+                BindData();
             }
         }
 
-        
+        protected void BindData()
+        {
+            ShoppingBiz Biz = new ShoppingBiz();
+            DataTable dt = Biz.GetBasketList(0);
+            if (dt != null && dt.Rows.Count > 0)
+                gvBasket.DataSource = dt;
+            else
+                gvBasket.DataSource = null;
+
+            gvBasket.DataBind();
+        }
     }
 }
