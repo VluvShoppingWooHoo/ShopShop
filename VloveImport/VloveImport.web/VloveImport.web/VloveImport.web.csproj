@@ -113,6 +113,7 @@
     <Content Include="Images\pic\RateImport-Q.gif" />
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="Script\20140312.sql" />
     <Content Include="Script\Script Init.sql" />
     <Content Include="TestPage.aspx" />
     <Content Include="UserControls\ucAccfuncMypoint.ascx" />
