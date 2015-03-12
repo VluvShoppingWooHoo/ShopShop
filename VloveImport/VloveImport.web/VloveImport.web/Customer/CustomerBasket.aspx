@@ -6,14 +6,14 @@
         <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false">
             <Columns>                
                 <asp:TemplateField>
-                    <ItemTemplate>                        
-                        <input type="checkbox" id="cbItem" runat="server"/>
+                    <ItemTemplate>  
+                        <asp:CheckBox id="cbItem" runat="server" />                                              
                         <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>'/>
                     </ItemTemplate>                    
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Image ID="imgItem" runat="server"/>
+                        <%--<asp:Image ID="imgItem" runat="server"/>--%>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>

@@ -37,6 +37,7 @@ namespace VloveImport.web.Customer
 
         protected void btnOrder_ServerClick(object sender, EventArgs e)
         {
+            Session.Remove("ORDER");
             string Selected = "";
             CheckBox cb;
             HiddenField hd;
