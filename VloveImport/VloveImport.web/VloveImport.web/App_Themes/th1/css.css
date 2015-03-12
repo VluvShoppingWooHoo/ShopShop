@@ -178,7 +178,7 @@ body
     text-decoration: underline;
 }
 
-.dropdown-content li:hover .red, .dropdown-content li.active .red
+/*.dropdown-content li:hover .red, .dropdown-content li.active .red
 {
     background-color: rgba(255, 0, 0, 1) !important;
 }
@@ -186,7 +186,7 @@ body
 .menuBar.red div:hover
 {
     background-color: orange !important;
-}
+}*/
 
 /*.row.noafter:after
 {
@@ -325,3 +325,27 @@ h5[class~="subtitle"]
 {
     text-decoration: underline;
 }
+
+div[class~="hotlink"]
+{
+    border: none;
+}
+
+div[class~="hotlink"] a
+{
+    /*padding: 0px !important;*/
+    font-size: 20px !important;
+    margin-bottom: 10px !important;
+}
+
+div[class~="hotlink"] i
+{
+    /*font-size: 30px !important;*/
+    padding-right: 7%;
+}
+
+    div[class~="hotlink"] i[class^="flaticon-"]:before, div[class~="hotlink"] i[class*=" flaticon-"]:before, div[class~="hotlink"] i[class^="flaticon-"]:after, div[class~="hotlink"] i[class*=" flaticon-"]:after
+    {
+        font-size: 30px !important;
+        padding: 0px !important;
+    }

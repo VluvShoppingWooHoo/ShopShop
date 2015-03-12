@@ -26,7 +26,7 @@
         <%--<div class="row card-image small center maxheight200px">
             <img class="ImgheaderBanner maxheight200px" src="Images/pic/Banner1.png" width="80%" height="80%" />
         </div>--%>
-        <table>
+        <%--<table>
             <tr>
                 <td class="td">
                     <table id="Login" runat="server">
@@ -77,7 +77,7 @@
                     <uc1:ucRecommend ID="ucRecommend" runat="server" />
                 </td>
             </tr>
-        </table>
+        </table>--%>
     </div>
 </asp:Content>
 

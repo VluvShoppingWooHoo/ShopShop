@@ -1662,7 +1662,14 @@
         </div>
     </div>
     <div class="col s3 m3 l3">
-        etc.
+        <div class="collection hotlink">                        
+            <a href="#!" class="collection-item light-blue lighten-2 white-text"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
+            <a href="#!" class="collection-item light-blue lighten-2 white-text"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
+            <a href="#!" class="collection-item light-blue lighten-2 white-text"><i class="flaticon-logistics3"></i>ส่งแบบ Offline</a>
+            <a href="#!" class="collection-item light-blue lighten-2 white-text"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
+        </div>
+        <iframe marginwidth="0" marginheight="0" src="http://www.bangkokbank.com/fxbanner/banner1.htm" frameborder="0" width="173" scrolling="no" height="165"></iframe>
+        <%--<iframe id="ifrmBanner" scrolling="no" frameborder="0" src="http://www.bangkokbank.com/MajorRates/MainBannerThai.htm" width="170" height="160"></iframe>--%>
     </div>
 </div>
 
@@ -1688,8 +1695,6 @@
 
         $('div[class~="market-cat"').hover(function () {
         }, function () {
-            //$('div[class~="title"]').removeClass('orange white-text');
-            //$('div[class~="catlist"]').hide();
         }
 );
         $('div[class~="title"]').hover(function () {
@@ -1698,15 +1703,6 @@
             $(this).siblings('div[class~="catlist"]').show();
             $(this).addClass('orange white-text');
         }, function () {
-            //chk2 = false;
-            //if (chk2 || chk) {
-            //    if (!chk || chkFirst)
-            //        chkFirst = false;
-            //        //var isShow = $(this).siblings('div[class="catlist clearfix"]').is("show");
-            //        //if (!isHovered) {
-            //        $(this).siblings('div[class="catlist clearfix"]').hide();
-            //    //}
-            //}
         }
 );
 
@@ -1718,11 +1714,6 @@
                 $('div[class~="title"]').removeClass('orange white-text');
             }
         });
-
-        //var isHovered = $('div[class="title clearfix"]').is("hover");
-        //if (isHovered) {
-        //    $('div[class="catlist clearfix"]').hide();
-        //}
     });
 
     function ManageSideMenu() {
@@ -1733,7 +1724,7 @@
     function RemoveThings() {
         $('div[class~="market-link"]').hide();
         $('div[class~="catlist"]').hide();
-        //$('.sublist').hide();
+        $('.sublist').hide();
         $('i[class="shadow"]').remove();
     }
     function SetIcons() {

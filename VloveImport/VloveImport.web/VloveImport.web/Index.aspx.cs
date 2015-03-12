@@ -22,39 +22,39 @@ namespace VloveImport.web
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            //if (txtUser.Text == "")
-            //{
-            //    txtUser.Focus();
-            //    return;
-            //}
-            //if (txtPass.Text == "")
-            //{
-            //    txtPass.Focus();
-            //    return;
-            //}
+            ////if (txtUser.Text == "")
+            ////{
+            ////    txtUser.Focus();
+            ////    return;
+            ////}
+            ////if (txtPass.Text == "")
+            ////{
+            ////    txtPass.Focus();
+            ////    return;
+            ////}
 
-            LogonBiz Logon = new LogonBiz();
-            CustomerData Cust = new CustomerData();
-            Cust = Logon.LogonDBCustomer(txtUser.Text, txtPass.Text);
-            if (Cust != null)
-            {
-                Session["User"] = Cust;
-                Response.Redirect("~/Index.aspx");
-            }
+            //LogonBiz Logon = new LogonBiz();
+            //CustomerData Cust = new CustomerData();
+            //Cust = Logon.LogonDBCustomer(txtUser.Text, txtPass.Text);
+            //if (Cust != null)
+            //{
+            //    Session["User"] = Cust;
+            //    Response.Redirect("~/Index.aspx");
+            //}
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            txtUser.Text = "";
-            txtPass.Text = "";
+            //txtUser.Text = "";
+            //txtPass.Text = "";
         }
 
         private void CheckSession()
         {
-            if (Session["User"] != null)
-                Login.Visible = false;
-            else
-                Login.Visible = true;
+            //if (Session["User"] != null)
+            //    Login.Visible = false;
+            //else
+            //    Login.Visible = true;
         }
 
         #region for Scraping Web in ucSearchBox & ucIndexBox
