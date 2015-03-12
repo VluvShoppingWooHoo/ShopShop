@@ -22,40 +22,22 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// txtdateFrom control.
+        /// ucCalendar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdateFrom;
+        protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar1;
         
         /// <summary>
-        /// btnimgCalFrom control.
+        /// ucCalendar2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnimgCalFrom;
-        
-        /// <summary>
-        /// txtdateTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdateTo;
-        
-        /// <summary>
-        /// btnimgCalTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnimgCalTo;
+        protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar2;
         
         /// <summary>
         /// Label2 control.

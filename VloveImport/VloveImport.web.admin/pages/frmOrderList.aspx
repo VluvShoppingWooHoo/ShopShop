@@ -1,20 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="frmOrderList.aspx.cs" Inherits="VloveImport.web.admin.pages.frmOrderList" %>
+<%@ Register src="../UserControls/ucCalendar.ascx" tagname="ucCalendar" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <fieldset style ="width:98.5%;">
         <legend>Search Criteria</legend>
-        <table style ="border:1 solid;">
+        <table style ="border: 1 solid;">
             <tr>
                 <td class ="width15">
                     <asp:Label ID="Label1" runat="server" Text="Order Date :"></asp:Label>
                 </td>
                 <td class ="width35">
-                    <asp:TextBox ID="txtdateFrom" runat="server" Width ="100px"></asp:TextBox>
-                    <asp:ImageButton ID="btnimgCalFrom" runat="server" />
+                    <uc1:ucCalendar ID="ucCalendar1" runat="server" />
                     &nbsp;-&nbsp;
-                    <asp:TextBox ID="txtdateTo" runat="server" Width ="100px"></asp:TextBox>
-                    <asp:ImageButton ID="btnimgCalTo" runat="server" />
+                    <uc1:ucCalendar ID="ucCalendar2" runat="server" />
                 </td>
                 <td class ="width15">
                     <asp:Label ID="Label2" runat="server" Text="Customer Name:"></asp:Label>
@@ -38,11 +37,13 @@
                     </asp:DropDownList>
                 </td>
                 <td></td>
-                <td></td>
+                <td>
+                    
+                </td>
             </tr>
             <tr>
                 <td colspan ="4" style ="text-align:center;">
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass ="btnSearch" OnClick="Button1_Click" />&nbsp;&nbsp;
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass ="btnSearch" OnClick="btnSearch_Click" />&nbsp;&nbsp;
                     <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass ="btnCancel" />
                 </td>
             </tr>
