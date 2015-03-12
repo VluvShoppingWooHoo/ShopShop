@@ -82,9 +82,12 @@
     <Content Include="Customer\CustomerBasket.aspx" />
     <Content Include="Customer\CustomerAddress.aspx" />
     <Content Include="Customer\CustomerBank.aspx" />
+    <Content Include="Customer\CustomerConfirmInfo.aspx" />
     <Content Include="Customer\CustomerFavoritShop.aspx" />
     <Content Include="Customer\CustomerMyAccount.aspx" />
+    <Content Include="Customer\CustomerPayment.aspx" />
     <Content Include="Customer\CustomerProfile.aspx" />
+    <Content Include="Customer\CustomerTranspot.aspx" />
     <Content Include="Customer\dummyCustomer.aspx" />
     <Content Include="Customer\HowTo.aspx" />
     <Content Include="Customer\Login.aspx" />
@@ -221,6 +224,13 @@
     <Compile Include="Customer\CustomerBank.aspx.designer.cs">
       <DependentUpon>CustomerBank.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Customer\CustomerConfirmInfo.aspx.cs">
+      <DependentUpon>CustomerConfirmInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerConfirmInfo.aspx.designer.cs">
+      <DependentUpon>CustomerConfirmInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer\CustomerFavoritShop.aspx.cs">
       <DependentUpon>CustomerFavoritShop.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -235,12 +245,26 @@
     <Compile Include="Customer\CustomerMyAccount.aspx.designer.cs">
       <DependentUpon>CustomerMyAccount.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Customer\CustomerPayment.aspx.cs">
+      <DependentUpon>CustomerPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerPayment.aspx.designer.cs">
+      <DependentUpon>CustomerPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Customer\CustomerProfile.aspx.cs">
       <DependentUpon>CustomerProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Customer\CustomerProfile.aspx.designer.cs">
       <DependentUpon>CustomerProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerTranspot.aspx.cs">
+      <DependentUpon>CustomerTranspot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerTranspot.aspx.designer.cs">
+      <DependentUpon>CustomerTranspot.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\dummyCustomer.aspx.cs">
       <DependentUpon>dummyCustomer.aspx</DependentUpon>
@@ -478,6 +502,7 @@
     <Content Include="App_Themes\font\flaticon\flaticon.ttf" />
     <Content Include="App_Themes\font\flaticon\flaticon.woff" />
     <Content Include="MasterPage\MasterAdmin.Master" />
+    <Content Include="Script\20150311.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -140,7 +140,7 @@ namespace VloveImport.web
             Data.CUS_BK_ITEMNAME = Name;
             Data.CUS_BK_ITEMDESC = Name;
             Data.CUS_BK_AMOUNT = Convert.ToInt32(Amount);
-            Data.CUS_BK_PRICE = Convert.ToInt32(Price);
+            Data.CUS_BK_PRICE = Convert.ToDouble(Price);
             Data.CUS_BK_SIZE = Size;
             Data.CUS_BK_COLOR = Color;
             Data.CUS_BK_REMARK = Remark;
