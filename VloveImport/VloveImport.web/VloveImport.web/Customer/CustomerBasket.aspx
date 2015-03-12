@@ -8,6 +8,7 @@
                 <asp:TemplateField>
                     <ItemTemplate>                        
                         <input type="checkbox" id="cbItem" runat="server"/>
+                        <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>'/>
                     </ItemTemplate>                    
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -45,7 +46,7 @@
             </Columns>
             <HeaderStyle BackColor="Orange" />
         </asp:GridView>            
-        <button id="btnOrder" runat="server" type="submit" 
+        <button id="btnOrder" runat="server" type="submit" onserverclick="btnOrder_ServerClick"
             name="action" class="btn waves-effect orange waves-light">Order                                
         </button>
     </div>            

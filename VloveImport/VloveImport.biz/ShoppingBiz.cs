@@ -29,6 +29,13 @@ namespace VloveImport.biz
             else
                 return null;
         }
+        public string MakeOrder(Int32 CUS_ID)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetBasketList(CUS_ID);
+            return "";
+        }
 
         #region Admin Manage
         public DataTable GetOrderList(string Login, string ShopName)

@@ -18,7 +18,7 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                //string Cus_ID = Request.QueryString["Cus_id"] == null ? "" : en.DecryptData(Request.QueryString["Cus_id"].ToString());
+                //string CID = Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
                 BindData();
             }
         }
@@ -33,6 +33,29 @@ namespace VloveImport.web.Customer
                 gvBasket.DataSource = null;
 
             gvBasket.DataBind();
+        }
+
+        protected void btnOrder_ServerClick(object sender, EventArgs e)
+        {
+            string Selected = "";
+            CheckBox cb;
+            HiddenField hd;
+            foreach (GridViewRow gvr in gvBasket.Rows)
+            {
+                cb = new CheckBox();
+                hd = new HiddenField();
+                cb = (CheckBox)gvr.FindControl("cbItem");
+                if (cb != null && cb.Checked)
+                {
+                    hd = (HiddenField)gvr.FindControl("hdBK_ID");
+                    Selected = Selected + hd.Value + ",";
+                }
+            }
+            Session.Add("ORDER", Selected);
+            EncrypUtil en = new EncrypUtil();
+            string CUS_ID = "0";//SessionUser
+            CUS_ID = en.EncrypData(CUS_ID);
+            Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
         }
     }
 }
