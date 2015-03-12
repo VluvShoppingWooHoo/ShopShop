@@ -51,12 +51,12 @@ namespace VloveImport.dal
                 return ("AddtoCart -> msg : " + ex.Message);
             }
         }
-        public DataSet GetBasketList(ShoppingData Data)
+        public DataSet GetBasketList(Int32 CUS_ID)
         {
             try
             {
                 SqlCommandData.SetStoreProcedure("GET_BASKET_LIST");
-                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, Data.CUS_ID);
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
 
                 return SqlCommandData.ExecuteDataSet();
             }

@@ -19,11 +19,11 @@ namespace VloveImport.biz
             Result = dal.AddtoCart(Shop);
             return Result;
         }
-        public DataTable GetBasketList(ShoppingData Data)
+        public DataTable GetBasketList(Int32 CUS_ID)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             DataSet ds = new DataSet();
-            ds = dal.GetBasketList(Data);
+            ds = dal.GetBasketList(CUS_ID);
             if (ds != null && ds.Tables.Count > 0)
                 return ds.Tables[0];
             else
