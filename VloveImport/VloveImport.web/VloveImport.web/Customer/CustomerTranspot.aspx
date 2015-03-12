@@ -39,6 +39,60 @@
         $(function () {
             $("#masterForm").fadeIn(1000);
             $('select').material_select();
+
+            $("#btnSave").click(function () {
+
+                var rdb = "";
+                if ($("input[type='radio'][class~='rdb']:checked").length > 0) {
+                    rdb = $("input[type='radio'][class~='rdb']:checked").val();
+                }
+                var cb = "";
+                for (var i = 0; i < $("input[type='checkbox'][class~='cb']:checked").length ; i++) {
+                    cb += $("input[type='checkbox'][class~='cb']:checked")[i].value + "||";
+                }
+                var dtMat = $('#dtMaterial').val();
+                var dtHTML = $('#dtHTML').val();
+                var ddl = $('#ddl1').val();
+                var param = { "cb": cb, "rdb": rdb, "dtMat": dtMat, "dtHTML": dtHTML, "ddl": ddl };
+
+                $.ajax({
+                    type: 'POST',
+                    //url: form.attr('action'),
+                    url: "../TestPage.aspx/SampleMethod",
+                    data: JSON.stringify(param),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        //bindModal(data);
+                        //$('#loadingCircle').hide();
+                        //$('#loadingLine').hide();
+                        //$('#showData').show();
+                        //$('#footer').show();
+                    },
+                    error: function (err) {
+                        //alert('gs');
+                    }
+                });
+
+                //var form = $('#form1');
+
+                //$.ajax({
+                //    type: 'POST',
+                //    url: form.attr('action'),
+                //    data: form.serialize(),
+                //    dataType: 'json',
+                //    success: function (data) {
+                //        //bindModal(data);
+                //        //$('#loadingCircle').hide();
+                //        //$('#loadingLine').hide();
+                //        //$('#showData').show();
+                //        //$('#footer').show();
+                //    },
+                //    error: function (err) {
+                //        //alert('gs');
+                //    }
+                //});
+            });
         });
     </script>
 </asp:Content>
