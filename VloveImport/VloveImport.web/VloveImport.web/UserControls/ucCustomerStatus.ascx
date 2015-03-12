@@ -29,11 +29,11 @@
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="hlBasket" runat="server">ตะกร้า
+                        <asp:HyperLink ID="hlBasket" runat="server" NavigateUrl="~/Customer/CustomerBasket.aspx">ตะกร้า
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="hlWallet" runat="server">กระเป๋าเงินของฉัน
+                        <asp:HyperLink ID="hlWallet" runat="server" NavigateUrl="~/Customer/CustomerMyAccount.aspx">กระเป๋าเงินของฉัน
                         </asp:HyperLink>
                     </li>
                 </ul>

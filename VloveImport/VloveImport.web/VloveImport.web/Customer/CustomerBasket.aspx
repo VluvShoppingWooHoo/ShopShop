@@ -6,9 +6,9 @@
         <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false">
             <Columns>                
                 <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:CheckBox ID="cbItem" runat="server" Checked="true"/>
-                    </ItemTemplate>
+                    <ItemTemplate>                        
+                        <input type="checkbox" id="cbItem" runat="server"/>
+                    </ItemTemplate>                    
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
