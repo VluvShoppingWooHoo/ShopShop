@@ -63,6 +63,15 @@
     <Content Include="App_Themes\v_th1\css.css" />
     <Content Include="App_Themes\v_th1\Skin1.skin" />
     <Content Include="frmAdminIndex.aspx" />
+    <Content Include="img\icon\b_edit.png" />
+    <Content Include="img\icon\Close-2-icon.png" />
+    <Content Include="img\icon\close-icon.png" />
+    <Content Include="img\icon\Close.png" />
+    <Content Include="img\icon\c_box.png" />
+    <Content Include="img\icon\date.png" />
+    <Content Include="img\icon\l_box.png" />
+    <Content Include="img\icon\r_box.png" />
+    <Content Include="img\icon\Sign-Close-icon.png" />
     <Content Include="pages\frmOrderList.aspx" />
     <Content Include="UserControls\ucMenubar.ascx" />
     <Content Include="Web.config" />
@@ -109,7 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
-    <Folder Include="img\icon\" />
     <Folder Include="img\logo\" />
   </ItemGroup>
   <PropertyGroup>
