@@ -13,48 +13,39 @@ namespace VloveImport.web.Customer {
     public partial class CustomerTranspot {
         
         /// <summary>
-        /// rdbCar control.
+        /// rdbChina control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbCar;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbChina;
         
         /// <summary>
-        /// rdbBoat control.
+        /// rdbThai control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbBoat;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbThai;
         
         /// <summary>
-        /// rdbSafe control.
+        /// btnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbSafe;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnBack;
         
         /// <summary>
-        /// rdbNim control.
+        /// btnOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbNim;
-        
-        /// <summary>
-        /// btnUrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUrder;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnOrder;
     }
 }

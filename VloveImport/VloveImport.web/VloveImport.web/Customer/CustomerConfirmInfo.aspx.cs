@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
+using VloveImport.data;
 using VloveImport.util;
 
 namespace VloveImport.web.Customer
@@ -15,20 +16,24 @@ namespace VloveImport.web.Customer
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string CID = Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
-            if (CID == "")
-                Response.Redirect("CustomerBasket.aspx");
+            if (!IsPostBack)
+            {
+                string CID = Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
+                if (CID == "")
+                    Response.Redirect("CustomerBasket.aspx");
+
+                BindDataGrid();
+                BindDataTrans();
+            }
         }
 
         protected void BindDataGrid()
         {
             if (Session["ORDER"] != null)
             {
-                string Selected = Session["ORDER"].ToString();
-                ShoppingBiz Biz = new ShoppingBiz();
-                DataTable dt = new DataTable();// Biz.GetBasketSelected();
-                if (dt != null && dt.Rows.Count > 0)
-                    gvBasket.DataSource = dt;
+                DataTable dtSelected = (DataTable)Session["ORDER"];
+                if (dtSelected != null && dtSelected.Rows.Count > 0)
+                    gvBasket.DataSource = dtSelected;
                 else
                     gvBasket.DataSource = null;
 
@@ -38,6 +43,59 @@ namespace VloveImport.web.Customer
             {
                 //Error
             }
+        }
+        protected void BindDataTrans()
+        {
+            if (Session["TRANS"] != null)
+            {
+                string Trans = Session["TRANS"].ToString();
+                string[] spl = Trans.Split(',');
+
+                lbgroup1.Text = spl[0].Split('|')[1];
+                lbgroup2.Text = spl[1].Split('|')[1];
+            }
+            else
+            {
+                //Error
+            }
+        }
+
+        protected void btnConfirm_ServerClick(object sender, EventArgs e)
+        {
+            if (Session["TRANS"] != null && Session["ORDER"] != null)
+            {
+                string Result = "";
+                string Trans = Session["TRANS"].ToString();
+                string[] spl = Trans.Split(',');
+                DataTable dt = (DataTable)Session["ORDER"];
+                string User = "TEST"; //SessionUser
+
+                ShoppingBiz Biz = new ShoppingBiz();
+                OrderData Data = new OrderData();
+                Data.ORDER_STATUS = 1;
+                Data.CUS_ID = 0;//SessionUser
+                Data.ORDER_TRANSPOT_CHINA = Convert.ToInt32(spl[0].Split('|')[0]);
+                Data.ORDER_TRANSPOT_THAI = Convert.ToInt32(spl[1].Split('|')[0]);
+                Data.Create_User = User; //SessionUser
+
+                Result = Biz.MakeOrder(Data, dt, User);
+                if (Result == "")
+                {
+
+                }
+                else
+                {
+                    //Error
+                }
+            }
+        }
+
+        protected void btnBack_ServerClick(object sender, EventArgs e)
+        {
+            EncrypUtil en = new EncrypUtil();
+            string CUS_ID = "0";//SessionUser
+            CUS_ID = en.EncrypData(CUS_ID);
+            Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
         }
     }
 }

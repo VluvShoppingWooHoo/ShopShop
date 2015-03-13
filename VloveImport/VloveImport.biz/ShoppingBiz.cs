@@ -29,12 +29,30 @@ namespace VloveImport.biz
             else
                 return null;
         }
-        public string MakeOrder(Int32 CUS_ID)
+        public DataTable GetTransList(string Type)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             DataSet ds = new DataSet();
-            ds = dal.GetBasketList(CUS_ID);
-            return "";
+            ds = dal.GetTransList(Type);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+        public string MakeOrder(OrderData Data, DataTable dt, string User)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            string[] Result = new string[2];
+            string Res = "";
+            int OID = -1;
+            //Header
+            Result = dal.MakeOrderHeader(Data);
+            if (Result[1] != "")
+                OID = Convert.ToInt32(Convert.ToInt32(Result[1]));
+
+            Res = dal.MakeOrderDetail(dt, OID, User);
+
+            return Res;
         }
 
         #region Admin Manage

@@ -22,48 +22,39 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.GridView gvBasket;
         
         /// <summary>
-        /// rdbCar control.
+        /// lbgroup1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbCar;
+        protected global::System.Web.UI.WebControls.Label lbgroup1;
         
         /// <summary>
-        /// rdbBoat control.
+        /// lbgroup2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbBoat;
+        protected global::System.Web.UI.WebControls.Label lbgroup2;
         
         /// <summary>
-        /// rdbSafe control.
+        /// btnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbSafe;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnBack;
         
         /// <summary>
-        /// rdbNim control.
+        /// btnConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbNim;
-        
-        /// <summary>
-        /// btnUrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUrder;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnConfirm;
     }
 }

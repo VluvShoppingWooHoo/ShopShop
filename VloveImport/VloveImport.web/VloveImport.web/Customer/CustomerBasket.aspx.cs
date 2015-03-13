@@ -46,7 +46,7 @@ namespace VloveImport.web.Customer
         protected void btnOrder_ServerClick(object sender, EventArgs e)
         {
             Session.Remove("ORDER");
-            string Selected = "";
+            //string Selected = "";
             CheckBox cb;
             HiddenField hd;
             DataTable dtSelected = new DataTable();
@@ -61,12 +61,10 @@ namespace VloveImport.web.Customer
                     if (cb != null && !cb.Checked)
                     {
                         hd = (HiddenField)gvr.FindControl("hdBK_ID");
-                        dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
-                        //Selected = Selected + hd.Value + ",";
-
+                        dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());                        
                     }
                 }
-                Session.Add("ORDER", Selected);
+                Session.Add("ORDER", dtSelected);
                 EncrypUtil en = new EncrypUtil();
                 string CUS_ID = "0";//SessionUser
                 CUS_ID = en.EncrypData(CUS_ID);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VloveImport.biz;
 using VloveImport.util;
 
 namespace VloveImport.web.Customer
@@ -13,30 +14,48 @@ namespace VloveImport.web.Customer
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string CID = Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
-            if (CID == "")
-                Response.Redirect("CustomerBasket.aspx");
+            if (!IsPostBack)
+            {
+                string CID = Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
+                if (CID == "")
+                    Response.Redirect("CustomerBasket.aspx");
+
+                BindTrans();
+            }
         }
 
-        protected void btnUrder_Click(object sender, EventArgs e)
+        protected void BindTrans()
+        {
+            ShoppingBiz Biz = new ShoppingBiz();
+            rdbChina.DataSource = Biz.GetTransList("CHINA");
+            rdbChina.DataBind();
+            rdbChina.SelectedIndex = 0;
+
+            rdbThai.DataSource = Biz.GetTransList("THAI");
+            rdbThai.DataBind();
+            rdbThai.SelectedIndex = 0;
+        }
+
+        protected void btnOrder_ServerClick(object sender, EventArgs e)
         {
             Session.Remove("TRANS");
-            string Trans = "";
-            if (rdbCar.Checked)
-                Trans = rdbCar.Text;
-            else
-                Trans = rdbBoat.Text;
-
-            if (rdbSafe.Checked)
-                Trans = Trans + "|" + rdbSafe.Text;
-            else
-                Trans = Trans + "|" + rdbNim.Text;
+            string China = rdbChina.SelectedItem.Value + "|" + rdbChina.SelectedItem.Text;
+            string Thai = rdbThai.SelectedItem.Value + "|" + rdbThai.SelectedItem.Text;
+            string Trans = China + "," + Thai;                          
 
             Session.Add("TRANS", Trans);
             EncrypUtil en = new EncrypUtil();
             string CUS_ID = "0";//SessionUser
             CUS_ID = en.EncrypData(CUS_ID);
             Response.Redirect("CustomerConfirmInfo.aspx?CID=" + CUS_ID);
+        }
+
+        protected void btnBack_ServerClick(object sender, EventArgs e)
+        {
+            EncrypUtil en = new EncrypUtil();
+            string CUS_ID = "0";//SessionUser
+            CUS_ID = en.EncrypData(CUS_ID);
+            Response.Redirect("CustomerBasket.aspx?CID=" + CUS_ID);
         }
 
     }
