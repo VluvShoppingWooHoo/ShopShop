@@ -12,6 +12,7 @@ namespace VloveImport.data
         public string Login { get; set; }
         public string FirstName { get; set; }
         public string LastLName { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
     }
 }

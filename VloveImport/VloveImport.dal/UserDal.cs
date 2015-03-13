@@ -91,5 +91,24 @@ namespace VloveImport.dal
                 throw new Exception("GET_USER -> msg : " + ex.Message);
             }           
         }
+
+        public DataSet GET_USER_LOGIN(string USERNAME, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_EMP_USER_LOGIN");
+
+                SqlCommandData.SetParameter("USERNAME", SqlDbType.VarChar, ParameterDirection.Input, USERNAME);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ADMIN_GET_EMP_USER_LOGIN -> msg : " + ex.Message);
+            }
+        }
+
     }
 }

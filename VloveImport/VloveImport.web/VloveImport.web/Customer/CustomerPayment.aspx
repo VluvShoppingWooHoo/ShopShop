@@ -10,16 +10,32 @@
         <div class="col s10 m10 l10 TestBox1">
             เลือกวิธีการชำระเงิน
         <br />
+<<<<<<< HEAD
             <div class="row s6 m6 l6 TestBox1">
                 <br />
                 <asp:RadioButton ID="rdbPayment1" runat="server" GroupName="Payment" Checked="true" />
                 ชำระเงินรอบเดียว (ค่าสินค้าและค่าขนส่งทั้งหมด)
+=======
+        <div class="row s6 m6 l6 TestBox1">
+            <br />         
+            <asp:RadioButton ID="rdbPayment1" runat="server" GroupName="Payment" Checked="true"/>
+            ชำระเงินรอบเดียว (ค่าสินค้าและค่าขนส่งทั้งหมด)
+>>>>>>> origin/master
             <br />
                 <asp:RadioButton ID="rdbPayment2" runat="server" GroupName="Payment" Checked="true" />
                 ชำระเงิน 2 รอบ
             1. จ่ายเงินรอบแรก (ค่าสินค้า+ค่าขนส่งจากจีนมาไทย)
             2. จ่ายเงินรอบสอง (ค่าขนส่งภายในประเทศ)
+<<<<<<< HEAD
             </div>
+=======
+            <br />
+            รวมค่าใช้จ่ายทั้งหมด
+            <br />
+            <button id="btnConfirm" runat="server" type="submit" onserverclick="btnConfirm_ServerClick"
+                name="action" class="btn waves-effect orange waves-light">Pay                                
+            </button>  
+>>>>>>> origin/master
         </div>
     </div>
     <script type="text/javascript">
