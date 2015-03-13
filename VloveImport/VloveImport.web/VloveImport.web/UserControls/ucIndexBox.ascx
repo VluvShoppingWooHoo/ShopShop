@@ -1644,9 +1644,9 @@
         </div>
 
     </div>
-    <div class="col s6 m6 l6">
+    <div class="col s6 m6 l6" style="width:800px;">
         <div class="slider">
-            <ul class="slides">
+            <ul class="slides" style="height:300px;width:800px;">
                 <li class="li1">
                     <img src="../Images/pic/Banner/ILoveImport.jpg" />
                     <!-- random image -->
