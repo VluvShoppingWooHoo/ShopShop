@@ -77,9 +77,13 @@
     <Content Include="img\icon\r_box.png" />
     <Content Include="img\icon\Sign-Close-icon.png" />
     <Content Include="pages\frmCustomerList.aspx" />
+    <Content Include="pages\frmGroupUser.aspx" />
+    <Content Include="pages\frmGroupUserList.aspx" />
     <Content Include="pages\frmIndex.aspx" />
     <Content Include="pages\frmMasterBank.aspx" />
     <Content Include="pages\frmOrderList.aspx" />
+    <Content Include="pages\frmUser.aspx" />
+    <Content Include="pages\frmUserList.aspx" />
     <Content Include="UserControls\ucCalendar.ascx" />
     <Content Include="UserControls\ucMenubar.ascx" />
     <Content Include="Web.config" />
@@ -106,6 +110,20 @@
     <Compile Include="pages\frmCustomerList.aspx.designer.cs">
       <DependentUpon>frmCustomerList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\frmGroupUser.aspx.cs">
+      <DependentUpon>frmGroupUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmGroupUser.aspx.designer.cs">
+      <DependentUpon>frmGroupUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmGroupUserList.aspx.cs">
+      <DependentUpon>frmGroupUserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmGroupUserList.aspx.designer.cs">
+      <DependentUpon>frmGroupUserList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\frmIndex.aspx.cs">
       <DependentUpon>frmIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -126,6 +144,20 @@
     </Compile>
     <Compile Include="pages\frmOrderList.aspx.designer.cs">
       <DependentUpon>frmOrderList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmUser.aspx.cs">
+      <DependentUpon>frmUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmUser.aspx.designer.cs">
+      <DependentUpon>frmUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmUserList.aspx.cs">
+      <DependentUpon>frmUserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmUserList.aspx.designer.cs">
+      <DependentUpon>frmUserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\ucCalendar.ascx.cs">
