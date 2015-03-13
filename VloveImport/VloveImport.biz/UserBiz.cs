@@ -37,5 +37,14 @@ namespace VloveImport.biz
             else
                 return null;
         }
+
+        public DataSet GET_USER_LOGIN(string USERNAME, string Act)
+        {
+            DataSet ds = new DataSet();
+            UserDal dal = new UserDal("LocalConnection");
+            ds = dal.GET_USER_LOGIN(USERNAME, Act);
+            return ds;
+        }
+
     }
 }
