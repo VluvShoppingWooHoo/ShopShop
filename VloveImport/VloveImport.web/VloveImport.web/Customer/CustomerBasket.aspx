@@ -47,7 +47,7 @@
             <HeaderStyle BackColor="Orange" />
         </asp:GridView>            
         <button id="btnOrder" runat="server" type="submit" onserverclick="btnOrder_ServerClick"
-            name="action" class="btn waves-effect orange waves-light">Order                                
+            name="action" class="btn waves-effect orange waves-light">Selected                                
         </button>
     </div>            
 
