@@ -19,7 +19,7 @@ namespace VloveImport.util
         public string DecryptData(string strText)
         {
             EncrypDLL.EncrypDll Enc = new EncrypDLL.EncrypDll();
-            return Enc.Decrypt(strText, "VLOVEIMPORT");
+            return Enc.Decrypt(strText.Replace(" ", "+"), "VLOVEIMPORT");
         }
 
     }

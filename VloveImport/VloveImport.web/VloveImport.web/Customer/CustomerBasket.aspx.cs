@@ -18,7 +18,9 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                //string CID = Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
+                string CID = "0";// Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
+                if (CID == "")
+                    Response.Redirect("CustomerBasket.aspx");
                 BindData();
             }
         }
@@ -28,9 +30,15 @@ namespace VloveImport.web.Customer
             ShoppingBiz Biz = new ShoppingBiz();
             DataTable dt = Biz.GetBasketList(0);
             if (dt != null && dt.Rows.Count > 0)
+            {
                 gvBasket.DataSource = dt;
+                ViewState["SOURCE"] = dt;
+            }
             else
+            {
                 gvBasket.DataSource = null;
+                ViewState["SOURCE"] = null;
+            }
 
             gvBasket.DataBind();
         }
@@ -41,22 +49,30 @@ namespace VloveImport.web.Customer
             string Selected = "";
             CheckBox cb;
             HiddenField hd;
-            foreach (GridViewRow gvr in gvBasket.Rows)
+            DataTable dtSelected = new DataTable();
+            if (ViewState["SOURCE"] != null)
             {
-                cb = new CheckBox();
-                hd = new HiddenField();
-                cb = (CheckBox)gvr.FindControl("cbItem");
-                if (cb != null && cb.Checked)
+                dtSelected = (DataTable)ViewState["SOURCE"];
+                foreach (GridViewRow gvr in gvBasket.Rows)
                 {
-                    hd = (HiddenField)gvr.FindControl("hdBK_ID");
-                    Selected = Selected + hd.Value + ",";
+                    cb = new CheckBox();
+                    hd = new HiddenField();
+                    cb = (CheckBox)gvr.FindControl("cbItem");
+                    if (cb != null && !cb.Checked)
+                    {
+                        hd = (HiddenField)gvr.FindControl("hdBK_ID");
+                        dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
+                        //Selected = Selected + hd.Value + ",";
+
+                    }
                 }
+                Session.Add("ORDER", Selected);
+                EncrypUtil en = new EncrypUtil();
+                string CUS_ID = "0";//SessionUser
+                CUS_ID = en.EncrypData(CUS_ID);
+                Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
             }
-            Session.Add("ORDER", Selected);
-            EncrypUtil en = new EncrypUtil();
-            string CUS_ID = "0";//SessionUser
-            CUS_ID = en.EncrypData(CUS_ID);
-            Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
         }
+
     }
 }

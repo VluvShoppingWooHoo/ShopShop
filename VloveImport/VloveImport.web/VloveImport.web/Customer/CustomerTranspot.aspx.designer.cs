@@ -13,12 +13,48 @@ namespace VloveImport.web.Customer {
     public partial class CustomerTranspot {
         
         /// <summary>
-        /// btnOrder control.
+        /// rdbCar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnOrder;
+        protected global::System.Web.UI.WebControls.RadioButton rdbCar;
+        
+        /// <summary>
+        /// rdbBoat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbBoat;
+        
+        /// <summary>
+        /// rdbSafe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbSafe;
+        
+        /// <summary>
+        /// rdbNim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbNim;
+        
+        /// <summary>
+        /// btnUrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUrder;
     }
 }
