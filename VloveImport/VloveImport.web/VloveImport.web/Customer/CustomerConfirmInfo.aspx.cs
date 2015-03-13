@@ -81,7 +81,10 @@ namespace VloveImport.web.Customer
                 Result = Biz.MakeOrder(Data, dt, User);
                 if (Result == "")
                 {
-
+                    EncrypUtil en = new EncrypUtil();
+                    string CUS_ID = "0";//SessionUser
+                    CUS_ID = en.EncrypData(CUS_ID);
+                    Response.Redirect("CustomerPayment.aspx?CID=" + CUS_ID);
                 }
                 else
                 {
