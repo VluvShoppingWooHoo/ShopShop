@@ -65,6 +65,81 @@ namespace VloveImport.dal
                 throw new Exception("GET_BASKET_LIST -> msg : " + ex.Message);
             }
         }
+        public DataSet GetTransList(string Type)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_TRANS_LIST");
+                SqlCommandData.SetParameter_Input_INT("TYPEE", SqlDbType.VarChar, ParameterDirection.Input, Type);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_TRANS_LIST -> msg : " + ex.Message);
+            }
+        }
+        public string[] MakeOrderHeader(OrderData Data)
+        {
+            try
+            {
+                string[] Result = new string[2];
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_ORDER");
+
+                SqlCommandData.SetParameter_Input_INT("ORDER_STATUS", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_STATUS);
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, Data.CUS_ID);
+                SqlCommandData.SetParameter_Input_INT("ORDER_TRANSPOT_CHINA", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TRANSPOT_CHINA);
+                SqlCommandData.SetParameter_Input_INT("ORDER_TRANSPOT_THAI", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TRANSPOT_THAI);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
+                SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);
+
+                SqlCommandData.ExecuteNonQuery();
+                Result[1] = SqlCommandData.GetOutputStoreProcedure("ORDER_ID");
+                SqlCommandData.Commit();
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return new string[2] {"INS_ORDER -> msg : " + ex.Message, ""};
+            }
+        }
+        public string MakeOrderDetail(DataTable dt, int Order_ID, string User)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    SqlCommandData.SetStoreProcedure("INS_ORDER_DETAIL");
+
+                    SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, Order_ID);
+                    SqlCommandData.SetParameter("OD_ITEMNAME", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_ITEMNAME"].ToString());
+                    SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_AMOUNT"].ToString()));
+                    SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_PRICE"].ToString()));
+                    SqlCommandData.SetParameter("OD_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_SIZE"].ToString());
+                    SqlCommandData.SetParameter("OD_COLOR", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_COLOR"].ToString());
+                    SqlCommandData.SetParameter("OD_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_REMARK"].ToString());
+                    SqlCommandData.SetParameter_Input_INT("OD_REF_BASKET", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_ID"].ToString()));
+                    SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, User);
+
+                    SqlCommandData.ExecuteNonQuery();
+                }
+                
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return ("INS_ORDER_DETAIL -> msg : " + ex.Message);
+            }
+        }
 
 
         #region Admin Manage

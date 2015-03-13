@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonData.cs" />
+    <Compile Include="OrderData.cs" />
     <Compile Include="ShoppingData.cs" />
     <Compile Include="CustomerData.cs" />
     <Compile Include="Extension\Constant.cs" />
