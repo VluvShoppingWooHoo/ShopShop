@@ -1648,7 +1648,7 @@
         <div class="slider">
             <ul class="slides">
                 <li class="li1">
-                    <img src="../Images/pic/Banner/I Love Import.jpg" />
+                    <img src="../Images/pic/Banner/ILoveImport.jpg" />
                     <!-- random image -->
                 </li>
                 <li class="li2">
