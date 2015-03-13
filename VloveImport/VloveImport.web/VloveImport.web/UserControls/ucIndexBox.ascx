@@ -1648,14 +1648,15 @@
         <div class="slider">
             <ul class="slides">
                 <li class="li1">
-                    <img src="../Images/pic/Banner1.png" /><!-- random image -->
+                    <img src="../Images/pic/Banner/I Love Import.jpg" />
+                    <!-- random image -->
                 </li>
                 <li class="li2">
-                    <img src="../Images/pic/beautiful-art-of-chinese-new-year.jpg" />
+                    <img src="../Images/pic/Banner/Sale.jpg" />
                     <!-- random image -->
                 </li>
                 <li class="li3">
-                    <img src="../Images/pic/RateImport-Q.gif" />
+                    <img src="../Images/pic/Banner/Tour.jpg" />
                     <!-- random image -->
                 </li>
             </ul>
