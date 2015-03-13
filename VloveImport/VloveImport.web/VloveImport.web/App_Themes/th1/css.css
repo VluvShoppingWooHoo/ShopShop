@@ -282,6 +282,7 @@ div[class~="title"]
     {
         width: 20%;
         display: inline-block;
+        margin-right: 10px;
     }
 
     div[class~="title"] h4
@@ -296,7 +297,7 @@ div[class~="catlist"]
     /*position: fixed;*/
     border: 3px solid #eeeeee;
     position: absolute;
-    left: 25%;
+    left: 18%;
     z-index: 10;
     background: white;
     top: 0%;
@@ -331,21 +332,25 @@ div[class~="hotlink"]
     border: none;
 }
 
-div[class~="hotlink"] a
-{
-    /*padding: 0px !important;*/
-    font-size: 20px !important;
-    margin-bottom: 10px !important;
-}
-
-div[class~="hotlink"] i
-{
-    /*font-size: 30px !important;*/
-    padding-right: 7%;
-}
-
-    div[class~="hotlink"] i[class^="flaticon-"]:before, div[class~="hotlink"] i[class*=" flaticon-"]:before, div[class~="hotlink"] i[class^="flaticon-"]:after, div[class~="hotlink"] i[class*=" flaticon-"]:after
+    div[class~="hotlink"] a
     {
-        font-size: 30px !important;
-        padding: 0px !important;
+        font-size: 15px !important;
+        margin-bottom: 10px !important;
     }
+
+    div[class~="hotlink"] i
+    {
+        /*font-size: 30px !important;*/
+        padding-right: 7%;
+    }
+
+        div[class~="hotlink"] i[class^="flaticon-"]:before, div[class~="hotlink"] i[class*=" flaticon-"]:before, div[class~="hotlink"] i[class^="flaticon-"]:after, div[class~="hotlink"] i[class*=" flaticon-"]:after
+        {
+            font-size: 25px !important;
+            padding: 0px !important;
+        }
+
+.slider
+{
+    height: 350px;
+}

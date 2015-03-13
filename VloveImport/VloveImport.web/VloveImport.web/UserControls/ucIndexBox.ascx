@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
 <div class="row">
-    <div id="sideMenu" class="col s3 m3 l3">
+    <div id="sideMenu" class="col s2 m2 l2">
 
         <div class="cat-main" style="clear: both;">
             <div class="market-cat J_TBMarketCat tm1" id="cat1">
@@ -754,7 +754,7 @@
                         <i class="shadow"></i>
                         <i class="icon">G</i>
                     </div>
-                    <h4>เครื่องใช้ไฟฟ้าบ้านสำนักงาน</h4>
+                    <h4>เครื่องใช้ไฟฟ้า</h4>
                 </div>
                 <div class="catlist clearfix">
                     <div class="cat-l">
@@ -1644,9 +1644,9 @@
         </div>
 
     </div>
-    <div class="col s6 m6 l6" style="width:800px;">
+    <div class="col s8 m8 l8" >
         <div class="slider">
-            <ul class="slides" style="height:300px;width:800px;">
+            <ul class="slides" style="height:300px;">
                 <li class="li1">
                     <img src="../Images/pic/Banner/ILoveImport.jpg" />
                     <!-- random image -->
@@ -1662,12 +1662,12 @@
             </ul>
         </div>
     </div>
-    <div class="col s3 m3 l3">
+    <div class="col s2 m2 l2">
         <div class="collection hotlink">                        
-            <a href="#!" class="collection-item light-blue lighten-2 white-text"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
-            <a href="#!" class="collection-item light-blue lighten-2 white-text"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
-            <a href="#!" class="collection-item light-blue lighten-2 white-text"><i class="flaticon-logistics3"></i>ส่งแบบ Offline</a>
-            <a href="#!" class="collection-item light-blue lighten-2 white-text"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
+            <a href="#!" class="collection-item light-blue lighten-2 white-text" style="padding-left:0px"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
+            <a href="#!" class="collection-item light-blue lighten-2 white-text" style="padding-left:0px"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
+            <a href="#!" class="collection-item light-blue lighten-2 white-text" style="padding-left:0px"><i class="flaticon-logistics3"></i>ส่งแบบ Offline</a>
+            <a href="#!" class="collection-item light-blue lighten-2 white-text" style="padding-left:0px"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
         </div>
         <iframe marginwidth="0" marginheight="0" src="http://www.bangkokbank.com/fxbanner/banner1.htm" frameborder="0" width="173" scrolling="no" height="165"></iframe>
         <%--<iframe id="ifrmBanner" scrolling="no" frameborder="0" src="http://www.bangkokbank.com/MajorRates/MainBannerThai.htm" width="170" height="160"></iframe>--%>
