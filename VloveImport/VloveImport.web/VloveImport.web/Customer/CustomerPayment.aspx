@@ -6,7 +6,14 @@
         เลือกวิธีการชำระเงิน
         <br />
         <div class="row s6 m6 l6 TestBox1">
-
+            <br />
+            <asp:RadioButton ID="rdbPayment1" runat="server" GroupName="Payment" Checked="true"/>
+            ชำระเงินรอบเดียว (ค่าสินค้าและค่าขนส่งทั้งหมด)
+            <br />
+            <asp:RadioButton ID="rdbPayment2" runat="server" GroupName="Payment" Checked="true"/>
+            ชำระเงิน 2 รอบ
+            1. จ่ายเงินรอบแรก (ค่าสินค้า+ค่าขนส่งจากจีนมาไทย)
+            2. จ่ายเงินรอบสอง (ค่าขนส่งภายในประเทศ)
         </div>
     </div>
     <script type="text/javascript">
