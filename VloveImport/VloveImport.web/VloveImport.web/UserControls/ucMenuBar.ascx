@@ -1,34 +1,66 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucMenuBar.ascx.cs" Inherits="VloveImport.web.UserControls.ucMenuBar" %>
-<div class="menuBar red row center" style="line-height: 64px; height: 64px;">
+<div id="divSide" class="collection with-header">
+    <div class="collection-header">
+        Menu
+    </div>
+    <a class="collection-item" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a>
+    <a class="collection-item" href="/Customer/Order.aspx">สั่งสินค้า</a>
+    <a class="collection-item" href="/Customer/News.aspx">ข่าวสารและกิจกรรม</a>
+    <a class="collection-item" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a>
+    <a class="collection-item" href="/Customer/HowTo.aspx?type=other">อื่นๆ</a>
+    <a class="collection-item" href="/Customer/AboutUs.aspx">เกี่ยวกับเรา</a>
+    <a class="collection-item" href="/Customer/HowTo.aspx?type=order">วิธีการสั่งซื้อสินค้า</a>
+    <a class="collection-item" href="/Customer/HowTo.aspx?type=rateimport">ค่าขนส่ง</a>
+    <a class="collection-item" href="/Customer/Promotion.aspx">โปรโมชั่น</a>
+    <a class="collection-item" href="/Customer/ContactUs.aspx">ติดต่อเรา</a>
+</div>
+<script type="text/javascript">
+    $(function () {
+
+        var type = getUrlParameter('type');
+        if (type == 'rateimport')
+            $('#divRateimport').show();
+        else if (type == 'other')
+            $('#divOther').show();
+        else
+            $('#divOrder').show();
+
+        $('.collection-item').on("click", function () {
+            $('.collection-item').removeClass("active");
+            $(this).addClass('active');
+        });
+    });
+</script>
+<%--<div class="menuBar red row center" style="line-height: 64px; height: 64px;">
     <div class="col s2 m2 l2">
-        <a class=" white-text font15" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a>
+        <a class="collection-item" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a>
     </div>
     <div class="col s2 m2 l2">
-        <a class=" white-text font15" href="/Customer/Order.aspx">สั่งสินค้า</a>
+        <a class="collection-item" href="/Customer/Order.aspx">สั่งสินค้า</a>
     </div>
     <div class="col s2 m2 l2">
-        <a class=" white-text font15" href="/Customer/News.aspx">ข่าวสารและกิจกรรม</a>
+        <a class="collection-item" href="/Customer/News.aspx">ข่าวสารและกิจกรรม</a>
     </div>
     <div class="col s2 m2 l2">
-        <a class=" white-text font15" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a>
+        <a class="collection-item" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a>
     </div>
     <div class="col s4 m4 l4">
         <a class="red dropdown-button white-text font15 width200px" href="#!" data-activates="dropdown2" style="display:inline-block; width:200px">อื่นๆ<i class="mdi-navigation-arrow-drop-down right"></i></a>
         <ul id="dropdown2" class="dropdown-content width200px">
-            <li><a class="red white-text font15" href="/Customer/HowTo.aspx?type=other">อื่นๆ</a></li>
+            <li><a class="collection-item" href="/Customer/HowTo.aspx?type=other">อื่นๆ</a></li>
             <li class="divider"></li>
-            <li><a class="red white-text font15" href="/Customer/AboutUs.aspx">เกี่ยวกับเรา</a></li>
+            <li><a class="collection-item" href="/Customer/AboutUs.aspx">เกี่ยวกับเรา</a></li>
             <li class="divider"></li>
-            <li><a class="red white-text font15" href="/Customer/HowTo.aspx?type=order">วิธีการสั่งซื้อสินค้า</a></li>
+            <li><a class="collection-item" href="/Customer/HowTo.aspx?type=order">วิธีการสั่งซื้อสินค้า</a></li>
             <li class="divider"></li>
-            <li><a class="red white-text font15" href="/Customer/HowTo.aspx?type=rateimport">ค่าขนส่ง</a></li>
+            <li><a class="collection-item" href="/Customer/HowTo.aspx?type=rateimport">ค่าขนส่ง</a></li>
             <li class="divider"></li>
-            <li><a class="red white-text font15" href="/Customer/Promotion.aspx">โปรโมชั่น</a></li>
+            <li><a class="collection-item" href="/Customer/Promotion.aspx">โปรโมชั่น</a></li>
             <li class="divider"></li>
-            <li><a class="red white-text font15" href="/Customer/ContactUs.aspx">ติดต่อเรา</a></li>
+            <li><a class="collection-item" href="/Customer/ContactUs.aspx">ติดต่อเรา</a></li>
         </ul>
     </div>
-</div>
+</div>--%>
 
 <%--<nav class="red">
     <ul class="center hide-on-med-and-down">

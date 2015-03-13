@@ -80,7 +80,7 @@
         $('.parallax').parallax();
         $('ul.tabs').tabs();
         $('.collapsible').collapsible();
-
+        $(".button-collapse").sideNav();
         $('.modal-trigger').leanModal({
             dismissible: false
         });
