@@ -97,7 +97,7 @@
                 <HeaderStyle CssClass="width5" />
                 <ItemStyle CssClass="ItemStyle-center" />
             </asp:TemplateField>
-            <asp:BoundField DataField="Index" HeaderText="No." />
+            <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
             <asp:BoundField HeaderText="Order ID" />
             <asp:BoundField HeaderText="Order Date" />
             <asp:BoundField HeaderText="Total Amount" />
