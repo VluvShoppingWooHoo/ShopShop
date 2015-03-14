@@ -124,8 +124,10 @@ namespace VloveImport.dal
                     SqlCommandData.SetParameter("OD_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_SIZE"].ToString());
                     SqlCommandData.SetParameter("OD_COLOR", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_COLOR"].ToString());
                     SqlCommandData.SetParameter("OD_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_REMARK"].ToString());
-                    SqlCommandData.SetParameter_Input_INT("OD_REF_BASKET", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_ID"].ToString()));
+                    SqlCommandData.SetParameter("OD_URL", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_URL"].ToString());
+                    SqlCommandData.SetParameter("OD_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_PICURL"].ToString());
                     SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, User);
+                    SqlCommandData.SetParameter_Input_INT("OD_REF_BASKET", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_ID"].ToString()));
 
                     SqlCommandData.ExecuteNonQuery();
                 }
