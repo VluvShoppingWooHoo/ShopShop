@@ -67,6 +67,9 @@
     <Content Include="images\bg.jpg" />
     <Content Include="images\bgf.png" />
     <Content Include="images\icons.png" />
+    <Content Include="images\icon\c_box.png" />
+    <Content Include="images\icon\l_box.png" />
+    <Content Include="images\icon\r_box.png" />
     <Content Include="img\icon\b_edit.png" />
     <Content Include="img\icon\Close-2-icon.png" />
     <Content Include="img\icon\close-icon.png" />
@@ -74,8 +77,11 @@
     <Content Include="img\icon\c_box.png" />
     <Content Include="img\icon\date.png" />
     <Content Include="img\icon\l_box.png" />
+    <Content Include="img\icon\nxt-checkbox-checked-not-ok-md.png" />
+    <Content Include="img\icon\nxt-checkbox-checked-ok-md.png" />
     <Content Include="img\icon\r_box.png" />
     <Content Include="img\icon\Sign-Close-icon.png" />
+    <Content Include="pages\frmApprovePayment.aspx" />
     <Content Include="pages\frmCustomerList.aspx" />
     <Content Include="pages\frmGroupUser.aspx" />
     <Content Include="pages\frmGroupUserList.aspx" />
@@ -102,6 +108,13 @@
     </Compile>
     <Compile Include="MasterPage\Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmApprovePayment.aspx.cs">
+      <DependentUpon>frmApprovePayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmApprovePayment.aspx.designer.cs">
+      <DependentUpon>frmApprovePayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\frmCustomerList.aspx.cs">
       <DependentUpon>frmCustomerList.aspx</DependentUpon>

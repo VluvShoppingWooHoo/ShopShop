@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="frmOrderList.aspx.cs" Inherits="VloveImport.web.admin.pages.frmOrderList" %>
 <%@ Register src="../UserControls/ucCalendar.ascx" tagname="ucCalendar" tagprefix="uc1" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -69,9 +72,31 @@
             </tr>
         </table>
     </fieldset>
-    <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" Width="95%">
+    <table>
+        <tr>
+            <td></td>
+            <td style ="text-align:right;">
+                <asp:Button ID="btnclearOrder" runat="server" Text="Clear Order" CssClass ="btnCancel" />
+            </td>
+        </tr>
+        <tr>
+            <td style ="text-align:left;">
+                <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
+            </td>
+            <td style ="text-align:right;">
+                <asp:Button ID="btnSelectOrder" runat="server" Text="ดูรายการที่เลือก" CssClass ="btnCancel" OnClick="btnSelectOrder_Click" />
+            </td>
+        </tr>
+    </table>
+    <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" Width="95%">
         <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:ImageButton ID="imgBtn_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-ok-md.png" Width="20px" />
+                </ItemTemplate>
+                <HeaderStyle CssClass="width5" />
+                <ItemStyle CssClass="ItemStyle-center" />
+            </asp:TemplateField>
             <asp:BoundField DataField="Index" HeaderText="No." />
             <asp:BoundField HeaderText="Order ID" />
             <asp:BoundField HeaderText="Order Date" />
@@ -79,9 +104,51 @@
             <asp:BoundField HeaderText="Customer Name" />
             <asp:BoundField HeaderText="Order Status" />
             <asp:BoundField HeaderText="Employee Name" />
-            <asp:TemplateField HeaderText="Tools"></asp:TemplateField>
+            <asp:TemplateField HeaderText="Tools">
+                <ItemTemplate>
+                    <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />&nbsp;&nbsp;
+                    <asp:ImageButton ID="imgBtn_delete" runat="server" Height="15px" ImageUrl="~/img/icon/Close-2-icon.png" Width="15px" OnClick="imgBtn_delete_Click" />
+                </ItemTemplate>
+                <ItemStyle CssClass="ItemStyle-center" />
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
+
+
+        <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" BackgroundCssClass="modalBackground"
+            PopupControlID="Panel1" TargetControlID="lblheader">
+        </asp:ModalPopupExtender>
+
+        <asp:Panel ID="Panel1" Height="700px" Width="1000px" runat="server" Style="display: none;"><%--Style="display: none;"--%>
+            <table width="600px" style ="border-collapse:separate; border-spacing:0px" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_LEFT"></td>
+                    <td align="left" class="trLogin_CENTER" style ="padding:0px 0px;">
+                        <div style ="margin-left:-40px; margin-top: 10px;">
+                            <asp:Label ID="lblheader" runat="server" Text="gfsgdfg"></asp:Label>
+                        </div>
+                    </td>
+                    <td align="right" width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_RIGHT">
+                        <div style="text-align:right;margin-right: 10px; margin-top: 10px;">
+                            <asp:ImageButton ID="BtnImgClose" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" />
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: #CFCDCD;">
+                    <td style ="text-align:center; padding:0px 0px;" colspan="3">
+                        <center>
+                            <asp:Panel Width="96%" Height="550px" ID="Panel2" runat="server" BackColor="#FFFFFF">
+                               
+                            </asp:Panel>
+                        </center>
+                    </td>
+                </tr>
+                <tr style="background-color: #CFCDCD;">
+                    <td height="15px" style ="padding:0px 0px;" align="center" colspan="3"></td>
+                </tr>
+            </table>
+        </asp:Panel>
+
     </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Content>

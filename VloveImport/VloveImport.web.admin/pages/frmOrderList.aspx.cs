@@ -19,6 +19,21 @@ namespace VloveImport.web.admin.pages
 
         }
 
+        protected void imgBtn_edit_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void imgBtn_delete_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void btnSelectOrder_Click(object sender, EventArgs e)
+        {
+            ModalPopupExtender1.Show();
+        }
+
 
 
        

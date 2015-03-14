@@ -800,8 +800,14 @@ td.second-column{
 	white-space:normal; /*---ให้มีการตัดคำขึ้นบรรทัดใหม่ตามปกติ/*/
 }
 dth30{ width :30%;}
-.width35{
-}
+
+.width5{ width :5%;}
+.width10{ width :10%;}
+.width15{ width :15%;}
+.width20{ width :20%;}
+.width25{ width :25%;}
+.width30{ width :30%;}
+.width35{ width :35%;}
 .width40{ width :40%;}
 .width45{ width :45%;}
 .width50{ width :50%;}
@@ -1630,4 +1636,27 @@ opacity: 0.5;
 .displayblock
 {
 	display:block;
+}
+
+.trLogin_LEFT
+{
+    background: url("../../Images/icon/l_box.png") no-repeat;
+    height: 43px;
+}
+
+.trLogin_RIGHT
+{
+    background: url("../../Images/icon/r_box.png") no-repeat;
+}
+
+.trLogin_CENTER
+{
+    background: url("../../Images/icon/c_box.png");
+}
+
+.modalBackground
+{
+    background-color: Gray;
+    filter: alpha(opacity=80);
+    opacity: 0.9;
 }
