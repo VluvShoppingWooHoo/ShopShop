@@ -28,7 +28,7 @@ namespace VloveImport.web.Customer
         protected void BindData()
         {
             ShoppingBiz Biz = new ShoppingBiz();
-            DataTable dt = Biz.GetBasketList(0);
+            DataTable dt = Biz.GetOrderList(0);
             if (dt != null && dt.Rows.Count > 0)
             {
                 gvOrder.DataSource = dt;
