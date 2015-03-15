@@ -88,22 +88,26 @@
             </td>
         </tr>
     </table>
-    <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" Width="95%">
+    <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" Width="95%" 
+        DataKeyNames ="ORDER_ID,ORDER_DATE,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:ImageButton ID="imgBtn_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-ok-md.png" Width="20px" />
+                     <ItemStyle CssClass="ItemStyle-center" />
                 </ItemTemplate>
                 <HeaderStyle CssClass="width5" />
                 <ItemStyle CssClass="ItemStyle-center" />
             </asp:TemplateField>
             <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
-            <asp:BoundField HeaderText="Order ID" />
-            <asp:BoundField HeaderText="Order Date" />
-            <asp:BoundField HeaderText="Total Amount" />
-            <asp:BoundField HeaderText="Customer Name" />
-            <asp:BoundField HeaderText="Order Status" />
-            <asp:BoundField HeaderText="Employee Name" />
+            <asp:BoundField DataField ="ORDER_ID" HeaderText="Order ID" />
+            <asp:BoundField DataField = "ORDER_DATE" HeaderText="Order Date" />
+            <asp:BoundField DataField = "CUS_FULLNAME" HeaderText="Customer Name" />
+            <asp:BoundField DataField = "ORDER_STATUS_TEXT" HeaderText="Order Status" />
+            <asp:BoundField DataField = "EMP_NAME" HeaderText="Employee Name" />
+            <asp:BoundField DataField = "SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount" >
+            <ItemStyle CssClass="ItemStyle-right" />
+            </asp:BoundField>
             <asp:TemplateField HeaderText="Tools">
                 <ItemTemplate>
                     <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />&nbsp;&nbsp;
@@ -138,7 +142,28 @@
                     <td style ="text-align:center; padding:0px 0px;" colspan="3">
                         <center>
                             <asp:Panel Width="96%" Height="550px" ID="Panel2" runat="server" BackColor="#FFFFFF">
-                               
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" Width="95%" 
+                                    DataKeyNames ="ORDER_ID,ORDER_DATE,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
+                                    <Columns>
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="imgBtn_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-ok-md.png" Width="20px" />
+                                                 <ItemStyle CssClass="ItemStyle-center" />
+                                            </ItemTemplate>
+                                            <HeaderStyle CssClass="width5" />
+                                            <ItemStyle CssClass="ItemStyle-center" />
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
+                                        <asp:BoundField DataField ="ORDER_ID" HeaderText="Order ID" />
+                                        <asp:BoundField DataField = "ORDER_DATE" HeaderText="Order Date" />
+                                        <asp:BoundField DataField = "CUS_FULLNAME" HeaderText="Customer Name" />
+                                        <asp:BoundField DataField = "ORDER_STATUS_TEXT" HeaderText="Order Status" />
+                                        <asp:BoundField DataField = "EMP_NAME" HeaderText="Employee Name" />
+                                        <asp:BoundField DataField = "SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount" >
+                                        <ItemStyle CssClass="ItemStyle-right" />
+                                        </asp:BoundField>
+                                    </Columns>
+                                </asp:GridView>
                             </asp:Panel>
                         </center>
                     </td>
