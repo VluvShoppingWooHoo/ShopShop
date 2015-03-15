@@ -94,7 +94,6 @@
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:ImageButton ID="imgBtn_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-ok-md.png" Width="20px" />
-                     <ItemStyle CssClass="ItemStyle-center" />
                 </ItemTemplate>
                 <HeaderStyle CssClass="width5" />
                 <ItemStyle CssClass="ItemStyle-center" />
@@ -142,13 +141,12 @@
                     <td style ="text-align:center; padding:0px 0px;" colspan="3">
                         <center>
                             <asp:Panel Width="96%" Height="550px" ID="Panel2" runat="server" BackColor="#FFFFFF">
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" Width="95%" 
+                                <asp:GridView ID="gv_detail_view" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="20" Width="95%" 
                                     DataKeyNames ="ORDER_ID,ORDER_DATE,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
                                     <Columns>
                                         <asp:TemplateField>
                                             <ItemTemplate>
                                                 <asp:ImageButton ID="imgBtn_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-ok-md.png" Width="20px" />
-                                                 <ItemStyle CssClass="ItemStyle-center" />
                                             </ItemTemplate>
                                             <HeaderStyle CssClass="width5" />
                                             <ItemStyle CssClass="ItemStyle-center" />
