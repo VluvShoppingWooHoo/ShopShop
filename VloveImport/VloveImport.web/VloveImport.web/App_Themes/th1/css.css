@@ -304,27 +304,66 @@ div[class~="catlist"]
     /*top: -15%;
     height: 650px;*/
     /*color: red;*/
+    width: 580px;
+    /*height: 400px;*/
 }
 
-div[class~="cat-l"]
-{
-    border-right: 1px solid #eeeeee;
-    padding-left: 2em;
-    width: 40%;
-    display: inline-block;
-}
+    div[class~="catlist"] div[class~="cat-l"]
+    {
+        border-right: 1px solid #eeeeee;
+        padding-left: 2em;
+        width: 40%;
+        display: inline-block;
+        height: 99%;
+    }
 
-div[class~="cat-r"]
+    div[class~="catlist"] div[class~="cat-r"]
+    {
+        border-left: 1px solid #eeeeee;
+        padding-left: 2em;
+        width: 40%;
+        display: inline-block;
+        height: 99%;
+    }
+
+h5[class~="subtitle"]
 {
-    border-left: 1px solid #eeeeee;
-    padding-left: 2em;
-    width: 40%;
-    display: inline-block;
+    /*text-decoration: underline;*/
 }
 
 h5[class~="subtitle"]
 {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    font-size: 15px !important;
+    color: grey !important;
+}
+
+    h5[class~="subtitle"]:hover
+    {
+        color: black !important;
+    }
+
+    h5[class~="subtitle"] i
+    {
+        font-size: 10px !important;
+    }
+
+    h5[class~="subtitle"] a
+    {
+        /*text-decoration: underline;*/
+        font-size: 15px !important;
+        color: grey !important;
+    }
+
+        h5[class~="subtitle"] a:hover
+        {
+            color: black !important;
+        }
+
+li[class~="section"]:hover
+{
+    background-color: #f5f5f5;
+    /*color: black !important;*/
 }
 
 .slider
@@ -332,28 +371,39 @@ h5[class~="subtitle"]
     height: 350px;
 }
 
-#divSide .collection-header
+#divMenubar
 {
-    font-size: 50px !important;
     background-color: #0288d1;
-    color: white;
 }
 
-#divSide .collection-item
+#divSide
 {
-    background-color: #4fc3f7;
-    color: white;
+    background-color: #0288d1;
+    border: none;
 }
 
-    #divSide .collection-item:hover
+    #divSide .collection-header
     {
-        background-color: #0288d1;
+        font-size: 50px !important;
+        /*background-color: #0288d1;*/
+        color: white;
     }
 
-    #divSide .collection-item.active
+    #divSide .collection-item
     {
-        background-color: #0288d1;
+        background-color: #4fc3f7;
+        color: white;
     }
+
+        #divSide .collection-item:hover
+        {
+            background-color: #0288d1;
+        }
+
+        #divSide .collection-item.active
+        {
+            background-color: #0288d1;
+        }
 
 div[id="hotlink"]
 {

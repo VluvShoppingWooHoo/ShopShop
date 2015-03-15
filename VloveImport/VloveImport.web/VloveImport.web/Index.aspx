@@ -79,6 +79,12 @@
             </tr>
         </table>--%>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#divMenubar").hide();
+            $("#divcontent").removeClass("col s10 m10 l10");
+            $("#divcontent").addClass("col s12 m12 l12");
+            $("#masterForm").fadeIn(1000);
+        });
+    </script>
 </asp:Content>
-
-

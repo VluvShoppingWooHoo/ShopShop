@@ -1644,9 +1644,9 @@
         </div>
 
     </div>
-    <div class="col s8 m8 l8" >
+    <div class="col s8 m8 l8">
         <div class="slider">
-            <ul class="slides" style="height:300px;">
+            <ul class="slides" style="height: 300px;">
                 <li class="li1">
                     <img src="../Images/pic/Banner/ILoveImport.jpg" />
                     <!-- random image -->
@@ -1663,11 +1663,11 @@
         </div>
     </div>
     <div class="col s2 m2 l2">
-        <div id="hotlink" class="collection">                        
-            <a href="#!" class="collection-item" style="padding-left:0px"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
-            <a href="#!" class="collection-item" style="padding-left:0px"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
-            <a href="#!" class="collection-item" style="padding-left:0px"><i class="flaticon-logistics3"></i>ส่งแบบ Offline</a>
-            <a href="#!" class="collection-item" style="padding-left:0px"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
+        <div id="hotlink" class="collection">
+            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
+            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
+            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-logistics3"></i>ส่งแบบ Offline</a>
+            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
         </div>
         <iframe marginwidth="0" marginheight="0" src="http://www.bangkokbank.com/fxbanner/banner1.htm" frameborder="0" width="173" scrolling="no" height="165"></iframe>
         <%--<iframe id="ifrmBanner" scrolling="no" frameborder="0" src="http://www.bangkokbank.com/MajorRates/MainBannerThai.htm" width="170" height="160"></iframe>--%>
@@ -1687,7 +1687,7 @@
         //        txt = txt.replace("\\", "\\\\");
         //        $("#sideMenu").html(txt);
         ManageSideMenu();
-        $("#masterForm").fadeIn(1000);
+        //$("#masterForm").fadeIn(1000);
         //    },
         //    error: function (err) {
         //        alert('gs');
@@ -1759,5 +1759,14 @@
         $('div[class~="catlist"]').addClass('z-depth-3');
         $('div[class~="cat-l"]').addClass('col s6 m6 l6');
         $('div[class~="cat-r"]').addClass('col s6 m6 l6');
+        //$('li[class~="section"]').prepend("<i class='Tiny mdi-image-lens'></i>");
+        $('h5[class~="subtitle"]').prepend("<i class='Tiny mdi-image-lens'>&nbsp</i>");
+        //$('h5[class~="subtitle"] a').each(function () {
+        //    var htm = "<i class='mdi-image-lens'></i>" + this.innerText;
+        //    //this.replaceWith(htm);
+        //    //this.append(htm);
+        //    //this.innerText("<i class='mdi-image-lens'></i>" + htm);
+        //    //this.Text("<i class='mdi-image-lens'></i>" + htm);
+        //});
     }
 </script>
