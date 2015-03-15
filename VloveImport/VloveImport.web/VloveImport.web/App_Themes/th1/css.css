@@ -373,12 +373,14 @@ li[class~="section"]:hover
 
 #divMenubar
 {
-    background-color: #0288d1;
+    /*background-color: #0288d1;*/
+    background-color: black;
 }
 
 #divSide
 {
-    background-color: #0288d1;
+    /*background-color: #0288d1;*/
+    background-color: black;
     border: none;
 }
 
@@ -386,23 +388,27 @@ li[class~="section"]:hover
     {
         font-size: 50px !important;
         /*background-color: #0288d1;*/
+        background-color: black;
         color: white;
     }
 
     #divSide .collection-item
     {
-        background-color: #4fc3f7;
+        /*background-color: #4fc3f7;*/
+        background-color: #424242;
         color: white;
     }
 
         #divSide .collection-item:hover
         {
-            background-color: #0288d1;
+            /*background-color: #0288d1;*/
+            background-color: #212121;
         }
 
         #divSide .collection-item.active
         {
-            background-color: #0288d1;
+            /*background-color: #0288d1;*/
+            background-color: black;
         }
 
 div[id="hotlink"]
@@ -443,3 +449,8 @@ div[id="hotlink"]
     {
         background-color: #0288d1;
     }
+
+nav[class="ucCustomerStatus"]
+{
+    box-shadow: none;
+}
