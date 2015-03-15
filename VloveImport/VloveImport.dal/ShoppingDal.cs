@@ -142,7 +142,20 @@ namespace VloveImport.dal
                 return ("INS_ORDER_DETAIL -> msg : " + ex.Message);
             }
         }
+        public DataSet GetOrderList(Int32 CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_ORDER_LIST");
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
 
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_ORDER_LIST -> msg : " + ex.Message);
+            }
+        }
 
         #region Admin Manage
         public DataSet GetOrderList(string Login, string ShopName)
