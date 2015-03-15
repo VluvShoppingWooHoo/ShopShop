@@ -61,18 +61,6 @@ D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\HtmlAgilityPack.xml
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.dll
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.pdb
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.dll
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.dll
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.dll
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\EncrypDLL.dll
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.pdb
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.pdb
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.pdb
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
-D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
 D:\Work\V_I_IMPORT\shop2\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.dll
 D:\Work\V_I_IMPORT\shop2\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.pdb
 D:\Work\V_I_IMPORT\shop2\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.dll
@@ -85,3 +73,15 @@ D:\Work\V_I_IMPORT\shop2\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.
 D:\Work\V_I_IMPORT\shop2\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
 D:\Work\V_I_IMPORT\shop2\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
 D:\Work\V_I_IMPORT\shop2\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.dll
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.pdb
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.dll
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.dll
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.dll
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\EncrypDLL.dll
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.pdb
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.pdb
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.pdb
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
+D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
