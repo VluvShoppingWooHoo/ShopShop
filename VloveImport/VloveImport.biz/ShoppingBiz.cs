@@ -54,6 +54,16 @@ namespace VloveImport.biz
 
             return Res;
         }
+        public DataTable GetOrderList(Int32 CUS_ID)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetOrderList(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
 
         #region Admin Manage
         public DataTable GetOrderList(string Login, string ShopName)
