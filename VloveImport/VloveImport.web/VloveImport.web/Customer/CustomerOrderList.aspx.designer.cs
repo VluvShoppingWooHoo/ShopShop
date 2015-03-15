@@ -10,33 +10,33 @@
 namespace VloveImport.web.Customer {
     
     
-    public partial class CustomerPayment {
+    public partial class CustomerOrderList {
         
         /// <summary>
-        /// rdbPayment1 control.
+        /// ucMenubar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbPayment1;
+        protected global::VloveImport.web.UserControls.ucMenuBar ucMenubar1;
         
         /// <summary>
-        /// rdbPayment2 control.
+        /// gvOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbPayment2;
+        protected global::System.Web.UI.WebControls.GridView gvOrder;
         
         /// <summary>
-        /// btnConfirm control.
+        /// btnOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnConfirm;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnOrder;
     }
 }

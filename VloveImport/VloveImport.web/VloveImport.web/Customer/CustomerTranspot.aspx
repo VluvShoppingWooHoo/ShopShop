@@ -3,10 +3,7 @@
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div class="col s2 m2 l2">
-            <uc1:ucmenubar id="ucMenubar1" runat="server" />
-        </div>
-        <div class="col s10 m10 l10 TestBox1">
+        <div class="col s12 m12 l12 TestBox1">
             ข้อมูลการขนส่ง
         <br />
             <br />

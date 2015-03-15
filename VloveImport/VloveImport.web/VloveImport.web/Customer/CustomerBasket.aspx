@@ -4,17 +4,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div class="col s2 m2 l2">
-            <uc1:ucMenubar ID="ucMenubar1" runat="server" />
-        </div>
-        <div class="col s10 m10 l10 TestBox1">
+        <div class="col s12 m12 l12 TestBox1">
             ตะกร้าสินค้าของฉัน
         <br />
             <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:CheckBox ID="cbItem" runat="server" />
+                            <asp:CheckBox ID="cbItem" runat="server" Width="5px"/>
                             <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>

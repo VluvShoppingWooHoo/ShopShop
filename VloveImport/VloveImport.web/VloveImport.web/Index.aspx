@@ -9,8 +9,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="divIndex">
         <div class="row ucSearchbox">
-            <div class="col s3 m3 l3">
+            <div class="col s3 m3 l3" style="border: 1px solid black;">
                 &nbsp;
+                <img src="Images/pic/Under-construction.png" style="height: 70px; width: 100px;" />
             </div>
             <div class="col s9 m9 l9">
                 <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
@@ -79,6 +80,19 @@
             </tr>
         </table>--%>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#divMenubar").hide();
+            $("#divcontent").removeClass("col s10 m10 l10");
+            $("#divcontent").addClass("col s12 m12 l12");
+            $("#masterForm").fadeIn(1000);
+            setIndexPageHeight();
+        });
+
+        function setIndexPageHeight() {
+            var h = $("#divcontent").height();
+            $("#divcontent").height(h + 20);
+            //$("#divcard").height(h);        
+        }
+    </script>
 </asp:Content>
-
-

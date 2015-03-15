@@ -79,6 +79,7 @@
     <Content Include="Customer\Activate.aspx" />
     <Content Include="Customer\ContactUs.aspx" />
     <Content Include="Customer\AboutUs.aspx" />
+    <Content Include="Customer\CustomerOrderList.aspx" />
     <Content Include="Customer\CustomerBasket.aspx" />
     <Content Include="Customer\CustomerAddress.aspx" />
     <Content Include="Customer\CustomerBank.aspx" />
@@ -209,6 +210,13 @@
     </Compile>
     <Compile Include="Customer\AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerOrderList.aspx.cs">
+      <DependentUpon>CustomerOrderList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerOrderList.aspx.designer.cs">
+      <DependentUpon>CustomerOrderList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerBasket.aspx.cs">
       <DependentUpon>CustomerBasket.aspx</DependentUpon>
