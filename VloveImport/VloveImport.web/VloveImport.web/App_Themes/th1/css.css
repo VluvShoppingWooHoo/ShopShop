@@ -454,3 +454,9 @@ nav[class="ucCustomerStatus"]
 {
     box-shadow: none;
 }
+
+#divShop
+{
+    text-align: center;
+    margin-top: 40px;
+}

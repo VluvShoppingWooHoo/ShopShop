@@ -1645,7 +1645,7 @@
 
     </div>
     <div class="col s8 m8 l8">
-        <div class="slider">
+        <div class="row slider">
             <ul class="slides" style="height: 300px;">
                 <li class="li1">
                     <img src="../Images/pic/Banner/ILoveImport.jpg" />
@@ -1660,6 +1660,23 @@
                     <!-- random image -->
                 </li>
             </ul>
+        </div>
+        <div id="divShop" class="row">
+            <%--<div class="col s3 m3 l3">
+            </div>--%>
+            <div class="col s12 m12 l12">
+                <a target="_blank" href="http://www.taobao.com">
+                    <img src="../Images/pic/shop/taobao.jpg" />
+                </a>
+                <a target="_blank" href="http://www.tmall.com/">
+                    <img src="../Images/pic/shop/Tmall.jpg" />
+                </a>
+                <a target="_blank" href="http://www.1688.com/">
+                    <img src="../Images/pic/shop/1688.jpg" />
+                </a>
+            </div>
+           <%-- <div class="col s3 m3 l3">
+            </div>--%>
         </div>
     </div>
     <div class="col s2 m2 l2">
