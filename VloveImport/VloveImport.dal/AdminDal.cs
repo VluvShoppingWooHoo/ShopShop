@@ -41,21 +41,17 @@ namespace VloveImport.dal
             }
         }
 
-        public string INS_UPD_CUSTOMER_FAVORIT_SHOP(CustomerData EnCus, string Act)
+        public string UPD_ADMIN_ORDER(OrderData En, string Act)
         {
             try
             {
                 SqlCommandData.OpenConnection();
                 SqlCommandData.BeginTransaction();
-                SqlCommandData.SetStoreProcedure("INS_UPD_CUSTOMER_FAVORIT_SHOP");
+                SqlCommandData.SetStoreProcedure("ADMIN_UPDATE_ORDER");
 
-                SqlCommandData.SetParameter_Input_INT("CUS_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.CUS_SHOP_ID);
-                SqlCommandData.SetParameter("CUS_SHOP_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_SHOP_NAME);
-                SqlCommandData.SetParameter("CUS_SHOP_LINK", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_SHOP_LINK);
-                SqlCommandData.SetParameter("CUS_SHOP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_SHOP_REMARK);
-                SqlCommandData.SetParameter("CUS_SHOP_STATUS", SqlDbType.VarChar, ParameterDirection.Input, EnCus.CUS_SHOP_STATUS);
-                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
-                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Create_User);
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, En.ORDER_ID);
+                SqlCommandData.SetParameter_Input_INT("ORDDER_STAUTS", SqlDbType.VarChar, ParameterDirection.Input, En.ORDER_STATUS);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 SqlCommandData.ExecuteNonQuery();

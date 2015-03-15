@@ -13,6 +13,7 @@ namespace VloveImport.data
         //public string Update_User { get; set; }
         //public DateTime Update_Date { get; set; }
 
+        public int ROW_INDEX { get; set; }
         public string Create_User { get; set; }
         public Nullable<DateTime> Create_Date { get; set; }
         public string Update_User { get; set; }

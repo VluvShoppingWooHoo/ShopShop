@@ -14,7 +14,18 @@ namespace VloveImport.data
         public int ORDER_STATUS { get; set; }   
         public int CUS_ID { get; set; }
         public int ORDER_TRANSPOT_CHINA { get; set; }
-        public int ORDER_TRANSPOT_THAI { get; set; }        
+        public int ORDER_TRANSPOT_THAI { get; set; }    
+        public string EMP_NAME { get; set; }
+        #endregion
+
+        #region Optional
+
+        public int UseFlag { get; set; }
+        public string ORDER_DATE_TEXT { get; set; }
+        public string CUS_FULLNAME { get; set; }
+        public string ORDER_STATUS_TEXT { get; set; }
+        public string SUM_PROD_PRICE { get; set; }
+
         #endregion
 
         #region TB_ORDER_DETAIL

@@ -13,20 +13,20 @@ namespace VloveImport.biz
     {
         #region  CUSTOMER FAVORIT SHOP
 
-        //public string INS_UPD_CUSTOMER_FAVORIT_SHOP(CustomerData EnCus, string Act)
-        //{
-        //    string Result = "";
-        //    try
-        //    {
-        //        CustomerDal dal = new CustomerDal("LocalConnection");
-        //        Result = dal.INS_UPD_CUSTOMER_FAVORIT_SHOP(EnCus, Act);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Result = ex.Message;
-        //    }
-        //    return Result;
-        //}
+        public string UPD_ADMIN_ORDER(OrderData En, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.UPD_ADMIN_ORDER(En, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
 
         public DataSet GET_ADMIN_ORDER(string Act,int ORDER_ID = -1, Nullable<DateTime> START_DATE = null, Nullable<DateTime> END_DATE = null, string CUS_NAME = "")
         {
