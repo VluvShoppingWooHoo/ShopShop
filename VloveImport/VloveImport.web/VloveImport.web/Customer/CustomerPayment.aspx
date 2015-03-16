@@ -21,7 +21,7 @@
             <br />
             รวมค่าใช้จ่ายทั้งหมด
             <br />
-            <button id="btnConfirm" runat="server" type="submit" onserverclick="btnConfirm_ServerClick"
+            <button id="btnPayment" runat="server" type="submit" onserverclick="btnPayment_ServerClick"
                 name="action" class="btn waves-effect orange waves-light">Pay                                
             </button>  
         </div>

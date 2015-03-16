@@ -45,7 +45,11 @@ namespace VloveImport.web.Customer
 
         protected void imbPay_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("");
+            ImageButton imb = (ImageButton)sender;
+            string Order_ID;//SessionUser
+            Order_ID = en.EncrypData(imb.CommandArgument);
+            Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+            //Response.Redirect("CustomerPayment.aspx");
         }        
 
     }

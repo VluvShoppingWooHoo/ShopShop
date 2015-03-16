@@ -15,7 +15,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="วันที่สั่งซื้อ">
                         <ItemTemplate>
-                            <asp:Label ID="lbItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DATE") %>'>></asp:Label><br />
+                            <asp:Label ID="lbOrderDate" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DATE") %>'>></asp:Label><br />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
@@ -35,10 +35,10 @@
                             <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_AMOUNT") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รวมทั้งหมด">
+                    <asp:TemplateField HeaderText="">
                         <ItemTemplate>
                             <asp:ImageButton ID="imbPay" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' 
-                                 OnClick="imbPay_Click"/>
+                                 ImageUrl="~/Images/icon/Payment2.png" OnClick="imbPay_Click" Width="30px" Height="30px"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>

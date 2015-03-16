@@ -17,6 +17,11 @@ namespace VloveImport.web.Customer
             //if (OID == "")
         }
 
+        protected void btnPayment_ServerClick(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
