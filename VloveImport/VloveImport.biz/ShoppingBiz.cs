@@ -39,18 +39,21 @@ namespace VloveImport.biz
             else
                 return null;
         }
-        public string MakeOrder(OrderData Data, DataTable dt, string User)
+        public string[] MakeOrder(OrderData Data, DataTable dt, string User)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             string[] Result = new string[2];
-            string Res = "";
+            string[] Res = new string[2];
             int OID = -1;
             //Header
             Result = dal.MakeOrderHeader(Data);
             if (Result[1] != "")
+            {
                 OID = Convert.ToInt32(Convert.ToInt32(Result[1]));
+                Res[1] = Result[1];
+            }
 
-            Res = dal.MakeOrderDetail(dt, OID, User);
+            Res[0] = dal.MakeOrderDetail(dt, OID, User);
 
             return Res;
         }
