@@ -460,3 +460,7 @@ nav[class="ucCustomerStatus"]
     text-align: center;
     margin-top: 40px;
 }
+.Init input[type="radio"]
+{
+	  position: initial !important;
+}

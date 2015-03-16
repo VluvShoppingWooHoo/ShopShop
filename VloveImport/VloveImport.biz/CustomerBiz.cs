@@ -151,6 +151,16 @@ namespace VloveImport.biz
             }
             return Result;
         }
+        public DataTable GET_TRANSACTION_BY_ORDERID(Int32 Order_ID)
+        {
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GET_TRANSACTION_BY_ORDERID(Order_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;            
+        }
 
         #endregion
 

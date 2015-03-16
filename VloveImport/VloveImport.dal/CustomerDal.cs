@@ -270,7 +270,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("TRAN_AMOUNT", SqlDbType.Float, ParameterDirection.Input, EnTran.TRAN_AMOUNT);
 
                 SqlCommandData.SetParameter_Input_INT("TRAN_STATUS", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_STATUS);
-                SqlCommandData.SetParameter_Input_INT("TRAN_STATUS_APPROVE", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_STATUS_APPROVE);
+                //SqlCommandData.SetParameter_Input_INT("TRAN_STATUS_APPROVE", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_STATUS_APPROVE);
                 SqlCommandData.SetParameter_Input_INT("EMP_ID_APPROVE", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_ID_APPROVE);
                 SqlCommandData.SetParameter("EMP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_REMARK);
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.Cus_ID);
@@ -279,7 +279,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("PAYMENT_TYPE", SqlDbType.Int, ParameterDirection.Input, EnTran.PAYMENT_TYPE);
                 SqlCommandData.SetParameter("PAYMENT_DATE", SqlDbType.DateTime, ParameterDirection.Input, EnTran.PAYMENT_DATE);
                 SqlCommandData.SetParameter("PAYMENT_TIME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.PAYMENT_TIME);
-                SqlCommandData.SetParameter_Input_INT("BANK_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.BANK_ID);
+                SqlCommandData.SetParameter_Input_INT("BANK_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.BANK_ID);
 
                 //SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
@@ -294,7 +294,21 @@ namespace VloveImport.dal
                 return ("INS_UPD_TRANSACTION -> msg : " + ex.Message);
             }
         }
+        public DataSet GET_TRANSACTION_BY_ORDERID(Int32 Order_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_TRANSACTION_BY_ORDERID");
 
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, Order_ID);                
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_TRANSACTION_BY_ORDERID -> msg : " + ex.Message);
+            }
+        }
         #endregion
 
     }
