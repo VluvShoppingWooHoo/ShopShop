@@ -9,17 +9,29 @@
             เลือกวิธีการชำระเงิน
             <br />
             <div class="row s6 m6 l6 TestBox1">
+                <asp:HiddenField ID="hdOID" runat="server" />
                 <br />
-                <asp:RadioButton ID="rdbPayment1" runat="server" GroupName="Payment" Checked="true" />
-                ชำระเงินรอบเดียว (ค่าสินค้าและค่าขนส่งทั้งหมด)
+                <asp:RadioButton ID="rdbPayment1" runat="server" GroupName="Payment" Checked="true" CssClass="Init"/>
+                &nbsp;ชำระเงินรอบเดียว (ค่าสินค้าและค่าขนส่งทั้งหมด)
             <br />
-                <asp:RadioButton ID="rdbPayment2" runat="server" GroupName="Payment" Checked="true" />
-                ชำระเงิน 2 รอบ
-                1. จ่ายเงินรอบแรก (ค่าสินค้า+ค่าขนส่งจากจีนมาไทย)
-                2. จ่ายเงินรอบสอง (ค่าขนส่งภายในประเทศ)
+                <asp:RadioButton ID="rdbPayment2" runat="server" GroupName="Payment"  CssClass="Init"/>
+                &nbsp;ชำระเงิน 2 รอบ<br />
+                &nbsp;&nbsp;&nbsp;1. จ่ายเงินรอบแรก (ค่าสินค้า+ค่าขนส่งจากจีนมาไทย)<br />
+                &nbsp;&nbsp;&nbsp;2. จ่ายเงินรอบสอง (ค่าขนส่งภายในประเทศ)
             </div>
             <br />
-            รวมค่าใช้จ่ายทั้งหมด
+            รวมค่าใช้จ่ายโดยประมาณ
+            <br />
+            เลือกบัญชี
+            <br />
+            <asp:GridView ID="gvTran" runat="server" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField DataField="TRAN_DATE" HeaderText="วันที่ชำระเงิน" />
+                    <asp:BoundField DataField="TRAN_AMOUNT" HeaderText="จำนวนเงิน" />
+                    <asp:BoundField DataField="TRAN_STATUS" HeaderText="สถานะ" />
+                    <asp:BoundField DataField="TRAN_REMARK" HeaderText="หมายเหตุ" />
+                </Columns>
+            </asp:GridView>
             <br />
             <button id="btnPayment" runat="server" type="submit" onserverclick="btnPayment_ServerClick"
                 name="action" class="btn waves-effect orange waves-light">Pay                                
