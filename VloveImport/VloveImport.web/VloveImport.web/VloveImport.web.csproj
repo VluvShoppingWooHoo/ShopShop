@@ -101,6 +101,7 @@
     <Content Include="Customer\Register.aspx" />
     <Content Include="Customer\TourMarket.aspx" />
     <Content Include="Images\demo\logo_all_company.png" />
+    <Content Include="Images\icon\Payment.png" />
     <Content Include="Images\icon\b_edit.png" />
     <Content Include="Images\icon\Close-2-icon.png" />
     <Content Include="Images\icon\close-icon.png" />

@@ -37,7 +37,8 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="รวมทั้งหมด">
                         <ItemTemplate>
-                            <%--<asp:Label ID="lbTotal" runat="server" Text='<%# Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE")) * Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")) %>'>></asp:Label>--%>
+                            <asp:ImageButton ID="imbPay" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' 
+                                 OnClick="imbPay_Click"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
@@ -48,10 +49,6 @@
                 </Columns>
                 <HeaderStyle BackColor="Orange" />
             </asp:GridView>
-            <button id="btnOrder" runat="server" type="submit" onserverclick="btnOrder_ServerClick"
-                name="action" class="btn waves-effect orange waves-light">
-                Order                                
-            </button>
         </div>
     </div>
 

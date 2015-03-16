@@ -64,7 +64,7 @@ namespace VloveImport.web.Customer
         {
             if (Session["TRANS"] != null && Session["ORDER"] != null)
             {
-                string Result = "";
+                string[] Result;
                 string Trans = Session["TRANS"].ToString();
                 string[] spl = Trans.Split(',');
                 DataTable dt = (DataTable)Session["ORDER"];
@@ -79,12 +79,12 @@ namespace VloveImport.web.Customer
                 Data.Create_User = User; //SessionUser
 
                 Result = Biz.MakeOrder(Data, dt, User);
-                if (Result == "")
+                if (Result[0] == "")
                 {
                     EncrypUtil en = new EncrypUtil();
-                    string CUS_ID = "0";//SessionUser
-                    CUS_ID = en.EncrypData(CUS_ID);
-                    Response.Redirect("CustomerPayment.aspx?CID=" + CUS_ID);
+                    string Order_ID;//SessionUser
+                    Order_ID = en.EncrypData(Result[1]);
+                    Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
                 }
                 else
                 {

@@ -43,34 +43,10 @@ namespace VloveImport.web.Customer
             gvOrder.DataBind();
         }
 
-        protected void btnOrder_ServerClick(object sender, EventArgs e)
+        protected void imbPay_Click(object sender, ImageClickEventArgs e)
         {
-            Session.Remove("ORDER");
-            //string Selected = "";
-            CheckBox cb;
-            HiddenField hd;
-            DataTable dtSelected = new DataTable();
-            if (ViewState["SOURCE"] != null)
-            {
-                dtSelected = (DataTable)ViewState["SOURCE"];
-                foreach (GridViewRow gvr in gvOrder.Rows)
-                {
-                    cb = new CheckBox();
-                    hd = new HiddenField();
-                    cb = (CheckBox)gvr.FindControl("cbItem");
-                    if (cb != null && !cb.Checked)
-                    {
-                        hd = (HiddenField)gvr.FindControl("hdBK_ID");
-                        dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());                        
-                    }
-                }
-                Session.Add("ORDER", dtSelected);
-                EncrypUtil en = new EncrypUtil();
-                string CUS_ID = "0";//SessionUser
-                CUS_ID = en.EncrypData(CUS_ID);
-                Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
-            }
-        }
+            Response.Redirect("");
+        }        
 
     }
 }
