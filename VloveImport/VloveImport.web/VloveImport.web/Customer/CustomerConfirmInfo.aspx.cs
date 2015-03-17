@@ -72,7 +72,7 @@ namespace VloveImport.web.Customer
 
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
-                Data.ORDER_STATUS = 1;
+                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
                 Data.CUS_ID = 0;//SessionUser
                 Data.ORDER_TRANSPOT_CHINA = Convert.ToInt32(spl[0].Split('|')[0]);
                 Data.ORDER_TRANSPOT_THAI = Convert.ToInt32(spl[1].Split('|')[0]);

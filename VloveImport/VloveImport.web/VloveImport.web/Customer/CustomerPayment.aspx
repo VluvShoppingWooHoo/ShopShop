@@ -22,7 +22,8 @@
             <br />
             รวมค่าใช้จ่ายโดยประมาณ
             <br />
-            เลือกบัญชี
+            ยอดเงินในบัญชี
+            <a href="CustomerMyAccount.aspx">เติมเงิน</a>
             <br />
             <asp:GridView ID="gvTran" runat="server" AutoGenerateColumns="false">
                 <Columns>

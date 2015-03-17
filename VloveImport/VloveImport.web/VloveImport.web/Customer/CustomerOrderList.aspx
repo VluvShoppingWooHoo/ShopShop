@@ -25,6 +25,11 @@
                             <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "OD_SIZE") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="สถานะ">
+                        <ItemTemplate>
+                            <asp:Label ID="lbStatus" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_STATUS") %>'>></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="ราคา">
                         <ItemTemplate>
                             <asp:Label ID="lbPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'>></asp:Label>
@@ -37,8 +42,13 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="">
                         <ItemTemplate>
-                            <asp:ImageButton ID="imbPay" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' 
-                                 ImageUrl="~/Images/icon/Payment2.png" OnClick="imbPay_Click" Width="30px" Height="30px"/>
+                            <%--<button id="btnPayment" runat="server" type="submit" onserverclick="btnPayment_ServerClick" title="1"
+                                name="action" class="btn waves-effect orange waves-light">ชำระเงิน      
+                            </button>--%>
+                            <asp:Button ID="btnPay" runat="server" Text="ชำระเงิน" OnClick="btnPay_Click" CssClass=""
+                                CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>'  />
+                            <%--<asp:ImageButton ID="imbPay" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' 
+                                 ImageUrl="~/Images/icon/Payment2.png" OnClick="imbPay_Click" Width="30px" Height="30px"/>--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>

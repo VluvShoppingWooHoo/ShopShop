@@ -43,13 +43,12 @@ namespace VloveImport.web.Customer
             gvOrder.DataBind();
         }
 
-        protected void imbPay_Click(object sender, ImageClickEventArgs e)
+        protected void btnPay_Click(object sender, EventArgs e)
         {
-            ImageButton imb = (ImageButton)sender;
+            Button btn = (Button)sender;
             string Order_ID;//SessionUser
-            Order_ID = en.EncrypData(imb.CommandArgument);
+            Order_ID = en.EncrypData(btn.CommandArgument);
             Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
-            //Response.Redirect("CustomerPayment.aspx");
         }        
 
     }
