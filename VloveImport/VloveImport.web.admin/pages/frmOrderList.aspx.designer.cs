@@ -85,42 +85,6 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_order_status;
         
         /// <summary>
-        /// Label4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
-        
-        /// <summary>
-        /// ddl_shipping_status control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_shipping_status;
-        
-        /// <summary>
-        /// Label5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
-        
-        /// <summary>
-        /// ddl_transport_status control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_transport_status;
-        
-        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>
@@ -301,67 +265,67 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Panel Panel4;
         
         /// <summary>
-        /// Label7 control.
+        /// lbl_ViewDetail_ORDER_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_ORDER_ID;
         
         /// <summary>
-        /// Label8 control.
+        /// lbl_ViewDetail_ORDER_DATE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_ORDER_DATE;
         
         /// <summary>
-        /// Label14 control.
+        /// lbl_ViewDetail_TRANSPORT_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label14;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_TRANSPORT_1;
         
         /// <summary>
-        /// Label15 control.
+        /// lbl_ViewDetail_TRANSPORT_2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label15;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_TRANSPORT_2;
         
         /// <summary>
-        /// Label13 control.
+        /// lbl_ViewDetail_ADDRESS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label13;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_ADDRESS;
         
         /// <summary>
-        /// Label9 control.
+        /// lbl_ViewDetail_EMP_NAME control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label9;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_EMP_NAME;
         
         /// <summary>
-        /// Label10 control.
+        /// lbl_ViewDetail_EMP_UPDATE_DATE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_EMP_UPDATE_DATE;
         
         /// <summary>
         /// DropDownList2 control.
@@ -391,22 +355,22 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Button btn_modal_detail_update;
         
         /// <summary>
-        /// Label11 control.
+        /// lbl_ViewDetail_CusName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label11;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_CusName;
         
         /// <summary>
-        /// Label12 control.
+        /// lbl_ViewDetail_Telphone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Telphone;
         
         /// <summary>
         /// Label16 control.
@@ -418,13 +382,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label16;
         
         /// <summary>
-        /// Label17 control.
+        /// lbl_ViewDetail_Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label17;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Email;
         
         /// <summary>
         /// MultiView1 control.
@@ -454,13 +418,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Button btnEditProd_num;
         
         /// <summary>
-        /// GridView1 control.
+        /// gv_detail_prod_view control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gv_detail_prod_view;
         
         /// <summary>
         /// View2 control.
@@ -490,12 +454,12 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Button btnEditProd_num_cancel;
         
         /// <summary>
-        /// GridView2 control.
+        /// gv_detail_prod_Edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.GridView gv_detail_prod_Edit;
     }
 }

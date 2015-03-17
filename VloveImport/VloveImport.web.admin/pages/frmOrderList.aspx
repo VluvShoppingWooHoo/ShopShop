@@ -36,14 +36,15 @@
                             <asp:DropDownList ID="ddl_order_status" runat="server" Width="300px">
                                 <asp:ListItem Value="-1">แสดงทั้งหมด</asp:ListItem>
                                 <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
-                                <asp:ListItem Value="1">รอชำระเงิน</asp:ListItem>
+                                <asp:ListItem Value="1">ยังไม่ได้ชำระเงิน</asp:ListItem>
                                 <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>
                                 <asp:ListItem Value="3">รอจัดส่ง</asp:ListItem>
                                 <asp:ListItem Value="4">ส่งสินค้าแล้ว</asp:ListItem>
-                                <asp:ListItem Value="5">รอลูกค้ายืนยันการแก้ไขจำนวนสินค้า</asp:ListItem>
                             </asp:DropDownList>
                         </td>
-                        <td>
+                        <td></td>
+                        <td></td>
+                        <%--<td>
                             <asp:Label ID="Label4" runat="server" Text="วิธีการส่งสินค้า :"></asp:Label></td>
                         <td>
                             <asp:DropDownList ID="ddl_shipping_status" runat="server" Width="300px">
@@ -51,10 +52,10 @@
                                 <asp:ListItem Value="1">ขนส่งทางเรือ</asp:ListItem>
                                 <asp:ListItem Value="2">ขนส่งทางเครื่องบิน</asp:ListItem>
                             </asp:DropDownList>
-                        </td>
+                        </td>--%>
                     </tr>
                     <tr>
-                        <td>
+                        <%--<td>
                             <asp:Label ID="Label5" runat="server" Text="สถานะการส่งสินค้า :"></asp:Label>
                         </td>
                         <td>
@@ -64,12 +65,14 @@
                                 <asp:ListItem Value="2">สินค้ารอส่งให้ลูกค้า</asp:ListItem>
                                 <asp:ListItem Value="3">จัดส่งสินค้าให้ลูกค้าแล้ว</asp:ListItem>
                             </asp:DropDownList>
-                        </td>
+                        </td>--%>
+                        <td></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align: center;">
+                        <td colspan="4" style="text-align: center;">                        
                             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click" />&nbsp;&nbsp;
                     <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" />
                         </td>
@@ -251,37 +254,37 @@
                                             <tr>
                                                 <td>เลขที่การสั่งซื้อ :</td>
                                                 <td>
-                                                    <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_ORDER_ID" runat="server" Text=""></asp:Label>
                                                 </td>
                                                 <td>วันที่ทำการสั่งซื้อ :</td>
                                                 <td>
-                                                    <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_ORDER_DATE" runat="server" Text=""></asp:Label>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>วิธีการขนส่งขั้นที่ 1 :</td>
                                                 <td>
-                                                    <asp:Label ID="Label14" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_TRANSPORT_1" runat="server" Text=""></asp:Label>
                                                 </td>
                                                 <td>วิธีการขนส่งขั้นที่ 2 :</td>
                                                 <td>
-                                                    <asp:Label ID="Label15" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_TRANSPORT_2" runat="server" Text=""></asp:Label>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>ที่อยู่จัดส่งสินค้า :</td>
                                                 <td colspan ="3">
-                                                    <asp:Label ID="Label13" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_ADDRESS" runat="server" Text=""></asp:Label>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>พนักงานที่แก้ไขล่าสุด</td>
                                                 <td>
-                                                    <asp:Label ID="Label9" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_EMP_NAME" runat="server" Text=""></asp:Label>
                                                 </td>
                                                 <td>วันที่เข้ามาแก้ไข</td>
                                                 <td>
-                                                    <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_EMP_UPDATE_DATE" runat="server" Text=""></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -336,11 +339,11 @@
                                             <tr>
                                                 <td>ชื่อ - นามสกุล :</td>
                                                 <td>
-                                                    <asp:Label ID="Label11" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_CusName" runat="server" Text=""></asp:Label>
                                                 </td>
                                                 <td>เบอร์โทรศัพท์ :</td>
                                                 <td>
-                                                    <asp:Label ID="Label12" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_Telphone" runat="server" Text=""></asp:Label>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -350,7 +353,7 @@
                                                 </td>
                                                 <td>Email :</td>
                                                 <td>
-                                                    <asp:Label ID="Label17" runat="server" Text=""></asp:Label>
+                                                    <asp:Label ID="lbl_ViewDetail_Email" runat="server" Text=""></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -365,16 +368,25 @@
                                                         <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex ="0">
                                                             <asp:View ID="View1" runat="server">
                                                                 <asp:Button ID="btnEditProd_num" runat="server" Text="แก้ไขจำนวนสินค้า" CssClass =" btnSearch"></asp:Button>
-                                                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="95%" 
+                                                                <asp:GridView ID="gv_detail_prod_view" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="100%" 
                                                                     DataKeyNames ="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
                                                                     <Columns>
                                                                         <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
-                                                                        <asp:BoundField DataField ="ORDER_ID" HeaderText="Order ID" />
-                                                                        <asp:BoundField DataField = "ORDER_DATE_TEXT" HeaderText="Order Date" />
-                                                                        <asp:BoundField DataField = "CUS_FULLNAME" HeaderText="Customer Name" />
-                                                                        <asp:BoundField DataField = "ORDER_STATUS_TEXT" HeaderText="Order Status" />
-                                                                        <asp:BoundField DataField = "EMP_NAME" HeaderText="Employee Name" />
-                                                                        <asp:BoundField DataField = "SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount" >
+                                                                        <asp:BoundField DataField ="OD_ITEMNAME" HeaderText="รายละเอียดสินค้า" />
+                                                                        <asp:BoundField DataField = "OD_REMARK" HeaderText="หมายเหตุ" />
+                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคาต่อชิ้น" >
+                                                                        <ItemStyle CssClass="ItemStyle-right" />
+                                                                        </asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_AMOUNT" HeaderText="จำนวนสินค้าที่สั่งซื้อ" >
+                                                                        <ItemStyle CssClass="ItemStyle-right" />
+                                                                        </asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" >
+                                                                        <ItemStyle CssClass="ItemStyle-right" />
+                                                                        </asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_AMOUNT_ACTIVE" HeaderText="จำนวนสินค้าที่ได้รับ" >
+                                                                        <ItemStyle CssClass="ItemStyle-right" />
+                                                                        </asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" >
                                                                         <ItemStyle CssClass="ItemStyle-right" />
                                                                         </asp:BoundField>
                                                                     </Columns>
@@ -383,7 +395,7 @@
                                                             <asp:View ID="View2" runat="server">
                                                                 <asp:Button ID="btnEditProd_num_save" runat="server" Text="Update " CssClass =" btnSave"></asp:Button>&nbsp;&nbsp;
                                                                 <asp:Button ID="btnEditProd_num_cancel" runat="server" Text="Cancel" CssClass ="btnCancel"></asp:Button>
-                                                                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="95%" 
+                                                                <asp:GridView ID="gv_detail_prod_Edit" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="95%" 
                                                                     DataKeyNames ="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
                                                                     <Columns>
                                                                         <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />

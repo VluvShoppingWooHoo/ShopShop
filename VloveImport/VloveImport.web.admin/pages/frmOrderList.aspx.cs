@@ -14,7 +14,7 @@ namespace VloveImport.web.admin.pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         public void BindData()
@@ -56,7 +56,43 @@ namespace VloveImport.web.admin.pages
 
         protected void imgBtn_edit_Click(object sender, ImageClickEventArgs e)
         {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
+
+            DataSet ds = new DataSet();
+
+            AdminBiz AdBiz = new AdminBiz();
+            ds = AdBiz.GET_ADMIN_ORDER("BINDDATA_BYID",Convert.ToInt32(DataKeys_ID));
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                #region ORDER DATA
+                lbl_ViewDetail_ORDER_ID.Text = ds.Tables[0].Rows[0]["ORDER_ID"].ToString();
+                lbl_ViewDetail_ORDER_DATE.Text = ds.Tables[0].Rows[0]["ORDER_DATE_TEXT"].ToString();
+                lbl_ViewDetail_TRANSPORT_1.Text = ds.Tables[0].Rows[0]["ORDER_TRANSPOT_CHINA"].ToString();
+                lbl_ViewDetail_TRANSPORT_2.Text = ds.Tables[0].Rows[0]["ORDER_TRANSPOT_THAI"].ToString();
+                lbl_ViewDetail_ADDRESS.Text = "รอก่อน";
+                lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["UPDATE_USER"].ToString();
+                lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
+                #endregion
+
+                #region Customer Data
+                lbl_ViewDetail_CusName.Text = ds.Tables[0].Rows[0]["CUS_FULLNAME"].ToString();
+                lbl_ViewDetail_Telphone.Text = ds.Tables[0].Rows[0]["CUS_MOBILE"].ToString();
+                lbl_ViewDetail_Email.Text = ds.Tables[0].Rows[0]["CUS_EMAIL"].ToString();
+                #endregion
+
+                gv_detail_prod_view.DataSource = ds.Tables[0];
+                gv_detail_prod_view.DataBind();
+            }
+            else
+            {
+                gv_detail_prod_view.DataSource = null;
+                gv_detail_prod_view.DataBind();
+            }
+
             Modal_Detail.Show();
+
         }
 
         protected void imgBtn_delete_Click(object sender, ImageClickEventArgs e)
