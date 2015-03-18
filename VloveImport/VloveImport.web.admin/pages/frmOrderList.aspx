@@ -22,10 +22,10 @@
                     <uc1:ucCalendar ID="ucCalendar2" runat="server" />
                         </td>
                         <td class="width15">
-                            <asp:Label ID="Label2" runat="server" Text="ชื่อลูกค้า:"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="Customer Code:"></asp:Label>
                         </td>
                         <td class="width35">
-                            <asp:TextBox ID="txtCusName" runat="server" Width="300px"></asp:TextBox>
+                            <asp:TextBox ID="txtCusCode" runat="server" Width="300px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -96,7 +96,7 @@
                 </tr>
             </table>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="5" Width="95%"
-                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
+                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -106,9 +106,9 @@
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
-                    <asp:BoundField DataField="ORDER_ID" HeaderText="Order ID" />
+                    <asp:BoundField DataField="ORDER_CODE" HeaderText="Order Code" />
                     <asp:BoundField DataField="ORDER_DATE_TEXT" HeaderText="Order Date" />
-                    <asp:BoundField DataField="CUS_FULLNAME" HeaderText="Customer Name" />
+                    <asp:BoundField DataField="CUS_CODE" HeaderText="Customer Code" />
                     <asp:BoundField DataField="ORDER_STATUS_TEXT" HeaderText="Order Status" />
                     <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name" />
                     <asp:BoundField DataField="SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount">
@@ -191,7 +191,7 @@
                                         </table>
                                     </fieldset>
                                     <asp:GridView ID="gv_detail_view" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="95%" 
-                                        DataKeyNames ="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
+                                        DataKeyNames ="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE">
                                         <Columns>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
@@ -201,9 +201,9 @@
                                                 <ItemStyle CssClass="ItemStyle-center" />
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
-                                            <asp:BoundField DataField ="ORDER_ID" HeaderText="Order ID" />
+                                            <asp:BoundField DataField ="ORDER_CODE" HeaderText="Order Code" />
                                             <asp:BoundField DataField = "ORDER_DATE_TEXT" HeaderText="Order Date" />
-                                            <asp:BoundField DataField = "CUS_FULLNAME" HeaderText="Customer Name" />
+                                            <asp:BoundField DataField = "CUS_CODE" HeaderText="Customer Code" />
                                             <asp:BoundField DataField = "ORDER_STATUS_TEXT" HeaderText="Order Status" />
                                             <asp:BoundField DataField = "EMP_NAME" HeaderText="Employee Name" />
                                             <asp:BoundField DataField = "SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount" >
@@ -336,6 +336,14 @@
                                             ข้อมูลลูกค้า
                                         </legend>
                                         <table>
+                                            <tr>
+                                                <td>Customer Code</td>
+                                                <td>
+                                                    <asp:Label ID="lbl_ViewDetail_CusCode" runat="server" Text=""></asp:Label>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
                                             <tr>
                                                 <td>ชื่อ - นามสกุล :</td>
                                                 <td>
