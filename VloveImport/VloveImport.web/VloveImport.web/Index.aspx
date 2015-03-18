@@ -8,12 +8,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="divIndex">
-        <div class="row ucSearchbox">
-            <div class="col s3 m3 l3" style="border: 1px solid black;">
+        <div class="row ucSearchbox" style="margin-left: 1%;">
+            <div class="col s2 m2 l2" style="border: 1px solid black;">
                 &nbsp;
                 <img src="Images/pic/Under-construction.png" style="height: 70px; width: 100px;" />
             </div>
-            <div class="col s9 m9 l9">
+            <div class="col s10 m10 l10">
                 <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
             </div>
         </div>
