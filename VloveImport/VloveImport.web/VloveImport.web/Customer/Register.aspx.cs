@@ -19,7 +19,7 @@ namespace VloveImport.web.Customer
 
         protected void btnRegis_Click(object sender, EventArgs e)
         {
-            string Result = "";// Insert();
+            string Result = Insert();
             if (Result == "")
             {
                 mView.ActiveViewIndex = 1;
