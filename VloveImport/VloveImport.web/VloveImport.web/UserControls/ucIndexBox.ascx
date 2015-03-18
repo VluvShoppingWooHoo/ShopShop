@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
 <div class="row">
     <div id="sideMenu" class="col s2 m2 l2">
 
@@ -1683,24 +1683,29 @@
         <div id="hotlink" class="collection">
             <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
             <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
-            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-logistics3"></i>ส่งแบบ Offline</a>
+            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-logistics3"></i>ส่งแบบออฟไลน์</a>
             <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
         </div>
         <iframe marginwidth="0" marginheight="0" src="http://www.bangkokbank.com/fxbanner/banner1.htm" frameborder="0" width="173" scrolling="no" height="165"></iframe>
-        <%--<iframe id="ifrmBanner" scrolling="no" frameborder="0" src="http://www.bangkokbank.com/MajorRates/MainBannerThai.htm" width="170" height="160"></iframe>--%>
+        <div id="ExRate">
+
+            <div class="ex1"><span>Rate</span></div>
+            <div class="ex2"><span>5.28</span></div>
+            <div class="ex3"><span>ณ วันที่ 18/3/2558</span></div>
+        </div>
     </div>
 </div>
 <div class="row" style="margin-top: 20px;">
-   <%-- <div class="col s12 m12 l12">--%>
-        <nav id="navMenuHori">
-            <ul class="center hide-on-med-and-down">
-                <li><a class="truncate" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a></li>
-                <li><a class="truncate" href="/Customer/Order.aspx">สั่งสินค้า</a></li>
-                <li><a class="truncate" href="/Customer/HowTo.aspx?type=rateimport">ค่าขนส่ง</a></li>
-                <li><a class="truncate" href="/Customer/News.aspx">ข่าวสารและกิจกรรม</a></li>
-                <li><a class="truncate" href="/Customer/Promotion.aspx">โปรโมชั่น</a></li>
-                <li><a class="truncate" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a></li>
-               <%-- <li>
+    <%-- <div class="col s12 m12 l12">--%>
+    <nav id="navMenuHori">
+        <ul class="center hide-on-med-and-down">
+            <li><a class="truncate" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a></li>
+            <li><a class="truncate" href="/Customer/Order.aspx">สั่งสินค้า</a></li>
+            <li><a class="truncate" href="/Customer/HowTo.aspx?type=rateimport">ค่าขนส่ง</a></li>
+            <li><a class="truncate" href="/Customer/News.aspx">ข่าวสารและกิจกรรม</a></li>
+            <li><a class="truncate" href="/Customer/Promotion.aspx">โปรโมชั่น</a></li>
+            <li><a class="truncate" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a></li>
+            <%-- <li>
                     <a class="red dropdown-button width200px" href="#!" data-activates="dropdown1">อื่นๆ<i class="mdi-navigation-arrow-drop-down right"></i></a>
                     <ul id="dropdown1" class="dropdown-content">
                         <li><a class="red white-text font15" href="/Customer/HowTo.aspx?type=other">อื่นๆ</a></li>
@@ -1712,8 +1717,8 @@
                         <li><a class="red white-text font15" href="/Customer/ContactUs.aspx">ติดต่อเรา</a></li>
                     </ul>
                 </li>--%>
-            </ul>
-        </nav>
+        </ul>
+    </nav>
     <%--</div>--%>
 </div>
 <script type="text/javascript">

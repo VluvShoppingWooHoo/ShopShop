@@ -67,16 +67,17 @@ namespace VloveImport.web.admin.pages
             if (ds.Tables[0].Rows.Count > 0)
             {
                 #region ORDER DATA
-                lbl_ViewDetail_ORDER_ID.Text = ds.Tables[0].Rows[0]["ORDER_ID"].ToString();
+                lbl_ViewDetail_ORDER_ID.Text = ds.Tables[0].Rows[0]["ORDER_CODE"].ToString();
                 lbl_ViewDetail_ORDER_DATE.Text = ds.Tables[0].Rows[0]["ORDER_DATE_TEXT"].ToString();
-                lbl_ViewDetail_TRANSPORT_1.Text = ds.Tables[0].Rows[0]["ORDER_TRANSPOT_CHINA"].ToString();
-                lbl_ViewDetail_TRANSPORT_2.Text = ds.Tables[0].Rows[0]["ORDER_TRANSPOT_THAI"].ToString();
+                lbl_ViewDetail_TRANSPORT_1.Text = ds.Tables[0].Rows[0]["TRANSPOT_CHINA"].ToString();
+                lbl_ViewDetail_TRANSPORT_2.Text = ds.Tables[0].Rows[0]["TRANSPOT_THAI"].ToString();
                 lbl_ViewDetail_ADDRESS.Text = "รอก่อน";
                 lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["UPDATE_USER"].ToString();
                 lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
                 #endregion
 
                 #region Customer Data
+                lbl_ViewDetail_CusCode.Text = ds.Tables[0].Rows[0]["CUS_CODE"].ToString();
                 lbl_ViewDetail_CusName.Text = ds.Tables[0].Rows[0]["CUS_FULLNAME"].ToString();
                 lbl_ViewDetail_Telphone.Text = ds.Tables[0].Rows[0]["CUS_MOBILE"].ToString();
                 lbl_ViewDetail_Email.Text = ds.Tables[0].Rows[0]["CUS_EMAIL"].ToString();
@@ -119,6 +120,8 @@ namespace VloveImport.web.admin.pages
                 En.ORDER_STATUS_TEXT = gv_detail.DataKeys[rowIndex].Values[3].ToString();
                 En.EMP_NAME = gv_detail.DataKeys[rowIndex].Values[4].ToString();
                 En.SUM_PROD_PRICE = gv_detail.DataKeys[rowIndex].Values[5].ToString();
+                En.ORDER_CODE = gv_detail.DataKeys[rowIndex].Values[6].ToString();
+                En.CUS_CODE = gv_detail.DataKeys[rowIndex].Values[7].ToString();
                 ListEn.Add(En);
 
                 gv_detail_view.DataSource = AddIndex(ListEn);
@@ -170,6 +173,8 @@ namespace VloveImport.web.admin.pages
                     EnMa.ORDER_STATUS_TEXT = gv.DataKeys[i].Values[3].ToString();
                     EnMa.EMP_NAME = gv.DataKeys[i].Values[4].ToString();
                     EnMa.SUM_PROD_PRICE = gv.DataKeys[i].Values[5].ToString();
+                    EnMa.ORDER_CODE = gv.DataKeys[i].Values[6].ToString();
+                    EnMa.CUS_CODE = gv.DataKeys[i].Values[7].ToString();
                     List_En.Add(EnMa);
                 }
             }

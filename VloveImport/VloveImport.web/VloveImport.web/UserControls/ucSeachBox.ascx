@@ -1,12 +1,12 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucSeachBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucSeachBox" %>
-<div class="row">
-    <div class="col s9 m9 l9">
+<div class="row" style="margin-left: 10px;">
+    <div style="width: 76.5%; display: inline-block;">
         <div class="input-field orange-text row">
-            <input id="txtSearch" type="text" class="validate">
+            <input id="txtSearch" type="text" class="validate" style="border: solid 4px orange;">
             <label for="lbSearch" class="">Place web site here.</label>
         </div>
     </div>
-    <div class="col s3" style="line-height: 5">
+    <div style="line-height: 4; display: inline-block; margin-left: 2%;">
         <button id="btnSearch" type="button" class="btn waves-effect orange waves-light modal-trigger" name="action">
             SEARCH     
             <i class="mdi-action-search right"></i>
@@ -155,15 +155,29 @@
 
             var size = $('#liSize div a.selected').html();
             var color = '';
+            var price = $("#lblPrice").html();
+            var remark = $("#txtRemark").val();
             if ($('#liColor div a.selected img').length > 0) {
                 color = $('#liColor div a.selected img').attr("src");
             }
             else {
                 color = $('#liColor div a.selected').html();
             }
+            if (size === 'undefined') {
+                size = '';
+            }
+            if (color === 'undefined') {
+                color = '';
+            }
+            if (price === 'undefined') {
+                price = '';
+            }
+            if (remark === 'undefined') {
+                remark = '';
+            }
             var param = {
-                "Name": $("#lblItemName").html(), "Desc": '', "Amount": $("#aQTY").html(), "Price": $("#lblPrice").html(), "Size": size,
-                "Color": color, "Remark": $("#txtRemark").val(), "URL": $("#lblURL").html(), "Picture": ''
+                "Name": $("#lblItemName").html(), "Desc": '', "Amount": $("#aQTY").html(), "Price": price, "Size": size,
+                "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": ''
             };
             $.ajax({
                 type: 'POST',
@@ -190,7 +204,7 @@
             $('#showData').hide();
             //$('#footer').hide();
             $('#btnAddCart').hide();
-            
+
             //$('#modalItem').openModal();
             $("#a_link")[0].click();
             var param = { "txt": $('#txtSearch').val() };
