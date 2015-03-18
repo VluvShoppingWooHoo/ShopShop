@@ -8,17 +8,18 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class CustomerProfile : System.Web.UI.Page
+    public partial class CustomerProfile : BasePage
     {
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                string Cus_ID = Request.QueryString["Cus_id"] == null ? "" : en.DecryptData(Request.QueryString["Cus_id"].ToString());
+                string Cus_ID = GetCusID();//Request.QueryString["Cus_id"] == null ? "" : en.DecryptData(Request.QueryString["Cus_id"].ToString());                
                 BindData(Cus_ID);
             }
         }

@@ -58,13 +58,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// txtCusName control.
+        /// txtCusCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCusName;
+        protected global::System.Web.UI.WebControls.TextBox txtCusCode;
         
         /// <summary>
         /// Label3 control.
@@ -353,6 +353,15 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_modal_detail_update;
+        
+        /// <summary>
+        /// lbl_ViewDetail_CusCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_CusCode;
         
         /// <summary>
         /// lbl_ViewDetail_CusName control.
