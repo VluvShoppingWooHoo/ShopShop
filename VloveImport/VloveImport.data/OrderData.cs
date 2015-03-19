@@ -16,6 +16,10 @@ namespace VloveImport.data
         public int ORDER_TRANSPOT_CHINA { get; set; }
         public int ORDER_TRANSPOT_THAI { get; set; }    
         public string EMP_NAME { get; set; }
+
+        public string ORDER_CODE { get; set; }
+        public string CUS_CODE { get; set; }
+
         #endregion
 
         #region Optional
