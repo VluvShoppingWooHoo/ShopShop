@@ -7,10 +7,11 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class Register : System.Web.UI.Page
+    public partial class Register : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

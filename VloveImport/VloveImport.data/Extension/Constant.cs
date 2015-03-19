@@ -8,6 +8,19 @@ namespace VloveImport.data.Extension
 {
     public static class Constant
     {
+        public static class PageMenu
+        {
+            public const int News = 1;
+            public const int About_Us = 2;
+            public const int Shipping_Price = 3;
+            public const int Contact_Us = 4;
+            public const int Tour = 5;
+            public const int Service = 6;
+            public const int Promo = 7;
+            public const int Howto = 8;
+            public const int Jobs = 9;
+        }
+
         public static class Web
         {
             public const int WTaoBao = 1;

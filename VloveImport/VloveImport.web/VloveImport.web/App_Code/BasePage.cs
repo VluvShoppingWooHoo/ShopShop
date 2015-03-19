@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using EncrypDLL;
 using VloveImport.data;
+using VloveImport.util;
 
 namespace VloveImport.web.App_Code
 {
@@ -11,14 +11,14 @@ namespace VloveImport.web.App_Code
     {
         public string EncrypData(string strText)
         {
-            EncrypDLL.EncrypDll Enc = new EncrypDLL.EncrypDll();
-            return Enc.Encrypt(strText, "VLOVEIMPORT");
+            EncrypUtil en = new EncrypUtil();
+            return en.EncrypData(strText);
         }
 
         public string DecryptData(string strText)
         {
-            EncrypDLL.EncrypDll Enc = new EncrypDLL.EncrypDll();
-            return Enc.Decrypt(strText, "VLOVEIMPORT");
+            EncrypUtil en = new EncrypUtil();
+            return en.DecryptData(strText);
         }
 
         public string GetCusID()

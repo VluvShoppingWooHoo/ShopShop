@@ -9,7 +9,8 @@ namespace VloveImport.data
     public class CustomerData : CommonData
     {
         public int Cus_ID { get; set; }
-        public string Cus_Name { get; set; }
+        public string Cus_Code { get; set; }
+        public string Cus_Name { get; set; }        
         public string Cus_LName { get; set; }
         public string Cus_Gender { get; set; }
         public DateTime Cus_BirthDay { get; set; }
