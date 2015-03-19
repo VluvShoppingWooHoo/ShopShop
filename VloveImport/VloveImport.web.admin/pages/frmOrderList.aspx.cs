@@ -14,25 +14,34 @@ namespace VloveImport.web.admin.pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         public void BindData()
         {
             DataSet ds = new DataSet();
 
-            AdminBiz AdBiz = new AdminBiz();
-            ds = AdBiz.GET_ADMIN_ORDER("BINDDATA");
+            try
+            {
+                AdminBiz AdBiz = new AdminBiz();
+                ds = AdBiz.GET_ADMIN_ORDER("BINDDATA");
 
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                gv_detail.DataSource = ds.Tables[0];
-                gv_detail.DataBind();
+                ShowMessageBox((ds.Tables[0].Rows.Count).ToString(), this.Page);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    gv_detail.DataSource = ds.Tables[0];
+                    gv_detail.DataBind();
+                }
+                else
+                {
+                    gv_detail.DataSource = null;
+                    gv_detail.DataBind();
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                gv_detail.DataSource = null;
-                gv_detail.DataBind();
+                //Label4.Text = ex.Message;
             }
 
         }
@@ -62,7 +71,7 @@ namespace VloveImport.web.admin.pages
             DataSet ds = new DataSet();
 
             AdminBiz AdBiz = new AdminBiz();
-            ds = AdBiz.GET_ADMIN_ORDER("BINDDATA_BYID",Convert.ToInt32(DataKeys_ID));
+            ds = AdBiz.GET_ADMIN_ORDER("BINDDATA_BYID", Convert.ToInt32(DataKeys_ID));
 
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -127,7 +136,7 @@ namespace VloveImport.web.admin.pages
                 gv_detail_view.DataSource = AddIndex(ListEn);
                 gv_detail_view.DataBind();
             }
-            else ShowMessageBox("กรุณาทำการทีละไม่เกิน 20 รายการ", this.Page);       
+            else ShowMessageBox("กรุณาทำการทีละไม่เกิน 20 รายการ", this.Page);
         }
 
         protected void imgBtn_gv_view_delete_Click(object sender, ImageClickEventArgs e)
@@ -191,7 +200,7 @@ namespace VloveImport.web.admin.pages
             {
                 ModalPopupExtender1.Show();
             }
-            else ShowMessageBox("ยังไม่มีรายการที่เลือก", this.Page);            
+            else ShowMessageBox("ยังไม่มีรายการที่เลือก", this.Page);
         }
 
         protected void btnclearOrder_Click(object sender, EventArgs e)
@@ -221,6 +230,14 @@ namespace VloveImport.web.admin.pages
         {
             this.gv_detail.PageIndex = e.NewPageIndex;
             BindData();
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            ucCalendar1.ClearData();
+            ucCalendar2.ClearData();
+            txtCusCode.Text = "";
+            ddl_order_status.SelectedIndex = 0;
         }
 
     }

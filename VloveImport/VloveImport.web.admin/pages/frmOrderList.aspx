@@ -9,6 +9,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+
+<%--            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>--%>
+
             <fieldset style="width: 98.5%;">
                 <legend>Search Criteria</legend>
                 <table style="border: 1 solid;">
@@ -74,7 +77,7 @@
                     <tr>
                         <td colspan="4" style="text-align: center;">                        
                             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click" />&nbsp;&nbsp;
-                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" />
+                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" OnClick="btnReset_Click" />
                         </td>
                     </tr>
                 </table>
@@ -225,7 +228,7 @@
                 PopupControlID="Panel3" TargetControlID="lbl_modal_detail">
             </asp:ModalPopupExtender>
 
-            <asp:Panel ID="Panel3" Height="700px" Width="1200px" runat="server">
+            <asp:Panel ID="Panel3" Height="700px" Width="1200px" runat="server" Style="display: none;">
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
