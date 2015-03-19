@@ -11,7 +11,10 @@ namespace VloveImport.web.admin.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtcalendar.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            if (!IsPostBack)
+            {
+                txtcalendar.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            }
         }
 
         #region Convert Date to YYYYMMDD
@@ -54,6 +57,11 @@ namespace VloveImport.web.admin.UserControls
         public Nullable<System.DateTime> GET_DATE_TO_DATE()
         {
             return Convert_DateYYYYMMDD(txtcalendar.Text.Trim());
+        }
+
+        public void ClearData()
+        {
+            txtcalendar.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
     }
