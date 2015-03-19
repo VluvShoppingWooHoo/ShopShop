@@ -4,7 +4,7 @@
     <div class="col s8 m8 l8">--%>
         <nav class="ucCustomerStatus">
             <div class="nav-wrapper black white-text">
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul class="left hide-on-med-and-down" style="padding-left: 10%;">
                     <li>
                         <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="~/Customer/Login.aspx">เข้าสู่ระบบ
                         </asp:HyperLink>
@@ -13,6 +13,8 @@
                         <asp:HyperLink ID="hlRegis" runat="server" NavigateUrl="~/Customer/Register.aspx">สมัครสมาชิก
                         </asp:HyperLink>
                     </li>
+                </ul>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
                         <asp:HyperLink ID="hlMember" runat="server" NavigateUrl="~/Customer/CustomerProfile.aspx">ข้อมูลสมาชิก
                         </asp:HyperLink>
