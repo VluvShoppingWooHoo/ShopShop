@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div class="col s12 m12 l12 TestBox1">
+        <div class="col s12 m12 l12 TestBox1" style="min-height:500px;">
             ตะกร้าสินค้าของฉัน
         <br />
             <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false">
@@ -49,7 +49,9 @@
                     </asp:TemplateField>
                 </Columns>
                 <HeaderStyle BackColor="Orange" />
-            </asp:GridView>
+            </asp:GridView>            
+        </div>
+        <div class="col s12 m12 l12 TestBox1">
             <button id="btnOrder" runat="server" type="submit" onserverclick="btnOrder_ServerClick"
                 name="action" class="btn waves-effect orange waves-light">
                 Order                                

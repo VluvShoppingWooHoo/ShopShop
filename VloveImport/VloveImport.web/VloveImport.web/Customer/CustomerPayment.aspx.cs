@@ -8,14 +8,16 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class CustomerPayment : System.Web.UI.Page
+    public partial class CustomerPayment : BasePage
     {
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession(); 
             string OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
             if (OID == "")
             {

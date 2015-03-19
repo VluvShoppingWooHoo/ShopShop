@@ -8,19 +8,18 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class CustomerConfirmInfo : System.Web.UI.Page
+    public partial class CustomerConfirmInfo : BasePage
     {
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                string CID = Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
-                if (CID == "")
-                    Response.Redirect("CustomerBasket.aspx");
+                CheckSession();              
 
                 BindDataGrid();
                 BindDataTrans();

@@ -38,6 +38,7 @@ namespace VloveImport.web.Customer
             CustomerData Cust = new CustomerData();
             EncrypUtil en = new EncrypUtil();
 
+            Cust.Cus_Code = GetNoSeries("CUSTOMER");
             Cust.Cus_Email = txtEmail.Text;
             Cust.Cus_Password = en.EncrypData(txtPassword.Text);
             Cust.Cus_Mobile = txtMobile.Text;

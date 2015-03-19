@@ -8,17 +8,19 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class CustomerOrderList : System.Web.UI.Page
+    public partial class CustomerOrderList : BasePage
     {
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession(); 
             if (!IsPostBack)
             {
-                string CID = "0";// Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
+                //string CID = "0";// Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
                 //if (CID == "")
                 //    Response.Redirect("CustomerBasket.aspx");
                 BindData();
@@ -28,7 +30,7 @@ namespace VloveImport.web.Customer
         protected void BindData()
         {
             ShoppingBiz Biz = new ShoppingBiz();
-            DataTable dt = Biz.GetOrderList(0);
+            DataTable dt = Biz.GetOrderList(GetCusID());
             if (dt != null && dt.Rows.Count > 0)
             {
                 gvOrder.DataSource = dt;
