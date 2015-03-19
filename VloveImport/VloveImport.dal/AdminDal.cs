@@ -21,7 +21,19 @@ namespace VloveImport.dal
 
         #region ADMIN ORDER
 
-        public DataSet GET_ADMIN_ORDER(int ORDER_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE,string CUS_NAME,string Act)
+        public void TestCon()
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataSet GET_ADMIN_ORDER(int ORDER_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE, string Act)
         {
             try
             {
@@ -30,7 +42,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
                 SqlCommandData.SetParameter("START_DATE", SqlDbType.Date, ParameterDirection.Input, START_DATE);
                 SqlCommandData.SetParameter("END_DATE", SqlDbType.Date, ParameterDirection.Input, END_DATE);
-                SqlCommandData.SetParameter("CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, CUS_NAME);
+                SqlCommandData.SetParameter("CUS_CODE", SqlDbType.VarChar, ParameterDirection.Input, CUS_CODE);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
                 
                 return SqlCommandData.ExecuteDataSet();

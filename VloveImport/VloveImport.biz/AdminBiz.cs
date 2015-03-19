@@ -13,6 +13,20 @@ namespace VloveImport.biz
     {
         #region  CUSTOMER FAVORIT SHOP
 
+        public void TestCon()
+        {
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                dal.TestCon();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public string UPD_ADMIN_ORDER(OrderData En, string Act)
         {
             string Result = "";
@@ -28,11 +42,11 @@ namespace VloveImport.biz
             return Result;
         }
 
-        public DataSet GET_ADMIN_ORDER(string Act,int ORDER_ID = -1, Nullable<DateTime> START_DATE = null, Nullable<DateTime> END_DATE = null, string CUS_NAME = "")
+        public DataSet GET_ADMIN_ORDER(string Act, int ORDER_ID = -1, Nullable<DateTime> START_DATE = null, Nullable<DateTime> END_DATE = null, string CUS_NAME = "")
         {
             DataSet ds = new DataSet();
             AdminDal dal = new AdminDal("LocalConnection");
-            ds = dal.GET_ADMIN_ORDER(ORDER_ID, START_DATE, END_DATE,CUS_NAME, Act);
+            ds = dal.GET_ADMIN_ORDER(ORDER_ID, START_DATE, END_DATE, CUS_NAME, Act);
             return ds;
         }
 
