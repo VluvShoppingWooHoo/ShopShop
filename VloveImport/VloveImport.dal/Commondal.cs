@@ -312,6 +312,21 @@ namespace VloveImport.dal
 
         #endregion
 
+        public DataSet GET_NOSERIES(string NoSeries_Name)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_NOSERIES");
+
+                SqlCommandData.SetParameter("NAME", SqlDbType.VarChar, ParameterDirection.Input, NoSeries_Name);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_NOSERIES -> msg : " + ex.Message);
+            }
+        }
     }
 
 

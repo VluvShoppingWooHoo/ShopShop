@@ -1648,15 +1648,15 @@
         <div class="row slider">
             <ul class="slides" style="height: 300px;">
                 <li class="li1">
-                    <img src="../Images/pic/Banner/ILoveImport.jpg" />
+                    <img src="../Images/pic/Banner/ILoveImport.jpg"  style="height: 300px;" />
                     <!-- random image -->
                 </li>
                 <li class="li2">
-                    <img src="../Images/pic/Banner/Sale.jpg" />
+                    <img src="../Images/pic/Banner/Sale.jpg"  style="height: 300px;" />
                     <!-- random image -->
                 </li>
                 <li class="li3">
-                    <img src="../Images/pic/Banner/Tour.jpg" />
+                    <img src="../Images/pic/Banner/Tour.jpg"   style="height: 300px;"/>
                     <!-- random image -->
                 </li>
             </ul>
