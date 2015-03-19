@@ -1,7 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucMenuBar.ascx.cs" Inherits="VloveImport.web.UserControls.ucMenuBar" %>
+<%@ Import namespace="VloveImport.data.Extension" %>
+<%--<%Constant.ScrapModel. %>--%>
 <div id="divSide" class="collection with-header">
     <div class="collection-header">
-        Menu
+        <span id="spanMenu"></span>
     </div>
     <a class="collection-item" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a>
     <a class="collection-item" href="/Customer/Order.aspx">สั่งสินค้า</a>
@@ -24,6 +26,41 @@
             $('#divOther').show();
         else
             $('#divOrder').show();
+
+        var pageId = parseInt(getUrlParameter('pag'));
+        var MenuTXT = '';
+        switch(pageId) {
+            case 1:
+                MenuTXT = 'ข่าวสาร';
+                break;
+            case 2:
+                MenuTXT = 'เกี่ยวกับเรา';
+                break;
+            case 3:
+                MenuTXT = 'ค่าขนส่ง';
+                break;
+            case 4:
+                MenuTXT = 'ติดต่อเรา';
+                break;
+            case 5:
+                MenuTXT = 'ทัวร์ตลาดจีน';
+                break;
+            case 6:
+                MenuTXT = 'บริการของเรา';
+                break;
+            case 7:
+                MenuTXT = 'โปรโมชั่น';
+                break;
+            case 8:
+                MenuTXT = 'วิธีการสั่งซื้อสินค้า';
+                break;
+            case 9:
+                MenuTXT = 'สมัครงาน';
+                break;
+            default:
+                return;
+        }
+        $('#spanMenu').html(MenuTXT);
 
         $('.collection-item').on("click", function () {
             $('.collection-item').removeClass("active");

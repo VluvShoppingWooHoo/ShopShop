@@ -444,13 +444,14 @@ div[id="hotlink"]
     #navMenuHori ul li a
     {
         color: white;
-        font-size: 20px !important;
+        font-size: 17px !important;
     }
 
     #navMenuHori ul li
     {
         height: 64px;
-        padding: 1.5%;
+        padding-top: 1.5%;
+        /*padding-left: 1%;*/
     }
 
         #navMenuHori ul li:hover

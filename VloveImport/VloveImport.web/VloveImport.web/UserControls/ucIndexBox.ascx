@@ -1696,30 +1696,20 @@
     </div>
 </div>
 <div class="row" style="margin-top: 20px;">
-    <%-- <div class="col s12 m12 l12">--%>
     <nav id="navMenuHori">
         <ul class="center hide-on-med-and-down">
-            <li><a class="truncate" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a></li>
-            <li><a class="truncate" href="/Customer/Order.aspx">สั่งสินค้า</a></li>
-            <li><a class="truncate" href="/Customer/HowTo.aspx?type=rateimport">ค่าขนส่ง</a></li>
-            <li><a class="truncate" href="/Customer/News.aspx">ข่าวสารและกิจกรรม</a></li>
-            <li><a class="truncate" href="/Customer/Promotion.aspx">โปรโมชั่น</a></li>
-            <li><a class="truncate" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a></li>
-            <%-- <li>
-                    <a class="red dropdown-button width200px" href="#!" data-activates="dropdown1">อื่นๆ<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <ul id="dropdown1" class="dropdown-content">
-                        <li><a class="red white-text font15" href="/Customer/HowTo.aspx?type=other">อื่นๆ</a></li>
-                        <li class="divider"></li>
-                        <li><a class="red white-text font15" href="/Customer/AboutUs.aspx">เกี่ยวกับเรา</a></li>
-                        <li class="divider"></li>
-                        <li><a class="red white-text font15" href="/Customer/HowTo.aspx?type=order">วิธีการสั่งซื้อสินค้า</a></li>
-                        <li class="divider"></li>
-                        <li><a class="red white-text font15" href="/Customer/ContactUs.aspx">ติดต่อเรา</a></li>
-                    </ul>
-                </li>--%>
+            <li><a class="truncate" href="/Customer/News.aspx?pag=1">กิจกรรมและข่าวสาร</a></li>
+            <li><a class="truncate" href="#">เกี่ยวกับเรา</a></li>
+            <li><a class="truncate" href="/Customer/HowTo.aspx?type=rateimport&pag=3">ค่าขนส่ง</a></li>
+            <li><a class="truncate" href="#">ติดต่อเรา</a></li>
+            <li><a class="truncate" href="/Customer/TourMarket.aspx?pag=5">ทัวร์ตลาดจีน</a></li>
+            <li><a class="truncate" href="#">บริการของเรา</a></li>
+            <li><a class="truncate" href="/Customer/Promotion.aspx?pag=7">โปรโมชั่น</a></li>
+            <li><a class="truncate" href="/Customer/Order.aspx?pag=8">วิธีการสั่งซื้อสินค้า</a></li>
+            <li><a class="truncate" href="#">สมัครงาน</a></li>
+            <%--<li><a class="truncate" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a></li>--%>
         </ul>
     </nav>
-    <%--</div>--%>
 </div>
 <script type="text/javascript">
     $(function () {
