@@ -42,5 +42,14 @@ namespace VloveImport.biz
 
         #endregion
 
+        public string GetNoSeries(string NoSeries_Name)
+        {
+            string Result = "";
+            Commondal Com = new Commondal("LocalConnection");
+            DataSet ds = Com.GET_NOSERIES(NoSeries_Name);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+                Result = ds.Tables[0].Rows[0]["NoSeries"].ToString();
+            return Result;
+        }
     }
 }
