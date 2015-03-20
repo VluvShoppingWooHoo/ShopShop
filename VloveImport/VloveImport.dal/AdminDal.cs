@@ -33,6 +33,23 @@ namespace VloveImport.dal
             }
         }
 
+        public DataSet GET_MASTER_STATUS(string STATUS_TYPE, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_MASTER_STATUS");
+
+                SqlCommandData.SetParameter("TYPE_NAME", SqlDbType.VarChar, ParameterDirection.Input, STATUS_TYPE);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_ADMIN_ORDER -> msg : " + ex.Message);
+            }
+        }
+
         public DataSet GET_ADMIN_ORDER(int ORDER_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE, string Act)
         {
             try

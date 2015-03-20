@@ -11,7 +11,16 @@ namespace VloveImport.biz
 {
     public class AdminBiz
     {
-        #region  CUSTOMER FAVORIT SHOP
+
+        public DataSet GET_MASTER_STATUS(string STATUS_TYPE, string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.GET_MASTER_STATUS(STATUS_TYPE, Act);
+            return ds;
+        }
+
+        #region ORDER
 
         public void TestCon()
         {
