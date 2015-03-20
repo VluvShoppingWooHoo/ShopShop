@@ -27,26 +27,18 @@
     </asp:ContentPlaceHolder>
 </head>
 <body id="masterForm" hidden>
-    <form runat="server" style="min-height: 768px;">
+    <form runat="server">
         <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
         <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
-        <div id="divMain" class="row content white" style="margin-bottom: 0px">
+        <div id="divMain" class="row content white" style="margin-bottom: 0px; min-height: 768px;">
             <div id="divMenubar" class="col s2 m2 l2">
                 <uc1:ucMenubar ID="ucMenubar1" runat="server" />
             </div>
             <div id="divcontent" class="col s10 m10 l10">
-                <%--<div class="row">--%>
-                <%--<div class="white">--%>
-                <%--<div class="row" style="margin-bottom: 0px">
-                            <div class="col s12 m12 l12">--%>
                 <div id="divcard" class="card .z-depth-5" style="padding: 20px">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
-                <%-- </div>
-                        </div>--%>
-                <%--</div>--%>
-                <%--</div>--%>
             </div>
         </div>
         <div class="row" style="margin-bottom: 0px; margin-top: 0px">
@@ -110,10 +102,15 @@
     function escapeRegExp(string) {
         return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
     }
-    function setHeight() {
-        var h = $("#divMain").height();
-        $("#divMenubar").height(h);
-        $("#divcontent").height(h);
+    function setHeight(h) {
+        //var h = $("#divMain").height();
+        if (h > $("#divMenubar").height()) {
+            $("#divMenubar").height(h);
+        }
+        else {
+            $("#divMenubar").height(768);
+        }
+        //$("#divcontent").height(h);
         //$("#divcard").height(h);        
     }
 </script>
