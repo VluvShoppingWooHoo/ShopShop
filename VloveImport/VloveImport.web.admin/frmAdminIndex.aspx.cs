@@ -63,20 +63,27 @@ namespace VloveImport.web.admin
                 ShowMessageBox("กรุณากรอก USERNAME หรือ PASSWORD", this.Page);
             }
 
-            UserBiz userBiz = new UserBiz();
-            DataSet ds = userBiz.GET_USER_LOGIN(txtuser.Text.Trim(),"LOGIN");
-
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            try
             {
-                EncrypUtil En = new EncrypUtil();
-                string pwd = En.DecryptData(ds.Tables[0].Rows[0]["EMP_PASSWORD"].ToString());
-                if (pwd == txtpassword.Text)
+                UserBiz userBiz = new UserBiz();
+                DataSet ds = userBiz.GET_USER_LOGIN(txtuser.Text.Trim(), "LOGIN");
+
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-                    Response.Redirect("~/Pages/frmIndex.aspx");
+                    EncrypUtil En = new EncrypUtil();
+                    string pwd = En.DecryptData(ds.Tables[0].Rows[0]["EMP_PASSWORD"].ToString());
+                    if (pwd == txtpassword.Text)
+                    {
+                        Response.Redirect("~/Pages/frmIndex.aspx");
+                    }
+                    else ShowMessageBox("กรุณาตรวจสอบ USERNAME หรือ PASSWORD อีกครั้ง", this.Page);
                 }
                 else ShowMessageBox("กรุณาตรวจสอบ USERNAME หรือ PASSWORD อีกครั้ง", this.Page);
             }
-            else ShowMessageBox("กรุณาตรวจสอบ USERNAME หรือ PASSWORD อีกครั้ง", this.Page);
+            catch (Exception ex)
+            {
+                ShowMessageBox(ex.Message, this.Page);
+            }
         }
     }
 }

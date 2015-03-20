@@ -10,7 +10,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
-<%--            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>--%>
+            <%--<asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>--%>
 
             <fieldset style="width: 98.5%;">
                 <legend>Search Criteria</legend>

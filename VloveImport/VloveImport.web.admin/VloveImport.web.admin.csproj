@@ -81,6 +81,7 @@
     <Content Include="img\icon\nxt-checkbox-checked-ok-md.png" />
     <Content Include="img\icon\r_box.png" />
     <Content Include="img\icon\Sign-Close-icon.png" />
+    <Content Include="Logout.aspx" />
     <Content Include="pages\frmApprovePayment.aspx" />
     <Content Include="pages\frmCustomerList.aspx" />
     <Content Include="pages\frmGroupUser.aspx" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="frmAdminIndex.aspx.designer.cs">
       <DependentUpon>frmAdminIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage\Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

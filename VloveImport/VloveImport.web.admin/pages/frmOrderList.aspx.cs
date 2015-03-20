@@ -26,7 +26,8 @@ namespace VloveImport.web.admin.pages
                 AdminBiz AdBiz = new AdminBiz();
                 ds = AdBiz.GET_ADMIN_ORDER("BINDDATA");
 
-                ShowMessageBox((ds.Tables[0].Rows.Count).ToString(), this.Page);
+                //Label4.Text = (ds.Tables[0].Rows.Count).ToString();
+
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     gv_detail.DataSource = ds.Tables[0];
