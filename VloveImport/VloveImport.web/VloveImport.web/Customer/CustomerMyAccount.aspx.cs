@@ -20,7 +20,7 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                ฝ/BindData();
+                //BindData();
             }
         }
 
