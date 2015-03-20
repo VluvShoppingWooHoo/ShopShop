@@ -76,13 +76,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// ddl_order_status control.
+        /// ddl_search_order_status control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_order_status;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_search_order_status;
         
         /// <summary>
         /// btnSearch control.
@@ -184,22 +184,22 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// ddl_status_order control.
+        /// ddl_choose_status_order control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_status_order;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_choose_status_order;
         
         /// <summary>
-        /// ddl_sub_status_order control.
+        /// ddl_choose_sub_status control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_sub_status_order;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_choose_sub_status;
         
         /// <summary>
         /// btnUpdateStatus control.

@@ -14,7 +14,35 @@ namespace VloveImport.web.admin.pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                BindData_order_status(ddl_search_order_status,"S");
+            }
+        }
 
+
+        public void BindData_order_status(DropDownList ddl,string ddlType = "")
+        {
+            AdminBiz AddBiz = new AdminBiz();
+            DataSet ds = AddBiz.GET_MASTER_STATUS("ORDER_STS", "BIND_DDL");
+
+            ddl.DataValueField = "S_ID";
+            ddl.DataTextField = "S_NAME";
+            ddl.DataSource = ds.Tables[0];
+            ddl.DataBind();
+            if(ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", string.Empty));
+        }
+
+        public void BindData_transport_status(DropDownList ddl, string ddlType = "")
+        {
+            AdminBiz AddBiz = new AdminBiz();
+            DataSet ds = AddBiz.GET_MASTER_STATUS("TRANSPORT", "BIND_DDL");
+
+            ddl.DataValueField = "S_ID";
+            ddl.DataTextField = "S_NAME";
+            ddl.DataSource = ds.Tables[0];
+            ddl.DataBind();
+            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", string.Empty));
         }
 
         public void BindData()
@@ -238,7 +266,44 @@ namespace VloveImport.web.admin.pages
             ucCalendar1.ClearData();
             ucCalendar2.ClearData();
             txtCusCode.Text = "";
-            ddl_order_status.SelectedIndex = 0;
+            ddl_search_order_status.SelectedIndex = 0;
+        }
+
+        protected void btn_modal_detail_update_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEditProd_num_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEditProd_num_save_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEditProd_num_cancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddl_choose_status_order_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddl_choose_status_order.SelectedValue == "1")
+            {
+                BindData_order_status(ddl_choose_sub_status);
+            }
+            else if (ddl_choose_status_order.SelectedValue == "2")
+            {
+                BindData_transport_status(ddl_choose_sub_status);
+            }
+        }
+
+        protected void btnUpdateStatus_Click(object sender, EventArgs e)
+        {
+            //ถึงตรงนี้เอา Grid Loop
         }
 
     }

@@ -36,13 +36,11 @@
                             <asp:Label ID="Label3" runat="server" Text="สถานะการสั่งซื้อ :"></asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddl_order_status" runat="server" Width="300px">
-                                <asp:ListItem Value="-1">แสดงทั้งหมด</asp:ListItem>
+                            <asp:DropDownList ID="ddl_search_order_status" runat="server" Width="300px">
+<%--                                <asp:ListItem Value="-1">แสดงทั้งหมด</asp:ListItem>
                                 <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
                                 <asp:ListItem Value="1">ยังไม่ได้ชำระเงิน</asp:ListItem>
-                                <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>
-                                <asp:ListItem Value="3">รอจัดส่ง</asp:ListItem>
-                                <asp:ListItem Value="4">ส่งสินค้าแล้ว</asp:ListItem>
+                                <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>--%>
                             </asp:DropDownList>
                         </td>
                         <td></td>
@@ -132,7 +130,7 @@
                 PopupControlID="Panel1" TargetControlID="lblheader">
             </asp:ModalPopupExtender>
 
-            <asp:Panel ID="Panel1" Height="700px" Width="1200px" runat="server" Style="display: none;">
+            <asp:Panel ID="Panel1" Height="700px" Width="1200px" runat="server" >
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -161,34 +159,32 @@
                                             <tr>
                                                 <td width ="15%">สถานะ :</td>
                                                 <td width ="85%">
-                                                    <asp:DropDownList ID="ddl_status_order" runat="server">
+                                                    <asp:DropDownList ID="ddl_choose_status_order" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_choose_status_order_SelectedIndexChanged">
                                                         <asp:ListItem Value="-1">กรุณาเลือก</asp:ListItem>
                                                         <asp:ListItem Value="1">สถานะการสั่งซื้อ</asp:ListItem>
-                                                        <asp:ListItem>สถานะการส่งสินค้า</asp:ListItem>
+                                                        <asp:ListItem Value="2">สถานะการส่งสินค้า</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>สถานะที่ต้องการแก้ไข :</td>
                                                 <td>
-                                                    <asp:DropDownList ID="ddl_sub_status_order" runat="server">
-                                                        <asp:ListItem Value="-1">กรุณาเลือก</asp:ListItem>
+                                                    <asp:DropDownList ID="ddl_choose_sub_status" runat="server">
+<%--                                                        <asp:ListItem Value="-1">กรุณาเลือก</asp:ListItem>
                                                         <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
                                                         <asp:ListItem Value="1">รอชำระเงิน</asp:ListItem>
                                                         <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>
-                                                        <asp:ListItem Value="3">รอจัดส่ง</asp:ListItem>
-                                                        <asp:ListItem Value="4">ส่งสินค้าแล้ว</asp:ListItem>
                                                         <asp:ListItem Value="-2">---------</asp:ListItem>
                                                         <asp:ListItem Value="1">อยู่ระหว่างการสั่งจากประเทศจีน</asp:ListItem>
                                                         <asp:ListItem Value="2">สินค้ารอส่งให้ลูกค้า</asp:ListItem>
-                                                        <asp:ListItem Value="3">จัดส่งสินค้าให้ลูกค้าแล้ว</asp:ListItem>
+                                                        <asp:ListItem Value="3">จัดส่งสินค้าให้ลูกค้าแล้ว</asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <asp:Button ID="btnUpdateStatus" runat="server" Text="Update Status" CssClass ="btnSave"></asp:Button>
+                                                    <asp:Button ID="btnUpdateStatus" runat="server" Text="Update Status" CssClass ="btnSave" OnClick="btnUpdateStatus_Click"></asp:Button>
                                                 </td>
                                             </tr>
                                         </table>
@@ -228,7 +224,7 @@
                 PopupControlID="Panel3" TargetControlID="lbl_modal_detail">
             </asp:ModalPopupExtender>
 
-            <asp:Panel ID="Panel3" Height="700px" Width="1200px" runat="server" Style="display: none;">
+            <asp:Panel ID="Panel3" Height="700px" Width="1200px" runat="server" >
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -305,9 +301,6 @@
                                                         <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
                                                         <asp:ListItem Value="1">รอชำระเงิน</asp:ListItem>
                                                         <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>
-                                                        <asp:ListItem Value="3">รอจัดส่ง</asp:ListItem>
-                                                        <asp:ListItem Value="4">ส่งสินค้าแล้ว</asp:ListItem>
-                                                        <asp:ListItem Value="5">รอลูกค้ายืนยันการแก้ไขจำนวนสินค้า</asp:ListItem>
                                                     </asp:DropDownList>
                                                     <%-- 
                                                         <asp:ListItem Value="5">รอลูกค้ายืนยันการแก้ไขจำนวนสินค้า</asp:ListItem>
@@ -329,7 +322,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <asp:Button ID="btn_modal_detail_update" runat="server" Text="Update Status" CssClass ="btnSave"></asp:Button>
+                                                    <asp:Button ID="btn_modal_detail_update" runat="server" Text="Update Status" CssClass ="btnSave" OnClick="btn_modal_detail_update_Click"></asp:Button>
                                                 </td>
                                             </tr>
                                         </table>
@@ -378,34 +371,24 @@
                                                     <td>
                                                         <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex ="0">
                                                             <asp:View ID="View1" runat="server">
-                                                                <asp:Button ID="btnEditProd_num" runat="server" Text="แก้ไขจำนวนสินค้า" CssClass =" btnSearch"></asp:Button>
+                                                                <asp:Button ID="btnEditProd_num" runat="server" Text="แก้ไขจำนวนสินค้า" CssClass =" btnSearch" OnClick="btnEditProd_num_Click"></asp:Button>
                                                                 <asp:GridView ID="gv_detail_prod_view" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="100%" 
                                                                     DataKeyNames ="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
                                                                     <Columns>
                                                                         <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
                                                                         <asp:BoundField DataField ="OD_ITEMNAME" HeaderText="รายละเอียดสินค้า" />
                                                                         <asp:BoundField DataField = "OD_REMARK" HeaderText="หมายเหตุ" />
-                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคาต่อชิ้น" >
-                                                                        <ItemStyle CssClass="ItemStyle-right" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField = "OD_AMOUNT" HeaderText="จำนวนสินค้าที่สั่งซื้อ" >
-                                                                        <ItemStyle CssClass="ItemStyle-right" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" >
-                                                                        <ItemStyle CssClass="ItemStyle-right" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField = "OD_AMOUNT_ACTIVE" HeaderText="จำนวนสินค้าที่ได้รับ" >
-                                                                        <ItemStyle CssClass="ItemStyle-right" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" >
-                                                                        <ItemStyle CssClass="ItemStyle-right" />
-                                                                        </asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคาต่อชิ้น" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_AMOUNT" HeaderText="จำนวนสินค้าที่สั่งซื้อ" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_AMOUNT_ACTIVE" HeaderText="จำนวนสินค้าที่ได้รับ" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
+                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
                                                                     </Columns>
                                                                 </asp:GridView>        
                                                             </asp:View>
                                                             <asp:View ID="View2" runat="server">
-                                                                <asp:Button ID="btnEditProd_num_save" runat="server" Text="Update " CssClass =" btnSave"></asp:Button>&nbsp;&nbsp;
-                                                                <asp:Button ID="btnEditProd_num_cancel" runat="server" Text="Cancel" CssClass ="btnCancel"></asp:Button>
+                                                                <asp:Button ID="btnEditProd_num_save" runat="server" Text="Update " CssClass =" btnSave" OnClick="btnEditProd_num_save_Click"></asp:Button>&nbsp;&nbsp;
+                                                                <asp:Button ID="btnEditProd_num_cancel" runat="server" Text="Cancel" CssClass ="btnCancel" OnClick="btnEditProd_num_cancel_Click"></asp:Button>
                                                                 <asp:GridView ID="gv_detail_prod_Edit" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="95%" 
                                                                     DataKeyNames ="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
                                                                     <Columns>
@@ -415,9 +398,7 @@
                                                                         <asp:BoundField DataField = "CUS_FULLNAME" HeaderText="Customer Name" />
                                                                         <asp:BoundField DataField = "ORDER_STATUS_TEXT" HeaderText="Order Status" />
                                                                         <asp:BoundField DataField = "EMP_NAME" HeaderText="Employee Name" />
-                                                                        <asp:BoundField DataField = "SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount" >
-                                                                        <ItemStyle CssClass="ItemStyle-right" />
-                                                                        </asp:BoundField>
+                                                                        <asp:BoundField DataField = "SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
                                                                     </Columns>
                                                                 </asp:GridView>  
                                                             </asp:View>
