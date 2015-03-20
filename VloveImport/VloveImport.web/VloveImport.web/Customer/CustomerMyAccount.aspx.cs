@@ -9,24 +9,24 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.util;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class CustomerMyAccount : System.Web.UI.Page
+    public partial class CustomerMyAccount : BasePage
     {
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                //string Cus_ID = Request.QueryString["Cus_id"] == null ? "" : en.DecryptData(Request.QueryString["Cus_id"].ToString());
-                //BindData(Cus_ID);
+                //BindData();
             }
         }
 
-        private void BindData(string ID)
+        private void BindData()
         {
-            Int32 Cus_ID = Convert.ToInt32(ID);
+            Int32 Cus_ID = GetCusID();
             CustomerBiz Biz = new CustomerBiz();
             DataTable dt = Biz.GET_CUSTOMER_MYACCOUNT(Cus_ID);
 
