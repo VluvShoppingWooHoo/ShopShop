@@ -527,3 +527,8 @@ nav[class="ucCustomerStatus"]
         {
             font-size: 15px !important;
         }
+
+.dpBlock
+{
+    display: block !important;
+}

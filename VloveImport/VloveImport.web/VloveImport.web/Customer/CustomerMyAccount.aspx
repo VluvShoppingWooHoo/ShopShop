@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col s10 m10 l10">
             <ul class="tabs">
-                <li class="tab col s3 m3 l3"><a href="#topup">เก็บเงิน</a></li>
+                <li class="tab col s3 m3 l3"><a href="#topup">เติมเงิน</a></li>
                 <li class="tab col s3 m3 l3"><a href="#withdraw">เบิกเงิน</a></li>
                 <li class="tab col s3 m3 l3"><a href="#translog">บันทึกการใช้จ่าย</a></li>
                 <li class="tab col s3 m3 l3"><a href="#voucher">บัตรกำนัล</a></li>
