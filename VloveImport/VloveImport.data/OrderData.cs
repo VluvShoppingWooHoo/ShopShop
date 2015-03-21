@@ -11,7 +11,8 @@ namespace VloveImport.data
         #region TB_ORDER
         public int ORDER_ID { get; set; }
         public DateTime ORDER_DATE { get; set; }
-        public int ORDER_STATUS { get; set; }   
+        public int ORDER_STATUS { get; set; }
+        public int TRANSPORT_STATUS { get; set; } 
         public int CUS_ID { get; set; }
         public int ORDER_TRANSPOT_CHINA { get; set; }
         public int ORDER_TRANSPOT_THAI { get; set; }    
@@ -30,6 +31,7 @@ namespace VloveImport.data
         public string ORDER_DATE_TEXT { get; set; }
         public string CUS_FULLNAME { get; set; }
         public string ORDER_STATUS_TEXT { get; set; }
+        public string TRANSPORT_STATUS_TEXT { get; set; }
         public string SUM_PROD_PRICE { get; set; }
 
         #endregion

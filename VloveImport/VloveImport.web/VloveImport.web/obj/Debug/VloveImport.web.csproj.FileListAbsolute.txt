@@ -219,3 +219,4 @@ D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.web\Vlo
 D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.csprojResolveAssemblyReference.cache
 D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.dll
 D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.pdb
+D:\Work\V_I_IMPORT\shop3\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.csprojResolveAssemblyReference.cache

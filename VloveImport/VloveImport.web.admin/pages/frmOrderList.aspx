@@ -97,7 +97,7 @@
                 </tr>
             </table>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="5" Width="95%"
-                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
+                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -106,13 +106,29 @@
                         <HeaderStyle CssClass="width5" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
-                    <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
-                    <asp:BoundField DataField="ORDER_CODE" HeaderText="Order Code" />
-                    <asp:BoundField DataField="ORDER_DATE_TEXT" HeaderText="Order Date" />
-                    <asp:BoundField DataField="CUS_CODE" HeaderText="Customer Code" />
-                    <asp:BoundField DataField="ORDER_STATUS_TEXT" HeaderText="Order Status" />
-                    <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name" />
+                    <asp:BoundField DataField="ROW_INDEX" HeaderText="No." >
+                    <HeaderStyle CssClass="width5" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="ORDER_CODE" HeaderText="OrderCode" >
+                    <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="ORDER_DATE_TEXT" HeaderText="Order Date" >
+                    <HeaderStyle CssClass="width15" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="CUS_CODE" HeaderText="CustomerCode" >
+                    <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="ORDER_STATUS_TEXT" HeaderText="Order Status" >
+                    <HeaderStyle CssClass="width15" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="TRANSPORT_STATUS_TEXT" HeaderText="Transport Status" >
+                    <HeaderStyle CssClass="width15" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name" >
+                    <HeaderStyle CssClass="width15" />
+                    </asp:BoundField>
                     <asp:BoundField DataField="SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount">
+                        <HeaderStyle CssClass="width10" />
                         <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
@@ -120,6 +136,7 @@
                             <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />&nbsp;&nbsp;
                     <asp:ImageButton ID="imgBtn_delete" runat="server" Height="15px" ImageUrl="~/img/icon/Close-2-icon.png" Width="15px" OnClick="imgBtn_delete_Click" />
                         </ItemTemplate>
+                        <HeaderStyle CssClass="width5" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
                 </Columns>
@@ -189,8 +206,8 @@
                                             </tr>
                                         </table>
                                     </fieldset>
-                                    <asp:GridView ID="gv_detail_view" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="95%" 
-                                        DataKeyNames ="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE">
+                                    <asp:GridView ID="gv_detail_view" runat="server" AutoGenerateColumns="False" Width="95%"
+                                        DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
                                         <Columns>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
@@ -199,15 +216,39 @@
                                                 <HeaderStyle CssClass="width5" />
                                                 <ItemStyle CssClass="ItemStyle-center" />
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
-                                            <asp:BoundField DataField ="ORDER_CODE" HeaderText="Order Code" />
-                                            <asp:BoundField DataField = "ORDER_DATE_TEXT" HeaderText="Order Date" />
-                                            <asp:BoundField DataField = "CUS_CODE" HeaderText="Customer Code" />
-                                            <asp:BoundField DataField = "ORDER_STATUS_TEXT" HeaderText="Order Status" />
-                                            <asp:BoundField DataField = "EMP_NAME" HeaderText="Employee Name" />
-                                            <asp:BoundField DataField = "SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount" >
-                                            <ItemStyle CssClass="ItemStyle-right" />
+                                            <asp:BoundField DataField="ROW_INDEX" HeaderText="No." >
+                                            <HeaderStyle CssClass="width5" />
                                             </asp:BoundField>
+                                            <asp:BoundField DataField="ORDER_CODE" HeaderText="OrderCode" >
+                                            <HeaderStyle CssClass="width10" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="ORDER_DATE_TEXT" HeaderText="Order Date" >
+                                            <HeaderStyle CssClass="width15" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="CUS_CODE" HeaderText="CustomerCode" >
+                                            <HeaderStyle CssClass="width10" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="ORDER_STATUS_TEXT" HeaderText="Order Status" >
+                                            <HeaderStyle CssClass="width15" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="TRANSPORT_STATUS_TEXT" HeaderText="Transport Status" >
+                                            <HeaderStyle CssClass="width15" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name" >
+                                            <HeaderStyle CssClass="width15" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="SUM_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount">
+                                                <HeaderStyle CssClass="width10" />
+                                                <ItemStyle CssClass="ItemStyle-right" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Tools">
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />&nbsp;&nbsp;
+                                            <asp:ImageButton ID="imgBtn_delete" runat="server" Height="15px" ImageUrl="~/img/icon/Close-2-icon.png" Width="15px" OnClick="imgBtn_delete_Click" />
+                                                </ItemTemplate>
+                                                <HeaderStyle CssClass="width5" />
+                                                <ItemStyle CssClass="ItemStyle-center" />
+                                            </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
                             </asp:Panel>
@@ -261,6 +302,12 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td>จำนวนเงินทั้งหมด :</td>
+                                                <td></td>
+                                                <td>จำนวนเงินหักค่า :</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
                                                 <td>วิธีการขนส่งขั้นที่ 1 :</td>
                                                 <td>
                                                     <asp:Label ID="lbl_ViewDetail_TRANSPORT_1" runat="server" Text=""></asp:Label>
@@ -296,11 +343,11 @@
                                             <tr>
                                                 <td width ="15%">สถานะการสั่งซื้อ :</td>
                                                 <td width ="85%">
-                                                    <asp:DropDownList ID="DropDownList2" runat="server">
-                                                        <asp:ListItem Value="-1">กรุณาเลือก</asp:ListItem>
+                                                    <asp:DropDownList ID="ddl_ViewDetail_ORDER_STATUS" runat="server">
+<%--                                                        <asp:ListItem Value="-1">กรุณาเลือก</asp:ListItem>
                                                         <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
                                                         <asp:ListItem Value="1">รอชำระเงิน</asp:ListItem>
-                                                        <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>
+                                                        <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                     <%-- 
                                                         <asp:ListItem Value="5">รอลูกค้ายืนยันการแก้ไขจำนวนสินค้า</asp:ListItem>
@@ -312,10 +359,10 @@
                                             <tr>
                                                 <td>สถานะการส่งสินค้า :</td>
                                                 <td>
-                                                    <asp:DropDownList ID="DropDownList1" runat="server">
-                                                        <asp:ListItem Value="1">อยู่ระหว่างการสั่งจากประเทศจีน</asp:ListItem>
+                                                    <asp:DropDownList ID="ddl_ViewDetail_TRANSPORT_STATUS" runat="server">
+<%--                                                        <asp:ListItem Value="1">อยู่ระหว่างการสั่งจากประเทศจีน</asp:ListItem>
                                                         <asp:ListItem Value="2">สินค้ารอส่งให้ลูกค้า</asp:ListItem>
-                                                        <asp:ListItem Value="3">จัดส่งสินค้าให้ลูกค้าแล้ว</asp:ListItem>
+                                                        <asp:ListItem Value="3">จัดส่งสินค้าให้ลูกค้าแล้ว</asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
@@ -372,7 +419,7 @@
                                                         <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex ="0">
                                                             <asp:View ID="View1" runat="server">
                                                                 <asp:Button ID="btnEditProd_num" runat="server" Text="แก้ไขจำนวนสินค้า" CssClass =" btnSearch" OnClick="btnEditProd_num_Click"></asp:Button>
-                                                                <asp:GridView ID="gv_detail_prod_view" runat="server" AutoGenerateColumns="False" AllowPaging="False" Width="100%" 
+                                                                <asp:GridView ID="gv_detail_prod_view" runat="server" AutoGenerateColumns="False" Width="100%" 
                                                                     DataKeyNames ="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
                                                                     <Columns>
                                                                         <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
@@ -380,9 +427,9 @@
                                                                         <asp:BoundField DataField = "OD_REMARK" HeaderText="หมายเหตุ" />
                                                                         <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคาต่อชิ้น" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
                                                                         <asp:BoundField DataField = "OD_AMOUNT" HeaderText="จำนวนสินค้าที่สั่งซื้อ" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
-                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
+                                                                        <asp:BoundField DataField = "TOTAL_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
                                                                         <asp:BoundField DataField = "OD_AMOUNT_ACTIVE" HeaderText="จำนวนสินค้าที่ได้รับ" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
-                                                                        <asp:BoundField DataField = "OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
+                                                                        <asp:BoundField DataField = "TOTAL_PROD_PRICE_ACTIVE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม" ><ItemStyle CssClass="ItemStyle-right" /></asp:BoundField>
                                                                     </Columns>
                                                                 </asp:GridView>        
                                                             </asp:View>

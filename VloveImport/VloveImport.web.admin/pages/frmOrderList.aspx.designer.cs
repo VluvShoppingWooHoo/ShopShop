@@ -328,22 +328,22 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_EMP_UPDATE_DATE;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// ddl_ViewDetail_ORDER_STATUS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_ViewDetail_ORDER_STATUS;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// ddl_ViewDetail_TRANSPORT_STATUS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_ViewDetail_TRANSPORT_STATUS;
         
         /// <summary>
         /// btn_modal_detail_update control.
