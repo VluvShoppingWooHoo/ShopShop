@@ -17,6 +17,8 @@ namespace VloveImport.web.admin.pages
             if (!IsPostBack)
             {
                 BindData_order_status(ddl_search_order_status, "S");
+                BindData_order_status(ddl_ViewDetail_ORDER_STATUS);
+                BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS);
             }
         }
 
@@ -31,6 +33,7 @@ namespace VloveImport.web.admin.pages
             ddl.DataSource = ds.Tables[0];
             ddl.DataBind();
             if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", string.Empty));
+            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", string.Empty));
         }
 
         public void BindData_transport_status(DropDownList ddl, string ddlType = "")
@@ -43,6 +46,7 @@ namespace VloveImport.web.admin.pages
             ddl.DataSource = ds.Tables[0];
             ddl.DataBind();
             if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", string.Empty));
+            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", string.Empty));
         }
 
         public void BindData()
@@ -107,11 +111,15 @@ namespace VloveImport.web.admin.pages
                 #region ORDER DATA
                 lbl_ViewDetail_ORDER_ID.Text = ds.Tables[0].Rows[0]["ORDER_CODE"].ToString();
                 lbl_ViewDetail_ORDER_DATE.Text = ds.Tables[0].Rows[0]["ORDER_DATE_TEXT"].ToString();
-                lbl_ViewDetail_TRANSPORT_1.Text = ds.Tables[0].Rows[0]["TRANSPOT_CHINA"].ToString();
-                lbl_ViewDetail_TRANSPORT_2.Text = ds.Tables[0].Rows[0]["TRANSPOT_THAI"].ToString();
+                lbl_ViewDetail_TRANSPORT_1.Text = ds.Tables[0].Rows[0]["TRANSPORT_CHINA_TEXT"].ToString();
+                lbl_ViewDetail_TRANSPORT_2.Text = ds.Tables[0].Rows[0]["TRANSPORT_THAI_TEXT"].ToString();
                 lbl_ViewDetail_ADDRESS.Text = "รอก่อน";
                 lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["UPDATE_USER"].ToString();
                 lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
+
+                ddl_ViewDetail_ORDER_STATUS.SelectedValue = ds.Tables[0].Rows[0]["ORDER_STATUS"].ToString();
+                ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = ds.Tables[0].Rows[0]["TRANSPORT_STATUS"].ToString();
+
                 #endregion
 
                 #region Customer Data
@@ -151,15 +159,16 @@ namespace VloveImport.web.admin.pages
                 OrderData En = new OrderData();
 
                 En = new OrderData();
-                //ORDER_ID,ORDER_DATE,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE
+                //ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT
                 En.ORDER_ID = Convert.ToInt32(gv_detail.DataKeys[rowIndex].Values[0].ToString());
                 En.ORDER_DATE_TEXT = gv_detail.DataKeys[rowIndex].Values[1].ToString();
                 En.CUS_FULLNAME = gv_detail.DataKeys[rowIndex].Values[2].ToString();
                 En.ORDER_STATUS_TEXT = gv_detail.DataKeys[rowIndex].Values[3].ToString();
                 En.EMP_NAME = gv_detail.DataKeys[rowIndex].Values[4].ToString();
                 En.SUM_PROD_PRICE = gv_detail.DataKeys[rowIndex].Values[5].ToString();
-                En.ORDER_CODE = gv_detail.DataKeys[rowIndex].Values[6].ToString();
-                En.CUS_CODE = gv_detail.DataKeys[rowIndex].Values[7].ToString();
+                En.CUS_CODE = gv_detail.DataKeys[rowIndex].Values[6].ToString();
+                En.ORDER_CODE = gv_detail.DataKeys[rowIndex].Values[7].ToString();
+                En.TRANSPORT_STATUS_TEXT = gv_detail.DataKeys[rowIndex].Values[8].ToString();
                 ListEn.Add(En);
 
                 gv_detail_view.DataSource = AddIndex(ListEn);
@@ -197,23 +206,24 @@ namespace VloveImport.web.admin.pages
         internal List<OrderData> Get_Gridview_Detail(GridView gv)
         {
             List<OrderData> List_En = new List<OrderData>();
-            OrderData EnMa;
+            OrderData En;
 
             if (gv.Rows.Count > 0)
             {
                 for (int i = 0; i <= gv.Rows.Count - 1; i++)
                 {
-                    EnMa = new OrderData();
-                    //ORDER_ID,ORDER_DATE,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE
-                    EnMa.ORDER_ID = Convert.ToInt32(gv.DataKeys[i].Values[0].ToString());
-                    EnMa.ORDER_DATE_TEXT = gv.DataKeys[i].Values[1].ToString();
-                    EnMa.CUS_FULLNAME = gv.DataKeys[i].Values[2].ToString();
-                    EnMa.ORDER_STATUS_TEXT = gv.DataKeys[i].Values[3].ToString();
-                    EnMa.EMP_NAME = gv.DataKeys[i].Values[4].ToString();
-                    EnMa.SUM_PROD_PRICE = gv.DataKeys[i].Values[5].ToString();
-                    EnMa.ORDER_CODE = gv.DataKeys[i].Values[6].ToString();
-                    EnMa.CUS_CODE = gv.DataKeys[i].Values[7].ToString();
-                    List_En.Add(EnMa);
+                    En = new OrderData();
+                    //ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT
+                    En.ORDER_ID = Convert.ToInt32(gv_detail.DataKeys[i].Values[0].ToString());
+                    En.ORDER_DATE_TEXT = gv_detail.DataKeys[i].Values[1].ToString();
+                    En.CUS_FULLNAME = gv_detail.DataKeys[i].Values[2].ToString();
+                    En.ORDER_STATUS_TEXT = gv_detail.DataKeys[i].Values[3].ToString();
+                    En.EMP_NAME = gv_detail.DataKeys[i].Values[4].ToString();
+                    En.SUM_PROD_PRICE = gv_detail.DataKeys[i].Values[5].ToString();
+                    En.CUS_CODE = gv_detail.DataKeys[i].Values[6].ToString();
+                    En.ORDER_CODE = gv_detail.DataKeys[i].Values[7].ToString();
+                    En.TRANSPORT_STATUS_TEXT = gv_detail.DataKeys[i].Values[8].ToString();
+                    List_En.Add(En);
                 }
             }
 
@@ -330,6 +340,8 @@ namespace VloveImport.web.admin.pages
                     if (Result == "")
                     {
                         BindData();
+                        gv_detail_view.DataSource = null;
+                        gv_detail_view.DataBind();
                         ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
                     }
                     else ShowMessageBox(Server.HtmlEncode(Result), this.Page);
