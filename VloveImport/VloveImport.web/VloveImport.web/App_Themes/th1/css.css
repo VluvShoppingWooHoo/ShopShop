@@ -528,6 +528,7 @@ nav[class="ucCustomerStatus"]
             font-size: 15px !important;
         }
 
+<<<<<<< HEAD
 .bold
 {
     font-weight: bolder;
@@ -542,3 +543,9 @@ nav[class="ucCustomerStatus"]
 {
     padding-left:2%;
 }
+=======
+.dpBlock
+{
+    display: block !important;
+}
+>>>>>>> origin/master
