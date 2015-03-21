@@ -54,7 +54,7 @@ namespace VloveImport.web.UserControls
                 EnTran = new TransactionData();
                 EnTran.PAYMENT_TIME = i.ToString().PadLeft(2, '0');
                 ListTran.Insert(i, EnTran);
-                if (i < 25) ListTran_HOUR.Insert(i, EnTran);
+                if (i < 24) ListTran_HOUR.Insert(i, EnTran);
             }
 
             ddlH.DataSource = ListTran_HOUR;
@@ -190,6 +190,11 @@ namespace VloveImport.web.UserControls
             return dateSave;
         }
         #endregion
+
+        protected void btnSaveUcWithdraw_ServerClick(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

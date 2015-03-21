@@ -112,7 +112,7 @@
         <br />
         <br />
         <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" 
-            name="action" runat="server" onclick ="return funsubmitTopUp('S');" >
+            name="action" runat="server" onserverclick="btnSaveUcWithdraw_ServerClick">
             SUBMIT
         </button>
         &nbsp;&nbsp;
