@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucMenuBar.ascx.cs" Inherits="VloveImport.web.UserControls.ucMenuBar" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucMenuBar.ascx.cs" Inherits="VloveImport.web.UserControls.ucMenuBar" %>
 <%@ Import namespace="VloveImport.data.Extension" %>
 <%--<%Constant.ScrapModel. %>--%>
 <div id="divSide" class="collection with-header">
@@ -12,7 +12,19 @@
     <a class="collection-item mShipping_Price" data-id="mSH4">ค่าส่งในไทย</a>
     <a class="collection-item mShipping_Price" data-id="mSH5">การรับสินค้า</a>
     <a class="collection-item mShipping_Price" data-id="mSH6">การคิดราคาค่านำเข้าแบ่งตามประเภท</a>
-
+    
+    <a class="collection-item mOrder" data-id="mOR1">กฏกติกาในการสั่งซื้อ</a>
+    <a class="collection-item mOrder" data-id="mOR2">ตัวอย่างศัพท์ภาษาจีนและวิธีหาสินค้าในเว็บจีน</a>
+    <a class="collection-item mOrder" data-id="mOR3">การ Search หาสินค้า</a>
+    <a class="collection-item mOrder" data-id="mOR4">วิธีสั่งซื้อสินค้าสำหรับลูกค้าที่สั่งแบบ ฝากจ่ายเงิน</a>
+    <a class="collection-item mOrder" data-id="mOR5">วิธีการฝากส่งสินค้าอย่างเดียว</a>
+    <a class="collection-item mOrder" data-id="mOR6">วิธีการสั่งซื้อแบบ Grab Url หน้าเว็บไซด์</a>
+    <a class="collection-item mOrder" data-id="mOR7">การโอนเงินและการเติมเงิน</a>
+    <a class="collection-item mOrder" data-id="mOR8">รายละเอียดขั้นตอนการชำระเงิน</a>
+    <a class="collection-item mOrder" data-id="mOR9">วิธีการชำระเงินและแจ้งยืนยันการชำระเงิน</a>
+    <a class="collection-item mOrder" data-id="mOR10">วิธีถอนเงินในระบบ</a>
+    <a class="collection-item mOrder" data-id="mOR11">ตารางไซด์เครื่องแต่งกาย</a>
+    <a class="collection-item mOrder" data-id="mOR12">วิธีการสมัครสมาชิก</a>
 
     <%--<a class="collection-item" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a>
     <a class="collection-item" href="/Customer/Order.aspx">สั่งสินค้า</a>
@@ -27,7 +39,7 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#spanMenu a.collection-item').hide();
+        $('#divSide a.collection-item').hide();
         var type = getUrlParameter('type');
         if (type == 'rateimport')
             $('#divRateimport').show();
@@ -63,6 +75,7 @@
                 break;
             case 8:
                 MenuTXT = 'วิธีการสั่งซื้อสินค้า';
+                $('.mOrder').show();
                 break;
             case 9:
                 MenuTXT = 'สมัครงาน';
@@ -71,6 +84,9 @@
                 return;
         }
         $('#spanMenu').html(MenuTXT);
+
+        $('.mContent').hide();
+        $('.mIndex').show();
 
         $('.collection-item').on("click", function () {
             $('.collection-item').removeClass("active");

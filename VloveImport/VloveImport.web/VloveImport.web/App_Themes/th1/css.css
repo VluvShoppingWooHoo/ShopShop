@@ -527,3 +527,18 @@ nav[class="ucCustomerStatus"]
         {
             font-size: 15px !important;
         }
+
+.bold
+{
+    font-weight: bolder;
+}
+
+.oblique
+{
+    font-style: oblique;
+}
+
+.indent
+{
+    padding-left:2%;
+}
