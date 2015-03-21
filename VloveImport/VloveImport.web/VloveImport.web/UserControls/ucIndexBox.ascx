@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
+<%@ Register Src="~/UserControls/ucIndexMenuBar.ascx" TagName="ucIndexMenuBar" TagPrefix="ucIMB" %>
 <div class="row">
     <div id="sideMenu" class="col s2 m2 l2">
 
@@ -1648,15 +1649,15 @@
         <div class="row slider">
             <ul class="slides" style="height: 300px;">
                 <li class="li1">
-                    <img src="../Images/pic/Banner/ILoveImport.jpg"  style="height: 300px;" />
+                    <img src="../Images/pic/Banner/ILoveImport.jpg" style="height: 300px;" />
                     <!-- random image -->
                 </li>
                 <li class="li2">
-                    <img src="../Images/pic/Banner/Sale.jpg"  style="height: 300px;" />
+                    <img src="../Images/pic/Banner/Sale.jpg" style="height: 300px;" />
                     <!-- random image -->
                 </li>
                 <li class="li3">
-                    <img src="../Images/pic/Banner/Tour.jpg"   style="height: 300px;"/>
+                    <img src="../Images/pic/Banner/Tour.jpg" style="height: 300px;" />
                     <!-- random image -->
                 </li>
             </ul>
@@ -1696,20 +1697,7 @@
     </div>
 </div>
 <div class="row" style="margin-top: 20px;">
-    <nav id="navMenuHori">
-        <ul class="center hide-on-med-and-down">
-            <li><a class="truncate" href="/Customer/News.aspx?pag=1">กิจกรรมและข่าวสาร</a></li>
-            <li><a class="truncate" href="#">เกี่ยวกับเรา</a></li>
-            <li><a class="truncate" href="/Customer/HowTo.aspx?type=rateimport&pag=3">ค่าขนส่ง</a></li>
-            <li><a class="truncate" href="#">ติดต่อเรา</a></li>
-            <li><a class="truncate" href="/Customer/TourMarket.aspx?pag=5">ทัวร์ตลาดจีน</a></li>
-            <li><a class="truncate" href="#">บริการของเรา</a></li>
-            <li><a class="truncate" href="/Customer/Promotion.aspx?pag=7">โปรโมชั่น</a></li>
-            <li><a class="truncate" href="/Customer/Order.aspx?pag=8">วิธีการสั่งซื้อสินค้า</a></li>
-            <li><a class="truncate" href="#">สมัครงาน</a></li>
-            <%--<li><a class="truncate" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a></li>--%>
-        </ul>
-    </nav>
+    <ucIMB:ucIndexMenuBar ID="ucIndexMenuBar" runat="server" />
 </div>
 <script type="text/javascript">
     $(function () {

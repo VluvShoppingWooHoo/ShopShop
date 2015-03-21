@@ -35,7 +35,7 @@ namespace VloveImport.web.UserControls
         {
             if (!IsPostBack)
             {
-                lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                //lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 BindDataDropdown_time();
                 BindData();
             }
@@ -74,8 +74,8 @@ namespace VloveImport.web.UserControls
 
             if (ds.Tables[0].Rows.Count > 0)
             {
-                rbList1_bank_list.DataSource = ds.Tables[0];
-                rbList1_bank_list.DataBind();
+                ddlBank.DataSource = ds.Tables[0];
+                ddlBank.DataBind();
             }
         }
 
@@ -89,7 +89,7 @@ namespace VloveImport.web.UserControls
             EnTran.TRAN_TABLE_TYPE = 1;
             EnTran.TRAN_DETAIL = "รายการฝากเงิน";
 
-            EnTran.BANK_ID = Convert.ToInt32(rbList1_bank_list.SelectedValue);
+            EnTran.BANK_ID = Convert.ToInt32(ddlBank.SelectedValue);
             EnTran.TRAN_AMOUNT = Convert.ToDouble(txt_tranfer_amount.Text);
             EnTran.PAYMENT_DATE = Convert.ToDateTime(Convert_DateYYYYMMDD(txt_tranfer_date.Text));
             EnTran.PAYMENT_TIME = ddlH.SelectedValue + ":" + ddlM.SelectedValue + ":" + ddls.SelectedValue;
@@ -137,7 +137,7 @@ namespace VloveImport.web.UserControls
         {
             bool IsReturn = true;
 
-            if (rbList1_bank_list.SelectedValue == "" || txt_tranfer_amount.Text.Trim() == ""
+            if (ddlBank.SelectedValue == "" || txt_tranfer_amount.Text.Trim() == ""
                                                         || txt_tranfer_date.Text.Trim() == ""
                                                         || txt_email.Text.Trim() == ""
                                                         )
@@ -180,7 +180,7 @@ namespace VloveImport.web.UserControls
 
         public void ClearData()
         {
-            rbList1_bank_list.SelectedIndex = 0;
+            ddlBank.SelectedIndex = 0;
             txt_tranfer_amount.Text = "";
             txt_tranfer_date.Text = "";
             txt_email.Text = "";
