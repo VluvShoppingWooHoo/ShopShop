@@ -40,6 +40,15 @@ namespace VloveImport.web.UserControls {
         protected global::System.Web.UI.WebControls.TextBox txt_tranfer_amount;
         
         /// <summary>
+        /// dtMaterial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtMaterial;
+        
+        /// <summary>
         /// ddlH control.
         /// </summary>
         /// <remarks>

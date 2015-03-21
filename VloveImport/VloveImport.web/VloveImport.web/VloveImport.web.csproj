@@ -137,6 +137,7 @@
     <Content Include="UserControls\ucAdminStatus.ascx" />
     <Content Include="UserControls\ucCustomerMenuBar.ascx" />
     <Content Include="UserControls\ucIndexBox.ascx" />
+    <Content Include="UserControls\ucIndexMenuBar.ascx" />
     <Content Include="UserControls\ucRecommend.ascx" />
     <Content Include="UserControls\ucSeachBox.ascx" />
     <Content Include="UserControls\ucCustomerStatus.ascx" />
@@ -464,6 +465,13 @@
     </Compile>
     <Compile Include="UserControls\ucIndexBox.ascx.designer.cs">
       <DependentUpon>ucIndexBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucIndexMenuBar.ascx.cs">
+      <DependentUpon>ucIndexMenuBar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucIndexMenuBar.ascx.designer.cs">
+      <DependentUpon>ucIndexMenuBar.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucRecommend.ascx.cs">
       <DependentUpon>ucRecommend.ascx</DependentUpon>

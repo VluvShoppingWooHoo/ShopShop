@@ -8,11 +8,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.UserControls
 {
     public partial class ucAccFuncTopup : System.Web.UI.UserControl
     {
+        BasePage bp = new BasePage();
         public int _VS_ID
         {
             get { return Convert.ToInt32(ViewState["__VS_ID"]); }
@@ -91,59 +93,26 @@ namespace VloveImport.web.UserControls
 
             EnTran.BANK_ID = Convert.ToInt32(ddlBank.SelectedValue);
             EnTran.TRAN_AMOUNT = Convert.ToDouble(txt_tranfer_amount.Text);
-            EnTran.PAYMENT_DATE = Convert.ToDateTime(Convert_DateYYYYMMDD(txt_tranfer_date.Text));
+            EnTran.PAYMENT_DATE = Convert.ToDateTime(Convert_DateYYYYMMDD(dtMaterial.Value));
             EnTran.PAYMENT_TIME = ddlH.SelectedValue + ":" + ddlM.SelectedValue + ":" + ddls.SelectedValue;
             EnTran.TRAN_EMAIL = txt_email.Text.Trim();
             EnTran.TRAN_REMARK = txt_remark.Text.Trim();
             EnTran.TRAN_STATUS = 1;
             EnTran.Create_User = "Batt";
             return EnTran;
-        }
-
-        public void ShowMessageBox(string message, Page currentPage, string redirectNamePage = "")
-        {
-            string msgboxScript = "alert('" + message + "');";
-
-            if (redirectNamePage == "" && message != "1")
-            {
-                if ((ScriptManager.GetCurrent(currentPage) != null))
-                {
-                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
-                }
-            }
-            else if (redirectNamePage != "" && message != "1")
-            {
-                string redirectPage = "window.location.href=\"" + redirectNamePage + "\";";
-
-                if ((ScriptManager.GetCurrent(currentPage) != null))
-                {
-                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript + redirectPage, true);
-                }
-            }
-            else
-            {
-                string redirectPage = "window.location.href=\"" + redirectNamePage + "\";";
-
-                if ((ScriptManager.GetCurrent(currentPage) != null))
-                {
-                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", redirectPage, true);
-                }
-            }
-
-
-        }
+        }        
 
         public bool CheckInput()
         {
             bool IsReturn = true;
 
             if (ddlBank.SelectedValue == "" || txt_tranfer_amount.Text.Trim() == ""
-                                                        || txt_tranfer_date.Text.Trim() == ""
+                                                        || dtMaterial.Value.Trim() == ""
                                                         || txt_email.Text.Trim() == ""
                                                         )
             {
                 IsReturn = false;
-                ShowMessageBox("กรุณากรอกข้อมูลในช่องที่มีสัญลักษณ์ *", this.Page);
+                bp.ShowMessageBox("กรุณากรอกข้อมูลในช่องที่มีสัญลักษณ์ *", this.Page);
                 return IsReturn;
             }
 
@@ -152,7 +121,7 @@ namespace VloveImport.web.UserControls
             if(! Regex.IsMatch(txt_email.Text.Trim(),emailPattern))
             {
                 IsReturn = false;
-                ShowMessageBox("กรุณากรอก E-Mail ให้ถูกต้อง", this.Page);
+                bp.ShowMessageBox("กรุณากรอก E-Mail ให้ถูกต้อง", this.Page);
                 return IsReturn;
             }
 
@@ -168,12 +137,12 @@ namespace VloveImport.web.UserControls
                 IsReturn = CusBiz.INS_UPD_TRANSACTION(SetData(), "INS");
                 if (IsReturn != "")
                 {
-                    ShowMessageBox(IsReturn, this.Page);
+                    bp.ShowMessageBox(IsReturn, this.Page);
                 }
                 else
                 {
                     ClearData();
-                    ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#topup");
+                    bp.ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#topup");
                 }
             }
         }
@@ -182,25 +151,12 @@ namespace VloveImport.web.UserControls
         {
             ddlBank.SelectedIndex = 0;
             txt_tranfer_amount.Text = "";
-            txt_tranfer_date.Text = "";
+            dtMaterial.Value = "";
             txt_email.Text = "";
             txt_remark.Text = "";
             ddlH.SelectedIndex = 0;
             ddlM.SelectedIndex = 0;
             ddls.SelectedIndex = 0;
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            if (hd_submit.Value == "S")
-            {
-                SaveData();
-            }
-            else
-            {
-                ClearData();
-                ShowMessageBox("1", this.Page, "CustomerMyAccount.aspx#topup");
-            }
         }
 
         #region Convert Date to YYYYMMDD

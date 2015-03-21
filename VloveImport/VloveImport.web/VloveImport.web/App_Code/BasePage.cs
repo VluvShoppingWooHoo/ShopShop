@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
@@ -49,6 +50,39 @@ namespace VloveImport.web.App_Code
                 string Login = "~/Customer/Login.aspx?u=";
                     Response.Redirect(Login + EncrypData(url));
             }
+        }
+
+        public void ShowMessageBox(string message, Page currentPage, string redirectNamePage = "")
+        {
+            string msgboxScript = "alert('" + message + "');";
+
+            if (redirectNamePage == "" && message != "1")
+            {
+                if ((ScriptManager.GetCurrent(currentPage) != null))
+                {
+                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+                }
+            }
+            else if (redirectNamePage != "" && message != "1")
+            {
+                string redirectPage = "window.location.href=\"" + redirectNamePage + "\";";
+
+                if ((ScriptManager.GetCurrent(currentPage) != null))
+                {
+                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript + redirectPage, true);
+                }
+            }
+            else
+            {
+                string redirectPage = "window.location.href=\"" + redirectNamePage + "\";";
+
+                if ((ScriptManager.GetCurrent(currentPage) != null))
+                {
+                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", redirectPage, true);
+                }
+            }
+
+
         }
     }
 }

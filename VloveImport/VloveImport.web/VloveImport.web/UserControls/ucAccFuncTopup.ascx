@@ -75,7 +75,7 @@
             </div>
         </div>        
         <span style ="color:red;">*</span><br />
-        <input type="date" class="datepicker" id="dtMaterial" style="width:300px;" />
+        <input type="date" class="datepicker" id="dtMaterial" runat="server" style="width:300px;" />
         <br />
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
