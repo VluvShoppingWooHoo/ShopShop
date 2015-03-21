@@ -16,12 +16,12 @@ namespace VloveImport.web.admin.pages
         {
             if (!IsPostBack)
             {
-                BindData_order_status(ddl_search_order_status,"S");
+                BindData_order_status(ddl_search_order_status, "S");
             }
         }
 
 
-        public void BindData_order_status(DropDownList ddl,string ddlType = "")
+        public void BindData_order_status(DropDownList ddl, string ddlType = "")
         {
             AdminBiz AddBiz = new AdminBiz();
             DataSet ds = AddBiz.GET_MASTER_STATUS("ORDER_STS", "BIND_DDL");
@@ -30,7 +30,7 @@ namespace VloveImport.web.admin.pages
             ddl.DataTextField = "S_NAME";
             ddl.DataSource = ds.Tables[0];
             ddl.DataBind();
-            if(ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", string.Empty));
+            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", string.Empty));
         }
 
         public void BindData_transport_status(DropDownList ddl, string ddlType = "")
@@ -299,11 +299,42 @@ namespace VloveImport.web.admin.pages
             {
                 BindData_transport_status(ddl_choose_sub_status);
             }
+            ModalPopupExtender1.Show();
         }
 
         protected void btnUpdateStatus_Click(object sender, EventArgs e)
         {
-            //ถึงตรงนี้เอา Grid Loop
+            if (ddl_choose_status_order.SelectedValue == "-1")
+            {
+                ShowMessageBox("กรุณาเลือกสถานะในการอัพเดท !!", this.Page);
+                ModalPopupExtender1.Show();
+            }
+            else
+            {
+                if (gv_detail_view.Rows.Count > 0)
+                {
+                    OrderData En = new OrderData();
+                    for (int i = 0; i <= gv_detail_view.Rows.Count - 1; i++)
+                    {
+                        En.ORDER_ID_LIST += gv_detail_view.DataKeys[i].Values[0].ToString() + ",";
+                    }
+
+                    En.ORDER_ID_LIST = En.ORDER_ID_LIST.Remove(En.ORDER_ID_LIST.Length - 1);
+                    string Act = "";
+                    if (ddl_choose_status_order.SelectedValue == "1") Act = "UPDATE_STS_SPLIT_ORDER"; //สถานะการสั่งซื้อ
+                    else if (ddl_choose_status_order.SelectedValue == "2") Act = "UPDATE_STS_SPLIT_TRANSPORT"; //สถานะการส่งสินค้า
+                    AdminBiz AdBiz = new AdminBiz();
+                    En.ORDER_STATUS = Convert.ToInt32(ddl_choose_sub_status.SelectedValue);
+                    En.Create_User = "Administrator";
+                    string Result = AdBiz.UPD_ADMIN_ORDER(En, Act);
+                    if (Result == "")
+                    {
+                        BindData();
+                        ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+                    }
+                    else ShowMessageBox(Server.HtmlEncode(Result), this.Page);
+                }
+            }            
         }
 
     }
