@@ -110,8 +110,8 @@
             SUBMIT
         </button>
         &nbsp;&nbsp;
-        <button id="Button2" type="button" class="btn waves-effect orange waves-light" 
-            name="action" runat="server" onclick ="return funsubmitTopUp('C');" >
+        <button id="btnClear" type="button" class="btn waves-effect orange waves-light" 
+            name="action">
             CLEAR     
         </button>
     </ContentTemplate>
@@ -150,6 +150,20 @@
                     alert('gs');
                 }
             });
+        });
+
+        $('#btnClear').click(function () {
+
+            $('.ddlBank').val("1");
+            $('.txt_tranfer_amount').val("");
+            $('.dtMaterial').val("");
+            $('.ddlH').val("00");
+            $('.ddlM').val("00");
+            $('.ddls').val("00");
+            $('.txt_email').val("");
+            $('.txt_remark').val("");
+            $('#file').val("");
+            
         });
     });
 </script>
