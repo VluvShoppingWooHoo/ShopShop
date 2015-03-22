@@ -547,3 +547,19 @@ nav[class="ucCustomerStatus"]
 {
     display: block !important;
 }
+
+div[id="google_translate_element"]
+{
+    display:inline-block;
+    max-height: 30px;
+}
+
+div[class="skiptranslate goog-te-gadget"]
+{
+    max-height: 30px;
+}
+
+div[class="goog-te-gadget-simple"]
+{
+    max-height: 30px;
+}
