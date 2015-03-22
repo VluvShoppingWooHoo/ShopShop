@@ -27,15 +27,16 @@
                 </asp:HyperLink>
             </li>
         </ul>
-        <div id="google_translate_element"></div>
-       <%-- <a id="aChina" class="translateFlag" href="#" data-id="1">
+
+        <div id="google_translate_element" style="display: none;"></div>
+        <a id="aChina" class="translateFlag" href="#" data-id="1">
             <img src="../Images/icon/Flag/China-Flag-icon.png" />
         </a>
         <a id="aThai" class="translateFlag" href="#" data-id="2">
             <img src="../Images/icon/Flag/Thailand-Flag-icon.png" />
-        </a>--%>
+        </a>
 
-        <ul id="nav-mobile" class="right hide-on-med-and-down" style="display:inline-block;">
+        <ul id="nav-mobile" class="right hide-on-med-and-down" style="display: inline-block;">
             <li>
                 <asp:HyperLink ID="hlIndex" runat="server" NavigateUrl="~/Index.aspx">หน้าหลัก
                 </asp:HyperLink>
@@ -54,7 +55,7 @@
             </li>
         </ul>
     </div>
-        </div>
+    <%--</div>--%>
 </nav>
 <%--<script type="text/javascript">
     function googleTranslateElementInit() {
@@ -62,13 +63,23 @@
     }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>--%>
-<script type="text/javascript">
+<%--<script type="text/javascript">
 
     $(function () {
+
+        $('.translateFlag').on("click", function () {
+            var aid = $(this).data("id");
+            if (aid == 1) {
+                $.cookie('googtrans', '/th/zh-TW');
+            }
+            else {
+                $.cookie('googtrans', '/zh-TW/th');
+            }
+        });
     });
 
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({ pageLanguage: 'th', includedLanguages: 'th,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
     }
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>--%>

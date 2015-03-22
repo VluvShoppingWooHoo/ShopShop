@@ -15,10 +15,12 @@
     <%--<link type="text/css" rel="stylesheet" href="../App_Themes/css/bootstrap.min.css" media="screen,projection" />--%>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <%--<meta name="google-translate-customization" content="78bd105bbf17b353-aac3c30d692f1591-g6f4e8d826d82ad18-13"></meta>--%>
+    <meta name="google-translate-customization" content="78bd105bbf17b353-aac3c30d692f1591-g6f4e8d826d82ad18-13"></meta>
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../App_Themes/js/jquery-2.1.1.min.js"></script>
+    <script src="../App_Themes/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="../App_Themes/js/materialize.min.js"></script>
+
     <%--<script type="text/javascript" src="../App_Themes/js/bootstrap.min.js"></script>--%>
     <%--<script type="text/javascript" src="../App_Themes/js/jssor.slider.mini.js"></script>--%>
     <link href="../App_Themes/th1/css.css" rel="stylesheet" />
@@ -85,16 +87,16 @@
         });
         setHeight();
 
-        //$('.translateFlag').on("click", function () {
-        //    var aid = $(this).data("id");
-        //    var txt = $('a[class~="goog-te-menu2-item"] div span.text').val();
-        //    if (aid == 1) {
-
-        //    }
-        //    else {
-
-        //    }
-        //});
+        $('.translateFlag').on("click", function () {
+            var aid = $(this).data("id");
+            if (aid == 1) {
+                $.cookie('googtrans', '/th/zh-TW');
+            }
+            else {
+                $.cookie('googtrans', '/zh-TW/th');
+            }
+            location.reload();
+        });
     });
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1);
@@ -126,3 +128,9 @@
     }
 
 </script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'th', includedLanguages: 'th,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

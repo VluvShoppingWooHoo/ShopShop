@@ -1,5 +1,6 @@
 ﻿body
 {
+    top: 0px!important;
 }
 
 .HeadMaster
@@ -540,7 +541,7 @@ nav[class="ucCustomerStatus"]
 
 .indent
 {
-    padding-left:2%;
+    padding-left: 2%;
 }
 
 .dpBlock
@@ -548,18 +549,7 @@ nav[class="ucCustomerStatus"]
     display: block !important;
 }
 
-div[id="google_translate_element"]
+.goog-te-banner-frame.skiptranslate
 {
-    display:inline-block;
-    max-height: 30px;
-}
-
-div[class="skiptranslate goog-te-gadget"]
-{
-    max-height: 30px;
-}
-
-div[class="goog-te-gadget-simple"]
-{
-    max-height: 30px;
+    display: none!important;
 }
