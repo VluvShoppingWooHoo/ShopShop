@@ -1,16 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucAccFuncTopup.ascx.cs" Inherits="VloveImport.web.UserControls.ucAccFuncTopup" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
-<script type="text/javascript">
-
-    function funsubmitTopUp(obj) {
-        
-        document.getElementById('ContentPlaceHolder1_ucAccFuncTopup_hd_submit').value = obj
-        document.getElementById('ContentPlaceHolder1_ucAccFuncTopup_Button1').click();
-    }
-
-</script>
-
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
         <br />
