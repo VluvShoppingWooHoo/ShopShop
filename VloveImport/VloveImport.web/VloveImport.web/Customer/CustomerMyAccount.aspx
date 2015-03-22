@@ -24,15 +24,15 @@
     <div class="row">
         <div class="col s10 m10 l10">
             <ul class="tabs">
-                <li class="tab col s3 m3 l3"><a href="#topup">เติมเงิน</a></li>
+                <%--<li class="tab col s3 m3 l3"><a href="#topup">เติมเงิน</a></li>--%>
                 <li class="tab col s3 m3 l3"><a href="#withdraw">เบิกเงิน</a></li>
                 <li class="tab col s3 m3 l3"><a href="#translog">บันทึกการใช้จ่าย</a></li>
                 <li class="tab col s3 m3 l3"><a href="#voucher">บัตรกำนัล</a></li>
                 <li class="tab col s3 m3 l3"><a href="#mypoint">คะแนนสะสม</a></li>
             </ul>
-            <div id="topup" class="row">
+            <%--<div id="topup" class="row">
                 <uc1:ucAccFuncTopup runat="server" ID="ucAccFuncTopup" />
-            </div>
+            </div>--%>
             <div id="withdraw" class="row">
                 <uc1:ucAccfuncWithdraw ID="ucAccfuncWithdraw1" runat="server" />
             </div>
