@@ -94,15 +94,6 @@ namespace VloveImport.web.UserControls {
         protected global::System.Web.UI.WebControls.TextBox txt_remark;
         
         /// <summary>
-        /// btnSaveUcWithdraw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSaveUcWithdraw;
-        
-        /// <summary>
         /// Button2 control.
         /// </summary>
         /// <remarks>

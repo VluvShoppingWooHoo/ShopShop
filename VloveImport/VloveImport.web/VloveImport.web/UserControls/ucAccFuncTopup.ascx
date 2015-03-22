@@ -32,7 +32,7 @@
         </div>
         <br />
         <asp:DropDownList ID="ddlBank" DataTextField="BANK_SHOP_ACCOUNT_NO" DataValueField="BANK_SHOP_ID" runat="server" 
-            CssClass="dpBlock" Width="300px"></asp:DropDownList>
+            CssClass="dpBlock ddlBank" Width="300px"></asp:DropDownList>
         <%--<asp:RadioButtonList ID="rbList1_bank_list" DataTextField = "BANK_SHOP_ACCOUNT_NO" DataValueField = "BANK_SHOP_ID" runat="server"></asp:RadioButtonList>--%>
         <br />
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
@@ -46,7 +46,7 @@
             <input class="file-path validate" type="text" style="width:300px;"/>
             <div class="btn">
                 <span>File</span>
-                <input type="file" />
+                <input id="file" type="file" />
             </div>
         </div>
         <br />    
@@ -56,7 +56,7 @@
                 <b>* จำนวนเงิน</b>
             </div>                           
         </div> 
-        <asp:TextBox ID="txt_tranfer_amount" runat="server" Width ="400px" ></asp:TextBox>
+        <asp:TextBox ID="txt_tranfer_amount" CssClass="txt_tranfer_amount" runat="server" Width ="400px" ></asp:TextBox>
         <br />        
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
@@ -65,7 +65,7 @@
             </div>
         </div>        
         <span style ="color:red;">*</span><br />
-        <input type="date" class="datepicker" id="dtMaterial" runat="server" style="width:300px;" />
+        <input type="date" class="datepicker dtMaterial" id="dtMaterial" runat="server" style="width:300px;" />
         <br />
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
@@ -75,11 +75,11 @@
         </div>
         <br />
         <asp:DropDownList ID="ddlH" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
-            style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
+            CssClass="ddlH" style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
         <asp:DropDownList ID="ddlM" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
-            style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
+            CssClass="ddlM" style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
         <asp:DropDownList ID="ddls" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
-            style =" display:inline;" Width ="100px"></asp:DropDownList>
+            CssClass="ddls" style =" display:inline;" Width ="100px"></asp:DropDownList>
         <br />
         <br />
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
@@ -89,7 +89,7 @@
             </div>            
         </div>
         <br />
-        <asp:TextBox ID="txt_email" runat="server" Width ="400px"></asp:TextBox>
+        <asp:TextBox ID="txt_email" runat="server" Width ="400px" CssClass="txt_email"></asp:TextBox>
         <br />
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
@@ -98,11 +98,15 @@
             </div>            
         </div>
         <br />
-        <asp:TextBox ID="txt_remark" runat="server" Width ="400px" Height ="80px" TextMode ="MultiLine"></asp:TextBox>
+        <asp:TextBox ID="txt_remark" CssClass="txt_remark" runat="server" Width ="400px" Height ="80px" TextMode ="MultiLine"></asp:TextBox>
         <br />
         <br />
-        <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" 
+        <%--<button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" 
             name="action" runat="server" onserverclick="btnSaveUcWithdraw_ServerClick">
+            SUBMIT
+        </button>--%>
+        <button id="btnSaveUcTopup" type="button" class="btn waves-effect orange waves-light" 
+            name="action">
             SUBMIT
         </button>
         &nbsp;&nbsp;
@@ -112,3 +116,40 @@
         </button>
     </ContentTemplate>
 </asp:UpdatePanel>
+<script type="text/javascript">
+    $(function () {
+        //var newOption = "<option value='" + "1" + "'>Some Text</option>";
+        //$(".ddlBank").append(newOption);
+        //var newOption1 = "<option value='" + "2" + "'>Some Text2</option>";
+        //$(".ddlBank").append(newOption1);
+        $('#btnSaveUcTopup').click(function () {
+
+            var Bank = $('.ddlBank').val();
+            var amt = $('.txt_tranfer_amount').val();
+            var date = $('.dtMaterial').val();
+            var time = $('.ddlH').val() + ':' + $('.ddlM').val() + ':' + $('.ddls').val()
+            var email = $('.txt_email').val();
+            var remark = $('.txt_remark').val();
+            var file = $('#file').val();
+
+            var param = {
+                "Bank": Bank, "amt": amt, "date": date, "date": date, "time": time,
+                "email": email, "remark": remark, "file": file
+            };
+            $.ajax({
+                type: 'POST',
+                url: "../Customer/CustomerMyAccount.aspx/btnTopup",
+                data: JSON.stringify(param),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    //$('#modalItem').closeModal();
+                    //toast('Item Added.', 5000)
+                },
+                error: function (err) {
+                    alert('gs');
+                }
+            });
+        });
+    });
+</script>

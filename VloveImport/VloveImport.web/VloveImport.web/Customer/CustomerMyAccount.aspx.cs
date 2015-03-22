@@ -39,6 +39,7 @@ namespace VloveImport.web.Customer
         }
 
         #region Event
+        #region V1
         protected void btnTopup_Click(object sender, EventArgs e)
         {
 
@@ -64,6 +65,43 @@ namespace VloveImport.web.Customer
 
         }
         #endregion
+        #region V2
+        [WebMethod]
+        public static string btnTopup(string Bank, string amt, string date, string time, string email, string remark, string file)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize("");
+        }
+
+        [WebMethod]
+        public static string btnWithdraw(string accname, string amt, string remark, string pwd)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize("");
+        }
+
+        [WebMethod]
+        public static string btnTransLog(string Bank, string amt, string date, string time, string email, string remark, string file)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize("");
+        }
+
+        [WebMethod]
+        public static string btnVoucher(string Bank, string amt, string date, string time, string email, string remark, string file)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize("");
+        }
+
+        [WebMethod]
+        public static string btnMyPoint(string Bank, string amt, string date, string time, string email, string remark, string file)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize("");
+        }
+        #endregion
+        #endregion
 
         public string CallUcWithdraw1(string ddlAccount, string txt_amount, string txt_remark, string txt_Withraw_Password)
         {
@@ -78,6 +116,5 @@ namespace VloveImport.web.Customer
             CustomerMyAccount CusPage = new CustomerMyAccount();
             return js.Serialize(CusPage.CallUcWithdraw1(ddlAccount, txt_amount, txt_remark, txt_Withraw_Password));
         }
-
     }
 }
