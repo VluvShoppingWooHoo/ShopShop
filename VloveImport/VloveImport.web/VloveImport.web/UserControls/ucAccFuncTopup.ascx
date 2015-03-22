@@ -24,96 +24,111 @@
             </div>
         </div>
         <br />
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b>เลือก I LOVE IMPORT ธนาคาร</b>                                        
             </div>
         </div>
-        <br />
-        <asp:DropDownList ID="ddlBank" DataTextField="BANK_SHOP_ACCOUNT_NO" DataValueField="BANK_SHOP_ID" runat="server" 
-            CssClass="dpBlock ddlBank" Width="300px"></asp:DropDownList>
-        <%--<asp:RadioButtonList ID="rbList1_bank_list" DataTextField = "BANK_SHOP_ACCOUNT_NO" DataValueField = "BANK_SHOP_ID" runat="server"></asp:RadioButtonList>--%>
-        <br />
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <asp:DropDownList ID="ddlBank" DataTextField="BANK_SHOP_ACCOUNT_NO" DataValueField="BANK_SHOP_ID" runat="server" 
+                CssClass="dpBlock ddlBank" Width="300px"></asp:DropDownList>
+            </div>
+        </div>
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b>หลักฐานการชำระเงิน</b>
             </div>            
         </div>
-        <br />
-        <div class="file-field input-field">
-            <input class="file-path validate" type="text" style="width:300px;"/>
-            <div class="btn">
-                <span>File</span>
-                <input id="file" type="file" />
+        <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 24%; margin-top: -60px;">            
+            <div style ="margin-left:10px;">
+                <div class="file-field input-field">
+                    <input class="file-path validate" type="text" style="width:300px;"/>
+                    <div class="btn">
+                        <span>File</span>
+                        <input id="file" type="file" />
+                    </div>
+                </div>
             </div>
-        </div>
-        <br />    
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">    
+        </div>   
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">    
             <br />
             <div style ="margin-left:10px;">
                 <b>* จำนวนเงิน</b>
             </div>                           
         </div> 
-        <asp:TextBox ID="txt_tranfer_amount" CssClass="txt_tranfer_amount" runat="server" Width ="400px" ></asp:TextBox>
-        <br />        
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <asp:TextBox ID="txt_tranfer_amount" CssClass="txt_tranfer_amount" runat="server" Width ="300px" ></asp:TextBox>
+            </div>
+        </div>      
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b>* วันโอนเงิน </b>
             </div>
         </div>        
-        <span style ="color:red;">*</span><br />
-        <input type="date" class="datepicker dtMaterial" id="dtMaterial" runat="server" style="width:300px;" />
-        <br />
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <input type="date" class="datepicker dtMaterial" id="dtMaterial" runat="server" style="width:300px;" />
+            </div>
+        </div>
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b>* เวลาโอน</b>
             </div>            
         </div>
-        <br />
-        <asp:DropDownList ID="ddlH" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
-            CssClass="ddlH" style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
-        <asp:DropDownList ID="ddlM" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
-            CssClass="ddlM" style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
-        <asp:DropDownList ID="ddls" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
-            CssClass="ddls" style =" display:inline;" Width ="100px"></asp:DropDownList>
-        <br />
-        <br />
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <asp:DropDownList ID="ddlH" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
+                    CssClass="ddlH" style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
+                <asp:DropDownList ID="ddlM" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
+                    CssClass="ddlM" style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
+                <asp:DropDownList ID="ddls" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
+                    CssClass="ddls" style =" display:inline;" Width ="100px"></asp:DropDownList>
+            </div>
+        </div>
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b> E-mail</b>
             </div>            
         </div>
-        <br />
-        <asp:TextBox ID="txt_email" runat="server" Width ="400px" CssClass="txt_email"></asp:TextBox>
-        <br />
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <asp:TextBox ID="txt_email" runat="server" Width ="300px" CssClass="txt_email"></asp:TextBox>        
+            </div>
+        </div>
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b> หมายเหตุ</b>
             </div>            
         </div>
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <asp:TextBox ID="txt_remark" CssClass="txt_remark" runat="server" Width ="400px" Height ="80px" TextMode ="MultiLine"></asp:TextBox>
+            </div>
+        </div>
         <br />
-        <asp:TextBox ID="txt_remark" CssClass="txt_remark" runat="server" Width ="400px" Height ="80px" TextMode ="MultiLine"></asp:TextBox>
         <br />
-        <br />
-        <%--<button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light" 
-            name="action" runat="server" onserverclick="btnSaveUcWithdraw_ServerClick">
-            SUBMIT
-        </button>--%>
-        <button id="btnSaveUcTopup" type="button" class="btn waves-effect orange waves-light" 
-            name="action">
-            SUBMIT
-        </button>
-        &nbsp;&nbsp;
-        <button id="btnClear" type="button" class="btn waves-effect orange waves-light" 
-            name="action">
-            CLEAR     
-        </button>
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 20%;">            
+            <div style ="margin-left:10px;">
+                <button id="btnSaveUcTopup" type="button" class="btn waves-effect orange waves-light" 
+                    name="action">
+                    SUBMIT
+                </button>
+                &nbsp;&nbsp;
+                <button id="btnClear" type="button" class="btn waves-effect orange waves-light" 
+                    name="action">
+                    CLEAR     
+                </button>
+            </div>
+        </div>
+        
     </ContentTemplate>
 </asp:UpdatePanel>
 <script type="text/javascript">
