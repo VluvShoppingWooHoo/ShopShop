@@ -50,7 +50,7 @@ namespace VloveImport.dal
             }
         }
 
-        public DataSet GET_ADMIN_ORDER(int ORDER_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE, string Act)
+        public DataSet GET_ADMIN_ORDER(int ORDER_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE,int ORDER_STATUS, string Act)
         {
             try
             {
@@ -60,6 +60,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("START_DATE", SqlDbType.Date, ParameterDirection.Input, START_DATE);
                 SqlCommandData.SetParameter("END_DATE", SqlDbType.Date, ParameterDirection.Input, END_DATE);
                 SqlCommandData.SetParameter("CUS_CODE", SqlDbType.VarChar, ParameterDirection.Input, CUS_CODE);
+                SqlCommandData.SetParameter_Input_INT("ORDER_STATUS", SqlDbType.Int, ParameterDirection.Input, ORDER_STATUS);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
                 
                 return SqlCommandData.ExecuteDataSet();
