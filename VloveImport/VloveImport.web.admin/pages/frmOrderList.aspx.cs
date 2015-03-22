@@ -12,16 +12,22 @@ namespace VloveImport.web.admin.pages
 {
     public partial class frmOrderList : System.Web.UI.Page
     {
+        public string _VS_USER_LOGIN
+        {
+            get { return ViewState["__VS_USER_LOGIN"].ToString(); }
+            set { ViewState["__VS_USER_LOGIN"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                _VS_USER_LOGIN = "Administrator";
                 BindData_order_status(ddl_search_order_status, "S");
                 BindData_order_status(ddl_ViewDetail_ORDER_STATUS);
                 BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS);
             }
         }
-
 
         public void BindData_order_status(DropDownList ddl, string ddlType = "")
         {
@@ -32,8 +38,8 @@ namespace VloveImport.web.admin.pages
             ddl.DataTextField = "S_NAME";
             ddl.DataSource = ds.Tables[0];
             ddl.DataBind();
-            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", string.Empty));
-            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", string.Empty));
+            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", "-1"));
+            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", "-1"));
         }
 
         public void BindData_transport_status(DropDownList ddl, string ddlType = "")
@@ -45,8 +51,8 @@ namespace VloveImport.web.admin.pages
             ddl.DataTextField = "S_NAME";
             ddl.DataSource = ds.Tables[0];
             ddl.DataBind();
-            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", string.Empty));
-            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", string.Empty));
+            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", "-1"));
+            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", "-1"));
         }
 
         public void BindData()
@@ -56,9 +62,7 @@ namespace VloveImport.web.admin.pages
             try
             {
                 AdminBiz AdBiz = new AdminBiz();
-                ds = AdBiz.GET_ADMIN_ORDER("BINDDATA");
-
-                //Label4.Text = (ds.Tables[0].Rows.Count).ToString();
+                ds = AdBiz.GET_ADMIN_ORDER("BINDDATA", START_DATE: ucCalendar1.GET_DATE_TO_DATE(), END_DATE: ucCalendar2.GET_DATE_TO_DATE(), CUS_NAME: txtCusCode.Text.Trim(), ORDER_STATUS: Convert.ToInt32(ddl_search_order_status.SelectedValue));
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -113,7 +117,7 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_ORDER_DATE.Text = ds.Tables[0].Rows[0]["ORDER_DATE_TEXT"].ToString();
                 lbl_ViewDetail_TRANSPORT_1.Text = ds.Tables[0].Rows[0]["TRANSPORT_CHINA_TEXT"].ToString();
                 lbl_ViewDetail_TRANSPORT_2.Text = ds.Tables[0].Rows[0]["TRANSPORT_THAI_TEXT"].ToString();
-                lbl_ViewDetail_ADDRESS.Text = "รอก่อน";
+                lbl_ViewDetail_ADDRESS.Text = ds.Tables[0].Rows[0]["CUS_REC_NAME"].ToString() + "<br/>" + ds.Tables[0].Rows[0]["CUS_ADDRESS"].ToString();
                 lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["UPDATE_USER"].ToString();
                 lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
 
@@ -131,6 +135,8 @@ namespace VloveImport.web.admin.pages
 
                 gv_detail_prod_view.DataSource = ds.Tables[0];
                 gv_detail_prod_view.DataBind();
+                gv_detail_prod_Edit.DataSource = ds.Tables[0];
+                gv_detail_prod_Edit.DataBind();
             }
             else
             {
@@ -144,6 +150,23 @@ namespace VloveImport.web.admin.pages
 
         protected void imgBtn_delete_Click(object sender, ImageClickEventArgs e)
         {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
+            OrderData En = new OrderData();
+            string Act = "DELETE";
+            AdminBiz AdBiz = new AdminBiz();
+            En.Create_User = _VS_USER_LOGIN;
+            En.ORDER_ID = Convert.ToInt32(DataKeys_ID);
+            string Result = AdBiz.UPD_ADMIN_ORDER(En, Act);
+            if (Result == "")
+            {
+                BindData();
+                ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+            }
+            else
+            {
+                ShowMessageBox(Server.HtmlEncode(Result), this.Page);
+            }
 
         }
 
@@ -173,8 +196,33 @@ namespace VloveImport.web.admin.pages
 
                 gv_detail_view.DataSource = AddIndex(ListEn);
                 gv_detail_view.DataBind();
+
+                BindData();
             }
             else ShowMessageBox("กรุณาทำการทีละไม่เกิน 20 รายการ", this.Page);
+        }
+
+        protected void imgBtn_cancel_choose_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string ORDER_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
+            List<OrderData> ListEn = new List<OrderData>();
+            ListEn = Get_Gridview_Detail(gv_detail_view);
+
+            for (int i = 0; i <= ListEn.Count - 1; i++)
+            {
+                if (ORDER_ID == ListEn[i].ORDER_ID.ToString())
+                {
+                    ListEn.RemoveAt(i);
+                    break;
+                }
+            }
+
+            gv_detail_view.DataSource = AddIndex(ListEn);
+            gv_detail_view.DataBind();
+
+            BindData();
+
         }
 
         protected void imgBtn_gv_view_delete_Click(object sender, ImageClickEventArgs e)
@@ -187,9 +235,10 @@ namespace VloveImport.web.admin.pages
                 ListEn.RemoveAt(rowIndex);
                 gv_detail_view.DataSource = AddIndex(ListEn);
                 gv_detail_view.DataBind();
-            }
 
-            ModalPopupExtender1.Show();
+                if (ListEn.Count > 0) ModalPopupExtender1.Show();
+                BindData();
+            }
         }
 
         internal List<OrderData> AddIndex(List<OrderData> List_En)
@@ -214,15 +263,15 @@ namespace VloveImport.web.admin.pages
                 {
                     En = new OrderData();
                     //ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT
-                    En.ORDER_ID = Convert.ToInt32(gv_detail.DataKeys[i].Values[0].ToString());
-                    En.ORDER_DATE_TEXT = gv_detail.DataKeys[i].Values[1].ToString();
-                    En.CUS_FULLNAME = gv_detail.DataKeys[i].Values[2].ToString();
-                    En.ORDER_STATUS_TEXT = gv_detail.DataKeys[i].Values[3].ToString();
-                    En.EMP_NAME = gv_detail.DataKeys[i].Values[4].ToString();
-                    En.SUM_PROD_PRICE = gv_detail.DataKeys[i].Values[5].ToString();
-                    En.CUS_CODE = gv_detail.DataKeys[i].Values[6].ToString();
-                    En.ORDER_CODE = gv_detail.DataKeys[i].Values[7].ToString();
-                    En.TRANSPORT_STATUS_TEXT = gv_detail.DataKeys[i].Values[8].ToString();
+                    En.ORDER_ID = Convert.ToInt32(gv.DataKeys[i].Values[0].ToString());
+                    En.ORDER_DATE_TEXT = gv.DataKeys[i].Values[1].ToString();
+                    En.CUS_FULLNAME = gv.DataKeys[i].Values[2].ToString();
+                    En.ORDER_STATUS_TEXT = gv.DataKeys[i].Values[3].ToString();
+                    En.EMP_NAME = gv.DataKeys[i].Values[4].ToString();
+                    En.SUM_PROD_PRICE = gv.DataKeys[i].Values[5].ToString();
+                    En.CUS_CODE = gv.DataKeys[i].Values[6].ToString();
+                    En.ORDER_CODE = gv.DataKeys[i].Values[7].ToString();
+                    En.TRANSPORT_STATUS_TEXT = gv.DataKeys[i].Values[8].ToString();
                     List_En.Add(En);
                 }
             }
@@ -246,7 +295,9 @@ namespace VloveImport.web.admin.pages
         {
             AdminBiz AdBiz = new AdminBiz();
             OrderData En = new OrderData();
+            En.Create_User = this._VS_USER_LOGIN;
             AdBiz.UPD_ADMIN_ORDER(En, "CANCEL_ORDER_OVER_DATE");
+            BindData();
         }
 
         protected void gv_detail_RowCreated(object sender, GridViewRowEventArgs e)
@@ -259,9 +310,25 @@ namespace VloveImport.web.admin.pages
 
         protected void gv_detail_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            List<OrderData> ListEn = new List<OrderData>();
+            ListEn = Get_Gridview_Detail(gv_detail_view);
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //e.Row.Cells[4].Text = "Example" + DataBinder.Eval(e.Row.DataItem, "EMAILPATTERN").ToString();
+                string ORDER_ID = DataBinder.Eval(e.Row.DataItem, "ORDER_ID").ToString();
+                if (ListEn.Count > 0)
+                {
+                    for (int i = 0; i <= ListEn.Count - 1; i++)
+                    {
+                        if (ORDER_ID == ListEn[i].ORDER_ID.ToString())
+                        {
+                            ((ImageButton)e.Row.FindControl("imgBtn_choose")).Visible = false;
+                            ((ImageButton)e.Row.FindControl("imgBtn_cancel_choose")).Visible = true;
+                            e.Row.CssClass = "label-SELECT";
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -286,7 +353,8 @@ namespace VloveImport.web.admin.pages
 
         protected void btnEditProd_num_Click(object sender, EventArgs e)
         {
-
+            MultiView1.ActiveViewIndex = 1;
+            Modal_Detail.Show();
         }
 
         protected void btnEditProd_num_save_Click(object sender, EventArgs e)
@@ -296,7 +364,8 @@ namespace VloveImport.web.admin.pages
 
         protected void btnEditProd_num_cancel_Click(object sender, EventArgs e)
         {
-
+            MultiView1.ActiveViewIndex = 0;
+            Modal_Detail.Show();
         }
 
         protected void ddl_choose_status_order_SelectedIndexChanged(object sender, EventArgs e)
@@ -335,19 +404,25 @@ namespace VloveImport.web.admin.pages
                     else if (ddl_choose_status_order.SelectedValue == "2") Act = "UPDATE_STS_SPLIT_TRANSPORT"; //สถานะการส่งสินค้า
                     AdminBiz AdBiz = new AdminBiz();
                     En.ORDER_STATUS = Convert.ToInt32(ddl_choose_sub_status.SelectedValue);
-                    En.Create_User = "Administrator";
+                    En.Create_User = _VS_USER_LOGIN;
                     string Result = AdBiz.UPD_ADMIN_ORDER(En, Act);
                     if (Result == "")
                     {
                         BindData();
                         gv_detail_view.DataSource = null;
                         gv_detail_view.DataBind();
+                        BindData();
+
                         ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
                     }
-                    else ShowMessageBox(Server.HtmlEncode(Result), this.Page);
+                    else
+                    {
+                        ShowMessageBox(Server.HtmlEncode(Result), this.Page);
+                        ModalPopupExtender1.Show();
+                    }
                 }
-            }            
+            }
         }
-
+        
     }
 }

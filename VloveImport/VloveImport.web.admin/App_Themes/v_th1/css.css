@@ -889,6 +889,15 @@ caption {background: #66FFCC}
     color:#999;*/
 }
 
+.label-SELECT
+{
+    background-color:#33FF99;
+	font-family: Arial,Verdana,sans-serif;
+    font-size:10pt;
+    font-weight:bold;
+    font-style:italic;
+    color:#999;
+}
 .label-inactive
 {
     background-color:#D7CCB3;

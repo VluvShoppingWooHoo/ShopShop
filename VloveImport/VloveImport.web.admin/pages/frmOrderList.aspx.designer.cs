@@ -283,6 +283,51 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_ORDER_DATE;
         
         /// <summary>
+        /// lbl_ViewDetail_Amount_Receive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Amount_Receive;
+        
+        /// <summary>
+        /// lbl_ViewDetail_Amount_Actually_Pay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Amount_Actually_Pay;
+        
+        /// <summary>
+        /// lbl_ViewDetail_Amount_Recall_Pay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Amount_Recall_Pay;
+        
+        /// <summary>
+        /// lbl_ViewDetail_Product_Price control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Product_Price;
+        
+        /// <summary>
+        /// lbl_ViewDetail_Transport_Price control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Transport_Price;
+        
+        /// <summary>
         /// lbl_ViewDetail_TRANSPORT_1 control.
         /// </summary>
         /// <remarks>
