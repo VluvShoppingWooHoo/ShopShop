@@ -13,6 +13,15 @@ namespace VloveImport.web.admin.pages {
     public partial class frmOrder {
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// lbl_ViewDetail_ORDER_ID control.
         /// </summary>
         /// <remarks>

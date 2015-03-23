@@ -124,10 +124,11 @@ namespace VloveImport.web.admin.pages
             En.Create_User = _VS_USER_LOGIN;
 
             En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue);
-            string Result_order = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_SPLIT_ORDER");
+            En.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
+            string Result_order = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_ORDER");
 
             En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue);
-            string Result_transport = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_SPLIT_TRANSPORT");
+            string Result_transport = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_TRANSPORT");
 
             if (Result_order == "" && Result_transport == "")
             {
@@ -153,18 +154,39 @@ namespace VloveImport.web.admin.pages
         protected void btnEditProd_num_save_Click(object sender, EventArgs e)
         {
             AdminBiz AdBiz;
-            for(int i = 0; i <= gv_detail_prod_Edit.Rows.Count -1 ;i++)
+            string Result = "";
+
+            for (int i = 0; i <= gv_detail_prod_Edit.Rows.Count - 1; i++)
+            {
+                TextBox txtprodnum = (TextBox)gv_detail_prod_Edit.Rows[i].Cells[5].FindControl("gv_detail_prod_Edit_txt");
+                int PROD_NUM = Convert.ToInt32(gv_detail_prod_Edit.Rows[i].Cells[4].Text);
+                if (Convert.ToInt32(txtprodnum.Text) > PROD_NUM)
+                {
+                    ShowMessageBox("กรุณาตรวจสอบจำนวนสินค้าอีกครั้ง", this.Page);
+                    return;
+                }
+            }
+
+            for (int i = 0; i <= gv_detail_prod_Edit.Rows.Count - 1; i++)
             {
                 AdBiz = new AdminBiz();
                 TextBox txtprodnum = (TextBox)gv_detail_prod_Edit.Rows[i].Cells[5].FindControl("gv_detail_prod_Edit_txt");
-                int ORDER_ID =Convert.ToInt32( gv_detail_prod_Edit.DataKeys[i].Values[0].ToString());
+                int ORDER_ID = Convert.ToInt32(gv_detail_prod_Edit.DataKeys[i].Values[0].ToString());
                 int ORDER_DETAIL_ID = Convert.ToInt32(gv_detail_prod_Edit.DataKeys[i].Values[6].ToString());
 
                 int PROD_NUM = txtprodnum.Text == "" ? 0 : Convert.ToInt32(txtprodnum.Text);
 
-                AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(ORDER_ID, ORDER_DETAIL_ID, PROD_NUM, _VS_USER_LOGIN, "UPD_PROD_AMOUNT");
-
+                Result += AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(ORDER_ID, ORDER_DETAIL_ID, PROD_NUM, _VS_USER_LOGIN, "UPD_PROD_AMOUNT");
             }
+
+            if (Result == "")
+            {
+                BindData();
+                MultiView1.ActiveViewIndex = 0;
+                ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+            }
+            else ShowMessageBox(Server.HtmlEncode(Result), this.Page);
+
         }
 
         protected void btnEditProd_num_cancel_Click(object sender, EventArgs e)
