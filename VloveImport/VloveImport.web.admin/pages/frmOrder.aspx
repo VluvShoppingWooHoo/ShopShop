@@ -201,8 +201,9 @@
                                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:TextBox ID="gv_detail_prod_Edit_txt" runat="server" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>'></asp:TextBox>
-                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="gv_detail_prod_Edit_txt" ID="gv_detail_prod_Edit_txt_FilteredTextBoxExtender" ValidChars="0123456789"></asp:FilteredTextBoxExtender>
+                                            <asp:TextBox ID="gv_detail_prod_Edit_txt" runat="server" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>' MaxLength = "8"></asp:TextBox>
+                                                <asp:FilteredTextBoxExtender ID="gv_detail_prod_Edit_txt_FilteredTextBoxExtender" runat="server" Enabled="True" TargetControlID="gv_detail_prod_Edit_txt" ValidChars="0123456789">
+                                                 </asp:FilteredTextBoxExtender>
                                         </ItemTemplate>
                                         <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:TemplateField>
