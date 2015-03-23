@@ -254,12 +254,11 @@
                 </table>
             </asp:Panel>
 
-            <asp:ModalPopupExtender ID="Modal_Detail" runat="server" BackgroundCssClass="modalBackground"
+<%--            <asp:ModalPopupExtender ID="Modal_Detail" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel3" TargetControlID="lbl_modal_detail">
             </asp:ModalPopupExtender>
 
             <asp:Panel ID="Panel3" Height="700px" Width="1200px" runat="server" >
-                <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
@@ -363,25 +362,13 @@
                                                 <td width ="15%">สถานะการสั่งซื้อ :</td>
                                                 <td width ="85%">
                                                     <asp:DropDownList ID="ddl_ViewDetail_ORDER_STATUS" runat="server">
-<%--                                                        <asp:ListItem Value="-1">กรุณาเลือก</asp:ListItem>
-                                                        <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
-                                                        <asp:ListItem Value="1">รอชำระเงิน</asp:ListItem>
-                                                        <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>--%>
                                                     </asp:DropDownList>
-                                                    <%-- 
-                                                        <asp:ListItem Value="5">รอลูกค้ายืนยันการแก้ไขจำนวนสินค้า</asp:ListItem>
-                                                        สถานะนี้จะเกิดขึ้น โดยระบบจะ stamp ให้เองโดยเคสที่เป็น การแก้จำนวนสินค้าของพนักงานจะต้องมีการส่งเมลให้ลูกค้ากลับมา ยืนยันการสั่งซื้อ หรือ สามารถให้ยกเลิกการสั่งซื้อสินค้า
-                                                        และถ้าเป็นสถานะนี้อยู่พนักงานจะไม่สามารถเข้ามาเปลี่ยน สถานะได้
-                                                    --%>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>สถานะการส่งสินค้า :</td>
                                                 <td>
                                                     <asp:DropDownList ID="ddl_ViewDetail_TRANSPORT_STATUS" runat="server">
-<%--                                                        <asp:ListItem Value="1">อยู่ระหว่างการสั่งจากประเทศจีน</asp:ListItem>
-                                                        <asp:ListItem Value="2">สินค้ารอส่งให้ลูกค้า</asp:ListItem>
-                                                        <asp:ListItem Value="3">จัดส่งสินค้าให้ลูกค้าแล้ว</asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
@@ -488,7 +475,7 @@
                         <td height="15px" style="padding: 0px 0px;" align="center" colspan="3"></td>
                     </tr>
                 </table>
-            </asp:Panel>
+            </asp:Panel>--%>
 
         </ContentTemplate>
     </asp:UpdatePanel>

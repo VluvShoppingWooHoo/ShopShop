@@ -88,6 +88,7 @@
     <Content Include="pages\frmGroupUserList.aspx" />
     <Content Include="pages\frmIndex.aspx" />
     <Content Include="pages\frmMasterBank.aspx" />
+    <Content Include="pages\frmOrder.aspx" />
     <Content Include="pages\frmOrderList.aspx" />
     <Content Include="pages\frmUser.aspx" />
     <Content Include="pages\frmUserList.aspx" />
@@ -158,6 +159,13 @@
     </Compile>
     <Compile Include="pages\frmMasterBank.aspx.designer.cs">
       <DependentUpon>frmMasterBank.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmOrder.aspx.cs">
+      <DependentUpon>frmOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmOrder.aspx.designer.cs">
+      <DependentUpon>frmOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\frmOrderList.aspx.cs">
       <DependentUpon>frmOrderList.aspx</DependentUpon>
