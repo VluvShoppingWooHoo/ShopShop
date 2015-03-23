@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="frmOrder.aspx.cs" Inherits="VloveImport.web.admin.pages.frmOrder" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -156,7 +158,7 @@
                         <asp:View ID="View1" runat="server">
                             <asp:Button ID="btnEditProd_num" runat="server" Text="แก้ไขจำนวนสินค้า" CssClass=" btnSearch" OnClick="btnEditProd_num_Click"></asp:Button>
                             <asp:GridView ID="gv_detail_prod_view" runat="server" AutoGenerateColumns="False" Width="100%"
-                                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
+                                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,OD_ID">
                                 <Columns>
                                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
                                     <asp:BoundField DataField="OD_ITEMNAME" HeaderText="รายละเอียดสินค้า" />
@@ -183,7 +185,7 @@
                             <asp:Button ID="btnEditProd_num_save" runat="server" Text="Update " CssClass=" btnSave" OnClick="btnEditProd_num_save_Click"></asp:Button>&nbsp;&nbsp;
                                                                 <asp:Button ID="btnEditProd_num_cancel" runat="server" Text="Cancel" CssClass="btnCancel" OnClick="btnEditProd_num_cancel_Click"></asp:Button>
                             <asp:GridView ID="gv_detail_prod_Edit" runat="server" AutoGenerateColumns="False" Width="100%"
-                                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE">
+                                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,OD_ID">
                                 <Columns>
                                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
                                     <asp:BoundField DataField="OD_ITEMNAME" HeaderText="รายละเอียดสินค้า" />
@@ -200,6 +202,7 @@
                                         </EditItemTemplate>
                                         <ItemTemplate>
                                             <asp:TextBox ID="gv_detail_prod_Edit_txt" runat="server" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>'></asp:TextBox>
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="gv_detail_prod_Edit_txt" ID="gv_detail_prod_Edit_txt_FilteredTextBoxExtender" ValidChars="0123456789"></asp:FilteredTextBoxExtender>
                                         </ItemTemplate>
                                         <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:TemplateField>

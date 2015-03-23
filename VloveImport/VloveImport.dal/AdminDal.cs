@@ -46,7 +46,7 @@ namespace VloveImport.dal
             }
             catch (Exception ex)
             {
-                throw new Exception("GET_ADMIN_ORDER -> msg : " + ex.Message);
+                throw new Exception("GET_MASTER_STATUS -> msg : " + ex.Message);
             }
         }
 
@@ -92,7 +92,32 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 SqlCommandData.RollBack();
-                return ("INS_UPD_CUSTOMER_FAVORIT_SHOP -> msg : " + ex.Message);
+                return ("UPD_ADMIN_ORDER -> msg : " + ex.Message);
+            }
+        }
+
+        public string UPD_ADMIN_ORDER_PROD_AMOUNT(int ORDER_ID, int ORDER_DETAIL_ID, int PROD_NUM, string CREATE_USER, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_UPDATE_ORDER_PROD_AMOUNT");
+
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
+                SqlCommandData.SetParameter_Input_INT("ORDER_DETAIL_ID", SqlDbType.VarChar, ParameterDirection.Input, ORDER_DETAIL_ID);
+                SqlCommandData.SetParameter_Input_INT("PROD_NUM", SqlDbType.VarChar, ParameterDirection.Input, PROD_NUM);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, CREATE_USER);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("UPD_ADMIN_ORDER_PROD_AMOUNT -> msg : " + ex.Message);
             }
         }
 

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
+using VloveImport.data;
 
 namespace VloveImport.web.admin.pages
 {
@@ -106,9 +107,42 @@ namespace VloveImport.web.admin.pages
             }
         }
 
+        public void ShowMessageBox(string message, Page currentPage)
+        {
+            string msgboxScript = "alert('" + message + "');";
+
+            if ((ScriptManager.GetCurrent(currentPage) != null))
+            {
+                ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+            }
+        }
+
         protected void btn_detail_update_Click(object sender, EventArgs e)
         {
+            OrderData En = new OrderData();
+            AdminBiz AdBiz = new AdminBiz();
+            En.Create_User = _VS_USER_LOGIN;
 
+            En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue);
+            string Result_order = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_SPLIT_ORDER");
+
+            En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue);
+            string Result_transport = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_SPLIT_TRANSPORT");
+
+            if (Result_order == "" && Result_transport == "")
+            {
+                DataSet ds = AdBiz.GET_ADMIN_ORDER("BINDDATA_BYID", Convert.ToInt32(_VS_ORDER_ID));
+                gv_detail_prod_view.DataSource = ds.Tables[0];
+                gv_detail_prod_view.DataBind();
+                gv_detail_prod_Edit.DataSource = ds.Tables[0];
+                gv_detail_prod_Edit.DataBind();
+
+                ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+            }
+            else
+            {
+                ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result_order + "  ERROR TRANSPORT : " + Result_transport), this.Page);
+            }
         }
 
         protected void btnEditProd_num_Click(object sender, EventArgs e)
@@ -118,7 +152,19 @@ namespace VloveImport.web.admin.pages
 
         protected void btnEditProd_num_save_Click(object sender, EventArgs e)
         {
+            AdminBiz AdBiz;
+            for(int i = 0; i <= gv_detail_prod_Edit.Rows.Count -1 ;i++)
+            {
+                AdBiz = new AdminBiz();
+                TextBox txtprodnum = (TextBox)gv_detail_prod_Edit.Rows[i].Cells[5].FindControl("gv_detail_prod_Edit_txt");
+                int ORDER_ID =Convert.ToInt32( gv_detail_prod_Edit.DataKeys[i].Values[0].ToString());
+                int ORDER_DETAIL_ID = Convert.ToInt32(gv_detail_prod_Edit.DataKeys[i].Values[6].ToString());
 
+                int PROD_NUM = txtprodnum.Text == "" ? 0 : Convert.ToInt32(txtprodnum.Text);
+
+                AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(ORDER_ID, ORDER_DETAIL_ID, PROD_NUM, _VS_USER_LOGIN, "UPD_PROD_AMOUNT");
+
+            }
         }
 
         protected void btnEditProd_num_cancel_Click(object sender, EventArgs e)

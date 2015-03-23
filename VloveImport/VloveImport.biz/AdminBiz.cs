@@ -59,6 +59,21 @@ namespace VloveImport.biz
             return ds;
         }
 
+        public string UPD_ADMIN_ORDER_PROD_AMOUNT(int ORDER_ID, int ORDER_DETAIL_ID, int PROD_NUM, string CREATE_USER, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.UPD_ADMIN_ORDER_PROD_AMOUNT(ORDER_ID, ORDER_DETAIL_ID, PROD_NUM, CREATE_USER, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
         #endregion
     }
 }
