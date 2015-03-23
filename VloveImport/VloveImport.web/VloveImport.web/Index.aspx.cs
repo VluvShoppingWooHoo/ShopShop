@@ -90,13 +90,16 @@ namespace VloveImport.web
                 #region getID
                 string[] a = txt.Split('?');
                 string[] b = a[1].Split('&');
-
-                foreach (string item in b)
+                data.URL = txt;
+                if (webMode == 1)
                 {
-                    if (item.IndexOf("id=") == 0)
+                    foreach (string item in b)
                     {
-                        data.URL = a[0] + '?' + item;
-                        txt = item.Replace("id=", "");
+                        if (item.IndexOf("id=") == 0)
+                        {
+                            data.URL = a[0] + '?' + item;
+                            txt = item.Replace("id=", "");
+                        }
                     }
                 }
                 data.ItemID = txt;

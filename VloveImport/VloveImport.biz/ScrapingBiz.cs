@@ -26,7 +26,7 @@ namespace VloveImport.biz
             //HtmlNode.ElementsFlags.Remove("em");
             //HtmlNode.ElementsFlags.Remove("span");
             //HtmlNode.ElementsFlags.Remove("font");
-            
+
             //HtmlAgilityPack.HtmlWeb HtmlWeb = new HtmlWeb();
             var HtmlWeb = new HtmlWeb
             {
@@ -34,7 +34,7 @@ namespace VloveImport.biz
                 OverrideEncoding = System.Text.Encoding.GetEncoding(54936)
             };
             HtmlAgilityPack.HtmlDocument doc = HtmlWeb.Load(html);
-            
+
             //doc.Encoding.
             //doc. = Encoding.Default;
             #endregion
@@ -95,8 +95,8 @@ namespace VloveImport.biz
             var result = doc.DocumentNode.Descendants("div").Where(l =>
                 l.Attributes.Contains("class") &&
                 l.Attributes["class"].Value.Contains("cat-main"));
-                //l.Attributes["class"].Value.Contains("cat-l"));
-            
+            //l.Attributes["class"].Value.Contains("cat-l"));
+
             HtmlNode node = result.FirstOrDefault();
             return node.OuterHtml;
         }
@@ -160,7 +160,8 @@ namespace VloveImport.biz
                         ItemName = node.InnerText.Trim();
                         break;
                     case 3:
-                        ItemName = string.Empty;
+                        node = doc.GetElementbyId("mod-detail-title");
+                        ItemName = node.ChildNodes[1].InnerHtml.Trim();
                         break;
                     default:
                         break;
@@ -209,7 +210,11 @@ namespace VloveImport.biz
                         picURL = node.Attributes[2].Value;
                         break;
                     case 3:
-                        picURL = string.Empty;
+                        var result = doc.DocumentNode.Descendants("div").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("tab-pane"));
+                        node = result.FirstOrDefault().ChildNodes[1].ChildNodes[1].ChildNodes[1];
+                        picURL = node.Attributes[0].Value;
                         break;
                     default:
                         break;
@@ -239,7 +244,11 @@ namespace VloveImport.biz
                         Price = node.ChildNodes[1].InnerText;
                         break;
                     case 3:
-                        Price = string.Empty;
+                        var result = doc.DocumentNode.Descendants("tr").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("price"));
+                        node = result.FirstOrDefault().ChildNodes[1].ChildNodes[3];
+                        Price = node.InnerText.Trim();
                         break;
                     default:
                         break;
@@ -278,7 +287,7 @@ namespace VloveImport.biz
             try
             {
                 HtmlNode node = null;
-                
+
                 switch (web)
                 {
                     case 1:
@@ -333,7 +342,8 @@ namespace VloveImport.biz
                         Color = Color.Remove(Color.Length - 2, 2);
                         break;
                     case 3:
-                        Color = string.Empty;
+                        Color = GetSizeOrColor1688("Color", doc);
+                        //Color = Color.Remove(Color.Length - 2, 2);
                         break;
                     default:
                         break;
@@ -355,7 +365,7 @@ namespace VloveImport.biz
                         var result = doc.DocumentNode.Descendants("dl").Where(l =>
                             l.Attributes.Contains("class") &&
                             l.Attributes["class"].Value.Contains("J_TMySizeProp"));
-                        node= result.FirstOrDefault().ChildNodes[3].ChildNodes[1];
+                        node = result.FirstOrDefault().ChildNodes[3].ChildNodes[1];
                         //Can't use foreach
                         for (int i = 0; i < node.ChildNodes.Count; i++)
                         {
@@ -388,7 +398,7 @@ namespace VloveImport.biz
                         Size = Size.Remove(Size.Length - 2, 2);
                         break;
                     case 3:
-                        Size = string.Empty;
+                        Size = GetSizeOrColor1688("Size", doc);
                         break;
                     default:
                         break;
@@ -401,6 +411,89 @@ namespace VloveImport.biz
         #endregion
         #region Scraping Side Menu
         #endregion
+        #endregion
+        #region private function
+        private string GetSizeOrColor1688(string txt, HtmlAgilityPack.HtmlDocument doc)
+        {
+            string result = string.Empty;
+            try
+            {
+                HtmlNode nodeLead;
+                HtmlNode nodeSku;
+                bool Lead = false;
+                bool Sku = false;
+                var objLeading = doc.DocumentNode.Descendants("div").Where(l =>
+                       l.Attributes.Contains("class") &&
+                       l.Attributes["class"].Value.Contains("obj-leading"));
+
+                var objSku = doc.DocumentNode.Descendants("div").Where(l =>
+                       l.Attributes.Contains("class") &&
+                       l.Attributes["class"].Value.Contains("obj-sku"));
+
+                nodeLead = objLeading.FirstOrDefault();
+                nodeSku = objSku.FirstOrDefault();
+
+                if (txt == "Color")
+                {
+                    if (nodeLead != null)
+                        if (nodeLead.ChildNodes[1].InnerText.Trim() == "Color" || nodeLead.ChildNodes[1].InnerText.Trim() == "颜色")
+                            Lead = true;
+
+                    if (nodeSku != null)
+                        if (nodeSku.ChildNodes[1].InnerText.Trim() == "Color" || nodeSku.ChildNodes[1].InnerText.Trim() == "颜色")
+                            Sku = true;
+                }
+                else
+                {
+                    if (nodeLead != null)
+                        if (nodeLead.ChildNodes[1].InnerText.Trim() != "Color" && nodeLead.ChildNodes[1].InnerText.Trim() != "颜色")
+                            Lead = true;
+
+                    if (nodeSku != null)
+                        if (nodeSku.ChildNodes[1].InnerText.Trim() != "Color" && nodeSku.ChildNodes[1].InnerText.Trim() != "颜色")
+                            Sku = true;
+                }
+                if (Lead)
+                {
+                    //Can't use foreach
+                    for (int i = 0; i < nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes.Count; i++)
+                    {
+                        if (nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes[i].Name.Contains("li"))
+                        {
+                            HtmlNode item = nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes[i].ChildNodes[1].ChildNodes[1];
+                            if (item.InnerHtml.Contains("vertical-img"))
+                            {
+                                result += item.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[1].Value;
+                            }
+                            else
+                                result += item.ChildNodes[1].ChildNodes[0].InnerHtml;
+                            result += "||";
+                        }
+                    }
+                }
+                else if (Sku)
+                {
+                    //Can't use foreach
+                    for (int i = 0; i < nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes.Count(); i++)
+                    {
+                        if (nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes[i].Name.Contains("tr"))
+                        {
+                            HtmlNode item = nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes[i].ChildNodes[1].ChildNodes[1];
+                            int start = 0, end = 0;
+                            if (item.InnerHtml.Contains("vertical-img"))
+                            {
+                                result += item.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[1].Value;
+                            }
+                            else
+                                result += item.InnerHtml;
+                            result += "||";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { result = string.Empty; }
+            return result;
+        }
         #endregion
     }
 }
