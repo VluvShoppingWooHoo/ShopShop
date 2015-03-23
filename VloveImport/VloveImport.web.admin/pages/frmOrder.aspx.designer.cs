@@ -139,13 +139,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_ViewDetail_TRANSPORT_STATUS;
         
         /// <summary>
-        /// btn_detail_update_Click control.
+        /// btn_detail_update control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_detail_update_Click;
+        protected global::System.Web.UI.WebControls.Button btn_detail_update;
         
         /// <summary>
         /// lbl_ViewDetail_CusCode control.

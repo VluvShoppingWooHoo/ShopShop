@@ -107,7 +107,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button ID="btn_detail_update_Click" runat="server" Text="Update Status" CssClass="btnSave" OnClick="btn_detail_update_Click_Click"></asp:Button>
+                    <asp:Button ID="btn_detail_update" runat="server" Text="Update Status" CssClass="btnSave" OnClick="btn_detail_update_Click"></asp:Button>
                 </td>
             </tr>
         </table>
