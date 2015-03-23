@@ -4,7 +4,7 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
         <br />
-        <b>เติมเงิน</b>
+        <b>เติมเงิน</b> : <b>ยอดเงินคงเหลือ THB0.00</b>
         <br /><br />
         <b>
             <span style ="color:red;">
@@ -15,7 +15,7 @@
                 <%--การชำระเงิน : เป็นการเลือกชำระเงินในบิลนั้นๆ ระบบจะทำการสั่งซื้อให้หลังจากได้รับยืนยันการชำระบิลจากลูกค้า--%>
             </span>
         </b>
-        <br />
+        <br />        
         <br />
         <div style = "border:2px solid #959595; background-color:#F5F5F5; vertical-align :middle; width:60%; height:60px;">
             <div style ="margin-top:10px;">
@@ -59,7 +59,7 @@
                 <b>* จำนวนเงิน</b>
             </div>                           
         </div> 
-        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+        <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 33%; margin-top: -40px;">            
             <div style ="margin-left:10px;">
                 <asp:TextBox ID="txt_tranfer_amount" CssClass="txt_tranfer_amount" runat="server" Width ="300px" ></asp:TextBox>
             </div>
@@ -70,7 +70,7 @@
                 <b>* วันโอนเงิน </b>
             </div>
         </div>        
-        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+        <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 33%; margin-top: -40px;">            
             <div style ="margin-left:10px;">
                 <input type="date" class="datepicker dtMaterial" id="dtMaterial" runat="server" style="width:300px;" />
             </div>
@@ -81,7 +81,7 @@
                 <b>* เวลาโอน</b>
             </div>            
         </div>
-        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+        <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 33%; margin-top: -40px;">            
             <div style ="margin-left:10px;">
                 <asp:DropDownList ID="ddlH" DataTextField ="PAYMENT_TIME" DataValueField ="PAYMENT_TIME" runat="server" 
                     CssClass="ddlH" style =" display:inline;" Width ="100px"></asp:DropDownList>&nbsp;&nbsp;
@@ -108,9 +108,9 @@
                 <b> หมายเหตุ</b>
             </div>            
         </div>
-        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 33%; margin-top: -40px;">            
+        <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 33%; margin-top: -40px;">            
             <div style ="margin-left:10px;">
-                <asp:TextBox ID="txt_remark" CssClass="txt_remark" runat="server" Width ="400px" Height ="80px" TextMode ="MultiLine"></asp:TextBox>
+                <asp:TextBox ID="txt_remark" CssClass="txt_remark" runat="server" Width ="350px" Height ="80px" TextMode ="MultiLine"></asp:TextBox>
             </div>
         </div>
         <br />

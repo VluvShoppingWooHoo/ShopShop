@@ -11,7 +11,7 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
         <br />
-        <b>ถอนเงิน</b>
+        <b>ถอนเงิน</b> : <b>ยอดเงินคงเหลือ THB0.00</b>
         <br /><br />
         <b>
             <span style ="color:red;">
@@ -23,85 +23,69 @@
             </span>
         </b>
         <br />
-        <br />
-        <b>ยอดเงินคงเหลือ THB0.00</b>
-
-
-        <table width="100%">
-            <tr>
-                <td colspan="2"><b>Withraw Request</b></td>
-            </tr>
-            <tr>
-                <td width="30%">วันที่:
-                    <asp:Label ID="lblDate" runat="server" Text=""></asp:Label></td>
-                <td width="70%" style="color: red;"><b>ในกรณีกดถอนเงิน เมื่อเจ้าหน้าที่ตรวจสอบผ่านแล้ว ระบบจะตัดเงินคงเหลือทันที</b></td>
-            </tr>
-            <tr>
-                <td>ยอดเงินคงเหลือ THB0.00</td>
-                <td style="color: red;"><b>แต่เงินจะเข้าบัญชีลูกค้าในช่วงระยะเวลาดำเนินการ 7-10 วัน</b></td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td>เลขที่บัญชีโอนเงินกลับ
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddl_account_name" CssClass="ddl_account_name" runat="server" Style="display: block;" Width="400px"></asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td>จำนวนเงิน</td>
-                <td>
-                    <asp:TextBox ID="txt_amount" runat="server" Width="400px" CssClass="txt_amount"></asp:TextBox>
-                    <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_amount" ID="txt_amount_FilteredTextBoxExtender" ValidChars=".1234567890">
-                    </asp:FilteredTextBoxExtender>
-                </td>
-            </tr>
-            <tr>
-                <td>หมายเหตุ</td>
-                <td>
-                    <asp:TextBox ID="txt_remark" runat="server" TextMode="MultiLine" Width="400px" Height="50px" Rows="5" CssClass="txt_remark"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div style="border: 2px solid #C6D880; background-color: #E6EFC2; height: 50px; vertical-align: middle;">
-                        รหัสผ่านสำหรับการถอนเงิน
-                    </div>
-                </td>
-                <td>
-                    <asp:TextBox ID="txt_Withraw_Password" runat="server" Width="400px" CssClass="txt_Withraw_Password"></asp:TextBox>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-            <b>**รหัสผ่านเป็นอันเดียวกันกับ รหัสผ่านการชำระเงิน</b>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <%--<button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light"
-                        name="action" runat="server" onclick="return funsubmit('S');">
-                        SUBMIT
-               
-                    </button>--%>
-                    <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light"
-                        name="action">
-                        SUBMIT
-               
-                    </button>
-                    &nbsp;&nbsp;
+        <br />        
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+            <br />
+            <div style ="margin-left:10px;">
+                <b>เลขที่บัญชีโอนเงินกลับ</b>                                        
+            </div>
+        </div>
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">                
+                <asp:DropDownList ID="ddl_account_name" runat="server" 
+                CssClass="dpBlock" Width="300px"></asp:DropDownList>
+            </div>
+        </div>
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+            <br />
+            <div style ="margin-left:10px;">
+                <b>จำนวนเงิน</b>                                        
+            </div>
+        </div>
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <asp:TextBox ID="txt_amount" runat="server" Width="300px" CssClass="txt_amount"></asp:TextBox>
+                <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_amount" ID="txt_amount_FilteredTextBoxExtender" ValidChars=".1234567890">
+                </asp:FilteredTextBoxExtender>
+            </div>
+        </div>
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+            <br />
+            <div style ="margin-left:10px;">
+                <b>หมายเหตุ</b>                                        
+            </div>
+        </div>
+        <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <asp:TextBox ID="txt_remark" runat="server" TextMode="MultiLine" Width="300px" Height="50px" Rows="5" CssClass="txt_remark"></asp:TextBox>
+            </div>
+        </div>
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+            <br />
+            <div style ="margin-left:10px;">
+                <span style="color:red; font-weight:600;">รหัสผ่านสำหรับการถอนเงิน</span>
+            </div>
+        </div>
+        <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 32%; margin-top: -40px;">            
+            <div style ="margin-left:10px;">
+                <asp:TextBox ID="txt_Withraw_Password" runat="server" Width="300px" CssClass="txt_Withraw_Password"></asp:TextBox>
+                 <br />&nbsp;&nbsp;<b>**รหัสผ่านเป็นอันเดียวกันกับ รหัสผ่านการชำระเงิน</b>
+            </div>
+        </div>
+        <br /><br />
+         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 20%;">            
+            <div style ="margin-left:10px;">
+                <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light"
+                    name="action">
+                    SUBMIT               
+                </button>
+                &nbsp;&nbsp;
                 <button id="Button2" type="button" class="btn waves-effect orange waves-light"
                     name="action" runat="server" onclick="return funsubmit('C');">
-                    CLEAR     
-               
+                    CLEAR                    
                 </button>
-                </td>
-            </tr>
-        </table>
-
-        <asp:HiddenField ID="hd_submit" runat="server" />
-        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" Style="display: none;" />
-
+            </div>
+        </div>                    
     </ContentTemplate>
 </asp:UpdatePanel>
 <script type="text/javascript">

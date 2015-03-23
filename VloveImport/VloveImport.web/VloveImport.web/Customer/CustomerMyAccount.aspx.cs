@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.util;
 using VloveImport.web.App_Code;
+using VloveImport.web.UserControls;
 
 namespace VloveImport.web.Customer
 {
@@ -20,6 +21,7 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
+                CheckSession();    
                 //BindData();
             }
         }
@@ -38,38 +40,13 @@ namespace VloveImport.web.Customer
             }
         }
 
-        #region Event
-        #region V1
-        protected void btnTopup_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnWithdraw_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnTransLog_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnVoucher_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnMyPoint_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-        #region V2
+        #region Event        
         [WebMethod]
         public static string btnTopup(string Bank, string amt, string date, string time, string email, string remark, string file)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
+            ucAccFuncTopup Topup = new ucAccFuncTopup();
+            Topup.SaveData();
             return js.Serialize("");
         }
 
@@ -100,21 +77,6 @@ namespace VloveImport.web.Customer
             JavaScriptSerializer js = new JavaScriptSerializer();
             return js.Serialize("");
         }
-        #endregion
-        #endregion
-
-        public string CallUcWithdraw1(string ddlAccount, string txt_amount, string txt_remark, string txt_Withraw_Password)
-        {
-            return"";  //ucAccfuncWithdraw1.SaveData(ddlAccount, txt_amount, txt_remark, txt_Withraw_Password);
-        }
-
-
-        [WebMethod]
-        public static string btnSave(string ddlAccount, string txt_amount, string txt_remark, string txt_Withraw_Password)
-        {
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            CustomerMyAccount CusPage = new CustomerMyAccount();
-            return js.Serialize(CusPage.CallUcWithdraw1(ddlAccount, txt_amount, txt_remark, txt_Withraw_Password));
-        }
+        #endregion      
     }
 }

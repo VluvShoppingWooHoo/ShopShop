@@ -10,11 +10,13 @@ using System.Data;
 using VloveImport.biz;
 using VloveImport.data;
 using System.Globalization;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.UserControls
 {
     public partial class ucAccfuncWithdraw : System.Web.UI.UserControl
     {
+        BasePage bp = new BasePage();
         public int _VS_ID
         {
             get { return Convert.ToInt32(ViewState["__VS_ID"]); }
@@ -42,7 +44,6 @@ namespace VloveImport.web.UserControls
                 this._VS_CUS_ID = 1;//CusData.Cus_ID;
                 BindData_BANK();
             }
-            lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd", new CultureInfo("en-US"));
         }
 
         public void BindData_BANK()
@@ -76,39 +77,6 @@ namespace VloveImport.web.UserControls
             txt_Withraw_Password.Text = "";
         }
 
-        public void ShowMessageBox(string message, Page currentPage, string redirectNamePage = "")
-        {
-            string msgboxScript = "alert('" + message + "');";
-
-            if (redirectNamePage == "" && message != "1")
-            {
-                if ((ScriptManager.GetCurrent(currentPage) != null))
-                {
-                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
-                }
-            }
-            else if (redirectNamePage != "" && message != "1")
-            {
-                string redirectPage = "window.location.href=\"" + redirectNamePage + "\";";
-
-                if ((ScriptManager.GetCurrent(currentPage) != null))
-                {
-                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript + redirectPage, true);
-                }
-            }
-            else
-            {
-                string redirectPage = "window.location.href=\"" + redirectNamePage + "\";";
-
-                if ((ScriptManager.GetCurrent(currentPage) != null))
-                {
-                    ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", redirectPage, true);
-                }
-            }
-
-            
-        }
-
         public TransactionData SetData()
         {
             TransactionData EnCus = new TransactionData();
@@ -134,26 +102,26 @@ namespace VloveImport.web.UserControls
             if (ddl_account_name.SelectedValue == "-1" || txt_amount.Text.Trim() == "" || txt_Withraw_Password.Text.Trim() == "")
             {
                 IsReturn = false;
-                ShowMessageBox("กรุณากรอกข้อมูลในช่องที่มีสัญลักษณ์ *", this.Page);
+                bp.ShowMessageBox("กรุณากรอกข้อมูลในช่องที่มีสัญลักษณ์ *", this.Page);
                 return IsReturn;
             }
 
             return IsReturn;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            if (hd_submit.Value == "S")
-            {
-                SaveData();
-            }
-            else
-            {
-                ClearData();
-                ShowMessageBox("1", this.Page, "CustomerMyAccount.aspx#withdraw");
-            }
+        //protected void Button1_Click(object sender, EventArgs e)
+        //{
+        //    if (hd_submit.Value == "S")
+        //    {
+        //        SaveData();
+        //    }
+        //    else
+        //    {
+        //        ClearData();
+        //        ShowMessageBox("1", this.Page, "CustomerMyAccount.aspx#withdraw");
+        //    }
 
-        }
+        //}
 
         public void SaveData()
         {
@@ -164,12 +132,12 @@ namespace VloveImport.web.UserControls
                 IsReturn = CusBiz.INS_UPD_TRANSACTION(SetData(), "INS");
                 if (IsReturn != "")
                 {
-                    ShowMessageBox(IsReturn, this.Page);
+                    bp.ShowMessageBox(IsReturn, this.Page);
                 }
                 else
                 {
                     ClearData();
-                    ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#withdraw");
+                    bp.ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#withdraw");
                 }
             }
         }
