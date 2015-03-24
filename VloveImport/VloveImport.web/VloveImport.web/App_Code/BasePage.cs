@@ -32,6 +32,15 @@ namespace VloveImport.web.App_Code
                     
         }
 
+        public string GetCusCode()
+        {
+            if (Session["User"] != null)
+                return ((CustomerData)Session["User"]).Cus_Code;
+            else
+                return "";
+
+        }
+
         public string GetNoSeries(string NoSeries_Name)
         {
             string Result = "";
@@ -81,8 +90,51 @@ namespace VloveImport.web.App_Code
                     ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", redirectPage, true);
                 }
             }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dtDate"></param>
+        /// <param name="Deli">Delimater</param>
+        /// <param name="DateFormat">DDMMYYYY,YYYYMMDD</param>
+        /// /// <param name="Diff">543,0</param>
+        /// <returns></returns>
+        public System.Nullable<System.DateTime> Convert_DateYYYYMMDD(string dtDate, char Deli, string DateFormat, int Diff)
+        {
+            string[] StrDate;
+            string DayDate;
+            string MonthDate;
+            string YearDate;
+            System.Nullable<System.DateTime> dateSave = default(System.Nullable<System.DateTime>);
 
+            if (!string.IsNullOrEmpty(dtDate) & dtDate != " ")
+            {
+                StrDate = dtDate.Split(Deli);
+                if (DateFormat == "DDMMYYYY")
+                {                    
+                    DayDate = StrDate[0];
+                    MonthDate = StrDate[1];
+                    YearDate = (Convert.ToInt32(StrDate[2]) - Diff).ToString();
+                }
+                else
+                {                 
+                    DayDate = StrDate[2];
+                    MonthDate = StrDate[1];
+                    YearDate = (Convert.ToInt32(StrDate[0]) - Diff).ToString();
+                }
 
+                if (YearDate.Length > 4)
+                {
+                    YearDate = YearDate.Substring(0, 4);
+                }
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US"); //"en-US" "th-TH"
+                dateSave = new DateTime(Convert.ToInt32(YearDate.Trim()), Convert.ToInt32(MonthDate.Trim()), Convert.ToInt32(DayDate.Trim()));
+            }
+            else
+            {
+                dateSave = null;
+            }
+            return dateSave;
         }
     }
 }

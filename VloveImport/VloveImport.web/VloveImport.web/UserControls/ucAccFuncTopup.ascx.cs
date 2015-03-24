@@ -79,28 +79,7 @@ namespace VloveImport.web.UserControls
                 ddlBank.DataSource = ds.Tables[0];
                 ddlBank.DataBind();
             }
-        }
-
-        public TransactionData SetData()
-        {
-            TransactionData EnTran = new TransactionData();
-            EnTran.TRAN_ID = this._VS_ID;
-            EnTran.Cus_ID = this._VS_CUS_ID;
-
-            EnTran.TRAN_TYPE = 1;
-            EnTran.TRAN_TABLE_TYPE = 1;
-            EnTran.TRAN_DETAIL = "รายการฝากเงิน";
-
-            EnTran.BANK_ID = Convert.ToInt32(ddlBank.SelectedValue);
-            EnTran.TRAN_AMOUNT = Convert.ToDouble(txt_tranfer_amount.Text);
-            EnTran.PAYMENT_DATE = Convert.ToDateTime(Convert_DateYYYYMMDD(dtMaterial.Value));
-            EnTran.PAYMENT_TIME = ddlH.SelectedValue + ":" + ddlM.SelectedValue + ":" + ddls.SelectedValue;
-            EnTran.TRAN_EMAIL = txt_email.Text.Trim();
-            EnTran.TRAN_REMARK = txt_remark.Text.Trim();
-            EnTran.TRAN_STATUS = 1;
-            EnTran.Create_User = "Batt";
-            return EnTran;
-        }        
+        }              
 
         public bool CheckInput()
         {
@@ -128,24 +107,7 @@ namespace VloveImport.web.UserControls
             return IsReturn;
         }
 
-        public void SaveData()
-        {
-            if (CheckInput())
-            {
-                CustomerBiz CusBiz = new CustomerBiz();
-                string IsReturn = "";
-                IsReturn = CusBiz.INS_UPD_TRANSACTION(SetData(), "INS");
-                if (IsReturn != "")
-                {
-                    bp.ShowMessageBox(IsReturn, this.Page);
-                }
-                else
-                {
-                    ClearData();
-                    bp.ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#topup");
-                }
-            }
-        }
+        
 
         public void ClearData()
         {
@@ -190,11 +152,6 @@ namespace VloveImport.web.UserControls
             return dateSave;
         }
         #endregion
-
-        protected void btnSaveUcWithdraw_ServerClick(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }

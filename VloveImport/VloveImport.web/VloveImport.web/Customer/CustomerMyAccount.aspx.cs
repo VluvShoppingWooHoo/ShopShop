@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
+using VloveImport.data;
 using VloveImport.util;
 using VloveImport.web.App_Code;
 using VloveImport.web.UserControls;
@@ -40,43 +41,67 @@ namespace VloveImport.web.Customer
             }
         }
 
-        #region Event        
+        #region Event
         [WebMethod]
         public static string btnTopup(string Bank, string amt, string date, string time, string email, string remark, string file)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
-            ucAccFuncTopup Topup = new ucAccFuncTopup();
-            Topup.SaveData();
-            return js.Serialize("");
+            string Result = "";
+            BasePage bp = new BasePage();
+            TransactionData EnTran = new TransactionData();
+            EnTran.Cus_ID = bp.GetCusID();
+
+            EnTran.TRAN_TYPE = 1;
+            EnTran.TRAN_TABLE_TYPE = 1;
+            EnTran.TRAN_DETAIL = "รายการฝากเงิน";
+
+            EnTran.BANK_ID = Convert.ToInt32(Bank);
+            EnTran.TRAN_AMOUNT = Convert.ToDouble(amt);
+            EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(date, '-', "YYYYMMDD", 0));
+            EnTran.PAYMENT_TIME = time;
+            EnTran.TRAN_EMAIL = email.Trim();
+            EnTran.TRAN_REMARK = remark.Trim();
+            EnTran.TRAN_STATUS = 1;
+            EnTran.Create_User = bp.GetCusCode();
+
+            CustomerBiz CusBiz = new CustomerBiz();
+            Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS");
+
+            return js.Serialize(Result);
         }
 
         [WebMethod]
         public static string btnWithdraw(string accname, string amt, string remark, string pwd)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
-            return js.Serialize("");
+            string Result = "";
+            return js.Serialize(Result);
         }
 
         [WebMethod]
         public static string btnTransLog(string Bank, string amt, string date, string time, string email, string remark, string file)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
-            return js.Serialize("");
+            string Result = "";
+            return js.Serialize(Result);
         }
 
         [WebMethod]
         public static string btnVoucher(string Bank, string amt, string date, string time, string email, string remark, string file)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
-            return js.Serialize("");
+            string Result = "";
+            return js.Serialize(Result);
         }
 
         [WebMethod]
         public static string btnMyPoint(string Bank, string amt, string date, string time, string email, string remark, string file)
-        {
+        {            
             JavaScriptSerializer js = new JavaScriptSerializer();
-            return js.Serialize("");
+            string Result = "";
+            return js.Serialize(Result);
         }
-        #endregion      
+        #endregion     
+        
     }
 }

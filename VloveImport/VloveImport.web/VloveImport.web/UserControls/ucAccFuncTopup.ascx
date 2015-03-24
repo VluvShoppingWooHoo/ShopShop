@@ -24,7 +24,7 @@
             </div>
         </div>
         <br />
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b>เลือก I LOVE IMPORT ธนาคาร</b>                                        
@@ -36,13 +36,13 @@
                 CssClass="dpBlock ddlBank" Width="300px"></asp:DropDownList>
             </div>
         </div>
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b>หลักฐานการชำระเงิน</b>
             </div>            
         </div>
-        <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 24%; margin-top: -60px;">            
+        <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 30%; margin-top: -60px;">            
             <div style ="margin-left:10px;">
                 <div class="file-field input-field">
                     <input class="file-path validate" type="text" style="width:300px;"/>
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>   
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">    
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">    
             <br />
             <div style ="margin-left:10px;">
                 <b>* จำนวนเงิน</b>
@@ -64,7 +64,7 @@
                 <asp:TextBox ID="txt_tranfer_amount" CssClass="txt_tranfer_amount" runat="server" Width ="300px" ></asp:TextBox>
             </div>
         </div>      
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b>* วันโอนเงิน </b>
@@ -75,7 +75,7 @@
                 <input type="date" class="datepicker dtMaterial" id="dtMaterial" runat="server" style="width:300px;" />
             </div>
         </div>
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b>* เวลาโอน</b>
@@ -91,7 +91,7 @@
                     CssClass="ddls" style =" display:inline;" Width ="100px"></asp:DropDownList>
             </div>
         </div>
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b> E-mail</b>
@@ -102,7 +102,7 @@
                 <asp:TextBox ID="txt_email" runat="server" Width ="300px" CssClass="txt_email"></asp:TextBox>        
             </div>
         </div>
-        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
+        <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
                 <b> หมายเหตุ</b>
