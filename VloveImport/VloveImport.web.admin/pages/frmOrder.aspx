@@ -141,7 +141,7 @@
                     <tr>
                         <td>จำนวนเงินในบัญชีคงเหลือ :</td>
                         <td>
-                            <asp:Label ID="Label16" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="lbl_ViewDetail_Total_Amount" runat="server" Text=""></asp:Label>
                         </td>
                         <td>Email :</td>
                         <td>

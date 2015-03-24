@@ -29,7 +29,7 @@ namespace VloveImport.web.admin.pages
         {
             if (!IsPostBack)
             {
-                _VS_USER_LOGIN = "Administrator";
+                _VS_USER_LOGIN = "admin";
                 BindData_order_status(ddl_ViewDetail_ORDER_STATUS);
                 BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS);
 
@@ -93,6 +93,7 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_CusName.Text = ds.Tables[0].Rows[0]["CUS_FULLNAME"].ToString();
                 lbl_ViewDetail_Telphone.Text = ds.Tables[0].Rows[0]["CUS_MOBILE"].ToString();
                 lbl_ViewDetail_Email.Text = ds.Tables[0].Rows[0]["CUS_EMAIL"].ToString();
+                lbl_ViewDetail_Total_Amount.Text = ds.Tables[0].Rows[0]["CUS_TOTAL_AMOUNT"].ToString(); 
                 #endregion
 
                 gv_detail_prod_view.DataSource = ds.Tables[0];
@@ -181,9 +182,16 @@ namespace VloveImport.web.admin.pages
 
             if (Result == "")
             {
-                BindData();
-                MultiView1.ActiveViewIndex = 0;
-                ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+                AdBiz = new AdminBiz();
+                Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
+
+                if (Result == "")
+                {
+                    BindData();
+                    MultiView1.ActiveViewIndex = 0;
+                    ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+                }
+                else ShowMessageBox(Server.HtmlEncode(Result), this.Page);                
             }
             else ShowMessageBox(Server.HtmlEncode(Result), this.Page);
 

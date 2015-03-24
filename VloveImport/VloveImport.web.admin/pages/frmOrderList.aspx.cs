@@ -22,7 +22,7 @@ namespace VloveImport.web.admin.pages
         {
             if (!IsPostBack)
             {
-                _VS_USER_LOGIN = "Administrator";
+                _VS_USER_LOGIN = "admin";
                 BindData_order_status(ddl_search_order_status, "S");
             }
         }

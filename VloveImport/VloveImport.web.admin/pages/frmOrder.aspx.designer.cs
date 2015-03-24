@@ -184,13 +184,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Telphone;
         
         /// <summary>
-        /// Label16 control.
+        /// lbl_ViewDetail_Total_Amount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label16;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Total_Amount;
         
         /// <summary>
         /// lbl_ViewDetail_Email control.
