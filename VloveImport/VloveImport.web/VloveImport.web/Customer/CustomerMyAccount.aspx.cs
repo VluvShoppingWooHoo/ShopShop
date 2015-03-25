@@ -75,6 +75,23 @@ namespace VloveImport.web.Customer
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
+            BasePage bp = new BasePage();
+            TransactionData EnTran = new TransactionData();
+            EnTran.Cus_ID = bp.GetCusID();
+
+            EnTran.TRAN_TYPE = 2;
+            EnTran.TRAN_TABLE_TYPE = 2;
+            EnTran.TRAN_DETAIL = "รายการถอนเงิน";
+
+            EnTran.TRAN_AMOUNT = Convert.ToDouble(amt);
+            EnTran.TRAN_REMARK = remark.Trim();
+            EnTran.Cus_Withdraw_Code = pwd.Trim();
+            EnTran.TRAN_STATUS = 1;
+            EnTran.CUS_ACC_NAME_ID = Convert.ToInt32(accname);
+            EnTran.Create_User = bp.GetCusCode();
+
+            CustomerBiz CusBiz = new CustomerBiz();
+            Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS");
             return js.Serialize(Result);
         }
 

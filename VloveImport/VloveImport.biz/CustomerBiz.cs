@@ -164,5 +164,17 @@ namespace VloveImport.biz
 
         #endregion
 
+        #region GET CUSTOMER BALANCE
+        public double GET_CUSTOMER_BALANCE(int CUS_ID)
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.GET_CUSTOMER_BALANCE(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+                return Convert.ToDouble(ds.Tables[0].Rows[0][0]);
+            else
+                return 0;
+        }
+        #endregion
     }
 }

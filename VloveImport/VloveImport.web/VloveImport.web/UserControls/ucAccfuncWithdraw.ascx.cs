@@ -38,12 +38,20 @@ namespace VloveImport.web.UserControls
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                CustomerData CusData = new CustomerData();
-                CusData = (CustomerData)Session["User"];
-                this._VS_CUS_ID = 1;//CusData.Cus_ID;
+            {                
+                BasePage bp = new BasePage();
+                this._VS_CUS_ID = bp.GetCusID();
                 BindData_BANK();
+                GetMymoney();
+                
             }
+        }
+
+        public void GetMymoney()
+        {
+            CustomerBiz biz = new CustomerBiz();
+            double Mymoney = biz.GET_CUSTOMER_BALANCE(this._VS_CUS_ID);
+            lbMymoney.Text = Mymoney.ToString();
         }
 
         public void BindData_BANK()

@@ -11,7 +11,7 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
         <br />
-        <b>ถอนเงิน</b> : <b>ยอดเงินคงเหลือ THB0.00</b>
+        <b>ถอนเงิน</b> : <b>ยอดเงินคงเหลือ THB <asp:Label ID="lbMymoney" runat="server"></asp:Label></b>
         <br /><br />
         <b>
             <span style ="color:red;">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
-            <div style ="margin-left:10px;">                
+            <div style ="margin-left:10px;">                                
                 <asp:DropDownList ID="ddl_account_name" runat="server" 
                 CssClass="dpBlock" Width="300px"></asp:DropDownList>
             </div>
@@ -45,7 +45,7 @@
         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
             <div style ="margin-left:10px;">
                 <asp:TextBox ID="txt_amount" runat="server" Width="300px" CssClass="txt_amount"></asp:TextBox>
-                <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_amount" ID="txt_amount_FilteredTextBoxExtender" ValidChars=".1234567890">
+                <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_amount" ID="txt_amount_FilteredTextBoxExtender" ValidChars="1234567890">
                 </asp:FilteredTextBoxExtender>
             </div>
         </div>
@@ -68,7 +68,7 @@
         </div>
         <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 32%; margin-top: -40px;">            
             <div style ="margin-left:10px;">
-                <asp:TextBox ID="txt_Withraw_Password" runat="server" Width="300px" CssClass="txt_Withraw_Password"></asp:TextBox>
+                <asp:TextBox ID="txt_Withraw_Password" runat="server" Width="300px" TextMode="Password" CssClass="txt_Withraw_Password"></asp:TextBox>
                  <br />&nbsp;&nbsp;<b>**รหัสผ่านเป็นอันเดียวกันกับ รหัสผ่านการชำระเงิน</b>
             </div>
         </div>
