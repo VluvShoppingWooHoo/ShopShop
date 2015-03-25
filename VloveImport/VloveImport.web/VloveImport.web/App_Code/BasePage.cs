@@ -61,6 +61,17 @@ namespace VloveImport.web.App_Code
             }
         }
 
+        #region Message Alert
+        public void ShowMessageBox(string message, Page currentPage)
+        {
+            string msgboxScript = "alert('" + message + "');";
+
+            if ((ScriptManager.GetCurrent(currentPage) != null))
+            {
+                ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+            }
+        }
+
         public void ShowMessageBox(string message, Page currentPage, string redirectNamePage = "")
         {
             string msgboxScript = "alert('" + message + "');";
@@ -91,6 +102,10 @@ namespace VloveImport.web.App_Code
                 }
             }
         }
+        #endregion
+
+
+        #region Convert
         /// <summary>
         /// 
         /// </summary>
@@ -136,5 +151,6 @@ namespace VloveImport.web.App_Code
             }
             return dateSave;
         }
+        #endregion
     }
 }
