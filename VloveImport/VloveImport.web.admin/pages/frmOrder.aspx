@@ -85,11 +85,7 @@
                     <tr>
                         <td width="15%">สถานะการสั่งซื้อ :</td>
                         <td width="85%">
-                            <asp:DropDownList ID="ddl_ViewDetail_ORDER_STATUS" runat="server">
-                                <%--                                                        <asp:ListItem Value="-1">กรุณาเลือก</asp:ListItem>
-                                                        <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
-                                                        <asp:ListItem Value="1">รอชำระเงิน</asp:ListItem>
-                                                        <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>--%>
+                            <asp:DropDownList ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged">
                             </asp:DropDownList>
                             <%-- 
                                                         <asp:ListItem Value="5">รอลูกค้ายืนยันการแก้ไขจำนวนสินค้า</asp:ListItem>

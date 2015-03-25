@@ -24,6 +24,18 @@ namespace VloveImport.web.admin.pages
             set { ViewState["__VS_ORDER_ID"] = value; }
         }
 
+        public string _VS_ORDER_STS
+        {
+            get { return ViewState["__VS_ORDER_STS"].ToString(); }
+            set { ViewState["__VS_ORDER_STS"] = value; }
+        }
+
+        public string _VS_ORDER_TRAN_STS
+        {
+            get { return ViewState["__VS_ORDER_TRAN_STS"].ToString(); }
+            set { ViewState["__VS_ORDER_TRAN_STS"] = value; }
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,10 +51,12 @@ namespace VloveImport.web.admin.pages
             }
         }
 
-        public void BindData_order_status(DropDownList ddl, string ddlType = "")
+        public void BindData_order_status(DropDownList ddl, string ddlType = "", string STS_NAME = "", string Act = "")
         {
+            if (Act == "") Act = "BIND_DDL";
+
             AdminBiz AddBiz = new AdminBiz();
-            DataSet ds = AddBiz.GET_MASTER_STATUS("ORDER_STS", "BIND_DDL");
+            DataSet ds = AddBiz.GET_MASTER_STATUS("ORDER_STS", Act, STS_NAME);
 
             ddl.DataValueField = "S_ID";
             ddl.DataTextField = "S_NAME";
@@ -52,10 +66,12 @@ namespace VloveImport.web.admin.pages
             else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", "-1"));
         }
 
-        public void BindData_transport_status(DropDownList ddl, string ddlType = "")
+        public void BindData_transport_status(DropDownList ddl, string ddlType = "", string STS_NAME = "", string Act = "")
         {
+            if (Act == "") Act = "BIND_DDL";
+
             AdminBiz AddBiz = new AdminBiz();
-            DataSet ds = AddBiz.GET_MASTER_STATUS("TRANSPORT", "BIND_DDL");
+            DataSet ds = AddBiz.GET_MASTER_STATUS("TRANSPORT", Act, STS_NAME);
 
             ddl.DataValueField = "S_ID";
             ddl.DataTextField = "S_NAME";
@@ -83,8 +99,43 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["UPDATE_USER"].ToString();
                 lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
 
-                ddl_ViewDetail_ORDER_STATUS.SelectedValue = ds.Tables[0].Rows[0]["ORDER_STATUS"].ToString();
-                ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = ds.Tables[0].Rows[0]["TRANSPORT_STATUS"].ToString();
+                //ค้างการคำนวนทิ้งไว้ ก่อนยังผิดอยู่
+                lbl_ViewDetail_Amount_Receive.Text = ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE"].ToString(); 
+                lbl_ViewDetail_Product_Price.Text = ds.Tables[0].Rows[0]["SUM_PROD_PRICE_ACTIVE"].ToString();
+                lbl_ViewDetail_Transport_Price.Text = ds.Tables[0].Rows[0]["TRANSPOT_TOTAL"].ToString(); 
+
+                _VS_ORDER_STS = ds.Tables[0].Rows[0]["ORDER_STATUS"].ToString();
+                _VS_ORDER_TRAN_STS = ds.Tables[0].Rows[0]["TRANSPORT_STATUS"].ToString();
+
+                BindData_order_status(ddl_ViewDetail_ORDER_STATUS, STS_NAME: _VS_ORDER_STS, Act: "BIND_DDL_STS_ID");
+                ddl_ViewDetail_ORDER_STATUS.SelectedValue = _VS_ORDER_STS;
+
+                BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS, STS_NAME: _VS_ORDER_TRAN_STS, Act: "BIND_DDL_STS_ID");
+                ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = _VS_ORDER_TRAN_STS;
+
+                if (_VS_ORDER_STS == "2")
+                {
+                    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
+                    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+
+                    btnEditProd_num.Visible = true;
+                    btn_detail_update.Visible = true;
+                }
+                else if (_VS_ORDER_STS == "3")
+                {
+                    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
+                    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
+
+                    btnEditProd_num.Visible = false;
+                    btn_detail_update.Visible = true;
+                }
+                else
+                {
+                    ddl_ViewDetail_ORDER_STATUS.Enabled = false;
+                    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+                    btnEditProd_num.Visible = false;
+                    btn_detail_update.Visible = false;
+                }
 
                 #endregion
 
@@ -93,7 +144,7 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_CusName.Text = ds.Tables[0].Rows[0]["CUS_FULLNAME"].ToString();
                 lbl_ViewDetail_Telphone.Text = ds.Tables[0].Rows[0]["CUS_MOBILE"].ToString();
                 lbl_ViewDetail_Email.Text = ds.Tables[0].Rows[0]["CUS_EMAIL"].ToString();
-                lbl_ViewDetail_Total_Amount.Text = ds.Tables[0].Rows[0]["CUS_TOTAL_AMOUNT"].ToString(); 
+                lbl_ViewDetail_Total_Amount.Text = ds.Tables[0].Rows[0]["CUS_TOTAL_AMOUNT"].ToString();
                 #endregion
 
                 gv_detail_prod_view.DataSource = ds.Tables[0];
@@ -131,19 +182,21 @@ namespace VloveImport.web.admin.pages
             En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue);
             string Result_transport = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_TRANSPORT");
 
-            if (Result_order == "" && Result_transport == "")
-            {
-                DataSet ds = AdBiz.GET_ADMIN_ORDER("BINDDATA_BYID", Convert.ToInt32(_VS_ORDER_ID));
-                gv_detail_prod_view.DataSource = ds.Tables[0];
-                gv_detail_prod_view.DataBind();
-                gv_detail_prod_Edit.DataSource = ds.Tables[0];
-                gv_detail_prod_Edit.DataBind();
+            string Result = "";
 
+            if (ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue == "3")
+            {
+                Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
+            }
+
+            if (Result_order == "" && Result_transport == "" && Result == "")
+            {
+                BindData();
                 ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
             }
             else
             {
-                ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result_order + "  ERROR TRANSPORT : " + Result_transport), this.Page);
+                ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result_order + "  ERROR TRANSPORT : " + Result_transport + "  ERROR TRANSACTION : " + Result), this.Page);
             }
         }
 
@@ -182,24 +235,30 @@ namespace VloveImport.web.admin.pages
 
             if (Result == "")
             {
-                AdBiz = new AdminBiz();
-                Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
-
-                if (Result == "")
-                {
-                    BindData();
-                    MultiView1.ActiveViewIndex = 0;
-                    ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
-                }
-                else ShowMessageBox(Server.HtmlEncode(Result), this.Page);                
+                BindData();
+                MultiView1.ActiveViewIndex = 0;
+                ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
             }
             else ShowMessageBox(Server.HtmlEncode(Result), this.Page);
-
         }
 
         protected void btnEditProd_num_cancel_Click(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 0;
+        }
+
+        protected void ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "4")
+            {
+                ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = "3";
+                ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+            }
+            else
+            {
+                ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = _VS_ORDER_TRAN_STS;
+                ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
+            }
         }
     }
 }

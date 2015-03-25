@@ -141,16 +141,17 @@ namespace VloveImport.web.admin.pages
                 OrderData En = new OrderData();
 
                 En = new OrderData();
-                //ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT
+                //ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT,SUM_PROD_PRICE_ACTIVE
                 En.ORDER_ID = Convert.ToInt32(gv_detail.DataKeys[rowIndex].Values[0].ToString());
                 En.ORDER_DATE_TEXT = gv_detail.DataKeys[rowIndex].Values[1].ToString();
                 En.CUS_FULLNAME = gv_detail.DataKeys[rowIndex].Values[2].ToString();
                 En.ORDER_STATUS_TEXT = gv_detail.DataKeys[rowIndex].Values[3].ToString();
                 En.EMP_NAME = gv_detail.DataKeys[rowIndex].Values[4].ToString();
-                En.SUM_PROD_PRICE = gv_detail.DataKeys[rowIndex].Values[5].ToString();
+                En.SUM_PROD_PRICE = Convert.ToDouble(gv_detail.DataKeys[rowIndex].Values[5].ToString());
                 En.CUS_CODE = gv_detail.DataKeys[rowIndex].Values[6].ToString();
                 En.ORDER_CODE = gv_detail.DataKeys[rowIndex].Values[7].ToString();
                 En.TRANSPORT_STATUS_TEXT = gv_detail.DataKeys[rowIndex].Values[8].ToString();
+                En.SUM_PROD_PRICE_ACTIVE = Convert.ToDouble(gv_detail.DataKeys[rowIndex].Values[9].ToString());
                 ListEn.Add(En);
 
                 gv_detail_view.DataSource = AddIndex(ListEn);
@@ -221,16 +222,17 @@ namespace VloveImport.web.admin.pages
                 for (int i = 0; i <= gv.Rows.Count - 1; i++)
                 {
                     En = new OrderData();
-                    //ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT
+                    //ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT,SUM_PROD_PRICE_ACTIVE
                     En.ORDER_ID = Convert.ToInt32(gv.DataKeys[i].Values[0].ToString());
                     En.ORDER_DATE_TEXT = gv.DataKeys[i].Values[1].ToString();
                     En.CUS_FULLNAME = gv.DataKeys[i].Values[2].ToString();
                     En.ORDER_STATUS_TEXT = gv.DataKeys[i].Values[3].ToString();
                     En.EMP_NAME = gv.DataKeys[i].Values[4].ToString();
-                    En.SUM_PROD_PRICE = gv.DataKeys[i].Values[5].ToString();
+                    En.SUM_PROD_PRICE = Convert.ToDouble(gv.DataKeys[i].Values[5].ToString());
                     En.CUS_CODE = gv.DataKeys[i].Values[6].ToString();
                     En.ORDER_CODE = gv.DataKeys[i].Values[7].ToString();
                     En.TRANSPORT_STATUS_TEXT = gv.DataKeys[i].Values[8].ToString();
+                    En.SUM_PROD_PRICE_ACTIVE = Convert.ToDouble(gv.DataKeys[i].Values[9].ToString());
                     List_En.Add(En);
                 }
             }
