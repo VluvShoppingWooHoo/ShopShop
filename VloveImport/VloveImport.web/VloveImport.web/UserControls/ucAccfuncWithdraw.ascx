@@ -95,15 +95,41 @@
         //var newOption1 = "<option value='" + "2" + "'>Some Text2</option>";
         //$(".ddl_account_name").append(newOption1);
         $('#btnSaveUcWithdraw').click(function () {
+       
+            var mymoney = $('#<%=lbMymoney.ClientID%>').text();
 
             var accname = $('.ddl_account_name').val();
             var amt = $('.txt_amount').val();
             var remark = $('.txt_remark').val();
-            var pwd = $('.txt_Withraw_Password').val();
+            var pwd = $('.txt_Withraw_Password').val();            
 
             var param = {
                 "accname": accname, "amt": amt, "remark": remark, "pwd": pwd
             };
+    
+            if ($('#<%= ddl_account_name.ClientID %>').val() == "-1") {
+                alert("กรุณาเลือกบัญชี");
+                return;
+            }
+
+            if (amt == "") {
+                alert("กรุณากรอก จำนวนเงิน");
+                return;
+            }
+
+            if (pwd == "") {
+                alert("กรุณากรอก Password");
+                return;
+            }
+
+            var mm = parseFloat(mymoney);
+            var am = parseFloat(amt);
+
+            if (mm < am) {
+                alert('เงินในบัญชีไม่พอ');
+                return;
+            }
+
             $.ajax({
                 type: 'POST',
                 url: "../Customer/CustomerMyAccount.aspx/btnWithdraw",
@@ -118,6 +144,8 @@
                     alert('gs');
                 }
             });
+            
+            
         });
     });
 </script>
