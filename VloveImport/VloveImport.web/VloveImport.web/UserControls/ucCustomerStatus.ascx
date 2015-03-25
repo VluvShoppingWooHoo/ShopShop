@@ -42,6 +42,10 @@
                 </asp:HyperLink>
             </li>
             <li>
+                <asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Customer/CustomerProfile.aspx">ข้อมูลของฉัน
+                </asp:HyperLink>
+            </li>
+            <li>
                 <asp:HyperLink ID="hlOrder" runat="server" NavigateUrl="~/Customer/CustomerOrderList.aspx">รายการสั่งซื้อ
                 </asp:HyperLink>
             </li>
