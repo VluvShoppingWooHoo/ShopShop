@@ -7,10 +7,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class CustomerBank : System.Web.UI.Page
+    public partial class CustomerBank : BasePage
     {
         public int _VS_ID
         {
@@ -34,9 +35,7 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                CustomerData CusData = new CustomerData();
-                CusData = (CustomerData)Session["User"];
-                this._VS_CUS_ID = 1;//CusData.Cus_ID;
+                this._VS_CUS_ID = GetCusID();
                 BindData();
                 BindData_MS_BANK();
             }

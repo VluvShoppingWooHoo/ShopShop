@@ -40,7 +40,15 @@ namespace VloveImport.web.UserControls
                 //lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 BindDataDropdown_time();
                 BindData();
+                GetMymoney();
             }
+        }
+
+        public void GetMymoney()
+        {
+            CustomerBiz biz = new CustomerBiz();
+            double Mymoney = biz.GET_CUSTOMER_BALANCE(this._VS_CUS_ID);
+            lbMymoney.Text = Mymoney.ToString("###,###.00");
         }
 
         public void BindDataDropdown_time()

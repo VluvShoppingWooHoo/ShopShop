@@ -46,9 +46,11 @@ namespace VloveImport.biz
                     Cust.Cus_Status = dt.Rows[0]["Cus_Status"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["Cus_Status"].ToString());
                     if (dt.Rows[0]["Activate_Date"].ToString() != "")
                         Cust.Activate_Date = Convert.ToDateTime(dt.Rows[0]["Activate_Date"].ToString());
+
+                    return Cust;
                 }
             }
-            return Cust;
+            return null;
         }
 
         public string InsertRegisCustomer(CustomerData Cust)
