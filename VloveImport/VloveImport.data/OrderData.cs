@@ -32,7 +32,8 @@ namespace VloveImport.data
         public string CUS_FULLNAME { get; set; }
         public string ORDER_STATUS_TEXT { get; set; }
         public string TRANSPORT_STATUS_TEXT { get; set; }
-        public string SUM_PROD_PRICE { get; set; }
+        public double SUM_PROD_PRICE { get; set; }
+        public double SUM_PROD_PRICE_ACTIVE { get; set; }
 
         #endregion
 

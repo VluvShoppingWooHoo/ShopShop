@@ -12,11 +12,11 @@ namespace VloveImport.biz
     public class AdminBiz
     {
 
-        public DataSet GET_MASTER_STATUS(string STATUS_TYPE, string Act)
+        public DataSet GET_MASTER_STATUS(string STATUS_TYPE, string Act, string STS_NAME = "")
         {
             DataSet ds = new DataSet();
             AdminDal dal = new AdminDal("LocalConnection");
-            ds = dal.GET_MASTER_STATUS(STATUS_TYPE, Act);
+            ds = dal.GET_MASTER_STATUS(STATUS_TYPE, Act, STS_NAME);
             return ds;
         }
 
@@ -51,11 +51,11 @@ namespace VloveImport.biz
             return Result;
         }
 
-        public DataSet GET_ADMIN_ORDER(string Act, int ORDER_ID = -1, Nullable<DateTime> START_DATE = null, Nullable<DateTime> END_DATE = null, string CUS_NAME = "",int ORDER_STATUS = -1)
+        public DataSet GET_ADMIN_ORDER(string Act, int ORDER_ID = -1, Nullable<DateTime> START_DATE = null, Nullable<DateTime> END_DATE = null, string CUS_NAME = "", int ORDER_STATUS = -1)
         {
             DataSet ds = new DataSet();
             AdminDal dal = new AdminDal("LocalConnection");
-            ds = dal.GET_ADMIN_ORDER(ORDER_ID, START_DATE, END_DATE, CUS_NAME,ORDER_STATUS, Act);
+            ds = dal.GET_ADMIN_ORDER(ORDER_ID, START_DATE, END_DATE, CUS_NAME, ORDER_STATUS, Act);
             return ds;
         }
 

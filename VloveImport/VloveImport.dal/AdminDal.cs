@@ -33,12 +33,13 @@ namespace VloveImport.dal
             }
         }
 
-        public DataSet GET_MASTER_STATUS(string STATUS_TYPE, string Act)
+        public DataSet GET_MASTER_STATUS(string STATUS_TYPE, string Act,string STS_NAME)
         {
             try
             {
                 SqlCommandData.SetStoreProcedure("ADMIN_GET_MASTER_STATUS");
 
+                SqlCommandData.SetParameter("STATUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, STS_NAME);
                 SqlCommandData.SetParameter("TYPE_NAME", SqlDbType.VarChar, ParameterDirection.Input, STATUS_TYPE);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
