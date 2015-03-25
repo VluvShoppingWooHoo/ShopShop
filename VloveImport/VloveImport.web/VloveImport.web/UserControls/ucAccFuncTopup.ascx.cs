@@ -38,6 +38,8 @@ namespace VloveImport.web.UserControls
             if (!IsPostBack)
             {
                 //lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                BasePage bp = new BasePage();
+                this._VS_CUS_ID = bp.GetCusID();
                 BindDataDropdown_time();
                 BindData();
                 GetMymoney();
@@ -48,7 +50,7 @@ namespace VloveImport.web.UserControls
         {
             CustomerBiz biz = new CustomerBiz();
             double Mymoney = biz.GET_CUSTOMER_BALANCE(this._VS_CUS_ID);
-            lbMymoney.Text = Mymoney.ToString("###,###.00");
+            lbMymoney.Text = Mymoney.ToString("###,##0.00");
         }
 
         public void BindDataDropdown_time()
