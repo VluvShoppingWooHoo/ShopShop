@@ -4,7 +4,7 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
         <br />
-        <b>เติมเงิน</b> : <b>ยอดเงินคงเหลือ THB0.00</b>
+        <b>เติมเงิน</b> : <b>ยอดเงินคงเหลือ THB <asp:Label ID="lbMymoney" runat="server"></asp:Label></b>
         <br /><br />
         <b>
             <span style ="color:red;">

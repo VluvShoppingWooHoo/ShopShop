@@ -51,7 +51,7 @@ namespace VloveImport.web.UserControls
         {
             CustomerBiz biz = new CustomerBiz();
             double Mymoney = biz.GET_CUSTOMER_BALANCE(this._VS_CUS_ID);
-            lbMymoney.Text = Mymoney.ToString();
+            lbMymoney.Text = Mymoney.ToString("###,###.00");
         }
 
         public void BindData_BANK()
