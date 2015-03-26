@@ -1,2 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucAccfuncTransLog.ascx.cs" Inherits="VloveImport.web.UserControls.ucAccfuncTransLog" %>
-Test Translog
+<br />
+<b>บันทึกการใช้จ่าย</b> : <b>ยอดเงินคงเหลือ THB <asp:Label ID="lbMymoney" runat="server"></asp:Label></b>
+<br /><br />
+<div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:95%; height:300px;">
+    <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false">
+        <Columns>
+            <asp:BoundField DataField="Test" HeaderText="Test" />
+            <asp:BoundField DataField="Test" HeaderText="Test" />
+            <asp:BoundField DataField="Test" HeaderText="Test" />
+        </Columns>
+    </asp:GridView>
+</div>

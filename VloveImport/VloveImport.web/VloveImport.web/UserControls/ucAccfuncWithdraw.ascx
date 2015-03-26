@@ -1,15 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucAccfuncWithdraw.ascx.cs" Inherits="VloveImport.web.UserControls.ucAccfuncWithdraw" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<script type="text/javascript">
 
-    function funsubmit(obj) {
-        document.getElementById('ContentPlaceHolder1_ucAccfuncWithdraw1_hd_submit').value = obj
-        document.getElementById('ContentPlaceHolder1_ucAccfuncWithdraw1_Button1').click();
-    }
-
-</script>
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-    <ContentTemplate>
         <br />
         <b>ถอนเงิน</b> : <b>ยอดเงินคงเหลือ THB <asp:Label ID="lbMymoney" runat="server"></asp:Label></b>
         <br /><br />
@@ -85,9 +76,7 @@
                     CLEAR                    
                 </button>
             </div>
-        </div>                    
-    </ContentTemplate>
-</asp:UpdatePanel>
+        </div>      
 <script type="text/javascript">
     $(function () {
         //var newOption = "<option value='" + "1" + "'>Some Text</option>";
