@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucMenuBar.ascx.cs" Inherits="VloveImport.web.UserControls.ucMenuBar" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucMenuBar.ascx.cs" Inherits="VloveImport.web.UserControls.ucMenuBar" %>
 <%@ Import namespace="VloveImport.data.Extension" %>
 <%--<%Constant.ScrapModel. %>--%>
 <div id="divSide" class="collection with-header">
@@ -25,17 +25,23 @@
     <a class="collection-item mOrder" data-id="mOR10">วิธีถอนเงินในระบบ</a>
     <a class="collection-item mOrder" data-id="mOR11">ตารางไซด์เครื่องแต่งกาย</a>
     <a class="collection-item mOrder" data-id="mOR12">วิธีการสมัครสมาชิก</a>
+        
 
-    <%--<a class="collection-item" href="/Customer/TourMarket.aspx">ทัวร์ตลาดจีน</a>
-    <a class="collection-item" href="/Customer/Order.aspx">สั่งสินค้า</a>
-    <a class="collection-item" href="/Customer/News.aspx">ข่าวสารและกิจกรรม</a>
-    <a class="collection-item" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a>
-    <a class="collection-item" href="/Customer/HowTo.aspx?type=other">อื่นๆ</a>
-    <a class="collection-item" href="/Customer/AboutUs.aspx">เกี่ยวกับเรา</a>
-    <a class="collection-item" href="/Customer/HowTo.aspx?type=order">วิธีการสั่งซื้อสินค้า</a>
-    <a class="collection-item" href="/Customer/HowTo.aspx?type=rateimport">ค่าขนส่ง</a>
-    <a class="collection-item" href="/Customer/Promotion.aspx">โปรโมชั่น</a>
-    <a class="collection-item" href="/Customer/ContactUs.aspx">ติดต่อเรา</a>--%>
+    <a class="collection-item mCus black" disabled>ข้อมูลทั่วไป</a>
+    <a class="collection-item mCus">ข้อมูลลูกค้า</a>
+    <a class="collection-item mCus">ที่อยู่ลูกค้า</a>
+    <a class="collection-item mCus">หน้าจัดการ บัญชีของลูกค้า</a>
+    <a class="collection-item mCus">เปลี่ยนรหัส</a>
+    
+    <a class="collection-item mCus black"disabled>รายการ</a>
+    <a class="collection-item mCus">สั่งซื้อสินค้า</a>
+    <a class="collection-item mCus">รายการสั่งซื้อ</a>
+    <a class="collection-item mCus">ตะกร้า</a>
+    
+    <a class="collection-item mCus black" disabled>บัญชี</a>
+    <a class="collection-item mCus">เติมเงิน</a>
+    <a class="collection-item mCus">ถอนเงิน</a>
+    <a class="collection-item mCus">ประวัติการชำระเงิน</a>
 </div>
 <script type="text/javascript">
     $(function () {
@@ -48,9 +54,10 @@
         else
             $('#divOrder').show();
 
+        //$('.mCus').show();
         var pageId = parseInt(getUrlParameter('pag'));
         var MenuTXT = '';
-        switch(pageId) {
+        switch (pageId) {
             case 1:
                 MenuTXT = 'ข่าวสาร';
                 break;
@@ -81,6 +88,8 @@
                 MenuTXT = 'สมัครงาน';
                 break;
             default:
+                MenuTXT = 'ลูกค้า';
+                $('.mCus').show();
                 return;
         }
         $('#spanMenu').html(MenuTXT);
