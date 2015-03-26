@@ -92,6 +92,7 @@
     <Content Include="pages\frmMasterBank.aspx" />
     <Content Include="pages\frmOrder.aspx" />
     <Content Include="pages\frmOrderList.aspx" />
+    <Content Include="pages\frmProductOrderList.aspx" />
     <Content Include="pages\frmUser.aspx" />
     <Content Include="pages\frmUserList.aspx" />
     <Content Include="UserControls\ucCalendar.ascx" />
@@ -175,6 +176,13 @@
     </Compile>
     <Compile Include="pages\frmOrderList.aspx.designer.cs">
       <DependentUpon>frmOrderList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmProductOrderList.aspx.cs">
+      <DependentUpon>frmProductOrderList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmProductOrderList.aspx.designer.cs">
+      <DependentUpon>frmProductOrderList.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\frmUser.aspx.cs">
       <DependentUpon>frmUser.aspx</DependentUpon>
