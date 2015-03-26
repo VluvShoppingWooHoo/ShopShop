@@ -311,7 +311,7 @@ namespace VloveImport.dal
         }
         #endregion
 
-        #region GET CUSTOMER BALANCE
+        #region GET CUSTOMER ...
         public DataSet GET_CUSTOMER_BALANCE(int CUS_ID)
         {
             try
@@ -324,6 +324,21 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 throw new Exception("GET_CUSTOMER_BALANCE -> msg : " + ex.Message);
+            }
+        }
+
+        public DataSet GET_CUSTOMER_TRANS_HIS(int CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_TRANS_HIS");
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_CUSTOMER_TRANS_HIS -> msg : " + ex.Message);
             }
         }
         #endregion

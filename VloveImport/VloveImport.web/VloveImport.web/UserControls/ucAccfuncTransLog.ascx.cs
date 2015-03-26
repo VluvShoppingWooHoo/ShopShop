@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -37,7 +38,10 @@ namespace VloveImport.web.UserControls
 
         protected void BindData()
         {
-
+            CustomerBiz biz = new CustomerBiz();
+            DataTable dt = biz.GET_CUSTOMER_TRANS_HIS(this._VS_CUS_ID);
+            gvTrans.DataSource = dt;
+            gvTrans.DataBind();
         }
     }
 }
