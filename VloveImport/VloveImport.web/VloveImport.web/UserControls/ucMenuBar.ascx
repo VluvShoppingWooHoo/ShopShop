@@ -3,7 +3,7 @@
 <%--<%Constant.ScrapModel. %>--%>
 <div id="divSide" class="collection with-header">
     <div class="collection-header">
-        <span id="spanMenu"></span>
+        <span id="spanMenu" style="font-size:20px !important"></span>
     </div>
     
     <a class="collection-item mShipping_Price" data-id="mSH1">การขนส่งทางเครื่องบิน</a>
