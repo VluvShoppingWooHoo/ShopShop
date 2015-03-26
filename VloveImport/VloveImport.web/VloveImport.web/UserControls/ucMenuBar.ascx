@@ -1,18 +1,18 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucMenuBar.ascx.cs" Inherits="VloveImport.web.UserControls.ucMenuBar" %>
-<%@ Import namespace="VloveImport.data.Extension" %>
+<%@ Import Namespace="VloveImport.data.Extension" %>
 <%--<%Constant.ScrapModel. %>--%>
 <div id="divSide" class="collection with-header">
     <div class="collection-header">
-        <span id="spanMenu" style="font-size:20px !important"></span>
+        <span id="spanMenu" style="font-size: 20px !important"></span>
     </div>
-    
+
     <a class="collection-item mShipping_Price" data-id="mSH1">การขนส่งทางเครื่องบิน</a>
     <a class="collection-item mShipping_Price" data-id="mSH2">การขนส่งทางรถ</a>
     <a class="collection-item mShipping_Price" data-id="mSH3">การขนส่งทางเรือ</a>
     <a class="collection-item mShipping_Price" data-id="mSH4">ค่าส่งในไทย</a>
     <a class="collection-item mShipping_Price" data-id="mSH5">การรับสินค้า</a>
     <a class="collection-item mShipping_Price" data-id="mSH6">การคิดราคาค่านำเข้าแบ่งตามประเภท</a>
-    
+
     <a class="collection-item mOrder" data-id="mOR1">กฏกติกาในการสั่งซื้อ</a>
     <a class="collection-item mOrder" data-id="mOR2">ตัวอย่างศัพท์ภาษาจีนและวิธีหาสินค้าในเว็บจีน</a>
     <a class="collection-item mOrder" data-id="mOR3">การ Search หาสินค้า</a>
@@ -25,19 +25,19 @@
     <a class="collection-item mOrder" data-id="mOR10">วิธีถอนเงินในระบบ</a>
     <a class="collection-item mOrder" data-id="mOR11">ตารางไซด์เครื่องแต่งกาย</a>
     <a class="collection-item mOrder" data-id="mOR12">วิธีการสมัครสมาชิก</a>
-        
+
 
     <a class="collection-item mCus black" disabled>ข้อมูลทั่วไป</a>
     <a class="collection-item mCus">ข้อมูลลูกค้า</a>
     <a class="collection-item mCus">ที่อยู่ลูกค้า</a>
     <a class="collection-item mCus">หน้าจัดการ บัญชีของลูกค้า</a>
     <a class="collection-item mCus">เปลี่ยนรหัส</a>
-    
-    <a class="collection-item mCus black"disabled>รายการ</a>
+
+    <a class="collection-item mCus black" disabled>รายการ</a>
     <a class="collection-item mCus">สั่งซื้อสินค้า</a>
     <a class="collection-item mCus">รายการสั่งซื้อ</a>
     <a class="collection-item mCus">ตะกร้า</a>
-    
+
     <a class="collection-item mCus black" disabled>บัญชี</a>
     <a class="collection-item mCus">เติมเงิน</a>
     <a class="collection-item mCus">ถอนเงิน</a>
@@ -88,10 +88,14 @@
                 MenuTXT = 'สมัครงาน';
                 break;
             default:
-                MenuTXT = 'ลูกค้า';
-                $('.mCus').show();
+                var User = '<%= Session["User"]%>';
+                if (User != '') {
+                    MenuTXT = 'ลูกค้า';
+                    $('.mCus').show();
+                }
                 return;
         }
+
         $('#spanMenu').html(MenuTXT);
 
         $('.mContent').hide();

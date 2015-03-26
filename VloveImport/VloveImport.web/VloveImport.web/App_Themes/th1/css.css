@@ -375,13 +375,13 @@ li[class~="section"]:hover
 
 #divMenubar
 {
-    /*background-color: #9e9e9e;*/
+    /*background-color: #0288d1;*/
     background-color: black;
 }
 
 #divSide
 {
-    /*background-color: #9e9e9e;*/
+    /*background-color: #0288d1;*/
     background-color: black;
     border: none;
 }
@@ -389,27 +389,27 @@ li[class~="section"]:hover
     #divSide .collection-header
     {
         font-size: 50px !important;
-        /*background-color: #9e9e9e;*/
+        /*background-color: #0288d1;*/
         background-color: black;
         color: white;
     }
 
     #divSide .collection-item
     {
-        /*background-color: #bdbdbd;*/
+        /*background-color: #00D9FF;*/
         background-color: #424242;
         color: white;
     }
 
         #divSide .collection-item:hover
         {
-            /*background-color: #9e9e9e;*/
+            /*background-color: #0288d1;*/
             background-color: #212121;
         }
 
         #divSide .collection-item.active
         {
-            /*background-color: #9e9e9e;*/
+            /*background-color: #0288d1;*/
             background-color: black;
         }
 
@@ -438,7 +438,8 @@ div[id="hotlink"]
 
 #navMenuHori
 {
-    background-color: #bdbdbd;
+    background-color: #00D9FF;
+    /*background-color: #4fc3f7;*/    
     height: 64px;
 }
 
@@ -457,28 +458,29 @@ div[id="hotlink"]
 
         #navMenuHori ul li:hover
         {
-            background-color: #9e9e9e;
+            background-color: #0288d1;
         }
 
         #navMenuHori ul li.active
         {
-            background-color: #9e9e9e;
+            background-color: #0288d1;
         }
 
 #hotlink .collection-item
 {
-    background-color: #bdbdbd;
+    background-color: #00D9FF;
+    /*background-color: #4fc3f7;*/    
     color: white;
 }
 
     #hotlink .collection-item:hover
     {
-        background-color: #9e9e9e;
+        background-color: #0288d1;
     }
 
     #hotlink .collection-item.active
     {
-        background-color: #9e9e9e;
+        background-color: #0288d1;
     }
 
 nav[class="ucCustomerStatus"]
