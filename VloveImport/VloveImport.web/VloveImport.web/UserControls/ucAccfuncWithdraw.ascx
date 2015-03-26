@@ -94,11 +94,12 @@
         //$(".ddl_account_name").append(newOption);
         //var newOption1 = "<option value='" + "2" + "'>Some Text2</option>";
         //$(".ddl_account_name").append(newOption1);
-        $('#btnSaveUcWithdraw').click(function () {
-       
-            var mymoney = $('#<%=lbMymoney.ClientID%>').text();
+        $('#btnSaveUcWithdraw').click(function () {                  
 
-            var accname = $('.ddl_account_name').val();
+            alert($('.txt_amount').val());
+            alert($(this).find('textarea[id*=txt_remark]').val());
+
+            var accname = $('#<%= ddl_account_name.ClientID %>').val();
             var amt = $('.txt_amount').val();
             var remark = $('.txt_remark').val();
             var pwd = $('.txt_Withraw_Password').val();            
@@ -107,6 +108,7 @@
                 "accname": accname, "amt": amt, "remark": remark, "pwd": pwd
             };
     
+            var mymoney = $('#<%=lbMymoney.ClientID%>').text();
             if ($('#<%= ddl_account_name.ClientID %>').val() == "-1") {
                 alert("กรุณาเลือกบัญชี");
                 return;
