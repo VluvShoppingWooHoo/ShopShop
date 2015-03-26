@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -100,9 +101,11 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
 
                 //ค้างการคำนวนทิ้งไว้ ก่อนยังผิดอยู่
-                lbl_ViewDetail_Amount_Receive.Text = ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE"].ToString(); 
-                lbl_ViewDetail_Product_Price.Text = ds.Tables[0].Rows[0]["SUM_PROD_PRICE_ACTIVE"].ToString();
-                lbl_ViewDetail_Transport_Price.Text = ds.Tables[0].Rows[0]["TRANSPOT_TOTAL"].ToString(); 
+                lbl_ViewDetail_Amount_Receive.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_ViewDetail_Product_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_PROD_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));                
+                lbl_ViewDetail_Amount_Actually_Pay.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_ViewDetail_Amount_Recall_Pay.Text = (Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE"].ToString()) - Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE_ACTIVE"].ToString())).ToString("N", new CultureInfo("en-US"));
+                lbl_ViewDetail_Transport_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TRANSPOT_TOTAL"].ToString()).ToString("N", new CultureInfo("en-US"));
 
                 _VS_ORDER_STS = ds.Tables[0].Rows[0]["ORDER_STATUS"].ToString();
                 _VS_ORDER_TRAN_STS = ds.Tables[0].Rows[0]["TRANSPORT_STATUS"].ToString();
@@ -113,7 +116,15 @@ namespace VloveImport.web.admin.pages
                 BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS, STS_NAME: _VS_ORDER_TRAN_STS, Act: "BIND_DDL_STS_ID");
                 ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = _VS_ORDER_TRAN_STS;
 
-                if (_VS_ORDER_STS == "2")
+                if (_VS_ORDER_STS == "0")
+                {
+                    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
+                    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+
+                    btnEditProd_num.Visible = false;
+                    btn_detail_update.Visible = true;
+                }
+                else if (_VS_ORDER_STS == "2")
                 {
                     ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                     ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
@@ -184,7 +195,7 @@ namespace VloveImport.web.admin.pages
 
             string Result = "";
 
-            if (ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue == "3")
+            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3")
             {
                 Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
             }

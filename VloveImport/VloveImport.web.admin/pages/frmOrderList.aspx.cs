@@ -152,6 +152,7 @@ namespace VloveImport.web.admin.pages
                 En.ORDER_CODE = gv_detail.DataKeys[rowIndex].Values[7].ToString();
                 En.TRANSPORT_STATUS_TEXT = gv_detail.DataKeys[rowIndex].Values[8].ToString();
                 En.SUM_PROD_PRICE_ACTIVE = Convert.ToDouble(gv_detail.DataKeys[rowIndex].Values[9].ToString());
+                En.ORDER_STATUS = Convert.ToInt32(gv_detail.DataKeys[rowIndex].Values[10].ToString());
                 ListEn.Add(En);
 
                 gv_detail_view.DataSource = AddIndex(ListEn);
@@ -233,6 +234,7 @@ namespace VloveImport.web.admin.pages
                     En.ORDER_CODE = gv.DataKeys[i].Values[7].ToString();
                     En.TRANSPORT_STATUS_TEXT = gv.DataKeys[i].Values[8].ToString();
                     En.SUM_PROD_PRICE_ACTIVE = Convert.ToDouble(gv.DataKeys[i].Values[9].ToString());
+                    En.ORDER_STATUS = Convert.ToInt32(gv.DataKeys[i].Values[10].ToString());
                     List_En.Add(En);
                 }
             }
@@ -277,6 +279,13 @@ namespace VloveImport.web.admin.pages
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 string ORDER_ID = DataBinder.Eval(e.Row.DataItem, "ORDER_ID").ToString();
+                int ORDER_STATUS = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "ORDER_STATUS").ToString());
+
+                if (ORDER_STATUS >= 2 || ORDER_STATUS == 0)
+                {
+                    ((ImageButton)e.Row.FindControl("imgBtn_delete")).Visible = false;
+                }
+
                 if (ListEn.Count > 0)
                 {
                     for (int i = 0; i <= ListEn.Count - 1; i++)

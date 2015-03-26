@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <asp:DropDownList ID="ddl_search_order_status" runat="server" Width="300px">
-<%--                                <asp:ListItem Value="-1">แสดงทั้งหมด</asp:ListItem>
+                                <%--                                <asp:ListItem Value="-1">แสดงทั้งหมด</asp:ListItem>
                                 <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
                                 <asp:ListItem Value="1">ยังไม่ได้ชำระเงิน</asp:ListItem>
                                 <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>--%>
@@ -73,7 +73,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align: center;">                        
+                        <td colspan="4" style="text-align: center;">
                             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click" />&nbsp;&nbsp;
                     <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" OnClick="btnReset_Click" />
                         </td>
@@ -92,41 +92,41 @@
                         <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
                     </td>
                     <td style="text-align: right;">
-                        <asp:Button ID="btnSelectOrder" runat="server" Text="ดูรายการที่เลือก" CssClass="btnCancel" OnClick="btnSelectOrder_Click" />
+                        <asp:Button ID="btnSelectOrder" runat="server" Text="ดูรายการที่เลือก" CssClass="btnCancel" Visible ="false" OnClick="btnSelectOrder_Click" />
                     </td>
                 </tr>
             </table>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="15" Width="100%"
-                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT,SUM_PROD_PRICE_ACTIVE" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
+                DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT,SUM_PROD_PRICE_ACTIVE,ORDER_STATUS" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
                 <Columns>
-                    <asp:TemplateField>
+                    <asp:TemplateField Visible="False">
                         <ItemTemplate>
                             <asp:ImageButton ID="imgBtn_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-ok-md.png" Width="20px" OnClick="imgBtn_choose_Click" />
-                            <asp:ImageButton ID="imgBtn_cancel_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-not-ok-md.png" Width="20px" Visible = "false" OnClick="imgBtn_cancel_choose_Click"/>
+                            <asp:ImageButton ID="imgBtn_cancel_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-not-ok-md.png" Width="20px" Visible="false" OnClick="imgBtn_cancel_choose_Click" />
                         </ItemTemplate>
                         <HeaderStyle CssClass="width5" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
-                    <asp:BoundField DataField="ROW_INDEX" HeaderText="No." >
-                    <HeaderStyle CssClass="width5" />
+                    <asp:BoundField DataField="ROW_INDEX" HeaderText="No.">
+                        <HeaderStyle CssClass="width5" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="ORDER_CODE" HeaderText="OrderCode" >
-                    <HeaderStyle CssClass="width10" />
+                    <asp:BoundField DataField="ORDER_CODE" HeaderText="OrderCode">
+                        <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="ORDER_DATE_TEXT" HeaderText="Order Date" >
-                    <HeaderStyle CssClass="width15" />
+                    <asp:BoundField DataField="ORDER_DATE_TEXT" HeaderText="Order Date">
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="CUS_CODE" HeaderText="CustomerCode" >
-                    <HeaderStyle CssClass="width10" />
+                    <asp:BoundField DataField="CUS_CODE" HeaderText="CustomerCode">
+                        <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="ORDER_STATUS_TEXT" HeaderText="Order Status" >
-                    <HeaderStyle CssClass="width15" />
+                    <asp:BoundField DataField="ORDER_STATUS_TEXT" HeaderText="Order Status">
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="TRANSPORT_STATUS_TEXT" HeaderText="Transport Status" >
-                    <HeaderStyle CssClass="width15" />
+                    <asp:BoundField DataField="TRANSPORT_STATUS_TEXT" HeaderText="Transport Status">
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name" >
-                    <HeaderStyle CssClass="width15" />
+                    <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name">
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
                     <asp:BoundField DataField="SUM_PROD_PRICE_ACTIVE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount">
                         <HeaderStyle CssClass="width10" />
@@ -134,8 +134,8 @@
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
-                            <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />&nbsp;&nbsp;
-                    <asp:ImageButton ID="imgBtn_delete" runat="server" Height="15px" ImageUrl="~/img/icon/Close-2-icon.png" Width="15px" OnClick="imgBtn_delete_Click" />
+                            <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />
+                            <asp:ImageButton ID="imgBtn_delete" runat="server" Height="15px" ImageUrl="~/img/icon/Close-2-icon.png" Width="15px" OnClick="imgBtn_delete_Click" />
                         </ItemTemplate>
                         <HeaderStyle CssClass="width5" />
                         <ItemStyle CssClass="ItemStyle-center" />
@@ -148,7 +148,7 @@
                 PopupControlID="Panel1" TargetControlID="lblheader">
             </asp:ModalPopupExtender>
 
-            <asp:Panel ID="Panel1" Height="700px" Width="1200px" runat="server" >
+            <asp:Panel ID="Panel1" Height="700px" Width="1200px" runat="server">
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -208,7 +208,7 @@
                                         </table>
                                     </fieldset>
                                     <asp:GridView ID="gv_detail_view" runat="server" AutoGenerateColumns="False" Width="95%"
-                                        DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT,SUM_PROD_PRICE_ACTIVE">
+                                        DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,CUS_CODE,ORDER_CODE,TRANSPORT_STATUS_TEXT,SUM_PROD_PRICE_ACTIVE,ORDER_STATUS">
                                         <Columns>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
@@ -254,7 +254,7 @@
                 </table>
             </asp:Panel>
 
-<%--            <asp:ModalPopupExtender ID="Modal_Detail" runat="server" BackgroundCssClass="modalBackground"
+            <%--            <asp:ModalPopupExtender ID="Modal_Detail" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel3" TargetControlID="lbl_modal_detail">
             </asp:ModalPopupExtender>
 
@@ -476,7 +476,6 @@
                     </tr>
                 </table>
             </asp:Panel>--%>
-
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
