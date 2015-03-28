@@ -128,6 +128,7 @@
     <Content Include="Script\20150313.sql" />
     <Content Include="Script\20150315 V2.sql" />
     <Content Include="Script\20150315.sql" />
+    <Content Include="Script\20150329.sql" />
     <Content Include="Script\Script Init.sql" />
     <Content Include="TestPage.aspx" />
     <Content Include="UserControls\ucAccfuncMypoint.ascx" />
