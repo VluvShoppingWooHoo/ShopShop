@@ -28,6 +28,12 @@ namespace VloveImport.data.Extension
             public const int W1688 = 3;
         }
 
+        public static class Fact
+        {
+            public const int F = 0;
+            public const int T = 1;
+        }
+
         public static class ScrapModel
         {
             public const string ItemID = "ItemID";

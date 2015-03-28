@@ -97,6 +97,12 @@
             }
             location.reload();
         });
+        
+        var User = '<%= Session["User"]%>';
+        if (User == '') 
+            $('#fbLoginbtn').show();
+        else
+            $('#fbLoginbtn').hide();
     });
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1);

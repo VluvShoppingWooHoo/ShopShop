@@ -55,10 +55,30 @@ namespace VloveImport.biz
 
         public string InsertRegisCustomer(CustomerData Cust)
         {
-            string Result = "";            
+            string Result = "";
             LogonDal dal = new LogonDal("LocalConnection");
             Result = dal.InsertRegisCustomer(Cust);
             return Result;
+        }
+
+        public string InsertRegisCustomerFB(CustomerData Cust)
+        {
+            string Result = "";
+            LogonDal dal = new LogonDal("LocalConnection");
+            Result = dal.InsertRegisCustomerFB(Cust);
+            return Result;
+        }
+
+        public CustomerData RegisValidEmail(string User)
+        {
+            CustomerData Cust = new CustomerData();
+            Cust.Cus_Password = string.Empty;
+            LogonDal dal = new LogonDal("LocalConnection");
+            DataTable dt = new DataTable();
+            dt = dal.LogonUser(User);
+            if (dt != null && dt.Rows.Count > 0)
+                Cust.Cus_Password = dt.Rows[0]["Cus_Password"].ToString();
+            return Cust;
         }
 
         public string UpdateActivateCustomer(string Email, string Pass)

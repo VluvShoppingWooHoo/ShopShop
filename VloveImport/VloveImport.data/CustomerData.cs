@@ -9,6 +9,7 @@ namespace VloveImport.data
     public class CustomerData : CommonData
     {
         public int Cus_ID { get; set; }
+        public string Cus_FB_ID { get; set; }
         public string Cus_Code { get; set; }
         public string Cus_Name { get; set; }        
         public string Cus_LName { get; set; }
@@ -21,8 +22,8 @@ namespace VloveImport.data
         public string Cus_Password { get; set; }
         public string Cus_Withdraw_Code { get; set; }
         public string Cus_Link_Shop { get; set; }
-        public int Cus_Point { get; set; }
         public int Cus_Ref_ID { get; set; }
+        public int Cus_Point { get; set; }
         public int Cus_Active { get; set; }
         public int Cus_Status { get; set; }
         public DateTime Activate_Date { get; set; }

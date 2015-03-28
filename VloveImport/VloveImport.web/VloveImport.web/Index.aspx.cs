@@ -10,6 +10,7 @@ using VloveImport.data;
 using VloveImport.util;
 using VloveImport.biz;
 using VloveImport.data.Extension;
+using Facebook;
 
 namespace VloveImport.web
 {

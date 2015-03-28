@@ -8,9 +8,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <div>
+        </div>
     </form>
 </body>
 </html>
+
+<script type="text/javascript">
+    $(function () {
+        FB.logout(function (response) { });
+    });
+</script>

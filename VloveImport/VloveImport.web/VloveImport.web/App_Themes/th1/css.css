@@ -555,3 +555,8 @@ nav[class="ucCustomerStatus"]
 {
     display: none!important;
 }
+
+#fbLoginbtn span
+{
+    vertical-align:middle;
+}
