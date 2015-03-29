@@ -148,7 +148,7 @@
                 PopupControlID="Panel1" TargetControlID="lblheader">
             </asp:ModalPopupExtender>
 
-            <asp:Panel ID="Panel1" Height="700px" Width="1200px" runat="server">
+            <asp:Panel ID="Panel1" Height="700px" Width="1200px" runat="server" Style="display: none;">
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
