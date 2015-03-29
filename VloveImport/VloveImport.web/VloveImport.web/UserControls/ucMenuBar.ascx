@@ -28,20 +28,20 @@
 
 
     <a class="collection-item mCus black" disabled>ข้อมูลทั่วไป</a>
-    <a class="collection-item mCus">ข้อมูลลูกค้า</a>
-    <a class="collection-item mCus">ที่อยู่ลูกค้า</a>
-    <a class="collection-item mCus">หน้าจัดการ บัญชีของลูกค้า</a>
-    <a class="collection-item mCus">เปลี่ยนรหัส</a>
+    <a class="collection-item mCus" href="../Customer/CustomerProfile.aspx">ข้อมูลของฉัน</a>
+    <a class="collection-item mCus" href="../Customer/CustomerAddress.aspx">ที่อยู่ลูกค้า</a>
+    <a class="collection-item mCus" href="../Customer/CustomerBank.aspx">หน้าจัดการ บัญชีของลูกค้า</a>
+    <a class="collection-item mCus" href="../Customer/CustomerProfile.aspx">เปลี่ยนรหัส</a>
 
     <a class="collection-item mCus black" disabled>รายการ</a>
-    <a class="collection-item mCus">สั่งซื้อสินค้า</a>
-    <a class="collection-item mCus">รายการสั่งซื้อ</a>
-    <a class="collection-item mCus">ตะกร้า</a>
+    <a class="collection-item mCus" href="../Customer/CustomerProfile.aspx">สั่งซื้อสินค้า</a>
+    <a class="collection-item mCus" href="../Customer/CustomerOrderList.aspx">รายการสั่งซื้อ</a>
+    <a class="collection-item mCus" href="../Customer/CustomerBasket.aspx">ตะกร้า</a>
 
     <a class="collection-item mCus black" disabled>บัญชี</a>
-    <a class="collection-item mCus">เติมเงิน</a>
-    <a class="collection-item mCus">ถอนเงิน</a>
-    <a class="collection-item mCus">ประวัติการชำระเงิน</a>
+    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx#topup">เติมเงิน</a>
+    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx#withdraw">ถอนเงิน</a>
+    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx#translog">ประวัติการชำระเงิน</a>
 </div>
 <script type="text/javascript">
     $(function () {
