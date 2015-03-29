@@ -34,6 +34,7 @@ namespace VloveImport.data
         public string TRAN_TYPE_TEXT { get; set; }
         public string TRAN_TABLE_TYPE_TEXT { get; set; }
         public string EMP_NAME { get; set; }
+        public string TRAN_ID_LIST { get; set; }
 
         #endregion
 
