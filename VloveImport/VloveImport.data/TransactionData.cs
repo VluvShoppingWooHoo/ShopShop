@@ -27,5 +27,15 @@ namespace VloveImport.data
         public string PAYMENT_TIME { get; set; }
         public string TRAN_EMAIL { get; set; }
 
+        #region Optional Transaction
+
+        public string TRAN_DATE_TEXT { get; set; }
+        public string TRAN_STATUS_TEXT { get; set; }
+        public string TRAN_TYPE_TEXT { get; set; }
+        public string TRAN_TABLE_TYPE_TEXT { get; set; }
+        public string EMP_NAME { get; set; }
+
+        #endregion
+
     }
 }

@@ -75,5 +75,32 @@ namespace VloveImport.biz
         }
 
         #endregion
+
+        #region Transaction
+
+        public DataSet GET_ADMIN_TRANSACTION(int TRAN_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE, int TRAN_STATUS, int TRAN_TYPE, int TRAN_TABLE_TYPE, string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.GET_ADMIN_TRANSACTION(TRAN_ID, START_DATE, END_DATE, CUS_CODE, TRAN_STATUS, TRAN_TYPE, TRAN_TABLE_TYPE, Act);
+            return ds;
+        }
+
+        public string INS_UPD_TRANSACTION(TransactionData EnTran, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.INS_UPD_TRANSACTION(EnTran, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
+        #endregion
     }
 }
