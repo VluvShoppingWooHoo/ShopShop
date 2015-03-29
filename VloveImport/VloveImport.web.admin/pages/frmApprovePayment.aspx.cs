@@ -45,16 +45,22 @@ namespace VloveImport.web.admin.pages
                 _VS_USER_EMP_ID = 1;
                 BindData_Transaction_status(ddlTranSactionStatus, "S");
                 BindData_Transaction_TYPE(ddlTranSactionType, "S");
+                BindData_Transaction_status(ddlview_Tran_Status, "A", "BIND_DDL_STS_IN");
             }
 
             btnUpdateRemark.Attributes.Add("onClick", "javascript:return confirm('คุณต้องการบันทึกรายการนี้หรือไม่ ?')");
 
         }
 
-        public void BindData_Transaction_status(DropDownList ddl, string ddlType = "")
+        public void BindData_Transaction_status(DropDownList ddl, string ddlType = "",string Act = "")
         {
+            string STS_NAME = "";
+
+            if (Act == "") Act = "BIND_DDL";
+            else if (Act == "BIND_DDL_STS_IN") STS_NAME = "2,3";
+
             AdminBiz AddBiz = new AdminBiz();
-            DataSet ds = AddBiz.GET_MASTER_STATUS("TRANS_STS", "BIND_DDL");
+            DataSet ds = AddBiz.GET_MASTER_STATUS("TRANS_STS", Act, STS_NAME);
 
             ddl.DataValueField = "S_ID";
             ddl.DataTextField = "S_NAME";
@@ -246,7 +252,7 @@ namespace VloveImport.web.admin.pages
             En.TRAN_ID = TRAN_ID;
             En.EMP_ID_APPROVE = Convert.ToInt32(_VS_USER_EMP_ID);
             En.TRAN_STATUS = TRAN_STATUS;
-            En.TRAN_REMARK = TRAN_EMP_REMARK;
+            En.EMP_REMARK = TRAN_EMP_REMARK;
 
             Result = AdBiz.INS_UPD_TRANSACTION(En, Act);
             if (Result == "")
@@ -366,7 +372,45 @@ namespace VloveImport.web.admin.pages
 
         protected void btnView_Update_Click(object sender, EventArgs e)
         {
+            string Result = "";
 
+            if (ddlview_Tran_Status.SelectedValue == "-1")
+            {
+                ModalPopupExtender1.Show();
+                ShowMessageBox("กรุณาเลือก Transaction Status", this.Page);
+                
+                return;
+            }
+
+            if (gv_detail_view.Rows.Count > 0)
+            {
+                TransactionData En = new TransactionData();
+                for (int i = 0; i <= gv_detail_view.Rows.Count - 1; i++)
+                {
+                    En.TRAN_ID_LIST += gv_detail_view.DataKeys[i].Values[0].ToString() + ",";
+                }
+
+                En.TRAN_ID_LIST = En.TRAN_ID_LIST.Remove(En.TRAN_ID_LIST.Length - 1);
+                En.EMP_ID_APPROVE = Convert.ToInt32(_VS_USER_EMP_ID);
+                En.TRAN_STATUS = Convert.ToInt32(ddlview_Tran_Status.SelectedValue);
+                En.EMP_REMARK = txtview_EMP_Remark.Text.Trim();
+
+                AdminBiz AdBiz = new AdminBiz();
+                Result = AdBiz.INS_UPD_TRANSACTION(En, "UPD_EMP_APPROVE_LIST");
+                if (Result == "")
+                {
+                    gv_detail_view.DataSource = null;
+                    gv_detail_view.DataBind();
+                    BindData();
+
+                    ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+                }
+                else
+                {
+                    ModalPopupExtender1.Show();
+                    ShowMessageBox(Server.HtmlEncode(Result), this.Page);
+                }
+            }
         }
 
     }

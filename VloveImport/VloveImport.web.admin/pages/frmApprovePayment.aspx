@@ -14,7 +14,7 @@
 
             <fieldset style="width: 98.5%;">
                 <legend>Search Criteria</legend>
-                <table style="border: 1 solid;">
+                <table>
                     <tr>
                         <td class="width15">
                             <asp:Label ID="Label2" runat="server" Text="Transaction Status"></asp:Label>
@@ -97,7 +97,10 @@
                         <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
                     <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name">
-                        <HeaderStyle CssClass="width15" />
+                        <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="EMP_REMARK" HeaderText="Employee Remark">
+                        <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Approve Status">
                         <ItemTemplate>
@@ -148,17 +151,25 @@
                                 <fieldset style ="width:95%;">
                                     <table>
                                     <tr>
-                                        <td>
+                                        <td class ="width15">
+                                            <asp:Label ID="Label7" runat="server" Text="Approve Status"></asp:Label>
+                                        </td>
+                                        <td class ="width85">
+                                            <asp:DropDownList ID="ddlview_Tran_Status" runat="server"></asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan ="2">
                                             <asp:Label ID="Label6" runat="server" Text="ระบุหมายเหตุในการทำรายการ"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td colspan ="2">
                                             <asp:TextBox ID="txtview_EMP_Remark" runat="server" Width ="95%" Height ="100px" TextMode ="MultiLine"></asp:TextBox>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td colspan ="2">
                                             <asp:Button ID="btnView_Update" runat="server" Text="บันทึก" CssClass ="btnSave" OnClick="btnView_Update_Click"></asp:Button>
                                         </td>
                                     </tr>
@@ -192,9 +203,6 @@
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="CUS_CODE" HeaderText="CustomerCode">
                                                     <HeaderStyle CssClass="width10" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name">
-                                                    <HeaderStyle CssClass="width15" />
                                                 </asp:BoundField>
                                             </Columns>
                                         </asp:GridView>
