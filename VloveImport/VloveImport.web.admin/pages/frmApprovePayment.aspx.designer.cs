@@ -22,6 +22,24 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// ddlTranSactionStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTranSactionStatus;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -49,22 +67,22 @@ namespace VloveImport.web.admin.pages {
         protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar2;
         
         /// <summary>
-        /// Label2 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// txtCusCode control.
+        /// ddlTranSactionType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCusCode;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTranSactionType;
         
         /// <summary>
         /// Label3 control.
@@ -76,13 +94,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// ddl_search_order_status control.
+        /// txtCusCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_search_order_status;
+        protected global::System.Web.UI.WebControls.TextBox txtCusCode;
         
         /// <summary>
         /// btnSearch control.
@@ -101,15 +119,6 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnReset;
-        
-        /// <summary>
-        /// btnclearOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnclearOrder;
         
         /// <summary>
         /// lblResult control.
