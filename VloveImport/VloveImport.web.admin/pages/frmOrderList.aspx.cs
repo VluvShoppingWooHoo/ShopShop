@@ -356,7 +356,6 @@ namespace VloveImport.web.admin.pages
                     string Result = AdBiz.UPD_ADMIN_ORDER(En, Act);
                     if (Result == "")
                     {
-                        BindData();
                         gv_detail_view.DataSource = null;
                         gv_detail_view.DataBind();
                         BindData();
