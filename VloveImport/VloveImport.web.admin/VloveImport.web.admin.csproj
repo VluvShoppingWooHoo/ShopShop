@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\..\shop2\VloveImport\SolutionItem\AjaxToolkit4\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\SolutionItem\AjaxToolkit4\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
