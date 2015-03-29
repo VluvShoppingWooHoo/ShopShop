@@ -49,6 +49,18 @@ namespace VloveImport.web.admin.UserControls
         }
         #endregion
 
+        public void SET_DATE(DateTime sDate)
+        {
+            try
+            {
+                txtcalendar.Text = sDate.ToString("dd/MM/yyyy");
+            }
+            catch (Exception ex)
+            {
+                txtcalendar.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            }
+        }
+
         public string GET_DATE_TO_STRING(string FormatText = "yyyy-MM-dd")
         {
             return Convert_DateYYYYMMDD(txtcalendar.Text.Trim()).Value.ToString(FormatText);

@@ -73,6 +73,7 @@
     <Content Include="images\icon\l_box.png" />
     <Content Include="images\icon\r_box.png" />
     <Content Include="img\icon\b_edit.png" />
+    <Content Include="img\icon\check-icon.png" />
     <Content Include="img\icon\Close-2-icon.png" />
     <Content Include="img\icon\close-icon.png" />
     <Content Include="img\icon\Close.png" />
