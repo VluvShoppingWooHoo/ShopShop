@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="VloveImport.web.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="VloveImport.web.Index" %>
 
 <%@ Register Src="~/UserControls/ucRecommend.ascx" TagName="ucRecommend" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/ucSeachBox.ascx" TagName="ucSeachBox" TagPrefix="uc3" %>
@@ -10,12 +9,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="divIndex">
         <div class="row ucSearchbox" style="margin-left: 1%;">
-            <div class="col s2 m2 l2" >
+            <div class="col s2 m2 l2">
                 &nbsp;
                 <img src="Images/pic/Logo/LOGO-01.jpg" style="height: 100%; width: 100%;" />
             </div>
             <div class="col s10 m10 l10">
                 <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
+                <div style="text-align: center; width: 78%;">
+                    <span class="black-text">ตรวจสอบสถานะการขนส่งได้</span> <a target="_blank" href="http://www.kuaidi100.com/"><span class="textUnderline bold red-text" style="font-size: 18px !important;">ที่นี่ <i class="mdi-maps-directions-ferry"></i></span></a>
+                </div>
             </div>
         </div>
         <div class="row" style="margin-bottom: 0px">

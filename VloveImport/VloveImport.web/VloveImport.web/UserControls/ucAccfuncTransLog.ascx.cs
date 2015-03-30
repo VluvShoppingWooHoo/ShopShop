@@ -39,7 +39,7 @@ namespace VloveImport.web.UserControls
         protected void BindData()
         {
             CustomerBiz biz = new CustomerBiz();
-            DataTable dt = biz.GET_CUSTOMER_TRANS_HIS(this._VS_CUS_ID);
+            DataTable dt = biz.GET_CUSTOMER_TRANSLOG(this._VS_CUS_ID);
             gvTrans.DataSource = dt;
             gvTrans.DataBind();
         }
