@@ -29,8 +29,8 @@
                     </li>
                     <li>
                         <asp:TextBox ID="txtpassword" CssClass="text" TextMode="Password" runat="server" TabIndex ="2"></asp:TextBox><a href="#" class=" icon lock"></a>
-                        <asp:TextBoxWatermarkExtender ID="txtpassword_TextBoxWatermarkExtender" runat="server" Enabled="True" TargetControlID="txtpassword" WatermarkText="PASSWORD">
-                        </asp:TextBoxWatermarkExtender>
+<%--                        <asp:TextBoxWatermarkExtender ID="txtpassword_TextBoxWatermarkExtender" runat="server" Enabled="True" TargetControlID="txtpassword" WatermarkText="PASSWORD">
+                        </asp:TextBoxWatermarkExtender>--%>
                     </li>
                     <br />
                     <div class="forgot">

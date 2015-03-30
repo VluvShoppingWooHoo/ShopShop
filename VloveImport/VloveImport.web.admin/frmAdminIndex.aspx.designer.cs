@@ -76,15 +76,6 @@ namespace VloveImport.web.admin {
         protected global::System.Web.UI.WebControls.TextBox txtpassword;
         
         /// <summary>
-        /// txtpassword_TextBoxWatermarkExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TextBoxWatermarkExtender txtpassword_TextBoxWatermarkExtender;
-        
-        /// <summary>
         /// btnLogin control.
         /// </summary>
         /// <remarks>
