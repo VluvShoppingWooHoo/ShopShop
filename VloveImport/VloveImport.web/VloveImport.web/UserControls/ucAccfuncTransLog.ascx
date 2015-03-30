@@ -9,7 +9,7 @@
             <asp:BoundField DataField="TRAN_REMARK" HeaderText="หมายเหตุ" />
             <asp:BoundField DataField="TRAN_DATE" HeaderText="วันที่" />
             <asp:BoundField DataField="TRAN_AMOUNT" HeaderText="จำนวน" />
-            <asp:BoundField DataField="TRAN_STATUS" HeaderText="สถานะ" />
+            <asp:BoundField DataField="STATUS_DESCRIPTION" HeaderText="สถานะ" />
         </Columns>
     </asp:GridView>
 </div>

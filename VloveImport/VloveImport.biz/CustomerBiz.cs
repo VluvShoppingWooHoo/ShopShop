@@ -176,11 +176,11 @@ namespace VloveImport.biz
                 return 0;
         }
 
-        public DataTable GET_CUSTOMER_TRANS_HIS(int CUS_ID)
+        public DataTable GET_CUSTOMER_TRANSLOG(int CUS_ID)
         {
             DataSet ds = new DataSet();
             CustomerDal dal = new CustomerDal("LocalConnection");
-            ds = dal.GET_CUSTOMER_BALANCE(CUS_ID);
+            ds = dal.GET_CUSTOMER_TRANSLOG(CUS_ID);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
                 return ds.Tables[0];
             else
