@@ -55,6 +55,12 @@
                 <asp:Label ID="lblDetail_EmpUpdateDate" runat="server"></asp:Label>
             </td>
         </tr>
+        <tr>
+            <td>Employee Remark :</td>
+            <td colspan ="3">
+                <asp:Label ID="lblDetail_EmpRemark" runat="server"></asp:Label>
+            </td>
+        </tr>
     </table>
 </fieldset>
 <fieldset style="width: 95%;">

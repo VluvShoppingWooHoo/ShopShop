@@ -14,7 +14,7 @@
                     <asp:MenuItem Text="ORDER" Value="ORDER" NavigateUrl="~/pages/frmOrderList.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Payment" Value="PAYMENT" NavigateUrl="~/pages/frmApprovePayment.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Customer List" Value="CUSTOMER" NavigateUrl="~/pages/frmCustomerList.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Bank List" Value="BANK"></asp:MenuItem>
+                    <asp:MenuItem Text="Bank List" Value="BANK" NavigateUrl="~/pages/frmMasterBank.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="User List" Value="USER" NavigateUrl="~/pages/frmUserList.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Group User" Value="GROUPUSER" NavigateUrl="~/pages/frmGroupUserList.aspx"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Logout.aspx" Text="Logout" Value="LOGOUT"></asp:MenuItem>

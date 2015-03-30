@@ -38,12 +38,13 @@ namespace VloveImport.web.admin.UserControls
                 lblDetail_TranType.Text = ds.Tables[0].Rows[0]["TRAN_TYPE_TEXT"].ToString();
                 lblDetail_TranDate.Text = ds.Tables[0].Rows[0]["TRAN_DATE_TEXT"].ToString();
                 lblDetail_TranAmount.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TRAN_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lblDetail_TranDetail.Text = ds.Tables[0].Rows[0]["TRAN_DETAIL"].ToString();
-                lblDetail_TranRemark.Text = ds.Tables[0].Rows[0]["TRAN_REMARK"].ToString();
-                lblDetail_TranStatus.Text = ds.Tables[0].Rows[0]["TRAN_STATUS"].ToString();
+                lblDetail_TranDetail.Text = ds.Tables[0].Rows[0]["TRAN_DETAIL_TEXT"].ToString();
+                lblDetail_TranRemark.Text = ds.Tables[0].Rows[0]["TRAN_REMARK_TEXT"].ToString();
+                lblDetail_TranStatus.Text = ds.Tables[0].Rows[0]["TRAN_STATUS_TEXT"].ToString();
 
                 lblDetail_EmpName.Text = ds.Tables[0].Rows[0]["EMP_NAME"].ToString();
                 lblDetail_EmpUpdateDate.Text = ds.Tables[0].Rows[0]["EMP_APPROVE_DATE_TEXT"].ToString();
+                lblDetail_EmpRemark.Text = ds.Tables[0].Rows[0]["EMP_REMARK"].ToString();
 
                 #endregion
 
