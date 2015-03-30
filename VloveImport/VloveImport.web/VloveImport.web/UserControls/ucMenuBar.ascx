@@ -39,9 +39,9 @@
     <a class="collection-item mCus" href="../Customer/CustomerBasket.aspx">ตะกร้า</a>
 
     <a class="collection-item mCus black" disabled>บัญชี</a>
-    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx#topup">เติมเงิน</a>
-    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx#withdraw">ถอนเงิน</a>
-    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx#translog">ประวัติการชำระเงิน</a>
+    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx?tab=topup">เติมเงิน</a>
+    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx?tab=withdraw">ถอนเงิน</a>
+    <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx?tab=translog">ประวัติการชำระเงิน</a>
 </div>
 <script type="text/javascript">
     $(function () {

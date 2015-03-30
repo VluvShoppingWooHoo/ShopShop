@@ -439,7 +439,7 @@ div[id="hotlink"]
 #navMenuHori
 {
     background-color: #00D9FF;
-    /*background-color: #4fc3f7;*/    
+    /*background-color: #4fc3f7;*/
     height: 64px;
 }
 
@@ -469,7 +469,7 @@ div[id="hotlink"]
 #hotlink .collection-item
 {
     background-color: #00D9FF;
-    /*background-color: #4fc3f7;*/    
+    /*background-color: #4fc3f7;*/
     color: white;
 }
 
@@ -558,5 +558,29 @@ nav[class="ucCustomerStatus"]
 
 #fbLoginbtn span
 {
-    vertical-align:middle;
+    vertical-align: middle;
 }
+
+.paddingTop25
+{
+    padding-top: 25px !important;
+}
+
+.paddingTop15
+{
+    padding-top: 15px !important;
+}
+
+.marginTop20
+{
+    margin-top: 20px !important;
+}
+
+
+.divRowBlock
+{
+    border-bottom: 1px solid #eeeeee;
+    min-height: 80px;
+    /*padding-bottom : 15px;*/
+}
+
