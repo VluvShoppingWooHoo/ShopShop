@@ -97,6 +97,7 @@
     <Content Include="pages\frmProductOrderList.aspx" />
     <Content Include="pages\frmUser.aspx" />
     <Content Include="pages\frmUserList.aspx" />
+    <Content Include="UserControls\ucApprovePaymentDetail.ascx" />
     <Content Include="UserControls\ucCalendar.ascx" />
     <Content Include="UserControls\ucMenubar.ascx" />
     <Content Include="Web.config" />
@@ -201,6 +202,13 @@
       <DependentUpon>frmUserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ucApprovePaymentDetail.ascx.cs">
+      <DependentUpon>ucApprovePaymentDetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucApprovePaymentDetail.ascx.designer.cs">
+      <DependentUpon>ucApprovePaymentDetail.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucCalendar.ascx.cs">
       <DependentUpon>ucCalendar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

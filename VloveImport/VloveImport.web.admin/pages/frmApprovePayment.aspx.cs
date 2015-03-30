@@ -49,7 +49,6 @@ namespace VloveImport.web.admin.pages
             }
 
             btnUpdateRemark.Attributes.Add("onClick", "javascript:return confirm('คุณต้องการบันทึกรายการนี้หรือไม่ ?')");
-
         }
 
         public void BindData_Transaction_status(DropDownList ddl, string ddlType = "",string Act = "")
@@ -269,7 +268,10 @@ namespace VloveImport.web.admin.pages
 
         protected void imgBtn_view_Click(object sender, ImageClickEventArgs e)
         {
-
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            int TRAN_ID = Convert.ToInt32(this.gv_detail.DataKeys[rowIndex].Values[0].ToString());
+            ModalPopupExtender3.Show();
+            ucApprovePaymentDetail1.BindData(TRAN_ID);
         }
 
         protected void imgBtn_Approve_Click(object sender, ImageClickEventArgs e)
