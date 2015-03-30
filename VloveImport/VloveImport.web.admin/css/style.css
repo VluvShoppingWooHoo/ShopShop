@@ -237,7 +237,7 @@ input[type="submit"]:hover{
 	}
 	input[type="text"], input[type="password"]{
 		font-size:18px;
-		padding: 0.4em 1em 0.45em 1em;15px 2px
+		padding: 0.4em 1em 0.45em 1em;/*15px 2px*/
 	}
 	.copy-right {
 	left:20%;
