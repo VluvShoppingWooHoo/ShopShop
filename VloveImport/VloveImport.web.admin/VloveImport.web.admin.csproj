@@ -226,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPage\Site1.Master" />
+    <Content Include="DB\db_batt_20150331.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
