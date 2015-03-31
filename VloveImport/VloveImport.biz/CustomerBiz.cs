@@ -187,5 +187,22 @@ namespace VloveImport.biz
                 return null;
         }
         #endregion
+
+        #region CHANGE_PASSWORD
+        public string CHANGE_PASSWORD(Int32 CUS_ID, string Pass)
+        {
+            string Result = "";
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.CHANGE_PASSWORD(CUS_ID, Pass);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+        #endregion
     }
 }

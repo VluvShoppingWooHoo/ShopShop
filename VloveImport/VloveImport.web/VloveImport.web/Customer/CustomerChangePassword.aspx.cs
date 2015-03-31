@@ -43,82 +43,25 @@ namespace VloveImport.web.Customer
 
         #region Event
         [WebMethod]
-        public static string btnTopup(string Bank, string amt, string date, string time, string email, string remark, string file)
+        public static string btnConfirm(string old, string newp, string conf)
         {
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            string Result = "";
             BasePage bp = new BasePage();
-            TransactionData EnTran = new TransactionData();
-            EnTran.Cus_ID = bp.GetCusID();
-
-            EnTran.TRAN_TYPE = 1;
-            EnTran.TRAN_TABLE_TYPE = 1;
-            EnTran.TRAN_DETAIL = "รายการฝากเงิน";
-
-            EnTran.BANK_ID = Convert.ToInt32(Bank);
-            EnTran.TRAN_AMOUNT = Convert.ToDouble(amt);
-            EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(date, '-', "YYYYMMDD", 0));
-            EnTran.PAYMENT_TIME = time;
-            EnTran.TRAN_EMAIL = email.Trim();
-            EnTran.TRAN_REMARK = remark.Trim();
-            EnTran.TRAN_STATUS = 1;
-            EnTran.Create_User = bp.GetCusCode();
-
-            CustomerBiz CusBiz = new CustomerBiz();
-            Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS");
-
-            return js.Serialize(Result);
-        }
-
-        [WebMethod]
-        public static string btnWithdraw(string accname, string amt, string remark, string pwd)
-        {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
-            BasePage bp = new BasePage();
-            TransactionData EnTran = new TransactionData();
-            EnTran.Cus_ID = bp.GetCusID();
+            CustomerBiz biz = new CustomerBiz();
+            DataTable dt = biz.Get_Customer_Profile(bp.GetCusID());
+            if (dt != null && dt.Rows.Count > 0)
+            {
 
-            EnTran.TRAN_TYPE = 2;
-            EnTran.TRAN_TABLE_TYPE = 2;
-            EnTran.TRAN_DETAIL = "รายการถอนเงิน";
+            }
+            else
+            {
+                return js.Serialize("Session Timeout");
+            }
 
-            EnTran.TRAN_AMOUNT = Convert.ToDouble(amt);
-            EnTran.TRAN_REMARK = remark.Trim();
-            EnTran.Cus_Withdraw_Code = pwd.Trim();
-            EnTran.TRAN_STATUS = 1;
-            EnTran.CUS_ACC_NAME_ID = Convert.ToInt32(accname);
-            EnTran.Create_User = bp.GetCusCode();
-
-            CustomerBiz CusBiz = new CustomerBiz();
-            Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS");
+            Result = biz.CHANGE_PASSWORD(bp.GetCusID(), newp);
             return js.Serialize(Result);
         }
-
-        [WebMethod]
-        public static string btnTransLog(string Bank, string amt, string date, string time, string email, string remark, string file)
-        {
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            string Result = "";
-            return js.Serialize(Result);
-        }
-
-        [WebMethod]
-        public static string btnVoucher(string Bank, string amt, string date, string time, string email, string remark, string file)
-        {
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            string Result = "";
-            return js.Serialize(Result);
-        }
-
-        [WebMethod]
-        public static string btnMyPoint(string Bank, string amt, string date, string time, string email, string remark, string file)
-        {            
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            string Result = "";
-            return js.Serialize(Result);
-        }
-        #endregion     
-        
+        #endregion
     }
 }

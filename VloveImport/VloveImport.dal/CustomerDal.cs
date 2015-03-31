@@ -342,5 +342,29 @@ namespace VloveImport.dal
             }
         }
         #endregion
+
+        #region CHANGE_PASSWORD
+        public string CHANGE_PASSWORD(Int32 CUS_ID, string Pass)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("CHANGE_PASSWORD");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter("PASSWORD", SqlDbType.NVarChar, ParameterDirection.Input, Pass);                
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("CHANGE_PASSWORD -> msg : " + ex.Message);
+            }
+        }
+        #endregion
     }
 }

@@ -13,12 +13,30 @@ namespace VloveImport.web.Customer {
     public partial class CustomerChangePassword {
         
         /// <summary>
-        /// ddlBank control.
+        /// txtOldPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBank;
+        protected global::System.Web.UI.WebControls.TextBox txtOldPass;
+        
+        /// <summary>
+        /// txtNewPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewPass;
+        
+        /// <summary>
+        /// txtConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConfirm;
     }
 }
