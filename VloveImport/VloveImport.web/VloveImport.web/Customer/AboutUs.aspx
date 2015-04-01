@@ -46,7 +46,7 @@
             else
                 $('#divService').show();
 
-            $("#masterForm").fadeIn(1000);
+            SetFadeout();
         });
     </script>
 </asp:Content>

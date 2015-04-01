@@ -885,7 +885,7 @@
     </div>
     <script type="text/javascript">
         $(function () {
-            $("#masterForm").fadeIn(1000);
+            SetFadeout();
         });
     </script>
 </asp:Content>

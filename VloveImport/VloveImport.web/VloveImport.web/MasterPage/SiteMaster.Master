@@ -68,7 +68,55 @@
                     </div>
                 </div>
             </footer>
-
+        </div>
+        <a href="#MastermodalItem" class="modal-trigger" id="Master_link" hidden>content</a>
+        <div id="MastermodalItem" class="modal modal-fixed-footer row" style="background: transparent; box-shadow: none;">
+            <div id="loadingMaster" class="preloader-wrapper big active center-Preload-Circle" style="background: transparent; box-shadow: none;">
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-orange">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-deep-orange">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-red ">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </body>
@@ -97,9 +145,9 @@
             }
             location.reload();
         });
-        
+
         var User = '<%= Session["User"]%>';
-        if (User == '') 
+        if (User == '')
             $('#fbLoginbtn').show();
         else
             $('#fbLoginbtn').hide();
@@ -132,7 +180,20 @@
         //$("#divcontent").height(h);
         //$("#divcard").height(h);        
     }
-
+    function SetFadeout() {
+        $("#masterForm").fadeIn(1000);
+        var coo = $.cookie('googtrans');
+        if (coo == '/zh-TW/th') {
+            //$('#MastermodalItem').show(0).delay(2500);
+        }
+        else {
+            $('#MastermodalItem').openModal();
+            //$("#Master_link")[0].click();
+            $('#loadingMaster').show();
+            $('#MastermodalItem').show(0).delay(5000);
+            $('#MastermodalItem').closeModal();
+        }
+    }
 </script>
 <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -140,3 +201,4 @@
     }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+

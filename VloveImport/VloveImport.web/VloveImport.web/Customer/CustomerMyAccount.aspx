@@ -95,7 +95,7 @@
             //    $('#divRateimport').show();
             $('a.' + type).click();
 
-            $("#masterForm").fadeIn(1000);
+            SetFadeout();
 
             $("#btnSaveUcWithdraw").click(function () {
 

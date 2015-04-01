@@ -290,7 +290,7 @@
 
     <script type="text/javascript">
         $(function () {
-            $("#masterForm").fadeIn(1000);
+            SetFadeout();
             var type = getUrlParameter('type');
             if (type == 'rateimport')
                 $('#divRateimport').show();

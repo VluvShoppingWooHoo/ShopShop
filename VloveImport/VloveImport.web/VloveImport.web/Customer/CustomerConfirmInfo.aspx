@@ -76,7 +76,7 @@
 
     <script type="text/javascript">
         $(function () {
-            $("#masterForm").fadeIn(1000);
+            SetFadeout();
             $('select').material_select();
 
 
