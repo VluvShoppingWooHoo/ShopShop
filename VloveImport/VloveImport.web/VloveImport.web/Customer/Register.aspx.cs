@@ -35,6 +35,7 @@ namespace VloveImport.web.Customer
             string Result = Insert();
             if (Result == "")
             {
+                //sendmail
                 mView.ActiveViewIndex = 1;
                 SetActivate();
             }
