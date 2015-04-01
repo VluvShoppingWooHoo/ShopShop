@@ -353,7 +353,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("CHANGE_PASSWORD");
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
-                SqlCommandData.SetParameter("PASSWORD", SqlDbType.NVarChar, ParameterDirection.Input, Pass);                
+                SqlCommandData.SetParameter("CUS_PASSWORD", SqlDbType.NVarChar, ParameterDirection.Input, Pass);                
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();

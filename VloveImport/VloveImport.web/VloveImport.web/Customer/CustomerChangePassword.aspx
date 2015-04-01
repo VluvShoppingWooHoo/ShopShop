@@ -59,10 +59,20 @@
 
         $('#btnConfirm').click(function () {
 
-            var old = $('.txtOldPass').val();
-            var newp = $('.txtNewPass').val();
-            var conf = $('.txtConfirm').val();          
+            var old = $('#<%= txtOldPass.ClientID %>').val();
+            var newp = $('#<%= txtNewPass.ClientID %>').val();
+            var conf = $('#<%= txtConfirm.ClientID %>').val();
+            
+            if (newp != conf) {
+                alert("รหัสผ่านใหม่ไม่ถูกต้อง");
+                return;
+            }
 
+            if (old == newp) {
+                alert("รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสผ่านเดิม");
+                return;
+            }
+            
             var param = {
                 "old": old, "newp": newp, "conf": conf
             };
@@ -73,13 +83,18 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (data) {
-                    //$('#modalItem').closeModal();
-                    //toast('Item Added.', 5000)
+                    var spl = data.d.replace(/"/g, '').split('|')
+                    if (spl[0] == 1) //1 = Success, 2 = Error
+                        window.location = spl[1];
+                    else
+                        alert(spl[1]);
+                  
                 },
                 error: function (err) {
                     alert('gs');
                 }
             });
+
         });
     </script>
 </asp:Content>

@@ -61,7 +61,23 @@ namespace VloveImport.web.App_Code
             }
         }
 
+        public void Redirect(string PageName)
+        {
+            HttpContext.Current.Response.Redirect(PageName);            
+        }
+
+        public void RefreshPage()
+        {            
+            Response.Redirect(Page.Request.Url.AbsoluteUri);
+        }
+
         #region Message Alert
+        public void ShowMessageBox(string message)
+        {
+            string msgboxScript = "alert('" + message + "');";           
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "msgboxScriptAJAX", msgboxScript, true);            
+        }
+
         public void ShowMessageBox(string message, Page currentPage)
         {
             string msgboxScript = "alert('" + message + "');";

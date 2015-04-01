@@ -30,8 +30,15 @@ namespace VloveImport.web.Customer
         {
             LoginProcess(txtUser.Text, txtPass.Text);
             if (Session["User"] != null)
+            {
                 if (ViewState["url"] != null && ViewState["url"].ToString() != "")
                     Response.Redirect(ViewState["url"].ToString());
+            }
+            else
+            {
+                ShowMessageBox("รหัสผ่านไม่ถูกต้อง");
+                return;
+            }
             Response.Redirect("~/Index.aspx");
         }
 

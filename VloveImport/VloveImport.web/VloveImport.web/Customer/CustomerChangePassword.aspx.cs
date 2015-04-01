@@ -22,7 +22,7 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                //CheckSession();    
+                CheckSession();    
                 //BindData();
             }
         }
@@ -45,6 +45,7 @@ namespace VloveImport.web.Customer
         [WebMethod]
         public static string btnConfirm(string old, string newp, string conf)
         {
+            string PassDB = "", DBDecrypt = "";
             BasePage bp = new BasePage();
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
@@ -52,16 +53,29 @@ namespace VloveImport.web.Customer
             DataTable dt = biz.Get_Customer_Profile(bp.GetCusID());
             if (dt != null && dt.Rows.Count > 0)
             {
-
+                PassDB = dt.Rows[0]["CUS_PASSWORD"].ToString();
+                DBDecrypt = bp.DecryptData(PassDB);
+                if (old == DBDecrypt)
+                {
+                    Result = biz.CHANGE_PASSWORD(bp.GetCusID(), bp.EncrypData(newp));
+                    if (Result == "")
+                        return js.Serialize("1|CustomerChangePassword.aspx");
+                    else
+                        return js.Serialize("2|โปรดติดต่อเจ้าหน้าที่");
+                }
+                else
+                {
+                    return js.Serialize("2|รหัสผ่านผิด!!!");
+                }
             }
             else
             {
-                return js.Serialize("Session Timeout");
+                return js.Serialize("2|Session Timeout");
             }
 
-            Result = biz.CHANGE_PASSWORD(bp.GetCusID(), newp);
-            return js.Serialize(Result);
-        }
+            
+            //return js.Serialize(Result);
+        }        
         #endregion
     }
 }
