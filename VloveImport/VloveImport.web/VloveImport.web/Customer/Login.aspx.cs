@@ -63,10 +63,15 @@ namespace VloveImport.web.Customer
             return js.Serialize(jData);
         }
 
-        protected void btnReset_Click(object sender, EventArgs e)
+        protected void btnFotgot_Click(object sender, EventArgs e)
         {
-            txtUser.Text = "";
-            txtPass.Text = "";
+            
         }
+
+        //protected void btnReset_Click(object sender, EventArgs e)
+        //{
+        //    txtUser.Text = "";
+        //    txtPass.Text = "";
+        //}
     }
 }

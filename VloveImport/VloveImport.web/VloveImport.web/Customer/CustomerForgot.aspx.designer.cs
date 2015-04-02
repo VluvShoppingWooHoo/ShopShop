@@ -10,7 +10,7 @@
 namespace VloveImport.web.Customer {
     
     
-    public partial class CustomerProfile {
+    public partial class CustomerForgot {
         
         /// <summary>
         /// lbUser control.
