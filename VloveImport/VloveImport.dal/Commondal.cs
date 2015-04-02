@@ -327,6 +327,20 @@ namespace VloveImport.dal
                 throw new Exception("GET_NOSERIES -> msg : " + ex.Message);
             }
         }
+
+        public DataSet Get_ConfigByGroup(string Group)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_CONFIG_BY_GROUP");
+                SqlCommandData.SetParameter("GROUPNAME", SqlDbType.VarChar, ParameterDirection.Input, Group);
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_CONFIG_BY_GROUP -> msg : " + ex.Message);
+            }
+        }
     }
 
 

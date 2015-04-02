@@ -51,5 +51,15 @@ namespace VloveImport.biz
                 Result = ds.Tables[0].Rows[0]["NoSeries"].ToString();
             return Result;
         }
+
+        public DataTable Get_ConfigByGroup(string Group)
+        {
+            DataTable dt = new DataTable();
+            Commondal Com = new Commondal("LocalConnection");
+            DataSet ds = Com.Get_ConfigByGroup(Group);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+                dt = ds.Tables[0];
+            return dt;
+        }
     }
 }

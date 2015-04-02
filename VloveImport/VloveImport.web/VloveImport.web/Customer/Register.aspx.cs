@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
@@ -32,15 +36,24 @@ namespace VloveImport.web.Customer
             //Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
             #endregion
             //string Result = Insert(Cust);
-            string Result = Insert();
+            string Result = "";// Insert();
+            string[] Temp;
             if (Result == "")
             {
                 //sendmail
-                mView.ActiveViewIndex = 1;
-                SetActivate();
+                Temp = Get_Config("REGIS");
+                if (Temp.Length > 0)
+                    Result = SendMail(txtEmail.Text, txtPassword.Text, Temp[0], Temp[1]);
+                else
+                {
+                    //WriteLog
+                    lbMessage.Text = "Error";
+                }
+
             }
             else
             {
+                //WriteLog
                 lbMessage.Text = "Error";
             }
         }
@@ -102,17 +115,8 @@ namespace VloveImport.web.Customer
             }
             catch (Exception ex) { }
             return Result;
-        }
-        protected void SetActivate()
-        {
-            EncrypUtil en = new EncrypUtil();
-            string e = "", c = "";
-            e = en.EncrypData(txtEmail.Text);
-            c = en.EncrypData(txtPassword.Text);
-            hplActivate.Text = "ActivateHere";
-            hplActivate.NavigateUrl = "Activate.aspx?e=" + Server.UrlEncode(e) + "&c=" + Server.UrlEncode(c);
-        }
-
+        }        
+        
         #region for fb register
         [WebMethod]
         public static string fbRegis(string email, string first_name, string id, string last_name, string gender)
