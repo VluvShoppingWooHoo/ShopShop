@@ -65,7 +65,7 @@ namespace VloveImport.web.Customer
 
         protected void btnFotgot_Click(object sender, EventArgs e)
         {
-            
+            Redirect("CustomerForgot.aspx");
         }
 
         //protected void btnReset_Click(object sender, EventArgs e)
