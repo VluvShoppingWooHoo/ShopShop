@@ -8,7 +8,7 @@
     </div>
     <div class="row divRowBlock">
         <div class="col s2 m2 l2 paddingTop25">
-            รหัสผ่านจะถูกตั้งค่าใหม่ และส่งให้
+            รหัสผ่านจะถูกตั้งค่า และส่งไปทางอีเมลล์ของผู้ใช้
         </div>
     </div>
     <div class="row divRowBlock">
@@ -23,7 +23,7 @@
         </div>
     </div>    
     <div class="row paddingTop25">
-        <button id="btnSave" runat="server" type="submit" onserverclick="btnSave_Click"
+        <button id="btnSend" runat="server" type="submit" onserverclick="btnSend_Click"
             name="action" class="btn waves-effect orange waves-light">
             ส่งเมลล์                                
         </button>

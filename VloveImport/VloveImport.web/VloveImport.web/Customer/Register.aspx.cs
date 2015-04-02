@@ -36,7 +36,7 @@ namespace VloveImport.web.Customer
             //Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
             #endregion
             //string Result = Insert(Cust);
-            string Result = "";// Insert();
+            string Result = Insert();
             string[] Temp;
             if (Result == "")
             {
