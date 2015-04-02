@@ -50,6 +50,7 @@
       <HintPath>..\..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -136,6 +137,7 @@
     <Content Include="Script\20150329.sql" />
     <Content Include="Script\Script Init.sql" />
     <Content Include="TestPage.aspx" />
+    <Content Include="UserControls\ucNewsFeed.ascx" />
     <Content Include="UserControls\ucAccfuncMypoint.ascx" />
     <Content Include="UserControls\ucAccfuncVoucher.ascx" />
     <Content Include="UserControls\ucAccfuncTransLog.ascx" />
@@ -150,7 +152,9 @@
     <Content Include="UserControls\ucCustomerStatus.ascx" />
     <Content Include="UserControls\ucMenuBar.ascx" />
     <Content Include="UserControls\ucAccFuncTopup.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -430,6 +434,13 @@
     </Compile>
     <Compile Include="TestPage.aspx.designer.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucNewsFeed.ascx.cs">
+      <DependentUpon>ucNewsFeed.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucNewsFeed.ascx.designer.cs">
+      <DependentUpon>ucNewsFeed.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucAccfuncMypoint.ascx.cs">
       <DependentUpon>ucAccfuncMypoint.ascx</DependentUpon>

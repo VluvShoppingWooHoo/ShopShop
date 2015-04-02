@@ -11,6 +11,12 @@ using VloveImport.util;
 using VloveImport.biz;
 using VloveImport.data.Extension;
 using Facebook;
+using System.Xml;
+using System.Web.Configuration;
+using System.ServiceModel.Syndication;
+using System.Net;
+using System.Text;
+using System.IO;
 
 namespace VloveImport.web
 {
@@ -122,7 +128,7 @@ namespace VloveImport.web
             try
             {
                 //tag = sc.GetSideMenu("http://portal.weloveshopping.com/");
-                tag = sc.GetSideMenu("http://www.vcanbuy.com/protected/faqs/tree");                
+                tag = sc.GetSideMenu("http://www.vcanbuy.com/protected/faqs/tree");
             }
             catch (Exception ex) { }
             return tag;
@@ -170,6 +176,79 @@ namespace VloveImport.web
             ShoppingBiz Biz = new ShoppingBiz();
             Result = Biz.AddtoCart(Data);
             return Result;
+        }
+        #endregion
+
+        #region News Feed
+        [WebMethod]
+        public static string GetNewsFeed()
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            JSONData jData = new JSONData();
+            string xml;
+            try
+            {
+                string URL = WebConfigurationManager.AppSettings["NewsFeedURL"];
+                using (WebClient webClient = new WebClient())
+                {
+                    xml = Encoding.UTF8.GetString(webClient.DownloadData(URL));
+                }
+                xml = xml.Replace("+07:00", "");
+                string[] separators = { "</pubDate>" };
+                string[] xmlArr = xml.Split(separators, StringSplitOptions.None);
+                xml = "";
+                foreach (string item in xmlArr)
+                {
+                    int count = item.Trim().Length;
+                    string txt = string.Empty;
+                    if (item.Trim().Substring(count - 1, 1) == ">")
+                        txt = item.Trim().Substring(0, count - 9);
+                    else
+                        txt = item.Trim().Substring(0, count - 28);
+                    xml += txt.Trim();
+                }
+                byte[] bytes = System.Text.UTF8Encoding.ASCII.GetBytes(xml);
+                XmlReader reader = XmlReader.Create(new MemoryStream(bytes));
+                SyndicationFeed feed = new SyndicationFeed();
+                //feed.
+                feed = SyndicationFeed.Load(reader);
+                foreach (SyndicationItem item in feed.Items)
+                {
+                    //String subject = item.Title.Text;
+                    //String summary = item.Summary.Text;
+                }
+
+
+                //while (reader.Read())
+                //{
+                //    switch (reader.NodeType)
+                //    {
+                //        case XmlNodeType.Element: // The node is an element.
+                //            result += "<" + reader.Name;
+
+                //            while (reader.MoveToNextAttribute()) // Read the attributes.
+                //                result += " " + reader.Name + "='" + reader.Value + "'";
+                //            result += ">";
+                //            result += "<br />";
+                //            //Console.WriteLine(">");
+                //            break;
+                //        case XmlNodeType.Text: //Display the text in each element.
+                //            result += reader.Value;
+                //            break;
+                //        case XmlNodeType.EndElement: //Display the end of the element.
+                //            result += "</" + reader.Name;
+                //            result += ">";
+                //            break;
+                //    }
+                //}
+                ////XmlDocument xml = new XmlDocument();
+                ////xml.Load(reader);
+                //jData.ReturnVal = result;
+                jData.Result = Constant.Fact.T;
+            }
+            catch (Exception ex) { }
+            return js.Serialize(jData);
+
         }
         #endregion
     }

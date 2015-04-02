@@ -70,6 +70,7 @@
             </footer>
         </div>
         <a href="#MastermodalItem" class="modal-trigger" id="Master_link" hidden>content</a>
+        <span id="translateFact">´Õ</span>
         <div id="MastermodalItem" class="modal modal-fixed-footer row" style="background: transparent; box-shadow: none;">
             <div id="loadingMaster" class="preloader-wrapper big active center-Preload-Circle" style="background: transparent; box-shadow: none;">
                 <div class="spinner-layer spinner-yellow">
@@ -151,6 +152,28 @@
             $('#fbLoginbtn').show();
         else
             $('#fbLoginbtn').hide();
+
+
+        //var coo = $.cookie('googtrans');
+        //if (coo == '/th/zh-TW') {
+        //    $('#MastermodalItem').openModal();
+        //    $('#MastermodalItem').show(0);
+        //    //$("#Master_link")[0].click();
+        //    $('#loadingMaster').show();
+        //    //$('#MastermodalItem').show(0).delay(5000);
+        //    for (var i = 0; i < 5000; i++) {
+        //        if ($('#translateFact').html() != "´Õ") {
+        //            //alert('ºÅÒæ');
+        //            $('#MastermodalItem').closeModal();
+        //            //$('#MastermodalItem').show(0).delay(1000);
+        //            break;
+        //        }
+        //    }
+        //    //alert('5000');
+        //}
+        //else {
+        //    //$('#MastermodalItem').show(0).delay(2500);
+        //}
     });
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1);
@@ -182,17 +205,6 @@
     }
     function SetFadeout() {
         $("#masterForm").fadeIn(1000);
-        var coo = $.cookie('googtrans');
-        if (coo == '/zh-TW/th') {
-            //$('#MastermodalItem').show(0).delay(2500);
-        }
-        else {
-            $('#MastermodalItem').openModal();
-            //$("#Master_link")[0].click();
-            $('#loadingMaster').show();
-            $('#MastermodalItem').show(0).delay(5000);
-            $('#MastermodalItem').closeModal();
-        }
     }
 </script>
 <script type="text/javascript">

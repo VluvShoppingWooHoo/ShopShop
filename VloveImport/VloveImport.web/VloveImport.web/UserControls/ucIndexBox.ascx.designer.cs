@@ -20,5 +20,14 @@ namespace VloveImport.web.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::VloveImport.web.UserControls.ucIndexMenuBar ucIndexMenuBar;
+        
+        /// <summary>
+        /// ucNewsFeed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VloveImport.web.UserControls.ucNewsFeed ucNewsFeed;
     }
 }

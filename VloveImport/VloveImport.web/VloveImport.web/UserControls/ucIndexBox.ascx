@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
 <%@ Register Src="~/UserControls/ucIndexMenuBar.ascx" TagName="ucIndexMenuBar" TagPrefix="ucIMB" %>
+<%@ Register Src="~/UserControls/ucNewsFeed.ascx" TagName="ucNewsFeed" TagPrefix="ucNF" %>
 <div class="row">
     <div id="sideMenu" class="col s2 m2 l2">
 
@@ -767,9 +768,27 @@
 </div>
 <div class="row" style="margin-top: 20px;">
     <ucIMB:ucIndexMenuBar ID="ucIndexMenuBar" runat="server" />
+    <ucNF:ucNewsFeed ID="ucNewsFeed" runat="server" />
 </div>
 <script type="text/javascript">
     $(function () {
+
+        //$.ajax({
+        //    type: 'POST',
+        //    url: "../Index.aspx/GetNewsFeed",
+        //    contentType: 'application/json; charset=utf-8',
+        //    dataType: 'json',
+        //    success: function (data) {
+        //        var obj = JSON.parse(data.d);
+        //        if (obj.Result == 1) {
+        //            $('#divNewsFeed').html(ManageNewsFeed(obj.ReturnVal));
+        //        }
+        //    },
+        //    error: function (err) {
+        //        alert('gs');
+        //    }
+        //});
+
         //$.ajax({
         //    type: 'POST',
         //    url: "../Index.aspx/GetSideMenu",
@@ -816,6 +835,23 @@
         });
     });
 
+    function ManageNewsFeed(val) {
+        var result = "";
+        var nodes = val.split("<br />");
+        var txt = "";
+        var count = 0;
+        for (var i = 0; i < nodes.length; i++) {
+            if (count == 5)
+                return result;
+            switch (node[i]) {
+                case '65':
+                    alert("Yay!");
+                    break;
+            }
+            result += txt;
+        }
+        return result;
+    }
     function ManageSideMenu() {
         RemoveThings();
         SetIcons();
