@@ -25,20 +25,25 @@ namespace VloveImport.web.Customer
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
-            DataTable dt;
-            string Result = ResetPassword();
+            int CUS_ID = -1;
+            CustomerBiz biz = new CustomerBiz();
+            DataTable dt = biz.Get_Customer_Profile_By_Email(txtEmail.Text);
+            if(dt != null && dt.Rows.Count == 1)
+                CUS_ID = dt.Rows[0]["CUS_PASSWORD"].ToString() ==  "" ? -1 : Convert.ToInt32(dt.Rows[0]["CUS_PASSWORD"].ToString());
+
+            string ResetPass = System.Web.Security.Membership.GeneratePassword(10, 3);
+            string Result = biz.RESET_PASSWORD(ResetPass, CUS_ID);
             string email = "", pass = "";
             string[] Temp;
             Temp = Get_Config("REGIS");
             if (Temp.Length > 0)
                 Result = SendMail(email, pass, Temp[0], Temp[1]);
-        }
 
-        protected string ResetPassword()
-        {
-            string Result = "";
-
-            return Result;
-        }
+            if (Result == "")
+            {
+                txtEmail.Text = "";
+                lbMsg.Text = "รหัสผ่านถูกส่งไปที่อีเมลล์ของคุณเรียบร้อย";
+            }
+        }        
     }
 }

@@ -48,6 +48,16 @@ namespace VloveImport.biz
             }
             return Result;
         }
+        public DataTable Get_Customer_Profile_By_Email(string Email)
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.Get_Customer_Profile_By_Email(Email);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
         #endregion
 
         #region CUSTOMER ADDRESS
@@ -188,7 +198,7 @@ namespace VloveImport.biz
         }
         #endregion
 
-        #region CHANGE_PASSWORD
+        #region CUSTOMER_PASSWORD
         public string CHANGE_PASSWORD(Int32 CUS_ID, string Pass)
         {
             string Result = "";
@@ -196,6 +206,21 @@ namespace VloveImport.biz
             {
                 CustomerDal dal = new CustomerDal("LocalConnection");
                 Result = dal.CHANGE_PASSWORD(CUS_ID, Pass);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
+        public string RESET_PASSWORD(string Pass, int CUS_ID)
+        {
+            string Result = "";
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.RESET_PASSWORD(Pass, CUS_ID);
             }
             catch (Exception ex)
             {

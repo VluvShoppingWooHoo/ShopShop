@@ -78,6 +78,20 @@ namespace VloveImport.dal
                 return ("Insert_Customer_Address -> msg : " + ex.Message);
             }
         }
+        public DataSet Get_Customer_Profile_By_Email(string Email)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_PROFILE_BY_EMAIL");
+                SqlCommandData.SetParameter("EMAIL", SqlDbType.VarChar, ParameterDirection.Input, Email);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_CUSTOMER_PROFILE_BY_EMAIL -> msg : " + ex.Message);
+            }
+        }
         #endregion
 
         #region CUSTOMER ADDRESS
@@ -343,7 +357,7 @@ namespace VloveImport.dal
         }
         #endregion
 
-        #region CHANGE_PASSWORD
+        #region CUSTOMER_PASSWORD
         public string CHANGE_PASSWORD(Int32 CUS_ID, string Pass)
         {
             try
@@ -363,6 +377,27 @@ namespace VloveImport.dal
             {
                 SqlCommandData.RollBack();
                 return ("CHANGE_PASSWORD -> msg : " + ex.Message);
+            }
+        }
+        public string RESET_PASSWORD(string Pass, int CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("UPDATE_CUSTOMER_REPASS");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter("CUS_PASS", SqlDbType.VarChar, ParameterDirection.Input, Pass);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("UPDATE_CUSTOMER_REPASS -> msg : " + ex.Message);
             }
         }
         #endregion

@@ -28,6 +28,12 @@
             ส่งเมลล์                                
         </button>
     </div>
+    <div class="row divRowBlock">
+        <div class="col s2 m2 l2 paddingTop25">
+            <asp:Label ID="lbMsg" runat="server"></asp:Label>
+        </div>
+        <div class="col s1 m1 l1">                 
+    </div>  
     <script type="text/javascript">
         $(function () {
             SetFadeout();
