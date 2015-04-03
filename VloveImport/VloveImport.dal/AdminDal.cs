@@ -33,7 +33,7 @@ namespace VloveImport.dal
             }
         }
 
-        public DataSet GET_MASTER_STATUS(string STATUS_TYPE, string Act,string STS_NAME)
+        public DataSet GET_MASTER_STATUS(string STATUS_TYPE, string Act, string STS_NAME)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace VloveImport.dal
             }
         }
 
-        public DataSet GET_ADMIN_ORDER(int ORDER_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE,int ORDER_STATUS, string Act)
+        public DataSet GET_ADMIN_ORDER(int ORDER_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE, int ORDER_STATUS, string Act)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CUS_CODE", SqlDbType.VarChar, ParameterDirection.Input, CUS_CODE);
                 SqlCommandData.SetParameter_Input_INT("ORDER_STATUS", SqlDbType.Int, ParameterDirection.Input, ORDER_STATUS);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
-                
+
                 return SqlCommandData.ExecuteDataSet();
             }
             catch (Exception ex)
@@ -126,7 +126,7 @@ namespace VloveImport.dal
 
         #region Admin Transaction
 
-        public DataSet GET_ADMIN_TRANSACTION(int TRAN_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE, int TRAN_STATUS,int TRAN_TYPE,int TRAN_TABLE_TYPE, string Act)
+        public DataSet GET_ADMIN_TRANSACTION(int TRAN_ID, Nullable<DateTime> START_DATE, Nullable<DateTime> END_DATE, string CUS_CODE, int TRAN_STATUS, int TRAN_TYPE, int TRAN_TABLE_TYPE, string Act)
         {
             try
             {
@@ -158,8 +158,8 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("ADMIN_INS_UPD_TRANSACTION");
 
                 SqlCommandData.SetParameter_Input_INT("TRAN_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_ID);
-                SqlCommandData.SetParameter_Input_INT("TRAN_TYPE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_TYPE);
-                SqlCommandData.SetParameter_Input_INT("TRAN_TABLE_TYPE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_TABLE_TYPE);
+                SqlCommandData.SetParameter_Input_INT("TRAN_TYPE", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_TYPE);
+                SqlCommandData.SetParameter_Input_INT("TRAN_TABLE_TYPE", SqlDbType.Int, ParameterDirection.Input, EnTran.TRAN_TABLE_TYPE);
                 SqlCommandData.SetParameter("TRAN_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_DETAIL);
                 SqlCommandData.SetParameter("TRAN_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRAN_REMARK);
                 SqlCommandData.SetParameter_Input_INT("TRAN_AMOUNT", SqlDbType.Float, ParameterDirection.Input, EnTran.TRAN_AMOUNT);
@@ -189,6 +189,161 @@ namespace VloveImport.dal
             {
                 SqlCommandData.RollBack();
                 return ("INS_UPD_TRANSACTION -> msg : " + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Group User
+
+        public DataSet GET_ADMIN_GET_GROUP_USER(int GROUP_ID, string GROUP_NAME, string GROUP_STATUS, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_DATA_GROUP_USER");
+
+                SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, GROUP_ID);
+                SqlCommandData.SetParameter("GROUP_NAME", SqlDbType.Date, ParameterDirection.Input, GROUP_NAME);
+                SqlCommandData.SetParameter_Input_INT("GROUP_STATUS", SqlDbType.Int, ParameterDirection.Input, GROUP_STATUS);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_ADMIN_GET_GROUP_USER -> msg : " + ex.Message);
+            }
+        }
+
+        public string ADMIN_INS_GROUP_USER(AdminUserData EnTran, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_INS_UPD_DATA_GROUP_USER");
+
+                SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.GROUP_ID);
+                SqlCommandData.SetParameter("GROUP_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.GROUP_NAME);
+                SqlCommandData.SetParameter("GROUP_ROLE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.GROUP_ROLE);
+                SqlCommandData.SetParameter("GROUP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.GROUP_REMARK);
+                SqlCommandData.SetParameter_Input_INT("GROUP_STATUS", SqlDbType.Int, ParameterDirection.Input, EnTran.GROUP_STATUS);
+
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("ADMIN_INS_GROUP_USER -> msg : " + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region User
+
+        public DataSet GET_ADMIN_GET_USER(int EMP_ID, string USERNAME, string EMP_NAME, int EMP_STATUS, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_DATA_USER");
+
+                SqlCommandData.SetParameter_Input_INT("EMP_ID", SqlDbType.Int, ParameterDirection.Input, EMP_ID);
+                SqlCommandData.SetParameter("USERNAME", SqlDbType.Date, ParameterDirection.Input, USERNAME);
+                SqlCommandData.SetParameter("EMP_NAME", SqlDbType.Int, ParameterDirection.Input, EMP_NAME);
+                SqlCommandData.SetParameter_Input_INT("EMP_STATUS", SqlDbType.Int, ParameterDirection.Input, EMP_STATUS);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_ADMIN_GET_GROUP_USER -> msg : " + ex.Message);
+            }
+        }
+
+        public string ADMIN_INS_USER(AdminUserData EnTran, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_INS_UPD_DATA_USER");
+
+                SqlCommandData.SetParameter_Input_INT("EMP_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_ID);
+                SqlCommandData.SetParameter("USERNAME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.USERNAME);
+                SqlCommandData.SetParameter("EMP_PASSWORD", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_PASSWORD);
+                SqlCommandData.SetParameter("EMP_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_NAME);
+                SqlCommandData.SetParameter("EMP_LNAME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_LNAME);
+                SqlCommandData.SetParameter("EMP_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_DETAIL);
+                SqlCommandData.SetParameter_Input_INT("EMP_STATUS", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_STATUS);
+                SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.GROUP_ID);
+
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("ADMIN_INS_GROUP_USER -> msg : " + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Config
+
+        public DataSet ADMIN_GET_CONFIG(int CONFIG_ID, string CONFIG_GROUP, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_DATA_CONFIG");
+
+                SqlCommandData.SetParameter_Input_INT("CONFIG_ID", SqlDbType.Int, ParameterDirection.Input, CONFIG_ID);
+                SqlCommandData.SetParameter("CONFIG_GROUP", SqlDbType.Date, ParameterDirection.Input, CONFIG_GROUP);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ADMIN_GET_CONFIG -> msg : " + ex.Message);
+            }
+        }
+
+        public string ADMIN_UPD_CONFIG(AdminUserData EnTran, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_UPD_DATA_CONFIG");
+
+                SqlCommandData.SetParameter("CONFIG_ID", SqlDbType.VarChar, ParameterDirection.Input, EnTran.CONFIG_ID);
+                SqlCommandData.SetParameter("CONFIG_VALUE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.CONFIG_VALUE);
+                SqlCommandData.SetParameter("CONFIG_GROUP", SqlDbType.VarChar, ParameterDirection.Input, EnTran.CONFIG_GROUP);
+                SqlCommandData.SetParameter("CONFIG_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.CONFIG_REMARK);
+
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("ADMIN_UPD_CONFIG -> msg : " + ex.Message);
             }
         }
 

@@ -36,10 +36,17 @@ namespace VloveImport.data
         public int BANK_SHOP_STATUS { get; set; }
         #endregion
 
+        #region Config
+
+        public string CONFIG_ID { get; set; }
+        public string CONFIG_VALUE { get; set; }
+        public string CONFIG_GROUP { get; set; }
+        public string CONFIG_REMARK { get; set; }
+
+        #endregion
 
 
 
-        
 
     }
 }

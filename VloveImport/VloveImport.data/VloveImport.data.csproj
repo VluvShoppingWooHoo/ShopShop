@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminUserData.cs" />
     <Compile Include="CommonData.cs" />
     <Compile Include="JasonData.cs" />
     <Compile Include="OrderData.cs" />
