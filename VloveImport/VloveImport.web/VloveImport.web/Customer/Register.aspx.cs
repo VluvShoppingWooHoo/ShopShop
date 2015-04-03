@@ -35,7 +35,7 @@ namespace VloveImport.web.Customer
             //Cust.Cus_Mobile = txtMobile.Text;
             //Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
             #endregion
-            //string Result = Insert(Cust);
+            string Body = "", Link = "",emailEn = "", passEn = "", Path = "";
             string Result = Insert();
             string[] Temp;
             if (Result == "")
@@ -43,7 +43,14 @@ namespace VloveImport.web.Customer
                 //sendmail
                 Temp = Get_Config("REGIS");
                 if (Temp.Length > 0)
-                    Result = SendMail(txtEmail.Text, txtPassword.Text, Temp[0], Temp[1]);
+                {
+                    emailEn = EncrypData(txtEmail.Text);
+                    passEn = EncrypData(txtPassword.Text);
+                    Path = Page.Request.Url.Authority;
+                    Link = Path + "/Customer/Activate.aspx?e=" + Server.UrlEncode(emailEn) + "&c=" + Server.UrlEncode(passEn);
+                    Body = Temp[1].Replace("{0}", Link);
+                    Result = SendMail(txtEmail.Text, Temp[0], Body);
+                }
                 else
                 {
                     //WriteLog
@@ -56,6 +63,8 @@ namespace VloveImport.web.Customer
                 //WriteLog
                 lbMessage.Text = "Error";
             }
+
+            GoToIndex();
         }
 
         protected string Insert()
@@ -70,6 +79,7 @@ namespace VloveImport.web.Customer
                     EncrypUtil en = new EncrypUtil();
 
                     Cust.Cus_Code = GetNoSeries("CUSTOMER");
+                    Cust.Cus_Name = txtName.Text;
                     Cust.Cus_Email = txtEmail.Text;
                     Cust.Cus_Password = en.EncrypData(txtPassword.Text);
                     Cust.Cus_Mobile = txtMobile.Text;
@@ -84,7 +94,7 @@ namespace VloveImport.web.Customer
             }
             else
             {
-                Result = "Error Input";
+                Result = "ตรวจสอบข้อมูลให้ถูกต้อง!!!";
             }
             return Result;
         }
@@ -94,12 +104,34 @@ namespace VloveImport.web.Customer
             bool IsReturn = true;
             string emailPattern = "^([0-9a-zA-Z]+[-._+&])*[0-9a-zA-Z]+@" + "([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$";
 
+            if (txtName.Text.Trim() == "")
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณากรอกชื่อ", this.Page);
+                return IsReturn;
+            }
+
             if (!Regex.IsMatch(txtEmail.Text.Trim(), emailPattern))
             {
                 IsReturn = false;
                 ShowMessageBox("กรุณากรอก E-Mail ให้ถูกต้อง", this.Page);
                 return IsReturn;
             }
+
+            if (txtPassword.Text.Trim() == "")
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณากรอกรหัสผ่าน", this.Page);
+                return IsReturn;
+            }
+
+            if (txtConfirmPass.Text.Trim() == "")
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณายืนยันรหัสผ่านให้ถูกต้อง", this.Page);
+                return IsReturn;
+            }
+           
             return IsReturn;
         }
 

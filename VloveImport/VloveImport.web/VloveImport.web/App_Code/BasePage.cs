@@ -65,6 +65,11 @@ namespace VloveImport.web.App_Code
             }
         }
 
+        public void GoToIndex()
+        {
+            HttpContext.Current.Response.Redirect("~/Index.aspx");
+        }
+
         public void Redirect(string PageName)
         {
             HttpContext.Current.Response.Redirect(PageName);            
@@ -125,9 +130,9 @@ namespace VloveImport.web.App_Code
         #endregion
 
         #region Sendmail
-        public string SendMail(string MailTo, string Pass, string Subject, string Body)
+        public string SendMail(string MailTo, string Subject, string Body)
         {
-            string Result = "", Link = "";
+            string Result = "";
             string strMailServer = WebConfigurationManager.AppSettings["SMTP"].ToString();
             string UserEmail = WebConfigurationManager.AppSettings["email"].ToString();
             string PassEmail = WebConfigurationManager.AppSettings["emailp"].ToString();
@@ -141,15 +146,9 @@ namespace VloveImport.web.App_Code
                 Mail.SubjectEncoding = System.Text.Encoding.UTF8;
                 Mail.BodyEncoding = System.Text.Encoding.UTF8;
                 Mail.From = mailAdd;
-                Mail.To.Add(MailTo);
-
-                string e = "", c = "";
-                e = EncrypData(MailTo);
-                c = EncrypData(Pass);
-                Link = "Activate.aspx?e=" + Server.UrlEncode(e) + "&c=" + Server.UrlEncode(c);
+                Mail.To.Add(MailTo);                
 
                 Mail.Subject = Subject;
-                Body = Body.Replace("{0}", Link);
                 Mail.Body = Body.Replace("\r\n", "<br/>");
 
                 if (strMailServer != "")

@@ -7,12 +7,21 @@
         <asp:View ID="vRegis" runat="server">
             <table>
                 <tr>
+                    <td>ชื่อ
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:TextBox ID="txtName" runat="server" ></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
                     <td>อีเมลล์
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" runat="server" TextMode="Email"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

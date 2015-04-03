@@ -48,6 +48,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("InsertRegisCustomer");
 
                 SqlCommandData.SetParameter("Cus_Code", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Code);
+                SqlCommandData.SetParameter("Cus_Name", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
                 SqlCommandData.SetParameter("Cus_Email", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Email);
                 SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Password);
                 SqlCommandData.SetParameter("Cus_Mobile", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Mobile);

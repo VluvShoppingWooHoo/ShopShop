@@ -388,7 +388,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("UPDATE_CUSTOMER_REPASS");
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
-                SqlCommandData.SetParameter("CUS_PASS", SqlDbType.VarChar, ParameterDirection.Input, Pass);
+                SqlCommandData.SetParameter("CUS_PASS", SqlDbType.NVarChar, ParameterDirection.Input, Pass);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
