@@ -105,7 +105,7 @@ namespace VloveImport.biz
 
         #region Group user
 
-        public DataSet GET_ADMIN_GET_GROUP_USER(int GROUP_ID, string GROUP_NAME, string GROUP_STATUS, string Act)
+        public DataSet GET_ADMIN_GET_GROUP_USER(int GROUP_ID, string GROUP_NAME, int GROUP_STATUS, string Act)
         {
             DataSet ds = new DataSet();
             AdminDal dal = new AdminDal("LocalConnection");

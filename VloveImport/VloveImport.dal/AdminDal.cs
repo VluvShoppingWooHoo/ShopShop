@@ -196,14 +196,14 @@ namespace VloveImport.dal
 
         #region Group User
 
-        public DataSet GET_ADMIN_GET_GROUP_USER(int GROUP_ID, string GROUP_NAME, string GROUP_STATUS, string Act)
+        public DataSet GET_ADMIN_GET_GROUP_USER(int GROUP_ID, string GROUP_NAME, int GROUP_STATUS, string Act)
         {
             try
             {
                 SqlCommandData.SetStoreProcedure("ADMIN_GET_DATA_GROUP_USER");
 
                 SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, GROUP_ID);
-                SqlCommandData.SetParameter("GROUP_NAME", SqlDbType.Date, ParameterDirection.Input, GROUP_NAME);
+                SqlCommandData.SetParameter("GROUP_NAME", SqlDbType.VarChar, ParameterDirection.Input, GROUP_NAME);
                 SqlCommandData.SetParameter_Input_INT("GROUP_STATUS", SqlDbType.Int, ParameterDirection.Input, GROUP_STATUS);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
