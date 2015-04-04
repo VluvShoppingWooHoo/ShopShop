@@ -12,14 +12,25 @@ namespace VloveImport.data
         public int ORDER_ID { get; set; }
         public DateTime ORDER_DATE { get; set; }
         public int ORDER_STATUS { get; set; }
-        public int TRANSPORT_STATUS { get; set; } 
         public int CUS_ID { get; set; }
+        public int CUS_ADDRESS_ID { get; set; }
+        public int TRANSPORT_STATUS { get; set; } 
+        
         public int ORDER_TRANSPOT_CHINA { get; set; }
-        public int ORDER_TRANSPOT_THAI { get; set; }    
+        public int ORDER_TRANSPOT_THAI { get; set; }
+        public DateTime ORDER_TRANSPOT_DATE { get; set; }
+        public string ORDER_TRANSPOT_CODE { get; set; }
+        public string ORDER_TRANSPOT_DETAIL { get; set; }
+        public int ORDER_TRANSPOT_STATUS { get; set; }
+        public double ORDER_TRANSPOT_CHINA_PRICE { get; set; }
+        public double ORDER_TRANSPOT_THAI_PRICE { get; set; }
+        public double ORDER_TRANSPOT_TOTAL { get; set; }
+
+        public double ORDER_CURRENCY { get; set; }
+        public int ORDER_TRANS_RATE { get; set; }
+
         public string EMP_NAME { get; set; }
-
         public string ORDER_ID_LIST { get; set; }
-
         public string ORDER_CODE { get; set; }
         public string CUS_CODE { get; set; }
 
