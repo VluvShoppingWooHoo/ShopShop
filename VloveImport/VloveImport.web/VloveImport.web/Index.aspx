@@ -88,14 +88,6 @@
             $("#divMenubar").hide();
             $("#divcontent").removeClass("col s10 m10 l10");
             $("#divcontent").addClass("col s12 m12 l12");
-            SetFadeout();
-            setIndexPageHeight();
         });
-
-        function setIndexPageHeight() {
-            var h = $("#divcontent").height();
-            $("#divcontent").height(h + 20);
-            //$("#divcard").height(h);        
-        }
     </script>
 </asp:Content>

@@ -43,49 +43,95 @@
                     <li class="tab col s3 m3 l3"><a href="#">Test 4</a></li>
                 </ul>
                 <div id="rad" class="row">
-                    <div class="col s5 m5 l5 TestBox1">
-                        Check Box
+                    <div class="row">
+                        <div class="col s5 m5 l5 TestBox1">
+                            Check Box
                         <p>
                             <input class="cb" type="checkbox" id="cb1" value="Red-CheckBox" />
                             <label for="cb1">Red</label>
                         </p>
-                        <p>
-                            <input class="cb" type="checkbox" id="cb2" value="Yellow-CheckBox" />
-                            <label for="cb2">Yellow</label>
-                        </p>
-                        <p>
-                            <input class="cb" type="checkbox" id="cb3" value="Green-CheckBox" checked="checked" disabled="disabled" />
-                            <label for="cb3">Green</label>
-                        </p>
-                        <p>
-                            <input class="cb" type="checkbox" id="cb4" value="Brown-CheckBox" disabled="disabled" />
-                            <label for="cb4">Brown</label>
-                        </p>
-                    </div>
-                    <div class="col s65 m5 l5 TestBox1">
-                        Radio Button
+                            <p>
+                                <input class="cb" type="checkbox" id="cb2" value="Yellow-CheckBox" />
+                                <label for="cb2">Yellow</label>
+                            </p>
+                            <p>
+                                <input class="cb" type="checkbox" id="cb3" value="Green-CheckBox" checked="checked" disabled="disabled" />
+                                <label for="cb3">Green</label>
+                            </p>
+                            <p>
+                                <input class="cb" type="checkbox" id="cb4" value="Brown-CheckBox" disabled="disabled" />
+                                <label for="cb4">Brown</label>
+                            </p>
+                        </div>
+                        <div class="col s5 m5 l5 TestBox1">
+                            Radio Button
                         <p>
                             <input class="rdb" name="group1" type="radio" id="rdb1" value="Red-Radio" />
                             <label for="rdb1">Red</label>
                         </p>
-                        <p>
-                            <input class="rdb" name="group1" type="radio" id="rdb2" value="Yellow-Radio" />
-                            <label for="rdb2">Yellow</label>
-                        </p>
-                        <p>
-                            <input class="rdb with-gap" name="group1" type="radio" id="rdb3" value="Green-Radio" />
-                            <label for="rdb3">Green</label>
-                        </p>
-                        <p>
-                            <input class="rdb" name="group1" type="radio" id="rdb4" disabled="disabled" value="Brown-Radio" />
-                            <label for="rdb4">Brown</label>
-                        </p>
+                            <p>
+                                <input class="rdb" name="group1" type="radio" id="rdb2" value="Yellow-Radio" />
+                                <label for="rdb2">Yellow</label>
+                            </p>
+                            <p>
+                                <input class="rdb with-gap" name="group1" type="radio" id="rdb3" value="Green-Radio" />
+                                <label for="rdb3">Green</label>
+                            </p>
+                            <p>
+                                <input class="rdb" name="group1" type="radio" id="rdb4" disabled="disabled" value="Brown-Radio" />
+                                <label for="rdb4">Brown</label>
+                            </p>
+                        </div>
+
+                        <div class="col s2 m2 l2 TestBox1">
+                            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+
+                            <div id="status">
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col s2 m2 l2 TestBox1">
-                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-
-                        <div id="status">
+                    <div class="row">
+                        <div class="col s4 m4 l4">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="Images/pic/Banner/ILoveImport.jpg" />
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Test1 <i class="mdi-navigation-more-vert right"></i></span>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4">Card Title <i class="mdi-navigation-close right"></i></span>
+                                    <p><a href="#">Here is some more information about this product that is only revealed once clicked on.</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4 l4">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="Images/pic/Banner/Sale.jpg" />
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Test1 <i class="mdi-navigation-more-vert right"></i></span>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4">Card Title <i class="mdi-navigation-close right"></i></span>
+                                    <p><a href="#">Here is some more information about this product that is only revealed once clicked on.</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4 m4 l4">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="Images/pic/Banner/Tour.jpg" />
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Test1 <i class="mdi-navigation-more-vert right"></i></span>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4">Card Title <i class="mdi-navigation-close right"></i></span>
+                                    <p><a href="#">Here is some more information about this product that is only revealed once clicked on.</a></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

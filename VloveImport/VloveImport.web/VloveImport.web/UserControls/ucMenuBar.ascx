@@ -109,6 +109,7 @@
             $('.mContent').hide();
             $('#' + aid).show();
             var h = $('#divcontent').outerHeight();
+            //var h = $('.page-footer').position().top;
             setHeight(h);
         });
     });

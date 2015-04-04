@@ -584,3 +584,7 @@ nav[class="ucCustomerStatus"]
     /*padding-bottom : 15px;*/
 }
 
+.contentCard:hover
+{
+    background-color: #f5f5f5;
+}

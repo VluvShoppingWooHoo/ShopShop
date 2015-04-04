@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
 <%@ Register Src="~/UserControls/ucIndexMenuBar.ascx" TagName="ucIndexMenuBar" TagPrefix="ucIMB" %>
 <%@ Register Src="~/UserControls/ucNewsFeed.ascx" TagName="ucNewsFeed" TagPrefix="ucNF" %>
+<%@ Register Src="~/UserControls/ucContent.ascx" TagName="ucContent" TagPrefix="ucCT" %>
 <div class="row">
     <div id="sideMenu" class="col s2 m2 l2">
 
@@ -768,10 +769,48 @@
 </div>
 <div class="row" style="margin-top: 20px;">
     <ucIMB:ucIndexMenuBar ID="ucIndexMenuBar" runat="server" />
-    <ucNF:ucNewsFeed ID="ucNewsFeed" runat="server" />
+    <ucCT:ucContent ID="ucContent" runat="server" />
+    <%--<ucNF:ucNewsFeed ID="ucNewsFeed" runat="server" />--%>
 </div>
 <script type="text/javascript">
     $(function () {
+        $.ajax({
+            type: 'POST',
+            url: "../Index.aspx/GetContent",
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                var obj = JSON.parse(data.d);
+                if (obj.Result == 1) {
+                    var txtPromo = '<div class="row">';
+                    var txtNews = '<div class="row">';
+                    var countPromo = 0;
+                    var countNews = 0;
+                    for (var i = 0; i < obj.ReturnVal.length; i++) {
+                        if (obj.ReturnVal[i].ContentType == 1) {
+                            if (countPromo < 4) {
+                                countPromo++;
+                                txtPromo += '<div class="col s3 m3 l3"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
+                            }
+                        }
+                        else {
+                            if (countNews < 4) {
+                                countNews++;
+                                txtNews += '<div class="col s3 m3 l3"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
+                            }
+                        }
+                    }
+                    txtPromo += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=1">ดูเพิ่มเติม</a></div></div>';                    
+                    txtNews += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=2">ดูเพิ่มเติม</a></div></div>';
+                    $('#divPromotionBar').html(txtPromo);
+                    $('#divNewsBar').html(txtNews);
+                    setIndexPageHeight();
+                }
+            },
+            error: function (err) {
+                alert('gs');
+            }
+        });
 
         //$.ajax({
         //    type: 'POST',
@@ -833,7 +872,15 @@
             $('.collection-item').removeClass("active");
             $(this).addClass('active');
         });
+
+        SetFadeout();
     });
+
+    function setIndexPageHeight() {
+        var h = $("#divcard").outerHeight();;
+        $("#divcontent").height(h + 20);
+        //$("#divcard").height(h);        
+    }
 
     function ManageNewsFeed(val) {
         var result = "";

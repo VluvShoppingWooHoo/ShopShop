@@ -185,6 +185,27 @@ namespace VloveImport.web
 
         #region News Feed
         [WebMethod]
+        public static string GetContent()
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            JSONData jData = new JSONData();
+            CMSContentBiz CMS = new CMSContentBiz();
+            List<ContentData> models = new List<ContentData>();
+            try
+            {
+                models = CMS.GetList(0);
+                if (models.Count > 0)
+                {
+                    jData.Result = Constant.Fact.T;
+                    jData.ReturnVal = models;
+                }
+                else
+                    jData.Result = Constant.Fact.F;
+            }
+            catch (Exception ex) { }
+            return js.Serialize(jData);
+        }
+        [WebMethod]
         public static string GetNewsFeed()
         {
             JavaScriptSerializer js = new JavaScriptSerializer();

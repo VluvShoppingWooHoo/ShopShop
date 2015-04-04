@@ -17,7 +17,7 @@
                 </asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink ID="hlRegis" runat="server" NavigateUrl="~/Customer/Register.aspx">สมัครสมาชิก
+                <asp:HyperLink ID="hlRegis" runat="server" NavigateUrl="~/Customer/Register.aspx?type=rateimport&pag=3">สมัครสมาชิก
                 </asp:HyperLink>
             </li>
             <li>

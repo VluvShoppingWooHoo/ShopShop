@@ -70,7 +70,7 @@
             </footer>
         </div>
         <a href="#MastermodalItem" class="modal-trigger" id="Master_link" hidden>content</a>
-        <span id="translateFact">Де</span>
+        <span id="translateFact" hidden>Де</span>
         <div id="MastermodalItem" class="modal modal-fixed-footer row" style="background: transparent; box-shadow: none;">
             <div id="loadingMaster" class="preloader-wrapper big active center-Preload-Circle" style="background: transparent; box-shadow: none;">
                 <div class="spinner-layer spinner-yellow">
@@ -134,7 +134,8 @@
         $('.modal-trigger').leanModal({
             dismissible: false
         });
-        setHeight();
+        var h = $('#divcontent').outerHeight();
+        setHeight(h);
 
         $('.translateFlag').on("click", function () {
             var aid = $(this).data("id");
@@ -195,7 +196,10 @@
     function setHeight(h) {
         //var h = $("#divMain").height();
         if (h > $("#divMenubar").height()) {
-            $("#divMenubar").height(h);
+            if(h > 768)
+                $("#divMenubar").height(h);
+            else
+                $("#divMenubar").height(768);
         }
         else {
             $("#divMenubar").height(768);
