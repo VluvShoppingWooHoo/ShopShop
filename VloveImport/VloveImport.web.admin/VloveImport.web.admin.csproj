@@ -252,6 +252,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
+    <Folder Include="App_Themes\v_th1\images\" />
     <Folder Include="img\logo\" />
   </ItemGroup>
   <ItemGroup>
