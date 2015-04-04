@@ -102,5 +102,87 @@ namespace VloveImport.biz
         }
 
         #endregion
+
+        #region Group user
+
+        public DataSet GET_ADMIN_GET_GROUP_USER(int GROUP_ID, string GROUP_NAME, string GROUP_STATUS, string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.GET_ADMIN_GET_GROUP_USER(GROUP_ID, GROUP_NAME, GROUP_STATUS, Act);
+            return ds;
+        }
+
+        public string ADMIN_INS_GROUP_USER(AdminUserData En, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.ADMIN_INS_GROUP_USER(En, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
+        #endregion
+
+        #region User
+
+        public DataSet GET_ADMIN_GET_USER(int EMP_ID, string USERNAME, string EMP_NAME, int EMP_STATUS, string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.GET_ADMIN_GET_USER(EMP_ID, USERNAME, EMP_NAME, EMP_STATUS, Act);
+            return ds;
+        }
+
+        public string ADMIN_INS_USER(AdminUserData En, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.ADMIN_INS_USER(En, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
+        #endregion
+
+        #region Config
+
+        public DataSet ADMIN_GET_CONFIG(int CONFIG_ID, string CONFIG_GROUP, string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.ADMIN_GET_CONFIG(CONFIG_ID, CONFIG_GROUP, Act);
+            return ds;
+        }
+
+        public string ADMIN_UPD_CONFIG(CommonData En, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.ADMIN_UPD_CONFIG(En, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
+        #endregion
+
     }
 }

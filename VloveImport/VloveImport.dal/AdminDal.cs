@@ -215,7 +215,7 @@ namespace VloveImport.dal
             }
         }
 
-        public string ADMIN_INS_GROUP_USER(AdminUserData EnTran, string Act)
+        public string ADMIN_INS_GROUP_USER(AdminUserData En, string Act)
         {
             try
             {
@@ -223,13 +223,13 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("ADMIN_INS_UPD_DATA_GROUP_USER");
 
-                SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.GROUP_ID);
-                SqlCommandData.SetParameter("GROUP_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.GROUP_NAME);
-                SqlCommandData.SetParameter("GROUP_ROLE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.GROUP_ROLE);
-                SqlCommandData.SetParameter("GROUP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.GROUP_REMARK);
-                SqlCommandData.SetParameter_Input_INT("GROUP_STATUS", SqlDbType.Int, ParameterDirection.Input, EnTran.GROUP_STATUS);
+                SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, En.GROUP_ID);
+                SqlCommandData.SetParameter("GROUP_NAME", SqlDbType.VarChar, ParameterDirection.Input, En.GROUP_NAME);
+                SqlCommandData.SetParameter("GROUP_ROLE", SqlDbType.VarChar, ParameterDirection.Input, En.GROUP_ROLE);
+                SqlCommandData.SetParameter("GROUP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, En.GROUP_REMARK);
+                SqlCommandData.SetParameter_Input_INT("GROUP_STATUS", SqlDbType.Int, ParameterDirection.Input, En.GROUP_STATUS);
 
-                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 SqlCommandData.ExecuteNonQuery();
@@ -267,7 +267,7 @@ namespace VloveImport.dal
             }
         }
 
-        public string ADMIN_INS_USER(AdminUserData EnTran, string Act)
+        public string ADMIN_INS_USER(AdminUserData En, string Act)
         {
             try
             {
@@ -275,16 +275,16 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("ADMIN_INS_UPD_DATA_USER");
 
-                SqlCommandData.SetParameter_Input_INT("EMP_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_ID);
-                SqlCommandData.SetParameter("USERNAME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.USERNAME);
-                SqlCommandData.SetParameter("EMP_PASSWORD", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_PASSWORD);
-                SqlCommandData.SetParameter("EMP_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_NAME);
-                SqlCommandData.SetParameter("EMP_LNAME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_LNAME);
-                SqlCommandData.SetParameter("EMP_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, EnTran.EMP_DETAIL);
-                SqlCommandData.SetParameter_Input_INT("EMP_STATUS", SqlDbType.Int, ParameterDirection.Input, EnTran.EMP_STATUS);
-                SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.GROUP_ID);
+                SqlCommandData.SetParameter_Input_INT("EMP_ID", SqlDbType.Int, ParameterDirection.Input, En.EMP_ID);
+                SqlCommandData.SetParameter("USERNAME", SqlDbType.VarChar, ParameterDirection.Input, En.USERNAME);
+                SqlCommandData.SetParameter("EMP_PASSWORD", SqlDbType.VarChar, ParameterDirection.Input, En.EMP_PASSWORD);
+                SqlCommandData.SetParameter("EMP_NAME", SqlDbType.VarChar, ParameterDirection.Input, En.EMP_NAME);
+                SqlCommandData.SetParameter("EMP_LNAME", SqlDbType.VarChar, ParameterDirection.Input, En.EMP_LNAME);
+                SqlCommandData.SetParameter("EMP_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, En.EMP_DETAIL);
+                SqlCommandData.SetParameter_Input_INT("EMP_STATUS", SqlDbType.Int, ParameterDirection.Input, En.EMP_STATUS);
+                SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, En.GROUP_ID);
 
-                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 SqlCommandData.ExecuteNonQuery();
@@ -320,7 +320,7 @@ namespace VloveImport.dal
             }
         }
 
-        public string ADMIN_UPD_CONFIG(AdminUserData EnTran, string Act)
+        public string ADMIN_UPD_CONFIG(CommonData En, string Act)
         {
             try
             {
@@ -328,12 +328,12 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("ADMIN_UPD_DATA_CONFIG");
 
-                SqlCommandData.SetParameter("CONFIG_ID", SqlDbType.VarChar, ParameterDirection.Input, EnTran.CONFIG_ID);
-                SqlCommandData.SetParameter("CONFIG_VALUE", SqlDbType.VarChar, ParameterDirection.Input, EnTran.CONFIG_VALUE);
-                SqlCommandData.SetParameter("CONFIG_GROUP", SqlDbType.VarChar, ParameterDirection.Input, EnTran.CONFIG_GROUP);
-                SqlCommandData.SetParameter("CONFIG_REMARK", SqlDbType.VarChar, ParameterDirection.Input, EnTran.CONFIG_REMARK);
+                SqlCommandData.SetParameter("CONFIG_ID", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_ID);
+                SqlCommandData.SetParameter("CONFIG_VALUE", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_VALUE);
+                SqlCommandData.SetParameter("CONFIG_GROUP", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_GROUP);
+                SqlCommandData.SetParameter("CONFIG_REMARK", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_REMARK);
 
-                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 SqlCommandData.ExecuteNonQuery();
