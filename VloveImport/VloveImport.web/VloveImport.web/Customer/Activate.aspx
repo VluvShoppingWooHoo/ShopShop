@@ -7,7 +7,7 @@
             <table>
                 <tr>
                     <td>
-                        Verify Success
+                        ยืนยันสำเร็จ
                     </td>
                 </tr>
             </table>
@@ -16,7 +16,7 @@
             <table>
                 <tr>
                     <td>
-                        I have some Problem
+                        ยืนยันไม่สำเร็จ โปรดติดต่อเจ้าหน้าที่.
                     </td>
                 </tr>
             </table>

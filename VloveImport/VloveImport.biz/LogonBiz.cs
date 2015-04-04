@@ -81,11 +81,11 @@ namespace VloveImport.biz
             return Cust;
         }
 
-        public string UpdateActivateCustomer(string Email, string Pass)
+        public string UpdateActivateCustomer(Int32 CUS_ID)
         {
             string Result = "";
             LogonDal dal = new LogonDal("LocalConnection");
-            Result = dal.UpdateActivateCustomer(Email, Pass);
+            Result = dal.UpdateActivateCustomer(CUS_ID);
             return Result;
         }
     }

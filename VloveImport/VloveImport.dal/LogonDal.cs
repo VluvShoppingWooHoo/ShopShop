@@ -97,7 +97,7 @@ namespace VloveImport.dal
             }
         }
 
-        public string UpdateActivateCustomer(string Email, string Pass)
+        public string UpdateActivateCustomer(Int32 CUS_ID)
         {
             try
             {
@@ -105,8 +105,7 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 SqlCommandData.SetStoreProcedure("UpdateActivateCustomer");
 
-                SqlCommandData.SetParameter("Cus_Email", SqlDbType.VarChar, ParameterDirection.Input, Email);
-                SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Pass);                
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
