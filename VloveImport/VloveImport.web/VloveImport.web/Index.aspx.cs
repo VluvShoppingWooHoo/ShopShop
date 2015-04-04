@@ -17,6 +17,7 @@ using System.ServiceModel.Syndication;
 using System.Net;
 using System.Text;
 using System.IO;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web
 {
@@ -142,11 +143,12 @@ namespace VloveImport.web
         [WebMethod]
         public static string btnSearch(string Name, string Desc, string Amount, string Price, string Size,
             string Color, string Remark, string URL, string Picture)
-        {
+        {          
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
             Index Index = new Index();
             ScrapingData Data = new ScrapingData();
+            //Data.CUS_ID = 
             Data.CUS_BK_ITEMNAME = Name;
             Data.CUS_BK_ITEMDESC = Name;
             Data.CUS_BK_AMOUNT = Convert.ToInt32(Amount);
@@ -174,6 +176,8 @@ namespace VloveImport.web
         {
             string Result = "";
             ShoppingBiz Biz = new ShoppingBiz();
+            BasePage bp = new BasePage();
+            Data.CUS_ID = bp.GetCusID();
             Result = Biz.AddtoCart(Data);
             return Result;
         }

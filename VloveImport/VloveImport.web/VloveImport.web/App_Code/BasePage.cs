@@ -55,13 +55,13 @@ namespace VloveImport.web.App_Code
 
         public void CheckSession()
         {
-            if (Session["User"] != null)
+            if (HttpContext.Current.Session["User"] != null)
                 return;
             else
             {
                 string url = HttpContext.Current.Request.Url.AbsolutePath;
                 string Login = "~/Customer/Login.aspx?u=";
-                    Response.Redirect(Login + EncrypData(url));
+                    HttpContext.Current.Response.Redirect(Login + EncrypData(url));
             }
         }
 
