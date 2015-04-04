@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDal.cs" />
+    <Compile Include="CMSContentDal.cs" />
     <Compile Include="CommandData.cs" />
     <Compile Include="Commondal.cs" />
     <Compile Include="ShoppingDal.cs" />

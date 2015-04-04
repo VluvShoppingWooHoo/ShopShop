@@ -87,6 +87,8 @@
     <Content Include="Customer\Activate.aspx" />
     <Content Include="Customer\ContactUs.aspx" />
     <Content Include="Customer\AboutUs.aspx" />
+    <Content Include="Customer\ContentDetail.aspx" />
+    <Content Include="Customer\ContentList.aspx" />
     <Content Include="Customer\CustomerForgot.aspx" />
     <Content Include="Customer\CustomerChangePassword.aspx" />
     <Content Include="Customer\CustomerOrder.aspx" />
@@ -138,6 +140,7 @@
     <Content Include="Script\20150329.sql" />
     <Content Include="Script\Script Init.sql" />
     <Content Include="TestPage.aspx" />
+    <Content Include="UserControls\ucContent.ascx" />
     <Content Include="UserControls\ucNewsFeed.ascx" />
     <Content Include="UserControls\ucAccfuncMypoint.ascx" />
     <Content Include="UserControls\ucAccfuncVoucher.ascx" />
@@ -231,6 +234,18 @@
     </Compile>
     <Compile Include="Customer\AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\ContentDetail.aspx.cs">
+      <DependentUpon>ContentDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\ContentDetail.aspx.designer.cs">
+      <DependentUpon>ContentDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\ContentList.aspx.cs">
+      <DependentUpon>ContentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\ContentList.aspx.designer.cs">
+      <DependentUpon>ContentList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerForgot.aspx.cs">
       <DependentUpon>CustomerForgot.aspx</DependentUpon>
@@ -442,6 +457,12 @@
     </Compile>
     <Compile Include="TestPage.aspx.designer.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucContent.ascx.cs">
+      <DependentUpon>ucContent.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucContent.ascx.designer.cs">
+      <DependentUpon>ucContent.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucNewsFeed.ascx.cs">
       <DependentUpon>ucNewsFeed.ascx</DependentUpon>
