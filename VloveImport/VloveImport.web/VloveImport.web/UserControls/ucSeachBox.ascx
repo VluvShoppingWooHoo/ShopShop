@@ -153,48 +153,53 @@
 
         $('#btnAddCart').click(function () {
 
-            var size = $('#liSize div a.selected').html();
-            var color = '';
-            var price = $("#lblPrice").html();
-            var remark = $("#txtRemark").val();
-            if ($('#liColor div a.selected img').length > 0) {
-                color = $('#liColor div a.selected img').attr("src");
+            var User = '<%= Session["User"]%>';
+            if (User != '') {
+                var size = $('#liSize div a.selected').html();
+                var color = '';
+                var price = $("#lblPrice").html();
+                var remark = $("#txtRemark").val();
+                if ($('#liColor div a.selected img').length > 0) {
+                    color = $('#liColor div a.selected img').attr("src");
+                }
+                else {
+                    color = $('#liColor div a.selected').html();
+                }
+                if (typeof size === 'undefined') {
+                    size = '';
+                }
+                if (typeof color === 'undefined') {
+                    color = '';
+                }
+                if (typeof price === 'undefined') {
+                    price = '';
+                }
+                if (typeof remark === 'undefined') {
+                    remark = '';
+                }
+                var param = {
+                    "Name": $("#lblItemName").html(), "Desc": '', "Amount": $("#aQTY").html(), "Price": price, "Size": size,
+                    "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": ''
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: "../Index.aspx/btnSearch",
+                    data: JSON.stringify(param),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#modalItem').closeModal();
+                        toast('Item Added.', 5000)
+                    },
+                    error: function (err) {
+                        alert('gs');
+                    }
+                });
             }
             else {
-                color = $('#liColor div a.selected').html();
+                window.location.href = "/Customer/Login.aspx";
             }
-            if (size === 'undefined') {
-                size = '';
-            }
-            if (color === 'undefined') {
-                color = '';
-            }
-            if (price === 'undefined') {
-                price = '';
-            }
-            if (remark === 'undefined') {
-                remark = '';
-            }
-            var param = {
-                "Name": $("#lblItemName").html(), "Desc": '', "Amount": $("#aQTY").html(), "Price": price, "Size": size,
-                "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": ''
-            };
-            $.ajax({
-                type: 'POST',
-                url: "../Index.aspx/btnSearch",
-                data: JSON.stringify(param),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (data) {
-                    $('#modalItem').closeModal();
-                    toast('Item Added.', 5000)
-                },
-                error: function (err) {
-                    alert('gs');
-                }
-            });
         });
-
         $('#btnClose').click(function () {
             $('#modalItem').closeModal();
         });
