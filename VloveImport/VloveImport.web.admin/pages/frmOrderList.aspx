@@ -22,7 +22,7 @@
                         <td class="width35">
                             <uc1:ucCalendar ID="ucCalendar1" runat="server" />
                             &nbsp;-&nbsp;
-                    <uc1:ucCalendar ID="ucCalendar2" runat="server" />
+                            <uc1:ucCalendar ID="ucCalendar2" runat="server" />
                         </td>
                         <td class="width15">
                             <asp:Label ID="Label2" runat="server" Text="Customer Code:"></asp:Label>
