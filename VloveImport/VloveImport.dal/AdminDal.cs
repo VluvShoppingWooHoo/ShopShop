@@ -365,7 +365,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CUS_EMAIL", SqlDbType.VarChar, ParameterDirection.Input, En.Cus_Email);
                 SqlCommandData.SetParameter("CUS_TELEPHONE", SqlDbType.VarChar, ParameterDirection.Input, En.Cus_Telephone);
                 SqlCommandData.SetParameter("SYMBOW_TYPE", SqlDbType.VarChar, ParameterDirection.Input, En.SYMBOW_TYPE);
-                SqlCommandData.SetParameter("CUS_AMOUNT", SqlDbType.VarChar, ParameterDirection.Input, En.CUS_AMOUNT);
+                SqlCommandData.SetParameter("CUS_AMOUNT", SqlDbType.Float, ParameterDirection.Input, En.CUS_AMOUNT);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 return SqlCommandData.ExecuteDataSet();
