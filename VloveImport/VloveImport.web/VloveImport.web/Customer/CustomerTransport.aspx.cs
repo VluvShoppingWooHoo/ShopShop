@@ -63,5 +63,17 @@ namespace VloveImport.web.Customer
             Response.Redirect("CustomerBasket.aspx?CID=" + CUS_ID);
         }
 
+        protected void rdbThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rdbThai.SelectedItem.Value == "")
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
     }
 }

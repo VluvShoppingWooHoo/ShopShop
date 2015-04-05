@@ -59,7 +59,7 @@
             PopupControlID="Panel1" TargetControlID="lblheader">
         </asp:ModalPopupExtender>
 
-        <asp:Panel ID="Panel1" Height="400px" Width="600px" runat="server" Style="display: none;"><%--Style="display: none;"--%>
+        <asp:Panel ID="Panel1" Height="700px" Width="600px" runat="server" Style="display: none;"><%--Style="display: none;"--%>
             <table width="600px" style ="border-collapse:separate;" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_LEFT"></td>
@@ -77,7 +77,7 @@
                 <tr style="background-color: #CFCDCD;">
                     <td style ="text-align:center; padding:0px 0px;" colspan="3">
                         <center>
-                            <asp:Panel Width="96%" Height="350px" ID="Panel2" runat="server" BackColor="#FFFFFF">
+                            <asp:Panel Width="96%" Height="650px" ID="Panel2" runat="server" BackColor="#FFFFFF">
                                 <table width ="100%">
                                     <tr>
                                         <td align ="left" Width ="25%">ชื่อลูกค้า : </td>
@@ -96,28 +96,31 @@
                                     <tr>
                                         <td align ="left">ภาค : </td>
                                         <td align ="left">
-                                            <asp:DropDownList ID="dll_region" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_region_SelectedIndexChanged"></asp:DropDownList>
+                                            <asp:DropDownList ID="dll_region" runat="server" Width ="300px" AutoPostBack="True" CssClass="dpBlock"
+                                                OnSelectedIndexChanged="dll_region_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                         <td align ="center"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
                                         <td align ="left">จังหวัด : </td>
                                         <td align ="left">
-                                            <asp:DropDownList ID="dll_province" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_province_SelectedIndexChanged"></asp:DropDownList>
+                                            <asp:DropDownList ID="dll_province" runat="server" Width ="300px" AutoPostBack="True" CssClass="dpBlock"
+                                                OnSelectedIndexChanged="dll_province_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                         <td align ="center"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
                                         <td align ="left">เขต/อำเภอ</td>
                                         <td align ="left">
-                                            <asp:DropDownList ID="dll_District" runat="server" Width ="300px" AutoPostBack="True" OnSelectedIndexChanged="dll_District_SelectedIndexChanged"></asp:DropDownList>
+                                            <asp:DropDownList ID="dll_District" runat="server" Width ="300px" AutoPostBack="True" CssClass="dpBlock"
+                                                OnSelectedIndexChanged="dll_District_SelectedIndexChanged"></asp:DropDownList>
                                         </td>
                                         <td align ="center"></td>
                                     </tr>
                                     <tr>
                                         <td align ="left">แขวง/ตำบล</td>
                                         <td align ="left">
-                                            <asp:DropDownList ID="dll_Sub_District" runat="server" Width ="300px"></asp:DropDownList>
+                                            <asp:DropDownList ID="dll_Sub_District" runat="server" Width ="300px" CssClass="dpBlock"></asp:DropDownList>
                                         </td>
                                         <td align ="center"></td>
                                     </tr>

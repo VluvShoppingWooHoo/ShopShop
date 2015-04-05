@@ -38,7 +38,7 @@ namespace VloveImport.web.Customer
                 CheckSession();
                 CustomerData CusData = new CustomerData();
                 CusData = (CustomerData)Session["User"];
-                this._VS_CUS_ID = 1;//CusData.Cus_ID;
+                this._VS_CUS_ID = CusData.Cus_ID;
                 BinddataRegion("");
                 BindData();
             }
