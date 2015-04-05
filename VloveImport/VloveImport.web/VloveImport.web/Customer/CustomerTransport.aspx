@@ -19,12 +19,12 @@
                         <br />
                         2. ขนส่งภายในประเทศ โดยวิธี
                         <br />
-                        <asp:RadioButtonList ID="rdbThai" runat="server" DataTextField="TRANS_NAME" DataValueField="TRANS_ID" AutoPostBack="true"
+                        <asp:RadioButtonList ID="rdbThai" CssClass="rdbThai" runat="server" DataTextField="TRANS_NAME" DataValueField="TRANS_ID" AutoPostBack="true"
                             OnSelectedIndexChanged="rdbThai_SelectedIndexChanged">
                         </asp:RadioButtonList>
                 
                         <br />
-                        <div id="divAddress" runat="server">
+                        <div id="divAddress" class="divAddress" runat="server">
                             3. เลือกที่อยู่ในการจัดส่ง
                             <br />
                             <asp:RadioButtonList ID="rdbAddress" runat="server" DataTextField="ADDRESS_FULL" DataValueField="CUS_ADD_ID">
@@ -50,10 +50,19 @@
 
     <script type="text/javascript">
         $(function () {
+            $('.divAddress').hide();
             SetFadeout();
-            $('select').material_select();
-
-
+            $('.rdbThai label').click(function (e) {
+                //alert(e.currentTarget.control.id);
+                //$("#" + e.currentTarget.control.id).attr('checked', 'checked');
+                if (e.currentTarget.innnerHtml == "มารับเอง" || e.currentTarget.control.value == 3) {
+                    $('.divAddress').hide();
+                }
+                else {
+                    $('.divAddress').show();
+                }
+            });
+            //$('select').material_select();
         });
     </script>
 </asp:Content>
