@@ -28,6 +28,15 @@ namespace VloveImport.data.Extension
             public const int W1688 = 3;
         }
 
+        public static class WebSubTaobao
+        {
+            public const string TW_Taobao = "tw.taobao";
+        }
+        public static class WebTemplate
+        {
+            public const string Taobao = "http://item.taobao.com/item.htm?id=";
+        }
+        
         public static class Fact
         {
             public const int F = 0;

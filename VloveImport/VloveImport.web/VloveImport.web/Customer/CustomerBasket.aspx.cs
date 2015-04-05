@@ -51,7 +51,7 @@ namespace VloveImport.web.Customer
             DataTable dtSelected = new DataTable();
             if (ViewState["SOURCE"] != null)
             {
-                dtSelected = (DataTable)ViewState["SOURCE"];
+                dtSelected = ((DataTable)ViewState["SOURCE"]).Copy();
                 foreach (GridViewRow gvr in gvBasket.Rows)
                 {
                     cb = new CheckBox();
@@ -63,11 +63,17 @@ namespace VloveImport.web.Customer
                         dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());                        
                     }
                 }
+
+                if (dtSelected.Rows.Count == 0)
+                {
+                    ShowMessageBox("กรุณาเลือกรายการที่ต้องการสั่งซื้อ");
+                    return;
+                }
                 Session.Add("ORDER", dtSelected);
                 EncrypUtil en = new EncrypUtil();
                 string CUS_ID = GetCusID().ToString();
                 CUS_ID = en.EncrypData(CUS_ID);
-                Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
+                Response.Redirect("CustomerTransport.aspx?CID=" + CUS_ID);
             }
         }
 

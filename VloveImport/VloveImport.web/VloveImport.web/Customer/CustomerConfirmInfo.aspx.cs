@@ -52,7 +52,7 @@ namespace VloveImport.web.Customer
 
                 lbgroup1.Text = spl[0].Split('|')[1];
                 lbgroup2.Text = spl[1].Split('|')[1];
-                lbgroup3.Text = spl[2].Split('|')[2];
+                lbgroup3.Text = spl[2].Split('|')[1];
             }
             else
             {
@@ -74,6 +74,7 @@ namespace VloveImport.web.Customer
                 OrderData Data = new OrderData();
                 Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
                 Data.CUS_ID = GetCusID();
+                Data.CUS_ADDRESS_ID = Convert.ToInt32(spl[2].Split('|')[0]);
                 Data.TRANSPORT_CH_TH_METHOD = Convert.ToInt32(spl[0].Split('|')[0]);
                 Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
                 Data.Create_User = User; //SessionUser
@@ -98,7 +99,7 @@ namespace VloveImport.web.Customer
             EncrypUtil en = new EncrypUtil();
             string CUS_ID = GetCusID().ToString();
             CUS_ID = en.EncrypData(CUS_ID);
-            Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
+            Response.Redirect("CustomerTransport.aspx?CID=" + CUS_ID);
         }
     }
 }

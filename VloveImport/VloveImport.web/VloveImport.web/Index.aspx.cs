@@ -79,7 +79,17 @@ namespace VloveImport.web
                 int webMode = 1;
                 #region for use
                 if (txt.Contains("taobao.com"))
+                {
                     webMode = Constant.Web.WTaoBao;
+                    if (txt.Contains(Constant.WebSubTaobao.TW_Taobao))
+                    {
+                        int end = txt.IndexOf(".htm?");
+                        string newURL = txt.Substring(0, end);
+                        int start = newURL.LastIndexOf("/");
+                        string ID = newURL.Substring(start + 1, newURL.Length - (start + 1));
+                        txt = Constant.WebTemplate.Taobao + ID;
+                    }
+                }
                 else if (txt.Contains("tmall.com"))
                     webMode = Constant.Web.WTmall;
                 else
@@ -143,7 +153,7 @@ namespace VloveImport.web
         [WebMethod]
         public static string btnSearch(string Name, string Desc, string Amount, string Price, string Size,
             string Color, string Remark, string URL, string Picture)
-        {          
+        {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
             Index Index = new Index();

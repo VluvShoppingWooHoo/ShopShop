@@ -71,6 +71,7 @@
         </div>
         <a href="#MastermodalItem" class="modal-trigger" id="Master_link" hidden>content</a>
         <span id="translateFact" hidden>ดี</span>
+        <%--<input id="translateFact" type="text" value="ดี" />--%>
         <div id="MastermodalItem" class="modal modal-fixed-footer row" style="background: transparent; box-shadow: none;">
             <div id="loadingMaster" class="preloader-wrapper big active center-Preload-Circle" style="background: transparent; box-shadow: none;">
                 <div class="spinner-layer spinner-yellow">
@@ -124,7 +125,9 @@
 </html>
 
 <script type="text/javascript">
+    var firstText;
     $(function () {
+        firstText = $("#translateFact").html();
         $('.slider').slider({ full_width: false });
         $('.dropdown-button').dropdown();
         $('.parallax').parallax();
@@ -154,27 +157,12 @@
         else
             $('#fbLoginbtn').hide();
 
-
-        //var coo = $.cookie('googtrans');
-        //if (coo == '/th/zh-TW') {
-        //    $('#MastermodalItem').openModal();
-        //    $('#MastermodalItem').show(0);
-        //    //$("#Master_link")[0].click();
-        //    $('#loadingMaster').show();
-        //    //$('#MastermodalItem').show(0).delay(5000);
-        //    for (var i = 0; i < 5000; i++) {
-        //        if ($('#translateFact').html() != "ดี") {
-        //            //alert('บลาๆ');
-        //            $('#MastermodalItem').closeModal();
-        //            //$('#MastermodalItem').show(0).delay(1000);
-        //            break;
-        //        }
-        //    }
-        //    //alert('5000');
-        //}
-        //else {
-        //    //$('#MastermodalItem').show(0).delay(2500);
-        //}
+        var coo = $.cookie('googtrans');
+        if (coo == '/th/zh-TW') {
+            $('#Master_link').click();
+            $('#loadingMaster').show();
+            setTimeout(waitTrans, 500);
+        }
     });
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1);
@@ -196,7 +184,7 @@
     function setHeight(h) {
         //var h = $("#divMain").height();
         if (h > $("#divMenubar").height()) {
-            if(h > 768)
+            if (h > 768)
                 $("#divMenubar").height(h);
             else
                 $("#divMenubar").height(768);
@@ -209,6 +197,14 @@
     }
     function SetFadeout() {
         $("#masterForm").fadeIn(1000);
+    }
+    function waitTrans() {
+        if (firstText != $('#translateFact').html()) {
+            $('#MastermodalItem').closeModal();
+        }
+        else {
+            setTimeout(waitTrans, 500);
+        }
     }
 </script>
 <script type="text/javascript">
