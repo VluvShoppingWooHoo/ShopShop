@@ -16,7 +16,16 @@ namespace VloveImport.web.admin.pages
         {
             if (!IsPostBack)
             {
+                ResetData();
                 BindData();
+            }
+        }
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ResetData();
             }
         }
 
@@ -34,7 +43,7 @@ namespace VloveImport.web.admin.pages
                 En.CUS_BIRTHDAY_TO = ucCalendar_BirthdayTo.GET_DATE_TO_DATE();
                 En.Cus_Email = txtCus_Email.Text.Trim();
                 En.Cus_Telephone = txtCus_telphone.Text.Trim();
-                En.SYMBOW_TYPE = ddlSymbow.SelectedValue;
+                En.SYMBOW_TYPE = txtCus_Amount.Text.Trim() == "" ? "-1" : ddlSymbow.SelectedValue;
                 En.CUS_AMOUNT = txtCus_Amount.Text.Trim() == "" ? (Double?)null : Convert.ToDouble(txtCus_Amount.Text.Trim());
 
                 AdminBiz AdBiz = new AdminBiz();
@@ -58,6 +67,18 @@ namespace VloveImport.web.admin.pages
             }
         }
 
+        public void ResetData()
+        {
+            txtCus_Code.Text = "";
+            txtCus_Name.Text = "";
+            ucCalendar_BirthdayFrom.CleanDataTextBox();
+            ucCalendar_BirthdayTo.CleanDataTextBox();
+            txtCus_Email.Text = "";
+            txtCus_telphone.Text = "";
+            ddlSymbow.SelectedIndex = 0;
+            txtCus_Amount.Text = "";
+        }
+
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             BindData();
@@ -65,14 +86,7 @@ namespace VloveImport.web.admin.pages
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            txtCus_Code.Text = "";
-            txtCus_Name.Text = "";
-            ucCalendar_BirthdayFrom.ClearData();
-            ucCalendar_BirthdayTo.ClearData();
-            txtCus_Email.Text = "";
-            txtCus_telphone.Text = "";
-            ddlSymbow.SelectedIndex = 0;
-            txtCus_Amount.Text = "";
+            ResetData();
         }
 
     }

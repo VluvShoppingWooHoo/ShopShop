@@ -58,6 +58,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.TextBox txtCus_Name;
         
         /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
         /// ucCalendar_BirthdayFrom control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace VloveImport.web.admin.pages {
         protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar_BirthdayTo;
         
         /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+        
+        /// <summary>
         /// txtCus_Email control.
         /// </summary>
         /// <remarks>
@@ -85,6 +103,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.TextBox txtCus_Email;
         
         /// <summary>
+        /// Label5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label5;
+        
+        /// <summary>
         /// txtCus_telphone control.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,15 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCus_telphone;
+        
+        /// <summary>
+        /// Label6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
         /// ddlSymbow control.

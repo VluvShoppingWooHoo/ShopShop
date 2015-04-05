@@ -26,23 +26,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Customer Birthday : </td>
+                        <td><asp:Label ID="Label3" runat="server" Text="Customer Birthday :"></asp:Label></td>
                         <td>
                             <uc1:ucCalendar ID="ucCalendar_BirthdayFrom" runat="server" />
                             &nbsp;-&nbsp;
                             <uc1:ucCalendar ID="ucCalendar_BirthdayTo" runat="server" />
                         </td>
-                        <td>Customer Email</td>
+                        <td><asp:Label ID="Label4" runat="server" Text="Customer Email :"></asp:Label></td>
                         <td>
                             <asp:TextBox ID="txtCus_Email" runat="server" Width="300px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td>Customer Telephone : </td>
+                        <td><asp:Label ID="Label5" runat="server" Text="Customer Telephone :"></asp:Label></td>
                         <td>
                             <asp:TextBox ID="txtCus_telphone" runat="server" Width="300px"></asp:TextBox>
                         </td>
-                        <td>Customer Amount :</td>
+                        <td><asp:Label ID="Label6" runat="server" Text="Customer Amount :"></asp:Label></td>
                         <td>
                             <asp:DropDownList ID="ddlSymbow" runat="server" Width="100px">
                                 <asp:ListItem Value="1">=</asp:ListItem>
@@ -72,7 +72,7 @@
                 </tr>
             </table>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="15" Width="100%"
-                DataKeyNames="CUS_ID,CUS_CODE" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
+                DataKeyNames="CUS_ID,CUS_CODE">
                 <Columns>
                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No.">
                         <HeaderStyle CssClass="width5" />
@@ -85,8 +85,12 @@
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Telephone" DataField="CUS_TELEPHONE" />
                     <asp:BoundField HeaderText="Email" DataField="CUS_EMAIL"/>
-                    <asp:BoundField HeaderText="Amount" DataField="CUS_TOTAL_AMOUNT" />
-                    <asp:BoundField HeaderText="Point" DataField="CUS_POINT"/>
+                    <asp:BoundField HeaderText="Amount" DataField="CUS_TOTAL_AMOUNT" DataFormatString="{0:#,##0.00}">
+                    <ItemStyle CssClass="ItemStyle-right" />
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="Point" DataField="CUS_POINT">
+                    <ItemStyle CssClass="ItemStyle-right" />
+                    </asp:BoundField>
                     <asp:BoundField DataField="CUS_STATUS_TEXT" HeaderText="Status">
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
