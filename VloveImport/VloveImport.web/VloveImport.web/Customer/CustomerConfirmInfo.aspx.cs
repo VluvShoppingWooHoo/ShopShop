@@ -52,7 +52,7 @@ namespace VloveImport.web.Customer
 
                 lbgroup1.Text = spl[0].Split('|')[1];
                 lbgroup2.Text = spl[1].Split('|')[1];
-                lbgroup3.Text = spl[2].Split('|')[2];
+                lbgroup3.Text = spl[2].Split('|')[1];
             }
             else
             {
