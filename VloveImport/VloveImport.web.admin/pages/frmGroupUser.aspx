@@ -21,6 +21,7 @@
                         </td>
                         <td class="width35">
                             <asp:TextBox ID="txtGroup_name" runat="server" Width="300px"></asp:TextBox>
+                            <span style ="color:red;">*</span>
                         </td>
                         <td class="width15">
                             <asp:Label ID="Label2" runat="server" Text="Group Status :"></asp:Label>
@@ -39,7 +40,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Role Group</td>
+                        <td>
+                            Role Group
+                            <span style ="color:red;">*</span>
+                        </td>
                         <td colspan="3">
                         </td>
                     </tr>

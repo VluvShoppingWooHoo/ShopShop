@@ -45,7 +45,7 @@ namespace VloveImport.web.admin.pages
                 }
             }
 
-            this.btnSave.Attributes.Add("onClick", "javascript:return confirm('คุณต้องการบันทึกข้อมูลหรือไม่ ?')");
+            this.btnSave.Attributes.Add("onClick", "javascript:return confirm('Do you want to save data ?')");
         }
 
         public void BindData()
