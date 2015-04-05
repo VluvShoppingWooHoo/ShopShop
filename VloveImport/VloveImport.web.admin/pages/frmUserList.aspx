@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="frmUserList.aspx.cs" Inherits="VloveImport.web.admin.pages.frmUserList" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-    <ContentTemplate>
-<fieldset style="width: 98.5%;">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <fieldset style="width: 98.5%;">
                 <legend>Search Criteria</legend>
                 <table style="border: 1 solid;">
                     <tr>
@@ -47,7 +48,7 @@
                         <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
                     </td>
                     <td style="text-align: right;">
-                        <asp:Button ID="btnAdd" runat="server" Text="Add user" CssClass ="btnSave" OnClick="btnAdd_Click" />
+                        <asp:Button ID="btnAdd" runat="server" Text="Add user" CssClass="btnSave" OnClick="btnAdd_Click" />
                     </td>
                 </tr>
             </table>
@@ -58,16 +59,16 @@
                         <HeaderStyle CssClass="width5" />
                     </asp:BoundField>
                     <asp:BoundField DataField="USERNAME" HeaderText="Username">
-                    <HeaderStyle CssClass="width15" />
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="Employee name" DataField="FULL_NAME" >
-                    <HeaderStyle CssClass="width15" />
+                    <asp:BoundField HeaderText="Employee name" DataField="FULL_NAME">
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="Groupuser" DataField="GROUP_NAME" >
-                    <HeaderStyle CssClass="width15" />
+                    <asp:BoundField HeaderText="Groupuser" DataField="GROUP_NAME">
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
                     <asp:BoundField DataField="EMP_STATUS_TEXT" HeaderText="Status">
-                    <HeaderStyle CssClass="width15" />
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
@@ -79,6 +80,6 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-    </ContentTemplate>
-</asp:UpdatePanel>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
