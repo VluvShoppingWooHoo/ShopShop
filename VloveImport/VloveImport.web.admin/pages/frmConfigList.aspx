@@ -15,25 +15,11 @@
                             <asp:TextBox ID="txtconfigid" runat="server" Width="300px"></asp:TextBox>
                         </td>
                         <td class="width15">
-                            <asp:Label ID="Label2" runat="server" Text="Config Status :"></asp:Label>
-                        </td>
-                        <td class="width35">
-                            <asp:DropDownList ID="ddl_status" runat="server" Width="300px">
-                                <asp:ListItem Value="-1">Show all</asp:ListItem>
-                                <asp:ListItem Value="1">Active</asp:ListItem>
-                                <asp:ListItem Value="0">Inactive</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <asp:Label ID="Label3" runat="server" Text="Config Group :"></asp:Label>
                         </td>
-                        <td>
+                        <td class="width35">
                             <asp:TextBox ID="txtconfigGroup" runat="server" Width="300px"></asp:TextBox>
                         </td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td colspan="4" style="text-align: center;">

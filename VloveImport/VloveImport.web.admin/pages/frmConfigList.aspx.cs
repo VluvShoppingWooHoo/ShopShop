@@ -104,7 +104,6 @@ namespace VloveImport.web.admin.pages
         {
             txtconfigid.Text = "";
             txtconfigGroup.Text = "";
-            ddl_status.SelectedIndex = 0;
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
