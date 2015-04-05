@@ -159,7 +159,7 @@ namespace VloveImport.biz
 
         #region Config
 
-        public DataSet ADMIN_GET_CONFIG(int CONFIG_ID, string CONFIG_GROUP, string Act)
+        public DataSet ADMIN_GET_CONFIG(string CONFIG_ID, string CONFIG_GROUP, string Act)
         {
             DataSet ds = new DataSet();
             AdminDal dal = new AdminDal("LocalConnection");

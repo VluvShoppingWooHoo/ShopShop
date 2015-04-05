@@ -302,14 +302,14 @@ namespace VloveImport.dal
 
         #region Config
 
-        public DataSet ADMIN_GET_CONFIG(int CONFIG_ID, string CONFIG_GROUP, string Act)
+        public DataSet ADMIN_GET_CONFIG(string CONFIG_ID, string CONFIG_GROUP, string Act)
         {
             try
             {
                 SqlCommandData.SetStoreProcedure("ADMIN_GET_DATA_CONFIG");
 
-                SqlCommandData.SetParameter_Input_INT("CONFIG_ID", SqlDbType.Int, ParameterDirection.Input, CONFIG_ID);
-                SqlCommandData.SetParameter("CONFIG_GROUP", SqlDbType.Date, ParameterDirection.Input, CONFIG_GROUP);
+                SqlCommandData.SetParameter("CONFIG_ID", SqlDbType.VarChar, ParameterDirection.Input, CONFIG_ID);
+                SqlCommandData.SetParameter("CONFIG_GROUP", SqlDbType.VarChar, ParameterDirection.Input, CONFIG_GROUP);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 return SqlCommandData.ExecuteDataSet();
