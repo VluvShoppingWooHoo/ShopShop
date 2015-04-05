@@ -27,7 +27,7 @@ namespace VloveImport.data
         public string EMP_NAME { get; set; }
         public string EMP_LNAME { get; set; }
         public string EMP_DETAIL { get; set; }
-        public string EMP_STATUS { get; set; }
+        public int EMP_STATUS { get; set; }
 
         #endregion
 

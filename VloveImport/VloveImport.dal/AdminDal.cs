@@ -254,8 +254,8 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("ADMIN_GET_DATA_USER");
 
                 SqlCommandData.SetParameter_Input_INT("EMP_ID", SqlDbType.Int, ParameterDirection.Input, EMP_ID);
-                SqlCommandData.SetParameter("USERNAME", SqlDbType.Date, ParameterDirection.Input, USERNAME);
-                SqlCommandData.SetParameter("EMP_NAME", SqlDbType.Int, ParameterDirection.Input, EMP_NAME);
+                SqlCommandData.SetParameter("USERNAME", SqlDbType.VarChar, ParameterDirection.Input, USERNAME);
+                SqlCommandData.SetParameter("EMP_NAME", SqlDbType.VarChar, ParameterDirection.Input, EMP_NAME);
                 SqlCommandData.SetParameter_Input_INT("EMP_STATUS", SqlDbType.Int, ParameterDirection.Input, EMP_STATUS);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
