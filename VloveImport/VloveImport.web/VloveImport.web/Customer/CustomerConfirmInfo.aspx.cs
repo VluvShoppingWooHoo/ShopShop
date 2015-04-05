@@ -52,6 +52,7 @@ namespace VloveImport.web.Customer
 
                 lbgroup1.Text = spl[0].Split('|')[1];
                 lbgroup2.Text = spl[1].Split('|')[1];
+                lbgroup3.Text = spl[2].Split('|')[2];
             }
             else
             {
@@ -95,7 +96,7 @@ namespace VloveImport.web.Customer
         protected void btnBack_ServerClick(object sender, EventArgs e)
         {
             EncrypUtil en = new EncrypUtil();
-            string CUS_ID = "0";//SessionUser
+            string CUS_ID = GetCusID().ToString();
             CUS_ID = en.EncrypData(CUS_ID);
             Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
         }

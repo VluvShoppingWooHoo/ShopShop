@@ -10,23 +10,22 @@
 
             <div class="row s6 m6 l6 TestBox1">
                 1. ขนส่งจากจีนถึงไทย โดยวิธี 
-            <br />
+                <br />
                 <asp:RadioButtonList ID="rdbChina" runat="server" DataTextField="TRANS_NAME" DataValueField="TRANS_ID">
                 </asp:RadioButtonList>
-                <%--<asp:RadioButton ID="rdbCar" runat="server" GroupName="GROUP1" Text="ทางรถ (10-15 วัน)" />    
-            <br />         
-            <asp:RadioButton ID="rdbBoat" runat="server" GroupName="GROUP1" Text="ทางเรือ (20-25 วัน)" />         --%>
-                <%--</div>
-        
-        <div class="row s6 m6 l6 TestBox1">--%>
+                
                 <br />
                 2. ขนส่งภายในประเทศ โดยวิธี
-            <br />
+                <br />
                 <asp:RadioButtonList ID="rdbThai" runat="server" DataTextField="TRANS_NAME" DataValueField="TRANS_ID">
                 </asp:RadioButtonList>
-                <%--<asp:RadioButton ID="rdbSafe" runat="server" GroupName="GROUP2" Text="มารับเอง" />    
-            <br />         
-            <asp:RadioButton ID="rdbNim" runat="server" GroupName="GROUP2" Text="นิ่มซีเส็ง" />                     --%>
+                
+                <br />
+                3. เลือกที่อยู่ในการจัดส่ง
+                <br />
+                <asp:RadioButtonList ID="rdbAddress" runat="server" DataTextField="ADDRESS_FULL" DataValueField="CUS_ADD_ID">
+                </asp:RadioButtonList>
+
                 <br />
                 <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
                     name="action" class="btn waves-effect orange waves-light">

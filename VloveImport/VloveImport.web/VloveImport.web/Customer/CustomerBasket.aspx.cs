@@ -65,7 +65,7 @@ namespace VloveImport.web.Customer
                 }
                 Session.Add("ORDER", dtSelected);
                 EncrypUtil en = new EncrypUtil();
-                string CUS_ID = "0";//SessionUser
+                string CUS_ID = GetCusID().ToString();
                 CUS_ID = en.EncrypData(CUS_ID);
                 Response.Redirect("CustomerTranspot.aspx?CID=" + CUS_ID);
             }

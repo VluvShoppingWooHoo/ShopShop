@@ -59,6 +59,9 @@
                 2. เลือกวิธีขนส่งภายในประเทศ โดย
             <asp:Label ID="lbgroup2" runat="server"></asp:Label>
                 <br />
+                3. ที่อยู่ในการจัดส่ง
+            <asp:Label ID="lbgroup3" runat="server"></asp:Label>
+                <br />
                 <%--กรุณาทำการชำระเงินภายใน 3 วัน หลังจาก 3 วัน ใบสั่งซื้อจะถูกยกเลิกโดยอัตโนมัติ--%>
                 <br />                
                 <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"

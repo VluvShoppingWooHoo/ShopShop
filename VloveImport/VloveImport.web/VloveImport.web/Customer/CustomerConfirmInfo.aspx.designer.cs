@@ -40,6 +40,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Label lbgroup2;
         
         /// <summary>
+        /// lbgroup3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbgroup3;
+        
+        /// <summary>
         /// btnBack control.
         /// </summary>
         /// <remarks>
