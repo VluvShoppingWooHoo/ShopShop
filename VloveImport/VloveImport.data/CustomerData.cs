@@ -68,5 +68,14 @@ namespace VloveImport.data
 
         #endregion
 
+        #region Search
+
+        public string SYMBOW_TYPE { get; set; }
+        public Nullable<DateTime> CUS_BIRTHDAY_FROM { get; set; }
+        public Nullable<DateTime> CUS_BIRTHDAY_TO { get; set; }
+        public Double? CUS_AMOUNT {get; set;}
+
+        #endregion
+
     }
 }
