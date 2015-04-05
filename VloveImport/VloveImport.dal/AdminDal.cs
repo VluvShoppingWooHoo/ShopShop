@@ -349,5 +349,34 @@ namespace VloveImport.dal
 
         #endregion
 
+        #region Customer
+
+        public DataSet ADMIN_GET_CUSTOMER(CustomerData En, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_DATA_CUSTOMER");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.VarChar, ParameterDirection.Input, En.Cus_ID);
+                SqlCommandData.SetParameter("CUS_CODE", SqlDbType.VarChar, ParameterDirection.Input, En.Cus_Code);
+                SqlCommandData.SetParameter("CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, En.Cus_Name);
+                SqlCommandData.SetParameter("CUS_BIRTHDAY_FROM", SqlDbType.Date, ParameterDirection.Input, En.CUS_BIRTHDAY_FROM);
+                SqlCommandData.SetParameter("CUS_BIRTHDAY_TO", SqlDbType.VarChar, ParameterDirection.Input, En.CUS_BIRTHDAY_TO);
+                SqlCommandData.SetParameter("CUS_EMAIL", SqlDbType.VarChar, ParameterDirection.Input, En.Cus_Email);
+                SqlCommandData.SetParameter("CUS_TELEPHONE", SqlDbType.VarChar, ParameterDirection.Input, En.Cus_Telephone);
+                SqlCommandData.SetParameter("SYMBOW_TYPE", SqlDbType.VarChar, ParameterDirection.Input, En.SYMBOW_TYPE);
+                SqlCommandData.SetParameter("CUS_AMOUNT", SqlDbType.VarChar, ParameterDirection.Input, En.CUS_AMOUNT);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ADMIN_GET_CUSTOMER -> msg : " + ex.Message);
+            }
+        }
+
+        #endregion
+
     }
 }

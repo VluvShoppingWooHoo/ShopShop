@@ -184,5 +184,17 @@ namespace VloveImport.biz
 
         #endregion
 
+        #region Customer
+
+        public DataSet ADMIN_GET_CUSTOMER(CustomerData En, string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.ADMIN_GET_CUSTOMER(En, Act);
+            return ds;
+        }
+
+        #endregion
+
     }
 }
