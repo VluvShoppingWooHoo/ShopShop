@@ -10,7 +10,7 @@ using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class CustomerTranspot : BasePage
+    public partial class CustomerTransport : BasePage
     {
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)

@@ -10,7 +10,7 @@
 namespace VloveImport.web.Customer {
     
     
-    public partial class CustomerTranspot {
+    public partial class CustomerTransport {
         
         /// <summary>
         /// rdbChina control.

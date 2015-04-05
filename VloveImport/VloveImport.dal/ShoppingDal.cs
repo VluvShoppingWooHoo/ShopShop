@@ -90,9 +90,13 @@ namespace VloveImport.dal
 
                 SqlCommandData.SetParameter_Input_INT("ORDER_STATUS", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_STATUS);
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, Data.CUS_ID);
-                SqlCommandData.SetParameter_Input_INT("ORDER_TRANSPOT_CHINA", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TRANSPOT_CHINA);
-                SqlCommandData.SetParameter_Input_INT("ORDER_TRANSPOT_THAI", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TRANSPOT_THAI);
+                SqlCommandData.SetParameter_Input_INT("CUS_ADDRESS_ID", SqlDbType.Int, ParameterDirection.Input, Data.CUS_ADDRESS_ID);
+                SqlCommandData.SetParameter_Input_INT("TRANSPORT_CH_TH_METHOD", SqlDbType.Int, ParameterDirection.Input, Data.TRANSPORT_CH_TH_METHOD);
+                SqlCommandData.SetParameter_Input_INT("TRANSPORT_TH_CU_METHOD", SqlDbType.Int, ParameterDirection.Input, Data.TRANSPORT_TH_CU_METHOD);
+                SqlCommandData.SetParameter_Input_INT("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
+                SqlCommandData.SetParameter_Input_INT("ORDER_TRANS_RATE", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TRANS_RATE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
+
                 SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);
 
                 SqlCommandData.ExecuteNonQuery();

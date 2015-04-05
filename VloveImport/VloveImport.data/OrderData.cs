@@ -13,30 +13,22 @@ namespace VloveImport.data
         public DateTime ORDER_DATE { get; set; }
         public int ORDER_STATUS { get; set; }
         public int CUS_ID { get; set; }
-        public int CUS_ADDRESS_ID { get; set; }
-        public int TRANSPORT_STATUS { get; set; } 
-        
-        public int ORDER_TRANSPOT_CHINA { get; set; }
-        public int ORDER_TRANSPOT_THAI { get; set; }
-        public DateTime ORDER_TRANSPOT_DATE { get; set; }
-        public string ORDER_TRANSPOT_CODE { get; set; }
-        public string ORDER_TRANSPOT_DETAIL { get; set; }
-        public int ORDER_TRANSPOT_STATUS { get; set; }
-        public double ORDER_TRANSPOT_CHINA_PRICE { get; set; }
-        public double ORDER_TRANSPOT_THAI_PRICE { get; set; }
-        public double ORDER_TRANSPOT_TOTAL { get; set; }
-
+        public int CUS_ADDRESS_ID { get; set; }        
+        public int TRANSPORT_CH_TH_METHOD { get; set; }
+        public int TRANSPORT_TH_CU_METHOD { get; set; }
+        public DateTime TRANSPORT_DATE { get; set; }
+        public string TRANSPORT_DETAIL { get; set; }
+        public int TRANSPORT_STATUS { get; set; }
         public double ORDER_CURRENCY { get; set; }
         public int ORDER_TRANS_RATE { get; set; }
+        #endregion
+
+        #region Optional
 
         public string EMP_NAME { get; set; }
         public string ORDER_ID_LIST { get; set; }
         public string ORDER_CODE { get; set; }
         public string CUS_CODE { get; set; }
-
-        #endregion
-
-        #region Optional
 
         public int UseFlag { get; set; }
         public string ORDER_DATE_TEXT { get; set; }
@@ -56,9 +48,17 @@ namespace VloveImport.data
         public double OD_PRICE { get; set; }
         public string OD_SIZE { get; set; }
         public string OD_COLOR { get; set; }
-        public string OD_REMARK { get; set; }        
-        public string OD_REF_BASKET { get; set; }
+        public string OD_REMARK { get; set; }
+        public string OD_URL { get; set; }
+        public string OD_PICURL { get; set; }           
         public string OD_STATUS { get; set; }
+        public string OD_SHOPNAME { get; set; }
+        public string THANSPORT_CODE { get; set; }
+        public string THANSPORT_CHINA_PRICE { get; set; }
+        public string THANSPORT_THAI_PRICE { get; set; }
+        public string THANSPORT_CUSTOMER_PRICE { get; set; }
+        public string THANSPORT_TOTAL_PRICE { get; set; }
+        public string OD_REF_BASKET { get; set; }
         #endregion
     }
 }

@@ -101,7 +101,7 @@
     <Content Include="Customer\CustomerMyAccount.aspx" />
     <Content Include="Customer\CustomerPayment.aspx" />
     <Content Include="Customer\CustomerProfile.aspx" />
-    <Content Include="Customer\CustomerTranspot.aspx" />
+    <Content Include="Customer\CustomerTransport.aspx" />
     <Content Include="Customer\dummyCustomer.aspx" />
     <Content Include="Customer\HowTo.aspx" />
     <Content Include="Customer\Login.aspx" />
@@ -331,12 +331,12 @@
     <Compile Include="Customer\CustomerProfile.aspx.designer.cs">
       <DependentUpon>CustomerProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Customer\CustomerTranspot.aspx.cs">
-      <DependentUpon>CustomerTranspot.aspx</DependentUpon>
+    <Compile Include="Customer\CustomerTransport.aspx.cs">
+      <DependentUpon>CustomerTransport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Customer\CustomerTranspot.aspx.designer.cs">
-      <DependentUpon>CustomerTranspot.aspx</DependentUpon>
+    <Compile Include="Customer\CustomerTransport.aspx.designer.cs">
+      <DependentUpon>CustomerTransport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\dummyCustomer.aspx.cs">
       <DependentUpon>dummyCustomer.aspx</DependentUpon>
