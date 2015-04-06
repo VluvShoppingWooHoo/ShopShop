@@ -41,7 +41,7 @@ namespace VloveImport.dal
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("SP_FX_GET_PAGEBYURL");
+                SqlCommandData.SetStoreProcedure("GET_PAGEBYURL");
                
                 //Input                
                 SqlCommandData.SetParameter("P_PAGE_URL", SqlDbType.VarChar, ParameterDirection.Input, Page_URL);
@@ -51,9 +51,29 @@ namespace VloveImport.dal
             }
             catch (Exception ex)
             {
-                throw new Exception("SP_EADW_GET_PAGEBYURL -> msg : " + ex.Message);
+                throw new Exception("GET_PAGEBYURL -> msg : " + ex.Message);
             }
         }
         #endregion
+
+        public DataSet Get_MenuListByType(string Page_Type)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_MENULIST_BY_TYPE");
+
+                //Input                
+                SqlCommandData.SetParameter("P_TYPE", SqlDbType.VarChar, ParameterDirection.Input, Page_Type);
+                //Oracle_commandData.SetParameter("P_CIF_NO_MAX", OracleType.Number, ParameterDirection.Input, P_LIMIT_NO_MAX);
+
+                return SqlCommandData.ExecuteDataSet();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_MENULIST_BY_TYPE -> msg : " + ex.Message);
+            }
+        }
+
     }
 }

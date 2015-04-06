@@ -31,6 +31,16 @@ namespace VloveImport.biz
             return dal.GetPageByURL(Page_URL);
         }
         #endregion
+
+        public DataTable Get_MenuListByType(string Page_Type)
+        {
+            PermissionDal dal = new PermissionDal("LocalConnection");
+            DataSet ds = dal.Get_MenuListByType(Page_Type);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null)
+                return ds.Tables[0];
+            else
+                return null;
+        }
         
     }
 }

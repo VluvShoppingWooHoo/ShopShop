@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
+using VloveImport.data;
 using VloveImport.util;
 
 namespace VloveImport.web.admin
@@ -74,6 +75,21 @@ namespace VloveImport.web.admin
                     string pwd = En.DecryptData(ds.Tables[0].Rows[0]["EMP_PASSWORD"].ToString());
                     if (pwd == txtpassword.Text)
                     {
+                        AdminUserData Data = new AdminUserData();
+                        Data.EMP_ID = Convert.ToInt32(ds.Tables[0].Rows[0]["EMP_ID"].ToString());
+                        Data.USERNAME = ds.Tables[0].Rows[0]["USERNAME"].ToString();
+                        Data.EMP_PASSWORD = ds.Tables[0].Rows[0]["EMP_PASSWORD"].ToString();
+                        Data.EMP_NAME = ds.Tables[0].Rows[0]["EMP_NAME"].ToString();
+                        Data.EMP_LNAME = ds.Tables[0].Rows[0]["EMP_LNAME"].ToString();
+                        Data.EMP_DETAIL = ds.Tables[0].Rows[0]["EMP_DETAIL"].ToString();
+                        Data.EMP_STATUS = Convert.ToInt32(ds.Tables[0].Rows[0]["EMP_STATUS"].ToString());
+                        Data.GROUP_ID = Convert.ToInt32(ds.Tables[0].Rows[0]["GROUP_ID"].ToString());
+                        Data.GROUP_NAME = ds.Tables[0].Rows[0]["GROUP_NAME"].ToString();
+                        Data.GROUP_ROLE = ds.Tables[0].Rows[0]["GROUP_ROLE"].ToString();
+                        Data.GROUP_REMARK = ds.Tables[0].Rows[0]["GROUP_REMARK"].ToString();
+                        Data.GROUP_STATUS = Convert.ToInt32(ds.Tables[0].Rows[0]["GROUP_STATUS"].ToString());
+
+                        Session["AdminUser"] = Data;
                         Response.Redirect("~/Pages/frmIndex.aspx");
                     }
                     else ShowMessageBox("กรุณาตรวจสอบ USERNAME หรือ PASSWORD อีกครั้ง", this.Page);

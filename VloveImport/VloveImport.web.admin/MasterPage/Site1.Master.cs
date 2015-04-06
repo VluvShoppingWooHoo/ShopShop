@@ -14,12 +14,13 @@ namespace VloveImport.web.admin.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            CheckPermission();
+            CheckSessionUser();
         }
 
         private void CheckSessionUser()
         {
-            if (Session["User"] == null)
+            if (Session["AdminUser"] == null)
             {
                 Response.Redirect("~/Logout.aspx");
             }
@@ -35,7 +36,8 @@ namespace VloveImport.web.admin.MasterPage
             URL = Page.Request.Url.ToString().Split('/');
             PAGE = URL[URL.Length - 1].Split('.');
             Page_URL = PAGE[0];
-            ds = PermissionBiz.GetPageByURL(Page_URL);
+            PermissionBiz Biz = new PermissionBiz();
+            ds = Biz.GetPageByURL(Page_URL);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 if (!CheckPage(ds.Tables[0].Rows[0]["PAGE_CODE"].ToString()))
                     Response.Redirect("~/Logout.aspx");
@@ -54,13 +56,13 @@ namespace VloveImport.web.admin.MasterPage
             if (PageCode == "99")
                 return true;
 
-            UserData User;
-            if (Session["User"] != null)
-                User = (UserData)Session["User"];
+            AdminUserData User;
+            if (Session["AdminUser"] != null)
+                User = (AdminUserData)Session["AdminUser"];
             else
                 return false;
 
-            string[] Permission = User.User_Group.GroupDesc.Split('|');
+            string[] Permission = User.GROUP_ROLE.Split('|');
             foreach (string str in Permission)
             {
                 if (str == PageCode)
