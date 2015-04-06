@@ -130,6 +130,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_EMP_UPDATE_DATE;
         
         /// <summary>
+        /// gv_detail_shop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_detail_shop;
+        
+        /// <summary>
         /// ddl_ViewDetail_ORDER_STATUS control.
         /// </summary>
         /// <remarks>

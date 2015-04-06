@@ -3,26 +3,32 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1
+        {
+            height: 26px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <fieldset style="width: 95%;">
-                <legend>รายละเอียดการสั่งซื้อสินค้า
+                <legend>Order Detail
                 </legend>
                 <table>
                     <tr>
-                        <td>เลขที่การสั่งซื้อ :</td>
+                        <td>Order Code :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_ORDER_ID" runat="server" Text=""></asp:Label>
                         </td>
-                        <td>วันที่ทำการสั่งซื้อ :</td>
+                        <td>Order Date :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_ORDER_DATE" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td>จำนวนเงินที่ได้รับจากลูกค้า :</td>
+                        <td>Receive Amount :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Amount_Receive" runat="server" Text=""></asp:Label>
                         </td>
@@ -30,48 +36,47 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>จำนวนเงินที่ลูกค้าต้องจ่ายจริง :</td>
+                        <td>Actually Amount :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Amount_Actually_Pay" runat="server" Text=""></asp:Label>
                         </td>
-                        <td>จำวนวนเงินที่ต้องคืนลูกค้า
-                        </td>
+                        <td>Recall Amount :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Amount_Recall_Pay" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td>ราคาสินค้า</td>
+                        <td>Product Price :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Product_Price" runat="server" Text=""></asp:Label>
                         </td>
-                        <td>ราคาค่าขนส่ง</td>
+                        <td>Transport Price</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Transport_Price" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td>วิธีการขนส่งขั้นที่ 1 :</td>
+                        <td>Transport From China :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_TRANSPORT_1" runat="server" Text=""></asp:Label>
                         </td>
-                        <td>วิธีการขนส่งขั้นที่ 2 :</td>
+                        <td>Transport From Thai :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_TRANSPORT_2" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td>ที่อยู่จัดส่งสินค้า :</td>
+                        <td>Transport Address :</td>
                         <td colspan="3">
                             <asp:Label ID="lbl_ViewDetail_ADDRESS" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td>พนักงานที่แก้ไขล่าสุด</td>
+                        <td>Employee name :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_EMP_NAME" runat="server" Text=""></asp:Label>
                         </td>
-                        <td>วันที่เข้ามาแก้ไข</td>
+                        <td>Employee Update Date :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_EMP_UPDATE_DATE" runat="server" Text=""></asp:Label>
                         </td>
@@ -79,28 +84,92 @@
                 </table>
             </fieldset>
             <fieldset style="width: 95%;">
-                <legend>แก้ไขสถานะการสั่งซื้อ
+                <legend>Shop Detail
                 </legend>
                 <table>
                     <tr>
-                        <td width="15%">สถานะการสั่งซื้อ :</td>
-                        <td width="85%">
-                            <asp:DropDownList ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged">
+                        <td>
+                            <asp:GridView ID="gv_detail_shop" runat="server" AutoGenerateColumns="False" Width="100%"
+                                DataKeyNames="ORDER_SHOP_ID,SHOPNAME,ORDER_ID,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,TRANSPORT_CUSTOMER_PRICE">
+                                <Columns>
+                                    <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
+                                    <asp:BoundField HeaderText="Shop name" DataField="SHOPNAME" />
+                                    <asp:BoundField HeaderText="Tracking no" DataField="TRACKING_NO" />
+                                    <asp:TemplateField HeaderText="Weight">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label1" runat="server" Text = '<%# Bind("WEIGHT") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Size">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label2" runat="server" Text = '<%# Bind("SIZE") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Weight price">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label3" runat="server" Text = '<%# Bind("WEIGHT_PRICE") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Size price">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label4" runat="server" Text = '<%# Bind("SIZE_PRICE") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Transport price china">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label5" runat="server" Text = '<%# Bind("TRANSPORT_CHINA_PRICE") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField HeaderText="Transport price thai" DataField ="TRANSPORT_THAI_PRICE">
+                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="Transport price customer">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label6" runat="server" Text = '<%# Bind("TRANSPORT_CUSTOMER_PRICE") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Tools">
+
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset style="width: 95%;">
+                <legend>
+                    Update Status Order And Transport
+                </legend>
+                <table>
+                    <tr>
+                        <td width="15%" class="auto-style1">Order Status :</td>
+                        <td width="85%" class="auto-style1">
+                            <asp:DropDownList Width ="300px" ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged">
                             </asp:DropDownList>
-                            <%-- 
-                                                        <asp:ListItem Value="5">รอลูกค้ายืนยันการแก้ไขจำนวนสินค้า</asp:ListItem>
-                                                        สถานะนี้จะเกิดขึ้น โดยระบบจะ stamp ให้เองโดยเคสที่เป็น การแก้จำนวนสินค้าของพนักงานจะต้องมีการส่งเมลให้ลูกค้ากลับมา ยืนยันการสั่งซื้อ หรือ สามารถให้ยกเลิกการสั่งซื้อสินค้า
-                                                        และถ้าเป็นสถานะนี้อยู่พนักงานจะไม่สามารถเข้ามาเปลี่ยน สถานะได้
-                            --%>
                         </td>
                     </tr>
                     <tr>
-                        <td>สถานะการส่งสินค้า :</td>
+                        <td>Transport Status :</td>
                         <td>
-                            <asp:DropDownList ID="ddl_ViewDetail_TRANSPORT_STATUS" runat="server">
-                                <%--                                                        <asp:ListItem Value="1">อยู่ระหว่างการสั่งจากประเทศจีน</asp:ListItem>
-                                                        <asp:ListItem Value="2">สินค้ารอส่งให้ลูกค้า</asp:ListItem>
-                                                        <asp:ListItem Value="3">จัดส่งสินค้าให้ลูกค้าแล้ว</asp:ListItem>--%>
+                            <asp:DropDownList ID="ddl_ViewDetail_TRANSPORT_STATUS" runat="server" Width ="300px">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -113,7 +182,8 @@
                 </table>
             </fieldset>
             <fieldset style="width: 95%;">
-                <legend>ข้อมูลลูกค้า
+                <legend>
+                    Customer Detail
                 </legend>
                 <table>
                     <tr>
@@ -125,21 +195,21 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td>ชื่อ - นามสกุล :</td>
+                        <td>Customer Name :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_CusName" runat="server" Text=""></asp:Label>
                         </td>
-                        <td>เบอร์โทรศัพท์ :</td>
+                        <td>Customer Telephone :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Telphone" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td>จำนวนเงินในบัญชีคงเหลือ :</td>
+                        <td>Customer Balance :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Total_Amount" runat="server" Text=""></asp:Label>
                         </td>
-                        <td>Email :</td>
+                        <td>Customer Email :</td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Email" runat="server" Text=""></asp:Label>
                         </td>
@@ -147,33 +217,34 @@
                 </table>
             </fieldset>
             <fieldset style="width: 95%;">
-                <legend>รายการสินค้า
+                <legend>
+                    Product Detail
                 </legend>
                 <table>
                     <tr>
                         <td>
                             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                                 <asp:View ID="View1" runat="server">
-                                    <asp:Button ID="btnEditProd_num" runat="server" Text="แก้ไขจำนวนสินค้า" CssClass=" btnSearch" OnClick="btnEditProd_num_Click"></asp:Button>
+                                    <asp:Button ID="btnEditProd_num" runat="server" Text="Edit product amount" CssClass=" btnSearch" OnClick="btnEditProd_num_Click"></asp:Button>
                                     <asp:GridView ID="gv_detail_prod_view" runat="server" AutoGenerateColumns="False" Width="100%"
                                         DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,OD_ID">
                                         <Columns>
                                             <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
-                                            <asp:BoundField DataField="OD_ITEMNAME" HeaderText="รายละเอียดสินค้า" />
-                                            <asp:BoundField DataField="OD_REMARK" HeaderText="หมายเหตุ" />
-                                            <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคาต่อชิ้น">
+                                            <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail" />
+                                            <asp:BoundField DataField="OD_REMARK" HeaderText="Remark" />
+                                            <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Price">
                                                 <ItemStyle CssClass="ItemStyle-right" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="OD_AMOUNT" HeaderText="จำนวนสินค้าที่สั่งซื้อ">
+                                            <asp:BoundField DataField="OD_AMOUNT" HeaderText="Order amount">
                                                 <ItemStyle CssClass="ItemStyle-right" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="TOTAL_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม">
+                                            <asp:BoundField DataField="TOTAL_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total price">
                                                 <ItemStyle CssClass="ItemStyle-right" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="OD_AMOUNT_ACTIVE" HeaderText="จำนวนสินค้าที่ได้รับ">
+                                            <asp:BoundField DataField="OD_AMOUNT_ACTIVE" HeaderText="Order active amount">
                                                 <ItemStyle CssClass="ItemStyle-right" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="TOTAL_PROD_PRICE_ACTIVE" DataFormatString="{0:#,##0.00}" HeaderText="ราคารวม">
+                                            <asp:BoundField DataField="TOTAL_PROD_PRICE_ACTIVE" DataFormatString="{0:#,##0.00}" HeaderText="Total active price">
                                                 <ItemStyle CssClass="ItemStyle-right" />
                                             </asp:BoundField>
                                         </Columns>
@@ -186,20 +257,20 @@
                                         DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,OD_ID">
                                         <Columns>
                                             <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
-                                            <asp:BoundField DataField="OD_ITEMNAME" HeaderText="รายละเอียดสินค้า" />
-                                            <asp:BoundField DataField="OD_REMARK" HeaderText="หมายเหตุ" />
-                                            <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="ราคาต่อชิ้น">
+                                            <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail" />
+                                            <asp:BoundField DataField="OD_REMARK" HeaderText="Remark" />
+                                            <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Price">
                                                 <ItemStyle CssClass="ItemStyle-right" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="OD_AMOUNT" HeaderText="จำนวนสินค้าที่สั่งซื้อ">
+                                            <asp:BoundField DataField="OD_AMOUNT" HeaderText="Order amount">
                                                 <ItemStyle CssClass="ItemStyle-right" />
                                             </asp:BoundField>
-                                            <asp:TemplateField HeaderText="จำนวนสินค้าที่ได้รับ">
+                                            <asp:TemplateField HeaderText="Order active amount">
                                                 <EditItemTemplate>
                                                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
-                                                    <asp:TextBox ID="gv_detail_prod_Edit_txt" runat="server" AutoCompleteType ="Disabled" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>' MaxLength="8"></asp:TextBox>
+                                                    <asp:TextBox ID="gv_detail_prod_Edit_txt" runat="server" AutoCompleteType="Disabled" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>' MaxLength="8"></asp:TextBox>
                                                     <asp:FilteredTextBoxExtender ID="gv_detail_prod_Edit_txt_FilteredTextBoxExtender" runat="server" Enabled="True" TargetControlID="gv_detail_prod_Edit_txt" ValidChars="0123456789">
                                                     </asp:FilteredTextBoxExtender>
                                                 </ItemTemplate>
