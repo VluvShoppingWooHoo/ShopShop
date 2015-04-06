@@ -238,5 +238,13 @@ namespace VloveImport.web.App_Code
             return dateSave;
         }
         #endregion
+
+        #region WriteLog
+        public void WriteLog(string Page, string Error)
+        {
+            commonBiz biz = new commonBiz();
+            biz.WriteLog(Page, Error);
+        }
+        #endregion
     }
 }

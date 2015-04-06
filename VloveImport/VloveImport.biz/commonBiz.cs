@@ -61,5 +61,11 @@ namespace VloveImport.biz
                 dt = ds.Tables[0];
             return dt;
         }
+
+        public void WriteLog(string Page, string Error)
+        {
+            Commondal Com = new Commondal("LocalConnection");
+            string Result = Com.WriteLog(Page, Error);         
+        }
     }
 }
