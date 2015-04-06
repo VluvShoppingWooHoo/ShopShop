@@ -152,7 +152,7 @@ namespace VloveImport.web
         #region AddToCart
         [WebMethod]
         public static string btnSearch(string Name, string Desc, string Amount, string Price, string Size,
-            string Color, string Remark, string URL, string Picture)
+            string Color, string Remark, string URL, string Picture, string ShopName)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
@@ -170,6 +170,7 @@ namespace VloveImport.web
             Data.CUS_BK_PICURL = Picture;
             Data.CUS_BK_STATUS = "BASKET";
             Data.Create_User = "";
+            Data.CUS_BK_SHOPNAME = ShopName;
             Result = Index.AddToCart(Data);
             if (Result != "")
             {

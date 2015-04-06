@@ -59,7 +59,8 @@ namespace VloveImport.web.App_Code
                 return;
             else
             {
-                string url = HttpContext.Current.Request.Url.AbsolutePath;
+                //string url = HttpContext.Current.Request.Url.AbsolutePath;
+                string url = HttpContext.Current.Request.Url.PathAndQuery;
                 string Login = "~/Customer/Login.aspx?u=";
                     HttpContext.Current.Response.Redirect(Login + EncrypData(url));
             }

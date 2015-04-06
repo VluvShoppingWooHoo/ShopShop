@@ -7,7 +7,7 @@
         </div>
     </div>
     <div style="line-height: 4; display: inline-block; margin-left: 2%;">
-        <button id="btnSearch" type="button" class="btn waves-effect orange waves-light modal-trigger" name="action">
+        <button id="btnSearch" type="button" class="btn waves-effect orange waves-light modal-trigger" name="action" style="padding-left: 10px;">
             SEARCH     
             <i class="mdi-action-search right"></i>
         </button>
@@ -75,6 +75,7 @@
         </div>
 
         <h1 id="lblItemName" class="card center">Modal Header</h1>
+        <h1 id="lblShopName" class="card center" hidden></h1>
         <div class="row">
             <div class="card-image col s4 m4 l4">
                 <img id="imgpicURL" height="200">
@@ -159,6 +160,7 @@
                 var color = '';
                 var price = $("#lblPrice").html();
                 var remark = $("#txtRemark").val();
+                var ShopName = $("#lblShopName").html();
                 if ($('#liColor div a.selected img').length > 0) {
                     color = $('#liColor div a.selected img').attr("src");
                 }
@@ -171,15 +173,18 @@
                 if (typeof color === 'undefined') {
                     color = '';
                 }
-                if (typeof price === 'undefined') {
-                    price = '';
+                if (typeof price === 'undefined' || price == '') {
+                    price = '0';
                 }
                 if (typeof remark === 'undefined') {
                     remark = '';
                 }
+                if (typeof ShopName === 'undefined') {
+                    ShopName = '';
+                }
                 var param = {
                     "Name": $("#lblItemName").html(), "Desc": '', "Amount": $("#aQTY").html(), "Price": price, "Size": size,
-                    "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": ''
+                    "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": '', "ShopName": ShopName
                 };
                 $.ajax({
                     type: 'POST',
@@ -197,7 +202,10 @@
                 });
             }
             else {
-                window.location.href = "/Customer/Login.aspx";
+                var encodedString = btoa($("#lblURL").html());
+                //var encodedString = btoa('Hello World');
+
+                window.location.href = "/Customer/CustomerOrder.aspx?txt=" + encodedString;
             }
         });
         $('#btnClose').click(function () {
@@ -254,11 +262,12 @@
         $("#divPrice").show();
         $("#divSize").show();
         $("#divColor").show();
-
+        $("#txtRemark").val('');
         $(".childliSize").remove();
         $(".childliColor").remove();
         var obj = JSON.parse(data.d);
         $("#lblItemName").html(obj.ItemName);
+        $("#lblShopName").html(obj.ShopName);
         $("#imgpicURL").attr("src", obj.picURL);
         $("#lblPrice").html(obj.Price);
         $("#lblURL").html(obj.URL);

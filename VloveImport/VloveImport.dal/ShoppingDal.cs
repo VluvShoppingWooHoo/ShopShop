@@ -39,6 +39,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CUS_BK_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_PICURL);
                 SqlCommandData.SetParameter("CUS_BK_STATUS", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_STATUS);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Shop.Create_User);
+                SqlCommandData.SetParameter("CUS_BK_SHOPNAME", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_SHOPNAME);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();

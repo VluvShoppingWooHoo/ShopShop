@@ -53,6 +53,7 @@ namespace VloveImport.data.Extension
             public const string ProPrice = "ProPrice";
             public const string Color = "Color";
             public const string Size = "Size";
+            public const string ShopName = "ShopName";
             public const string Web = "Web";
         }
     }

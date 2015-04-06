@@ -14,6 +14,9 @@
 
     <script type="text/javascript">
         $(function () {
+            var txt = getUrlParameter('txt');
+            var decodedString = atob(txt);
+            $('#txtSearch').val(decodedString);
             SetFadeout();
         });
     </script>
