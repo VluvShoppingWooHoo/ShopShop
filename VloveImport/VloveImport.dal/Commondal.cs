@@ -342,12 +342,13 @@ namespace VloveImport.dal
             }
         }
 
-        public string WriteLog(string Page, string Error)
+        public string WriteLog(string Page, string Function, string Error)
         {
             try
             {
                 SqlCommandData.SetStoreProcedure("INS_ERROR_LOG");
                 SqlCommandData.SetParameter("PAGE", SqlDbType.VarChar, ParameterDirection.Input, Page);
+                SqlCommandData.SetParameter("FUNCTION", SqlDbType.VarChar, ParameterDirection.Input, Function);
                 SqlCommandData.SetParameter("ERROR_DESCRIPTION", SqlDbType.VarChar, ParameterDirection.Input, Error);
                 SqlCommandData.ExecuteNonQuery();
                 return "";

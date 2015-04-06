@@ -41,7 +41,9 @@ namespace VloveImport.biz
         }
         public string[] MakeOrder(OrderData Data, DataTable dt, string User)
         {
+            commonBiz biz = new commonBiz();
             ShoppingDal dal = new ShoppingDal("LocalConnection");
+            
             string[] Result = new string[2];
             string[] Res = new string[2];
             int OID = -1;
@@ -51,6 +53,10 @@ namespace VloveImport.biz
             {
                 OID = Convert.ToInt32(Convert.ToInt32(Result[1]));
                 Res[1] = Result[1];
+            }
+            else
+            {
+                biz.WriteLog(,Result[0]);
             }
 
             Res[0] = dal.MakeOrderDetail(dt, OID, User);

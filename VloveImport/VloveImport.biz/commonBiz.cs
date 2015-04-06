@@ -62,10 +62,10 @@ namespace VloveImport.biz
             return dt;
         }
 
-        public void WriteLog(string Page, string Error)
+        public void WriteLog(string Page, string Function, string Error)
         {
             Commondal Com = new Commondal("LocalConnection");
-            string Result = Com.WriteLog(Page, Error);         
+            string Result = Com.WriteLog(Page, Function, Error);         
         }
     }
 }
