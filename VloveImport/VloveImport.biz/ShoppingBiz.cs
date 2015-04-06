@@ -56,9 +56,13 @@ namespace VloveImport.biz
             }
             else
             {
-                biz.WriteLog(,Result[0]);
+                biz.WriteLog("CustomerConfirmInfo", "MakeOrderHeader", Result[0]);
             }
 
+            //Oeder_Shop
+            Res[0] = dal.MakeOrderShop(dt, OID, User);
+
+            //Order_Detail
             Res[0] = dal.MakeOrderDetail(dt, OID, User);
 
             return Res;
