@@ -119,10 +119,10 @@ namespace VloveImport.dal
                 SqlCommandData.BeginTransaction();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    SqlCommandData.SetStoreProcedure("INS_ORDER_DETAIL");
+                    SqlCommandData.SetStoreProcedure("INS_ORDER_SHOP");
 
-                    SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, Order_ID);
-                    SqlCommandData.SetParameter("OD_ITEMNAME", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_ITEMNAME"].ToString());
+                    SqlCommandData.SetParameter("SHOPNAME", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_ITEMNAME"].ToString());
+                    SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, Order_ID);                    
                     SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_AMOUNT"].ToString()));
                     SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_PRICE"].ToString()));
                     SqlCommandData.SetParameter("OD_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_SIZE"].ToString());
@@ -146,7 +146,7 @@ namespace VloveImport.dal
             {
                 //throw new Exception("AddtoCart -> msg : " + ex.Message);                
                 SqlCommandData.RollBack();
-                return ("INS_ORDER_DETAIL -> msg : " + ex.Message);
+                return ("INS_ORDER_SHOP -> msg : " + ex.Message);
             }
         }
         public string MakeOrderDetail(DataTable dt, int Order_ID, string User)
