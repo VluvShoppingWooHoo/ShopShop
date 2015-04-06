@@ -41,7 +41,7 @@ namespace VloveImport.dal
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("GET_PAGEBYURL");
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_PAGEBYURL");
                
                 //Input                
                 SqlCommandData.SetParameter("P_PAGE_URL", SqlDbType.VarChar, ParameterDirection.Input, Page_URL);
@@ -51,7 +51,7 @@ namespace VloveImport.dal
             }
             catch (Exception ex)
             {
-                throw new Exception("GET_PAGEBYURL -> msg : " + ex.Message);
+                throw new Exception("ADMIN_GET_PAGEBYURL -> msg : " + ex.Message);
             }
         }
         #endregion
@@ -60,7 +60,7 @@ namespace VloveImport.dal
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("GET_MENULIST_BY_TYPE");
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_MENULIST_BY_TYPE");
 
                 //Input                
                 SqlCommandData.SetParameter("P_TYPE", SqlDbType.VarChar, ParameterDirection.Input, Page_Type);
@@ -71,7 +71,7 @@ namespace VloveImport.dal
             }
             catch (Exception ex)
             {
-                throw new Exception("GET_MENULIST_BY_TYPE -> msg : " + ex.Message);
+                throw new Exception("ADMIN_GET_MENULIST_BY_TYPE -> msg : " + ex.Message);
             }
         }
 
