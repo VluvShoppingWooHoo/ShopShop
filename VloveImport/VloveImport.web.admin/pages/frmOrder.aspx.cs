@@ -98,10 +98,10 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_TRANSPORT_2.Text = ds.Tables[0].Rows[0]["TRANSPORT_THAI_TEXT"].ToString();
                 lbl_ViewDetail_ADDRESS.Text = ds.Tables[0].Rows[0]["CUS_REC_NAME"].ToString() + "<br/>" + ds.Tables[0].Rows[0]["CUS_ADDRESS"].ToString();
                 lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["EMP_NAME"].ToString();
-                lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
+                lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString() == "" ? "-" : ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
 
                 lbl_ViewDetail_Amount_Receive.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lbl_ViewDetail_Product_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_PROD_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));                
+                lbl_ViewDetail_Product_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_PROD_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_ViewDetail_Amount_Actually_Pay.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_ViewDetail_Amount_Recall_Pay.Text = (Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE"].ToString()) - Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE_ACTIVE"].ToString())).ToString("N", new CultureInfo("en-US"));
                 lbl_ViewDetail_Transport_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TRANSPORT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
@@ -115,51 +115,58 @@ namespace VloveImport.web.admin.pages
                 BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS, STS_NAME: _VS_ORDER_TRAN_STS, Act: "BIND_DDL_STS_ID");
                 ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = _VS_ORDER_TRAN_STS;
 
-                if (_VS_ORDER_STS == "0")
-                {
-                    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
-                    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+                //if (_VS_ORDER_STS == "0")
+                //{
+                //    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
+                //    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
 
-                    btnEditProd_num.Visible = false;
-                    btn_detail_update.Visible = true;
-                }
-                else if (_VS_ORDER_STS == "2")
-                {
-                    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
-                    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+                //    btnEditProd_num.Visible = false;
+                //    btn_detail_update.Visible = true;
+                //}
+                //else if (_VS_ORDER_STS == "2")
+                //{
+                //    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
+                //    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
 
-                    btnEditProd_num.Visible = true;
-                    btn_detail_update.Visible = true;
-                }
-                else if (_VS_ORDER_STS == "3")
-                {
-                    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
-                    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
+                //    btnEditProd_num.Visible = true;
+                //    btn_detail_update.Visible = true;
+                //}
+                //else if (_VS_ORDER_STS == "3")
+                //{
+                //    ddl_ViewDetail_ORDER_STATUS.Enabled = true;
+                //    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
 
-                    btnEditProd_num.Visible = false;
-                    btn_detail_update.Visible = true;
-                }
-                else
-                {
-                    ddl_ViewDetail_ORDER_STATUS.Enabled = false;
-                    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
-                    btnEditProd_num.Visible = false;
-                    btn_detail_update.Visible = false;
-                }
+                //    btnEditProd_num.Visible = false;
+                //    btn_detail_update.Visible = true;
+                //}
+                //else
+                //{
+                //    ddl_ViewDetail_ORDER_STATUS.Enabled = false;
+                //    ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+                //    btnEditProd_num.Visible = false;
+                //    btn_detail_update.Visible = false;
+                //}
 
                 #endregion
 
                 #region Customer Data
-                lbl_ViewDetail_CusCode.Text = ds.Tables[0].Rows[0]["CUS_CODE"].ToString();
-                lbl_ViewDetail_CusName.Text = ds.Tables[0].Rows[0]["CUS_FULLNAME"].ToString();
-                lbl_ViewDetail_Telphone.Text = ds.Tables[0].Rows[0]["CUS_MOBILE"].ToString();
-                lbl_ViewDetail_Email.Text = ds.Tables[0].Rows[0]["CUS_EMAIL"].ToString();
-                lbl_ViewDetail_Total_Amount.Text = ds.Tables[0].Rows[0]["CUS_TOTAL_AMOUNT"].ToString();
+                lbl_ViewDetail_CusCode.Text = ds.Tables[3].Rows[0]["CUS_CODE"].ToString();
+                lbl_ViewDetail_CusName.Text = ds.Tables[3].Rows[0]["CUS_FULLNAME"].ToString();
+                lbl_ViewDetail_Telphone.Text = ds.Tables[3].Rows[0]["CUS_TELEPHONE"].ToString() + " Mobile : " + ds.Tables[3].Rows[0]["CUS_MOBILE"].ToString();
+                lbl_ViewDetail_Email.Text = ds.Tables[3].Rows[0]["CUS_EMAIL"].ToString();
+                lbl_ViewDetail_Total_Amount.Text = ds.Tables[3].Rows[0]["CUS_TOTAL_AMOUNT"].ToString();
                 #endregion
 
-                gv_detail_prod_view.DataSource = ds.Tables[0];
+                #region Order Shop
+
+                gv_detail_shop.DataSource = ds.Tables[1];
+                gv_detail_shop.DataBind();
+
+                #endregion
+
+                gv_detail_prod_view.DataSource = ds.Tables[2];
                 gv_detail_prod_view.DataBind();
-                gv_detail_prod_Edit.DataSource = ds.Tables[0];
+                gv_detail_prod_Edit.DataSource = ds.Tables[2];
                 gv_detail_prod_Edit.DataBind();
             }
             else
@@ -202,7 +209,7 @@ namespace VloveImport.web.admin.pages
             if (Result_order == "" && Result_transport == "" && Result == "")
             {
                 BindData();
-                ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+                ShowMessageBox("Update success", this.Page);
             }
             else
             {
@@ -226,7 +233,7 @@ namespace VloveImport.web.admin.pages
                 int PROD_NUM = Convert.ToInt32(gv_detail_prod_Edit.Rows[i].Cells[4].Text);
                 if (Convert.ToInt32(txtprodnum.Text) > PROD_NUM)
                 {
-                    ShowMessageBox("กรุณาตรวจสอบจำนวนสินค้าอีกครั้ง", this.Page);
+                    ShowMessageBox("Please check the product amount again.", this.Page);
                     return;
                 }
             }
@@ -236,7 +243,7 @@ namespace VloveImport.web.admin.pages
                 AdBiz = new AdminBiz();
                 TextBox txtprodnum = (TextBox)gv_detail_prod_Edit.Rows[i].Cells[5].FindControl("gv_detail_prod_Edit_txt");
                 int ORDER_ID = Convert.ToInt32(gv_detail_prod_Edit.DataKeys[i].Values[0].ToString());
-                int ORDER_DETAIL_ID = Convert.ToInt32(gv_detail_prod_Edit.DataKeys[i].Values[6].ToString());
+                int ORDER_DETAIL_ID = Convert.ToInt32(gv_detail_prod_Edit.DataKeys[i].Values[1].ToString());
 
                 int PROD_NUM = txtprodnum.Text == "" ? 0 : Convert.ToInt32(txtprodnum.Text);
 
@@ -247,7 +254,7 @@ namespace VloveImport.web.admin.pages
             {
                 BindData();
                 MultiView1.ActiveViewIndex = 0;
-                ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+                ShowMessageBox("Update success", this.Page);
             }
             else ShowMessageBox(Server.HtmlEncode(Result), this.Page);
         }

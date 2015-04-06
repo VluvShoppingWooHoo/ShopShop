@@ -102,6 +102,7 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label1" runat="server" Text = '<%# Bind("WEIGHT") %>'></asp:Label>
                                         </ItemTemplate>
+                                        <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Size">
                                         <EditItemTemplate>
@@ -110,6 +111,7 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label2" runat="server" Text = '<%# Bind("SIZE") %>'></asp:Label>
                                         </ItemTemplate>
+                                        <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Weight price">
                                         <EditItemTemplate>
@@ -118,6 +120,7 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label3" runat="server" Text = '<%# Bind("WEIGHT_PRICE") %>'></asp:Label>
                                         </ItemTemplate>
+                                        <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Size price">
                                         <EditItemTemplate>
@@ -126,6 +129,7 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label4" runat="server" Text = '<%# Bind("SIZE_PRICE") %>'></asp:Label>
                                         </ItemTemplate>
+                                        <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Transport price china">
                                         <EditItemTemplate>
@@ -134,8 +138,10 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label5" runat="server" Text = '<%# Bind("TRANSPORT_CHINA_PRICE") %>'></asp:Label>
                                         </ItemTemplate>
+                                        <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:TemplateField>
-                                    <asp:BoundField HeaderText="Transport price thai" DataField ="TRANSPORT_THAI_PRICE">
+                                    <asp:BoundField HeaderText="Transport price thai" DataField ="TRANSPORT_THAI_PRICE" DataFormatString="{0:#,##0.00}">
+                                    <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:BoundField>
                                     <asp:TemplateField HeaderText="Transport price customer">
                                         <EditItemTemplate>
@@ -144,8 +150,11 @@
                                         <ItemTemplate>
                                             <asp:Label ID="Label6" runat="server" Text = '<%# Bind("TRANSPORT_CUSTOMER_PRICE") %>'></asp:Label>
                                         </ItemTemplate>
+                                        <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Tools">
+
+                                        <ItemStyle CssClass="ItemStyle-center" />
 
                                     </asp:TemplateField>
                                 </Columns>
@@ -226,8 +235,7 @@
                             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                                 <asp:View ID="View1" runat="server">
                                     <asp:Button ID="btnEditProd_num" runat="server" Text="Edit product amount" CssClass=" btnSearch" OnClick="btnEditProd_num_Click"></asp:Button>
-                                    <asp:GridView ID="gv_detail_prod_view" runat="server" AutoGenerateColumns="False" Width="100%"
-                                        DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,OD_ID">
+                                    <asp:GridView ID="gv_detail_prod_view" runat="server" AutoGenerateColumns="False" Width="100%">
                                         <Columns>
                                             <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
                                             <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail" />
@@ -254,7 +262,7 @@
                                     <asp:Button ID="btnEditProd_num_save" runat="server" Text="Update " CssClass=" btnSave" OnClick="btnEditProd_num_save_Click"></asp:Button>&nbsp;&nbsp;
                                                                 <asp:Button ID="btnEditProd_num_cancel" runat="server" Text="Cancel" CssClass="btnCancel" OnClick="btnEditProd_num_cancel_Click"></asp:Button>
                                     <asp:GridView ID="gv_detail_prod_Edit" runat="server" AutoGenerateColumns="False" Width="100%"
-                                        DataKeyNames="ORDER_ID,ORDER_DATE_TEXT,CUS_FULLNAME,ORDER_STATUS_TEXT,EMP_NAME,SUM_PROD_PRICE,OD_ID">
+                                        DataKeyNames="ORDER_ID,OD_ID">
                                         <Columns>
                                             <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
                                             <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail" />
