@@ -79,7 +79,7 @@ namespace VloveImport.web.Customer
                 Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
                 Data.Create_User = User; //SessionUser
 
-                Result = Biz.MakeOrder(Data, dt, User, BasePage);
+                Result = Biz.MakeOrder(Data, dt, User);
                 if (Result[0] == "")
                 {
                     EncrypUtil en = new EncrypUtil();

@@ -241,10 +241,10 @@ namespace VloveImport.web.App_Code
         #endregion
 
         #region WriteLog
-        public void WriteLog(string Page, string Error)
+        public void WriteLog(string Page, string Function, string Error)
         {
             commonBiz biz = new commonBiz();
-            biz.WriteLog(Page, Error);
+            biz.WriteLog(Page, Function, Error);
         }
         #endregion
     }
