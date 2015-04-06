@@ -45,7 +45,12 @@ namespace VloveImport.web.Customer
             Session.Remove("TRANS");
             string China = rdbChina.SelectedItem.Value + "|" + rdbChina.SelectedItem.Text;
             string Thai = rdbThai.SelectedItem.Value + "|" + rdbThai.SelectedItem.Text;
-            string Address = rdbAddress.SelectedItem.Value + "|" + rdbAddress.SelectedItem.Text;
+            string Address = "";
+            if (rdbThai.SelectedItem.Value == "3")
+                Address = "-|-";
+            else
+                Address = rdbAddress.SelectedItem.Value + "|" + rdbAddress.SelectedItem.Text;
+            
             string Trans = China + "," + Thai + "," + Address;                          
 
             Session.Add("TRANS", Trans);
@@ -61,18 +66,6 @@ namespace VloveImport.web.Customer
             string CUS_ID = GetCusID().ToString();
             CUS_ID = en.EncrypData(CUS_ID);
             Response.Redirect("CustomerBasket.aspx?CID=" + CUS_ID);
-        }
-
-        protected void rdbThai_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (rdbThai.SelectedItem.Value == "")
-            {
-
-            }
-            else
-            {
-
-            }
         }
 
     }

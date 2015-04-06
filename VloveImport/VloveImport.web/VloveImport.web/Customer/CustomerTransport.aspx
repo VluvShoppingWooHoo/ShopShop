@@ -19,8 +19,7 @@
                         <br />
                         2. ขนส่งภายในประเทศ โดยวิธี
                         <br />
-                        <asp:RadioButtonList ID="rdbThai" CssClass="rdbThai" runat="server" DataTextField="TRANS_NAME" DataValueField="TRANS_ID" AutoPostBack="true"
-                            OnSelectedIndexChanged="rdbThai_SelectedIndexChanged">
+                        <asp:RadioButtonList ID="rdbThai" CssClass="rdbThai" runat="server" DataTextField="TRANS_NAME" DataValueField="TRANS_ID">
                         </asp:RadioButtonList>
                 
                         <br />
