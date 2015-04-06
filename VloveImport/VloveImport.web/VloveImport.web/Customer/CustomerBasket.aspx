@@ -11,7 +11,7 @@
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:CheckBox ID="cbItem" runat="server" Width="5px"/>
+                            <asp:CheckBox ID="cbItem" runat="server" Text=" " />
                             <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>

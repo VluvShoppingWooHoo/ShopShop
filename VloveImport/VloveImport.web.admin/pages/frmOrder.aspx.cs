@@ -13,6 +13,8 @@ namespace VloveImport.web.admin.pages
 {
     public partial class frmOrder : System.Web.UI.Page
     {
+        util.EncrypUtil Enc = new util.EncrypUtil();
+
         public string _VS_USER_LOGIN
         {
             get { return ViewState["__VS_USER_LOGIN"].ToString(); }
@@ -21,7 +23,7 @@ namespace VloveImport.web.admin.pages
 
         public string _VS_ORDER_ID
         {
-            get { return ViewState["__VS_ORDER_ID"].ToString(); }
+            get { return Request.QueryString["OID"] == null ? "" : Enc.DecryptData(Request.QueryString["OID"]); }
             set { ViewState["__VS_ORDER_ID"] = value; }
         }
 
@@ -46,8 +48,6 @@ namespace VloveImport.web.admin.pages
                 BindData_order_status(ddl_ViewDetail_ORDER_STATUS);
                 BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS);
 
-                util.EncrypUtil En = new util.EncrypUtil();
-                _VS_ORDER_ID = En.DecryptData(Request.QueryString["OID"]);
                 BindData();
             }
         }
@@ -97,15 +97,14 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_TRANSPORT_1.Text = ds.Tables[0].Rows[0]["TRANSPORT_CHINA_TEXT"].ToString();
                 lbl_ViewDetail_TRANSPORT_2.Text = ds.Tables[0].Rows[0]["TRANSPORT_THAI_TEXT"].ToString();
                 lbl_ViewDetail_ADDRESS.Text = ds.Tables[0].Rows[0]["CUS_REC_NAME"].ToString() + "<br/>" + ds.Tables[0].Rows[0]["CUS_ADDRESS"].ToString();
-                lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["UPDATE_USER"].ToString();
+                lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["EMP_NAME"].ToString();
                 lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
 
-                //ค้างการคำนวนทิ้งไว้ ก่อนยังผิดอยู่
-                lbl_ViewDetail_Amount_Receive.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_ViewDetail_Amount_Receive.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_ViewDetail_Product_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_PROD_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));                
-                lbl_ViewDetail_Amount_Actually_Pay.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lbl_ViewDetail_Amount_Recall_Pay.Text = (Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE"].ToString()) - Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_TOTAL_PROD_PRICE_ACTIVE"].ToString())).ToString("N", new CultureInfo("en-US"));
-                lbl_ViewDetail_Transport_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TRANSPOT_TOTAL"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_ViewDetail_Amount_Actually_Pay.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_ViewDetail_Amount_Recall_Pay.Text = (Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE"].ToString()) - Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE_ACTIVE"].ToString())).ToString("N", new CultureInfo("en-US"));
+                lbl_ViewDetail_Transport_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TRANSPORT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
 
                 _VS_ORDER_STS = ds.Tables[0].Rows[0]["ORDER_STATUS"].ToString();
                 _VS_ORDER_TRAN_STS = ds.Tables[0].Rows[0]["TRANSPORT_STATUS"].ToString();
