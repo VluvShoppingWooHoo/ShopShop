@@ -14,7 +14,10 @@ namespace VloveImport.web.admin.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetPermission();
+            if (!IsPostBack)
+            {
+                SetPermission();
+            }
         }
 
         #region SetPermission

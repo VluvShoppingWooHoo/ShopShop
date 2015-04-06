@@ -14,8 +14,12 @@ namespace VloveImport.web.admin.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CheckPermission();
-            CheckSessionUser();
+            if (!IsPostBack)
+            {
+                CheckPermission();
+                CheckSessionUser();
+            }
+            
         }
 
         private void CheckSessionUser()
@@ -35,12 +39,13 @@ namespace VloveImport.web.admin.MasterPage
             DataSet ds = new DataSet();
             URL = Page.Request.Url.ToString().Split('/');
             PAGE = URL[URL.Length - 1].Split('.');
-            Page_URL = PAGE[0];
+            Page_URL = "%" + PAGE[0] + "%";
             PermissionBiz Biz = new PermissionBiz();
             ds = Biz.GetPageByURL(Page_URL);
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)            
                 if (!CheckPage(ds.Tables[0].Rows[0]["PAGE_CODE"].ToString()))
                     Response.Redirect("~/Logout.aspx");
+           
 
         }
 
