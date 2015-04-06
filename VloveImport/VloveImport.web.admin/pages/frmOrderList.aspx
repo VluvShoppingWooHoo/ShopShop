@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+        <contenttemplate>
 
             <%--<asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>--%>
 
@@ -17,7 +17,7 @@
                 <table style="border: 1 solid;">
                     <tr>
                         <td class="width15">
-                            <asp:Label ID="Label1" runat="server" Text="วันที่สั่งซื้อ :"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="Order date :"></asp:Label>
                         </td>
                         <td class="width35">
                             <uc1:ucCalendar ID="ucCalendar1" runat="server" />
@@ -33,40 +33,16 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label ID="Label3" runat="server" Text="สถานะการสั่งซื้อ :"></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text="Order status :"></asp:Label>
                         </td>
                         <td>
                             <asp:DropDownList ID="ddl_search_order_status" runat="server" Width="300px">
-                                <%--                                <asp:ListItem Value="-1">แสดงทั้งหมด</asp:ListItem>
-                                <asp:ListItem Value="0">ยกเลิก</asp:ListItem>
-                                <asp:ListItem Value="1">ยังไม่ได้ชำระเงิน</asp:ListItem>
-                                <asp:ListItem Value="2">ชำระเงินแล้ว</asp:ListItem>--%>
                             </asp:DropDownList>
                         </td>
                         <td></td>
                         <td></td>
-                        <%--<td>
-                            <asp:Label ID="Label4" runat="server" Text="วิธีการส่งสินค้า :"></asp:Label></td>
-                        <td>
-                            <asp:DropDownList ID="ddl_shipping_status" runat="server" Width="300px">
-                                <asp:ListItem Value="-1">แสดงทั้งหมด</asp:ListItem>
-                                <asp:ListItem Value="1">ขนส่งทางเรือ</asp:ListItem>
-                                <asp:ListItem Value="2">ขนส่งทางเครื่องบิน</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>--%>
                     </tr>
                     <tr>
-                        <%--<td>
-                            <asp:Label ID="Label5" runat="server" Text="สถานะการส่งสินค้า :"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="ddl_transport_status" runat="server" Width="300px">
-                                <asp:ListItem Value="-1">แสดงทั้งหมด</asp:ListItem>
-                                <asp:ListItem Value="1">อยู่ระหว่างการส่งจากประเทศจีน</asp:ListItem>
-                                <asp:ListItem Value="2">สินค้ารอส่งให้ลูกค้า</asp:ListItem>
-                                <asp:ListItem Value="3">จัดส่งสินค้าให้ลูกค้าแล้ว</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>--%>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -75,7 +51,7 @@
                     <tr>
                         <td colspan="4" style="text-align: center;">
                             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click" />&nbsp;&nbsp;
-                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" OnClick="btnReset_Click" />
+                            <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" OnClick="btnReset_Click" />
                         </td>
                     </tr>
                 </table>
@@ -476,6 +452,6 @@
                     </tr>
                 </table>
             </asp:Panel>--%>
-        </ContentTemplate>
+        </contenttemplate>
     </asp:UpdatePanel>
 </asp:Content>

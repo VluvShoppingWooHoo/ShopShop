@@ -36,8 +36,8 @@ namespace VloveImport.web.admin.pages
             ddl.DataTextField = "S_NAME";
             ddl.DataSource = ds.Tables[0];
             ddl.DataBind();
-            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", "-1"));
-            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", "-1"));
+            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("Show all", "-1"));
+            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("Please select", "-1"));
         }
 
         public void BindData_transport_status(DropDownList ddl, string ddlType = "")
@@ -49,8 +49,8 @@ namespace VloveImport.web.admin.pages
             ddl.DataTextField = "S_NAME";
             ddl.DataSource = ds.Tables[0];
             ddl.DataBind();
-            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("แสดงทั้งหมด", "-1"));
-            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("กรุณาเลือก", "-1"));
+            if (ddlType == "S") ddl.Items.Insert(0, new ListItem("Show all", "-1"));
+            else if (ddlType == "A") ddl.Items.Insert(0, new ListItem("Please select", "-1"));
         }
 
         public void BindData()
@@ -267,7 +267,7 @@ namespace VloveImport.web.admin.pages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                ((ImageButton)e.Row.FindControl("imgBtn_delete")).Attributes.Add("onClick", "javascript:return confirm('คุณต้องการยกเลิกรายการสั่งซื้อนี้หรือไม่ ?')");
+                ((ImageButton)e.Row.FindControl("imgBtn_delete")).Attributes.Add("onClick", "javascript:return confirm('Do you want to cancel order ?')");
             }
         }
 
@@ -333,7 +333,7 @@ namespace VloveImport.web.admin.pages
         {
             if (ddl_choose_status_order.SelectedValue == "-1")
             {
-                ShowMessageBox("กรุณาเลือกสถานะในการอัพเดท !!", this.Page);
+                ShowMessageBox("Please select update status", this.Page);
                 ModalPopupExtender1.Show();
             }
             else
@@ -360,7 +360,7 @@ namespace VloveImport.web.admin.pages
                         gv_detail_view.DataBind();
                         BindData();
 
-                        ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
+                        ShowMessageBox("Save success", this.Page);
                     }
                     else
                     {
