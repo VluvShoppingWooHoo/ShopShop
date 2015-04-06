@@ -17,7 +17,8 @@ namespace VloveImport.data
         public string ProPrice { get; set; }
         public string Color { get; set; }
         public string Size { get; set; }
-        public string URL { get; set; }       
+        public string URL { get; set; }
+        public string ShopName { get; set; }    
         public int Web { get; set; }
         #endregion
 
@@ -34,6 +35,7 @@ namespace VloveImport.data
         public string CUS_BK_URL { get; set; }
         public string CUS_BK_PICURL { get; set; }
         public string CUS_BK_STATUS { get; set; }
+        public string CUS_BK_SHOPNAME { get; set; }
         #endregion
     }
 }

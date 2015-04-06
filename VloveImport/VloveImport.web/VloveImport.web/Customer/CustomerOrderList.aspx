@@ -27,7 +27,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="สถานะ">
                         <ItemTemplate>
-                            <asp:Label ID="lbStatus" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_STATUS") %>'>></asp:Label>
+                            <asp:Label ID="lbStatus" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DESC") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ราคา">

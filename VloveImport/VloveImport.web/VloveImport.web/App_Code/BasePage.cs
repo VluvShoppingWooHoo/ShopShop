@@ -59,7 +59,8 @@ namespace VloveImport.web.App_Code
                 return;
             else
             {
-                string url = HttpContext.Current.Request.Url.AbsolutePath;
+                //string url = HttpContext.Current.Request.Url.AbsolutePath;
+                string url = HttpContext.Current.Request.Url.PathAndQuery;
                 string Login = "~/Customer/Login.aspx?u=";
                     HttpContext.Current.Response.Redirect(Login + EncrypData(url));
             }
@@ -236,6 +237,14 @@ namespace VloveImport.web.App_Code
                 dateSave = null;
             }
             return dateSave;
+        }
+        #endregion
+
+        #region WriteLog
+        public void WriteLog(string Page, string Function, string Error)
+        {
+            commonBiz biz = new commonBiz();
+            biz.WriteLog(Page, Function, Error);
         }
         #endregion
     }

@@ -70,6 +70,9 @@ namespace VloveImport.biz
                             case Constant.ScrapModel.Size:
                                 model.Size = GetSize(html, web, doc);
                                 break;
+                            case Constant.ScrapModel.ShopName:
+                                model.ShopName = GetShopName(html, web, doc);
+                                break;
                             default:
                                 //model = null;
                                 break;
@@ -407,6 +410,43 @@ namespace VloveImport.biz
             catch (Exception ex) { }
             return Size;
         }
+        private string GetShopName(string html, int web, HtmlAgilityPack.HtmlDocument doc)
+        {
+            string ShopName = string.Empty;
+            try
+            {
+                HtmlNode node = null;
+                switch (web)
+                {
+                    case 1:
+                        var result = doc.DocumentNode.Descendants("div").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("tb-shop-name"));
+                        node = result.FirstOrDefault().ChildNodes[1].ChildNodes[1].ChildNodes[1].ChildNodes[1];
+                        ShopName = node.Attributes[1].Value.Trim();
+                        break;
+                    case 2:
+                        //var result2 = doc.DocumentNode.Descendants("div").Where(l =>
+                        //    l.Attributes.Contains("class") &&
+                        //    l.Attributes["class"].Value.Contains("shop-intro"));
+                        //node = result2.FirstOrDefault().ChildNodes[1].ChildNodes[1].ChildNodes[1];
+                        //ShopName = node.InnerHtml;;
+                        break;
+                    case 3:
+                        var result3 = doc.DocumentNode.Descendants("div").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("companyname"));
+                        node = result3.FirstOrDefault().ChildNodes[1].ChildNodes[1].ChildNodes[0].ChildNodes[0].ChildNodes[1].ChildNodes[0];
+                        ShopName = node.InnerHtml;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex) { }
+            return ShopName;
+        }
+
         #endregion
         #endregion
         #region Scraping Side Menu

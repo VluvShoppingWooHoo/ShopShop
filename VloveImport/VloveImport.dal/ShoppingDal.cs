@@ -39,6 +39,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CUS_BK_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_PICURL);
                 SqlCommandData.SetParameter("CUS_BK_STATUS", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_STATUS);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Shop.Create_User);
+                SqlCommandData.SetParameter("CUS_BK_SHOPNAME", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_SHOPNAME);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
@@ -109,6 +110,44 @@ namespace VloveImport.dal
                 //throw new Exception("AddtoCart -> msg : " + ex.Message);                
                 SqlCommandData.RollBack();
                 return new string[2] {"INS_ORDER -> msg : " + ex.Message, ""};
+            }
+        }
+        public string MakeOrderShop(DataTable dt, int Order_ID, string User)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    SqlCommandData.SetStoreProcedure("INS_ORDER_SHOP");
+
+                    SqlCommandData.SetParameter("SHOPNAME", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_ITEMNAME"].ToString());
+                    SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, Order_ID);                    
+                    SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_AMOUNT"].ToString()));
+                    SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_PRICE"].ToString()));
+                    SqlCommandData.SetParameter("OD_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_SIZE"].ToString());
+                    SqlCommandData.SetParameter("OD_COLOR", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_COLOR"].ToString());
+                    SqlCommandData.SetParameter("OD_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_REMARK"].ToString());
+                    SqlCommandData.SetParameter("OD_URL", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_URL"].ToString());
+                    SqlCommandData.SetParameter("OD_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_PICURL"].ToString());
+                    SqlCommandData.SetParameter("OD_STATUS", SqlDbType.NVarChar, ParameterDirection.Input, "0");
+                    SqlCommandData.SetParameter("OD_SHOPNAME", SqlDbType.NVarChar, ParameterDirection.Input, dr["CUS_BK_SHOPNAME"].ToString());
+
+                    SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, User);
+                    SqlCommandData.SetParameter_Input_INT("OD_REF_BASKET", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(dr["CUS_BK_ID"].ToString()));
+
+                    SqlCommandData.ExecuteNonQuery();
+                }
+
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return ("INS_ORDER_SHOP -> msg : " + ex.Message);
             }
         }
         public string MakeOrderDetail(DataTable dt, int Order_ID, string User)

@@ -499,6 +499,11 @@ nav[class="ucCustomerStatus"]
     position: initial !important;
 }
 
+input[type="checkbox"]
+{
+    visibility: hidden;
+}
+
 #ExRate
 {
     background-color: #fb8c00;
@@ -587,4 +592,44 @@ nav[class="ucCustomerStatus"]
 .contentCard:hover
 {
     background-color: #f5f5f5;
+}
+
+input[type="submit"]
+{
+    border: none;
+    background-color: transparent;
+    height: inherit;
+    z-index: 0;
+    padding: 0px;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+    input[type="submit"]:active
+    {
+        border: none;
+    }
+
+button[type="button"]
+{
+    min-width: 120px;
+    padding: 0px;
+}
+
+button[type="button"] i[class~="right"]
+{
+    padding-right: 10px;
+    /*padding-left: 10px;*/
+}
+
+.GridStyle th
+{
+    background-color: black;
+    /*border: none;
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 4px;
+    color:Black;*/
 }

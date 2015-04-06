@@ -341,6 +341,23 @@ namespace VloveImport.dal
                 throw new Exception("GET_CONFIG_BY_GROUP -> msg : " + ex.Message);
             }
         }
+
+        public string WriteLog(string Page, string Function, string Error)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("INS_ERROR_LOG");
+                SqlCommandData.SetParameter("PAGE", SqlDbType.VarChar, ParameterDirection.Input, Page);
+                SqlCommandData.SetParameter("FUNCTION", SqlDbType.VarChar, ParameterDirection.Input, Function);
+                SqlCommandData.SetParameter("ERROR_DESCRIPTION", SqlDbType.VarChar, ParameterDirection.Input, Error);
+                SqlCommandData.ExecuteNonQuery();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("INS_ERROR_LOG -> msg : " + ex.Message);
+            }
+        }
     }
 
 
