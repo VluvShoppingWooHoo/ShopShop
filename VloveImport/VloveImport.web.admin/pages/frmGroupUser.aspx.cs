@@ -146,7 +146,7 @@ namespace VloveImport.web.admin.pages
             {
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    ShowMessageBox("This information is in the system, please check again. !!", this.Page);
+                    ShowMessageBox("Groupname already exists, please check again. !!", this.Page);
                     IsReturn = false;
                 }
                 else IsReturn = true;
@@ -157,7 +157,7 @@ namespace VloveImport.web.admin.pages
                 {
                     if (this._VS_GROUP_ID.ToString() != ds.Tables[0].Rows[0]["GROUP_ID"].ToString())
                     {
-                        ShowMessageBox("This information is in the system, please check again. !!", this.Page);
+                        ShowMessageBox("Groupname already exists, please check again. !!", this.Page);
                         IsReturn = false;
                     }
                     else IsReturn = true;
