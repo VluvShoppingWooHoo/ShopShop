@@ -76,5 +76,10 @@ namespace VloveImport.web.admin.UserControls
             txtcalendar.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
+        public void CleanDataTextBox()
+        {
+            txtcalendar.Text = "";
+        }
+
     }
 }
