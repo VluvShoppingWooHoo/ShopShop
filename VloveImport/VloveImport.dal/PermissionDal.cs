@@ -35,5 +35,25 @@ namespace VloveImport.dal
             }
         }
         #endregion
+
+        #region Permission
+        public DataSet GetPageByURL(string Page_URL)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("SP_FX_GET_PAGEBYURL");
+               
+                //Input                
+                SqlCommandData.SetParameter("P_PAGE_URL", SqlDbType.VarChar, ParameterDirection.Input, Page_URL);
+
+                return SqlCommandData.ExecuteDataSet();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("SP_EADW_GET_PAGEBYURL -> msg : " + ex.Message);
+            }
+        }
+        #endregion
     }
 }

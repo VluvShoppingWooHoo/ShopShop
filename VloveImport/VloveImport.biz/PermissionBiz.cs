@@ -23,6 +23,14 @@ namespace VloveImport.biz
                 return null;
         }
         #endregion
+
+        #region Permission
+        public DataSet GetPageByURL(string Page_URL)
+        {
+            PermissionDal dal = new PermissionDal("LocalConnection");
+            return dal.GetPageByURL(Page_URL);
+        }
+        #endregion
         
     }
 }

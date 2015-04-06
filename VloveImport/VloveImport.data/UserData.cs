@@ -15,4 +15,13 @@ namespace VloveImport.data
         public string Username { get; set; }
         public string Password { get; set; }
     }
+
+    public class UserGroup
+    {
+        public int Group_ID { get; set; }
+        public string GroupName { get; set; }
+        public string GroupRole { get; set; }
+        public string GroupStatus { get; set; }
+        //public List<UserPage> UserPage { get; set; }
+    }
 }

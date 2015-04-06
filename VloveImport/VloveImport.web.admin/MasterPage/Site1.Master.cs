@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VloveImport.biz;
+using VloveImport.data;
 
 namespace VloveImport.web.admin.MasterPage
 {
@@ -49,7 +51,7 @@ namespace VloveImport.web.admin.MasterPage
         private bool CheckPage(string PageCode)
         {
             //Fix Code "Logout" 
-            if (PageCode == "04")
+            if (PageCode == "99")
                 return true;
 
             UserData User;
