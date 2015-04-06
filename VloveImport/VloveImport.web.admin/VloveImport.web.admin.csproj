@@ -87,6 +87,7 @@
     <Content Include="img\icon\View.png" />
     <Content Include="Logout.aspx" />
     <Content Include="pages\frmApprovePayment.aspx" />
+    <Content Include="pages\frmCmsList.aspx" />
     <Content Include="pages\frmConfig.aspx" />
     <Content Include="pages\frmConfigList.aspx" />
     <Content Include="pages\frmCustomerList.aspx" />
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="pages\frmApprovePayment.aspx.designer.cs">
       <DependentUpon>frmApprovePayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmCmsList.aspx.cs">
+      <DependentUpon>frmCmsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmCmsList.aspx.designer.cs">
+      <DependentUpon>frmCmsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\frmConfig.aspx.cs">
       <DependentUpon>frmConfig.aspx</DependentUpon>

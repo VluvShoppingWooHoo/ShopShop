@@ -35,12 +35,12 @@ namespace VloveImport.web.admin.pages
                 if (_VS_GROUP_ID > 0)
                 {
                     BindData();
-                    lbl_header.Text = "Edit Data GroupUser";
+                    lbl_header.Text = "Edit GroupUser Data";
                     btnSave.Text = "Update";
                 }
                 else
                 {
-                    lbl_header.Text = "Add Data GroupUser";
+                    lbl_header.Text = "Add GroupUser Data";
                     btnSave.Text = "Save";
                 }
             }
