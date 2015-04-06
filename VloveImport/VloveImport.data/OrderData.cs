@@ -21,6 +21,8 @@ namespace VloveImport.data
         public int TRANSPORT_STATUS { get; set; }
         public double ORDER_CURRENCY { get; set; }
         public int ORDER_TRANS_RATE { get; set; }
+        public string EMP_USER { get; set; }
+        public DateTime EMP_UPDATE_DATE { get; set; }
         #endregion
 
         #region Optional
@@ -38,6 +40,20 @@ namespace VloveImport.data
         public double SUM_PROD_PRICE { get; set; }
         public double SUM_PROD_PRICE_ACTIVE { get; set; }
 
+        #endregion
+
+        #region TB_ORDER_SHOP
+        public int ORDER_SHOP_ID;		
+        public string SHOPNAME;
+        public int ORDER_ID;
+        public string TRACKING_NO;
+        public string WEIGHT;
+        public string SIZE;
+        public double WEIGHT_PRICE;
+        public double SIZE_PRICE;	
+        public double TRANSPORT_CHINA_PRICE;
+        public double TRANSPORT_THAI_PRICE;
+        public double TRANSPORT_CUSTOMER_PRICE;
         #endregion
 
         #region TB_ORDER_DETAIL
