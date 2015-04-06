@@ -60,11 +60,13 @@ namespace VloveImport.biz
             }
 
             //Oeder_Shop
-            Res[0] = dal.MakeOrderShop(dt, OID, User);
-
-            //Order_Detail
-            Res[0] = dal.MakeOrderDetail(dt, OID, User);
-
+            bool chkShop = false;
+            Res[0] = dal.MakeOrderShop(dt, OID, User, ref chkShop);
+            //if (chkShop)
+            //{
+            ////    //Order_Detail
+            ////    Res[0] = dal.MakeOrderDetail(dt, int.Parse(Res[0]), User);
+            //}
             return Res;
         }
         public DataTable GetOrderList(Int32 CUS_ID)

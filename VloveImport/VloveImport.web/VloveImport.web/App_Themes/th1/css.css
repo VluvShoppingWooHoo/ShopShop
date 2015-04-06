@@ -625,7 +625,8 @@ button[type="button"] i[class~="right"]
 
 .GridStyle th
 {
-    background-color: black;
+    background-color: orange;
+    color: white;
     /*border: none;
     text-align: left;
     font-weight: bold;
