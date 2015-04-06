@@ -42,13 +42,13 @@ namespace VloveImport.web.admin.pages
                 BindDataGroupUser();
                 if (_VS_USER_ID > 0)
                 {
-                    lbl_header.Text = "Edit Data User";
+                    lbl_header.Text = "Edit User Data ";
                     btnSave.Text = "Update";
                     BindData();
                 }
                 else
                 {
-                    lbl_header.Text = "Add Data User";
+                    lbl_header.Text = "Add User Data ";
                     btnSave.Text = "Save";
                 }
             }
