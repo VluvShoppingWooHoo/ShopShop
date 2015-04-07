@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -24,22 +25,20 @@ namespace VloveImport.web.UserControls
         {
             ShoppingBiz biz = new ShoppingBiz();
             BasePage bp = new BasePage();
-            string Value = biz.GetRate();
+            DataTable dt = biz.GetRate();
             string Date = "";
             double Rate = 0;
-            if (Value == "")
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                Date = dt.Rows[0]["CONFIG_REMARK"].ToString();
+                Rate = dt.Rows[0]["CONFIG_VALUE"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["CONFIG_VALUE"].ToString());
+
+            }
+            else
             {
                 bp.WriteLog("Index", "GetRate", "Value is null");
                 return;
             }
-
-            try
-            {
-                Rate = Convert.ToDouble(Value.Split('|')[0]);
-                Date = "ณ วันที่ " + Value.Split('|')[1];
-            }
-            catch (Exception ex)
-            {}
 
             lbRate.Text = Rate.ToString();
             lbDate.Text = Date;

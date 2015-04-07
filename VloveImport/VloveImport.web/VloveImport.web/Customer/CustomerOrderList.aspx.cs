@@ -51,7 +51,23 @@ namespace VloveImport.web.Customer
             string Order_ID;//SessionUser
             Order_ID = en.EncrypData(btn.CommandArgument);
             Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
-        }        
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            ShoppingBiz biz = new ShoppingBiz();
+            Int32 OID = 0;
+            string Order_ID, Result = "";
+            Order_ID = btn.CommandArgument;
+            OID = Order_ID == "" ? 0 : Convert.ToInt32(Order_ID);
+
+            Result = biz.CancelOrder(GetCusID(), OID);
+            if (Result != "")
+                WriteLog("CustomerOrderList", "DeleteOrder", Result);
+
+            BindData();
+        } 
 
     }
 }

@@ -69,6 +69,13 @@ namespace VloveImport.biz
             //}
             return Res;
         }
+        public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            string Result = "";
+            Result = dal.CancelOrder(CUS_ID, ORDER_ID);
+            return Result;
+        }
         public DataTable GetOrderList(Int32 CUS_ID)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
@@ -80,15 +87,15 @@ namespace VloveImport.biz
                 return null;
         }
 
-        public string GetRate()
+        public DataTable GetRate()
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             DataSet ds = new DataSet();
             ds = dal.GetRate();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
-                return ds.Tables[0].Rows[0]["CONFIG_VALUE"].ToString();
+                return ds.Tables[0];
             else
-                return "";
+                return null;
         }
 
         #region Admin Manage

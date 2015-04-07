@@ -207,6 +207,28 @@ namespace VloveImport.dal
                 return ("INS_ORDER_DETAIL -> msg : " + ex.Message);
             }
         }
+        public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+
+                SqlCommandData.SetStoreProcedure("UPDATE_CANCEL_ORDER");
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
+                
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                throw new Exception("UPDATE_CANCEL_ORDER -> msg : " + ex.Message);
+            }
+        }
         public DataSet GetOrderList(Int32 CUS_ID)
         {
             try
