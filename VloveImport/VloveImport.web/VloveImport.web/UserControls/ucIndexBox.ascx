@@ -728,7 +728,7 @@
                     <!-- random image -->
                 </li>
                 <li class="li3">
-                    <img src="../Images/pic/Banner/Tour.jpg" style="min-height: 100%; min-width: 100%;" />
+                    <img src="../Images/pic/Banner/Tour1.jpg" style="min-height: 100%; min-width: 100%;" />
                     <!-- random image -->
                 </li>
             </ul>
@@ -761,9 +761,9 @@
         <iframe marginwidth="0" marginheight="0" src="http://www.bangkokbank.com/fxbanner/banner1.htm" frameborder="0" width="173" scrolling="no" height="165"></iframe>
         <div id="ExRate">
 
-            <div class="ex1"><span>Rate</span></div>
-            <div class="ex2"><span>5.28</span></div>
-            <div class="ex3"><span>ณ วันที่ 18/3/2558</span></div>
+            <div class="ex1"><span>อัตราแลกเปลี่ยนประจำวัน</span></div>
+            <div class="ex2"><span><asp:Label ID="lbRate" runat="server" ></asp:Label></span></div>
+            <div class="ex3"><span><asp:Label ID="lbDate" runat="server" ></asp:Label></span></div>
         </div>
     </div>
 </div>

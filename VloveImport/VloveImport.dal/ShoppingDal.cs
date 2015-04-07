@@ -222,6 +222,20 @@ namespace VloveImport.dal
             }
         }
 
+        public DataSet GetRate()
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_RATE");
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_RATE -> msg : " + ex.Message);
+            }
+        }
+
         #region Admin Manage
         public DataSet GetOrderList(string Login, string ShopName)
         {

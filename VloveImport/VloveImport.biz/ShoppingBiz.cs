@@ -80,6 +80,17 @@ namespace VloveImport.biz
                 return null;
         }
 
+        public string GetRate()
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetRate();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+                return ds.Tables[0].Rows[0]["CONFIG_VALUE"].ToString();
+            else
+                return "";
+        }
+
         #region Admin Manage
         public DataTable GetOrderList(string Login, string ShopName)
         {
