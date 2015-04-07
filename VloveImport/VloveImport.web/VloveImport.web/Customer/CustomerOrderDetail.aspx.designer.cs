@@ -13,12 +13,21 @@ namespace VloveImport.web.Customer {
     public partial class CustomerOrderDetail {
         
         /// <summary>
-        /// ucSeachBox control.
+        /// lbOrderDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.UserControls.ucSeachBox ucSeachBox;
+        protected global::System.Web.UI.WebControls.Label lbOrderDate;
+        
+        /// <summary>
+        /// lbOrder_STatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbOrder_STatus;
     }
 }
