@@ -13,24 +13,6 @@ namespace VloveImport.web.Customer {
     public partial class Register {
         
         /// <summary>
-        /// mView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView mView;
-        
-        /// <summary>
-        /// vRegis control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View vRegis;
-        
-        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -76,6 +58,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.CheckBox ckb;
         
         /// <summary>
+        /// txtAccept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAccept;
+        
+        /// <summary>
         /// txtMobile control.
         /// </summary>
         /// <remarks>
@@ -119,23 +110,5 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbMessage;
-        
-        /// <summary>
-        /// vSuccess control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View vSuccess;
-        
-        /// <summary>
-        /// hplActivate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hplActivate;
     }
 }

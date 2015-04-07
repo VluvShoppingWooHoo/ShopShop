@@ -35,6 +35,7 @@ namespace VloveImport.web.Customer
             //Cust.Cus_Mobile = txtMobile.Text;
             //Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
             #endregion
+            string[] URL;
             string Body = "", Link = "",emailEn = "", passEn = "", Path = "";
             string Result = Insert();
             string[] Temp;
@@ -54,6 +55,8 @@ namespace VloveImport.web.Customer
                 else
                 {
                     //WriteLog
+                    URL = Page.Request.Url.ToString().Split('/');
+                    WriteLog(URL[URL.Length - 1], ((Button)sender).ID, "");
                     lbMessage.Text = "Error";
                 }
 
@@ -61,6 +64,8 @@ namespace VloveImport.web.Customer
             else
             {
                 //WriteLog
+                URL = Page.Request.Url.ToString().Split('/');
+                WriteLog(URL[URL.Length - 1], ((Button)sender).ID, "");
                 lbMessage.Text = "Error";
             }
 
