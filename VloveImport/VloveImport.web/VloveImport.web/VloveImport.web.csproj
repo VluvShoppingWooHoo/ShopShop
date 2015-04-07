@@ -89,6 +89,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\ContentDetail.aspx" />
     <Content Include="Customer\ContentList.aspx" />
+    <Content Include="Customer\CustomerOrderDetail.aspx" />
     <Content Include="Customer\CustomerForgot.aspx" />
     <Content Include="Customer\CustomerChangePassword.aspx" />
     <Content Include="Customer\CustomerOrder.aspx" />
@@ -247,6 +248,13 @@
     </Compile>
     <Compile Include="Customer\ContentList.aspx.designer.cs">
       <DependentUpon>ContentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerOrderDetail.aspx.cs">
+      <DependentUpon>CustomerOrderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerOrderDetail.aspx.designer.cs">
+      <DependentUpon>CustomerOrderDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerForgot.aspx.cs">
       <DependentUpon>CustomerForgot.aspx</DependentUpon>
