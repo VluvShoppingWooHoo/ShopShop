@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div class="s12 m12 l12 textUnderline">
+        <div class="s12 m12 l12 ContentTitle">
             บริการพาทัวร์ตลาดจีน จัดทัวร์ตลาดจีน
         </div>
     </div>

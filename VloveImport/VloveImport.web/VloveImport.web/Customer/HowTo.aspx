@@ -6,7 +6,7 @@
     <div id="divRateimport" class="row" hidden>
         <div id="mSH1" class="mContent mIndex">
             <div class="row">
-                <div class="s12 m12 l12 textUnderline">
+                <div class="s12 m12 l12 ContentTitle">
                     การขนส่งทางเครื่องบิน
                 </div>
             </div>
@@ -15,7 +15,7 @@
                     นำเข้าสินค้าจากจีนส่งสินค้าจากกวางโจว – ไทย ทางอากาศ(Air)<br />
 
                     ทางเครื่องบินปิดตู้ทุกวันระยะเวลาในการขนส่งจากจีนมาไทย 2-3 วันบริการขนส่งสินค้าถึงหน้าบ้านหรือหน้าร้านของลูกค้าด้วยขนส่งเอกชน ทั้งใน กรุงเทพฯ ปริมณฑล และต่างจังหวัด<br />
-                    <table class="centered hoverable">
+                    <table class="centered hoverable borderTable">
                         <thead>
                             <tr>
                                 <th>น้ำหนัก</th>
@@ -45,7 +45,7 @@
         </div>
         <div id="mSH2" class="mContent">
             <div class="row">
-                <div class="s12 m12 l12 textUnderline">
+                <div class="s12 m12 l12 ContentTitle">
                     การขนส่งทางรถ
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     นำเข้าสินค้าจากจีนส่งสินค้าจากกวางโจว – ไทย ทางรถ (EK) ทางรถ<br />
                     ปิดตู้ทุกวันและระยะเวลาในการขนส่งจากจีนมาไทย 5 -7 วัน นับจากวันขึ้นตู้เป็นการขนส่งที่ใช้กันอย่างแพร่หลายใน ปัจจุบันค่าใช้จ่ายไม่แพง สะดวกและเร็ว บริการขนส่งสินค้าถึงหน้าบ้านหรือหน้าร้านของลูกค้าด้วยขนส่งเอกชน ทั้งใน กรุงเทพฯ ปริมณฑล และต่างจังหวัด
                     <br />
-                    <table class="centered hoverable">
+                    <table class="centered hoverable borderTable">
                         <thead>
                             <tr>
                                 <th>น้ำหนัก</th>
@@ -101,7 +101,7 @@
         </div>
         <div id="mSH3" class="mContent">
             <div class="row">
-                <div class="s12 m12 l12 textUnderline">
+                <div class="s12 m12 l12 ContentTitle">
                     การขนส่งทางเรือ 
                 </div>
             </div>
@@ -111,7 +111,7 @@
 
                     ระยะเวลาในการขนส่ง 12 -16 วัน เรืออกทุกอาทิตย์ ข้อดี คือ ไม่แพง สินค้าที่ไม่มีรูปร่างไม่สัมพันธ์กับรูปร่างจึงเหมาะกับการขนส่งทางเรือ ลดต้นทุน (เหมาะกับสินค้าลิขสิทธิ์ สินค้าที่ทำจากเหล็ก มีเหล็กเป็นส่วนประกอบ) ข้อเสีย คือ ใช้ระยะเวลาในการขนส่งค่อนข้างนาน 
                     <br />
-                    <table class="centered hoverable">
+                    <table class="centered hoverable borderTable">
                         <thead>
                             <tr>
                                 <th>น้ำหนัก</th>
@@ -158,7 +158,7 @@
         </div>
         <div id="mSH4" class="mContent">
             <div class="row">
-                <div class="s12 m12 l12 textUnderline">
+                <div class="s12 m12 l12 ContentTitle">
                     ค่าส่งในไทย
                 </div>
             </div>
@@ -194,7 +194,7 @@
         </div>
         <div id="mSH5" class="mContent">
             <div class="row">
-                <div class="s12 m12 l12 textUnderline">
+                <div class="s12 m12 l12 ContentTitle">
                     การรับสินค้า
                 </div>
             </div>
@@ -206,7 +206,7 @@
         </div>
         <div id="mSH6" class="mContent">
             <div class="row">
-                <div class="s12 m12 l12 textUnderline">
+                <div class="s12 m12 l12 ContentTitle">
                     การคิดราคาค่านำเข้าแบ่งตามประเภท 
                 </div>
             </div>
@@ -249,7 +249,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 1. ตรวจสอบยอดสินค้าที่ต้องชำระ
             </div>
         </div>
@@ -260,7 +260,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 2. ตรวจสอบยอดสินค้าที่ต้องชำระ
             </div>
         </div>
@@ -271,7 +271,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 3. แจ้งยืนยันโอนเงิน
             </div>
         </div>

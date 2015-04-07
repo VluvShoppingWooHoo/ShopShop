@@ -720,15 +720,15 @@
         <div class="row slider">
             <ul class="slides" style="height: 300px;">
                 <li class="li1">
-                    <img src="../Images/pic/Banner/ILoveImport.jpg" style="min-height: 100%; min-width: 100%;" />
+                    <img src="../Images/pic/Banner/ILoveImport.jpg" style="background-size:100%;" />
                     <!-- random image -->
                 </li>
                 <li class="li2">
-                    <img src="../Images/pic/Banner/Sale.jpg" style="min-height: 100%; min-width: 100%;" />
+                    <img src="../Images/pic/Banner/Sale.jpg" style="background-size:100%;" />
                     <!-- random image -->
                 </li>
                 <li class="li3">
-                    <img src="../Images/pic/Banner/Tour1.jpg" style="min-height: 100%; min-width: 100%;" />
+                    <img src="../Images/pic/Banner/Tour1.jpg" style="background-size:100%;" />
                     <!-- random image -->
                 </li>
             </ul>

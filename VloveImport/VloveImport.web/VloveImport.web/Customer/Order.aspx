@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="mOR1" class="mContent mIndex">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 กฏ กติกาในการสั่งซื้อ
             </div>
         </div>
@@ -32,7 +32,7 @@
     </div>
     <div id="mOR2" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 ตัวอย่างศัพท์ภาษาจีน
             </div>
         </div>
@@ -65,7 +65,7 @@
     </div>
     <div id="mOR3" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 การ Search หาสินค้า
             </div>
         </div>
@@ -81,7 +81,7 @@
     </div>
     <div id="mOR4" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 วิธีสั่งซื้อสินค้าสำหรับลูกค้าที่สั่งแบบ ฝากจ่ายเงิน
             </div>
         </div>
@@ -106,7 +106,7 @@
     </div>
     <div id="mOR5" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 วิธีการฝากส่งสินค้าอย่างเดียว
             </div>
         </div>
@@ -118,7 +118,7 @@
     </div>
     <div id="mOR6" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 วิธีการสั่งซื้อแบบ Grab Url หน้าเว็บไซด์
             </div>
         </div>
@@ -129,7 +129,7 @@
     </div>
     <div id="mOR7" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 การโอนเงินและการเติมเงิน
             </div>
         </div>
@@ -140,7 +140,7 @@
     </div>
     <div id="mOR8" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 รายละเอียดขั้นตอนการชำระเงิน
             </div>
         </div>
@@ -168,7 +168,7 @@
     </div>
     <div id="mOR9" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 วิธีการชำระเงินและแจ้งยืนยันการชำระเงิน
             </div>
         </div>
@@ -190,7 +190,7 @@
     </div>
     <div id="mOR10" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 วิธีถอนเงินในระบบ
             </div>
         </div>
@@ -201,7 +201,7 @@
     </div>
     <div id="mOR11" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 ตารางไซส์เครื่องแต่งกาย
             </div>
         </div>
@@ -863,7 +863,7 @@
     </div>
     <div id="mOR12" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 วิธีการสมัครสมาชิก
             </div>
         </div>

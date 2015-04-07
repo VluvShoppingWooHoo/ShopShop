@@ -93,8 +93,8 @@ body
 
 *
 {
-    /*font-size: 12px !important;*/
-    font-size: 14px !important;
+    font-size: 12px !important;
+    /*font-size: 14px !important;*/
 }
 
 .input-field
@@ -392,6 +392,7 @@ li[class~="section"]:hover
         /*background-color: #0288d1;*/
         background-color: black;
         color: white;
+        text-align: center;
     }
 
     #divSide .collection-item
@@ -420,7 +421,7 @@ div[id="hotlink"]
 
     div[id="hotlink"] a
     {
-        font-size: 15px !important;
+        font-size: 14px !important;
         margin-bottom: 5px !important;
     }
 
@@ -446,7 +447,7 @@ div[id="hotlink"]
     #navMenuHori ul li a
     {
         color: white;
-        font-size: 17px !important;
+        font-size: 14px !important;
     }
 
     #navMenuHori ul li
@@ -513,7 +514,7 @@ input[type="checkbox"]
 
     #ExRate div.ex1 span
     {
-        font-size: 15px !important;
+        font-size: 14px !important;
     }
 
     #ExRate div.ex2
@@ -533,8 +534,17 @@ input[type="checkbox"]
 
         #ExRate div.ex3 span
         {
-            font-size: 15px !important;
+            font-size: 14px !important;
         }
+
+.ContentTitle
+{
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: 16px !important;
+    color: orange;
+    margin-bottom: 20px;
+}
 
 .bold
 {
@@ -606,6 +616,7 @@ input[type="submit"]
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+
     input[type="submit"]:active
     {
         border: none;
@@ -617,11 +628,11 @@ button[type="button"]
     padding: 0px;
 }
 
-button[type="button"] i[class~="right"]
-{
-    padding-right: 10px;
-    /*padding-left: 10px;*/
-}
+    button[type="button"] i[class~="right"]
+    {
+        padding-right: 10px;
+        /*padding-left: 10px;*/
+    }
 
 .GridStyle th
 {
@@ -633,4 +644,34 @@ button[type="button"] i[class~="right"]
     font-size: 15px;
     padding: 4px;
     color:Black;*/
+}
+
+.slider ul.slides
+{
+    height: auto !important;
+}
+
+i::before
+{
+    margin-left: 10px !important;
+}
+
+i[class~="right"]
+{
+    margin-left: 0px !important;
+}
+
+i[class~="NoFont"]
+{
+    margin-right: 10px !important;
+}
+table[class~="borderTable"]
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+table[class~="borderTable"], table[class~="borderTable"] th, table[class~="borderTable"] td
+{
+    border: solid 1px lightgrey;
 }

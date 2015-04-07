@@ -23,7 +23,7 @@
             <br />
 
             <div class="row">
-                <div class="s12 m12 l12 textUnderline">
+                <div class="s12 m12 l12 ContentTitle">
                     ติดต่อโกดังที่ไทย
                 </div>
 
@@ -33,7 +33,7 @@
                 <br />
             </div>
             <div class="row">
-                <div class="s12 m12 l12 textUnderline">
+                <div class="s12 m12 l12 ContentTitle">
                     ติดต่อโกดังที่จีน
                 </div>
                 +8615017510371<br />

@@ -143,10 +143,10 @@
         $('.translateFlag').on("click", function () {
             var aid = $(this).data("id");
             if (aid == 1) {
-                $.cookie('googtrans', '/th/zh-TW');
+                $.cookie('googtrans', '/th/zh-CN');
             }
             else {
-                $.cookie('googtrans', '/zh-TW/th');
+                $.cookie('googtrans', '/zh-CN/th');
             }
             location.reload();
         });
@@ -158,7 +158,7 @@
             $('#fbLoginbtn').hide();
 
         var coo = $.cookie('googtrans');
-        if (coo == '/th/zh-TW') {
+        if (coo == '/th/zh-CN') {
             $('#Master_link').click();
             $('#loadingMaster').show();
             setTimeout(waitTrans, 500);
@@ -209,7 +209,7 @@
 </script>
 <script type="text/javascript">
     function googleTranslateElementInit() {
-        new google.translate.TranslateElement({ pageLanguage: 'th', includedLanguages: 'th,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
+        new google.translate.TranslateElement({ pageLanguage: 'th', includedLanguages: 'th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
     }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

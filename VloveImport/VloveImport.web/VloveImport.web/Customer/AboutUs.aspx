@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="divAbout" hidden>
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 i love import  บริการนำเข้าสินค้าจากจีน
             </div>
         </div>
@@ -21,7 +21,7 @@
     </div>
     <div id="divService" hidden>
         <div class="row">
-            <div class="s12 m12 l12 textUnderline">
+            <div class="s12 m12 l12 ContentTitle">
                 บริการของเรา
             </div>
         </div>

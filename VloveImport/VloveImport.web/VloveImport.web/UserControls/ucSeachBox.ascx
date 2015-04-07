@@ -136,10 +136,10 @@
     <div id="footer" class="modal-footer">
         <input type="hidden" id="hdWeb">
         <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
-            <i class="mdi-action-shopping-cart"></i>
+            <i class="mdi-action-shopping-cart NoFont"></i>
         </button>
         <button id="btnClose" type="button" class="btn waves-effect red white-text waves-light" name="action" style="margin-right: 25px">
-            <i class="mdi-navigation-close"></i>
+            <i class="mdi-navigation-close NoFont"></i>
         </button>
         <%--<a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>--%>
     </div>
