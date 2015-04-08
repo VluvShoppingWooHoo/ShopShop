@@ -154,10 +154,13 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_CusName.Text = ds.Tables[3].Rows[0]["CUS_FULLNAME"].ToString();
                 lbl_ViewDetail_Telphone.Text = ds.Tables[3].Rows[0]["CUS_TELEPHONE"].ToString() + " Mobile : " + ds.Tables[3].Rows[0]["CUS_MOBILE"].ToString();
                 lbl_ViewDetail_Email.Text = ds.Tables[3].Rows[0]["CUS_EMAIL"].ToString();
-                lbl_ViewDetail_Total_Amount.Text = ds.Tables[3].Rows[0]["CUS_TOTAL_AMOUNT"].ToString();
+                //lbl_ViewDetail_Total_Amount.Text = ds.Tables[3].Rows[0]["CUS_TOTAL_AMOUNT"].ToString();
                 #endregion
 
                 #region Order Shop
+
+                gv_detail.DataSource = ds.Tables[2];
+                gv_detail.DataBind();
 
                 gv_detail_shop.DataSource = ds.Tables[1];
                 gv_detail_shop.DataBind();
@@ -166,8 +169,8 @@ namespace VloveImport.web.admin.pages
 
                 gv_detail_prod_view.DataSource = ds.Tables[2];
                 gv_detail_prod_view.DataBind();
-                gv_detail_prod_Edit.DataSource = ds.Tables[2];
-                gv_detail_prod_Edit.DataBind();
+                //gv_detail_prod_Edit.DataSource = ds.Tables[2];
+                //gv_detail_prod_Edit.DataBind();
             }
             else
             {
@@ -276,6 +279,33 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = _VS_ORDER_TRAN_STS;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
             }
+        }
+
+        protected void gv_detail_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string OD_STATUS = DataBinder.Eval(e.Row.DataItem, "OD_STATUS").ToString();
+
+                if (OD_STATUS == "-1")
+                {
+                    e.Row.Cells[0].ColumnSpan = 8;
+                    for (int i = 1; i <= 7; i++)
+                    {
+                        e.Row.Cells[i].Visible = false;
+                        e.Row.CssClass = "AltRowStyle";
+                    }
+
+                    e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "ROW_INDEX_SHOP").ToString();
+
+                }
+                else
+                {
+                    e.Row.CssClass = "RowStyle";
+                    e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "ROW_RANK_PROD").ToString();
+                }
+            }
+            
         }
     }
 }

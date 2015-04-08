@@ -13,7 +13,7 @@ namespace VloveImport.web.admin.UserControls
         {
             if (!IsPostBack)
             {
-                txtcalendar.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                
             }
         }
 
@@ -59,6 +59,11 @@ namespace VloveImport.web.admin.UserControls
             {
                 txtcalendar.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
+        }
+
+        public void SET_DATE_DEFAULT()
+        {
+            txtcalendar.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         public string GET_DATE_TO_STRING(string FormatText = "yyyy-MM-dd")

@@ -13,7 +13,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <fieldset style="width: 95%;">
+            <fieldset>
                 <legend>Order Detail
                 </legend>
                 <table>
@@ -81,10 +81,88 @@
                             <asp:Label ID="lbl_ViewDetail_EMP_UPDATE_DATE" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan = "4">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Code</td>
+                        <td>
+                            <asp:Label ID="lbl_ViewDetail_CusCode" runat="server" Text=""></asp:Label>
+                        </td>
+                        <td>Customer Name :</td>
+                        <td>
+                            <asp:Label ID="lbl_ViewDetail_CusName" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Customer Email :</td>
+                        <td>
+                            <asp:Label ID="lbl_ViewDetail_Email" runat="server" Text=""></asp:Label>
+                        </td>
+                        <td>Customer Telephone :</td>
+                        <td>
+                            <asp:Label ID="lbl_ViewDetail_Telphone" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
                 </table>
             </fieldset>
-            <fieldset style="width: 95%;">
-                <legend>Shop Detail
+            <fieldset>
+                <legend>
+                    Update Status Order And Transport
+                </legend>
+                <table>
+                    <tr>
+                        <td width="15%" class="auto-style1">Order Status :</td>
+                        <td width="85%" class="auto-style1">
+                            <asp:DropDownList Width ="300px" ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Transport Status :</td>
+                        <td>
+                            <asp:DropDownList ID="ddl_ViewDetail_TRANSPORT_STATUS" runat="server" Width ="300px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <asp:Button ID="btn_detail_update" runat="server" Text="Update Status" CssClass="btnSave" OnClick="btn_detail_update_Click"></asp:Button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    Shop Detail
+                </legend>
+                <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="gv_detail_RowDataBound">
+                    <Columns>
+                        <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
+                        <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail" />
+                        <asp:BoundField DataField="OD_REMARK" HeaderText="Remark" />
+                        <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Price">
+                        <ItemStyle CssClass="ItemStyle-right" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="OD_AMOUNT" HeaderText="Order amount">
+                        <ItemStyle CssClass="ItemStyle-right" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="TOTAL_PROD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total price">
+                        <ItemStyle CssClass="ItemStyle-right" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="OD_AMOUNT_ACTIVE" HeaderText="Order active amount">
+                        <ItemStyle CssClass="ItemStyle-right" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="TOTAL_PROD_PRICE_ACTIVE" DataFormatString="{0:#,##0.00}" HeaderText="Total active price">
+                        <ItemStyle CssClass="ItemStyle-right" />
+                        </asp:BoundField>
+                    </Columns>
+                </asp:GridView>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    Shop Detail
                 </legend>
                 <table>
                     <tr>
@@ -159,68 +237,6 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-            <fieldset style="width: 95%;">
-                <legend>
-                    Update Status Order And Transport
-                </legend>
-                <table>
-                    <tr>
-                        <td width="15%" class="auto-style1">Order Status :</td>
-                        <td width="85%" class="auto-style1">
-                            <asp:DropDownList Width ="300px" ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Transport Status :</td>
-                        <td>
-                            <asp:DropDownList ID="ddl_ViewDetail_TRANSPORT_STATUS" runat="server" Width ="300px">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:Button ID="btn_detail_update" runat="server" Text="Update Status" CssClass="btnSave" OnClick="btn_detail_update_Click"></asp:Button>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-            <fieldset style="width: 95%;">
-                <legend>
-                    Customer Detail
-                </legend>
-                <table>
-                    <tr>
-                        <td>Customer Code</td>
-                        <td>
-                            <asp:Label ID="lbl_ViewDetail_CusCode" runat="server" Text=""></asp:Label>
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Customer Name :</td>
-                        <td>
-                            <asp:Label ID="lbl_ViewDetail_CusName" runat="server" Text=""></asp:Label>
-                        </td>
-                        <td>Customer Telephone :</td>
-                        <td>
-                            <asp:Label ID="lbl_ViewDetail_Telphone" runat="server" Text=""></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Customer Balance :</td>
-                        <td>
-                            <asp:Label ID="lbl_ViewDetail_Total_Amount" runat="server" Text=""></asp:Label>
-                        </td>
-                        <td>Customer Email :</td>
-                        <td>
-                            <asp:Label ID="lbl_ViewDetail_Email" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                 </table>
