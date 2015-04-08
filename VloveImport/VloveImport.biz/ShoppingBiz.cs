@@ -86,7 +86,16 @@ namespace VloveImport.biz
             else
                 return null;
         }
-
+        public DataTable GetOrderDetail(Int32 ORDER_ID)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetOrderDetail(ORDER_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
         public DataTable GetRate()
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");

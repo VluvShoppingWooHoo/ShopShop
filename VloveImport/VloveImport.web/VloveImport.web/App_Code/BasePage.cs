@@ -57,8 +57,8 @@ namespace VloveImport.web.App_Code
         {
             double Rate = 0;
             DataTable dt = new DataTable();
-            commonBiz Biz = new commonBiz();
-            dt = Biz.Get_ConfigByGroup("EXCH_RATE");
+            ShoppingBiz Biz = new ShoppingBiz();
+            dt = Biz.GetRate();
             if (dt != null && dt.Rows.Count > 0)
                 Rate = Convert.ToDouble(dt.Rows[0]["CONFIG_VALUE"].ToString());
 

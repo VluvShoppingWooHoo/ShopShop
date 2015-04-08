@@ -67,6 +67,21 @@ namespace VloveImport.web.Customer
                 WriteLog("CustomerOrderList", "DeleteOrder", Result);
 
             BindData();
+        }
+
+        protected void gvOrder_DataBound(object sender, EventArgs e)
+        {
+            HyperLink hl;
+            string Order_ID = "";
+            foreach (GridViewRow gvr in gvOrder.Rows)
+            {
+                hl = (HyperLink)gvr.Cells[0].FindControl("hlOrderCode");
+                if (hl != null)
+                {
+                    Order_ID = EncrypData(hl.NavigateUrl);
+                    hl.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?OID=" + Order_ID;
+                }
+            }
         } 
 
     }

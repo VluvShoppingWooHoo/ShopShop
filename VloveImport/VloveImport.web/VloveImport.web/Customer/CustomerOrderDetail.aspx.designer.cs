@@ -13,21 +13,48 @@ namespace VloveImport.web.Customer {
     public partial class CustomerOrderDetail {
         
         /// <summary>
-        /// lbOrderDate control.
+        /// lbOrder_Code control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbOrderDate;
+        protected global::System.Web.UI.WebControls.Label lbOrder_Code;
         
         /// <summary>
-        /// lbOrder_STatus control.
+        /// lbCusName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbOrder_STatus;
+        protected global::System.Web.UI.WebControls.Label lbCusName;
+        
+        /// <summary>
+        /// lbOrder_Date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbOrder_Date;
+        
+        /// <summary>
+        /// lbOrderTransport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbOrderTransport;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
     }
 }

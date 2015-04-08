@@ -20,11 +20,21 @@ namespace VloveImport.web.Customer
             //CheckSession(); 
             if (!IsPostBack)
             {
-                //string CID = "0";// Request.QueryString["CID"] == null ? "" : en.DecryptData(Request.QueryString["CID"].ToString());
-                //if (CID == "")
-                //    Response.Redirect("CustomerBasket.aspx");            
+                string OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
+                BindData(OID);
             }
-        }            
-
+        }
+        protected void BindData(string Order_ID)
+        {
+            ShoppingBiz biz = new ShoppingBiz();
+            DataTable dt = new DataTable();
+            Int32 OID = Order_ID == "" ? 0 : Convert.ToInt32(Order_ID);
+            dt = biz.GetOrderDetail(OID);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                lbOrder_Code.Text = dt.Rows[0]["ORDER_CODE"].ToString();
+                lbOrder_Date.Text = dt.Rows[0]["ORDER_DATE"].ToString();
+            }
+        }
     }
 }

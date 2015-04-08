@@ -244,7 +244,20 @@ namespace VloveImport.dal
                 throw new Exception("GET_ORDER_LIST -> msg : " + ex.Message);
             }
         }
+        public DataSet GetOrderDetail(Int32 ORDER_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_ORDER_DETAIL");
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
 
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_ORDER_DETAIL -> msg : " + ex.Message);
+            }
+        }
         public DataSet GetRate()
         {
             try
