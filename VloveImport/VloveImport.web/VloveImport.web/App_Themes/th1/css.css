@@ -682,7 +682,24 @@ table[class~="borderTable"]
     margin-bottom: 15px;
 }
 
+<<<<<<< HEAD
     table[class~="borderTable"], table[class~="borderTable"] th, table[class~="borderTable"] td
     {
         border: solid 1px lightgrey;
     }
+=======
+table[class~="borderTable"], table[class~="borderTable"] th, table[class~="borderTable"] td
+{
+    border: solid 1px lightgrey;
+}
+
+.FontHeader
+{
+	font-size:16px !important;
+}
+
+.FontHeader2
+{
+	font-size:14px !important;
+}
+>>>>>>> origin/master

@@ -130,13 +130,40 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_EMP_UPDATE_DATE;
         
         /// <summary>
-        /// gv_detail_shop control.
+        /// lbl_ViewDetail_CusCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_detail_shop;
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_CusCode;
+        
+        /// <summary>
+        /// lbl_ViewDetail_CusName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_CusName;
+        
+        /// <summary>
+        /// lbl_ViewDetail_Email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Email;
+        
+        /// <summary>
+        /// lbl_ViewDetail_Telphone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Telphone;
         
         /// <summary>
         /// ddl_ViewDetail_ORDER_STATUS control.
@@ -166,49 +193,22 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Button btn_detail_update;
         
         /// <summary>
-        /// lbl_ViewDetail_CusCode control.
+        /// gv_detail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_CusCode;
+        protected global::System.Web.UI.WebControls.GridView gv_detail;
         
         /// <summary>
-        /// lbl_ViewDetail_CusName control.
+        /// gv_detail_shop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_CusName;
-        
-        /// <summary>
-        /// lbl_ViewDetail_Telphone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Telphone;
-        
-        /// <summary>
-        /// lbl_ViewDetail_Total_Amount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Total_Amount;
-        
-        /// <summary>
-        /// lbl_ViewDetail_Email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Email;
+        protected global::System.Web.UI.WebControls.GridView gv_detail_shop;
         
         /// <summary>
         /// MultiView1 control.

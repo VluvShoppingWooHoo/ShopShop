@@ -5,21 +5,21 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="row">
-                <div class="col s12 m12 l12 TestBox1">
-                    ข้อมูลการขนส่ง
+                <div class="col s12 m12 l12 TestBox1">                    
+                    <span class="bold FontHeader orange-text">ข้อมูลการขนส่ง</span>
                 <br />
                     <br />
 
                     <div class="row s6 m6 l6 TestBox1">
                         1. ขนส่งจากจีนถึงไทย โดยวิธี 
                         <br />
-                        <asp:RadioButtonList ID="rdbChina" runat="server" DataTextField="TRANS_NAME" DataValueField="TRANS_ID">
+                        <asp:RadioButtonList ID="rdbChina" runat="server" DataTextField="STATUS_DESCRIPTION" DataValueField="STATUS_NAME">
                         </asp:RadioButtonList>
                 
                         <br />
                         2. ขนส่งภายในประเทศ โดยวิธี
                         <br />
-                        <asp:RadioButtonList ID="rdbThai" CssClass="rdbThai" runat="server" DataTextField="TRANS_NAME" DataValueField="TRANS_ID">
+                        <asp:RadioButtonList ID="rdbThai" CssClass="rdbThai" runat="server" DataTextField="STATUS_DESCRIPTION" DataValueField="STATUS_NAME">
                         </asp:RadioButtonList>
                 
                         <br />
@@ -54,7 +54,7 @@
             $('.rdbThai label').click(function (e) {
                 //alert(e.currentTarget.control.id);
                 //$("#" + e.currentTarget.control.id).attr('checked', 'checked');
-                if (e.currentTarget.innnerHtml == "มารับเอง" || e.currentTarget.control.value == 3) {
+                if (e.currentTarget.innnerHtml == "มารับเอง" || e.currentTarget.control.value == 1) {
                     $('.divAddress').hide();
                 }
                 else {

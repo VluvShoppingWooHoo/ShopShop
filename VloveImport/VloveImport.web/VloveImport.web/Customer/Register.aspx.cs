@@ -28,13 +28,6 @@ namespace VloveImport.web.Customer
 
         protected void btnRegis_Click(object sender, EventArgs e)
         {
-            #region set model
-            //CustomerData Cust = new CustomerData();
-            //Cust.Cus_Email = txtEmail.Text;
-            //Cust.Cus_Password = txtPassword.Text;
-            //Cust.Cus_Mobile = txtMobile.Text;
-            //Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
-            #endregion
             string[] URL;
             string Body = "", Link = "",emailEn = "", passEn = "", Path = "";
             string Result = Insert();
@@ -51,12 +44,15 @@ namespace VloveImport.web.Customer
                     Link = Path + "/Customer/Activate.aspx?e=" + Server.UrlEncode(emailEn) + "&c=" + Server.UrlEncode(passEn);
                     Body = Temp[1].Replace("{0}", Link);
                     Result = SendMail(txtEmail.Text, Temp[0], Body);
+
+                    //Success
+                    GoToIndex();
                 }
                 else
                 {
                     //WriteLog
                     URL = Page.Request.Url.ToString().Split('/');
-                    WriteLog(URL[URL.Length - 1], ((Button)sender).ID, "");
+                    WriteLog(URL[URL.Length - 1], "btnRegis", Result);
                     lbMessage.Text = "Error";
                 }
 
@@ -64,12 +60,12 @@ namespace VloveImport.web.Customer
             else
             {
                 //WriteLog
-                URL = Page.Request.Url.ToString().Split('/');
-                WriteLog(URL[URL.Length - 1], ((Button)sender).ID, "");
-                lbMessage.Text = "Error";
+                //URL = Page.Request.Url.ToString().Split('/');
+                //WriteLog(URL[URL.Length - 1], "btnRegis", Result);
+                //lbMessage.Text = "Error";
             }
 
-            GoToIndex();
+            
         }
 
         protected string Insert()
@@ -134,6 +130,20 @@ namespace VloveImport.web.Customer
             {
                 IsReturn = false;
                 ShowMessageBox("กรุณายืนยันรหัสผ่านให้ถูกต้อง", this.Page);
+                return IsReturn;
+            }
+
+            if (!ckb.Checked)
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณายอมรับเงื่อนไขการเป็นสมาชิก", this.Page);
+                return IsReturn;
+            }
+
+            if (txtMobile.Text.Trim() == "")
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณากรอกหมายเลขโทรศัพท์", this.Page);
                 return IsReturn;
             }
            

@@ -27,11 +27,11 @@ namespace VloveImport.web.Customer
         {
             ShoppingBiz Biz = new ShoppingBiz();
             CustomerBiz BizCus = new CustomerBiz();
-            rdbChina.DataSource = Biz.GetTransList("CHINA");
+            rdbChina.DataSource = Biz.GetTransList("TRANSPORT_C");
             rdbChina.DataBind();
             rdbChina.SelectedIndex = 0;
 
-            rdbThai.DataSource = Biz.GetTransList("THAI");
+            rdbThai.DataSource = Biz.GetTransList("TRANSPORT_T");
             rdbThai.DataBind();
             rdbThai.SelectedIndex = 0;
 

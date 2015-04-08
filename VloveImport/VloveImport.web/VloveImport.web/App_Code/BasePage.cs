@@ -53,6 +53,18 @@ namespace VloveImport.web.App_Code
             return Result;
         }
 
+        public double GetRateCurrency()
+        {
+            double Rate = 0;
+            DataTable dt = new DataTable();
+            commonBiz Biz = new commonBiz();
+            dt = Biz.Get_ConfigByGroup("EXCH_RATE");
+            if (dt != null && dt.Rows.Count > 0)
+                Rate = Convert.ToDouble(dt.Rows[0]["CONFIG_VALUE"].ToString());
+
+            return Rate;
+        }
+
         public void CheckSession()
         {
             if (HttpContext.Current.Session["User"] != null)

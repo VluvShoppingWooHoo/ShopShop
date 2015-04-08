@@ -154,10 +154,13 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_CusName.Text = ds.Tables[3].Rows[0]["CUS_FULLNAME"].ToString();
                 lbl_ViewDetail_Telphone.Text = ds.Tables[3].Rows[0]["CUS_TELEPHONE"].ToString() + " Mobile : " + ds.Tables[3].Rows[0]["CUS_MOBILE"].ToString();
                 lbl_ViewDetail_Email.Text = ds.Tables[3].Rows[0]["CUS_EMAIL"].ToString();
-                lbl_ViewDetail_Total_Amount.Text = ds.Tables[3].Rows[0]["CUS_TOTAL_AMOUNT"].ToString();
+                //lbl_ViewDetail_Total_Amount.Text = ds.Tables[3].Rows[0]["CUS_TOTAL_AMOUNT"].ToString();
                 #endregion
 
                 #region Order Shop
+
+                gv_detail.DataSource = ds.Tables[2];
+                gv_detail.DataBind();
 
                 gv_detail_shop.DataSource = ds.Tables[1];
                 gv_detail_shop.DataBind();
@@ -166,8 +169,8 @@ namespace VloveImport.web.admin.pages
 
                 gv_detail_prod_view.DataSource = ds.Tables[2];
                 gv_detail_prod_view.DataBind();
-                gv_detail_prod_Edit.DataSource = ds.Tables[2];
-                gv_detail_prod_Edit.DataBind();
+                //gv_detail_prod_Edit.DataSource = ds.Tables[2];
+                //gv_detail_prod_Edit.DataBind();
             }
             else
             {
@@ -276,6 +279,49 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = _VS_ORDER_TRAN_STS;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
             }
+        }
+
+        protected void gv_detail_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string OD_STATUS = DataBinder.Eval(e.Row.DataItem, "OD_STATUS").ToString();
+
+                if (OD_STATUS == "-1")
+                {
+                    e.Row.Cells[0].ColumnSpan = 8;
+                    for (int i = 1; i <= 7; i++)
+                    {
+                        e.Row.Cells[i].Visible = false;
+                        e.Row.CssClass = "RowStyle_SHOP";
+                    }
+
+                    string ShowShop = "";
+
+                    ShowShop += DataBinder.Eval(e.Row.DataItem, "ROW_INDEX_SHOP").ToString() + ".";
+                    ShowShop += "Shop name : " + DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString() + "&nbsp;&nbsp;";
+                    ShowShop += "Tracking No. " + DataBinder.Eval(e.Row.DataItem, "TRACKING_NO").ToString() + "&nbsp;&nbsp;";
+                    ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";
+
+                    e.Row.Cells[0].Text = ShowShop;
+
+                }
+                else
+                {
+                    int ROW = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "ROW_RANK_PROD").ToString());
+                    if ((ROW % 2) == 0)
+                    {
+                        e.Row.CssClass = "RowStyle_PROD1";
+                    }
+                    else
+                    {
+                        e.Row.CssClass = "RowStyle_PROD2";
+                    }
+                    
+                    e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "ROW_RANK_PROD").ToString();
+                }
+            }
+            
         }
     }
 }

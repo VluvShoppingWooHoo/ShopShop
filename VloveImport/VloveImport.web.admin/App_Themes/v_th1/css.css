@@ -1460,7 +1460,7 @@ input[type=submit].WizardNavigationButtonStyle a:hover
 }
 
 /*RowStyles*/
-.RowStyle td, .AltRowStyle td, .SelectedRowStyle td, .EditRowStyle td /*Common Styles*/
+.RowStyle td, .AltRowStyle td, .SelectedRowStyle td, .EditRowStyle td, .RowStyle_PROD1 td, .RowStyle_PROD2 td /*Common Styles*/
 {
     padding: 5px;
     border-right: solid 1px  #E1E1E6;/*เทาอ่อน*/  /*เทาเข้ม#91a7b4*/
@@ -1472,7 +1472,7 @@ input[type=submit].WizardNavigationButtonStyle a:hover
 }
 .AltRowStyle td
 {
-    background-color: #9ab2ca;
+    background-color: #D1DBE0;
 	background-image: url(images/YahooSprite.gif);
     background-position:0 -80px;
     background-repeat:repeat-x;
@@ -1485,7 +1485,29 @@ input[type=submit].WizardNavigationButtonStyle a:hover
     background-repeat:repeat-x;
 }
 
+.RowStyle_SHOP td
+{
+    background-color: #9ab2ca;
+	background-image: url(images/YahooSprite.gif);
+    background-position:center;
+    background-repeat:repeat-x;
+}
 
+.RowStyle_PROD1 td
+{
+    background-color: #D1DBE0;
+	background-image: url(images/YahooSprite.gif);
+    background-position:center;
+    background-repeat:repeat-x;
+}
+
+.RowStyle_PROD2 td
+{
+    background-color: #f1f5f6;
+	background-image: url(images/YahooSprite.gif);
+    background-position:center;
+    background-repeat:repeat-x;
+}
 
 
 /* ============================  */
