@@ -82,10 +82,10 @@
                 <%--<img id="imgpicURL" src="http://img04.taobaocdn.com/bao/uploaded/i4/TB12EHiGVXXXXX6XXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" height="200">--%>
             </div>
             <div class="col s8 m8 l8">
-                <div id="divPrice" class="row">
+                <div id="divPrice" class="row" style="margin-bottom: 5px !important;">
                     <div class="col s1 m1 l1">Price:</div>
                     <div class="col s11 m11 l11">
-                        <div id="lblPrice" class="row card center">
+                        <div id="lblPrice" class="row card center" style="margin-top: 0px !important;">
                         </div>
                     </div>
                 </div>
@@ -95,17 +95,17 @@
                         <p id="lblProPrice">A bunch of t1ext</p>
                     </div>
                 </div>--%>
-                <div id="divSize" class="row">
+                <div id="divSize" class="row" style="margin-bottom: 5px !important;">
                     <div class="col s1 m1 l1">Size:</div>
                     <div class="col s11 m11 l11">
-                        <div id="liSize" class="row card">
+                        <div id="liSize" class="row card" style="margin-top: 0px !important;">
                         </div>
                     </div>
                 </div>
-                <div id="divColor" class="row">
+                <div id="divColor" class="row" style="margin-bottom: 5px !important;">
                     <div class="col s1 m1 l1">Color:</div>
                     <div class="col s11 m11 l11">
-                        <div id="liColor" class="row card">
+                        <div id="liColor" class="row card" style="margin-top: 0px !important;">
                         </div>
                     </div>
                 </div>
@@ -161,6 +161,7 @@
                 var price = $("#lblPrice").html();
                 var remark = $("#txtRemark").val();
                 var ShopName = $("#lblShopName").html();
+                var Picture = $("#imgpicURL").attr('src');
                 if ($('#liColor div a.selected img').length > 0) {
                     color = $('#liColor div a.selected img').attr("src");
                 }
@@ -184,7 +185,7 @@
                 }
                 var param = {
                     "Name": $("#lblItemName").html(), "Desc": '', "Amount": $("#aQTY").html(), "Price": price, "Size": size,
-                    "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": '', "ShopName": ShopName
+                    "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": Picture, "ShopName": ShopName
                 };
                 $.ajax({
                     type: 'POST',

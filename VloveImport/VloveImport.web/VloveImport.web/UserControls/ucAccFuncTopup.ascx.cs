@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -89,7 +90,7 @@ namespace VloveImport.web.UserControls
                 ddlBank.DataSource = ds.Tables[0];
                 ddlBank.DataBind();
             }
-        }              
+        }
 
         public bool CheckInput()
         {
@@ -107,7 +108,7 @@ namespace VloveImport.web.UserControls
 
             string emailPattern = "^([0-9a-zA-Z]+[-._+&])*[0-9a-zA-Z]+@" + "([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$";
 
-            if(! Regex.IsMatch(txt_email.Text.Trim(),emailPattern))
+            if (!Regex.IsMatch(txt_email.Text.Trim(), emailPattern))
             {
                 IsReturn = false;
                 bp.ShowMessageBox("กรุณากรอก E-Mail ให้ถูกต้อง", this.Page);
@@ -117,7 +118,7 @@ namespace VloveImport.web.UserControls
             return IsReturn;
         }
 
-        
+
 
         public void ClearData()
         {
@@ -162,6 +163,47 @@ namespace VloveImport.web.UserControls
             return dateSave;
         }
         #endregion
+
+        protected void btnTopup_Click(object sender, EventArgs e)
+        {
+            string Result = "";
+            BasePage bp = new BasePage();
+            TransactionData EnTran = new TransactionData();
+            try
+            {
+                if (Ifile.HasFile)
+                {
+                    //if (Ifile.PostedFile.ContentType == "image/jpg")
+                    //{
+                    //    if (Ifile.PostedFile.ContentLength < 102400)
+                    //    {
+                    string filename = Server.MapPath("~/Images/transaction/") + Path.GetFileName(Ifile.FileName);
+                    Ifile.SaveAs(filename);
+                    EnTran.TRANS_PICURL = filename;
+                    //    }
+                    //}
+                }
+
+                EnTran.Cus_ID = bp.GetCusID();
+
+                EnTran.TRAN_TYPE = 1;
+                EnTran.TRAN_TABLE_TYPE = 1;
+                EnTran.TRAN_DETAIL = "รายการฝากเงิน";
+
+                EnTran.BANK_ID = Convert.ToInt32(ddlBank.SelectedValue);
+                EnTran.TRAN_AMOUNT = Convert.ToDouble(txt_tranfer_amount.Text);
+                EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(dtMaterial.Value, '-', "YYYYMMDD", 0));
+                EnTran.PAYMENT_TIME = ddlH.Text + ':' + ddlM.Text + ':' + ddls.Text;
+                EnTran.TRAN_EMAIL = txt_email.Text.Trim();
+                EnTran.TRAN_REMARK = txt_remark.Text.Trim();
+                EnTran.TRAN_STATUS = 1;
+                EnTran.Create_User = bp.GetCusCode();
+
+                CustomerBiz CusBiz = new CustomerBiz();
+                Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS");
+            }
+            catch (Exception ex) { }
+        }
 
     }
 }

@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
+using VloveImport.data.Extension;
 using VloveImport.util;
 using VloveImport.web.App_Code;
 using VloveImport.web.UserControls;
@@ -22,7 +23,7 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                CheckSession();    
+                CheckSession();
                 //BindData();
             }
         }
@@ -42,6 +43,24 @@ namespace VloveImport.web.Customer
         }
 
         #region Event
+        ////[HttpPost]
+        //[WebMethod]
+        //public static string UploadTopUp(HttpPostedFileBase file)
+        //{
+        //    JavaScriptSerializer js = new JavaScriptSerializer();
+        //    JSONData jData = new JSONData();
+        //    //try
+        //    //{
+        //    //    if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+        //    //    {
+        //    //        var pic = System.Web.HttpContext.Current.Request.Files["TopupIMG"];
+        //    //    }
+        //    //    jData.Result = Constant.Fact.T;
+        //    //}
+        //    //catch (Exception ex) { }
+        //    return js.Serialize(jData);
+        //}
+
         [WebMethod]
         public static string btnTopup(string Bank, string amt, string date, string time, string email, string remark, string file)
         {
@@ -113,12 +132,12 @@ namespace VloveImport.web.Customer
 
         [WebMethod]
         public static string btnMyPoint(string Bank, string amt, string date, string time, string email, string remark, string file)
-        {            
+        {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
             return js.Serialize(Result);
         }
-        #endregion     
-        
+        #endregion
+
     }
 }

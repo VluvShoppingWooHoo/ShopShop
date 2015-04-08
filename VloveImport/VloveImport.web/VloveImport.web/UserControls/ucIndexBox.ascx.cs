@@ -25,20 +25,20 @@ namespace VloveImport.web.UserControls
         {
             ShoppingBiz biz = new ShoppingBiz();
             BasePage bp = new BasePage();
-            DataTable dt = biz.GetRate();
+            //DataTable dt = biz.GetRate();
             string Date = "";
             double Rate = 0;
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                Date = dt.Rows[0]["CONFIG_REMARK"].ToString();
-                Rate = dt.Rows[0]["CONFIG_VALUE"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["CONFIG_VALUE"].ToString());
+            //if (dt != null && dt.Rows.Count > 0)
+            //{
+            //    Date = dt.Rows[0]["CONFIG_REMARK"].ToString();
+            //    Rate = dt.Rows[0]["CONFIG_VALUE"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["CONFIG_VALUE"].ToString());
 
-            }
-            else
-            {
-                bp.WriteLog("Index", "GetRate", "Value is null");
-                return;
-            }
+            //}
+            //else
+            //{
+            //    bp.WriteLog("Index", "GetRate", "Value is null");
+            //    return;
+            //}
 
             lbRate.Text = Rate.ToString();
             lbDate.Text = Date;

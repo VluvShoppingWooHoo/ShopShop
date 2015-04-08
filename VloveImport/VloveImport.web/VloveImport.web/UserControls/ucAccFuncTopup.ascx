@@ -3,6 +3,7 @@
 
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
+        <form></form>
         <br />
         <b>เติมเงิน</b> : <b>ยอดเงินคงเหลือ THB
             <asp:Label ID="lbMymoney" runat="server"></asp:Label></b>
@@ -51,7 +52,8 @@
                     <input class="file-path validate" type="text" style="width: 300px; margin-left: 0px; margin-right: 20px;" />
                     <div class="btn">
                         <span>File</span>
-                        <input id="file" type="file" />
+                        <%--<input id="Ifile" type="file" runat="server"/>--%>
+                            <asp:FileUpload ID="Ifile" runat="server" />
                     </div>
                 </div>
             </div>
@@ -123,11 +125,15 @@
         <br />
         <div style="vertical-align: middle; width: 40%; height: 50px; margin-left: 20%;">
             <div style="margin-left: 10px;">
-                <button id="btnSaveUcTopup" type="button" class="btn waves-effect orange waves-light"
+                <button type="button" class="btn waves-effect orange waves-light" name="action">
+                <asp:Button ID="btnTopup" runat="server" Text="SUBMIT" OnClick="btnTopup_Click" />
+                </button>
+
+                <%--<button id="btnSaveUcTopup" type="button" class="btn waves-effect orange waves-light"
                     name="action">
                     SUBMIT
                
-                </button>
+                </button>--%>
                 &nbsp;&nbsp;
                 <button id="btnClear" type="button" class="btn waves-effect orange waves-light"
                     name="action">
@@ -141,10 +147,7 @@
 </asp:UpdatePanel>
 <script type="text/javascript">
     $(function () {
-        //var newOption = "<option value='" + "1" + "'>Some Text</option>";
-        //$(".ddlBank").append(newOption);
-        //var newOption1 = "<option value='" + "2" + "'>Some Text2</option>";
-        //$(".ddlBank").append(newOption1);
+
         $('#btnSaveUcTopup').click(function () {
 
             var Bank = $('.ddlBank').val();
@@ -153,11 +156,10 @@
             var time = $('.ddlH').val() + ':' + $('.ddlM').val() + ':' + $('.ddls').val()
             var email = $('.txt_email').val();
             var remark = $('.txt_remark').val();
-            var file = $('#file').val();
 
             var param = {
-                "Bank": Bank, "amt": amt, "date": date, "date": date, "time": time,
-                "email": email, "remark": remark, "file": file
+                "Bank": Bank, "amt": amt, "date": date, "time": time,
+                "email": email, "remark": remark, "file": $('#hdFile').val()
             };
             $.ajax({
                 type: 'POST',

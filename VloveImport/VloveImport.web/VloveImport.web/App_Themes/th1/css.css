@@ -294,6 +294,16 @@ div[class~="title"]
         margin: 0px;
     }
 
+#liSize, #liColor
+{
+    padding-top: 10px;
+}
+
+.modalItemDiv
+{
+    height: 70px;
+}
+
 div[class~="catlist"]
 {
     /*position: fixed;*/
@@ -665,13 +675,14 @@ i[class~="NoFont"]
 {
     margin-right: 10px !important;
 }
+
 table[class~="borderTable"]
 {
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-table[class~="borderTable"], table[class~="borderTable"] th, table[class~="borderTable"] td
-{
-    border: solid 1px lightgrey;
-}
+    table[class~="borderTable"], table[class~="borderTable"] th, table[class~="borderTable"] td
+    {
+        border: solid 1px lightgrey;
+    }

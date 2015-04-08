@@ -40,6 +40,15 @@ namespace VloveImport.web.UserControls {
         protected global::System.Web.UI.WebControls.DropDownList ddlBank;
         
         /// <summary>
+        /// Ifile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload Ifile;
+        
+        /// <summary>
         /// txt_tranfer_amount control.
         /// </summary>
         /// <remarks>
@@ -101,5 +110,14 @@ namespace VloveImport.web.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_remark;
+        
+        /// <summary>
+        /// btnTopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTopup;
     }
 }

@@ -294,7 +294,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("PAYMENT_DATE", SqlDbType.DateTime, ParameterDirection.Input, EnTran.PAYMENT_DATE);
                 SqlCommandData.SetParameter("PAYMENT_TIME", SqlDbType.VarChar, ParameterDirection.Input, EnTran.PAYMENT_TIME);
                 SqlCommandData.SetParameter_Input_INT("BANK_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, EnTran.BANK_ID);
-
+                SqlCommandData.SetParameter("TRANS_PICURL", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRANS_PICURL);
                 //SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 

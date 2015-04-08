@@ -14,6 +14,7 @@ namespace VloveImport.data
         public int TRAN_TABLE_TYPE { get; set; }
         public string TRAN_DETAIL { get; set; }
         public string TRAN_REMARK { get; set; }
+        public string TRANS_PICURL { get; set; }
         public Nullable<DateTime> TRAN_DATE { get; set; }
         public double TRAN_AMOUNT { get; set; }
         public int TRAN_STATUS { get; set; }
