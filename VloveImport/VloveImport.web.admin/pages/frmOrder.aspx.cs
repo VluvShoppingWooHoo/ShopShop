@@ -293,15 +293,31 @@ namespace VloveImport.web.admin.pages
                     for (int i = 1; i <= 7; i++)
                     {
                         e.Row.Cells[i].Visible = false;
-                        e.Row.CssClass = "AltRowStyle";
+                        e.Row.CssClass = "RowStyle_SHOP";
                     }
 
-                    e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "ROW_INDEX_SHOP").ToString();
+                    string ShowShop = "";
+
+                    ShowShop += DataBinder.Eval(e.Row.DataItem, "ROW_INDEX_SHOP").ToString() + ".";
+                    ShowShop += "Shop name : " + DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString() + "&nbsp;&nbsp;";
+                    ShowShop += "Tracking No. " + DataBinder.Eval(e.Row.DataItem, "TRACKING_NO").ToString() + "&nbsp;&nbsp;";
+                    ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";
+
+                    e.Row.Cells[0].Text = ShowShop;
 
                 }
                 else
                 {
-                    e.Row.CssClass = "RowStyle";
+                    int ROW = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "ROW_RANK_PROD").ToString());
+                    if ((ROW % 2) == 0)
+                    {
+                        e.Row.CssClass = "RowStyle_PROD1";
+                    }
+                    else
+                    {
+                        e.Row.CssClass = "RowStyle_PROD2";
+                    }
+                    
                     e.Row.Cells[0].Text = DataBinder.Eval(e.Row.DataItem, "ROW_RANK_PROD").ToString();
                 }
             }

@@ -139,7 +139,7 @@
                 </legend>
                 <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="gv_detail_RowDataBound">
                     <Columns>
-                        <asp:BoundField DataField="ROW_INDEX" HeaderText="No." />
+                        <asp:BoundField DataField="ROW_INDEX" HtmlEncode = "false" HeaderText="No." />
                         <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail" />
                         <asp:BoundField DataField="OD_REMARK" HeaderText="Remark" />
                         <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Price">
@@ -157,6 +157,7 @@
                         <asp:BoundField DataField="TOTAL_PROD_PRICE_ACTIVE" DataFormatString="{0:#,##0.00}" HeaderText="Total active price">
                         <ItemStyle CssClass="ItemStyle-right" />
                         </asp:BoundField>
+                        <asp:TemplateField HeaderText="Tools"></asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </fieldset>
