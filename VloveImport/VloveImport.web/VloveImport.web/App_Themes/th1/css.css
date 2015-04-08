@@ -675,3 +675,13 @@ table[class~="borderTable"], table[class~="borderTable"] th, table[class~="borde
 {
     border: solid 1px lightgrey;
 }
+
+.FontHeader
+{
+	font-size:16px !important;
+}
+
+.FontHeader2
+{
+	font-size:14px !important;
+}

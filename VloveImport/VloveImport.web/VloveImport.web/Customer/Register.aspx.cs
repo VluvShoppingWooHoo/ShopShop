@@ -44,12 +44,15 @@ namespace VloveImport.web.Customer
                     Link = Path + "/Customer/Activate.aspx?e=" + Server.UrlEncode(emailEn) + "&c=" + Server.UrlEncode(passEn);
                     Body = Temp[1].Replace("{0}", Link);
                     Result = SendMail(txtEmail.Text, Temp[0], Body);
+
+                    //Success
+                    GoToIndex();
                 }
                 else
                 {
                     //WriteLog
                     URL = Page.Request.Url.ToString().Split('/');
-                    WriteLog(URL[URL.Length - 1], ((Button)sender).ID, "");
+                    WriteLog(URL[URL.Length - 1], "btnRegis", Result);
                     lbMessage.Text = "Error";
                 }
 
@@ -57,12 +60,12 @@ namespace VloveImport.web.Customer
             else
             {
                 //WriteLog
-                URL = Page.Request.Url.ToString().Split('/');
-                WriteLog(URL[URL.Length - 1], ((Button)sender).ID, "");
-                lbMessage.Text = "Error";
+                //URL = Page.Request.Url.ToString().Split('/');
+                //WriteLog(URL[URL.Length - 1], "btnRegis", Result);
+                //lbMessage.Text = "Error";
             }
 
-            GoToIndex();
+            
         }
 
         protected string Insert()
@@ -130,10 +133,17 @@ namespace VloveImport.web.Customer
                 return IsReturn;
             }
 
-            if (ckb.Checked)
+            if (!ckb.Checked)
             {
                 IsReturn = false;
                 ShowMessageBox("กรุณายอมรับเงื่อนไขการเป็นสมาชิก", this.Page);
+                return IsReturn;
+            }
+
+            if (txtMobile.Text.Trim() == "")
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณากรอกหมายเลขโทรศัพท์", this.Page);
                 return IsReturn;
             }
            

@@ -23,6 +23,7 @@ namespace VloveImport.web.Customer
 
                 BindDataGrid();
                 BindDataTrans();
+                BindDataSummary();
             }
         }
 
@@ -58,6 +59,21 @@ namespace VloveImport.web.Customer
             {
                 //Error
             }
+        }
+        protected void BindDataSummary()
+        {
+            DataTable dtSelected = (DataTable)Session["ORDER"];
+            double Total_Amount = 0, Amount = 0, Transport_Amount = 0;
+            
+            foreach (DataRow dr in dtSelected.Rows)
+            {
+                Amount = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
+                Total_Amount = Total_Amount + Amount;
+            }
+
+            Transport_Amount = Total_Amount * 10 / 100;
+            lbPay1.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,###.00") + " + " + Transport_Amount.ToString("###,###.00")
+                + " = " + (Total_Amount + Transport_Amount).ToString("###,###.00") + " หยวน";
         }
 
         protected void btnConfirm_ServerClick(object sender, EventArgs e)
