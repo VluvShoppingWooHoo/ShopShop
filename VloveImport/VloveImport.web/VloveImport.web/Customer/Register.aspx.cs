@@ -28,13 +28,6 @@ namespace VloveImport.web.Customer
 
         protected void btnRegis_Click(object sender, EventArgs e)
         {
-            #region set model
-            //CustomerData Cust = new CustomerData();
-            //Cust.Cus_Email = txtEmail.Text;
-            //Cust.Cus_Password = txtPassword.Text;
-            //Cust.Cus_Mobile = txtMobile.Text;
-            //Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
-            #endregion
             string[] URL;
             string Body = "", Link = "",emailEn = "", passEn = "", Path = "";
             string Result = Insert();
@@ -134,6 +127,13 @@ namespace VloveImport.web.Customer
             {
                 IsReturn = false;
                 ShowMessageBox("กรุณายืนยันรหัสผ่านให้ถูกต้อง", this.Page);
+                return IsReturn;
+            }
+
+            if (ckb.Checked)
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณายอมรับเงื่อนไขการเป็นสมาชิก", this.Page);
                 return IsReturn;
             }
            
