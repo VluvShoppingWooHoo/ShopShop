@@ -90,6 +90,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("INS_ORDER");
 
                 SqlCommandData.SetParameter_Input_INT("ORDER_STATUS", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_STATUS);
+                SqlCommandData.SetParameter("ORDER_CODE", SqlDbType.NVarChar, ParameterDirection.Input, Data.ORDER_CODE);
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, Data.CUS_ID);
                 SqlCommandData.SetParameter_Input_INT("CUS_ADDRESS_ID", SqlDbType.Int, ParameterDirection.Input, Data.CUS_ADDRESS_ID);
                 SqlCommandData.SetParameter_Input_INT("TRANSPORT_CH_TH_METHOD", SqlDbType.Int, ParameterDirection.Input, Data.TRANSPORT_CH_TH_METHOD);

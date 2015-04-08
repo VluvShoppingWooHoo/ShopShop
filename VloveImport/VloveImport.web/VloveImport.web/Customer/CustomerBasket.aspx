@@ -9,16 +9,16 @@
         <br />
             <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false">
                 <Columns>
-                    <asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="30px">
                         <ItemTemplate>
                             <asp:CheckBox ID="cbItem" runat="server" Text=" " />
-                            <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_PICURL") %>' />
+                            <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
+                    <asp:TemplateField ItemStyle-Width="70px" ItemStyle-Height="70px">
+                        <ItemTemplate>                            
                             <asp:Image ID="imgItem" runat="server" Width="50px" Height="70px"
-                                ImageUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ITEMNAME") %>'/>
+                                ImageUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_PICURL") %>'/>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="สินค้า">
@@ -42,11 +42,6 @@
                     <asp:TemplateField HeaderText="รวมทั้งหมด">
                         <ItemTemplate>
                             <asp:Label ID="lbTotal" runat="server" Text='<%# Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE")) * Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")) %>'>></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Image ID="imgItem" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

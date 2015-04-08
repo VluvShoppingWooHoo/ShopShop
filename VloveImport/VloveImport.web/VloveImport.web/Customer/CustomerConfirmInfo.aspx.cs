@@ -73,6 +73,7 @@ namespace VloveImport.web.Customer
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
                 Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_CODE = GetNoSeries("ORDER");
                 Data.CUS_ID = GetCusID();
                 Data.CUS_ADDRESS_ID = spl[2].Split('|')[0] == "-" ? -1 : Convert.ToInt32(spl[2].Split('|')[0]);
                 Data.TRANSPORT_CH_TH_METHOD = Convert.ToInt32(spl[0].Split('|')[0]);

@@ -8,48 +8,34 @@
         <br />
             <asp:GridView ID="gvOrder" CssClass="GridStyle" runat="server" AutoGenerateColumns="false">
                 <Columns>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="รหัสใบสั่งซื้อ" ItemStyle-Width="130px">
                         <ItemTemplate>
                             <asp:HiddenField ID="hdOrder_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' />
+                            <asp:Label ID="lbOrderCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_CODE") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="วันที่สั่งซื้อ">
+                    <asp:TemplateField HeaderText="วันที่สั่งซื้อ" ItemStyle-Width="120px">
                         <ItemTemplate>
-                            <asp:Label ID="lbOrderDate" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DATE") %>'>></asp:Label><br />
+                            <asp:Label ID="lbOrderDate" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DATE") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <%--<asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label ID="lbItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_ITEMNAME") %>'>></asp:Label><br />
-                            <asp:Label ID="lbColor" runat="server" Text='<%# "สี " + DataBinder.Eval(Container.DataItem, "OD_COLOR") %>'>></asp:Label><br />
-                            <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "OD_SIZE") %>'>></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>--%>
-                    <asp:TemplateField HeaderText="สถานะ">
+                    <asp:TemplateField HeaderText="สถานะ" ItemStyle-Width="120px">
                         <ItemTemplate>
                             <asp:Label ID="lbStatus" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DESC") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <%--<asp:TemplateField HeaderText="ราคา">
-                        <ItemTemplate>
-                            <asp:Label ID="lbPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'>></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>--%>
-                    <asp:TemplateField HeaderText="จำนวนสินค้าในใบสั่งซื้อ">
+                    <asp:TemplateField HeaderText="รวมรายการ">
                         <ItemTemplate>
                             <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_AMOUNT") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รวมเงินในใบสั่งซื้อ">
+                    <asp:TemplateField HeaderText="รวมเงิน">
                         <ItemTemplate>
                             <asp:Label ID="lbPRICE" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="">
                         <ItemTemplate>
-                            <%--<button id="btnPayment" runat="server" type="submit" onserverclick="btnPayment_ServerClick" title="1"
-                                name="action" class="btn waves-effect orange waves-light">ชำระเงิน      
-                            </button>--%>
                             <button type="button" class="btn waves-effect orange waves-light" name="action" style="height:60%">
                                 <asp:Button ID="btnPay" runat="server" Text="ชำระเงิน" OnClick="btnPay_Click" CssClass=""
                                     CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' />
@@ -59,8 +45,6 @@
                                 <asp:Button ID="btnDelete" runat="server" Text="ลบใบสั่งซื้อ" OnClick="btnDelete_Click" CssClass=""
                                     CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' OnClientClick="return confirm('ต้องการลบใบสั่งซื้อ?');" />
                             </button>
-                            <%--<asp:ImageButton ID="imbPay" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' 
-                                 ImageUrl="~/Images/icon/Payment2.png" OnClick="imbPay_Click" Width="30px" Height="30px"/>--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
