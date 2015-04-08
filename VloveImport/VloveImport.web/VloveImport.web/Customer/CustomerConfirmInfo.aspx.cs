@@ -63,17 +63,19 @@ namespace VloveImport.web.Customer
         protected void BindDataSummary()
         {
             DataTable dtSelected = (DataTable)Session["ORDER"];
-            double Total_Amount = 0, Amount = 0, Transport_Amount = 0;
-            
+            double Total_Amount = 0, Price = 0, Amount = 0, Transport_Amount = 0, Rate = 0;
+            Rate = GetRateCurrency();
+
             foreach (DataRow dr in dtSelected.Rows)
             {
-                Amount = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
-                Total_Amount = Total_Amount + Amount;
+                Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
+                Price = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
+                Total_Amount = Total_Amount + (Amount * Price);
             }
 
             Transport_Amount = Total_Amount * 10 / 100;
-            lbPay1.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,###.00") + " + " + Transport_Amount.ToString("###,###.00")
-                + " = " + (Total_Amount + Transport_Amount).ToString("###,###.00") + " หยวน";
+            lbPay1.Text = "ชำระเงินรอบแรก = (" + Total_Amount.ToString("###,###.00") + " + " + Transport_Amount.ToString("###,###.00")
+                + ") * " + Rate.ToString("###,###.00") + " = " + ((Total_Amount + Transport_Amount) * Rate).ToString("###,###.00") + " บาท";
         }
 
         protected void btnConfirm_ServerClick(object sender, EventArgs e)

@@ -77,5 +77,31 @@ namespace VloveImport.web.Customer
             }
         }
 
+        protected void cbItem_CheckedChanged(object sender, EventArgs e)
+        {
+            CalTotalAmount();
+        }
+
+        protected void CalTotalAmount()
+        {
+            CheckBox cb;
+            Label Price, Amount;
+            double Total = 0, dPrice = 0, dAmount = 0;
+            foreach (GridViewRow gvr in gvBasket.Rows)
+            {                
+                cb = (CheckBox)gvr.Cells[0].FindControl("cbItem");
+                Price = (Label)gvr.Cells[3].FindControl("lbPrice");
+                Amount = (Label)gvr.Cells[4].FindControl("lbAmount");
+
+                if (cb != null && cb.Checked)
+                {
+                    dPrice = Price.Text == "" ? 0 : Convert.ToDouble(Price.Text);
+                    dAmount = Amount.Text == "" ? 0 : Convert.ToDouble(Amount.Text);
+                    Total = Total + (dPrice * dAmount);
+                }
+            }
+
+            //lbTotal.Text = Total.ToString("###,###.00") + "หยวน";
+        }
     }
 }
