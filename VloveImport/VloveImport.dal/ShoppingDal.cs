@@ -70,14 +70,14 @@ namespace VloveImport.dal
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("GET_TRANS_LIST");
+                SqlCommandData.SetStoreProcedure("GET_MASTER_STATUS_LIST");
                 SqlCommandData.SetParameter_Input_INT("TYPEE", SqlDbType.VarChar, ParameterDirection.Input, Type);
 
                 return SqlCommandData.ExecuteDataSet();
             }
             catch (Exception ex)
             {
-                throw new Exception("GET_TRANS_LIST -> msg : " + ex.Message);
+                throw new Exception("GET_MASTER_STATUS_LIST -> msg : " + ex.Message);
             }
         }
         public string[] MakeOrderHeader(OrderData Data)

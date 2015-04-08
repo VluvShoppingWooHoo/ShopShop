@@ -5,8 +5,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col s12 m12 l12 TestBox1" style="min-height:500px;">
-            ตะกร้าสินค้าของฉัน
-        <br />
+            <span class="bold FontHeader orange-text">ตะกร้าสินค้าของฉัน</span>
+            <br />
+            <br />
             <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false">
                 <Columns>
                     <asp:TemplateField ItemStyle-Width="30px">
@@ -24,9 +25,10 @@
                     <asp:TemplateField HeaderText="สินค้า">
                         <ItemTemplate>
                             <asp:HyperLink ID="hlItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ITEMNAME") %>'
-                                NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_URL") %>'></asp:HyperLink> <br />                            
-                            <asp:Label ID="lbColor" runat="server" Text='<%# "สี " + DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR") %>'>></asp:Label><br />
-                            <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "CUS_BK_SIZE") %>'>></asp:Label>
+                                NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_URL") %>'></asp:HyperLink> <br />                                                        
+                            <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "CUS_BK_SIZE") %>'></asp:Label> <br />
+                            <asp:Label ID="lbColor" runat="server" Text='<%# "สี " + DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR") %>' 
+                                Visible='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString().StartsWith("http") ? false : true %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ราคา">
