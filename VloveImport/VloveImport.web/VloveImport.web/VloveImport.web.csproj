@@ -239,12 +239,14 @@
     </Compile>
     <Compile Include="Customer\ContentDetail.aspx.cs">
       <DependentUpon>ContentDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Customer\ContentDetail.aspx.designer.cs">
       <DependentUpon>ContentDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\ContentList.aspx.cs">
       <DependentUpon>ContentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Customer\ContentList.aspx.designer.cs">
       <DependentUpon>ContentList.aspx</DependentUpon>
@@ -469,6 +471,7 @@
     </Compile>
     <Compile Include="UserControls\ucContent.ascx.cs">
       <DependentUpon>ucContent.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserControls\ucContent.ascx.designer.cs">
       <DependentUpon>ucContent.ascx</DependentUpon>
