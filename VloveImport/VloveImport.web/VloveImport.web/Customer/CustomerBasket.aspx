@@ -9,7 +9,7 @@
                 <div class="col s12 m12 l12 TestBox1" style="min-height:500px;">
                     <span class="bold FontHeader orange-text">ตะกร้าสินค้าของฉัน</span><br />                        
                     <div class="col s11 m11 l11">
-                        <span class="bold FontHeader2 red-text">1 ใบสั่งซื้อสามารถสั่งได้ไม่เกิน 10 รายการ</span>
+                        <span class="bold FontHeader2 red-text">1 ใบสั่งซื้อสามารถสั่งได้ไม่เกิน 10 รายการ และมูลค่าของใบสั่งซื้อไม่ต้ำกว่า 100 หยวน</span>
                     </div>
                     <div class="col s1 m1 l1">
                         <span class="bold FontHeader2 orange-text"><asp:Label ID="lbTotal" runat="server"></asp:Label></span>
@@ -36,7 +36,8 @@
                                         NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_URL") %>'></asp:HyperLink> <br />                                                        
                                     <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "CUS_BK_SIZE") %>'></asp:Label> <br />
                                     <asp:Label ID="lbColor" runat="server" Text='<%# "สี " + DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR") %>' 
-                                        Visible='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString().StartsWith("http") ? false : true %>'></asp:Label>
+                                        Visible='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString().StartsWith("http") ? false : 
+                                    DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString() == "" ? false : true %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="ราคา">

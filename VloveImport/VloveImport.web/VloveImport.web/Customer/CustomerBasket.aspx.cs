@@ -69,6 +69,27 @@ namespace VloveImport.web.Customer
                     ShowMessageBox("กรุณาเลือกรายการที่ต้องการสั่งซื้อ");
                     return;
                 }
+
+                if (dtSelected.Rows.Count > 10)
+                {
+                    ShowMessageBox("สั่งซื้อได้ไม่เกิน 10 รายการต่อ 1 ใบสั่งซื้อ");
+                    return;
+                }
+
+                double Price = 0, Amount = 0, Total = 0;
+                foreach (DataRow dr in dtSelected.Rows)
+                {
+                    Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
+                    Price = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
+                    Total = Total + (Amount * Price);
+                }
+
+                if (Total < 100)
+                {
+                    ShowMessageBox("มูลค่าของใบสั่งซื้อไม่ต้ำกว่า 100 หยวน");
+                    return;
+                }
+
                 Session.Add("ORDER", dtSelected);
                 EncrypUtil en = new EncrypUtil();
                 string CUS_ID = GetCusID().ToString();
