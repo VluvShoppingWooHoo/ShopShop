@@ -22,6 +22,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Label lbOrder_Code;
         
         /// <summary>
+        /// lbOrder_Date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbOrder_Date;
+        
+        /// <summary>
         /// lbCusName control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,22 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Label lbCusName;
         
         /// <summary>
-        /// lbOrder_Date control.
+        /// lbMobile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbOrder_Date;
+        protected global::System.Web.UI.WebControls.Label lbMobile;
+        
+        /// <summary>
+        /// lbAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAddress;
         
         /// <summary>
         /// lbOrderTransport control.
@@ -49,12 +67,30 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Label lbOrderTransport;
         
         /// <summary>
-        /// Label2 control.
+        /// lbOrderAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lbOrderAmount;
+        
+        /// <summary>
+        /// gvOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvOrder;
+        
+        /// <summary>
+        /// btnBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnBack;
     }
 }

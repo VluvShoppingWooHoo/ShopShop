@@ -697,3 +697,10 @@ table[class~="borderTable"]
 {
     font-size: 14px !important;
 }
+
+.lbCaption
+{
+	font-size: 18px !important;
+	font-weight: 700;
+	color: orange;
+}

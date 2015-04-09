@@ -28,13 +28,31 @@ namespace VloveImport.web.Customer
         {
             ShoppingBiz biz = new ShoppingBiz();
             DataTable dt = new DataTable();
+            string Trans = "";
             Int32 OID = Order_ID == "" ? 0 : Convert.ToInt32(Order_ID);
             dt = biz.GetOrderDetail(OID);
             if (dt != null && dt.Rows.Count > 0)
             {
                 lbOrder_Code.Text = dt.Rows[0]["ORDER_CODE"].ToString();
                 lbOrder_Date.Text = dt.Rows[0]["ORDER_DATE"].ToString();
+                
+                lbCusName.Text = dt.Rows[0]["CUS_NAME"].ToString();
+                lbMobile.Text = dt.Rows[0]["CUS_MOBILE"].ToString();
+
+                lbAddress.Text = dt.Rows[0]["CUS_ADDRESS"].ToString();
+                Trans = "1. " + dt.Rows[0]["TRANS_CH_TH"].ToString() + "<br/>2. " + dt.Rows[0]["TRANS_TH_CU"].ToString();
+                lbOrderTransport.Text = Trans;
+                lbOrderAmount.Text = dt.Rows.Count.ToString();
+
+                //Grid                          
+                gvOrder.DataSource = dt;   
+                gvOrder.DataBind();
             }
         }
+
+        protected void btnBack_ServerClick(object sender, EventArgs e)
+        {
+            Redirect("~/Customer/CustomerOrderList.aspx");
+        }        
     }
 }

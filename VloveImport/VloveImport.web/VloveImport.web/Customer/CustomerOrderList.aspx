@@ -4,8 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col s12 m12 l12 TestBox1">
-            ใบสั่งซื้อของฉัน
-        <br />
+            <span class="black-text FontHeader bold">ใบสั่งซื้อของฉัน</span>
+        <br /><br />
             <asp:GridView ID="gvOrder" CssClass="GridStyle" runat="server" AutoGenerateColumns="false" OnDataBound="gvOrder_DataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="รหัสใบสั่งซื้อ" ItemStyle-Width="130px">
