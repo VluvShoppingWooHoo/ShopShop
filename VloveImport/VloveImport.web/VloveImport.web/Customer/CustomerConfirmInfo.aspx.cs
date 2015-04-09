@@ -17,10 +17,9 @@ namespace VloveImport.web.Customer
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession();     
             if (!IsPostBack)
-            {
-                CheckSession();              
-
+            {                         
                 BindDataGrid();
                 BindDataTrans();
                 BindDataSummary();

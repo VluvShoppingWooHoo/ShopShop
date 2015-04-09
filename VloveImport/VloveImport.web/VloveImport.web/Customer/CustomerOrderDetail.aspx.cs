@@ -17,7 +17,7 @@ namespace VloveImport.web.Customer
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //CheckSession(); 
+            CheckSession(); 
             if (!IsPostBack)
             {
                 string OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());

@@ -13,31 +13,40 @@ namespace VloveImport.web.Customer {
     public partial class CustomerPayment {
         
         /// <summary>
-        /// hdOID control.
+        /// hlOrderCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdOID;
+        protected global::System.Web.UI.WebControls.HyperLink hlOrderCode;
         
         /// <summary>
-        /// rdbPayment1 control.
+        /// lbOrder_Code control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbPayment1;
+        protected global::System.Web.UI.WebControls.Label lbOrder_Code;
         
         /// <summary>
-        /// rdbPayment2 control.
+        /// lbTotalAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbPayment2;
+        protected global::System.Web.UI.WebControls.Label lbTotalAmount;
+        
+        /// <summary>
+        /// lbBalance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbBalance;
         
         /// <summary>
         /// gvTran control.

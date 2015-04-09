@@ -15,14 +15,14 @@ namespace VloveImport.web.Customer
     public partial class CustomerPayment : BasePage
     {
         EncrypUtil en = new EncrypUtil();
+        public string OID;
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckSession(); 
-            string OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
-            if (OID == "")
+            OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
+            if (OID != "")
             {
                 BindData();
-                hdOID.Value = OID;
             }
         }
 
@@ -32,43 +32,54 @@ namespace VloveImport.web.Customer
             TransactionData data = GetDataTran();
             string Result = biz.INS_UPD_TRANSACTION(data, "INS");
 
-            BindData();
-        }
+            Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
+        } 
 
         protected void BindData()
         {
-            if (hdOID.Value != "")
-            {
-                Int32 Order_ID = Convert.ToInt32(hdOID.Value);
-                CustomerBiz biz = new CustomerBiz();
-                DataTable dt = biz.GET_TRANSACTION_BY_ORDERID(Order_ID);
-                if (dt != null && dt.Rows.Count > 0)
-                    gvTran.DataSource = dt;
-                else
-                    gvTran.DataSource = null;
+            Int32 Order_ID = OID == "" ? 0 : Convert.ToInt32(OID);            
+            CustomerBiz biz = new CustomerBiz();
+            ShoppingBiz bizShop = new ShoppingBiz();
+            double Amount = 0, Price = 0, Total = 0;
 
-                gvTran.DataBind();
+            //Description
+            DataTable dtDetail = bizShop.GetOrderDetail(Order_ID);
+            if (dtDetail != null && dtDetail.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dtDetail.Rows)
+                {
+                    Amount = dr["OD_AMOUNT_ACTIVE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_AMOUNT_ACTIVE"].ToString());
+                    Price = dr["OD_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_PRICE"].ToString());
+                    Total = Total + (Amount * Price);
+                }
+                hlOrderCode.Text = dtDetail.Rows[0]["ORDER_CODE"].ToString();
+                hlOrderCode.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID);
+                lbTotalAmount.Text = Total.ToString("###,###.00");
+                lbBalance.Text = GetBalance().ToString("###,###.00");
             }
+
+            //Grid
+            DataTable dt = biz.GET_TRANSACTION_BY_ORDERID(Order_ID);
+            if (dt != null && dt.Rows.Count > 0)
+                gvTran.DataSource = dt;
+            else
+                gvTran.DataSource = null;
+
+            gvTran.DataBind();
+            
         }
 
         protected TransactionData GetDataTran()
         {
             TransactionData data = new TransactionData();
-            data.TRAN_TYPE = 2;
+            data.TRAN_TYPE = 2; //เงินออก
             data.TRAN_TABLE_TYPE = 3; //Order
-            data.TRAN_DETAIL = rdbPayment1.Checked ? "ชำระครั้งเดียว" : "ชำระ 2 ครั้ง";
-            data.TRAN_AMOUNT = GetAmount();
+            data.TRAN_DETAIL = "ชำระเงินครั้งแรก";
+            data.TRAN_AMOUNT = Convert.ToDouble(lbTotalAmount.Text);
             data.Cus_ID = 0;//SessionUser
-            data.ORDER_ID = hdOID.Value == "" ? 0 : Convert.ToInt32(hdOID.Value);
+            data.ORDER_ID = OID == "" ? 0 : Convert.ToInt32(OID);
 
             return data;
-        }
-
-        protected float GetAmount()
-        {
-            float Amt = 0;
-
-            return Amt;
         }
     }
 }

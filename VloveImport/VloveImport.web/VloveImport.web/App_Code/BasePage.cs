@@ -65,6 +65,14 @@ namespace VloveImport.web.App_Code
             return Rate;
         }
 
+        public double GetBalance()
+        {
+            CustomerBiz biz = new CustomerBiz();
+            double Balance = 0;
+            Balance = biz.GET_CUSTOMER_BALANCE(GetCusID());
+            return Balance;
+        }
+
         public void CheckSession()
         {
             if (HttpContext.Current.Session["User"] != null)
