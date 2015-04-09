@@ -196,6 +196,17 @@ namespace VloveImport.biz
             else
                 return null;
         }
+
+        public DataTable GET_CUSTOMER_TRANS_AMOUNT(int CUS_ID)
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.GET_CUSTOMER_TRANS_AMOUNT(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
         #endregion
 
         #region CUSTOMER_PASSWORD
