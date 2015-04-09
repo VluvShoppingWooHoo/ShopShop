@@ -171,20 +171,28 @@ namespace VloveImport.web.UserControls
             TransactionData EnTran = new TransactionData();
             try
             {
+                EnTran.Cus_ID = bp.GetCusID();
+
                 if (Ifile.HasFile)
                 {
                     //if (Ifile.PostedFile.ContentType == "image/jpg")
                     //{
                     //    if (Ifile.PostedFile.ContentLength < 102400)
                     //    {
-                    string filename = Server.MapPath("~/Images/transaction/") + Path.GetFileName(Ifile.FileName);
+                    string folder = Server.MapPath("~/Images/transaction/") + EnTran.Cus_ID;
+                    bool exists = System.IO.Directory.Exists(folder);
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(folder);
+
+                    string filename = folder + "\\" + Path.GetFileName(Ifile.FileName);
+
                     Ifile.SaveAs(filename);
                     EnTran.TRANS_PICURL = filename;
                     //    }
                     //}
                 }
 
-                EnTran.Cus_ID = bp.GetCusID();
 
                 EnTran.TRAN_TYPE = 1;
                 EnTran.TRAN_TABLE_TYPE = 1;
