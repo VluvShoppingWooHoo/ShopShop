@@ -54,8 +54,8 @@ namespace VloveImport.web.Customer
                 }
                 hlOrderCode.Text = dtDetail.Rows[0]["ORDER_CODE"].ToString();
                 hlOrderCode.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID);
-                lbTotalAmount.Text = Total.ToString("###,###.00");
-                lbBalance.Text = GetBalance().ToString("###,###.00");
+                lbTotalAmount.Text = Total.ToString("###,##0.00");
+                lbBalance.Text = GetBalance().ToString("###,##0.00");
             }
 
             //Grid
@@ -80,6 +80,12 @@ namespace VloveImport.web.Customer
             data.ORDER_ID = OID == "" ? 0 : Convert.ToInt32(OID);
 
             return data;
+        }
+
+        protected void btnTopup_ServerClick(object sender, EventArgs e)
+        {
+            string Page = "~/Customer/CustomerMyAccount.aspx?OID=" + EncrypData(OID);
+            Redirect("~/Customer/CustomerMyAccount.aspx?u=" + EncrypData(Page));
         }
     }
 }

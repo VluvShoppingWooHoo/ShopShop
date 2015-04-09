@@ -15,8 +15,7 @@
             <span class="black-text FontHeader2">รหัสใบสั่งซื้อ</span>
         </div>        
         <div class="col s4 m4 l4">  
-            <asp:HyperLink ID="hlOrderCode" runat="server"></asp:HyperLink>
-            <asp:Label ID="lbOrder_Code" runat="server" CssClass="lbCaption"></asp:Label>
+            <asp:HyperLink ID="hlOrderCode" runat="server" CssClass="lbCaption"></asp:HyperLink>
         </div>
     </div>
     <br />
@@ -35,7 +34,7 @@
         </div>        
         <div class="col s4 m4 l4">  
             <asp:Label ID="lbBalance" runat="server" CssClass="lbCaption"></asp:Label>
-            <a href="CustomerMyAccount.aspx">เติมเงิน</a>
+            <%--<a href="CustomerMyAccount.aspx">เติมเงิน</a>--%>
         </div>
     </div>
     <br />
@@ -52,6 +51,9 @@
         <button id="btnPayment" runat="server" type="submit" onserverclick="btnPayment_ServerClick"
             name="action" class="btn waves-effect orange waves-light">ชำระเงิน                                
         </button>  
+        <button id="btnTopup" runat="server" type="submit" onserverclick="btnTopup_ServerClick"
+            name="action" class="btn waves-effect orange waves-light">เติมเงิน                                
+        </button> 
     </div>
     <script type="text/javascript">
         $(function () {

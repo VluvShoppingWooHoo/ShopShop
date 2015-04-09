@@ -22,15 +22,6 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.HyperLink hlOrderCode;
         
         /// <summary>
-        /// lbOrder_Code control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbOrder_Code;
-        
-        /// <summary>
         /// lbTotalAmount control.
         /// </summary>
         /// <remarks>
@@ -65,5 +56,14 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnPayment;
+        
+        /// <summary>
+        /// btnTopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnTopup;
     }
 }

@@ -21,6 +21,9 @@ namespace VloveImport.web.Customer
             if (!IsPostBack)
             {
                 string OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
+                if (OID == "")
+                    GoToIndex();
+
                 BindData(OID);
             }
         }

@@ -40,6 +40,7 @@ namespace VloveImport.web.Customer
             }
             else
             {
+                GoToIndex();
                 //Error
             }
         }
