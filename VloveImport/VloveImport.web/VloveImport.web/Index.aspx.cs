@@ -18,8 +18,6 @@ using System.Net;
 using System.Text;
 using System.IO;
 using VloveImport.web.App_Code;
-using OpenQA.Selenium;
-using SimpleBrowser.WebDriver;
 
 namespace VloveImport.web
 {
