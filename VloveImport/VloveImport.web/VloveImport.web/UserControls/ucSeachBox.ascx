@@ -111,10 +111,10 @@
                 </div>
                 <div id="divQTY" class="row">
                     <div class="col s1 m1 l1">QTY:</div>
-                    <div class="col s4 m4 l4" style="margin: 0px">
+                    <div class="col s5 m5 l5" style="margin: 0px">
                         <ul class="pagination" style="margin: 0px">
                             <li class="" style="display: inline-block"><a id="aMinus" href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
-                            <li class="" style="display: inline-block"><a id="aQTY" href="#!" class="">1</a></li>
+                            <li class="" style="display: inline-block; vertical-align:text-bottom;"><a id="aQTY" href="#!" class="">1</a></li>
                             <li class="" style="display: inline-block"><a id="aPlus" href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
                         </ul>
 

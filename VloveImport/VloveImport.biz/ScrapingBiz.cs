@@ -228,7 +228,7 @@ namespace VloveImport.biz
         }
         private string GetPrice(string html, int web, HtmlAgilityPack.HtmlDocument doc)
         {
-            string Price = string.Empty;
+            string Price = "0";
             try
             {
                 HtmlNode node = null;
@@ -239,12 +239,10 @@ namespace VloveImport.biz
                         Price = node.ChildNodes[1].InnerText;
                         break;
                     case 2:
-                        //var result = doc.DocumentNode.Descendants("dl").Where(l =>
-                        //    l.Attributes.Contains("class") &&
-                        //    l.Attributes["class"].Value.Contains("tm-price-panel"));
-                        //node = result.FirstOrDefault().ChildNodes[1].ChildNodes[0];
-                        node = doc.GetElementbyId("J_StrPrice");
-                        Price = node.ChildNodes[1].InnerText;
+                        int start = 0;
+                        start = doc.DocumentNode.InnerHtml.IndexOf("defaultItemPrice");
+                        string result2 = doc.DocumentNode.InnerHtml.Substring(start + 19, ((doc.DocumentNode.InnerHtml.IndexOf(",", doc.DocumentNode.InnerHtml.IndexOf(".", start + 19))) - (start + 19)));
+                        Price = result2.Replace("\"", "");          
                         break;
                     case 3:
                         var result = doc.DocumentNode.Descendants("tr").Where(l =>
@@ -262,7 +260,7 @@ namespace VloveImport.biz
         }
         private string GetProPrice(string html, int web, HtmlAgilityPack.HtmlDocument doc)
         {
-            string ProPrice = string.Empty;
+            string ProPrice = "0";
             try
             {
                 switch (web)
@@ -272,10 +270,17 @@ namespace VloveImport.biz
                         ProPrice = node.InnerText;
                         break;
                     case 2:
-                        ProPrice = string.Empty;
+                        int start = 0;
+                        start = doc.DocumentNode.InnerHtml.IndexOf("defaultItemPrice");
+                        string result2 = doc.DocumentNode.InnerHtml.Substring(start + 19, ((doc.DocumentNode.InnerHtml.IndexOf(",", doc.DocumentNode.InnerHtml.IndexOf(".", start + 19))) - (start + 19)));
+                        ProPrice = result2.Replace("\"", "");   
                         break;
                     case 3:
-                        ProPrice = string.Empty;
+                        var result3 = doc.DocumentNode.Descendants("div").Where(l =>
+                            l.Attributes.Contains("class") &&
+                            l.Attributes["class"].Value.Contains("counter-price"));
+                        node = result3.FirstOrDefault().ChildNodes[2];
+                        ProPrice = node.InnerText;                    
                         break;
                     default:
                         break;
@@ -426,11 +431,8 @@ namespace VloveImport.biz
                         ShopName = node.Attributes[1].Value.Trim();
                         break;
                     case 2:
-                        //var result2 = doc.DocumentNode.Descendants("div").Where(l =>
-                        //    l.Attributes.Contains("class") &&
-                        //    l.Attributes["class"].Value.Contains("shop-intro"));
-                        //node = result2.FirstOrDefault().ChildNodes[1].ChildNodes[1].ChildNodes[1];
-                        //ShopName = node.InnerHtml;;
+                        node = doc.GetElementbyId("shopExtra");
+                        ShopName = node.ChildNodes[1].ChildNodes[1].InnerText;
                         break;
                     case 3:
                         var result3 = doc.DocumentNode.Descendants("div").Where(l =>
