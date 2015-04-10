@@ -14,8 +14,8 @@
         <div class="col s2 m2 l2">           
             <span class="black-text FontHeader2">รหัสใบสั่งซื้อ</span>
         </div>        
-        <div class="col s4 m4 l4">  
-            <asp:HyperLink ID="hlOrderCode" runat="server" CssClass="lbCaption"></asp:HyperLink>
+        <div class="col s3 m3 l3 right-align">  
+            <asp:HyperLink ID="hlOrderCode" runat="server" CssClass="lbCaption margin0"></asp:HyperLink>
         </div>
     </div>
     <br />
@@ -23,7 +23,7 @@
         <div class="col s2 m2 l2">           
             <span class="black-text FontHeader2">ยอดที่ต้องชำระ</span>
         </div>        
-        <div class="col s4 m4 l4">  
+        <div class="col s3 m3 l3 right-align">  
             <asp:Label ID="lbTotalAmount" runat="server" CssClass="lbCaption"></asp:Label>
         </div>
     </div>
@@ -32,7 +32,7 @@
         <div class="col s2 m2 l2">           
             <span class="black-text FontHeader2">เงินในบัญชี</span>
         </div>        
-        <div class="col s4 m4 l4">  
+        <div class="col s3 m3 l3 right-align">  
             <asp:Label ID="lbBalance" runat="server" CssClass="lbCaption"></asp:Label>
             <%--<a href="CustomerMyAccount.aspx">เติมเงิน</a>--%>
         </div>

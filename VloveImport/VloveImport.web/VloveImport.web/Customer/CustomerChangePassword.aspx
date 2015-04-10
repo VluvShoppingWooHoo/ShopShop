@@ -3,50 +3,59 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="row">
-        <div class="col s7 m7 l7">
-            เปลี่ยนรหัสผ่าน
-            <br />
-            <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+        <span class="FontHeader">เปลี่ยนรหัสผ่าน</span>
+        <br />
+        <br />
+        <div class="col s12 m12 l12">
+            <ul class="tabs">
+                <li class="tab col s6 m6 l6"><a class="topup" href="#login">รหัสผ่านสำหรับการเข้าสู่ระบบ</a></li>
+                <li class="tab col s6 m6 l6"><a class="withdraw" href="#withdraw">รหัสผ่านสำรับการถอนเงิน</a></li>
+            </ul>
+            <div class="col s7 m7 l7">                
                 <br />
-                <div style ="margin-left:10px;">
-                    <b>รหัสผ่านเก่า</b>                                        
+                <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+                    <br />
+                    <div style ="margin-left:10px;">
+                        <b>รหัสผ่านเก่า</b>                                        
+                    </div>
                 </div>
-            </div>
-            <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
-                <div style ="margin-left:10px;">
-                    <asp:TextBox ID="txtOldPass" runat="server" TextMode="Password"></asp:TextBox>
+                <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
+                    <div style ="margin-left:10px;">
+                        <asp:TextBox ID="txtOldPass" runat="server" TextMode="Password"></asp:TextBox>
+                    </div>
                 </div>
-            </div>
-            <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+                <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+                    <br />
+                    <div style ="margin-left:10px;">
+                        <b>รหัสผ่านใหม่</b>                                        
+                    </div>
+                </div>
+                <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
+                    <div style ="margin-left:10px;">
+                        <asp:TextBox ID="txtNewPass" runat="server" TextMode="Password"></asp:TextBox>
+                    </div>
+                </div>
+                <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
+                    <br />
+                    <div style ="margin-left:10px;">
+                        <b>ยืนยันรหัสผ่าน</b>                                        
+                    </div>
+                </div>
+                <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
+                    <div style ="margin-left:10px;">
+                        <asp:TextBox ID="txtConfirm" runat="server" TextMode="Password"></asp:TextBox>
+                    </div>
+                </div>
                 <br />
-                <div style ="margin-left:10px;">
-                    <b>รหัสผ่านใหม่</b>                                        
+                <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 20%;">            
+                    <div style ="margin-left:10px;">
+                        <button id="btnConfirm" type="button" class="btn waves-effect orange waves-light" 
+                            name="action">
+                            ยืนยัน
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
-                <div style ="margin-left:10px;">
-                    <asp:TextBox ID="txtNewPass" runat="server" TextMode="Password"></asp:TextBox>
-                </div>
-            </div>
-            <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
-                <br />
-                <div style ="margin-left:10px;">
-                    <b>ยืนยันรหัสผ่าน</b>                                        
-                </div>
-            </div>
-            <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
-                <div style ="margin-left:10px;">
-                    <asp:TextBox ID="txtConfirm" runat="server" TextMode="Password"></asp:TextBox>
-                </div>
-            </div>
-            <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 20%;">            
-            <div style ="margin-left:10px;">
-                <button id="btnConfirm" type="button" class="btn waves-effect orange waves-light" 
-                    name="action">
-                    ยืนยัน
-                </button>
-            </div>
-        </div>
         </div>
     </div>
 

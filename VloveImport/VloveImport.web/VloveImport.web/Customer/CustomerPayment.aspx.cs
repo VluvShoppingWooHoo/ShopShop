@@ -52,7 +52,7 @@ namespace VloveImport.web.Customer
                     Price = dr["OD_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_PRICE"].ToString());
                     Total = Total + (Amount * Price);
                 }
-                hlOrderCode.Text = dtDetail.Rows[0]["ORDER_CODE"].ToString();
+                hlOrderCode.Text = dtDetail.Rows[0]["ORDER_CODE"].ToString().Trim();
                 hlOrderCode.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID);
                 lbTotalAmount.Text = Total.ToString("###,##0.00");
                 lbBalance.Text = GetBalance().ToString("###,##0.00");

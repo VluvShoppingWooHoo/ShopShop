@@ -704,3 +704,10 @@ table[class~="borderTable"]
 	font-weight: 700;
 	color: orange;
 }
+
+.margin0
+{
+	margin-right:0px !important;
+}
+
+
