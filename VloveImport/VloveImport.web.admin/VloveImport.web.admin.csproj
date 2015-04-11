@@ -87,6 +87,7 @@
     <Content Include="img\icon\nxt-checkbox-checked-not-ok-md.png" />
     <Content Include="img\icon\nxt-checkbox-checked-ok-md.png" />
     <Content Include="img\icon\r_box.png" />
+    <Content Include="img\icon\sendemail.png" />
     <Content Include="img\icon\Sign-Close-icon.png" />
     <Content Include="img\icon\View.png" />
     <Content Include="Logout.aspx" />
