@@ -63,12 +63,13 @@ namespace VloveImport.web.admin.UserControls
         {
             string Result = "";
             string strMailServer = WebConfigurationManager.AppSettings["SMTP"].ToString();
+            string UserEmail = WebConfigurationManager.AppSettings["email"].ToString();
             string PassEmail = WebConfigurationManager.AppSettings["emailp"].ToString();
             try
             {
                 //Send Email ให้คนลำดับถัดไปในกรณี Approve หรือ ส่งให้คนลำดับก่อนหน้าในกรณี Reject
                 MailMessage Mail = new MailMessage();
-                MailAddress mailAdd = new MailAddress(MailTo);
+                MailAddress mailAdd = new MailAddress(UserEmail);
                 //Email, toEmail
                 Mail.IsBodyHtml = true;
                 Mail.SubjectEncoding = System.Text.Encoding.UTF8;
@@ -84,7 +85,7 @@ namespace VloveImport.web.admin.UserControls
                 if (strMailServer != "")
                 {
                     SmtpClient SmtpClient = new SmtpClient(strMailServer, 25);
-                    SmtpClient.Credentials = new NetworkCredential(MailTo, Enc.DecryptData(PassEmail));
+                    SmtpClient.Credentials = new NetworkCredential(UserEmail, Enc.DecryptData(PassEmail));
 
                     SmtpClient.Send(Mail);
                     Mail.Attachments.Clear();
@@ -123,6 +124,7 @@ namespace VloveImport.web.admin.UserControls
 
         protected void btnsendMail_Click(object sender, EventArgs e)
         {
+            string Result = "";
             if (CheckEmailPattern(txt_email_from.Text.Trim()))
             {
                 string[] strEmailArry = txt_email_to.Text.Trim().Split(',');
@@ -147,7 +149,7 @@ namespace VloveImport.web.admin.UserControls
                 }
                 else
                 {
-                    SendMail(txt_email_from.Text.Trim(), txt_email_to.Text.Trim(), txt_email_subject.Text.Trim(), txt_email_detail.Text.Trim());
+                    Result = SendMail(txt_email_from.Text.Trim(), txt_email_to.Text.Trim(), txt_email_subject.Text.Trim(), txt_email_detail.Text.Trim());
                 }
             }
         }
