@@ -63,6 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\v_th1\css.css" />
+    <Content Include="App_Themes\v_th1\images\input-background-notice.png" />
+    <Content Include="App_Themes\v_th1\images\input-background-readonly.png" />
+    <Content Include="App_Themes\v_th1\images\input-background-warning.png" />
+    <Content Include="App_Themes\v_th1\images\input-background.png" />
     <Content Include="App_Themes\v_th1\Skin1.skin" />
     <Content Include="css\style.css" />
     <Content Include="frmAdminIndex.aspx" />
@@ -83,8 +87,10 @@
     <Content Include="img\icon\nxt-checkbox-checked-not-ok-md.png" />
     <Content Include="img\icon\nxt-checkbox-checked-ok-md.png" />
     <Content Include="img\icon\r_box.png" />
+    <Content Include="img\icon\sendemail.png" />
     <Content Include="img\icon\Sign-Close-icon.png" />
     <Content Include="img\icon\View.png" />
+    <Content Include="img\logo\LOGO-01.jpg" />
     <Content Include="Logout.aspx" />
     <Content Include="pages\frmApprovePayment.aspx" />
     <Content Include="pages\frmCMSContent.aspx" />
@@ -103,6 +109,7 @@
     <Content Include="pages\frmUserList.aspx" />
     <Content Include="UserControls\ucApprovePaymentDetail.ascx" />
     <Content Include="UserControls\ucCalendar.ascx" />
+    <Content Include="UserControls\ucEmail.ascx" />
     <Content Include="UserControls\ucMenubar.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -247,6 +254,12 @@
     <Compile Include="UserControls\ucCalendar.ascx.designer.cs">
       <DependentUpon>ucCalendar.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucEmail.ascx.cs">
+      <DependentUpon>ucEmail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucEmail.ascx.designer.cs">
+      <DependentUpon>ucEmail.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucMenubar.ascx.cs">
       <DependentUpon>ucMenubar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -267,10 +280,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
-    <Folder Include="App_Themes\v_th1\images\" />
     <Folder Include="Attachment\" />
     <Folder Include="img\CMSimg\" />
-    <Folder Include="img\logo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VloveImport.biz\VloveImport.biz.csproj">
