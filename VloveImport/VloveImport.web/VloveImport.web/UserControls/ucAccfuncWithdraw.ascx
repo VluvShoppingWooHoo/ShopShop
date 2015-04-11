@@ -83,10 +83,7 @@
         //$(".ddl_account_name").append(newOption);
         //var newOption1 = "<option value='" + "2" + "'>Some Text2</option>";
         //$(".ddl_account_name").append(newOption1);
-        $('#btnSaveUcWithdraw').click(function () {                  
-
-            alert($('.txt_amount').val());
-            alert($(this).find('textarea[id*=txt_remark]').val());
+        $('#btnSaveUcWithdraw').click(function () {                            
 
             var accname = $('#<%= ddl_account_name.ClientID %>').val();
             var amt = $('.txt_amount').val();
@@ -110,14 +107,6 @@
 
             if (pwd == "") {
                 alert("กรุณากรอก Password");
-                return;
-            }
-
-            var mm = parseFloat(mymoney);
-            var am = parseFloat(amt);
-
-            if (mm < am) {
-                alert('เงินในบัญชีไม่พอ');
                 return;
             }
 

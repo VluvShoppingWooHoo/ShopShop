@@ -95,11 +95,11 @@ namespace VloveImport.web.Customer
         public static string btnWithdraw(string accname, string amt, string remark, string pwd)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
-            string Result = "", withdrawDB = "", pwdEn = "";
+            string Result = "", withdrawDB = "", withdrawDBEn = "";
             BasePage bp = new BasePage();
             withdrawDB = bp.GetCusSession().Cus_Withdraw_Code;
-            pwdEn = bp.EncrypData(pwd);
-            if (withdrawDB == pwdEn)
+            withdrawDBEn = bp.DecryptData(withdrawDB);
+            if (withdrawDBEn == pwd)
             {
                 TransactionData EnTran = new TransactionData();
                 EnTran.Cus_ID = bp.GetCusID();

@@ -51,6 +51,14 @@
         </div>     
     </div>
     <div class="row">        
+        <div class="col s2 m2 l2">              
+            <span class="black-text FontHeader">สถานะใบสั่งซื้อ</span><br />            
+        </div>
+        <div class="col s10 m10 l10">             
+            <asp:Label ID="lbOrderStatus" runat="server" CssClass="lbCaption"></asp:Label>
+        </div>     
+    </div>
+    <div class="row">        
         <div class="col s12 m12 l12">           
             <span class="black-text FontHeader">ทั้งหมด </span> <asp:Label ID="lbOrderAmount" runat="server" CssClass="lbCaption"></asp:Label> 
             <span class="black-text FontHeader"> รายการ</span>
@@ -106,6 +114,10 @@
             <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
                 name="action" class="btn waves-effect orange waves-light">
                 ย้อนกลับ                                
+            </button>
+            <button id="btnPay" runat="server" type="submit" onserverclick="btnPay_ServerClick"
+                name="action" class="btn waves-effect orange waves-light">
+                ชำระเงิน                                
             </button>
         </div>
     </div>

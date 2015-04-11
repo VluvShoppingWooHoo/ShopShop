@@ -46,6 +46,7 @@ namespace VloveImport.web.Customer
                 Trans = "1. " + dt.Rows[0]["TRANS_CH_TH"].ToString() + "<br/>2. " + dt.Rows[0]["TRANS_TH_CU"].ToString();
                 lbOrderTransport.Text = Trans;
                 lbOrderAmount.Text = dt.Rows.Count.ToString();
+                lbOrderStatus.Text = dt.Rows[0]["ORDER_DESC"].ToString();
 
                 //Grid                          
                 gvOrder.DataSource = dt;   
@@ -56,6 +57,12 @@ namespace VloveImport.web.Customer
         protected void btnBack_ServerClick(object sender, EventArgs e)
         {
             Redirect("~/Customer/CustomerOrderList.aspx");
+        }
+
+        protected void btnPay_ServerClick(object sender, EventArgs e)
+        {
+            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
+            Redirect("~/Customer/CustomerOrderList.aspx?OID=" + OID;
         }        
     }
 }

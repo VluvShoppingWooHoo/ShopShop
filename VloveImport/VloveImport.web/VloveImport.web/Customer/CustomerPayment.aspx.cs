@@ -28,16 +28,24 @@ namespace VloveImport.web.Customer
 
         protected void btnPayment_ServerClick(object sender, EventArgs e)
         {
-            string withdrawDB = "", pwdEn = "";
+            string withdrawDB = "", withdrawDBEn = "", pwd = "";
             CustomerBiz biz = new CustomerBiz();
             withdrawDB = GetCusSession().Cus_Withdraw_Code;
-            pwdEn = EncrypData(txtPass.Text);
-            if (withdrawDB == pwdEn)
+            withdrawDBEn = DecryptData(withdrawDB);
+            pwd = txtPass.Text;
+            if (withdrawDBEn == pwd)
             {
-                TransactionData data = GetDataTran();
-                string Result = biz.INS_UPD_TRANSACTION(data, "INS");
+                double Bal = lbBalance.Text == "" ? 0 : Convert.ToDouble(lbBalance.Text);
+                double Tol = lbTotalAmount.Text == "" ? 0 : Convert.ToDouble(lbTotalAmount.Text);
+                if (Bal > Tol)
+                {
+                    TransactionData data = GetDataTran();
+                    string Result = biz.INS_UPD_TRANSACTION(data, "INS");
 
-                Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
+                    Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
+                }
+                else
+                    ShowMessageBox("เงินในบัญชีไม่พอ กรุณาเติมเงินก่อนค่ะ");
             }
             else
             {
