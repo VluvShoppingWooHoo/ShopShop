@@ -196,5 +196,27 @@ namespace VloveImport.biz
 
         #endregion
 
+        #region CMS
+
+        public DataSet ADMIN_GET_CMS(string ID, string Title, string Content_Type, string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.ADMIN_GET_CMS(ID, Title, Content_Type, Act);
+            return ds;
+        }
+
+        public string ADMIN_INS_UPD_CMS(ContentData cd, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.ADMIN_INS_UPD_CMS(cd, Act);
+            }
+            catch (Exception ex) { }
+            return Result;
+        }
+        #endregion
     }
 }

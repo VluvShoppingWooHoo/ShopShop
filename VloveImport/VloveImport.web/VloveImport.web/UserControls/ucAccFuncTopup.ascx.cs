@@ -175,22 +175,21 @@ namespace VloveImport.web.UserControls
 
                 if (Ifile.HasFile)
                 {
-                    //if (Ifile.PostedFile.ContentType == "image/jpg")
-                    //{
-                    //    if (Ifile.PostedFile.ContentLength < 102400)
-                    //    {
-                    string folder = Server.MapPath("~/Images/transaction/") + EnTran.Cus_ID;
+                    string folder = Server.MapPath("~/Attachment");
                     bool exists = System.IO.Directory.Exists(folder);
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(folder);
+
+                    folder = folder + "\\" + EnTran.Cus_ID;
+                    exists = System.IO.Directory.Exists(folder);
 
                     if (!exists)
                         System.IO.Directory.CreateDirectory(folder);
 
-                    string filename = folder + "\\" + Path.GetFileName(Ifile.FileName);
+                    string filename = "Attachment\\" + EnTran.Cus_ID + "\\" + Path.GetFileName(Ifile.FileName);
 
-                    Ifile.SaveAs(filename);
+                    Ifile.SaveAs(folder + "\\" + Path.GetFileName(Ifile.FileName));
                     EnTran.TRANS_PICURL = filename;
-                    //    }
-                    //}
                 }
 
 

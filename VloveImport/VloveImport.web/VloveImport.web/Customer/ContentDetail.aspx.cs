@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
@@ -29,6 +30,8 @@ namespace VloveImport.web.Customer
             try
             {
                 models = CMS.GetContentByIDList(int.Parse(ID));
+                string path = WebConfigurationManager.AppSettings["AdminURL"];
+                models.ContentImage = path + models.ContentImage;
                 jData.Result = Constant.Fact.T;
                 jData.ReturnVal = models;
             }

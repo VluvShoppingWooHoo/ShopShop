@@ -218,6 +218,11 @@ namespace VloveImport.web
                 models = CMS.GetList(0);
                 if (models.Count > 0)
                 {
+                    string path = WebConfigurationManager.AppSettings["AdminURL"];
+                    for (int i = 0; i < models.Count; i++)
+                    {
+                        models[i].ContentImage = path + models[i].ContentImage;
+                    }
                     jData.Result = Constant.Fact.T;
                     jData.ReturnVal = models;
                 }
