@@ -18,10 +18,14 @@ using System.Net;
 using System.Text;
 using System.IO;
 using VloveImport.web.App_Code;
+<<<<<<< HEAD
 //using SimpleBrowser;
 //using OpenQA.Selenium.PhantomJS;
 //using OpenQA.Selenium;
 
+=======
+ 
+>>>>>>> origin/master
 namespace VloveImport.web
 {
     public partial class Index : System.Web.UI.Page
