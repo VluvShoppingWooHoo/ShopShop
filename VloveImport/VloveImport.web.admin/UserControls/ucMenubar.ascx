@@ -4,8 +4,8 @@
     <tr>
         <td bgcolor="#EEEEEE">
             <asp:Menu ID="Menu1"  StaticEnableDefaultPopOutImage="false" DynamicEnableDefaultPopOutImage="false" runat="server" BackColor="Transparent" Orientation="Horizontal"
-                DynamicHorizontalOffset="2" Font-Names="tahoma, Arial, mS Sans Serif, sans-serif" Font-Size="8pt" Font-Bold="false"
-                ForeColor="Black" StaticSubMenuIndent="10px" Height="20px" Style="margin-top: 1px; margin-left: 0px; padding-bottom: 2px; padding-top: 0px; z-index: 9999;"
+                DynamicHorizontalOffset="2" Font-Names="tahoma, Arial, mS Sans Serif, sans-serif" Font-Size="10pt" Font-Bold="false"
+                ForeColor="Black" StaticSubMenuIndent="10px" Height="25px" Style="margin-top: 1px; margin-left: 0px; padding-bottom: 2px; padding-top: 0px; z-index: 9999;"
                 StaticDisplayLevels="1" MaximumDynamicDisplayLevels="1">
                 <DynamicHoverStyle BackColor="White" ForeColor="black" Height="20px" />
                 <DynamicMenuItemStyle ItemSpacing="0" ForeColor="black" HorizontalPadding="3px" VerticalPadding="4px" Height="20px" CssClass="displayblock" />
