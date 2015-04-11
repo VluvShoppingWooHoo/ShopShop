@@ -106,5 +106,16 @@ namespace VloveImport.web.Customer
             string Page = "~/Customer/CustomerMyAccount.aspx?OID=" + EncrypData(OID);
             Redirect("~/Customer/CustomerMyAccount.aspx?u=" + EncrypData(Page));
         }
+
+        protected void btnBack_ServerClick(object sender, EventArgs e)
+        {
+            string Page = Request.QueryString["P"] == null ? "" : DecryptData(Request.QueryString["P"].ToString());
+            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
+
+            if (Page == "LIST")
+                Redirect("~/Customer/CustomerOrderList.aspx");
+            else
+                Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
+        }
     }
 }
