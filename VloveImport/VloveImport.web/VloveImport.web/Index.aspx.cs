@@ -18,6 +18,9 @@ using System.Net;
 using System.Text;
 using System.IO;
 using VloveImport.web.App_Code;
+using SimpleBrowser;
+using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium;
 
 namespace VloveImport.web
 {
@@ -69,6 +72,16 @@ namespace VloveImport.web
         [WebMethod]
         public static string GetModelFromURL(string txt)
         {
+            //try
+            //{
+            //    string PhantomDirectory = @"..\..\..\packages\PhantomJS.2.0.0\tools\phantomjs";
+            //    using (IWebDriver phantomDriver = new PhantomJSDriver(PhantomDirectory))
+            //    {
+            //        phantomDriver.Url = txt;
+            //        //Assert.Contains("Google", phantomDriver.Title);
+            //    }
+            //}
+            //catch (Exception ex) { }
             //txt = "http://item.taobao.com/item.htm?spm=a215z.1607468.a214yav.11.ssGwcK&id=42865704337";
             //txt = "http://item.taobao.com/item.htm?id=42400927372&ali_refid=a3_420435_1006:1106126314:N:%B2%CA%BA%E7%D0%AC:7055520b07090b98fe54085c41bad517&ali_trackid=1_7055520b07090b98fe54085c41bad517&spm=a230r.1.1005.40.wn70vl";
             ScrapingBiz sc = new ScrapingBiz();
@@ -125,7 +138,6 @@ namespace VloveImport.web
             }
             catch (Exception ex) { }
             return js.Serialize(data);
-            //return "";
         }
 
         [WebMethod]
