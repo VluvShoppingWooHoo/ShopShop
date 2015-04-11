@@ -90,6 +90,7 @@
     <Content Include="img\icon\sendemail.png" />
     <Content Include="img\icon\Sign-Close-icon.png" />
     <Content Include="img\icon\View.png" />
+    <Content Include="img\logo\LOGO-01.jpg" />
     <Content Include="Logout.aspx" />
     <Content Include="pages\frmApprovePayment.aspx" />
     <Content Include="pages\frmCMSContent.aspx" />
@@ -274,7 +275,6 @@
     <Folder Include="App_Code\" />
     <Folder Include="Attachment\" />
     <Folder Include="img\CMSimg\" />
-    <Folder Include="img\logo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VloveImport.biz\VloveImport.biz.csproj">
