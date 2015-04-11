@@ -83,6 +83,7 @@
 
     <script type="text/javascript">
         $(function () {
+            SetFadeout();
 
             var type = getUrlParameter('tab');
             if (type === 'undefined' || type == '')
@@ -95,7 +96,7 @@
             //    $('#divRateimport').show();
             $('a.' + type).click();
 
-            SetFadeout();
+            
 
             $("#btnSaveUcWithdraw").click(function () {
 

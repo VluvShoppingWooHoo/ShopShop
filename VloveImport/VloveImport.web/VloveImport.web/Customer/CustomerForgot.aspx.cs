@@ -42,7 +42,7 @@ namespace VloveImport.web.Customer
             }
 
             string ResetPass = System.Web.Security.Membership.GeneratePassword(10, 3);
-            string Result = biz.RESET_PASSWORD(ResetPass, CUS_ID);
+            string Result = biz.RESET_PASSWORD(EncrypData(ResetPass), CUS_ID, "LOGIN");
             
             string[] Temp;
             Temp = Get_Config("REPASS");

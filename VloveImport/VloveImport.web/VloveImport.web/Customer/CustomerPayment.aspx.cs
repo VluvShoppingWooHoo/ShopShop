@@ -28,11 +28,22 @@ namespace VloveImport.web.Customer
 
         protected void btnPayment_ServerClick(object sender, EventArgs e)
         {
+            string withdrawDB = "", pwdEn = "";
             CustomerBiz biz = new CustomerBiz();
-            TransactionData data = GetDataTran();
-            string Result = biz.INS_UPD_TRANSACTION(data, "INS");
+            withdrawDB = GetCusSession().Cus_Withdraw_Code;
+            pwdEn = EncrypData(txtPass.Text);
+            if (withdrawDB == pwdEn)
+            {
+                TransactionData data = GetDataTran();
+                string Result = biz.INS_UPD_TRANSACTION(data, "INS");
 
-            Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
+                Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
+            }
+            else
+            {
+                ShowMessageBox("รหัสผ่านการชำระเงินไม่ถูกต้อง");
+                return;
+            }
         } 
 
         protected void BindData()

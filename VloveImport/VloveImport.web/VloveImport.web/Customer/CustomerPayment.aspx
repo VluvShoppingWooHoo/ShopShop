@@ -37,6 +37,15 @@
             <%--<a href="CustomerMyAccount.aspx">เติมเงิน</a>--%>
         </div>
     </div>
+    <div class="row">
+        <div class="col s2 m2 l2">           
+            <span class="black-text FontHeader2">รหัสผ่านการชำระเงิน</span>
+        </div>        
+        <div class="col s3 m3 l3 right-align">  
+            <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>
+            <%--<a href="CustomerMyAccount.aspx">เติมเงิน</a>--%>
+        </div>
+    </div>
     <br />
     <div class="row">        
         <asp:GridView ID="gvTran" runat="server" AutoGenerateColumns="false">

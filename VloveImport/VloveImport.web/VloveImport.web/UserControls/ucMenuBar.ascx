@@ -31,7 +31,7 @@
     <a class="collection-item mCus" href="../Customer/CustomerProfile.aspx">ข้อมูลของฉัน</a>
     <a class="collection-item mCus" href="../Customer/CustomerAddress.aspx">ที่อยู่ลูกค้า</a>
     <a class="collection-item mCus" href="../Customer/CustomerBank.aspx">หน้าจัดการ บัญชีของลูกค้า</a>
-    <a class="collection-item mCus" href="../Customer/CustomerChangePassword.aspx">เปลี่ยนรหัส</a>
+    <a class="collection-item mCus" href="../Customer/CustomerChangePassword.aspx">รหัสผ่าน</a>
 
     <a class="collection-item mCus black" disabled>รายการ</a>
     <a class="collection-item mCus" href="../Customer/CustomerOrder.aspx">สั่งซื้อสินค้า</a>

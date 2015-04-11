@@ -45,6 +45,24 @@ namespace VloveImport.web.App_Code
 
         }
 
+        public string GetCusEmail()
+        {
+            if (Session["User"] != null)
+                return ((CustomerData)Session["User"]).Cus_Email;
+            else
+                return "";
+
+        }
+
+        public CustomerData GetCusSession()
+        {
+            if (Session["User"] != null)
+                return ((CustomerData)Session["User"]);
+            else
+                return null;
+
+        }
+
         public string GetNoSeries(string NoSeries_Name)
         {
             string Result = "";

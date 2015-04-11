@@ -373,7 +373,7 @@ namespace VloveImport.dal
         #endregion
 
         #region CUSTOMER_PASSWORD
-        public string CHANGE_PASSWORD(Int32 CUS_ID, string Pass)
+        public string CHANGE_PASSWORD(Int32 CUS_ID, string Pass, string  TYPE)
         {
             try
             {
@@ -382,7 +382,8 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("CHANGE_PASSWORD");
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
-                SqlCommandData.SetParameter("CUS_PASSWORD", SqlDbType.NVarChar, ParameterDirection.Input, Pass);                
+                SqlCommandData.SetParameter("PASSWORD", SqlDbType.NVarChar, ParameterDirection.Input, Pass);
+                SqlCommandData.SetParameter("TYPE_PASS", SqlDbType.NVarChar, ParameterDirection.Input, TYPE);                
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
@@ -394,7 +395,7 @@ namespace VloveImport.dal
                 return ("CHANGE_PASSWORD -> msg : " + ex.Message);
             }
         }
-        public string RESET_PASSWORD(string Pass, int CUS_ID)
+        public string RESET_PASSWORD(string Pass, int CUS_ID, string TYPE_PASS)
         {
             try
             {
@@ -403,7 +404,8 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("UPDATE_CUSTOMER_REPASS");
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
-                SqlCommandData.SetParameter("CUS_PASS", SqlDbType.NVarChar, ParameterDirection.Input, Pass);
+                SqlCommandData.SetParameter("PASSWORD", SqlDbType.NVarChar, ParameterDirection.Input, Pass);
+                SqlCommandData.SetParameter("TYPE_PASS", SqlDbType.NVarChar, ParameterDirection.Input, TYPE_PASS);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();

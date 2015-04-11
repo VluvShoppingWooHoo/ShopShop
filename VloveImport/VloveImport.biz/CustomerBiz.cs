@@ -210,13 +210,13 @@ namespace VloveImport.biz
         #endregion
 
         #region CUSTOMER_PASSWORD
-        public string CHANGE_PASSWORD(Int32 CUS_ID, string Pass)
+        public string CHANGE_PASSWORD(Int32 CUS_ID, string Pass, string TYPE)
         {
             string Result = "";
             try
             {
                 CustomerDal dal = new CustomerDal("LocalConnection");
-                Result = dal.CHANGE_PASSWORD(CUS_ID, Pass);
+                Result = dal.CHANGE_PASSWORD(CUS_ID, Pass, TYPE);
             }
             catch (Exception ex)
             {
@@ -225,13 +225,13 @@ namespace VloveImport.biz
             return Result;
         }
 
-        public string RESET_PASSWORD(string Pass, int CUS_ID)
+        public string RESET_PASSWORD(string Pass, int CUS_ID, string TYPE_PASS)
         {
             string Result = "";
             try
             {
                 CustomerDal dal = new CustomerDal("LocalConnection");
-                Result = dal.RESET_PASSWORD(Pass, CUS_ID);
+                Result = dal.RESET_PASSWORD(Pass, CUS_ID, TYPE_PASS);
             }
             catch (Exception ex)
             {
