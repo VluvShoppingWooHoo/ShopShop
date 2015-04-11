@@ -879,6 +879,14 @@ caption {background: #66FFCC}
     width:auto;
 }
 
+.label-large
+{
+	font-family: Arial,Verdana,sans-serif;
+    font-size :15pt;
+    color:#585880;/*ตัวอีกษร สีเทา*/
+    width:auto;
+}
+
 .label-Mark
 {
     background-color:#33FF66;
@@ -922,6 +930,15 @@ caption {background: #66FFCC}
     border:1px solid #ADADAD;
     font-family: Arial,Verdana,sans-serif;
     font-size :10pt;
+    color:#585880;/*ตัวอีกษร สีเทา*/
+    background:url("images/input-background.png") no-repeat scroll left top transparent!important;
+}
+.textbox-large
+{
+	/*width:200px;width:auto;*/ 
+    border:1px solid #ADADAD;
+    font-family: Arial,Verdana,sans-serif;
+    font-size :15pt;
     color:#585880;/*ตัวอีกษร สีเทา*/
     background:url("images/input-background.png") no-repeat scroll left top transparent!important;
 }
@@ -1022,18 +1039,19 @@ caption {background: #66FFCC}
 /* ============================ */
 .btnSave, .btnCancel, .btnSearch, .btnSelect, .btnClose {
 	font-family: Arial,Verdana,sans-serif;
-    font-size :10pt;
-    font-weight:bold;
-    border-collapse: collapse;
-    cursor:pointer;
-    vertical-align:top;
-    height :20px;
-    line-height:8pt;
+	font-size :10pt;
+	font-weight:bold;
+	border-collapse: collapse;
+	cursor:pointer;
+	vertical-align:top;
+	height :20px;
+	line-height:8pt;
     
-     -moz-border-radius:5px;
+	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
     }
+
 /* ==== btnSave */
 .btnSave 
 {

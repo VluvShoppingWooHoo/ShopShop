@@ -6,9 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>LOGIN :: I LOVE IMPORT</title>
-    <meta charset="utf-8">
-    <link href="css/style.css" rel='stylesheet' type='text/css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -17,18 +14,45 @@
 
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <div style="margin-top: 70px;">
+                <div style="margin-top: 12%;">
                     <table width="100%">
                         <tr>
-                            <td class ="ItemStyle-center">
-                                fsgfdsg
-                                <table class ="width50">
-                                    <tr>
-                                        <td>
-                                            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/logo/LOGO-01.jpg" Width = "300px" Height = "120px" />
-                                        </td>
-                                    </tr>
-                                </table>
+                            <td>
+                                <div style ="margin-left:30%;">
+                                    <table class="width50">
+                                        <tr>
+                                            <td colspan="2">
+                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/img/logo/LOGO-01.jpg" Width="100%" Height="100px" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class ="width15 ItemStyle-center">
+                                                <h1>
+                                                    <asp:Label ID="Label1" runat="server" CssClass = "label-large" Text="Username : "></asp:Label>
+                                                </h1>
+                                            </td>
+                                            <td class ="width85 ItemStyle-left">
+                                                <asp:TextBox ID="txtuser" runat="server" CssClass = "textbox-large" TabIndex="1"></asp:TextBox>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class ="ItemStyle-center">
+                                                <asp:Label ID="Label2" runat="server" CssClass = "label-large" Text="Password : "></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtpassword" TextMode="Password" CssClass = "textbox-large" runat="server" TabIndex="2"></asp:TextBox>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <asp:Button ID="btnLogin" runat="server" Text="Login" Height ="40px" Width = "80px" CssClass ="btnSave" TabIndex="3" OnClick="btnLogin_Click" />
+                                                &nbsp;&nbsp;
+                                                <asp:Button ID="btnReset" runat="server" Text="Reset" Height ="40px" Width = "80px" CssClass ="btnCancel" OnClick="btnReset_Click"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </td>
                         </tr>
                     </table>
