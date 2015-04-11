@@ -18,9 +18,9 @@ using System.Net;
 using System.Text;
 using System.IO;
 using VloveImport.web.App_Code;
-using SimpleBrowser;
-using OpenQA.Selenium.PhantomJS;
-using OpenQA.Selenium;
+//using SimpleBrowser;
+//using OpenQA.Selenium.PhantomJS;
+//using OpenQA.Selenium;
 
 namespace VloveImport.web
 {
