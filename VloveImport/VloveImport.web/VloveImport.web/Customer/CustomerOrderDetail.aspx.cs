@@ -62,7 +62,7 @@ namespace VloveImport.web.Customer
         protected void btnPay_ServerClick(object sender, EventArgs e)
         {
             string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
-            Redirect("~/Customer/CustomerOrderList.aspx?OID=" + OID;
+            Redirect("~/Customer/CustomerOrderList.aspx?OID=" + OID);
         }        
     }
 }
