@@ -109,6 +109,7 @@
     <Content Include="pages\frmUserList.aspx" />
     <Content Include="UserControls\ucApprovePaymentDetail.ascx" />
     <Content Include="UserControls\ucCalendar.ascx" />
+    <Content Include="UserControls\ucEmail.ascx" />
     <Content Include="UserControls\ucMenubar.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -252,6 +253,12 @@
     </Compile>
     <Compile Include="UserControls\ucCalendar.ascx.designer.cs">
       <DependentUpon>ucCalendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucEmail.ascx.cs">
+      <DependentUpon>ucEmail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucEmail.ascx.designer.cs">
+      <DependentUpon>ucEmail.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucMenubar.ascx.cs">
       <DependentUpon>ucMenubar.ascx</DependentUpon>

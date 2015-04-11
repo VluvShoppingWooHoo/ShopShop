@@ -17,7 +17,7 @@ namespace VloveImport.web.admin
         {
             if (!IsPostBack)
             {
-                txtuser.Focus();
+                //txtuser.Focus();
             }
             //EncrypUtil En = new EncrypUtil();
             //string str = En.EncrypData("P@ssw0rd");

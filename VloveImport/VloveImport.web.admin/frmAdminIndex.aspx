@@ -11,38 +11,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <form id="form1" runat="server">
 
-    <!-----start-main---->
-    <div class="login-form">
-        <h1>LOGIN</h1>
-        <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <li>
-                        <asp:TextBox ID="txtuser" CssClass="text" runat="server" TabIndex ="1"></asp:TextBox>
-                        <asp:TextBoxWatermarkExtender ID="txtuser_TextBoxWatermarkExtender" runat="server" Enabled="True" TargetControlID="txtuser" WatermarkText="USERNAME">
-                        </asp:TextBoxWatermarkExtender>
-                        <a href="#" class=" icon user"></a>
-                    </li>
-                    <li>
-                        <asp:TextBox ID="txtpassword" CssClass="text" TextMode="Password" runat="server" TabIndex ="2"></asp:TextBox><a href="#" class=" icon lock"></a>
-<%--                        <asp:TextBoxWatermarkExtender ID="txtpassword_TextBoxWatermarkExtender" runat="server" Enabled="True" TargetControlID="txtpassword" WatermarkText="PASSWORD">
-                        </asp:TextBoxWatermarkExtender>--%>
-                    </li>
-                    <br />
-                    <div class="forgot">
-                          <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Height="60px" OnClick="btnLogin_Click" TabIndex ="3"/><a href="#" class=" icon arrow"></a>                                                                                                                                                                                                                      </h4>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </form>
-    </div>
-    <!--//End-login-form-->
-</body>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <div style="margin-top: 70px;">
+                    <table width="100%">
+                        <tr>
+                            <td class ="ItemStyle-center">
+                                fsgfdsg
+                                <table class ="width50">
+                                    <tr>
+                                        <td>
+                                            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/logo/LOGO-01.jpg" Width = "300px" Height = "120px" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </form>
 </html>
-
-
-<!DOCTYPE html>
