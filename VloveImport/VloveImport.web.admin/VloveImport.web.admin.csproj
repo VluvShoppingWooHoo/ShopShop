@@ -63,6 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\v_th1\css.css" />
+    <Content Include="App_Themes\v_th1\images\input-background-notice.png" />
+    <Content Include="App_Themes\v_th1\images\input-background-readonly.png" />
+    <Content Include="App_Themes\v_th1\images\input-background-warning.png" />
+    <Content Include="App_Themes\v_th1\images\input-background.png" />
     <Content Include="App_Themes\v_th1\Skin1.skin" />
     <Content Include="css\style.css" />
     <Content Include="frmAdminIndex.aspx" />
@@ -267,7 +271,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
-    <Folder Include="App_Themes\v_th1\images\" />
     <Folder Include="Attachment\" />
     <Folder Include="img\CMSimg\" />
     <Folder Include="img\logo\" />

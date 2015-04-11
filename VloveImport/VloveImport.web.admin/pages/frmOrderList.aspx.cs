@@ -24,6 +24,9 @@ namespace VloveImport.web.admin.pages
             {
                 _VS_USER_LOGIN = "admin";
                 BindData_order_status(ddl_search_order_status, "S");
+                ddl_search_order_status.SelectedValue = "2";
+                ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
+                ucCalendar2.SET_DATE_DEFAULT();
             }
         }
 
@@ -281,10 +284,7 @@ namespace VloveImport.web.admin.pages
                 string ORDER_ID = DataBinder.Eval(e.Row.DataItem, "ORDER_ID").ToString();
                 int ORDER_STATUS = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "ORDER_STATUS").ToString());
 
-                if (ORDER_STATUS >= 2 || ORDER_STATUS == 0)
-                {
-                    ((ImageButton)e.Row.FindControl("imgBtn_delete")).Visible = false;
-                }
+                ((ImageButton)e.Row.FindControl("imgBtn_delete")).Visible = false;
 
                 if (ListEn.Count > 0)
                 {
@@ -310,7 +310,7 @@ namespace VloveImport.web.admin.pages
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            ucCalendar1.ClearData();
+            ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
             ucCalendar2.ClearData();
             txtCusCode.Text = "";
             ddl_search_order_status.SelectedIndex = 0;

@@ -1487,6 +1487,7 @@ input[type=submit].WizardNavigationButtonStyle a:hover
 
 .RowStyle_SHOP td
 {
+	text-align : left;
     background-color: #9ab2ca;
 	background-image: url(images/YahooSprite.gif);
     background-position:center;
