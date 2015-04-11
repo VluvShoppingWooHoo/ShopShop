@@ -268,6 +268,7 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Themes\v_th1\images\" />
+    <Folder Include="Attachmen\" />
     <Folder Include="img\CMSimg\" />
     <Folder Include="img\logo\" />
   </ItemGroup>
