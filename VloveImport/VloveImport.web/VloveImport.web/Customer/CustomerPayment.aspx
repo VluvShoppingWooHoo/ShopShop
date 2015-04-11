@@ -58,6 +58,9 @@
             </Columns>
         </asp:GridView>
         <br />
+        <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
+            name="action" class="btn waves-effect orange waves-light">ย้อนกลับ                                
+        </button> 
         <button id="btnPayment" runat="server" type="submit" onserverclick="btnPayment_ServerClick"
             name="action" class="btn waves-effect orange waves-light">ชำระเงิน                                
         </button>  

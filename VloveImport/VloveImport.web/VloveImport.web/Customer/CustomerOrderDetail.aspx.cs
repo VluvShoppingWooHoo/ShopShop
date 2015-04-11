@@ -31,7 +31,7 @@ namespace VloveImport.web.Customer
         {
             ShoppingBiz biz = new ShoppingBiz();
             DataTable dt = new DataTable();
-            string Trans = "";
+            string Trans = "", Status = "";
             Int32 OID = Order_ID == "" ? 0 : Convert.ToInt32(Order_ID);
             dt = biz.GetOrderDetail(OID);
             if (dt != null && dt.Rows.Count > 0)
@@ -48,6 +48,10 @@ namespace VloveImport.web.Customer
                 lbOrderAmount.Text = dt.Rows.Count.ToString();
                 lbOrderStatus.Text = dt.Rows[0]["ORDER_DESC"].ToString();
 
+                Status = dt.Rows[0]["ORDER_STATUS"].ToString();
+                if (Status == "0" || Status == "2" || Status == "5" || Status == "6")
+                    btnPay.Visible = false;
+
                 //Grid                          
                 gvOrder.DataSource = dt;   
                 gvOrder.DataBind();
@@ -56,13 +60,19 @@ namespace VloveImport.web.Customer
 
         protected void btnBack_ServerClick(object sender, EventArgs e)
         {
-            Redirect("~/Customer/CustomerOrderList.aspx");
+            string Page = Request.QueryString["P"] == null ? "" : DecryptData(Request.QueryString["P"].ToString());
+            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
+
+            //if(Page == "LIST")
+                Redirect("~/Customer/CustomerOrderList.aspx");
+            //else
+            //    Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
         }
 
         protected void btnPay_ServerClick(object sender, EventArgs e)
         {
             string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
-            Redirect("~/Customer/CustomerOrderList.aspx?OID=" + OID);
+            Redirect("~/Customer/CustomerPayment.aspx?OID=" + OID);
         }        
     }
 }

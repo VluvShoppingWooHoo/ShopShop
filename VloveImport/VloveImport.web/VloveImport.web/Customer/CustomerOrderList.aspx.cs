@@ -50,7 +50,7 @@ namespace VloveImport.web.Customer
             Button btn = (Button)sender;
             string Order_ID;//SessionUser
             Order_ID = en.EncrypData(btn.CommandArgument);
-            Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+            Response.Redirect("CustomerPayment.aspx?P=" + EncrypData("LIST") + "&OID=" + Order_ID);
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -72,14 +72,30 @@ namespace VloveImport.web.Customer
         protected void gvOrder_DataBound(object sender, EventArgs e)
         {
             HyperLink hl;
+            HiddenField hdd;
+            Button btnPay, btnDel;
             string Order_ID = "";
             foreach (GridViewRow gvr in gvOrder.Rows)
             {
                 hl = (HyperLink)gvr.Cells[0].FindControl("hlOrderCode");
+                hdd = (HiddenField)gvr.Cells[2].FindControl("hddStatus");
                 if (hl != null)
                 {
                     Order_ID = EncrypData(hl.NavigateUrl);
-                    hl.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?OID=" + Order_ID;
+                    hl.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?P=" + EncrypData("LIST") + "&OID=" + Order_ID;
+                }
+
+                if (hdd != null && (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "5" || hdd.Value == "6"))
+                {
+                    gvr.Cells[5].Visible = false;
+                    //btnPay = (Button)gvr.Cells[5].FindControl("btnPay");
+                    //btnDel = (Button)gvr.Cells[5].FindControl("btnDelete");
+
+                    //if (btnPay != null)
+                    //    btnPay.Visible = false;
+                    //if (btnDel != null)
+                    //    btnDel.Visible = false;
+
                 }
             }
         } 

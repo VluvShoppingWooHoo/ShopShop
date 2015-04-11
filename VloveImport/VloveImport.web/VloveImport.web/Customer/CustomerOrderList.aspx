@@ -24,6 +24,7 @@
                     <asp:TemplateField HeaderText="สถานะ" ItemStyle-Width="120px">
                         <ItemTemplate>
                             <asp:Label ID="lbStatus" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DESC") %>'></asp:Label>
+                            <asp:HiddenField ID="hddStatus" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_STATUS") %>'></asp:HiddenField>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="รวมรายการ">
@@ -31,12 +32,12 @@
                             <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_AMOUNT") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รวมเงิน">
+                    <asp:TemplateField HeaderText="รวมเงิน" ItemStyle-Height="80px">
                         <ItemTemplate>
                             <asp:Label ID="lbPRICE" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="">
+                    <asp:TemplateField>
                         <ItemTemplate>
                             <button type="button" class="btn waves-effect orange waves-light" name="action" style="height:60%">
                                 <asp:Button ID="btnPay" runat="server" Text="ชำระเงิน" OnClick="btnPay_Click" CssClass=""
