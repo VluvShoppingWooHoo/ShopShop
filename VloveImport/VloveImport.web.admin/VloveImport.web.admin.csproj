@@ -93,7 +93,7 @@
     <Content Include="img\logo\LOGO-01.jpg" />
     <Content Include="Logout.aspx" />
     <Content Include="pages\frmApprovePayment.aspx" />
-    <Content Include="pages\frmCMSContent.aspx" />
+    <Content Include="pages\frmCms.aspx" />
     <Content Include="pages\frmCmsList.aspx" />
     <Content Include="pages\frmConfig.aspx" />
     <Content Include="pages\frmConfigList.aspx" />
@@ -142,11 +142,11 @@
     <Compile Include="pages\frmApprovePayment.aspx.designer.cs">
       <DependentUpon>frmApprovePayment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\frmCMSContent.aspx.cs">
-      <DependentUpon>frmCMSContent.aspx</DependentUpon>
+    <Compile Include="pages\frmCms.aspx.cs">
+      <DependentUpon>frmCms.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\frmCMSContent.aspx.designer.cs">
-      <DependentUpon>frmCMSContent.aspx</DependentUpon>
+    <Compile Include="pages\frmCms.aspx.designer.cs">
+      <DependentUpon>frmCms.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\frmCmsList.aspx.cs">
       <DependentUpon>frmCmsList.aspx</DependentUpon>
