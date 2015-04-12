@@ -39,7 +39,12 @@
                         <td><asp:Label ID="Label5" runat="server" Text="Config Value 2 :"></asp:Label></td>
                         <td colspan ="3">
                             <asp:TextBox ID="txtConfig_Value2" runat="server" Width ="95%"></asp:TextBox>
-                            <span style ="color:red;">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><asp:Label ID="Label6" runat="server" Text="Config Value 3 :"></asp:Label></td>
+                        <td colspan ="3">
+                            <asp:TextBox ID="txtConfig_Value3" runat="server" Width ="95%"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>

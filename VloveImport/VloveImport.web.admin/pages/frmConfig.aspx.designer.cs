@@ -103,6 +103,24 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.TextBox txtConfig_Value2;
         
         /// <summary>
+        /// Label6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label6;
+        
+        /// <summary>
+        /// txtConfig_Value3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConfig_Value3;
+        
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>

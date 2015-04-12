@@ -331,6 +331,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CONFIG_ID", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_ID);
                 SqlCommandData.SetParameter("CONFIG_VALUE", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_VALUE);
                 SqlCommandData.SetParameter("CONFIG_VALUE2", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_VALUE2);
+                SqlCommandData.SetParameter("CONFIG_VALUE3", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_VALUE3);
                 SqlCommandData.SetParameter("CONFIG_GROUP", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_GROUP);
                 SqlCommandData.SetParameter("CONFIG_REMARK", SqlDbType.VarChar, ParameterDirection.Input, En.CONFIG_REMARK);
 

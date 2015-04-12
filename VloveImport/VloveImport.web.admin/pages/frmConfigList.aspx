@@ -53,6 +53,9 @@
                     <asp:BoundField HeaderText="Config value 2" DataField="CONFIG_VALUE2">
                         <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
+                    <asp:BoundField HeaderText="Config value 3" DataField="CONFIG_VALUE3">
+                        <HeaderStyle CssClass="width15" />
+                    </asp:BoundField>
                     <asp:BoundField HeaderText="Config Group" DataField="CONFIG_GROUP">
                         <HeaderStyle CssClass="width15" />
                     </asp:BoundField>

@@ -41,6 +41,7 @@ namespace VloveImport.data
         public string CONFIG_ID { get; set; }
         public string CONFIG_VALUE { get; set; }
         public string CONFIG_VALUE2 { get; set; }
+        public string CONFIG_VALUE3 { get; set; }
         public string CONFIG_GROUP { get; set; }
         public string CONFIG_REMARK { get; set; }
 
