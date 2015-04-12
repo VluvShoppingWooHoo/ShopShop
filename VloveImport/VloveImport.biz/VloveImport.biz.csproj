@@ -45,6 +45,7 @@
     <Compile Include="AdminBiz.cs" />
     <Compile Include="CMSContentBiz.cs" />
     <Compile Include="commonBiz.cs" />
+    <Compile Include="ReportBiz.cs" />
     <Compile Include="PermissionBiz.cs" />
     <Compile Include="ShoppingBiz.cs" />
     <Compile Include="CustomerBiz.cs" />
