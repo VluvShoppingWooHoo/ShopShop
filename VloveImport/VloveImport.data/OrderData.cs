@@ -53,6 +53,7 @@ namespace VloveImport.data
         public double TRANSPORT_CHINA_PRICE;
         public double TRANSPORT_THAI_PRICE;
         public double TRANSPORT_CUSTOMER_PRICE;
+        public int PRODUCT_TYPE;
         #endregion
 
         #region TB_ORDER_DETAIL
