@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Reporting.WebForms;
 using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Report
@@ -19,21 +21,31 @@ namespace VloveImport.web.Report
 
         protected void SetReport(string ReportName)
         {
+            ReportDataSource ds = new ReportDataSource();
             string ReportPath = WebConfigurationManager.AppSettings["ReportPath"].ToString();
             switch (ReportName)
             {
                 case "ORDER":
+                    ds = Order_Report("ORDER");
                     break;
             }
 
-            ReportViewer1.ServerReport.ReportPath = ReportPath + ReportName;
-            ReportViewer1.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Remote;
+            if (ds != null)
+            {
+                ReportViewer1.ServerReport.ReportPath = Server.MapPath(ReportPath + ReportName);
+                ReportViewer1.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Remote;
+                ReportViewer1.LocalReport.DataSources.Clear();
+                ReportViewer1.LocalReport.DataSources.Add(ds);
+            }
         }
 
         #region
-        protected void Order_Report()
-        {
-
+        protected ReportDataSource Order_Report(string Name)
+        {            
+            DataTable dt = new DataTable();
+            Report
+            ReportDataSource ds = new ReportDataSource(Name, dt);
+            return ds;
         }
         #endregion
     }
