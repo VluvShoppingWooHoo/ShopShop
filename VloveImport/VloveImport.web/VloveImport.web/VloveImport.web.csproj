@@ -49,6 +49,10 @@
     <Reference Include="Facebook">
       <HintPath>..\..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SolutionItem\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
