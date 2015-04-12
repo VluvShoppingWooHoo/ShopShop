@@ -77,7 +77,8 @@ namespace VloveImport.web.Customer
 
         protected void btnPrint_ServerClick(object sender, EventArgs e)
         {
-
+            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
+            Redirect("~/Report/ReportViewer.aspx?ID=" + OID + "&RN=" + EncrypData("ORDER"));
         }        
     }
 }
