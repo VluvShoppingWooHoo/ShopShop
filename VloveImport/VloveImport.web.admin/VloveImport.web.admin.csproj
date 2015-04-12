@@ -43,6 +43,9 @@
     <Reference Include="AjaxControlToolkit">
       <HintPath>..\SolutionItem\AjaxToolkit4\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -144,6 +147,7 @@
     </Compile>
     <Compile Include="pages\frmCms.aspx.cs">
       <DependentUpon>frmCms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\frmCms.aspx.designer.cs">
       <DependentUpon>frmCms.aspx</DependentUpon>
@@ -256,6 +260,7 @@
     </Compile>
     <Compile Include="UserControls\ucEmail.ascx.cs">
       <DependentUpon>ucEmail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserControls\ucEmail.ascx.designer.cs">
       <DependentUpon>ucEmail.ascx</DependentUpon>
@@ -271,6 +276,7 @@
   <ItemGroup>
     <Content Include="MasterPage\Site1.Master" />
     <Content Include="DB\db_batt_20150331.bak" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -50,6 +50,7 @@ namespace VloveImport.web.admin.pages
                 txtConfig_ID.Text = ds.Tables[0].Rows[0]["CONFIG_ID"].ToString();
                 txtConfig_Group.Text = ds.Tables[0].Rows[0]["CONFIG_GROUP"].ToString();
                 txtConfig_Value.Text = ds.Tables[0].Rows[0]["CONFIG_VALUE"].ToString();
+                txtConfig_Value2.Text = ds.Tables[0].Rows[0]["CONFIG_VALUE2"].ToString();
                 txtConfig_Remark.Text = ds.Tables[0].Rows[0]["CONFIG_REMARK"].ToString();
             }
 
@@ -84,6 +85,7 @@ namespace VloveImport.web.admin.pages
                 En.CONFIG_ID = txtConfig_ID.Text.Trim();
                 En.CONFIG_GROUP = txtConfig_Group.Text.Trim();
                 En.CONFIG_VALUE = txtConfig_Value.Text.Trim();
+                En.CONFIG_VALUE2 = txtConfig_Value2.Text.Trim();
                 En.CONFIG_REMARK = txtConfig_Remark.Text.Trim();
                 En.Create_User = _VS_USER_LOGIN;
 
