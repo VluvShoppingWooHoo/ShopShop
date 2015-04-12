@@ -74,6 +74,21 @@ namespace VloveImport.biz
             return Result;
         }
 
+        public string UPD_ADMIN_ORDER_SHOP(OrderData En, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.UPD_ADMIN_ORDER_SHOP(En, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
         #endregion
 
         #region Transaction

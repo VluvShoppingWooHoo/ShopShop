@@ -45,6 +45,7 @@ namespace VloveImport.data
         #region TB_ORDER_SHOP
         public int ORDER_SHOP_ID;		
         public string SHOPNAME;
+        public string SHOP_ORDER_ID;
         public string TRACKING_NO;
         public string WEIGHT;
         public string SIZE;

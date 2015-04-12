@@ -122,6 +122,40 @@ namespace VloveImport.dal
             }
         }
 
+        public string UPD_ADMIN_ORDER_SHOP(OrderData En, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_UPDATE_ORDER_SHOP");
+
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, En.ORDER_ID);
+                SqlCommandData.SetParameter_Input_INT("ORDER_SHOP_ID", SqlDbType.VarChar, ParameterDirection.Input, En.ORDER_SHOP_ID);
+                SqlCommandData.SetParameter("SHOPNAME", SqlDbType.VarChar, ParameterDirection.Input, En.SHOPNAME);
+                SqlCommandData.SetParameter("SHOP_ORDER_ID", SqlDbType.VarChar, ParameterDirection.Input, En.SHOP_ORDER_ID);
+                SqlCommandData.SetParameter("TRACKING_NO", SqlDbType.VarChar, ParameterDirection.Input, En.TRACKING_NO);
+                SqlCommandData.SetParameter("WEIGHT", SqlDbType.VarChar, ParameterDirection.Input, En.WEIGHT);
+                SqlCommandData.SetParameter("SIZE", SqlDbType.VarChar, ParameterDirection.Input, En.SIZE);
+                SqlCommandData.SetParameter("WEIGHT_PRICE", SqlDbType.Float, ParameterDirection.Input, En.WEIGHT_PRICE);
+                SqlCommandData.SetParameter("SIZE_PRICE", SqlDbType.Float, ParameterDirection.Input, En.SIZE_PRICE);
+                SqlCommandData.SetParameter("TRANSPORT_CHINA_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_CHINA_PRICE);
+                SqlCommandData.SetParameter("TRANSPORT_THAI_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_THAI_PRICE);
+                SqlCommandData.SetParameter_Input_INT("PRODUCT_TYPE", SqlDbType.Int, ParameterDirection.Input, En.PRODUCT_TYPE);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("UPD_ADMIN_ORDER -> msg : " + ex.Message);
+            }
+        }
+
         #endregion
 
         #region Admin Transaction
