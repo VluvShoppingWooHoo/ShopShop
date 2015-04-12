@@ -27,6 +27,7 @@ namespace VloveImport.web.admin.pages
                 ddl_search_order_status.SelectedValue = "2";
                 ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
                 ucCalendar2.SET_DATE_DEFAULT();
+                BindData();
             }
         }
 
