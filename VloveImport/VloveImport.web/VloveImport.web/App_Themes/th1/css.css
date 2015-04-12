@@ -710,4 +710,17 @@ table[class~="borderTable"]
 	margin-right:0px !important;
 }
 
+.txtalignCenter
+{
+    text-align: center !important;
+}
+
+div[class~="card-image"] a span[class~="card-title"]
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0px !important;
+    width: 100%
+}
+
 

@@ -2,6 +2,8 @@
 <%@ Register Src="~/UserControls/ucIndexMenuBar.ascx" TagName="ucIndexMenuBar" TagPrefix="ucIMB" %>
 <%@ Register Src="~/UserControls/ucNewsFeed.ascx" TagName="ucNewsFeed" TagPrefix="ucNF" %>
 <%@ Register Src="~/UserControls/ucContent.ascx" TagName="ucContent" TagPrefix="ucCT" %>
+<%@ Register Src="~/UserControls/ucRecommend.ascx" TagName="ucRecommend" TagPrefix="ucRec" %>
+
 <div class="row">
     <div id="sideMenu" class="col s2 m2 l2">
 
@@ -720,15 +722,15 @@
         <div class="row slider">
             <ul class="slides" style="height: 300px;">
                 <li class="li1">
-                    <img src="../Images/pic/Banner/ILoveImport.jpg" style="background-size:100%;" />
+                    <img src="../Images/pic/Banner/ILoveImport.jpg" style="background-size: 100%;" />
                     <!-- random image -->
                 </li>
                 <li class="li2">
-                    <img src="../Images/pic/Banner/Sale.jpg" style="background-size:100%;" />
+                    <img src="../Images/pic/Banner/Sale.jpg" style="background-size: 100%;" />
                     <!-- random image -->
                 </li>
                 <li class="li3">
-                    <img src="../Images/pic/Banner/Tour1.jpg" style="background-size:100%;" />
+                    <img src="../Images/pic/Banner/Tour1.jpg" style="background-size: 100%;" />
                     <!-- random image -->
                 </li>
             </ul>
@@ -762,18 +764,40 @@
         <div id="ExRate">
 
             <div class="ex1"><span>อัตราแลกเปลี่ยนประจำวัน</span></div>
-            <div class="ex2"><span><asp:Label ID="lbRate" runat="server" ></asp:Label></span></div>
-            <div class="ex3"><span><asp:Label ID="lbDate" runat="server" ></asp:Label></span></div>
+            <div class="ex2">
+                <span>
+                    <asp:Label ID="lbRate" runat="server"></asp:Label></span>
+            </div>
+            <div class="ex3">
+                <span>
+                    <asp:Label ID="lbDate" runat="server"></asp:Label></span>
+            </div>
         </div>
     </div>
 </div>
 <div class="row" style="margin-top: 20px;">
     <ucIMB:ucIndexMenuBar ID="ucIndexMenuBar" runat="server" />
     <ucCT:ucContent ID="ucContent" runat="server" />
+    <ucRec:ucRecommend ID="ucRecommend" runat="server" />
     <%--<ucNF:ucNewsFeed ID="ucNewsFeed" runat="server" />--%>
 </div>
 <script type="text/javascript">
+    //var prevHeight = "";
     $(function () {
+
+        ////var h = $("#divcard").outerHeight();;
+        ////$("#divcontent").height(h + 20);
+        //prevHeight = $('#divcard').outerHeight();
+        //$('#divcard').attr({
+        //    callback: function (e) {
+        //        var curHeight = $(this).height();
+        //        if (prevHeight !== outerHeight) {
+        //            $("#divcontent").height(curHeight + 20);
+        //            prevHeight = outerHeight;
+        //        }
+        //    }
+        //});
+
         $.ajax({
             type: 'POST',
             url: "../Index.aspx/GetContent",
@@ -784,8 +808,14 @@
                 if (obj.Result == 1) {
                     var txtPromo = '<div class="row">';
                     var txtNews = '<div class="row">';
+                    var txtRecommendMain = '<div class="row">';
+                    var txtRecommendSub1 = '<div class="row">';
+                    var txtRecommendSub2 = '<div class="row">';
                     var countPromo = 0;
                     var countNews = 0;
+                    var countRecommend = 0;
+                    var countRecommend1 = 0;
+                    var countRecommend2 = 0;
                     for (var i = 0; i < obj.ReturnVal.length; i++) {
                         if (obj.ReturnVal[i].ContentType == 1) {
                             if (countPromo < 4) {
@@ -793,17 +823,39 @@
                                 txtPromo += '<div class="col s3 m3 l3"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
                             }
                         }
-                        else {
+                        else if (obj.ReturnVal[i].ContentType == 2) {
                             if (countNews < 4) {
                                 countNews++;
                                 txtNews += '<div class="col s3 m3 l3"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
                             }
                         }
+                        else {
+                            var img = obj.ReturnVal[i].ContentDetail.split("|")[0];
+                            var name = obj.ReturnVal[i].ContentDetail.split("|")[1];
+                            var url = obj.ReturnVal[i].ContentDetail.split("|")[2];
+                            if (countRecommend == 0) {
+                                countRecommend++;
+                                txtRecommendMain += '<div class="card"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" /><span class="card-title">' + name + '</span></a></div></div>';
+                            }
+                            else if (countRecommend1 < 4 || countRecommend2 < 4) {
+                                if (countRecommend1 == countRecommend2) {
+                                    countRecommend1++;
+                                    txtRecommendSub1 += '<div class="col s3 m3 l3"><div class="card"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" /><span class="card-title">' + name + '</span></a></div></div></div>';
+                                }
+                                else {
+                                    countRecommend2++;
+                                    txtRecommendSub2 += '<div class="col s3 m3 l3"><div class="card"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" /><span class="card-title">' + name + '</span></a></div></div></div>';
+                                }
+                            }
+                        }
                     }
-                    txtPromo += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=1">ดูเพิ่มเติม</a></div></div>';                    
+                    txtPromo += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=1">ดูเพิ่มเติม</a></div></div>';
                     txtNews += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=2">ดูเพิ่มเติม</a></div></div>';
                     $('#divPromotionBar').html(txtPromo);
                     $('#divNewsBar').html(txtNews);
+                    $('#divRecommendNewest').html(txtRecommendMain);
+                    $('#divSubRecommend1').html(txtRecommendSub1);
+                    $('#divSubRecommend2').html(txtRecommendSub2);
                     setIndexPageHeight();
                 }
             },
@@ -849,7 +901,7 @@
         $('div[class~="market-cat"]').hover(function () {
         }, function () {
         }
-);
+    );
         $('div[class~="title"]').hover(function () {
             $('div[class~="title"]').removeClass('orange white-text');
             $('div[class~="catlist"]').hide();
@@ -857,7 +909,7 @@
             $(this).addClass('orange white-text');
         }, function () {
         }
-);
+    );
 
         $('div[class~="catlist"]').hover(function () {
         }, function () {
@@ -876,11 +928,11 @@
         SetFadeout();
     });
 
-    function setIndexPageHeight() {
-        var h = $("#divcard").outerHeight();;
-        $("#divcontent").height(h + 20);
-        //$("#divcard").height(h);        
-    }
+    //function setIndexPageHeight() {
+    //    var h = $("#divcard").outerHeight();;
+    //    $("#divcontent").height(h + 20);
+    //    //$("#divcard").height(h);        
+    //}
 
     function ManageNewsFeed(val) {
         var result = "";

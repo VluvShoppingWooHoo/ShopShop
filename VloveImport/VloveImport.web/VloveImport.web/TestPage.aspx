@@ -91,17 +91,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s4 m4 l4">
+                        <div class="col s2 m2 l2">
                             <div class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="Images/pic/Banner/ILoveImport.jpg" />
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">Test1 <i class="mdi-navigation-more-vert right"></i></span>
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Card Title <i class="mdi-navigation-close right"></i></span>
-                                    <p><a href="#">Here is some more information about this product that is only revealed once clicked on.</a></p>
+                                <div class="card-image">
+                                    <a class="txtalignCenter" href="#">
+                                        <img src="Images/pic/Banner/Sale.jpg" />
+                                        <span class="card-title">Card Title</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>

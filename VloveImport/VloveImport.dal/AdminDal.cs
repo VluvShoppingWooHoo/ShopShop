@@ -406,9 +406,9 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("ADMIN_INS_UPD_CMS");
 
                 SqlCommandData.SetParameter_Input_INT("CONTENT_ID", SqlDbType.Int, ParameterDirection.Input, cd.ContentID);
-                SqlCommandData.SetParameter("CONTENT_TITLE", SqlDbType.VarChar, ParameterDirection.Input, cd.ContentTitle);
+                SqlCommandData.SetParameter("CONTENT_TITLE", SqlDbType.NVarChar, ParameterDirection.Input, cd.ContentTitle);
                 SqlCommandData.SetParameter("CONTENT_IMG", SqlDbType.VarChar, ParameterDirection.Input, cd.ContentImage);
-                SqlCommandData.SetParameter("CONTENT_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, cd.ContentDetail);
+                SqlCommandData.SetParameter("CONTENT_DETAIL", SqlDbType.NVarChar, ParameterDirection.Input, cd.ContentDetail);
                 SqlCommandData.SetParameter_Input_INT("CONTENT_TYPE", SqlDbType.Int, ParameterDirection.Input, int.Parse(cd.ContentType));
                 SqlCommandData.SetParameter_Input_INT("IS_ACTIVE", SqlDbType.Int, ParameterDirection.Input, cd.IsActive);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);

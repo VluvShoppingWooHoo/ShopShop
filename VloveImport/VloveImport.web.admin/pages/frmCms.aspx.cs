@@ -48,19 +48,27 @@ namespace VloveImport.web.admin.pages
 
         public void BindData()
         {
-            AdminBiz AddBiz = new AdminBiz();
-            DataSet ds = new DataSet();
-            ds = AddBiz.ADMIN_GET_CMS(_VS_CONTENT_ID, string.Empty, "0", "BINDDATA_BYID");
-
-            if (ds.Tables[0].Rows.Count > 0)
+            try
             {
-                txtContentTitle.Text = ds.Tables[0].Rows[0]["CONTENT_TITLE"].ToString();
-                txtContentDetail.Text = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString();
-                ddl_Content_Type.SelectedValue = ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString();
-                if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"])chkIsActive.Checked = true;
-                else chkIsActive.Checked = false;
-                chkType(ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString());
+                AdminBiz AddBiz = new AdminBiz();
+                DataSet ds = new DataSet();
+                ds = AddBiz.ADMIN_GET_CMS(_VS_CONTENT_ID, string.Empty, "0", "BINDDATA_BYID");
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    txtContentTitle.Text = ds.Tables[0].Rows[0]["CONTENT_TITLE"].ToString();
+                    txtContentDetail.Text = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString();
+                    ddl_Content_Type.SelectedValue = ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString();
+                    if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"]) chkIsActive.Checked = true;
+                    else chkIsActive.Checked = false;
+                    chkType(ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString());
+                    if (hdfContentType.Value == "3")
+                    {
+                        txtURL.Text = (ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString()).Split('|')[0].ToString();
+                    }
+                }
             }
+            catch (Exception ex) { }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -116,7 +124,7 @@ namespace VloveImport.web.admin.pages
 
                     data = sc.Handle(txt, webMode);
                     #endregion
-                    cd.ContentDetail = txtURL.Text;
+                    cd.ContentDetail = data.picURL + "|" + data.ItemName.Replace("|", "_") + "|" + txtURL.Text;
                 }
                 cd.ContentType = hdfContentType.Value;
 
