@@ -39,6 +39,17 @@ namespace VloveImport.web.admin.pages
             set { ViewState["__VS_ORDER_TRAN_STS"] = value; }
         }
 
+        public int _VS_ORDER_SHOP_ID
+        {
+            get { return Convert.ToInt32(ViewState["__VS_ORDER_SHOP_ID"].ToString()); }
+            set { ViewState["__VS_ORDER_SHOP_ID"] = value; }
+        }
+
+        public string _VS_TRANSPORT_CH_TH_METHOD
+        {
+            get { return ViewState["__VS_TRANSPORT_CH_TH_METHOD"].ToString(); }
+            set { ViewState["__VS_TRANSPORT_CH_TH_METHOD"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -100,6 +111,9 @@ namespace VloveImport.web.admin.pages
             if (ds.Tables[0].Rows.Count > 0)
             {
                 #region ORDER DATA
+
+                _VS_TRANSPORT_CH_TH_METHOD = ds.Tables[0].Rows[0]["TRANSPORT_CH_TH_METHOD"].ToString();
+
                 lbl_ViewDetail_ORDER_ID.Text = ds.Tables[0].Rows[0]["ORDER_CODE"].ToString();
                 lbl_ViewDetail_ORDER_DATE.Text = ds.Tables[0].Rows[0]["ORDER_DATE_TEXT"].ToString();
                 lbl_ViewDetail_TRANSPORT_1.Text = ds.Tables[0].Rows[0]["TRANSPORT_CHINA_TEXT"].ToString();
@@ -122,6 +136,9 @@ namespace VloveImport.web.admin.pages
 
                 BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS, STS_NAME: _VS_ORDER_TRAN_STS, Act: "BIND_DDL_STS_ID");
                 ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = _VS_ORDER_TRAN_STS;
+
+                if (_VS_TRANSPORT_CH_TH_METHOD == "2") MultiView1.ActiveViewIndex = 0;
+                else MultiView1.ActiveViewIndex = 1;
 
                 //if (_VS_ORDER_STS == "0")
                 //{
@@ -334,15 +351,27 @@ namespace VloveImport.web.admin.pages
         protected void imgbtn_popup_shopdetail_Click(object sender, ImageClickEventArgs e)
         {
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+
+            _VS_ORDER_SHOP_ID = Convert.ToInt32(this.gv_detail.DataKeys[rowIndex].Values[0].ToString());
             txt_sd_shoporder_id.Text = this.gv_detail.DataKeys[rowIndex].Values[1].ToString();
             lbl_sd_shopname.Text = this.gv_detail.DataKeys[rowIndex].Values[2].ToString();
             txt_sd_trackingno.Text = this.gv_detail.DataKeys[rowIndex].Values[3].ToString();
             txt_sd_weight.Text = this.gv_detail.DataKeys[rowIndex].Values[4].ToString();
             txt_sd_size.Text = this.gv_detail.DataKeys[rowIndex].Values[5].ToString();
-            txt_sd_weight_rpice.Text = this.gv_detail.DataKeys[rowIndex].Values[6].ToString();
-            txt_sd_size_price.Text = this.gv_detail.DataKeys[rowIndex].Values[7].ToString();
+            //txt_sd_weight_rpice.Text = this.gv_detail.DataKeys[rowIndex].Values[6].ToString();
+            //txt_sd_size_price.Text = this.gv_detail.DataKeys[rowIndex].Values[7].ToString();
             txt_sd_tran_china_price.Text = this.gv_detail.DataKeys[rowIndex].Values[8].ToString();
             txt_sd_tran_thai_price.Text = this.gv_detail.DataKeys[rowIndex].Values[9].ToString();
+
+            if(_VS_TRANSPORT_CH_TH_METHOD == "2")
+            {
+                ddl_TRANS_METHOD_AirPlane.SelectedValue = this.gv_detail.DataKeys[rowIndex].Values[25].ToString();
+            }
+            else
+            {
+                ddl_TRANS_METHOD_OTHER.SelectedValue = this.gv_detail.DataKeys[rowIndex].Values[25].ToString();
+            }
+
             Modal_ShopDetail.Show();
         }
 
@@ -393,8 +422,84 @@ namespace VloveImport.web.admin.pages
 
         #region Modal Shop
 
-        protected void btnUpdateShopDetail_Click(object sender, EventArgs e)
+        protected void btnUpdateShopDetail_Click1(object sender, EventArgs e)
         {
+            if (_VS_TRANSPORT_CH_TH_METHOD == "2")
+            {
+                if (ddl_TRANS_METHOD_AirPlane.SelectedValue == "-1")
+                {
+                    ShowMessageBox("Please select product type !!", this.Page);
+                }
+            }
+            else
+            {
+                if (ddl_TRANS_METHOD_OTHER.SelectedValue == "-1")
+                {
+                    ShowMessageBox("Please select product type !!", this.Page);
+                }
+            }
+
+            AdminBiz AdBiz = new AdminBiz();
+
+            OrderData En = new OrderData();
+
+            En.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
+            En.ORDER_SHOP_ID = _VS_ORDER_SHOP_ID;
+            En.SHOPNAME = lbl_sd_shopname.Text;
+            En.SHOP_ORDER_ID = txt_sd_shoporder_id.Text.Trim();
+            En.TRACKING_NO = txt_sd_trackingno.Text.Trim();
+            En.WEIGHT = txt_sd_weight.Text.Trim();
+            En.SIZE = txt_sd_size.Text.Trim();
+            En.WEIGHT_PRICE = 0;
+            En.SIZE_PRICE = 0;
+            En.TRANSPORT_CHINA_PRICE = Convert.ToDouble(txt_sd_tran_china_price.Text.Trim());
+            En.TRANSPORT_THAI_PRICE = Convert.ToDouble(txt_sd_tran_thai_price.Text.Trim());
+            En.PRODUCT_TYPE = Convert.ToInt32(_VS_TRANSPORT_CH_TH_METHOD == "2" ? ddl_TRANS_METHOD_AirPlane.SelectedValue : ddl_TRANS_METHOD_OTHER.SelectedValue);
+            En.Create_User = _VS_USER_LOGIN;
+
+            string Result =  AdBiz.UPD_ADMIN_ORDER_SHOP(En, "UPD_ORDER_SHOP");
+            if (Result == "")
+            {
+                ShowMessageBox("Update Shop success", this.Page);
+            }
+            else
+            {
+                ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result), this.Page);
+                Modal_ShopDetail.Show();
+            }
+            BindData();
+        }
+
+        protected void ddl_TRANS_METHOD_AirPlane_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddl_TRANS_METHOD_OTHER_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void Calculation()
+        { 
+            string CONFIG_GROUP = "";
+
+            if (_VS_TRANSPORT_CH_TH_METHOD == "1" && ddl_TRANS_METHOD_OTHER.SelectedValue == "1") CONFIG_GROUP = "TRANS_SHIP_DRESS_GENERAL";
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "1" && ddl_TRANS_METHOD_OTHER.SelectedValue == "2") CONFIG_GROUP = "TRANS_SHIP_GENERAL";
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "1" && ddl_TRANS_METHOD_OTHER.SelectedValue == "3") CONFIG_GROUP = "TRANS_SHIP_Q";
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "1") CONFIG_GROUP = "TRANS_CAR_DRESS_GENERAL";
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "2") CONFIG_GROUP = "TRANS_CAR_GENERAL";
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "3") CONFIG_GROUP = "TRANS_CAR_Q"; 
+
+            //Case Transport Airplane
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_OTHER.SelectedValue == "1") CONFIG_GROUP = "TRANS_AIR_PLANE_GENERAL";
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_OTHER.SelectedValue == "2") CONFIG_GROUP = "TRANS_AIR_PLANE_SOFT";
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_OTHER.SelectedValue == "3") CONFIG_GROUP = "TRANS_AIR_PLANE_BRAND";
+
+            AdminBiz AdBiz = new AdminBiz();
+            DataSet ds = AdBiz.ADMIN_GET_CONFIG("", CONFIG_GROUP, "BINDDATA");
+
+                        
 
         }
 
@@ -412,7 +517,6 @@ namespace VloveImport.web.admin.pages
             ucEmail1.SetEmail(lbl_ViewDetail_Email.Text.Trim());
             ucEmail1.SetEmail_To_Enabled();
         }
-
 
     }
 }

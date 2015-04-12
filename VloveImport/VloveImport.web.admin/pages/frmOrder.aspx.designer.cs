@@ -310,6 +310,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.TextBox txt_sd_size;
         
         /// <summary>
+        /// txt_sd_size_FilteredTextBoxExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_sd_size_FilteredTextBoxExtender1;
+        
+        /// <summary>
         /// txt_sd_weight control.
         /// </summary>
         /// <remarks>
@@ -319,22 +328,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.TextBox txt_sd_weight;
         
         /// <summary>
-        /// txt_sd_size_price control.
+        /// txt_sd_weight_FilteredTextBoxExtender1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_sd_size_price;
-        
-        /// <summary>
-        /// txt_sd_weight_rpice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_sd_weight_rpice;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_sd_weight_FilteredTextBoxExtender1;
         
         /// <summary>
         /// txt_sd_tran_china_price control.
@@ -346,6 +346,60 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.TextBox txt_sd_tran_china_price;
         
         /// <summary>
+        /// txt_sd_tran_china_price_FilteredTextBoxExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_sd_tran_china_price_FilteredTextBoxExtender;
+        
+        /// <summary>
+        /// MultiView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView MultiView1;
+        
+        /// <summary>
+        /// View1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View View1;
+        
+        /// <summary>
+        /// ddl_TRANS_METHOD_AirPlane control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_TRANS_METHOD_AirPlane;
+        
+        /// <summary>
+        /// View2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View View2;
+        
+        /// <summary>
+        /// ddl_TRANS_METHOD_OTHER control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_TRANS_METHOD_OTHER;
+        
+        /// <summary>
         /// txt_sd_tran_thai_price control.
         /// </summary>
         /// <remarks>
@@ -353,6 +407,15 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_sd_tran_thai_price;
+        
+        /// <summary>
+        /// txt_sd_tran_thai_price_FilteredTextBoxExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_sd_tran_thai_price_FilteredTextBoxExtender1;
         
         /// <summary>
         /// btnUpdateShopDetail control.

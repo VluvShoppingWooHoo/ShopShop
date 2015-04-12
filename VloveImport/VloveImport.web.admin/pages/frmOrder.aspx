@@ -109,7 +109,7 @@
                     <tr>
                         <td>Send Email :</td>
                         <td>
-                            <asp:ImageButton ID="imgbtn_SendEmail" runat="server" ImageUrl = "~/img/icon/sendemail.png" Width ="45px" Height ="35px" OnClick="imgbtn_SendEmail_Click" />
+                            <asp:ImageButton ID="imgbtn_SendEmail" runat="server" ImageUrl="~/img/icon/sendemail.png" Width="45px" Height="35px" OnClick="imgbtn_SendEmail_Click" />
                         </td>
                         <td>Viwe Full Customer Detail :</td>
                         <td>
@@ -148,7 +148,7 @@
                 <legend>Shop Detail
                 </legend>
                 <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDataBound="gv_detail_RowDataBound"
-                    DataKeyNames="ORDER_SHOP_ID,SHOP_ORDER_ID,SHOPNAME,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,OD_ID,OD_AMOUNT,OD_AMOUNT_ACTIVE,OD_PRICE,OD_SIZE,OD_COLOR,OD_REMARK,OD_URL,OD_PICURL,OD_STATUS,ROW_INDEX_SHOP,TOTAL_PROD_PRICE,TOTAL_PROD_PRICE_ACTIVE,ROW_INDEX,ROW_RANK_PROD">
+                    DataKeyNames="ORDER_SHOP_ID,SHOP_ORDER_ID,SHOPNAME,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,OD_ID,OD_AMOUNT,OD_AMOUNT_ACTIVE,OD_PRICE,OD_SIZE,OD_COLOR,OD_REMARK,OD_URL,OD_PICURL,OD_STATUS,ROW_INDEX_SHOP,TOTAL_PROD_PRICE,TOTAL_PROD_PRICE_ACTIVE,ROW_INDEX,ROW_RANK_PROD,PRODUCT_TYPE">
                     <Columns>
                         <asp:TemplateField HeaderText="No.">
                             <EditItemTemplate>
@@ -231,7 +231,7 @@
             <asp:ModalPopupExtender ID="Modal_ShopDetail" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel5" TargetControlID="lbl_modal_ShopDetail">
             </asp:ModalPopupExtender>
-            <asp:Panel ID="Panel5" Height="320" Width="800px" runat="server">
+            <asp:Panel ID="Panel5" Height="350px" Width="800px" runat="server">
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -250,7 +250,7 @@
                     <tr style="background-color: #CFCDCD;">
                         <td style="text-align: center; padding: 0px 0px;" colspan="3">
                             <center>
-                            <asp:Panel Width="96%" Height="220px" ID="Panel6" runat="server" BackColor="#FFFFFF">
+                            <asp:Panel Width="96%" Height="250px" ID="Panel6" runat="server" BackColor="#FFFFFF">
                                  <br />
                                  <table>
                                      <tr>
@@ -279,13 +279,23 @@
                                          </td>
                                          <td>
                                              <asp:TextBox ID="txt_sd_size" runat="server"></asp:TextBox>
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_size" ID="txt_sd_size_FilteredTextBoxExtender1" ValidChars="1234567890*">
+                                            </asp:FilteredTextBoxExtender>
+                                             <br />
+                                             <span style ="color:red;">
+                                                 <b>
+                                                     Ex.15*15*15
+                                                 </b>
+                                             </span>
                                          </td>
                                          <td>Weight :</td>
                                          <td>
                                              <asp:TextBox ID="txt_sd_weight" runat="server"></asp:TextBox>
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_weight" ID="txt_sd_weight_FilteredTextBoxExtender1" ValidChars="1234567890">
+                                            </asp:FilteredTextBoxExtender>
                                          </td>
                                      </tr>
-                                     <tr>
+<%--                                     <tr>
                                          <td>Size price :</td>
                                          <td>
                                              <asp:TextBox ID="txt_sd_size_price" runat="server"></asp:TextBox>
@@ -296,17 +306,48 @@
                                          <td>
                                              <asp:TextBox ID="txt_sd_weight_rpice" runat="server"></asp:TextBox>
                                          </td>
-                                     </tr>
+                                     </tr>--%>
                                      <tr>
                                          <td>
                                              Transport china price :
                                          </td>
                                          <td>
-                                             <asp:TextBox ID="txt_sd_tran_china_price" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txt_sd_tran_china_price" runat="server"></asp:TextBox>
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_tran_china_price" ID="txt_sd_tran_china_price_FilteredTextBoxExtender" ValidChars="1234567890.">
+                                            </asp:FilteredTextBoxExtender>
+                                         </td>
+                                         <td></td>
+                                         <td>
+                                             
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td>Transport Method :</td>
+                                         <td>
+                                             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex ="0">
+                                                 <asp:View ID="View1" runat="server">
+                                                     <asp:DropDownList ID="ddl_TRANS_METHOD_AirPlane" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_TRANS_METHOD_AirPlane_SelectedIndexChanged">
+                                                         <asp:ListItem Value="-1">Please Select</asp:ListItem>
+                                                         <asp:ListItem Value="1">Product General</asp:ListItem>
+                                                         <asp:ListItem Value="2">Product Soft</asp:ListItem>
+                                                         <asp:ListItem Value="3">Product Brand</asp:ListItem>
+                                                     </asp:DropDownList>
+                                                 </asp:View>
+                                                 <asp:View ID="View2" runat="server">
+                                                     <asp:DropDownList ID="ddl_TRANS_METHOD_OTHER" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_TRANS_METHOD_OTHER_SelectedIndexChanged">
+                                                         <asp:ListItem Value="-1">Please Select</asp:ListItem>
+                                                         <asp:ListItem Value="1">Product Dress Grneral</asp:ListItem>
+                                                         <asp:ListItem Value="2">Product Grneral</asp:ListItem>
+                                                         <asp:ListItem Value="3">Product Cal Cubi</asp:ListItem>
+                                                     </asp:DropDownList>
+                                                 </asp:View>
+                                             </asp:MultiView>
                                          </td>
                                          <td>Transport thai price :</td>
                                          <td>
                                              <asp:TextBox ID="txt_sd_tran_thai_price" runat="server"></asp:TextBox>
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_tran_thai_price" ID="txt_sd_tran_thai_price_FilteredTextBoxExtender1" ValidChars="1234567890.">
+                                            </asp:FilteredTextBoxExtender>
                                          </td>
                                      </tr>
                                     <tr>
@@ -314,7 +355,7 @@
                                     </tr>
                                      <tr>
                                          <td colspan ="4" class ="ItemStyle-center">
-                                             <asp:Button ID="btnUpdateShopDetail" runat="server" Text="Update" CssClass="btnSave"></asp:Button>
+                                             <asp:Button ID="btnUpdateShopDetail" runat="server" Text="Update" CssClass="btnSave" OnClick="btnUpdateShopDetail_Click1"></asp:Button>
                                          </td>
                                      </tr>
                                  </table>                  
@@ -366,3 +407,4 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
+
