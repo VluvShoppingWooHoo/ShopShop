@@ -50,6 +50,7 @@
       <HintPath>..\..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -135,6 +136,7 @@
     <Content Include="Images\pic\Banner\Tour.jpg" />
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="Report\ReportViewer.aspx" />
     <Content Include="Script\20140312.sql" />
     <Content Include="Script\20150313.sql" />
     <Content Include="Script\20150315 V2.sql" />
@@ -462,6 +464,13 @@
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ReportViewer.aspx.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer.aspx.designer.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TestPage.aspx.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -626,7 +635,6 @@
     <Folder Include="App_GlobalResources\" />
     <Folder Include="Old_App_Code\" />
     <Folder Include="Pages\" />
-    <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\VloveImport.biz\VloveImport.biz.csproj">
