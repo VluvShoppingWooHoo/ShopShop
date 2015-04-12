@@ -73,6 +73,11 @@ namespace VloveImport.web.Customer
         {
             string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
             Redirect("~/Customer/CustomerPayment.aspx?OID=" + OID);
+        }
+
+        protected void btnPrint_ServerClick(object sender, EventArgs e)
+        {
+
         }        
     }
 }
