@@ -174,11 +174,11 @@ namespace VloveImport.biz
 
         #region Config
 
-        public DataSet ADMIN_GET_CONFIG(string CONFIG_ID, string CONFIG_GROUP, string Act)
+        public DataSet ADMIN_GET_CONFIG(string CONFIG_ID, string CONFIG_GROUP, string Act, string CONFIG_VALUE = "")
         {
             DataSet ds = new DataSet();
             AdminDal dal = new AdminDal("LocalConnection");
-            ds = dal.ADMIN_GET_CONFIG(CONFIG_ID, CONFIG_GROUP, Act);
+            ds = dal.ADMIN_GET_CONFIG(CONFIG_ID, CONFIG_GROUP, Act, CONFIG_VALUE);
             return ds;
         }
 
