@@ -45,26 +45,8 @@ namespace VloveImport.web.Customer
         }
 
         #region Event
-        ////[HttpPost]
-        //[WebMethod]
-        //public static string UploadTopUp(HttpPostedFileBase file)
-        //{
-        //    JavaScriptSerializer js = new JavaScriptSerializer();
-        //    JSONData jData = new JSONData();
-        //    //try
-        //    //{
-        //    //    if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-        //    //    {
-        //    //        var pic = System.Web.HttpContext.Current.Request.Files["TopupIMG"];
-        //    //    }
-        //    //    jData.Result = Constant.Fact.T;
-        //    //}
-        //    //catch (Exception ex) { }
-        //    return js.Serialize(jData);
-        //}
-
         [WebMethod]
-        public static string btnTopup(string Bank, string amt, string date, string time, string email, string remark, string file)
+        public static string btnTopup(string Bank, string amt, string date, string time, string remark, string file)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
@@ -80,7 +62,6 @@ namespace VloveImport.web.Customer
             EnTran.TRAN_AMOUNT = Convert.ToDouble(amt);
             EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(date, '-', "YYYYMMDD", 0));
             EnTran.PAYMENT_TIME = time;
-            EnTran.TRAN_EMAIL = email.Trim();
             EnTran.TRAN_REMARK = remark.Trim();
             EnTran.TRAN_STATUS = 1;
             EnTran.Create_User = bp.GetCusCode();

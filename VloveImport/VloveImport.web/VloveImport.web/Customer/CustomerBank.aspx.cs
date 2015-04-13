@@ -33,6 +33,7 @@ namespace VloveImport.web.Customer
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession();
             if (!IsPostBack)
             {
                 this._VS_CUS_ID = GetCusID();

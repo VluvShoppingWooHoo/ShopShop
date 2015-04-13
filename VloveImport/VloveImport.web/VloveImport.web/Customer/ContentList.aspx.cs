@@ -9,14 +9,15 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.data.Extension;
+using VloveImport.web.App_Code;
 
 namespace VloveImport.web.Customer
 {
-    public partial class ContentList : System.Web.UI.Page
+    public partial class ContentList : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            CheckSession();
         }
 
         [WebMethod]
