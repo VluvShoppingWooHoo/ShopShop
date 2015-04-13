@@ -202,6 +202,33 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_ViewDetail_TRANSPORT_STATUS;
         
         /// <summary>
+        /// trTranCusPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trTranCusPrice;
+        
+        /// <summary>
+        /// txt_Transport_Cus_Price control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_Transport_Cus_Price;
+        
+        /// <summary>
+        /// txt_Transport_Cus_Price_FilteredTextBoxExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_Transport_Cus_Price_FilteredTextBoxExtender1;
+        
+        /// <summary>
         /// btn_detail_update control.
         /// </summary>
         /// <remarks>

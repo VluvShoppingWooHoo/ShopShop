@@ -136,6 +136,14 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
+                    <tr id="trTranCusPrice" runat="server" visible="false">
+                        <td>Transport Customer Price :</td>
+                        <td>
+                            <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="300px"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890">
+                            </asp:FilteredTextBoxExtender>
+                        </td>
+                    </tr>
                     <tr>
                         <td></td>
                         <td>
@@ -162,10 +170,10 @@
                             <ItemStyle CssClass="ItemStyle-center" />
                         </asp:TemplateField>
                         <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail">
-                            <HeaderStyle CssClass="width20" />
+                            <HeaderStyle CssClass="width15" />
                         </asp:BoundField>
                         <asp:BoundField DataField="OD_REMARK" HeaderText="Remark">
-                            <HeaderStyle CssClass="width20" />
+                            <HeaderStyle CssClass="width15" />
                         </asp:BoundField>
                         <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Price">
                             <HeaderStyle CssClass="width10" />
@@ -179,6 +187,24 @@
                             <HeaderStyle CssClass="width10" />
                             <ItemStyle CssClass="ItemStyle-right" />
                         </asp:BoundField>
+                        <asp:TemplateField HeaderText="Price Active">
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:MultiView ID="MultiView_Price_Active" runat="server" ActiveViewIndex="0">
+                                    <asp:View ID="View_Price_Active1" runat="server">
+                                        <asp:Label ID="lbl_OD_Price_ACTIVE" runat="server" Text='<%# Bind("OD_PRICE_ACTIVE") %>'></asp:Label>
+                                    </asp:View>
+                                    <asp:View ID="View_Price_Active2" runat="server">
+                                        <asp:TextBox ID="txt_OD_Price_ACTIVE" runat="server" AutoCompleteType="Disabled" Text='<%# Bind("OD_PRICE_ACTIVE") %>' Width="90%"></asp:TextBox>
+                                        <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_OD_Price_ACTIVE" ID="txt_OD_Price_ACTIVE_FilteredTextBoxExtender1" ValidChars="1234567890">
+                                        </asp:FilteredTextBoxExtender>
+                                    </asp:View>
+                                </asp:MultiView>
+                            </ItemTemplate>
+                            <HeaderStyle CssClass="width10" />
+                            <ItemStyle CssClass="ItemStyle-right" />
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Order active<br>amount">
                             <EditItemTemplate>
                             </EditItemTemplate>
@@ -189,6 +215,8 @@
                                     </asp:View>
                                     <asp:View ID="View4" runat="server">
                                         <asp:TextBox ID="txt_OD_AMOUNT_ACTIVE" runat="server" AutoCompleteType="Disabled" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>' Width="90%"></asp:TextBox>
+                                        <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_OD_AMOUNT_ACTIVE" ID="txt_OD_AMOUNT_ACTIVE_FilteredTextBoxExtender1" ValidChars="1234567890.,">
+                                        </asp:FilteredTextBoxExtender>
                                     </asp:View>
                                 </asp:MultiView>
                             </ItemTemplate>
@@ -313,7 +341,7 @@
                                          </td>
                                          <td>
                                             <asp:TextBox ID="txt_sd_tran_china_price" runat="server"></asp:TextBox>
-                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_tran_china_price" ID="txt_sd_tran_china_price_FilteredTextBoxExtender" ValidChars="1234567890.">
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_tran_china_price" ID="txt_sd_tran_china_price_FilteredTextBoxExtender" ValidChars="1234567890.,">
                                             </asp:FilteredTextBoxExtender>
                                          </td>
                                          <td></td>
@@ -346,7 +374,7 @@
                                          <td>Transport thai price :</td>
                                          <td>
                                              <asp:TextBox ID="txt_sd_tran_thai_price" runat="server"></asp:TextBox>
-                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_tran_thai_price" ID="txt_sd_tran_thai_price_FilteredTextBoxExtender1" ValidChars="1234567890.">
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_tran_thai_price" ID="txt_sd_tran_thai_price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                             </asp:FilteredTextBoxExtender>
                                          </td>
                                      </tr>
