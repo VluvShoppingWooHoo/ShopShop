@@ -129,6 +129,13 @@ namespace VloveImport.web.Customer
             if (txtConfirmPass.Text.Trim() == "")
             {
                 IsReturn = false;
+                ShowMessageBox("กรุณากรอกยืนยันรหัสผ่าน", this.Page);
+                return IsReturn;
+            }
+
+            if (txtPassword.Text.Trim() != txtConfirmPass.Text.Trim())
+            {
+                IsReturn = false;
                 ShowMessageBox("กรุณายืนยันรหัสผ่านให้ถูกต้อง", this.Page);
                 return IsReturn;
             }
