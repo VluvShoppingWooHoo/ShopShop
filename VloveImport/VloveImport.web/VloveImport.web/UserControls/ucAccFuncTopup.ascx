@@ -49,7 +49,7 @@
         <div style="vertical-align: middle; width: 50%; height: 50px; margin-left: 33%; margin-top: -60px;">
             <div style="margin-left: 10px;">
                 <div class="file-field input-field">
-                    <input class="file-path validate" type="text" style="width: 300px; margin-left: 0px; margin-right: 20px;" />
+                    <input class="file-path validate" id="filetext" type="text" style="width: 300px; margin-left: 0px; margin-right: 20px;" />
                     <div class="btn">
                         <span>File</span>
                         <%--<input id="Ifile" type="file" runat="server"/>--%>
@@ -102,17 +102,6 @@
         <div style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 30%; height: 50px;">
             <br />
             <div style="margin-left: 10px;">
-                <b>E-mail</b>
-            </div>
-        </div>
-        <div style="vertical-align: middle; width: 40%; height: 50px; margin-left: 33%; margin-top: -40px;">
-            <div style="margin-left: 10px;">
-                <asp:TextBox ID="txt_email" runat="server" Width="300px" CssClass="txt_email"></asp:TextBox>
-            </div>
-        </div>
-        <div style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 30%; height: 50px;">
-            <br />
-            <div style="margin-left: 10px;">
                 <b>หมายเหตุ</b>
             </div>
         </div>
@@ -147,6 +136,7 @@
 </asp:UpdatePanel>
 <script type="text/javascript">
     $(function () {
+        $('#filetext').attr("disabled", "disabled")
 
         $('#btnSaveUcTopup').click(function () {
 
@@ -154,12 +144,11 @@
             var amt = $('.txt_tranfer_amount').val();
             var date = $('.dtMaterial').val();
             var time = $('.ddlH').val() + ':' + $('.ddlM').val() + ':' + $('.ddls').val()
-            var email = $('.txt_email').val();
             var remark = $('.txt_remark').val();
 
             var param = {
                 "Bank": Bank, "amt": amt, "date": date, "time": time,
-                "email": email, "remark": remark, "file": $('#hdFile').val()
+                "remark": remark, "file": $('#hdFile').val()
             };
             $.ajax({
                 type: 'POST',
@@ -170,6 +159,14 @@
                 success: function (data) {
                     //$('#modalItem').closeModal();
                     //toast('Item Added.', 5000)
+                    $('.ddlBank').val("1");
+                    $('.txt_tranfer_amount').val("");
+                    $('.dtMaterial').val("");
+                    $('.ddlH').val("00");
+                    $('.ddlM').val("00");
+                    $('.ddls').val("00");
+                    $('.txt_remark').val("");
+                    $('#file').val("");
                 },
                 error: function (err) {
                     alert('gs');
@@ -185,7 +182,6 @@
             $('.ddlH').val("00");
             $('.ddlM').val("00");
             $('.ddls').val("00");
-            $('.txt_email').val("");
             $('.txt_remark').val("");
             $('#file').val("");
 

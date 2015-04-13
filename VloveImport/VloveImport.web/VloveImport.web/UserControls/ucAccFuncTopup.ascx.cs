@@ -98,7 +98,6 @@ namespace VloveImport.web.UserControls
 
             if (ddlBank.SelectedValue == "" || txt_tranfer_amount.Text.Trim() == ""
                                                         || dtMaterial.Value.Trim() == ""
-                                                        || txt_email.Text.Trim() == ""
                                                         )
             {
                 IsReturn = false;
@@ -106,14 +105,6 @@ namespace VloveImport.web.UserControls
                 return IsReturn;
             }
 
-            string emailPattern = "^([0-9a-zA-Z]+[-._+&])*[0-9a-zA-Z]+@" + "([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$";
-
-            if (!Regex.IsMatch(txt_email.Text.Trim(), emailPattern))
-            {
-                IsReturn = false;
-                bp.ShowMessageBox("กรุณากรอก E-Mail ให้ถูกต้อง", this.Page);
-                return IsReturn;
-            }
 
             return IsReturn;
         }
@@ -125,7 +116,6 @@ namespace VloveImport.web.UserControls
             ddlBank.SelectedIndex = 0;
             txt_tranfer_amount.Text = "";
             dtMaterial.Value = "";
-            txt_email.Text = "";
             txt_remark.Text = "";
             ddlH.SelectedIndex = 0;
             ddlM.SelectedIndex = 0;
@@ -201,7 +191,7 @@ namespace VloveImport.web.UserControls
                 EnTran.TRAN_AMOUNT = Convert.ToDouble(txt_tranfer_amount.Text);
                 EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(dtMaterial.Value, '-', "YYYYMMDD", 0));
                 EnTran.PAYMENT_TIME = ddlH.Text + ':' + ddlM.Text + ':' + ddls.Text;
-                EnTran.TRAN_EMAIL = txt_email.Text.Trim();
+                //EnTran.TRAN_EMAIL = txt_email.Text.Trim();
                 EnTran.TRAN_REMARK = txt_remark.Text.Trim();
                 EnTran.TRAN_STATUS = 1;
                 EnTran.Create_User = bp.GetCusCode();
