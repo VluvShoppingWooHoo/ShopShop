@@ -336,7 +336,7 @@ namespace VloveImport.dal
 
         #region Config
 
-        public DataSet ADMIN_GET_CONFIG(string CONFIG_ID, string CONFIG_GROUP, string Act)
+        public DataSet ADMIN_GET_CONFIG(string CONFIG_ID, string CONFIG_GROUP, string Act,string CONFIG_VALUE)
         {
             try
             {
@@ -344,6 +344,7 @@ namespace VloveImport.dal
 
                 SqlCommandData.SetParameter("CONFIG_ID", SqlDbType.VarChar, ParameterDirection.Input, CONFIG_ID);
                 SqlCommandData.SetParameter("CONFIG_GROUP", SqlDbType.VarChar, ParameterDirection.Input, CONFIG_GROUP);
+                SqlCommandData.SetParameter("CONFIG_VALUE", SqlDbType.VarChar, ParameterDirection.Input, CONFIG_VALUE);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 return SqlCommandData.ExecuteDataSet();

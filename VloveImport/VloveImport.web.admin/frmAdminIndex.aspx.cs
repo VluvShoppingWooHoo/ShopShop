@@ -98,6 +98,7 @@ namespace VloveImport.web.admin
             }
             catch (Exception ex)
             {
+                Label3.Text = ex.Message;
                 ShowMessageBox(ex.Message, this.Page);
             }
         }
