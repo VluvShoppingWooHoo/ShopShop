@@ -23,7 +23,10 @@ namespace VloveImport.web.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                mView.ActiveViewIndex = 1;
+            }
         }
 
         protected void btnRegis_Click(object sender, EventArgs e)
@@ -46,7 +49,8 @@ namespace VloveImport.web.Customer
                     Result = SendMail(txtEmail.Text, Temp[0], Body);
 
                     //Success
-                    GoToIndex();
+                    mView.ActiveViewIndex = 1;
+                    //GoToIndex();
                 }
                 else
                 {
@@ -73,7 +77,7 @@ namespace VloveImport.web.Customer
             string Result = "";
             if (CheckInput())
             {
-                if (CheckEmailAlreadyUse(txtEmail.Text) == string.Empty)
+                if (CheckEmailAlreadyUse(txtEmail.Text))
                 {
                     LogonBiz Log = new LogonBiz();
                     CustomerData Cust = new CustomerData();
@@ -157,15 +161,14 @@ namespace VloveImport.web.Customer
             return IsReturn;
         }
 
-        public string CheckEmailAlreadyUse(string email)
+        public bool CheckEmailAlreadyUse(string email)
         {
-            string Result = string.Empty;
+            bool Result = false; 
             try
             {
                 LogonBiz Log = new LogonBiz();
                 CustomerData cust = new CustomerData();
-                cust = Log.RegisValidEmail(email);
-                Result = cust.Cus_Password;
+                Result = Log.RegisValidEmail(email);
             }
             catch (Exception ex) { }
             return Result;
@@ -183,8 +186,9 @@ namespace VloveImport.web.Customer
             Register Register = new Register();
             try
             {
-                password = Register.CheckEmailAlreadyUse(email);
-                if (password == string.Empty)
+                //password = Register.CheckEmailAlreadyUse(email);
+                //if (password == string.Empty)
+                if(Register.CheckEmailAlreadyUse(email))
                 {
                     BasePage bp = new BasePage();
                     EncrypUtil en = new EncrypUtil();

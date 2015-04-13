@@ -13,6 +13,24 @@ namespace VloveImport.web.Customer {
     public partial class Register {
         
         /// <summary>
+        /// mView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView mView;
+        
+        /// <summary>
+        /// v0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View v0;
+        
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -110,5 +128,14 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbMessage;
+        
+        /// <summary>
+        /// V1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View V1;
     }
 }
