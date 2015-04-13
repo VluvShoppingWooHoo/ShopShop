@@ -58,7 +58,7 @@
                     </table>
                 </div>
 
-                <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
 
             </ContentTemplate>
         </asp:UpdatePanel>

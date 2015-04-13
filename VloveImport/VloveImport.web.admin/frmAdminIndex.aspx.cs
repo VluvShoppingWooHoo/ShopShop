@@ -17,7 +17,7 @@ namespace VloveImport.web.admin
         {
             if (!IsPostBack)
             {
-                //txtuser.Focus();
+                txtuser.Focus();
             }
             //EncrypUtil En = new EncrypUtil();
             //string str = En.EncrypData("P@ssw0rd");
@@ -98,7 +98,6 @@ namespace VloveImport.web.admin
             }
             catch (Exception ex)
             {
-                Label3.Text = ex.Message;
                 ShowMessageBox(ex.Message, this.Page);
             }
         }
