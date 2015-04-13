@@ -277,6 +277,7 @@
     <Content Include="MasterPage\Site1.Master" />
     <Content Include="DB\db_batt_20150331.bak" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\ILOVE_IMPORT.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
