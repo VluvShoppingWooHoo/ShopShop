@@ -83,6 +83,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, En.ORDER_ID);
                 SqlCommandData.SetParameter_Input_INT("ORDER_STAUTS", SqlDbType.VarChar, ParameterDirection.Input, En.ORDER_STATUS);
                 SqlCommandData.SetParameter("ORDER_ID_LIST", SqlDbType.VarChar, ParameterDirection.Input, En.ORDER_ID_LIST);
+                SqlCommandData.SetParameter("TRANSPORT_CUSTOMER_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_CUSTOMER_PRICE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
@@ -97,7 +98,7 @@ namespace VloveImport.dal
             }
         }
 
-        public string UPD_ADMIN_ORDER_PROD_AMOUNT(int ORDER_ID, int ORDER_DETAIL_ID, int PROD_NUM, string CREATE_USER, string Act)
+        public string UPD_ADMIN_ORDER_PROD_AMOUNT(int ORDER_ID, int ORDER_DETAIL_ID, int PROD_NUM, double PROD_PRICE_ACTIVE, string CREATE_USER, string Act)
         {
             try
             {
@@ -106,8 +107,9 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("ADMIN_UPDATE_ORDER_PROD_AMOUNT");
 
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
-                SqlCommandData.SetParameter_Input_INT("ORDER_DETAIL_ID", SqlDbType.VarChar, ParameterDirection.Input, ORDER_DETAIL_ID);
-                SqlCommandData.SetParameter_Input_INT("PROD_NUM", SqlDbType.VarChar, ParameterDirection.Input, PROD_NUM);
+                SqlCommandData.SetParameter_Input_INT("ORDER_DETAIL_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_DETAIL_ID);
+                SqlCommandData.SetParameter_Input_INT("PROD_NUM", SqlDbType.Int, ParameterDirection.Input, PROD_NUM);
+                SqlCommandData.SetParameter("PROD_PRICE_ACTIVE", SqlDbType.Float, ParameterDirection.Input, PROD_PRICE_ACTIVE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, CREATE_USER);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
@@ -142,6 +144,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("TRANSPORT_CHINA_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_CHINA_PRICE);
                 SqlCommandData.SetParameter("TRANSPORT_THAI_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_THAI_PRICE);
                 SqlCommandData.SetParameter_Input_INT("PRODUCT_TYPE", SqlDbType.Int, ParameterDirection.Input, En.PRODUCT_TYPE);
+                SqlCommandData.SetParameter_Input_INT("CAL_TRANSPORT_SHOP_RATE", SqlDbType.Int, ParameterDirection.Input, En.CAL_TRANSPORT_SHOP_RATE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
@@ -336,7 +339,7 @@ namespace VloveImport.dal
 
         #region Config
 
-        public DataSet ADMIN_GET_CONFIG(string CONFIG_ID, string CONFIG_GROUP, string Act,string CONFIG_VALUE)
+        public DataSet ADMIN_GET_CONFIG(string CONFIG_ID, string CONFIG_GROUP, string Act, string CONFIG_VALUE)
         {
             try
             {
@@ -434,7 +437,7 @@ namespace VloveImport.dal
                 throw new Exception("ADMIN_GET_CMS -> msg : " + ex.Message);
             }
         }
-        public string ADMIN_INS_UPD_CMS(ContentData cd , string Act)
+        public string ADMIN_INS_UPD_CMS(ContentData cd, string Act)
         {
             try
             {

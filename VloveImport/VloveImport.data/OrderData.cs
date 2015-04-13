@@ -43,18 +43,19 @@ namespace VloveImport.data
         #endregion
 
         #region TB_ORDER_SHOP
-        public int ORDER_SHOP_ID;		
-        public string SHOPNAME;
-        public string SHOP_ORDER_ID;
-        public string TRACKING_NO;
-        public string WEIGHT;
-        public string SIZE;
-        public double WEIGHT_PRICE;
-        public double SIZE_PRICE;	
-        public double TRANSPORT_CHINA_PRICE;
-        public double TRANSPORT_THAI_PRICE;
-        public double TRANSPORT_CUSTOMER_PRICE;
-        public int PRODUCT_TYPE;
+        public int ORDER_SHOP_ID { get; set; }
+        public string SHOPNAME { get; set; }
+        public string SHOP_ORDER_ID { get; set; }
+        public string TRACKING_NO { get; set; }
+        public string WEIGHT { get; set; }
+        public string SIZE { get; set; }
+        public double WEIGHT_PRICE { get; set; }
+        public double SIZE_PRICE { get; set; }
+        public double TRANSPORT_CHINA_PRICE { get; set; }
+        public double TRANSPORT_THAI_PRICE { get; set; }
+        public double TRANSPORT_CUSTOMER_PRICE { get; set; }
+        public int PRODUCT_TYPE { get; set; }
+        public string CAL_TRANSPORT_SHOP_RATE { get; set; } 
         #endregion
 
         #region TB_ORDER_DETAIL
