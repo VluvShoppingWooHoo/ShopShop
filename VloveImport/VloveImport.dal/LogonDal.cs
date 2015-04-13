@@ -39,6 +39,26 @@ namespace VloveImport.dal
             }
         }
 
+        public DataTable GET_EMAIL_REGIS(string EMAIL)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_REGIS_EMAIL");
+
+                SqlCommandData.SetParameter("EMAIL", SqlDbType.VarChar, ParameterDirection.Input, EMAIL);
+                DataSet ds = new DataSet();
+                ds = SqlCommandData.ExecuteDataSet();
+                if (ds != null && ds.Tables.Count > 0)
+                    return ds.Tables[0];
+                else
+                    return new DataTable();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_REGIS_EMAIL -> msg : " + ex.Message);
+            }
+        }
+
         public string InsertRegisCustomer(CustomerData Cust)
         {
             try

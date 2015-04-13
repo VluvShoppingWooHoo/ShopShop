@@ -69,16 +69,15 @@ namespace VloveImport.biz
             return Result;
         }
 
-        public CustomerData RegisValidEmail(string User)
-        {
-            CustomerData Cust = new CustomerData();
-            Cust.Cus_Password = string.Empty;
+        public bool RegisValidEmail(string EMAIL)
+        {           
             LogonDal dal = new LogonDal("LocalConnection");
             DataTable dt = new DataTable();
-            dt = dal.LogonUser(User);
+            dt = dal.GET_EMAIL_REGIS(EMAIL);
             if (dt != null && dt.Rows.Count > 0)
-                Cust.Cus_Password = dt.Rows[0]["Cus_Password"].ToString();
-            return Cust;
+                return false;
+            else
+                return true;
         }
 
         public string UpdateActivateCustomer(Int32 CUS_ID)
