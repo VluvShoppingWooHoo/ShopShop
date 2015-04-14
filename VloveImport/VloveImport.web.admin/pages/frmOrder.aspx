@@ -197,7 +197,7 @@
                                     </asp:View>
                                     <asp:View ID="View_Price_Active2" runat="server">
                                         <asp:TextBox ID="txt_OD_Price_ACTIVE" runat="server" AutoCompleteType="Disabled" Text='<%# Bind("OD_PRICE_ACTIVE") %>' Width="90%"></asp:TextBox>
-                                        <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_OD_Price_ACTIVE" ID="txt_OD_Price_ACTIVE_FilteredTextBoxExtender1" ValidChars="1234567890">
+                                        <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_OD_Price_ACTIVE" ID="txt_OD_Price_ACTIVE_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                         </asp:FilteredTextBoxExtender>
                                     </asp:View>
                                 </asp:MultiView>
@@ -215,7 +215,7 @@
                                     </asp:View>
                                     <asp:View ID="View4" runat="server">
                                         <asp:TextBox ID="txt_OD_AMOUNT_ACTIVE" runat="server" AutoCompleteType="Disabled" Text='<%# Bind("OD_AMOUNT_ACTIVE") %>' Width="90%"></asp:TextBox>
-                                        <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_OD_AMOUNT_ACTIVE" ID="txt_OD_AMOUNT_ACTIVE_FilteredTextBoxExtender1" ValidChars="1234567890.,">
+                                        <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_OD_AMOUNT_ACTIVE" ID="txt_OD_AMOUNT_ACTIVE_FilteredTextBoxExtender1" ValidChars="1234567890,">
                                         </asp:FilteredTextBoxExtender>
                                     </asp:View>
                                 </asp:MultiView>

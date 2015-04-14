@@ -130,7 +130,7 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_EMP_NAME.Text = ds.Tables[0].Rows[0]["EMP_NAME"].ToString();
                 lbl_ViewDetail_EMP_UPDATE_DATE.Text = ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString() == "" ? "-" : ds.Tables[0].Rows[0]["EMP_UPDATE_DATE"].ToString();
 
-                lbl_ViewDetail_Amount_Receive.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_ViewDetail_Amount_Receive.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_INCOME"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_ViewDetail_Product_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_PROD_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_ViewDetail_Amount_Actually_Pay.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_ViewDetail_Amount_Recall_Pay.Text = (Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE"].ToString()) - Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE_ACTIVE"].ToString())).ToString("N", new CultureInfo("en-US"));
@@ -412,11 +412,11 @@ namespace VloveImport.web.admin.pages
 
             if (_VS_TRANSPORT_CH_TH_METHOD == "2")
             {
-                ddl_TRANS_METHOD_AirPlane.SelectedValue = this.gv_detail.DataKeys[rowIndex].Values[25].ToString();
+                ddl_TRANS_METHOD_AirPlane.SelectedValue = this.gv_detail.DataKeys[rowIndex].Values[25].ToString() == "" ? "-1" : this.gv_detail.DataKeys[rowIndex].Values[25].ToString();
             }
             else
             {
-                ddl_TRANS_METHOD_OTHER.SelectedValue = this.gv_detail.DataKeys[rowIndex].Values[25].ToString();
+                ddl_TRANS_METHOD_OTHER.SelectedValue = this.gv_detail.DataKeys[rowIndex].Values[25].ToString() == "" ? "-1" : this.gv_detail.DataKeys[rowIndex].Values[25].ToString();
             }
 
             Modal_ShopDetail.Show();
