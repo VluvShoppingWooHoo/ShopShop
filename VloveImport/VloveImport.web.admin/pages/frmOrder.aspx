@@ -30,7 +30,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Receive Amount :</td>
+                        <td>
+                            <%--Receive Amount :--%>
+                            Income Amount :
+                        </td>
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Amount_Receive" runat="server" Text=""></asp:Label>
                         </td>
