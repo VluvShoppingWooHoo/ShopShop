@@ -113,12 +113,13 @@ namespace VloveImport.dal
                 return new string[2] { "INS_ORDER -> msg : " + ex.Message, "" };
             }
         }
-        public string MakeOrderShop(DataTable dt, int Order_ID, string User, ref bool chkSHop)
+        public string MakeOrderShop(DataTable dt, int Order_ID, string User, ref bool chkSHop, Double Rate)
         {
             try
             {
                 List<string> shopName = new List<string>();
                 bool chkfirst = true;
+                double Price = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
                     if (chkfirst || !(shopName.Contains(dr["CUS_BK_SHOPNAME"].ToString())))
@@ -146,7 +147,10 @@ namespace VloveImport.dal
                             SqlCommandData.SetParameter_Input_INT("ORDER_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, int.Parse(shop_id));
                             SqlCommandData.SetParameter("OD_ITEMNAME", SqlDbType.NVarChar, ParameterDirection.Input, drr["CUS_BK_ITEMNAME"].ToString());
                             SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(drr["CUS_BK_AMOUNT"].ToString()));
-                            SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Convert.ToInt32(drr["CUS_BK_PRICE"].ToString()));
+                            
+                            Price = Convert.ToDouble(drr["CUS_BK_PRICE"].ToString());
+                            Price = Rate * Price;
+                            SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Price);
                             SqlCommandData.SetParameter("OD_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, drr["CUS_BK_SIZE"].ToString());
                             SqlCommandData.SetParameter("OD_COLOR", SqlDbType.NVarChar, ParameterDirection.Input, drr["CUS_BK_COLOR"].ToString());
                             SqlCommandData.SetParameter("OD_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, drr["CUS_BK_REMARK"].ToString());

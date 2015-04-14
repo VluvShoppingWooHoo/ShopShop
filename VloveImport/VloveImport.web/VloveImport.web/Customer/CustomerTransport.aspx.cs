@@ -19,7 +19,7 @@ namespace VloveImport.web.Customer
             if (!IsPostBack)
             {
                 
-                if (Session["ORDER"] != null)            
+                if (Session["ORDER"] == null)            
                     GoToIndex();
 
                 BindTrans();

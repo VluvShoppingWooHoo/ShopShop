@@ -70,12 +70,12 @@ namespace VloveImport.web.Customer
             {
                 Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
                 Price = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
-                Total_Amount = Total_Amount + (Amount * Price);
+                Total_Amount = Total_Amount + (Amount * (Price * Rate));
             }
 
             Transport_Amount = Total_Amount * 10 / 100;
             lbPay1.Text = "ชำระเงินรอบแรก = (" + Total_Amount.ToString("###,###.00") + " + " + Transport_Amount.ToString("###,###.00")
-                + ") * " + Rate.ToString("###,###.00") + " = " + ((Total_Amount + Transport_Amount) * Rate).ToString("###,###.00") + " บาท";
+                + ") * " + Rate.ToString("###,###.00") + " = " + (Total_Amount + Transport_Amount).ToString("###,###.00") + " บาท";
         }
 
         protected void btnConfirm_ServerClick(object sender, EventArgs e)
@@ -87,6 +87,7 @@ namespace VloveImport.web.Customer
                 string[] spl = Trans.Split(',');
                 DataTable dt = (DataTable)Session["ORDER"];
                 string User = "TEST"; //SessionUser
+                double Rate = GetRateCurrency();
 
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
@@ -98,7 +99,7 @@ namespace VloveImport.web.Customer
                 Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
                 Data.Create_User = User; //SessionUser
 
-                Result = Biz.MakeOrder(Data, dt, User);
+                Result = Biz.MakeOrder(Data, dt, User, Rate);
                 if (Result[0] == "")
                 {
                     EncrypUtil en = new EncrypUtil();

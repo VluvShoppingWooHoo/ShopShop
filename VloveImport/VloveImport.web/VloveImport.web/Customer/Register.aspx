@@ -75,7 +75,7 @@
       
         </asp:View>
         <asp:View ID="V1" runat="server">
-            <div class="row" style="borde">
+            <div class="row">
                 <div class="row s4 m4 l4">
                     <span class="FontHeader orange-text">สมัครสมาชิกสำเร็จ</span> 
                 </div>

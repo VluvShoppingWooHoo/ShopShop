@@ -59,7 +59,8 @@ namespace VloveImport.web.Customer
             Int32 Order_ID = OID == "" ? 0 : Convert.ToInt32(OID);            
             CustomerBiz biz = new CustomerBiz();
             ShoppingBiz bizShop = new ShoppingBiz();
-            double Amount = 0, Price = 0, Total = 0;
+            double Amount = 0, Price = 0, Total = 0, Rate = 0;
+            Rate = GetRateCurrency();
 
             //Description
             DataTable dtDetail = bizShop.GetOrderDetail(Order_ID);
@@ -73,7 +74,7 @@ namespace VloveImport.web.Customer
                 }
                 hlOrderCode.Text = dtDetail.Rows[0]["ORDER_CODE"].ToString().Trim();
                 hlOrderCode.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID);
-                lbTotalAmount.Text = Total.ToString("###,##0.00");
+                lbTotalAmount.Text = (Total + (Total * 10 /100)).ToString("###,##0.00");
                 lbBalance.Text = GetBalance().ToString("###,##0.00");
             }
 

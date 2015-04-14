@@ -39,7 +39,7 @@ namespace VloveImport.biz
             else
                 return null;
         }
-        public string[] MakeOrder(OrderData Data, DataTable dt, string User)
+        public string[] MakeOrder(OrderData Data, DataTable dt, string User, double Rate)
         {
             commonBiz biz = new commonBiz();
             ShoppingDal dal = new ShoppingDal("LocalConnection");
@@ -61,7 +61,7 @@ namespace VloveImport.biz
 
             //Oeder_Shop
             bool chkShop = false;
-            Res[0] = dal.MakeOrderShop(dt, OID, User, ref chkShop);
+            Res[0] = dal.MakeOrderShop(dt, OID, User, ref chkShop, Rate);
             //if (chkShop)
             //{
             ////    //Order_Detail
