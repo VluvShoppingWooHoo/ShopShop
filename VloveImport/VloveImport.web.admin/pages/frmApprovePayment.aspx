@@ -272,9 +272,9 @@
             <asp:ModalPopupExtender ID="ModalPopupExtender3" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel5" TargetControlID="lbl_modal_view">
             </asp:ModalPopupExtender>
-            <asp:Panel ID="Panel5" Height="520px" Width="900px" runat="server" Style="display: none;">
+            <asp:Panel ID="Panel5" Height="620px" Width="900px" runat="server" Style="display: none;">
                 <%--Style="display: none;"--%>
-                <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
+                <table width="800px" style="border-collapse: separate; border-spacing: 0px; height:620px;" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
                         <td align="left" class="trLogin_CENTER" style="padding: 0px 0px;">
@@ -291,7 +291,7 @@
                     <tr style="background-color: #CFCDCD;">
                         <td style="text-align: center; padding: 0px 0px;" colspan="3">
                             <center>
-                            <asp:Panel Width="96%" Height="420px" ID="Panel6" runat="server" BackColor="#FFFFFF">
+                            <asp:Panel Width="96%" Height="600px" ID="Panel6" runat="server" BackColor="#FFFFFF">
                                 <br />
                                  <uc2:ucApprovePaymentDetail ID="ucApprovePaymentDetail1" runat="server" />                            
                             </asp:Panel>
