@@ -41,6 +41,8 @@ namespace VloveImport.web.admin.pages
         {
             if (!IsPostBack)
             {
+                ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
+                ucCalendar2.ClearData();
                 _VS_USER_LOGIN = "admin";
                 _VS_USER_EMP_ID = 1;
                 BindData_Transaction_status(ddlTranSactionStatus, "S");
@@ -49,6 +51,12 @@ namespace VloveImport.web.admin.pages
             }
 
             btnUpdateRemark.Attributes.Add("onClick", "javascript:return confirm('คุณต้องการบันทึกรายการนี้หรือไม่ ?')");
+            ucApprovePaymentDetail1.ucApprovePaymentDetail_OpenpopClick += new System.EventHandler(ucApprovePaymentDetail1_OpenpopClick);
+        }
+
+        public void ucApprovePaymentDetail1_OpenpopClick(object sender, System.EventArgs e)
+        {
+            ModalPopupExtender3.Show();
         }
 
         public void BindData_Transaction_status(DropDownList ddl, string ddlType = "",string Act = "")
@@ -167,6 +175,8 @@ namespace VloveImport.web.admin.pages
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
+            ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
+            ucCalendar2.ClearData();
             ddlTranSactionStatus.SelectedIndex = 0;
             ddlTranSactionType.SelectedIndex = 0;
             txtCusCode.Text = "";

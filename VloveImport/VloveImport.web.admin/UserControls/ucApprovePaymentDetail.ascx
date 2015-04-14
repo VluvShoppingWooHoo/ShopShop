@@ -1,6 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucApprovePaymentDetail.ascx.cs" Inherits="VloveImport.web.admin.UserControls.ucApprovePaymentDetail" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
+<%@ Register src="../UserControls/ucImage.ascx" tagname="ucImage" tagprefix="uc1" %>
+
 <fieldset style="width: 95%;">
     <legend>Transaction Detail</legend>
     <table>
@@ -26,13 +28,17 @@
         </tr>
         <tr>
             <td>Transaction Detail :</td>
-            <td colspan ="3">
+            <td>
                 <asp:Label ID="lblDetail_TranDetail" runat="server"></asp:Label>
+            </td>
+            <td>Transaction Picture :</td>
+            <td rowspan="2">
+                <asp:ImageButton ID="imbURL" runat="server" Width="30px" Height="40px" OnClick="imbURL_Click"/>
             </td>
         </tr>
         <tr>
             <td>Transaction Remark :</td>
-            <td colspan ="3">
+            <td colspan ="2">
                 <asp:Label ID="lblDetail_TranRemark" runat="server"></asp:Label>
             </td>
         </tr>
@@ -60,7 +66,7 @@
             <td colspan ="3">
                 <asp:Label ID="lblDetail_EmpRemark" runat="server"></asp:Label>
             </td>
-        </tr>
+        </tr>        
     </table>
 </fieldset>
 <fieldset style="width: 95%;">
@@ -97,3 +103,38 @@
         </tr>
     </table>
 </fieldset>
+<asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" BackgroundCssClass="modalBackground"
+    PopupControlID="Panel1" TargetControlID="lbl_modal_view">
+</asp:ModalPopupExtender>
+<asp:Panel ID="Panel1" Height="600px" Width="900px" runat="server" Style="display: none;">
+    <%--Style="display: none;"--%>
+    <table width="800px" style="border-collapse: separate; border-spacing: 0px; height: 600px;" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
+            <td align="left" class="trLogin_CENTER" style="padding: 0px 0px;">
+                <div style="margin-left: -40px; margin-top: 10px;">
+                    <asp:Label ID="lbl_modal_view" runat="server" Text="Image"></asp:Label>
+                </div>
+            </td>
+            <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
+                <div style="text-align: right; margin-right: 10px; margin-top: 10px;">
+                    <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" 
+                        OnClick="ImageButton2_Click"/>
+                </div>
+            </td>
+        </tr>
+        <tr style="background-color: #CFCDCD;">
+            <td style="text-align: center; padding: 0px 0px;" colspan="3">
+                <center>
+                    <asp:Panel Width="96%" Height="580px" ID="Panel6" runat="server" BackColor="#FFFFFF">
+                        <br />
+                            <uc1:ucImage ID="ucImage" runat="server" />                            
+                    </asp:Panel>
+                </center>
+            </td>
+        </tr>
+        <tr style="background-color: #CFCDCD;">
+            <td height="15px" style="padding: 0px 0px;" align="center" colspan="3"></td>
+        </tr>
+    </table>
+</asp:Panel>
