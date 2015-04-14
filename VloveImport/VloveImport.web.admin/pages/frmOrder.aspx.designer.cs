@@ -22,6 +22,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// btntemp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btntemp;
+        
+        /// <summary>
         /// lbl_ViewDetail_ORDER_ID control.
         /// </summary>
         /// <remarks>
@@ -173,15 +182,6 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgbtn_SendEmail;
-        
-        /// <summary>
-        /// imgbtn_ViewCustomerDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgbtn_ViewCustomerDetail;
         
         /// <summary>
         /// ddl_ViewDetail_ORDER_STATUS control.

@@ -11,10 +11,19 @@
             height: 26px;
         }
     </style>
+
+    <script type ="text/javascript">
+        function Fun_CalShopProduct_Detail()
+        {
+
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+            <asp:Button ID="btntemp" runat="server" Text="" Style="display: none;" />
             <fieldset>
                 <legend>Order Detail
                 </legend>
@@ -114,9 +123,9 @@
                         <td>
                             <asp:ImageButton ID="imgbtn_SendEmail" runat="server" ImageUrl="~/img/icon/sendemail.png" Width="45px" Height="35px" OnClick="imgbtn_SendEmail_Click" />
                         </td>
-                        <td>Viwe Full Customer Detail :</td>
+                        <td><%--Viwe Full Customer Detail :--%></td>
                         <td>
-                            <asp:ImageButton ID="imgbtn_ViewCustomerDetail" runat="server" />
+                            <%--<asp:ImageButton ID="imgbtn_ViewCustomerDetail" runat="server" />--%>
                         </td>
                     </tr>
                 </table>
@@ -262,7 +271,7 @@
             <asp:ModalPopupExtender ID="Modal_ShopDetail" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel5" TargetControlID="lbl_modal_ShopDetail">
             </asp:ModalPopupExtender>
-            <asp:Panel ID="Panel5" Height="350px" Width="800px" runat="server">
+            <asp:Panel ID="Panel5" Height="350px" Width="800px" runat="server" Style="display: none;">
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -309,7 +318,7 @@
                                              Size :
                                          </td>
                                          <td>
-                                             <asp:TextBox ID="txt_sd_size" runat="server"></asp:TextBox>
+                                             <asp:TextBox ID="txt_sd_size" runat="server" onblur ="Fun_CalShopProduct_Detail();"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_size" ID="txt_sd_size_FilteredTextBoxExtender1" ValidChars="1234567890*">
                                             </asp:FilteredTextBoxExtender>
                                              <br />
@@ -321,7 +330,7 @@
                                          </td>
                                          <td>Weight :</td>
                                          <td>
-                                             <asp:TextBox ID="txt_sd_weight" runat="server"></asp:TextBox>
+                                             <asp:TextBox ID="txt_sd_weight" runat="server" onblur ="Fun_CalShopProduct_Detail();"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_weight" ID="txt_sd_weight_FilteredTextBoxExtender1" ValidChars="1234567890">
                                             </asp:FilteredTextBoxExtender>
                                          </td>
@@ -362,6 +371,7 @@
                                                          <asp:ListItem Value="1">Product General</asp:ListItem>
                                                          <asp:ListItem Value="2">Product Soft</asp:ListItem>
                                                          <asp:ListItem Value="3">Product Brand</asp:ListItem>
+                                                         <asp:ListItem Value="4">Other</asp:ListItem>
                                                      </asp:DropDownList>
                                                  </asp:View>
                                                  <asp:View ID="View2" runat="server">
@@ -370,6 +380,7 @@
                                                          <asp:ListItem Value="1">Product Dress Grneral</asp:ListItem>
                                                          <asp:ListItem Value="2">Product Grneral</asp:ListItem>
                                                          <asp:ListItem Value="3">Product Cal Cubi</asp:ListItem>
+                                                         <asp:ListItem Value="4">Other</asp:ListItem>
                                                      </asp:DropDownList>
                                                  </asp:View>
                                              </asp:MultiView>
@@ -403,7 +414,7 @@
             <asp:ModalPopupExtender ID="MadoalPop_Email" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel1" TargetControlID="lbl_modal_email">
             </asp:ModalPopupExtender>
-            <asp:Panel ID="Panel1" Height="520" Width="800px" runat="server">
+            <asp:Panel ID="Panel1" Height="520" Width="800px" runat="server" Style="display: none;">
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
