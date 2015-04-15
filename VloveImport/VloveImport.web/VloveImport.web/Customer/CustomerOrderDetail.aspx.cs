@@ -49,7 +49,7 @@ namespace VloveImport.web.Customer
                 lbOrderStatus.Text = dt.Rows[0]["ORDER_DESC"].ToString();
 
                 Status = dt.Rows[0]["ORDER_STATUS"].ToString();
-                if (Status == "0" || Status == "2" || Status == "5" || Status == "6")
+                if (Status == "0" || Status == "2" || Status == "4" || Status == "6" || Status == "7" || Status == "8")
                     btnPay.Visible = false;
 
                 //Grid                          

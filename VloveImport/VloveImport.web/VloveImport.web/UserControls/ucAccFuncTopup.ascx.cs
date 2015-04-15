@@ -154,53 +154,5 @@ namespace VloveImport.web.UserControls
         }
         #endregion
 
-        protected void btnTopup_Click(object sender, EventArgs e)
-        {
-            string Result = "";
-            BasePage bp = new BasePage();
-            TransactionData EnTran = new TransactionData();
-            try
-            {
-                EnTran.Cus_ID = bp.GetCusID();
-
-                if (Ifile.HasFile)
-                {
-                    string folder = Server.MapPath("~/Attachment");
-                    bool exists = System.IO.Directory.Exists(folder);
-                    if (!exists)
-                        System.IO.Directory.CreateDirectory(folder);
-
-                    folder = folder + "\\" + EnTran.Cus_ID;
-                    exists = System.IO.Directory.Exists(folder);
-
-                    if (!exists)
-                        System.IO.Directory.CreateDirectory(folder);
-
-                    string filename = "Attachment\\" + EnTran.Cus_ID + "\\" + Path.GetFileName(Ifile.FileName);
-
-                    Ifile.SaveAs(folder + "\\" + Path.GetFileName(Ifile.FileName));
-                    EnTran.TRANS_PICURL = filename;
-                }
-
-
-                EnTran.TRAN_TYPE = 1;
-                EnTran.TRAN_TABLE_TYPE = 1;
-                EnTran.TRAN_DETAIL = "รายการฝากเงิน";
-
-                EnTran.BANK_ID = Convert.ToInt32(ddlBank.SelectedValue);
-                EnTran.TRAN_AMOUNT = Convert.ToDouble(txt_tranfer_amount.Text);
-                EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(dtMaterial.Value, '-', "YYYYMMDD", 0));
-                EnTran.PAYMENT_TIME = ddlH.Text + ':' + ddlM.Text + ':' + ddls.Text;
-                //EnTran.TRAN_EMAIL = txt_email.Text.Trim();
-                EnTran.TRAN_REMARK = txt_remark.Text.Trim();
-                EnTran.TRAN_STATUS = 1;
-                EnTran.Create_User = bp.GetCusCode();
-
-                CustomerBiz CusBiz = new CustomerBiz();
-                Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS");
-            }
-            catch (Exception ex) { }
-        }
-
     }
 }

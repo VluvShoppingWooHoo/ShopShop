@@ -86,26 +86,33 @@ namespace VloveImport.web.Customer
                 string Trans = Session["TRANS"].ToString();
                 string[] spl = Trans.Split(',');
                 DataTable dt = (DataTable)Session["ORDER"];
-                string User = "TEST"; //SessionUser
+                string User = GetCusCode();
                 double Rate = GetRateCurrency();
 
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
                 Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
                 Data.ORDER_CODE = GetNoSeries("ORDER");
+                Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
                 Data.CUS_ADDRESS_ID = spl[2].Split('|')[0] == "-" ? -1 : Convert.ToInt32(spl[2].Split('|')[0]);
                 Data.TRANSPORT_CH_TH_METHOD = Convert.ToInt32(spl[0].Split('|')[0]);
                 Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
-                Data.Create_User = User; //SessionUser
+                Data.Create_User = User; 
 
                 Result = Biz.MakeOrder(Data, dt, User, Rate);
                 if (Result[0] == "")
                 {
-                    EncrypUtil en = new EncrypUtil();
-                    string Order_ID;//SessionUser
-                    Order_ID = en.EncrypData(Result[1]);
-                    Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                    string Res = "";
+                    Int32 OID = Result[1] == "" ? 0 : Convert.ToInt32(Result[1]);
+                    Res = Biz.UpdateOrderPrice(OID);
+                    if (Res == "")
+                    {
+                        EncrypUtil en = new EncrypUtil();
+                        string Order_ID;//SessionUser
+                        Order_ID = en.EncrypData(Result[1]);
+                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                    }
                 }
                 else
                 {

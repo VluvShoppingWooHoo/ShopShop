@@ -67,7 +67,7 @@ namespace VloveImport.web.Customer
             EnTran.Create_User = bp.GetCusCode();
 
             CustomerBiz CusBiz = new CustomerBiz();
-            Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS");
+            Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
 
             return js.Serialize(Result);
         }
@@ -97,7 +97,7 @@ namespace VloveImport.web.Customer
                 EnTran.Create_User = bp.GetCusCode();
 
                 CustomerBiz CusBiz = new CustomerBiz();
-                Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS");
+                Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
             }
             else
             {

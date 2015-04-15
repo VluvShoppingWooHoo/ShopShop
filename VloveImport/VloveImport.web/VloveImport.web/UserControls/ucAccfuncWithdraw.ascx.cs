@@ -131,24 +131,7 @@ namespace VloveImport.web.UserControls
 
         //}
 
-        public void SaveData()
-        {
-            if (CheckInput())
-            {
-                CustomerBiz CusBiz = new CustomerBiz();
-                string IsReturn = "";
-                IsReturn = CusBiz.INS_UPD_TRANSACTION(SetData(), "INS");
-                if (IsReturn != "")
-                {
-                    bp.ShowMessageBox(IsReturn, this.Page);
-                }
-                else
-                {
-                    ClearData();
-                    bp.ShowMessageBox("บันทึกรายการเรียบร้อยแล้ว", this.Page, "CustomerMyAccount.aspx#withdraw");
-                }
-            }
-        }
+       
         
     }
 }

@@ -73,7 +73,6 @@ namespace VloveImport.web.Customer
         {
             HyperLink hl;
             HiddenField hdd;
-            Button btnPay, btnDel;
             string Order_ID = "";
             foreach (GridViewRow gvr in gvOrder.Rows)
             {
@@ -85,7 +84,8 @@ namespace VloveImport.web.Customer
                     hl.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?P=" + EncrypData("LIST") + "&OID=" + Order_ID;
                 }
 
-                if (hdd != null && (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "5" || hdd.Value == "6"))
+                if (hdd != null && (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "4" || 
+                    hdd.Value == "6" || hdd.Value == "7" || hdd.Value == "8"))
                 {
                     gvr.Cells[5].Visible = false;
                     //btnPay = (Button)gvr.Cells[5].FindControl("btnPay");
