@@ -116,6 +116,8 @@
     <Content Include="Customer\Register.aspx" />
     <Content Include="Customer\TourMarket.aspx" />
     <Content Include="Images\demo\logo_all_company.png" />
+    <Content Include="Images\icon\Flag\China-Flag-icon.png" />
+    <Content Include="Images\icon\Flag\Thailand-Flag-icon.png" />
     <Content Include="Images\icon\Payment2.png" />
     <Content Include="Images\icon\Payment.png" />
     <Content Include="Images\icon\b_edit.png" />
@@ -134,6 +136,9 @@
     <Content Include="Images\pic\RateImport-Q.gif" />
     <Content Include="Images\pic\Banner\Sale.jpg" />
     <Content Include="Images\pic\Banner\Tour.jpg" />
+    <Content Include="Images\pic\shop\1688.jpg" />
+    <Content Include="Images\pic\shop\taobao.jpg" />
+    <Content Include="Images\pic\shop\Tmall.jpg" />
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Report\ReportViewer.aspx" />
