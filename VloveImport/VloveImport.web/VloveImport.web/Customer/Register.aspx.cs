@@ -63,6 +63,7 @@ namespace VloveImport.web.Customer
             }
             else
             {
+                ShowMessageBox(Result);
                 //WriteLog
                 //URL = Page.Request.Url.ToString().Split('/');
                 //WriteLog(URL[URL.Length - 1], "btnRegis", Result);
@@ -94,6 +95,7 @@ namespace VloveImport.web.Customer
                 }
                 else
                 {
+                    Result = "Email นี้ถูกใช้ไปแล้ว";
                     //found email already use
                 }
             }

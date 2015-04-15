@@ -44,7 +44,7 @@ namespace VloveImport.web.Customer
                 }
             }
             
-            if (Result == "1")
+            if (Result == "")
             {
                 mView.ActiveViewIndex = 0;
             }
