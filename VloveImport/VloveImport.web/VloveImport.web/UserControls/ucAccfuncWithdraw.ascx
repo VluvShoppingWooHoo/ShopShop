@@ -117,6 +117,13 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (data) {
+                    var obj = JSON.parse(data.d);
+                    if (obj.Result == 1) {
+                        alert('ส่งคำขอถอนเงินเรียบร้อยแล้ว');
+                        location.reload();
+                    }
+                    else
+                        alert(obj.ReturnVal);
                     //$('#modalItem').closeModal();
                     //toast('Item Added.', 5000)
                 },

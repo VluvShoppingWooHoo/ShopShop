@@ -154,5 +154,52 @@ namespace VloveImport.web.UserControls
         }
         #endregion
 
+        protected void btnTopup_Click(object sender, EventArgs e)
+        {
+            string Result = "";
+            BasePage bp = new BasePage();
+            TransactionData EnTran = new TransactionData();
+            try
+            {
+                if (Ifile.HasFile)
+                {
+                    //if (Ifile.PostedFile.ContentType == "image/jpg")
+                    //{
+                    //    if (Ifile.PostedFile.ContentLength < 102400)
+                    //    {
+                    string filename = Server.MapPath("~/Images/transaction/") + Path.GetFileName(Ifile.FileName);
+                    Ifile.SaveAs(filename);
+                    EnTran.TRANS_PICURL = filename;
+                    //    }
+                    //}
+                }
+
+                EnTran.Cus_ID = bp.GetCusID();
+
+                EnTran.TRAN_TYPE = 1;
+                EnTran.TRAN_TABLE_TYPE = 1;
+                EnTran.TRAN_DETAIL = "รายการฝากเงิน";
+
+                EnTran.BANK_ID = Convert.ToInt32(ddlBank.SelectedValue);
+                EnTran.TRAN_AMOUNT = Convert.ToDouble(txt_tranfer_amount.Text);
+                EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(dtMaterial.Value, '-', "YYYYMMDD", 0));
+                EnTran.PAYMENT_TIME = ddlH.Text + ':' + ddlM.Text + ':' + ddls.Text;
+                //EnTran.TRAN_EMAIL = txt_email.Text.Trim();
+                EnTran.TRAN_REMARK = txt_remark.Text.Trim();
+                EnTran.TRAN_STATUS = 1;
+                EnTran.Create_User = bp.GetCusCode();
+
+                CustomerBiz CusBiz = new CustomerBiz();
+                Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
+                if (Result == string.Empty)
+                {
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('เติมเงินสำเร็จ');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                    //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>window.location.href = '/Customer/CustomerMyAccount.aspx'", false);
+                    //Response.Redirect("~/Customer/CustomerMyAccount.aspx");
+                }
+            }
+            catch (Exception ex) { }
+        }
+
     }
 }

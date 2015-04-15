@@ -78,6 +78,7 @@ namespace VloveImport.web.Customer
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "", withdrawDB = "", withdrawDBEn = "";
+            JSONData jData = new JSONData();
             BasePage bp = new BasePage();
             withdrawDB = bp.GetCusSession().Cus_Withdraw_Code;
             withdrawDBEn = bp.DecryptData(withdrawDB);
@@ -99,12 +100,19 @@ namespace VloveImport.web.Customer
 
                 CustomerBiz CusBiz = new CustomerBiz();
                 Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
+                if (Result == string.Empty)
+                    jData.Result = Constant.Fact.T;
+                //{
+                //    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('เติมเงินสำเร็จ');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                //}
             }
             else
             {
                 Result = "รหัสผ่านผิด";
+                jData.Result = Constant.Fact.F;
+                jData.ReturnVal = Result;
             }
-            return js.Serialize(Result);
+            return js.Serialize(jData);
         }
 
         [WebMethod]
