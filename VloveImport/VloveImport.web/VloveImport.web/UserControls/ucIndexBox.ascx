@@ -856,11 +856,11 @@
                     $('#divRecommendNewest').html(txtRecommendMain);
                     $('#divSubRecommend1').html(txtRecommendSub1);
                     $('#divSubRecommend2').html(txtRecommendSub2);
-                    setIndexPageHeight();
+                    //setIndexPageHeight();
                 }
             },
             error: function (err) {
-                alert('gs');
+                alert('Something wrong, please contact admin.');
             }
         });
 
@@ -876,7 +876,7 @@
         //        }
         //    },
         //    error: function (err) {
-        //        alert('gs');
+        //        alert('Something wrong, please contact admin.');
         //    }
         //});
 
@@ -894,7 +894,7 @@
         //SetFadeout();
         //    },
         //    error: function (err) {
-        //        alert('gs');
+        //        alert('Something wrong, please contact admin.');
         //    }
         //});
 

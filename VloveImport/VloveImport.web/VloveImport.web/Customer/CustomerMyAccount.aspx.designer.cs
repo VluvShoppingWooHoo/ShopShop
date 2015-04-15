@@ -47,5 +47,14 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::VloveImport.web.UserControls.ucAccfuncVoucher ucAccfuncVoucher;
+        
+        /// <summary>
+        /// ucAccfuncMypoint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VloveImport.web.UserControls.ucAccfuncMypoint ucAccfuncMypoint;
     }
 }

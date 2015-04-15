@@ -121,7 +121,7 @@
                     //toast('Item Added.', 5000)
                 },
                 error: function (err) {
-                    alert('gs');
+                    alert('Something wrong, please contact admin.');
                 }
             });
             

@@ -37,7 +37,7 @@
                     }
                 },
                 error: function (err) {
-                    alert('gs');
+                    alert('Something wrong, please contact admin.');
                 }
             });
 

@@ -135,6 +135,7 @@
     </div>
     <div id="footer" class="modal-footer">
         <input type="hidden" id="hdWeb">
+        <input type="hidden" id="hdPrice">
         <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
             <i class="mdi-action-shopping-cart NoFont"></i>
         </button>
@@ -146,6 +147,7 @@
 </div>
 
 <script type="text/javascript">
+    var isBetween = false;
     $(function () {
         //$('.childliSize').addClass('orange white-text');
         $('.modal-trigger').leanModal({
@@ -153,6 +155,8 @@
         });
 
         $('#btnAddCart').click(function () {
+            $('#Master_link').click();
+            //$('#loadingMaster').show();
 
             var User = '<%= Session["User"]%>';
             if (User != '') {
@@ -194,11 +198,12 @@
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
                     success: function (data) {
+                        $('#loadingMaster').closeModal();
                         $('#modalItem').closeModal();
                         toast('Item Added.', 5000)
                     },
                     error: function (err) {
-                        alert('gs');
+                        alert('Something wrong, please contact admin.');
                     }
                 });
             }
@@ -238,7 +243,7 @@
                     $('#btnAddCart').show();
                 },
                 error: function (err) {
-                    alert('gs');
+                    alert('Something wrong, please contact admin.');
                 }
             });
         });
@@ -275,28 +280,74 @@
         //$("#lblProPrice").html(obj.ProPrice);
         var arraySize = obj.Size.split("||");
         var arrayColor = obj.Color.split("||");
+        var firstSize = true;
+        var firstColor = true;
+        $("#hdPrice").val(obj.Price);
         $("#hdWeb").val(obj.Web);
+        
+        if (obj.Price.indexOf(" - ") > 0)
+            isBetween = true;
 
         for (var i = 0; i < arraySize.length; i++) {
-            //$("#liSize").append('<span>' + arraySize[i] + '</span>');
+            var txt = '<div class="col s1 m1 l1 modalItemDiv childliSize"><a id="aSize' + i + '" onclick="selectSize(' + i + ')" class="waves-effect waves-light btn';
+            if (firstSize == true) {
+                if (isBetween == true) {
+                    chkPrice(arraySize[i])
+                }
+                txt += ' orange white-text selected';
+            }
+            else
+                txt += ' white orange-text';
+            txt += '" style="margin-right:10px">' + arraySize[i] + '</a></div>';
+            firstSize = false;
             if (arraySize[i] != "")
-                $("#liSize").append('<div class="col s1 m1 l1 modalItemDiv childliSize"><a id="aSize' + i + '" onclick="selectSize(' + i + ')" class="waves-effect white orange-text waves-light btn" style="margin-right:10px">' + arraySize[i] + '</a></div>');
+                $("#liSize").append(txt);
+
         }
         if ($('div[class~="childliSize"]').length == 0)
             $("#divSize").hide();
         for (var i = 0; i < arrayColor.length; i++) {
-            //$("#liColor").append('<option value=""> ' + arrayColor[i] + ' </option>');
-            //$("#liColor").append('<img src="' + arrayColor[i] + '">');
-            if (arrayColor[i].indexOf("ttp:") > 0)
-                $("#liColor").append('<div class="col s2 m2 l2 childliColor"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect white orange-text waves-light btn" style="padding:0; margin-right:10px ; height:30px; width:30px;"><img src="' + arrayColor[i] + '"></a></div>');
+            var txt = '<div class="';
+
+            if (arrayColor[i].indexOf("ttp:") > 0) {
+                txt += 'col s2 m2 l2 childliColor"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect waves-light btn'
+                if (firstColor == true) {
+                    txt += ' orange white-text selected';
+                }
+                else
+                    txt += ' white orange-text';
+                txt += '" style="padding:0; margin-right:10px ; height:30px; width:30px;"><img src="' + arrayColor[i] + '"></a></div>';
+            }
             else
-                if (arrayColor[i] != "")
-                    $("#liColor").append('<div class="col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColorText(' + i + ')" class="waves-effect white orange-text waves-light btn" style="margin-right:10px">' + arrayColor[i] + '</a></div>');
+                if (arrayColor[i] != "") {
+                    txt += 'col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColorText(' + i + ')" class="waves-effect waves-light btn';
+                    if (firstColor == true) {
+                        if (isBetween == true) {
+                            chkPrice(arrayColor[i])
+                        }
+                        txt += ' orange white-text selected';
+                    }
+                    else
+                        txt += ' white orange-text';
+                    txt += '" style="margin-right:10px">' + arrayColor[i] + '</a></div>';
+                    //$("#liColor").append('<div class="col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColorText(' + i + ')" class="waves-effect white orange-text waves-light btn" style="margin-right:10px">' + arrayColor[i] + '</a></div>');
+                }
+            firstColor = false;
+
+            $("#liColor").append(txt);
         }
         if ($('div[class~="childliColor"]').length == 0)
             $("#divColor").hide();
         //'<li><a href="/user/messages"><span class="tab">Message Center</span></a></li>');
         //alert(data.d);
+    }
+
+    function chkPrice(e) {
+        var prices = $("#hdPrice").val().split(" - ");
+        if (e.indexOf(prices[0].split(".")[0]) > 0)
+            $("#lblPrice").html(prices[0]);
+        else
+            $("#lblPrice").html(prices[1]);
     }
 
     function selectColor(e) {
@@ -317,6 +368,7 @@
         $('#aColor' + e).removeClass('white orange-text');
         $('#aColor' + e).addClass('orange white-text');
         $('#aColor' + e).addClass('selected');
+        chkPrice($('#aColor' + e)[0].innerText);
     }
 
     function selectSize(e) {
@@ -326,6 +378,7 @@
         $('#aSize' + e).removeClass('white orange-text');
         $('#aSize' + e).addClass('orange white-text');
         $('#aSize' + e).addClass('selected');
+        chkPrice($('#aSize' + e)[0].innerText);
     }
 
 </script>
