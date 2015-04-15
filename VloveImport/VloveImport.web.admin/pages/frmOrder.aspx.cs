@@ -269,7 +269,8 @@ namespace VloveImport.web.admin.pages
 
             if (Convert.ToDouble(lbl_ViewDetail_Addtional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5"))
             {
-                ShowMessageBox("ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม", this.Page);
+                ShowMessageBox("Not available This is because the amount At no extra cost", this.Page);
+                //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
                 return;
             }
 

@@ -7,7 +7,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
 <fieldset style="width: 98.5%;">
                 <legend>Search Criteria</legend>
@@ -58,20 +58,20 @@
                 DataKeyNames="GROUP_ID,GROUP_NAME,GROUP_ROLE,GROUP_REMARK,GROUP_STATUS" OnPageIndexChanging="gv_detail_PageIndexChanging" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No.">
-                        <HeaderStyle CssClass="width5" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="GROUP_NAME" HeaderText="Group name">
                         <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
+                    <asp:BoundField DataField="GROUP_NAME" HeaderText="Group name">
+                        <HeaderStyle CssClass="width70" />
+                    </asp:BoundField>
                     <asp:BoundField DataField="GROUP_STATUS_TEXT" HeaderText="Status">
-                        <HeaderStyle CssClass="width15" />
+                        <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
                             <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />&nbsp;&nbsp;
                             <asp:ImageButton ID="imgBtn_delete" runat="server" Height="15px" ImageUrl="~/img/icon/Close-2-icon.png" Width="15px" OnClick="imgBtn_delete_Click" />
                         </ItemTemplate>
-                        <HeaderStyle CssClass="width5" />
+                        <HeaderStyle CssClass="width10" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
                 </Columns>

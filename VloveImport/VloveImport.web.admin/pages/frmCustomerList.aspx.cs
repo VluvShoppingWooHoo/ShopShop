@@ -14,6 +14,8 @@ namespace VloveImport.web.admin.pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ucEmail1.ucEmail_OpenpopClick += new System.EventHandler(ucEmail_OpenpopClick);
+
             if (!IsPostBack)
             {
                 ResetData();
@@ -87,6 +89,21 @@ namespace VloveImport.web.admin.pages
         protected void btnReset_Click(object sender, EventArgs e)
         {
             ResetData();
+        }
+
+        protected void imgBtn_Email_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[2].ToString();
+
+            ucEmail1.SetEmail(DataKeys_ID);
+            ucEmail1.SetEmail_To_Enabled();
+            MadoalPop_Email.Show();
+        }
+
+        public void ucEmail_OpenpopClick(object sender, System.EventArgs e)
+        {
+            MadoalPop_Email.Show();
         }
 
     }
