@@ -72,13 +72,16 @@ namespace VloveImport.web.Customer
         protected void gvOrder_DataBound(object sender, EventArgs e)
         {
             HyperLink hl;
-            HiddenField hdd;
+            HiddenField hdd, hdd_Pay;
             Button btnDel;
             string Order_ID = "";
+            Double Pay = 0;
             foreach (GridViewRow gvr in gvOrder.Rows)
             {
                 hl = (HyperLink)gvr.Cells[0].FindControl("hlOrderCode");
                 hdd = (HiddenField)gvr.Cells[2].FindControl("hddStatus");
+                hdd_Pay = (HiddenField)gvr.Cells[0].FindControl("hdOrder_Pay");
+
                 if (hl != null)
                 {
                     Order_ID = EncrypData(hl.NavigateUrl);
@@ -87,11 +90,16 @@ namespace VloveImport.web.Customer
 
                 if(hdd != null)
                 {
-                    if (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "4" || hdd.Value == "6" || hdd.Value == "7" || hdd.Value == "8")
+                    if (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "4" || hdd.Value == "6" || hdd.Value == "7")
                     {
                         gvr.Cells[7].Visible = false;
                         gvr.Cells[8].Visible = false;
                     }
+
+                    Pay = hdd_Pay.Value == "" ? 0 : Convert.ToDouble(hdd_Pay.Value);
+                    if (hdd.Value == "8" && Pay <= 0)
+                        gvr.Cells[7].Visible = false;
+
                     if (hdd.Value != "1")
                     {
                         gvr.Cells[8].Visible = false;
