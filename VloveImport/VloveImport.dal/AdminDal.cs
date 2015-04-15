@@ -133,7 +133,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("ADMIN_UPDATE_ORDER_SHOP");
 
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, En.ORDER_ID);
-                SqlCommandData.SetParameter_Input_INT("ORDER_SHOP_ID", SqlDbType.VarChar, ParameterDirection.Input, En.ORDER_SHOP_ID);
+                SqlCommandData.SetParameter_Input_INT("ORDER_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, En.ORDER_SHOP_ID);
                 SqlCommandData.SetParameter("SHOPNAME", SqlDbType.VarChar, ParameterDirection.Input, En.SHOPNAME);
                 SqlCommandData.SetParameter("SHOP_ORDER_ID", SqlDbType.VarChar, ParameterDirection.Input, En.SHOP_ORDER_ID);
                 SqlCommandData.SetParameter("TRACKING_NO", SqlDbType.VarChar, ParameterDirection.Input, En.TRACKING_NO);
@@ -144,7 +144,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("TRANSPORT_CHINA_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_CHINA_PRICE);
                 SqlCommandData.SetParameter("TRANSPORT_THAI_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_THAI_PRICE);
                 SqlCommandData.SetParameter_Input_INT("PRODUCT_TYPE", SqlDbType.Int, ParameterDirection.Input, En.PRODUCT_TYPE);
-                SqlCommandData.SetParameter_Input_INT("CAL_TRANSPORT_SHOP_RATE", SqlDbType.Int, ParameterDirection.Input, En.CAL_TRANSPORT_SHOP_RATE);
+                SqlCommandData.SetParameter("CAL_TRANSPORT_SHOP_RATE", SqlDbType.VarChar, ParameterDirection.Input, En.CAL_TRANSPORT_SHOP_RATE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
