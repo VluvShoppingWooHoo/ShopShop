@@ -46,8 +46,10 @@
                         <td>
                             <asp:Label ID="lbl_ViewDetail_Amount_Receive" runat="server" Text=""></asp:Label>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>Additional Amount :</td>
+                        <td>
+                            <asp:Label ID="lbl_ViewDetail_Addtional_Amount" runat="server" Text=""></asp:Label>
+                        </td>
                     </tr>
                     <tr>
                         <td>Actually Amount :</td>
@@ -152,7 +154,7 @@
                         <td>Transport Customer Price :</td>
                         <td>
                             <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="300px"></asp:TextBox>
-                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890">
+                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                             </asp:FilteredTextBoxExtender>
                         </td>
                     </tr>
@@ -331,7 +333,7 @@
                                          <td>Weight :</td>
                                          <td>
                                              <asp:TextBox ID="txt_sd_weight" runat="server" onblur ="Fun_CalShopProduct_Detail();"></asp:TextBox>
-                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_weight" ID="txt_sd_weight_FilteredTextBoxExtender1" ValidChars="1234567890">
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_weight" ID="txt_sd_weight_FilteredTextBoxExtender1" ValidChars="1234567890.">
                                             </asp:FilteredTextBoxExtender>
                                          </td>
                                      </tr>

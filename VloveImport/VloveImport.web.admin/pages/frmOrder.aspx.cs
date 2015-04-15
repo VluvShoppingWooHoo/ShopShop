@@ -134,11 +134,30 @@ namespace VloveImport.web.admin.pages
                 lbl_ViewDetail_Product_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["SUM_PROD_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_ViewDetail_Amount_Actually_Pay.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 //lbl_ViewDetail_Amount_Recall_Pay.Text = (Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE"].ToString()) - Convert.ToDouble(ds.Tables[0].Rows[0]["TOTAL_PRICE_ACTIVE"].ToString())).ToString("N", new CultureInfo("en-US"));
-                lbl_ViewDetail_Amount_Recall_Pay.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTALAMOUNT_REMAIN"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lbl_ViewDetail_Transport_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TRANSPORT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
-
                 _VS_ORDER_STS = ds.Tables[0].Rows[0]["ORDER_STATUS"].ToString();
                 _VS_ORDER_TRAN_STS = ds.Tables[0].Rows[0]["TRANSPORT_STATUS"].ToString();
+                
+                double TOTALAMOUNT_REMAIN = Convert.ToDouble(ds.Tables[0].Rows[0]["TOTALAMOUNT_REMAIN"].ToString()); //.ToString("N", new CultureInfo("en-US"));
+                if (TOTALAMOUNT_REMAIN >= 0)
+                {
+                    lbl_ViewDetail_Addtional_Amount.Text = "0.00";
+                    if (_VS_ORDER_STS == "8")
+                    {
+                        lbl_ViewDetail_Amount_Recall_Pay.Text = TOTALAMOUNT_REMAIN.ToString("N", new CultureInfo("en-US"));
+                    }
+                    else
+                    {
+                        lbl_ViewDetail_Amount_Recall_Pay.Text = "0.00";
+                    }
+                }
+                else 
+                {
+                    TOTALAMOUNT_REMAIN = -1 * TOTALAMOUNT_REMAIN;
+                    lbl_ViewDetail_Addtional_Amount.Text = TOTALAMOUNT_REMAIN.ToString("N", new CultureInfo("en-US"));
+                    lbl_ViewDetail_Amount_Recall_Pay.Text = "0.00";
+                }
+                
+                lbl_ViewDetail_Transport_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TRANSPORT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
 
                 BindData_order_status(ddl_ViewDetail_ORDER_STATUS, STS_NAME: _VS_ORDER_STS, Act: "BIND_DDL_STS_ID");
                 ddl_ViewDetail_ORDER_STATUS.SelectedValue = _VS_ORDER_STS;
@@ -172,18 +191,21 @@ namespace VloveImport.web.admin.pages
                     ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                     ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                     btn_detail_update.Visible = false;
+                    btnUpdateShopDetail.Visible = false;
                 }
                 else if (_VS_ORDER_STS == "4")
                 {
                     ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                     ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                     btn_detail_update.Visible = true;
+                    btnUpdateShopDetail.Visible = true;
                 }
                 else if (_VS_ORDER_STS == "6" || _VS_ORDER_STS == "7")
                 {
                     ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                     ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
                     btn_detail_update.Visible = true;
+                    btnUpdateShopDetail.Visible = false;
                 }
                 else if (_VS_ORDER_STS == "8")
                 {
@@ -191,6 +213,8 @@ namespace VloveImport.web.admin.pages
                     ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                     btn_detail_update.Visible = false;
                     trTranCusPrice.Visible = true;
+                    btnUpdateShopDetail.Visible = false;
+                    txt_Transport_Cus_Price.Text = Convert.ToDouble(ds.Tables[0].Rows[0]["TRANSPORT_CUSTOMER_PRICE"].ToString()).ToString("N", new CultureInfo("en-US")); 
                 }
                 else
                 {
@@ -198,6 +222,7 @@ namespace VloveImport.web.admin.pages
                     ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                     btn_detail_update.Visible = false;
                     trTranCusPrice.Visible = false;
+                    btnUpdateShopDetail.Visible = false;
                 }
 
                 #endregion
@@ -241,7 +266,13 @@ namespace VloveImport.web.admin.pages
                 ShowMessageBox("Please enter transport customer price", this.Page);
                 return;
             }
-            
+
+            if (Convert.ToDouble(lbl_ViewDetail_Addtional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5"))
+            {
+                ShowMessageBox("ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม", this.Page);
+                return;
+            }
+
             OrderData En = new OrderData();
             AdminBiz AdBiz = new AdminBiz();
             En.Create_User = _VS_USER_LOGIN;
@@ -256,7 +287,7 @@ namespace VloveImport.web.admin.pages
             string Result = "";
 
             //if (_VS_ORDER_STS == "2" && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5"))
-            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5")
+            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "8")
             {
                 Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
             }
@@ -347,7 +378,6 @@ namespace VloveImport.web.admin.pages
 
                 if (OD_STATUS == "-1")
                 {
-                    //((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
                     e.Row.Cells[0].ColumnSpan = gv_detail.Columns.Count;
                     e.Row.CssClass = "RowStyle_SHOP width100";
                     for (int i = 1; i <= gv_detail.Columns.Count - 1; i++)
@@ -363,6 +393,14 @@ namespace VloveImport.web.admin.pages
                     ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";
 
                     lblRowIndex.Text = ShowShop;
+
+                    #region
+                    if (Convert.ToInt32(_VS_ORDER_STS) >= 5) btnUpdateShopDetail.Visible = false;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) >= 3) btnUpdateShopDetail.Visible = true;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) == 2) btnUpdateShopDetail.Visible = true;
+                    else btnUpdateShopDetail.Visible = false;
+                    #endregion
+
 
                 }
                 else
@@ -386,27 +424,14 @@ namespace VloveImport.web.admin.pages
                     }
 
                     lblRowIndex.Text = DataBinder.Eval(e.Row.DataItem, "ROW_RANK_PROD").ToString();
-                }
 
-                if (Convert.ToInt32(_VS_ORDER_STS) >= 5)
-                {
-                    ((ImageButton)e.Row.FindControl("imgbtn_popup_shopdetail")).Visible = false;
-                    ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
-                }
-                else if (Convert.ToInt32(_VS_ORDER_STS) >=3)
-                {
-                    ((ImageButton)e.Row.FindControl("imgbtn_popup_shopdetail")).Visible = true;
-                    ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
-                }
-                else if (Convert.ToInt32(_VS_ORDER_STS) == 2)
-                {
-                    ((ImageButton)e.Row.FindControl("imgbtn_popup_shopdetail")).Visible = true;
-                    ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = true;
-                }
-                else
-                {
-                    ((ImageButton)e.Row.FindControl("imgbtn_popup_shopdetail")).Visible = false;
-                    ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                    #region
+                    if (Convert.ToInt32(_VS_ORDER_STS) >= 5) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) >= 3) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) == 2) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = true;
+                    else ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                    #endregion
+
                 }
             }
 
@@ -637,7 +662,7 @@ namespace VloveImport.web.admin.pages
             }
             else if (CAL_Q == false && txt_sd_size.Text.Trim() == "")
             {
-                ShowMessageBox("Please enter weight", this.Page);
+                ShowMessageBox("Please enter size", this.Page);
                 return false;
             }
             else if (CAL_Q == true && !(Regex.IsMatch(txt_sd_size.Text.Trim(), Size_Pattern)))
