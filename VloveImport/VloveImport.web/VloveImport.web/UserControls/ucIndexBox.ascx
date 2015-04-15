@@ -739,13 +739,13 @@
             <%--<div class="col s3 m3 l3">
             </div>--%>
             <div class="col s12 m12 l12">
-                <a target="_blank" href="http://www.taobao.com">
+                <a class="hvr-grow" target="_blank" href="http://www.taobao.com">
                     <img src="../Images/pic/shop/taobao.jpg" />
                 </a>
-                <a target="_blank" href="http://www.tmall.com/">
+                <a class="hvr-grow"  target="_blank" href="http://www.tmall.com/">
                     <img src="../Images/pic/shop/Tmall.jpg" />
                 </a>
-                <a target="_blank" href="http://www.1688.com/">
+                <a class="hvr-grow"  target="_blank" href="http://www.1688.com/">
                     <img src="../Images/pic/shop/1688.jpg" />
                 </a>
             </div>
@@ -755,10 +755,10 @@
     </div>
     <div class="col s2 m2 l2">
         <div id="hotlink" class="collection">
-            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
+            <a href="/Customer/CustomerOrder.aspx" class="collection-item" style="padding-left: 0px"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
             <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
             <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-logistics3"></i>ส่งแบบออฟไลน์</a>
-            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
+            <a target="_blank" href="http://www.bangkokbank.com/bangkokbankthai/webservices/rates/pages/fx_rates.aspx" class="collection-item" style="padding-left: 0px"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
         </div>
         <iframe marginwidth="0" marginheight="0" src="http://www.bangkokbank.com/fxbanner/banner1.htm" frameborder="0" width="173" scrolling="no" height="165"></iframe>
         <div id="ExRate">
@@ -820,13 +820,13 @@
                         if (obj.ReturnVal[i].ContentType == 1) {
                             if (countPromo < 4) {
                                 countPromo++;
-                                txtPromo += '<div class="col s3 m3 l3"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
+                                txtPromo += '<div class="col s3 m3 l3 hvr-grow"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
                             }
                         }
                         else if (obj.ReturnVal[i].ContentType == 2) {
                             if (countNews < 4) {
                                 countNews++;
-                                txtNews += '<div class="col s3 m3 l3"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
+                                txtNews += '<div class="col s3 m3 l3 hvr-grow"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
                             }
                         }
                         else {
@@ -835,16 +835,16 @@
                             var url = obj.ReturnVal[i].ContentDetail.split("|")[2];
                             if (countRecommend == 0) {
                                 countRecommend++;
-                                txtRecommendMain += '<div class="card"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" /><span class="card-title">' + name + '</span></a></div></div>';
+                                txtRecommendMain += '<div class="card hvr-grow" style="min-height:300px;"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" style="min-height:400px;min-width:350px;"/><span id="ReccommendMainItem" class="card-title">' + name + '</span></a></div></div>';
                             }
                             else if (countRecommend1 < 4 || countRecommend2 < 4) {
                                 if (countRecommend1 == countRecommend2) {
                                     countRecommend1++;
-                                    txtRecommendSub1 += '<div class="col s3 m3 l3"><div class="card"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" /><span class="card-title">' + name + '</span></a></div></div></div>';
+                                    txtRecommendSub1 += '<div class="col s3 m3 l3 hvr-grow" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
                                 }
                                 else {
                                     countRecommend2++;
-                                    txtRecommendSub2 += '<div class="col s3 m3 l3"><div class="card"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" /><span class="card-title">' + name + '</span></a></div></div></div>';
+                                    txtRecommendSub2 += '<div class="col s3 m3 l3 hvr-grow" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
                                 }
                             }
                         }

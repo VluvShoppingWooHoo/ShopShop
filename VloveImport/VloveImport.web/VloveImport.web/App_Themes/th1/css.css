@@ -700,14 +700,14 @@ table[class~="borderTable"]
 
 .lbCaption
 {
-	font-size: 18px !important;
-	font-weight: 700;
-	color: orange;
+    font-size: 18px !important;
+    font-weight: 700;
+    color: orange;
 }
 
 .margin0
 {
-	margin-right:0px !important;
+    margin-right: 0px !important;
 }
 
 .txtalignCenter
@@ -715,12 +715,41 @@ table[class~="borderTable"]
     text-align: center !important;
 }
 
+#ReccommendMainItem
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0px !important;
+    width: 100%;
+    font-size: 20px !important;
+}
+
 div[class~="card-image"] a span[class~="card-title"]
 {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     padding: 0px !important;
-    width: 100%
+    width: 100%;
 }
 
+.hvr-grow
+{
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
 
+    .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active
+    {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
