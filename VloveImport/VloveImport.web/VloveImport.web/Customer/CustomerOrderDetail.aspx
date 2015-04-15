@@ -125,7 +125,8 @@
             </button>
         </div>
     </div>
-    <div class="row">        
+    <div class="row"> 
+        <span class="FontHeader black-text">ข้อมูลการชำระเงิน</span>       
         <asp:GridView ID="gvTran" runat="server" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField DataField="TRAN_DATE" HeaderText="วันที่ชำระเงิน" />

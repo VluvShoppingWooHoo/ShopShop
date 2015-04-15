@@ -4,8 +4,8 @@
     <span class="oblique bold orange-text" style="font-size: 16px !important;">Recommend</span>
     <div id="divRecommend">
         <div class="row">
-            <div id="divRecommendNewest" class="col s3 m3 l3"></div>
-            <div class="col s9 m9 l9">
+            <div id="divRecommendNewest" class="col s4 m4 l4" style="padding-right:0px;min-height:350px;min-width:350px;"></div>
+            <div class="col s8 m8 l8">
                 <div id="divSubRecommend1" class="row">
                 </div>
                 <div id="divSubRecommend2" class="row">

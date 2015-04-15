@@ -12,6 +12,7 @@
                     <asp:TemplateField HeaderText="รหัสใบสั่งซื้อ" ItemStyle-Width="130px">
                         <ItemTemplate>
                             <asp:HiddenField ID="hdOrder_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' />
+                            <asp:HiddenField ID="hdOrder_Pay" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_PAY") %>' />
                             <asp:HyperLink ID="hlOrderCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_CODE") %>'
                                 NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>'></asp:HyperLink>
                             <%--<asp:Label ID="lbOrderCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_CODE") %>'></asp:Label>--%>
@@ -45,7 +46,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ค่าขนส่งในประเทศ" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label ID="lbPRICE3" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'></asp:Label>
+                            <asp:Label ID="lbPRICE3" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_PAY") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderStyle-Width="80px">
