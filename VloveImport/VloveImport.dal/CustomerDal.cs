@@ -268,7 +268,7 @@ namespace VloveImport.dal
 
         #region TRANSACTION
 
-        public string INS_UPD_TRANSACTION(TransactionData EnTran, string Act)
+        public string INS_UPD_TRANSACTION(TransactionData EnTran, string Act, Int32 Status)
         {
             try
             {
@@ -297,6 +297,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("TRANS_PICURL", SqlDbType.VarChar, ParameterDirection.Input, EnTran.TRANS_PICURL);
                 //SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnTran.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+                SqlCommandData.SetParameter_Input_INT("Status", SqlDbType.Int, ParameterDirection.Input, Status);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();

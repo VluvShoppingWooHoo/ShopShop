@@ -27,6 +27,7 @@ namespace VloveImport.biz
                 if (PassDB == Pass)
                 {
                     Cust.Cus_ID = dt.Rows[0]["Cus_ID"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["Cus_ID"].ToString());
+                    Cust.Cus_Code = dt.Rows[0]["Cus_Code"].ToString();
                     Cust.Cus_Name = dt.Rows[0]["Cus_Name"].ToString();
                     Cust.Cus_LName = dt.Rows[0]["Cus_LName"].ToString();
                     if (dt.Rows[0]["Cus_BirthDay"].ToString() != "")

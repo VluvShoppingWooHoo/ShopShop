@@ -69,6 +69,13 @@ namespace VloveImport.biz
             //}
             return Res;
         }
+        public string UpdateOrderPrice(Int32 Order_ID)
+        {
+            string Result = "";
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            Result = dal.UpdateOrderPrice(Order_ID);
+            return Result;
+        }
         public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");

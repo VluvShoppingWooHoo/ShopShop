@@ -147,13 +147,13 @@ namespace VloveImport.biz
 
         #region TRANSACTION
 
-        public string INS_UPD_TRANSACTION(TransactionData EnTran, string Act)
+        public string INS_UPD_TRANSACTION(TransactionData EnTran, string Act, Int32 Status)
         {
             string Result = "";
             try
             {
                 CustomerDal dal = new CustomerDal("LocalConnection");
-                Result = dal.INS_UPD_TRANSACTION(EnTran, Act);
+                Result = dal.INS_UPD_TRANSACTION(EnTran, Act, Status);
             }
             catch (Exception ex)
             {
