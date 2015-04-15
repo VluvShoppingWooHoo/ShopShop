@@ -9,7 +9,8 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <fieldset>
-                <legend>ข้อมูลธนาคาร
+                <legend>
+                    Master Bamk
                 </legend>
                 <table>
                     <tr>
@@ -21,26 +22,26 @@
                         <td>
                             <asp:GridView ID="gv_Deatil" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames="BANK_SHOP_ID" OnRowCreated="gv_Deatil_RowCreated">
                                 <Columns>
-                                    <asp:BoundField HeaderText="ลำดับ" DataField="ROW_INDEX">
+                                    <asp:BoundField HeaderText="No." DataField="ROW_INDEX">
                                         <HeaderStyle CssClass="width5" />
                                         <ItemStyle HorizontalAlign="Right" Width="5%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="BANK_NAME" HeaderText="ชื่อธนาคาร">
+                                    <asp:BoundField DataField="BANK_NAME" HeaderText="Bank name">
                                         <HeaderStyle CssClass="width15" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="เลขที่บัญชี" DataField="BANK_SHOP_ACCOUNT_NO">
+                                    <asp:BoundField HeaderText="Account no" DataField="BANK_SHOP_ACCOUNT_NO">
                                         <HeaderStyle CssClass="width15" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="ชื่อบัญชี" DataField="BANK_SHOP_ACCOUNT_NAME">
+                                    <asp:BoundField HeaderText="Account name" DataField="BANK_SHOP_ACCOUNT_NAME">
                                         <HeaderStyle CssClass="width15" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                         <ItemStyle HorizontalAlign="Left" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="หมายเหตุ" DataField="BANK_SHOP_REMARK">
+                                    <asp:BoundField HeaderText="Remark" DataField="BANK_SHOP_REMARK">
                                         <HeaderStyle CssClass="width25" />
                                         <ItemStyle HorizontalAlign="Left" Width="10%" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="สถานะ" DataField="BANK_SHOP_STATUS_TEXT">
+                                    <asp:BoundField HeaderText="Status" DataField="BANK_SHOP_STATUS_TEXT">
                                         <HeaderStyle CssClass="width15" />
                                         <ItemStyle HorizontalAlign="Center" Width="10%" />
                                     </asp:BoundField>
@@ -85,35 +86,35 @@
                         <br />
                         <table width ="100%">
                             <tr>
-                                <td align ="left" Width ="25%">ชื่อธนาคาร : </td>
+                                <td align ="left" Width ="25%">Bank name : </td>
                                 <td align ="left" Width ="75%">
                                     <asp:DropDownList ID="ddl_bank_name" runat="server"></asp:DropDownList>
                                 </td>
                             </tr>
                             <tr>
-                                <td align ="left" Width ="25%">เลขที่บัญชี : </td>
+                                <td align ="left" Width ="25%">Account no : </td>
                                 <td align ="left" Width ="75%">
                                     <asp:TextBox ID="txt_acc_no" runat="server" Width ="300px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td align ="left">ชื่อบัญชี :</td>
+                                <td align ="left">Account name :</td>
                                 <td align ="left">
                                     <asp:TextBox ID="txt_acc_name" runat="server" Width ="300px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td style ="vertical-align:top;" align ="left">หมายเหตุ : </td>
+                                <td style ="vertical-align:top;" align ="left">Remark : </td>
                                 <td align ="left">
                                     <asp:TextBox ID="txt_remark" runat="server" Width="300px" Height ="100px" TextMode ="MultiLine"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td align ="left">สถานะ : </td>
+                                <td align ="left">Status : </td>
                                 <td align ="left">
                                     <asp:DropDownList ID="ddl_Status" runat="server" Width ="300px">
-                                        <asp:ListItem Value="1">ใช้งาน</asp:ListItem>
-                                        <asp:ListItem Value="0">ไม่ใช้งาน</asp:ListItem>
+                                        <asp:ListItem Value="1">Active</asp:ListItem>
+                                        <asp:ListItem Value="0">Inactive</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                             </tr>
@@ -123,8 +124,8 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล" CssClass ="btnSave" OnClick="btnSave_Click"></asp:Button>&nbsp;&nbsp;
-                                    <asp:Button ID="btnReset" runat="server" Text="ล้างข้อมูล" CssClass ="btnCancel" OnClick="btnReset_Click"></asp:Button>
+                                    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass ="btnSave" OnClick="btnSave_Click"></asp:Button>&nbsp;&nbsp;
+                                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass ="btnCancel" OnClick="btnReset_Click"></asp:Button>
                                 </td>
                             </tr>
                         </table>                          

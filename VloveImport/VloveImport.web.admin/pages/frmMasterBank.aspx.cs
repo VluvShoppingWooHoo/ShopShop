@@ -44,15 +44,16 @@ namespace VloveImport.web.admin.pages
                 DataRow Data_Row;
                 Data_Row = ds.Tables[0].NewRow();
 
-                Data_Row["BANK_ID"] = -1;
-                Data_Row["BANK_NAME"] = "กรุณาเลือก";
-                ds.Tables[0].Rows.InsertAt(Data_Row, 0);
+                //Data_Row["BANK_ID"] = -1;
+                //Data_Row["BANK_NAME"] = "กรุณาเลือก";
+                //ds.Tables[0].Rows.InsertAt(Data_Row, 0);
 
                 ddl_bank_name.DataTextField = "BANK_NAME";
                 ddl_bank_name.DataValueField = "BANK_ID";
 
                 ddl_bank_name.DataSource = ds.Tables[0];
                 ddl_bank_name.DataBind();
+                ddl_bank_name.Items.Insert(0, new ListItem("Please select", "-1"));
             }
         }
 
