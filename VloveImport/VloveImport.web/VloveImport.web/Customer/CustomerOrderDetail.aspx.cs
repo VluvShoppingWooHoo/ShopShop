@@ -31,6 +31,7 @@ namespace VloveImport.web.Customer
         {
             ShoppingBiz biz = new ShoppingBiz();
             DataTable dt = new DataTable();
+            double Order_Pay = 0;
             string Trans = "", Status = "";
             Int32 OID = Order_ID == "" ? 0 : Convert.ToInt32(Order_ID);
             dt = biz.GetOrderDetail(OID);
@@ -49,7 +50,11 @@ namespace VloveImport.web.Customer
                 lbOrderStatus.Text = dt.Rows[0]["ORDER_DESC"].ToString();
 
                 Status = dt.Rows[0]["ORDER_STATUS"].ToString();
-                if (Status == "0" || Status == "2" || Status == "4" || Status == "6" || Status == "7" || Status == "8")
+                if (Status == "0" || Status == "2" || Status == "4" || Status == "6" || Status == "7")
+                    btnPay.Visible = false;
+
+                Order_Pay = dt.Rows[0]["ORDER_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["ORDER_PAY"].ToString());
+                if (Status == "8" && Order_Pay <= 0)
                     btnPay.Visible = false;
 
                 //Grid                          

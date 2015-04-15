@@ -41,7 +41,7 @@ namespace VloveImport.web.Customer
                 if (Bal > Tol)
                 {
                     if (ViewState["ORDER_STATUS"] != null)
-                        Status = Convert.ToInt32(ViewState["ORDER_STATUS"].ToString());
+                        Status = Convert.ToInt32(ViewState["ORDER_STATUS"].ToString()) + 1;
 
                     TransactionData data = GetDataTran();
                     string Result = biz.INS_UPD_TRANSACTION(data, "INS", Status);

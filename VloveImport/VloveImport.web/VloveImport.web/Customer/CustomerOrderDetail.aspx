@@ -114,11 +114,11 @@
             <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
                 name="action" class="btn waves-effect orange waves-light">
                 ย้อนกลับ                                
-            </button>
+            </button>&nbsp;&nbsp;
             <button id="btnPay" runat="server" type="submit" onserverclick="btnPay_ServerClick"
                 name="action" class="btn waves-effect orange waves-light">
                 ชำระเงิน                                
-            </button>
+            </button>&nbsp;&nbsp;
             <button id="btnPrint" runat="server" type="submit" onserverclick="btnPrint_ServerClick"
                 name="action" class="btn waves-effect orange waves-light">
                 พิมพ์                                
