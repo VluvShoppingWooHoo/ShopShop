@@ -115,7 +115,7 @@
         <div style="vertical-align: middle; width: 40%; height: 50px; margin-left: 20%;">
             <div style="margin-left: 10px;">
                 <button type="button" class="btn waves-effect orange waves-light" name="action">
-                <asp:Button ID="btnTopup" runat="server" Text="SUBMIT" OnClick="btnTopup_Click" />
+                <asp:Button ID="btnTopup" runat="server" Text="SUBMIT" />
                 </button>
 
                 <%--<button id="btnSaveUcTopup" type="button" class="btn waves-effect orange waves-light"
