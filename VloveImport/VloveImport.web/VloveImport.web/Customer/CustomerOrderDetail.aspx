@@ -125,6 +125,16 @@
             </button>
         </div>
     </div>
+    <div class="row">        
+        <asp:GridView ID="gvTran" runat="server" AutoGenerateColumns="false">
+            <Columns>
+                <asp:BoundField DataField="TRAN_DATE" HeaderText="วันที่ชำระเงิน" />
+                <asp:BoundField DataField="TRAN_AMOUNT" HeaderText="จำนวนเงิน" />
+                <asp:BoundField DataField="TRAN_STATUS_DESC" HeaderText="สถานะ" />
+                <asp:BoundField DataField="TRAN_REMARK" HeaderText="หมายเหตุ" />
+            </Columns>
+        </asp:GridView> 
+    </div>
     <script type="text/javascript">
         $(function () {
             SetFadeout();

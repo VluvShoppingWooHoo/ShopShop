@@ -60,6 +60,16 @@ namespace VloveImport.web.Customer
                 //Grid                          
                 gvOrder.DataSource = dt;   
                 gvOrder.DataBind();
+
+                //Grid
+                CustomerBiz biz_Cus = new CustomerBiz();
+                DataTable dtTran = biz_Cus.GET_TRANSACTION_BY_ORDERID(OID);
+                if (dtTran != null && dtTran.Rows.Count > 0)
+                    gvTran.DataSource = dtTran;
+                else
+                    gvTran.DataSource = null;
+
+                gvTran.DataBind();
             }
         }
 
