@@ -48,6 +48,7 @@ namespace VloveImport.web.admin.pages
                 BindData_Transaction_status(ddlTranSactionStatus, "S");
                 BindData_Transaction_TYPE(ddlTranSactionType, "S");
                 BindData_Transaction_status(ddlview_Tran_Status, "A", "BIND_DDL_STS_IN");
+                BindData();
             }
 
             btnUpdateRemark.Attributes.Add("onClick", "javascript:return confirm('คุณต้องการบันทึกรายการนี้หรือไม่ ?')");

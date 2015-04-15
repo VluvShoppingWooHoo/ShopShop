@@ -58,6 +58,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Amount_Receive;
         
         /// <summary>
+        /// lbl_ViewDetail_Addtional_Amount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ViewDetail_Addtional_Amount;
+        
+        /// <summary>
         /// lbl_ViewDetail_Amount_Actually_Pay control.
         /// </summary>
         /// <remarks>
