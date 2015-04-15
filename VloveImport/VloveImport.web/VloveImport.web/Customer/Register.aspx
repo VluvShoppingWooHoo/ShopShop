@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:MultiView ID="mView" runat="server">
+    <asp:MultiView ID="mView" runat="server" ActiveViewIndex="0">
         <asp:View ID="v0" runat="server">
             <div style="height:650px;">
                 <div class="col s2 m2 l2">
