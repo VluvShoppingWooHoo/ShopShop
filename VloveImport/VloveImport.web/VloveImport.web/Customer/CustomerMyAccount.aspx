@@ -4,7 +4,7 @@
 
 <%@ Register Src="~/UserControls/ucAccFuncTopup.ascx" TagPrefix="uc1" TagName="ucAccFuncTopup" %>
 <%@ Register Src="~/UserControls/ucAccfuncWithdraw.ascx" TagPrefix="uc1" TagName="ucAccfuncWithdraw" %>
-<%--<%@ Register Src="~/UserControls/ucAccfuncMypoint.ascx" TagPrefix="uc1" TagName="ucAccfuncMypoint" %>--%>
+<%@ Register Src="~/UserControls/ucAccfuncMypoint.ascx" TagPrefix="uc1" TagName="ucAccfuncMypoint" %>
 <%@ Register Src="~/UserControls/ucAccfuncTransLog.ascx" TagPrefix="uc1" TagName="ucAccfuncTransLog" %>
 <%@ Register Src="~/UserControls/ucAccfuncVoucher.ascx" TagPrefix="uc1" TagName="ucAccfuncVoucher" %>
 
@@ -43,7 +43,7 @@
                 <uc1:ucAccfuncVoucher runat="server" ID="ucAccfuncVoucher" />
             </div>
             <div id="mypoint" class="row">
-                <%-- <uc1:ucAccfuncMypoint runat="server" id="ucAccfuncMypoint" />--%>
+                 <uc1:ucAccfuncMypoint runat="server" id="ucAccfuncMypoint" />
             </div>
         </div>
     </div>

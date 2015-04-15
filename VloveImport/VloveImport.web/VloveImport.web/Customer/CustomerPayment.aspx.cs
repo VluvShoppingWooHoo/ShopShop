@@ -29,6 +29,7 @@ namespace VloveImport.web.Customer
         protected void btnPayment_ServerClick(object sender, EventArgs e)
         {
             string withdrawDB = "", withdrawDBEn = "", pwd = "";
+            Int32 Status = 0;
             CustomerBiz biz = new CustomerBiz();
             withdrawDB = GetCusSession().Cus_Withdraw_Code;
             withdrawDBEn = DecryptData(withdrawDB);
@@ -39,8 +40,11 @@ namespace VloveImport.web.Customer
                 double Tol = lbTotalAmount.Text == "" ? 0 : Convert.ToDouble(lbTotalAmount.Text);
                 if (Bal > Tol)
                 {
+                    if (ViewState["ORDER_STATUS"] != null)
+                        Status = Convert.ToInt32(ViewState["ORDER_STATUS"].ToString()) + 1;
+
                     TransactionData data = GetDataTran();
-                    string Result = biz.INS_UPD_TRANSACTION(data, "INS");
+                    string Result = biz.INS_UPD_TRANSACTION(data, "INS", Status);
 
                     Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
                 }
@@ -59,22 +63,25 @@ namespace VloveImport.web.Customer
             Int32 Order_ID = OID == "" ? 0 : Convert.ToInt32(OID);            
             CustomerBiz biz = new CustomerBiz();
             ShoppingBiz bizShop = new ShoppingBiz();
-            double Amount = 0, Price = 0, Total = 0, Rate = 0;
+            double Total = 0, Rate = 0;
             Rate = GetRateCurrency();
-
+            
             //Description
             DataTable dtDetail = bizShop.GetOrderDetail(Order_ID);
             if (dtDetail != null && dtDetail.Rows.Count > 0)
             {
-                foreach (DataRow dr in dtDetail.Rows)
-                {
-                    Amount = dr["OD_AMOUNT_ACTIVE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_AMOUNT_ACTIVE"].ToString());
-                    Price = dr["OD_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_PRICE"].ToString());
-                    Total = Total + (Amount * Price);
-                }
+                ViewState["ORDER_STATUS"] = dtDetail.Rows[0]["ORDER_STATUS"].ToString();
+                //foreach (DataRow dr in dtDetail.Rows)
+                //{
+                //    Amount = dr["OD_AMOUNT_ACTIVE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_AMOUNT_ACTIVE"].ToString());
+                //    Price = dr["OD_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_PRICE"].ToString());
+                //    Total = Total + (Amount * Price);
+                //}
+                Total = dtDetail.Rows[0]["ORDER_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dtDetail.Rows[0]["ORDER_PAY"].ToString());
+
                 hlOrderCode.Text = dtDetail.Rows[0]["ORDER_CODE"].ToString().Trim();
                 hlOrderCode.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID);
-                lbTotalAmount.Text = (Total + (Total * 10 /100)).ToString("###,##0.00");
+                lbTotalAmount.Text = Total.ToString("###,##0.00");
                 lbBalance.Text = GetBalance().ToString("###,##0.00");
             }
 

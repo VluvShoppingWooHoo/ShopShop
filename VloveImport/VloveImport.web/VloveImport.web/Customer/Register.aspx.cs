@@ -25,7 +25,7 @@ namespace VloveImport.web.Customer
         {
             if (!IsPostBack)
             {
-                mView.ActiveViewIndex = 1;
+                
             }
         }
 

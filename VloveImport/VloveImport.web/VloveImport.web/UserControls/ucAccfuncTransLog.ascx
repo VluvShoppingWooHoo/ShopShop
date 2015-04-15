@@ -3,7 +3,8 @@
 <b>บันทึกการใช้จ่าย</b> : <b>ยอดเงินคงเหลือ THB <asp:Label ID="lbMymoney" runat="server"></asp:Label></b>
 <br /><br />
 <div style = "border:2px solid #B7B2AF; vertical-align :middle; width:95%; height:600px;">
-    <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false">
+    <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false"
+        AllowPaging="true" PageSize="10" OnPageIndexChanging="gvTrans_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="TRAN_DETAIL" HeaderText="ประเภทรายการ" />
             <asp:BoundField DataField="TRAN_REMARK" HeaderText="หมายเหตุ" />

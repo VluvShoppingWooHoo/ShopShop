@@ -95,7 +95,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("CUS_ADDRESS_ID", SqlDbType.Int, ParameterDirection.Input, Data.CUS_ADDRESS_ID);
                 SqlCommandData.SetParameter_Input_INT("TRANSPORT_CH_TH_METHOD", SqlDbType.Int, ParameterDirection.Input, Data.TRANSPORT_CH_TH_METHOD);
                 SqlCommandData.SetParameter_Input_INT("TRANSPORT_TH_CU_METHOD", SqlDbType.Int, ParameterDirection.Input, Data.TRANSPORT_TH_CU_METHOD);
-                SqlCommandData.SetParameter_Input_INT("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
+                SqlCommandData.SetParameter("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
                 SqlCommandData.SetParameter_Input_INT("ORDER_TRANS_RATE", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TRANS_RATE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
 
@@ -210,6 +210,28 @@ namespace VloveImport.dal
                 //throw new Exception("AddtoCart -> msg : " + ex.Message);                
                 SqlCommandData.RollBack();
                 return ("INS_ORDER_DETAIL -> msg : " + ex.Message);
+            }
+        }
+        public string UpdateOrderPrice(Int32 Order_ID)
+        {
+            try
+            {
+                string Result = "";
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("UPDATE_ORDER_PRICE");
+
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, Order_ID);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return ex.Message;
             }
         }
         public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)

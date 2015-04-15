@@ -73,7 +73,7 @@ namespace VloveImport.web.Customer
         {
             HyperLink hl;
             HiddenField hdd;
-            Button btnPay, btnDel;
+            Button btnDel;
             string Order_ID = "";
             foreach (GridViewRow gvr in gvOrder.Rows)
             {
@@ -85,18 +85,30 @@ namespace VloveImport.web.Customer
                     hl.NavigateUrl = "~/Customer/CustomerOrderDetail.aspx?P=" + EncrypData("LIST") + "&OID=" + Order_ID;
                 }
 
-                if (hdd != null && (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "5" || hdd.Value == "6"))
+                if(hdd != null)
                 {
-                    gvr.Cells[5].Visible = false;
-                    //btnPay = (Button)gvr.Cells[5].FindControl("btnPay");
-                    //btnDel = (Button)gvr.Cells[5].FindControl("btnDelete");
-
-                    //if (btnPay != null)
-                    //    btnPay.Visible = false;
-                    //if (btnDel != null)
-                    //    btnDel.Visible = false;
-
+                    if (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "4" || hdd.Value == "6" || hdd.Value == "7" || hdd.Value == "8")
+                    {
+                        gvr.Cells[7].Visible = false;
+                        gvr.Cells[8].Visible = false;
+                    }
+                    if (hdd.Value != "1")
+                    {
+                        gvr.Cells[8].Visible = false;
+                    }
                 }
+            }
+        }
+
+        protected void gvOrder_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            if (ViewState["SOURCE"] != null)
+            {
+                DataTable dt = new DataTable();
+                dt = (DataTable)ViewState["SOURCE"];
+                gvOrder.PageIndex = e.NewPageIndex;
+                gvOrder.DataSource = dt;
+                gvOrder.DataBind();
             }
         } 
 

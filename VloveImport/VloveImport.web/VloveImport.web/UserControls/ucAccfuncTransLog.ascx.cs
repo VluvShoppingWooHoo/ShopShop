@@ -40,8 +40,29 @@ namespace VloveImport.web.UserControls
         {
             CustomerBiz biz = new CustomerBiz();
             DataTable dt = biz.GET_CUSTOMER_TRANSLOG(this._VS_CUS_ID);
-            gvTrans.DataSource = dt;
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                gvTrans.DataSource = dt;
+                ViewState["SOURCE"] = dt;
+            }
+            else
+            {
+                gvTrans.DataSource = null;
+                ViewState["SOURCE"] = null;
+            }            
             gvTrans.DataBind();
+        }
+
+        protected void gvTrans_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            if (ViewState["SOURCE"] != null)
+            {
+                DataTable dt = new DataTable();
+                dt = (DataTable)ViewState["SOURCE"];
+                gvTrans.PageIndex = e.NewPageIndex;
+                gvTrans.DataSource = dt;
+                gvTrans.DataBind();
+            }
         }
     }
 }

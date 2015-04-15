@@ -124,5 +124,17 @@ namespace VloveImport.web.Customer
 
             //lbTotal.Text = Total.ToString("###,###.00") + "หยวน";
         }
+
+        protected void gvBasket_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            if (ViewState["SOURCE"] != null)
+            {
+                DataTable dt = new DataTable();
+                dt = (DataTable)ViewState["SOURCE"];
+                gvBasket.PageIndex = e.NewPageIndex;
+                gvBasket.DataSource = dt;
+                gvBasket.DataBind();
+            }
+        }
     }
 }

@@ -16,7 +16,8 @@
                     </div>
                     <br />
                     <br />
-                    <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false">
+                    <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false"
+                        AllowPaging="true" PageSize="10" OnPageIndexChanging="gvBasket_PageIndexChanging">
                         <Columns>
                             <asp:TemplateField ItemStyle-Width="30px">
                                 <ItemTemplate>
