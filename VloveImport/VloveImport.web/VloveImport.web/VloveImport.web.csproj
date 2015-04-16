@@ -629,6 +629,7 @@
     <None Include="Properties\PublishProfiles\Web.pubxml" />
     <Content Include="Script\20150404.bak" />
     <Content Include="Script\20150411.bak" />
+    <Content Include="Script\20150416.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
