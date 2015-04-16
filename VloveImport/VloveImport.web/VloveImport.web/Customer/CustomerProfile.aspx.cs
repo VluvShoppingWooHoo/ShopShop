@@ -43,8 +43,8 @@ namespace VloveImport.web.Customer
             Data.Cus_LName = txtLName.Text;
             Data.Cus_Gender = ddlGender.SelectedValue;
             //Data.Cus_BirthDay = txtName.Text;
-            Data.Cus_Email = txtEmail.Text;
-            Data.Cus_Link_Shop = txtEmail.Text;
+            //Data.Cus_Email = txtEmail.Text;
+            //Data.Cus_Link_Shop = txtEmail.Text;
 
             return Data;
         }
@@ -54,13 +54,15 @@ namespace VloveImport.web.Customer
             Int32 Cus_ID = GetCusID();
             CustomerBiz Biz = new CustomerBiz();
             DataTable dt = Biz.Get_Customer_Profile(Cus_ID);
+            string Gender = "";
             if (dt != null && dt.Rows.Count > 0)
             {
-                lbCode.Text = dt.Rows[0]["Cus_Code"].ToString();
-                lbUser.Text = dt.Rows[0]["Cus_Code"].ToString();
+                Gender = dt.Rows[0]["Cus_Gender"].ToString() == "" ? "1" : dt.Rows[0]["Cus_Gender"].ToString();
+                lbEMail.Text = dt.Rows[0]["Cus_Email"].ToString();
+                lbCode.Text = dt.Rows[0]["Cus_Code"].ToString();                
                 txtName.Text = dt.Rows[0]["Cus_Name"].ToString();
                 txtLName.Text = dt.Rows[0]["Cus_LName"].ToString();
-                txtEmail.Text = dt.Rows[0]["Cus_Email"].ToString();
+                ddlGender.SelectedIndex = Convert.ToInt32(Gender);
                 txtLinkShop.Text = dt.Rows[0]["Cus_Link_shop"].ToString();
             }
         }

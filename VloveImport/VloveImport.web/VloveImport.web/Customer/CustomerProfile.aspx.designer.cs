@@ -13,13 +13,13 @@ namespace VloveImport.web.Customer {
     public partial class CustomerProfile {
         
         /// <summary>
-        /// lbUser control.
+        /// lbEMail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbUser;
+        protected global::System.Web.UI.WebControls.Label lbEMail;
         
         /// <summary>
         /// lbCode control.
@@ -65,15 +65,6 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlGender;
-        
-        /// <summary>
-        /// txtEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
         /// txtLinkShop control.
