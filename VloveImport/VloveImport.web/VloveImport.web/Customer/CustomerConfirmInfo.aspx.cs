@@ -74,8 +74,8 @@ namespace VloveImport.web.Customer
             }
 
             Transport_Amount = Total_Amount * 10 / 100;
-            lbPay1.Text = "ชำระเงินรอบแรก = (" + Total_Amount.ToString("###,###.00") + " + " + Transport_Amount.ToString("###,###.00")
-                + ") * " + Rate.ToString("###,###.00") + " = " + (Total_Amount + Transport_Amount).ToString("###,###.00") + " บาท";
+            lbPay1.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,###.00") + " + " + Transport_Amount.ToString("###,###.00")
+                + " = " + (Total_Amount + Transport_Amount).ToString("###,###.00") + " บาท";
         }
 
         protected void btnConfirm_ServerClick(object sender, EventArgs e)

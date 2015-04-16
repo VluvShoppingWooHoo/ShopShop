@@ -39,7 +39,7 @@
                             <asp:Label ID="lbPRICE" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ชำระเพิ่ม" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
+                    <%--<asp:TemplateField HeaderText="ชำระเพิ่ม" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Label ID="lbPRICE2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'></asp:Label>
                         </ItemTemplate>
@@ -48,7 +48,7 @@
                         <ItemTemplate>
                             <asp:Label ID="lbPRICE3" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_PAY") %>'></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>--%>
                     <asp:TemplateField HeaderStyle-Width="80px">
                         <ItemTemplate>
                             <button type="button" class="btn waves-effect orange waves-light" name="action" style="height:60%">
