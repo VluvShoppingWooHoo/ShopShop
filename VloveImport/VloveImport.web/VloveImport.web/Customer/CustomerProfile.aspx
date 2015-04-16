@@ -86,7 +86,8 @@
     </div>
     <div class="col s4 m4 l4">
         <div class="row">
-            <asp:Image ID="img" runat="server" />
+            <asp:Image ID="img" runat="server" ImageUrl="~/Images/pic/User.png" BorderWidth="1px"
+                Width="100px" Height="200px"/>
         </div>
     </div>
     
