@@ -24,7 +24,7 @@ namespace VloveImport.web.Customer
             CheckSession();
             if (!IsPostBack)
             {
-                
+
                 string url = Request.QueryString["u"] == null ? "" : DecryptData(Request.QueryString["u"].ToString());
                 //BindData();
             }
@@ -48,29 +48,31 @@ namespace VloveImport.web.Customer
         [WebMethod]
         public static string btnTopup(string Bank, string amt, string date, string time, string remark, string file)
         {
+            #region V1.
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
-            BasePage bp = new BasePage();
-            TransactionData EnTran = new TransactionData();
-            EnTran.Cus_ID = bp.GetCusID();
+            //BasePage bp = new BasePage();
+            //TransactionData EnTran = new TransactionData();
+            //EnTran.Cus_ID = bp.GetCusID();
 
-            EnTran.TRAN_TYPE = 1;
-            EnTran.TRAN_TABLE_TYPE = 1;
-            EnTran.TRAN_DETAIL = "รายการฝากเงิน";
+            //EnTran.TRAN_TYPE = 1;
+            //EnTran.TRAN_TABLE_TYPE = 1;
+            //EnTran.TRAN_DETAIL = "รายการฝากเงิน";
 
-            EnTran.BANK_ID = Convert.ToInt32(Bank);
-            EnTran.TRAN_AMOUNT = Convert.ToDouble(amt);
-            EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(date, '-', "YYYYMMDD", 0));
-            EnTran.PAYMENT_TIME = time;
-            EnTran.TRAN_REMARK = remark.Trim();
-            EnTran.TRAN_STATUS = 1;
-            EnTran.Create_User = bp.GetCusCode();
+            //EnTran.BANK_ID = Convert.ToInt32(Bank);
+            //EnTran.TRAN_AMOUNT = Convert.ToDouble(amt);
+            //EnTran.PAYMENT_DATE = Convert.ToDateTime(bp.Convert_DateYYYYMMDD(date, '-', "YYYYMMDD", 0));
+            //EnTran.PAYMENT_TIME = time;
+            //EnTran.TRAN_REMARK = remark.Trim();
+            //EnTran.TRAN_STATUS = 1;
+            //EnTran.Create_User = bp.GetCusCode();
 
-            CustomerBiz CusBiz = new CustomerBiz();
-            //Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
-            ucAccFuncTopup topup = new ucAccFuncTopup();
-            topup.ClearData();
+            //CustomerBiz CusBiz = new CustomerBiz();
+            ////Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
+            //ucAccFuncTopup topup = new ucAccFuncTopup();
+            //topup.ClearData();
             return js.Serialize(Result);
+            #endregion
         }
 
         [WebMethod]
