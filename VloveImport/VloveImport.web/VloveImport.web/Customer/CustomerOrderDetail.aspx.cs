@@ -65,12 +65,33 @@ namespace VloveImport.web.Customer
                 CustomerBiz biz_Cus = new CustomerBiz();
                 DataTable dtTran = biz_Cus.GET_TRANSACTION_BY_ORDERID(OID);
                 if (dtTran != null && dtTran.Rows.Count > 0)
+                {
                     gvTran.DataSource = dtTran;
+                }                 
                 else
                     gvTran.DataSource = null;
 
                 gvTran.DataBind();
             }
+        }
+
+        protected DataTable GenShopName(DataTable dt)
+        {
+            string Result = "";
+            string ShopName = "", OldShopName = "";
+            string Tracking = "", ShopID = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                ShopName = dr["SHOPNAME"].ToString();
+                if(ShopName != OldShopName)
+                {
+                    Result += "Shop name : " + ShopName + "&nbsp;&nbsp;";
+                    Result += "Tracking No. : " + dr["TRACKING_NO"].ToString() + "&nbsp;&nbsp;";
+                    Result += "Order ID " + dr["SHOP_ORDER_ID"].ToString() + "&nbsp;&nbsp;";
+                }
+                OldShopName = ShopName;
+            }
+            return dt;
         }
 
         protected void btnBack_ServerClick(object sender, EventArgs e)
@@ -94,6 +115,39 @@ namespace VloveImport.web.Customer
         {
             string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
             Redirect("~/Report/ReportViewer.aspx?ID=" + OID + "&RN=" + EncrypData("ORDER"));
-        }        
+        }
+
+        protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int Count = 0;
+                string ShopName = DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString();                
+                if (ViewState["OldShopName"] == null || ViewState["OldShopName"].ToString() != ShopName)
+                {
+                    Count = ViewState["Count"] == null ? 1 : Convert.ToInt32(ViewState["Count"]);
+                    Label lbShopName = ((Label)e.Row.FindControl("lbShopName"));
+                    GridViewRow row = new GridViewRow(e.Row.RowIndex + Count, -1, DataControlRowType.DataRow, DataControlRowState.Insert);
+                    TableCell cell = new TableCell();
+                    cell.ColumnSpan = gvOrder.Columns.Count;
+                    cell.CssClass = "gv-shopname";
+                    string ShowShop = "";
+
+                    ShowShop += "Shop name : " + DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString() + "&nbsp;&nbsp;";
+                    ShowShop += "Tracking No. " + DataBinder.Eval(e.Row.DataItem, "TRACKING_NO").ToString() + "&nbsp;&nbsp;";
+                    ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";
+
+                    lbShopName.Text = ShowShop;
+                    cell.Controls.Add(lbShopName);
+                    row.Cells.Add(cell);
+                    row.CssClass = "gv-shopname";
+                    ((GridView)sender).Controls[0].Controls.AddAt(e.Row.RowIndex + Count, row);
+                    
+                    ViewState["OldShopName"] = ShopName;
+                    ViewState["Count"] = ++Count;
+                }
+
+            }
+        }
     }
 }
