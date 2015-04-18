@@ -136,5 +136,40 @@ namespace VloveImport.web.Customer
                 gvBasket.DataBind();
             }
         }
+
+        #region Event Gridview
+        protected void imbEdit_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent.Parent.Parent).RowIndex;
+            ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 1;
+            ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 1;            
+        }
+
+        protected void imgbtn_Updateprod_amount_Click(object sender, ImageClickEventArgs e)
+        {
+            string Result = "";
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent.Parent.Parent).RowIndex;
+            int Amount = ((TextBox)gvBasket.Rows[rowIndex].FindControl("txtAmount")).Text == "" ? 0 : Convert.ToInt32(((TextBox)gvBasket.Rows[rowIndex].FindControl("txtAmount")).Text);
+            int BK_ID = ((HiddenField)gvBasket.Rows[rowIndex].FindControl("hdBK_ID")).Value == "" ? 0 : Convert.ToInt32(((TextBox)gvBasket.Rows[rowIndex].FindControl("hdBK_ID")).Text);
+
+            ShoppingBiz Biz = new ShoppingBiz();
+            Result = Biz.UpdateBasketAmount(BK_ID, Amount);
+            if (Result == "")
+            {
+                BindData();
+                //ShowMessageBox("Update product amount success", this.Page);
+                ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 0;
+                ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 0;
+            }
+        }
+
+        protected void imgbtn_Cancelprod_amount_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent.Parent.Parent).RowIndex;
+            ((TextBox)gvBasket.Rows[rowIndex].FindControl("txtAmount")).Text = ((Label)gvBasket.Rows[rowIndex].FindControl("lbAmount")).Text;
+            ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 0;
+            ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 0;
+        }
+        #endregion
     }
 }

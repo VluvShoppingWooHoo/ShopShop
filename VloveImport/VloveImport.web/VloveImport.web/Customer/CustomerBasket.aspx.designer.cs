@@ -13,6 +13,15 @@ namespace VloveImport.web.Customer {
     public partial class CustomerBasket {
         
         /// <summary>
+        /// updatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatePanel;
+        
+        /// <summary>
         /// lbTotal control.
         /// </summary>
         /// <remarks>
