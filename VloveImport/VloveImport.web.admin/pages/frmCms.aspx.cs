@@ -52,13 +52,14 @@ namespace VloveImport.web.admin.pages
             {
                 AdminBiz AddBiz = new AdminBiz();
                 DataSet ds = new DataSet();
-                ds = AddBiz.ADMIN_GET_CMS(_VS_CONTENT_ID, string.Empty, "0", "BINDDATA_BYID");
+                ds = AddBiz.ADMIN_GET_CMS(_VS_CONTENT_ID, string.Empty, "0", 1, "BINDDATA_BYID");
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     txtContentTitle.Text = ds.Tables[0].Rows[0]["CONTENT_TITLE"].ToString();
                     txtContentDetail.Text = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString();
                     ddl_Content_Type.SelectedValue = ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString();
+                    hdContentIMG.Value = ds.Tables[0].Rows[0]["CONTENT_IMG"].ToString();
                     if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"]) chkIsActive.Checked = true;
                     else chkIsActive.Checked = false;
                     chkType(ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString());
@@ -82,7 +83,7 @@ namespace VloveImport.web.admin.pages
                 cd.IsActive = chkIsActive.Checked == true ? 1 : 0;
                 cd.ContentID = _VS_CONTENT_ID == "" ? 0 : int.Parse(_VS_CONTENT_ID);
                 cd.ContentDate = DateTime.Today;
-                cd.ContentImage = string.Empty;
+                cd.ContentImage = hdContentIMG.Value;
                 if (hdfContentType.Value == "1" || hdfContentType.Value == "2")
                 {
                     if (FileUploadControl.HasFile)
@@ -95,7 +96,7 @@ namespace VloveImport.web.admin.pages
                         string filename = "Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
                         cd.ContentImage = filename;
                     }
-                    cd.ContentDetail = txtContentDetail.Text;
+                    cd.ContentDetail = htmlObject(txtContentDetail.Text);
                     cd.ContentTitle = txtContentTitle.Text;
                 }
                 else
@@ -160,6 +161,20 @@ namespace VloveImport.web.admin.pages
                 trTitle.Visible = false;
                 trURL.Visible = true;
             }
+        }
+
+        private string htmlObject(string txt)
+        {
+            #region Font Size
+            txt = txt.Replace("size=\"1\"", "style='font-size:0.63em !important;'")
+                .Replace("size=\"2\"", "style='font-size:0.82em !important;'")
+                .Replace("size=\"3\"", "style='font-size:1.0em !important;'")
+                .Replace("size=\"4\"", "style='font-size:1.13em !important;'")
+                .Replace("size=\"5\"", "style='font-size:1.5em !important;'")
+                .Replace("size=\"6\"", "style='font-size:2em !important;'")
+                .Replace("size=\"7\"", "style='font-size:3em !important;'");
+            #endregion
+            return txt;
         }
     }
 }

@@ -722,16 +722,19 @@
         <div class="row slider">
             <ul class="slides" style="height: 300px;">
                 <li class="li1">
-                    <img src="../Images/pic/Banner/ILoveImport.jpg" style="background-size: 100%;" />
-                    <!-- random image -->
+                    <%--<img src="../Images/pic/Banner/ILoveImport.jpg" style="background-size: 100%;" />--%>
                 </li>
                 <li class="li2">
-                    <img src="../Images/pic/Banner/Sale.jpg" style="background-size: 100%;" />
-                    <!-- random image -->
+                    <%--<img src="../Images/pic/Banner/Sale.jpg" style="background-size: 100%;" />--%>
                 </li>
                 <li class="li3">
-                    <img src="../Images/pic/Banner/Tour1.jpg" style="background-size: 100%;" />
-                    <!-- random image -->
+                    <%--<img src="../Images/pic/Banner/Tour1.jpg" style="background-size: 100%;" />--%>
+                </li>
+                <li class="li4">
+                    <%--<img src="../Images/pic/Banner/Tour1.jpg" style="background-size: 100%;" />--%>
+                </li>
+                <li class="li5">
+                    <%--<img src="../Images/pic/Banner/Tour1.jpg" style="background-size: 100%;" />--%>
                 </li>
             </ul>
         </div>
@@ -818,15 +821,16 @@
                     var countRecommend2 = 0;
                     for (var i = 0; i < obj.ReturnVal.length; i++) {
                         if (obj.ReturnVal[i].ContentType == 1) {
-                            if (countPromo < 4) {
+                            if (countPromo < 5) {
+                                $(".slider li.li" + (countPromo + 1)).append('<a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%;" /></a>')
                                 countPromo++;
-                                txtPromo += '<div class="col s3 m3 l3 hvr-grow"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
+                                //txtPromo += '<div class="col s3 m3 l3 hvr-float"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
                             }
                         }
                         else if (obj.ReturnVal[i].ContentType == 2) {
                             if (countNews < 4) {
                                 countNews++;
-                                txtNews += '<div class="col s3 m3 l3 hvr-grow"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
+                                txtNews += '<div class="col s3 m3 l3 hvr-float"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
                             }
                         }
                         else {
@@ -835,23 +839,23 @@
                             var url = obj.ReturnVal[i].ContentDetail.split("|")[2];
                             if (countRecommend == 0) {
                                 countRecommend++;
-                                txtRecommendMain += '<div class="card hvr-grow" style="min-height:300px;"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" style="min-height:400px;min-width:350px;"/><span id="ReccommendMainItem" class="card-title">' + name + '</span></a></div></div>';
+                                txtRecommendMain += '<div class="card hvr-float" style="min-height:300px;"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" style="min-height:400px;min-width:350px;"/><span id="ReccommendMainItem" class="card-title">' + name + '</span></a></div></div>';
                             }
                             else if (countRecommend1 < 4 || countRecommend2 < 4) {
                                 if (countRecommend1 == countRecommend2) {
                                     countRecommend1++;
-                                    txtRecommendSub1 += '<div class="col s3 m3 l3 hvr-grow" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
+                                    txtRecommendSub1 += '<div class="col s3 m3 l3 hvr-float" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
                                 }
                                 else {
                                     countRecommend2++;
-                                    txtRecommendSub2 += '<div class="col s3 m3 l3 hvr-grow" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
+                                    txtRecommendSub2 += '<div class="col s3 m3 l3 hvr-float" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
                                 }
                             }
                         }
                     }
-                    txtPromo += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=1">ดูเพิ่มเติม</a></div></div>';
+                    //txtPromo += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=1">ดูเพิ่มเติม</a></div></div>';
                     txtNews += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=2">ดูเพิ่มเติม</a></div></div>';
-                    $('#divPromotionBar').html(txtPromo);
+                    //$('#divPromotionBar').html(txtPromo);
                     $('#divNewsBar').html(txtNews);
                     $('#divRecommendNewest').html(txtRecommendMain);
                     $('#divSubRecommend1').html(txtRecommendSub1);

@@ -91,7 +91,7 @@ body
     opacity: 0.9;
 }
 
-*
+* :not(#contentDetailDiv)
 {
     font-size: 12px !important;
     /*font-size: 14px !important;*/
@@ -752,4 +752,22 @@ div[class~="card-image"] a span[class~="card-title"]
     {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
+    }
+
+.hvr-float
+{
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+}
+
+    .hvr-float:hover,.hvr-float:focus,.hvr-float:active
+    {
+        transform: translateY(-15px);
     }
