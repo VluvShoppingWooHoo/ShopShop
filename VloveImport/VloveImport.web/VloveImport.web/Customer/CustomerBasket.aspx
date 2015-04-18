@@ -3,8 +3,8 @@
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<%--    <asp:UpdatePanel ID="updatePanel" runat="server">
-        <ContentTemplate>--%>
+    <asp:UpdatePanel ID="updatePanel" runat="server">
+        <ContentTemplate>
             <div class="row">
                 <div class="col s12 m12 l12 TestBox1" style="min-height:500px;">
                     <span class="bold FontHeader orange-text">ตะกร้าสินค้าของฉัน</span><br />                        
@@ -48,7 +48,15 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="จำนวน">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT") %>'>></asp:Label>
+                                    <asp:MultiView ID="mvA" runat="server" ActiveViewIndex="0">
+                                        <asp:View ID="vA1" runat="server">
+                                            <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT") %>'>></asp:Label>
+                                        </asp:View>
+                                        <asp:View ID="vA2" runat="server">
+                                            <asp:TextBox ID="txtAmount" runat="server" Width="50px"
+                                                Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT") %>'></asp:TextBox>
+                                        </asp:View>
+                                    </asp:MultiView>                                    
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="รวมทั้งหมด">
@@ -56,6 +64,24 @@
                                     <asp:Label ID="lbTotal" runat="server" Text='<%# Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE")) * Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")) %>'>></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="">
+                                <ItemTemplate>
+                                    <asp:MultiView ID="mvB" runat="server" ActiveViewIndex="0">
+                                        <asp:View ID="vB1" runat="server">
+                                            <asp:ImageButton ID="imbEdit" runat="server" ImageUrl="~/Images/icon/b_edit.png" 
+                                                Width="15px" Height="15px" OnClick="imbEdit_Click" />
+                                        </asp:View>
+                                        <asp:View ID="vB2" runat="server">
+                                            <asp:ImageButton ID="imgbtn_Updateprod_amount" runat="server" ImageUrl="~/Images/icon/check-icon.png" 
+                                                Width="15px" Height="15px" OnClick="imgbtn_Updateprod_amount_Click" />
+                                        &nbsp;&nbsp;
+                                        <asp:ImageButton ID="imgbtn_Cancelprod_amount" runat="server" ImageUrl="~/Images/icon/Close-2-icon.png" 
+                                            Width="15px" Height="15px" OnClick="imgbtn_Cancelprod_amount_Click" />
+                                        </asp:View>
+                                    </asp:MultiView> 
+                                    
+                                </ItemTemplate>
+                            </asp:TemplateField>                            
                         </Columns>
                         <HeaderStyle BackColor="Orange" />
                     </asp:GridView>            
@@ -70,8 +96,8 @@
             </ContentTemplate>
         <%--<Triggers>
             <asp:PostBackTrigger ControlID="gvBasket" />
-        </Triggers>
-    </asp:UpdatePanel>--%>
+        </Triggers>--%>
+    </asp:UpdatePanel>
     <script type="text/javascript">
         $(function () {
             SetFadeout();
