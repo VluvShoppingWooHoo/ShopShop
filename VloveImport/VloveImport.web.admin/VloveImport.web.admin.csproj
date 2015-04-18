@@ -70,6 +70,15 @@
     <Content Include="App_Themes\v_th1\images\input-background-readonly.png" />
     <Content Include="App_Themes\v_th1\images\input-background-warning.png" />
     <Content Include="App_Themes\v_th1\images\input-background.png" />
+    <Content Include="App_Themes\v_th1\images\tab_active.gif" />
+    <Content Include="App_Themes\v_th1\images\tab_hover.gif" />
+    <Content Include="App_Themes\v_th1\images\tab_Inactive.gif" />
+    <Content Include="App_Themes\v_th1\images\tab_left_active.gif" />
+    <Content Include="App_Themes\v_th1\images\tab_left_hover.gif" />
+    <Content Include="App_Themes\v_th1\images\tab_left_inactive.gif" />
+    <Content Include="App_Themes\v_th1\images\tab_right_active.gif" />
+    <Content Include="App_Themes\v_th1\images\tab_right_hover.gif" />
+    <Content Include="App_Themes\v_th1\images\tab_right_inactive.gif" />
     <Content Include="App_Themes\v_th1\Skin1.skin" />
     <Content Include="css\style.css" />
     <Content Include="frmAdminIndex.aspx" />
@@ -107,6 +116,7 @@
     <Content Include="pages\frmMasterBank.aspx" />
     <Content Include="pages\frmOrder.aspx" />
     <Content Include="pages\frmOrderList.aspx" />
+    <Content Include="pages\frmOrder_TEMP.aspx" />
     <Content Include="pages\frmProductOrderList.aspx" />
     <Content Include="pages\frmUser.aspx" />
     <Content Include="pages\frmUserList.aspx" />
@@ -138,6 +148,13 @@
     </Compile>
     <Compile Include="MasterPage\Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Site2.Master.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Site2.Master.designer.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
     <Compile Include="pages\frmApprovePayment.aspx.cs">
       <DependentUpon>frmApprovePayment.aspx</DependentUpon>
@@ -223,6 +240,13 @@
     <Compile Include="pages\frmOrderList.aspx.designer.cs">
       <DependentUpon>frmOrderList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\frmOrder_TEMP.aspx.cs">
+      <DependentUpon>frmOrder_TEMP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmOrder_TEMP.aspx.designer.cs">
+      <DependentUpon>frmOrder_TEMP.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\frmProductOrderList.aspx.cs">
       <DependentUpon>frmProductOrderList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -285,6 +309,7 @@
     <Content Include="MasterPage\Site1.Master" />
     <Content Include="DB\db_batt_20150331.bak" />
     <Content Include="packages.config" />
+    <Content Include="MasterPage\Site2.Master" />
     <None Include="Properties\PublishProfiles\ILOVE_IMPORT.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
