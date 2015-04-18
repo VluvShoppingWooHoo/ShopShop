@@ -41,7 +41,7 @@
                                     DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString() == "" ? false : true %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ราคา">
+                            <asp:TemplateField HeaderText="ราคา<br/>(¥)">
                                 <ItemTemplate>
                                     <asp:Label ID="lbPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE") %>'>></asp:Label>
                                 </ItemTemplate>
@@ -59,7 +59,7 @@
                                     </asp:MultiView>                                    
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="รวมทั้งหมด">
+                            <asp:TemplateField HeaderText="รวมทั้งหมด<br/>(¥)">
                                 <ItemTemplate>
                                     <asp:Label ID="lbTotal" runat="server" Text='<%# Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE")) * Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")) %>'>></asp:Label>
                                 </ItemTemplate>
