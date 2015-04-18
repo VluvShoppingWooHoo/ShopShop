@@ -419,7 +419,7 @@ namespace VloveImport.dal
         #endregion
 
         #region CMS
-        public DataSet ADMIN_GET_CMS(string ID, string Title, string Content_Type, string Act)
+        public DataSet ADMIN_GET_CMS(string ID, string Title, string Content_Type, int Active, string Act)
         {
             try
             {
@@ -428,6 +428,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("CONTENT_ID", SqlDbType.Int, ParameterDirection.Input, ID);
                 SqlCommandData.SetParameter("CONTENT_TITLE", SqlDbType.VarChar, ParameterDirection.Input, Title);
                 SqlCommandData.SetParameter_Input_INT("CONTENT_TYPE", SqlDbType.Int, ParameterDirection.Input, Content_Type);
+                SqlCommandData.SetParameter_Input_INT("IS_ACTIVE", SqlDbType.Int, ParameterDirection.Input, Active);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 return SqlCommandData.ExecuteDataSet();

@@ -55,9 +55,8 @@
                     <tr id="trIMG" runat="server">
                         <td style="text-align: right;">Content Image :</td>
                         <td colspan="4">
-
                             <asp:FileUpload ID="FileUploadControl" runat="server" Width="100%" />
-
+                            <asp:HiddenField ID="hdContentIMG" runat="server" />
                         </td>
                     </tr>
                     <tr id="trHtmlEditor" runat="server">
@@ -77,7 +76,7 @@
                     <tr>
                         <td style="text-align: right;">Active :</td>
                         <td colspan="4">
-                            <asp:CheckBox ID="chkIsActive" runat="server" />
+                            <asp:CheckBox ID="chkIsActive" runat="server" Checked="true"/>
                         </td>
                     </tr>
                     <tr style="margin-top: 20px;">

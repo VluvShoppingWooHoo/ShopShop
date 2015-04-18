@@ -16,7 +16,8 @@
             <div class="col s10 m10 l10">
                 <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
                 <div style="text-align: center; width: 78%;">
-                    <span class="black-text">ตรวจสอบสถานะการขนส่งได้</span> <a class="hvr-grow"  target="_blank" href="http://www.kuaidi100.com/"><span class="textUnderline bold red-text" style="font-size: 18px !important;">ที่นี่ <i class="mdi-maps-directions-ferry"></i></span></a>
+                    <span class="black-text">ตรวจสอบสถานะการขนส่งทางจีนได้</span> <a class="hvr-grow"  target="_blank" href="http://www.kuaidi100.com/"><span class="textUnderline bold red-text" style="font-size: 18px !important;">ที่นี่ <i class="mdi-maps-directions-ferry"></i></span></a>
+                    <span class="black-text">ตรวจสอบเลขพัสดุไปรษณีย์</span> <a class="hvr-grow"  target="_blank" href="http://track.thailandpost.co.th/tracking/default.aspx"><span class="textUnderline bold red-text" style="font-size: 18px !important;">ที่นี่ <i class="mdi-maps-local-post-office"></i></span></a>
                 </div>
             </div>
         </div>

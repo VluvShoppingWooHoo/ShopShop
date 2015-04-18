@@ -32,7 +32,7 @@ namespace VloveImport.web.admin.pages
             try
             {
                 AdminBiz AdBiz = new AdminBiz();
-                ds = AdBiz.ADMIN_GET_CMS("0", txtTitle.Text.Trim(), ddl_Content_Type.SelectedValue.Trim(), "BINDDATA");
+                ds = AdBiz.ADMIN_GET_CMS("0", txtTitle.Text.Trim(), ddl_Content_Type.SelectedValue.Trim(), chkIsActive.Checked == true ? 1 : 0, "BINDDATA");
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {

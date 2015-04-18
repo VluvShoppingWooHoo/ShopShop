@@ -18,14 +18,6 @@
                         <td class="width35">
                             <asp:TextBox ID="txtTitle" runat="server" Width="300px"></asp:TextBox>
                         </td>
-                        <%--<td class="width15">
-                            <asp:Label ID="Label3" runat="server" Text="Active :"></asp:Label>
-                        </td>
-                        <td class="width35">
-                            <asp:CheckBox ID="chkIsActive" runat="server" />
-                        </td>
-                    </tr>--%>
-                    <%--<tr>--%>
                         <td class="width15">
                             <asp:Label ID="Label2" runat="server" Text="Content Type :"></asp:Label>
                         </td>
@@ -36,6 +28,18 @@
                                 <asp:ListItem Value="2">News</asp:ListItem>
                                 <asp:ListItem Value="3">Recommend</asp:ListItem>
                             </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="width15">
+                            <asp:Label ID="Label3" runat="server" Text="Active :"></asp:Label>
+                        </td>
+                        <td class="width35">
+                            <asp:CheckBox ID="chkIsActive" runat="server" Checked="true"/>
+                        </td>
+                        <td class="width15">
+                        </td>
+                        <td class="width35">
                         </td>
                     </tr>
                     <tr>

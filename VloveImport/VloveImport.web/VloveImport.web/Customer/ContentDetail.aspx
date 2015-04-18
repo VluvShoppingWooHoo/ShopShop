@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div class="s12 m12 l12">
-            <img id="contentDetailIMG" src="" style="width: 100%; min-height: 400px;" />
+        <div class="s12 m12 l12" style="text-align:center;">
+            <img id="contentDetailIMG" src="" style="width: 80%; min-height: 200px;" />
         </div>
     </div>
     <div class="row" style="margin-bottom: 2%; margin-top: 2%;">
