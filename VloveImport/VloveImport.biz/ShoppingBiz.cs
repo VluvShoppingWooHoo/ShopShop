@@ -29,6 +29,13 @@ namespace VloveImport.biz
             else
                 return null;
         }
+        public string UpdateBasketAmount(Int32 CUS_BK_ID, Int32 Amount)
+        {
+            string Result = "";
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            Result = dal.UpdateBasketAmount(CUS_BK_ID, Amount);
+            return Result;
+        }
         public DataTable GetTransList(string Type)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
@@ -75,7 +82,7 @@ namespace VloveImport.biz
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             Result = dal.UpdateOrderPrice(Order_ID);
             return Result;
-        }
+        }        
         public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");

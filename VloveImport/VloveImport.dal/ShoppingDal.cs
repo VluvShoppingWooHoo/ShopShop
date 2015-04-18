@@ -66,6 +66,29 @@ namespace VloveImport.dal
                 throw new Exception("GET_BASKET_LIST -> msg : " + ex.Message);
             }
         }
+        public string UpdateBasketAmount(Int32 CUS_BK_ID, Int32 Amount)
+        {
+            try
+            {
+                string Result = "";
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("UPDATE_BASKET_AMOUNT");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_BK_ID", SqlDbType.Int, ParameterDirection.Input, CUS_BK_ID);
+                SqlCommandData.SetParameter_Input_INT("AMOUNT", SqlDbType.Int, ParameterDirection.Input, Amount);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return ex.Message;
+            }
+        }
         public DataSet GetTransList(string Type)
         {
             try
@@ -233,7 +256,7 @@ namespace VloveImport.dal
                 SqlCommandData.RollBack();
                 return ex.Message;
             }
-        }
+        }        
         public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)
         {
             try
