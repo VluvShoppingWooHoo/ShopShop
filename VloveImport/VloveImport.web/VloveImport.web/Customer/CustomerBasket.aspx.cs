@@ -42,7 +42,7 @@ namespace VloveImport.web.Customer
             gvBasket.DataBind();
         }
 
-        protected void btnOrder_ServerClick(object sender, EventArgs e)
+        protected void btnOrder_Click(object sender, EventArgs e)
         {
             Session.Remove("ORDER");
             //string Selected = "";
@@ -60,7 +60,7 @@ namespace VloveImport.web.Customer
                     if (cb != null && !cb.Checked)
                     {
                         hd = (HiddenField)gvr.FindControl("hdBK_ID");
-                        dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());                        
+                        dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
                     }
                 }
 
@@ -150,7 +150,7 @@ namespace VloveImport.web.Customer
             string Result = "";
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent.Parent.Parent).RowIndex;
             int Amount = ((TextBox)gvBasket.Rows[rowIndex].FindControl("txtAmount")).Text == "" ? 0 : Convert.ToInt32(((TextBox)gvBasket.Rows[rowIndex].FindControl("txtAmount")).Text);
-            int BK_ID = ((HiddenField)gvBasket.Rows[rowIndex].FindControl("hdBK_ID")).Value == "" ? 0 : Convert.ToInt32(((TextBox)gvBasket.Rows[rowIndex].FindControl("hdBK_ID")).Text);
+            int BK_ID = ((HiddenField)gvBasket.Rows[rowIndex].FindControl("hdBK_ID")).Value == "" ? 0 : Convert.ToInt32(((HiddenField)gvBasket.Rows[rowIndex].FindControl("hdBK_ID")).Value);
 
             ShoppingBiz Biz = new ShoppingBiz();
             Result = Biz.UpdateBasketAmount(BK_ID, Amount);
@@ -170,6 +170,6 @@ namespace VloveImport.web.Customer
             ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 0;
             ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 0;
         }
-        #endregion
+        #endregion               
     }
 }

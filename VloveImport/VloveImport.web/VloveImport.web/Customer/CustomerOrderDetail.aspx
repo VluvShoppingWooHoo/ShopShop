@@ -66,10 +66,11 @@
     </div>
      <div class="row">        
         <div class="col s12 m12 l12">           
-            <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="false" OnRowDataBound="gvOrder_RowDataBound">
                 <Columns>
                     <asp:TemplateField ItemStyle-Width="70px" ItemStyle-Height="70px">
                         <ItemTemplate>
+                            <asp:Label ID="lbShopName" runat="server"></asp:Label>
                             <asp:Image ID="imgItem" runat="server" Width="50px" Height="70px"
                                 ImageUrl='<%# DataBinder.Eval(Container.DataItem, "OD_PICURL") %>'/>
                         </ItemTemplate>
@@ -78,8 +79,8 @@
                         <ItemTemplate>
                             <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "OD_ID") %>' />
                             <asp:HyperLink ID="hlItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_ITEMNAME") %>'
-                                NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "OD_URL") %>'></asp:HyperLink> <br />  
-                            <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "OD_SIZE") %>'></asp:Label><br />
+                                NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "OD_URL") %>'></asp:HyperLink> <br />  <%--OD_SIZE--%>
+                            <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "SHOPNAME") %>'></asp:Label><br />
                             <asp:Label ID="lbColor" runat="server" Text='<%# "สี " + DataBinder.Eval(Container.DataItem, "OD_COLOR") %>'
                                 Visible='<%# DataBinder.Eval(Container.DataItem, "OD_COLOR").ToString().StartsWith("http") ? false : true %>'></asp:Label>
                         </ItemTemplate>

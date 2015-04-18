@@ -16,11 +16,11 @@
                     </div>
                     <br />
                     <br />
-                    <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false"
-                        AllowPaging="true" PageSize="10" OnPageIndexChanging="gvBasket_PageIndexChanging">
+                    <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" 
+                        OnPageIndexChanging="gvBasket_PageIndexChanging">
                         <Columns>
                             <asp:TemplateField ItemStyle-Width="30px">
-                                <ItemTemplate>
+                                <ItemTemplate>                                    
                                     <asp:CheckBox ID="cbItem" runat="server" Text=" " OnCheckedChanged="cbItem_CheckedChanged" />
                                     <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>' />
                                 </ItemTemplate>
@@ -87,10 +87,11 @@
                     </asp:GridView>            
                 </div>
                 <div class="col s12 m12 l12 TestBox1">
-                    <button id="btnOrder" runat="server" type="submit" onserverclick="btnOrder_ServerClick"
+                    <%--<button id="btnOrder" runat="server" type="submit" onserverclick="btnOrder_ServerClick"
                         name="action" class="btn waves-effect orange waves-light">
                         Order                                
-                    </button>
+                    </button>--%>
+                    <asp:Button ID="btnOrder" runat="server" OnClick="btnOrder_Click" Text="Order" />
                 </div>
             </div>
             </ContentTemplate>

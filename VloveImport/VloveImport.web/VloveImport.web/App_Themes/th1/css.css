@@ -771,3 +771,9 @@ div[class~="card-image"] a span[class~="card-title"]
     {
         transform: translateY(-15px);
     }
+
+.gv-shopname
+{
+	background-color:yellow;
+	padding:7px 5px !important;
+}
