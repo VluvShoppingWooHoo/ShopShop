@@ -15,7 +15,7 @@
     <h3>ORDER DETAIL</h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 
-<asp:TabContainer ID="TabBooking" runat="server" Width="100%" ActiveTabIndex="2">
+<asp:TabContainer ID="TabBooking" runat="server" Width="100%" ActiveTabIndex="0">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <table>
@@ -559,7 +559,7 @@
                                                 <asp:ListItem Value="1">Product Dress Grneral</asp:ListItem>
                                                 <asp:ListItem Value="2">Product Grneral</asp:ListItem>
                                                 <asp:ListItem Value="3">Product Cal Cubi</asp:ListItem>
-                                                <asp:ListItem Value="4">Other</asp:ListItem>
+                                                <asp:ListItem Value="4">Product Brand</asp:ListItem>
                                             </asp:DropDownList>
                                         </asp:View>
                                     </asp:MultiView>
