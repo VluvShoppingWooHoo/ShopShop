@@ -143,6 +143,7 @@ namespace VloveImport.web.Customer
                     cell.Controls.Add(lbShopName);
                     if (ShopRemark != "")
                     {
+                        lbRemark.Visible = true;
                         lbRemark.Text = "<br/>หมายเหตุ : <br/>" + ShopRemark;
                         cell.Controls.Add(lbRemark);
                     }

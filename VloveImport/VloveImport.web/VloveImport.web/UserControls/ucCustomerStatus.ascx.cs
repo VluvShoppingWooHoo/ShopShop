@@ -14,7 +14,10 @@ namespace VloveImport.web.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadData();
+            if (!IsPostBack)
+            {
+                LoadData();
+            }
         }
 
         public void LoadData()

@@ -73,7 +73,8 @@
                             <asp:Image ID="imgItem" runat="server" Width="50px" Height="70px"
                                 ImageUrl='<%# DataBinder.Eval(Container.DataItem, "OD_PICURL") %>'/>
                             <asp:Label ID="lbShopName" runat="server" Width ="90%"></asp:Label>                            
-                            <asp:Label ID="lbRemark" runat="server" Width ="900px" CssClass="red-text bold word-wrap"></asp:Label>
+                            <asp:Label ID="lbRemark" runat="server" Width ="900px" Visible="false"
+                                CssClass="red-text bold word-wrap"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="สินค้า">
