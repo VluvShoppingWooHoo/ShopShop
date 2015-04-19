@@ -1,7 +1,20 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucRecommend.ascx.cs" Inherits="VloveImport.web.UserControls.ucRecommend" %>
+<%@ Register Src="~/UserControls/ucContent.ascx" TagName="ucContent" TagPrefix="ucCT" %>
 
 <div class="z-depth-1">
     <span class="oblique bold orange-text" style="font-size: 16px !important;">Recommend</span>
+    <div id="divMainRecommend">
+        <div class="row">
+            <div id="divMainRecommendNewest" class="col s4 m4 l4" style="padding-right:0px;min-height:350px;min-width:350px;"></div>
+            <div class="col s8 m8 l8">
+                <div id="divMainSubRecommend1" class="row">
+                </div>
+                <div id="divMainSubRecommend2" class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+    <ucCT:ucContent ID="ucContent" runat="server" />
     <div id="divRecommend">
         <div class="row">
             <div id="divRecommendNewest" class="col s4 m4 l4" style="padding-right:0px;min-height:350px;min-width:350px;"></div>
