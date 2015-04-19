@@ -49,7 +49,7 @@ namespace VloveImport.web.Customer
             string China = rdbChina.SelectedItem.Value + "|" + rdbChina.SelectedItem.Text;
             string Thai = rdbThai.SelectedItem.Value + "|" + rdbThai.SelectedItem.Text;
             string Address = "";
-            if (rdbThai.SelectedItem.Value == "3")
+            if (rdbThai.SelectedItem.Value == "1") //มารับเอง
                 Address = "-|-";
             else
                 Address = rdbAddress.SelectedItem.Value + "|" + rdbAddress.SelectedItem.Text;
