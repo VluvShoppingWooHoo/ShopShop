@@ -29,19 +29,23 @@
                                 Visible='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString().StartsWith("http") ? false : true %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ราคา">
+                    <asp:TemplateField HeaderText="ราคา (¥)">
                         <ItemTemplate>
-                            <asp:Label ID="lbPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE") %>'>></asp:Label>
+                            <asp:Label ID="lbPrice" runat="server" CssClass="right-align" Width="50%"
+                                Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE").ToString(), "Money") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="จำนวน">
                         <ItemTemplate>
-                            <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT") %>'>></asp:Label>
+                            <asp:Label ID="lbAmount" runat="server" CssClass="right-align" Width="50%"
+                                Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT").ToString(), "Amount") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รวมทั้งหมด">
+                    <asp:TemplateField HeaderText="รวมทั้งหมด (¥)">
                         <ItemTemplate>
-                            <asp:Label ID="lbTotal" runat="server" Text='<%# Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE")) * Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")) %>'>></asp:Label>
+                            <asp:Label ID="lbTotal" runat="server" CssClass="right-align" Width="50%"
+                                Text='<%# NumbertoString(Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE")) * 
+                            Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")), "Money") %>'>></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

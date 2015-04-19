@@ -92,17 +92,17 @@ namespace VloveImport.web.Customer
                 {
                     if (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "4" || hdd.Value == "6" || hdd.Value == "7")
                     {
-                        gvr.Cells[5].Visible = false;
                         gvr.Cells[6].Visible = false;
+                        gvr.Cells[7].Visible = false;
                     }
 
                     Pay = hdd_Pay.Value == "" ? 0 : Convert.ToDouble(hdd_Pay.Value);
                     if (hdd.Value == "8" && Pay <= 0)
-                        gvr.Cells[5].Visible = false;
+                        gvr.Cells[6].Visible = false;
 
                     if (hdd.Value != "1")
                     {
-                        gvr.Cells[6].Visible = false;
+                        gvr.Cells[7].Visible = false;
                     }
                 }
             }
