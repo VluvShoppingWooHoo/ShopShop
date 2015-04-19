@@ -64,7 +64,7 @@ namespace VloveImport.web.admin.pages
             try
             {
                 AdminBiz AdBiz = new AdminBiz();
-                ds = AdBiz.GET_ADMIN_ORDER("BINDDATA", START_DATE: ucCalendar1.GET_DATE_TO_DATE(), END_DATE: ucCalendar2.GET_DATE_TO_DATE(), CUS_NAME: txtCusCode.Text.Trim(), ORDER_STATUS: Convert.ToInt32(ddl_search_order_status.SelectedValue));
+                ds = AdBiz.GET_ADMIN_ORDER("BINDDATA", START_DATE: ucCalendar1.GET_DATE_TO_DATE(), END_DATE: ucCalendar2.GET_DATE_TO_DATE(), CUS_NAME: txtCusCode.Text.Trim(), ORDER_STATUS: Convert.ToInt32(ddl_search_order_status.SelectedValue),ORDER_CODE:txtOrderCode.Text.Trim());
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -108,7 +108,7 @@ namespace VloveImport.web.admin.pages
             string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
 
             util.EncrypUtil En = new util.EncrypUtil();
-            Response.Redirect("frmOrder.aspx?OID=" + Server.UrlEncode(En.EncrypData(DataKeys_ID)));
+            Response.Redirect("frmOrder_TEMP.aspx?OID=" + Server.UrlEncode(En.EncrypData(DataKeys_ID)));
         }
 
         protected void imgBtn_delete_Click(object sender, ImageClickEventArgs e)

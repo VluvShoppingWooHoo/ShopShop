@@ -13,7 +13,7 @@
     <h3>ORDER DETAIL</h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="3">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="0">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -532,7 +532,7 @@
 <asp:ModalPopupExtender ID="Modal_ShopDetail" runat="server" BackgroundCssClass="modalBackground"
     PopupControlID="Panel5" TargetControlID="lbl_modal_ShopDetail">
 </asp:ModalPopupExtender>
-<asp:Panel ID="Panel5" Height="420px" Width="800px" runat="server">
+<asp:Panel ID="Panel5" Height="420px" Width="800px" runat="server" Style="display: none;">
     <%--Style="display: none;"--%>
     <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -576,20 +576,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Size :
+                                    Size : <span style ="color:red">Ex.15*15*15 (CM)</span>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txt_sd_size" runat="server" onblur ="Fun_CalShopProduct_Detail();"></asp:TextBox>
                                 <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_size" ID="txt_sd_size_FilteredTextBoxExtender1" ValidChars="1234567890*">
                                 </asp:FilteredTextBoxExtender>
-                                    <br />
-                                    <span style ="color:red;">
-                                        <b>
-                                            Ex.15*15*15
-                                        </b>
-                                    </span>
                                 </td>
-                                <td>Weight :</td>
+                                <td>Weight : <span style ="color:red">(KG)</span></td>
                                 <td>
                                     <asp:TextBox ID="txt_sd_weight" runat="server" onblur ="Fun_CalShopProduct_Detail();"></asp:TextBox>
                                 <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_weight" ID="txt_sd_weight_FilteredTextBoxExtender1" ValidChars="1234567890.">

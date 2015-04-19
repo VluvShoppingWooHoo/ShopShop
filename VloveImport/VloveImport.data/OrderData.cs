@@ -23,6 +23,7 @@ namespace VloveImport.data
         public int ORDER_TRANS_RATE { get; set; }
         public string EMP_USER { get; set; }
         public DateTime EMP_UPDATE_DATE { get; set; }
+        public string ORDER_EMP_REMARK { get; set; }
         #endregion
 
         #region Optional
