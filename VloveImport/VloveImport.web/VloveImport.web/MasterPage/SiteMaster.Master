@@ -47,24 +47,25 @@
             <footer class="page-footer grey lighten-4" style="margin-top: 0px">
                 <div class="container">
                     <div class="row">
-                        <div class="col l6 s12">
+                        <div class="col l12 s12">
                             <h5 class="">Footer Content</h5>
                             <p class="">You can use rows and columns here to organize your footer content.</p>
                         </div>
-                        <div class="col l4 offset-l2 s12">
+                        <%--<div class="col l4 offset-l2 s12">
                             <h5 class="">Links</h5>
                             <ul>
 
-                                <li>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></li>
+                                <li></li>
                                 <li><a class="black-text" href="#!">Link 2</a></li>
                             </ul>
-                        </div>
+                        </div>--%>
                     </div>
                 </div>
                 <div class="footer-copyright grey lighten-3 black-text">
-                    <div class="container">
-                        2015 Copyright Text
-            <a class=" black-text right" href="#!">More Links</a>
+                    <div class="container" style="text-align: center;">
+                        Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
+                        <%--2015 Copyright Text
+            <a class=" black-text right" href="#!">More Links</a>--%>
                     </div>
                 </div>
             </footer>

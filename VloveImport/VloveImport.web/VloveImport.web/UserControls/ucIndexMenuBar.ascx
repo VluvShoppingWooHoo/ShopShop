@@ -9,7 +9,7 @@
         <li><a class="truncate" href="/Customer/ContactUs.aspx?pag=4">ติดต่อเรา</a></li>
         <li><a class="truncate" href="/Customer/TourMarket.aspx?pag=5">ทัวร์ตลาดจีน</a></li>
         <li><a class="truncate" href="/Customer/AboutUs.aspx?type=service&pag=6">บริการของเรา</a></li>
-        <li><a class="truncate" href="/Customer/Promotion.aspx?pag=7">โปรโมชั่น</a></li>
+        <li><a class="truncate" href="/Customer/ContentList.aspx?ctype=1&pag=7">โปรโมชั่น</a></li>
         <li><a class="truncate" href="/Customer/Order.aspx?pag=8">วิธีการสั่งซื้อสินค้า</a></li>
         <li><a class="truncate" href="#">สมัครงาน</a></li>
         <%--<li><a class="truncate" href="/Customer/Recommend.aspx">สินค้าแนะนำ</a></li>--%>

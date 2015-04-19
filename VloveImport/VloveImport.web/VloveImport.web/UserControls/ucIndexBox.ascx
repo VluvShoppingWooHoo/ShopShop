@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucIndexBox.ascx.cs" Inherits="VloveImport.web.UserControls.ucIndexBox" %>
 <%@ Register Src="~/UserControls/ucIndexMenuBar.ascx" TagName="ucIndexMenuBar" TagPrefix="ucIMB" %>
 <%@ Register Src="~/UserControls/ucNewsFeed.ascx" TagName="ucNewsFeed" TagPrefix="ucNF" %>
-<%@ Register Src="~/UserControls/ucContent.ascx" TagName="ucContent" TagPrefix="ucCT" %>
 <%@ Register Src="~/UserControls/ucRecommend.ascx" TagName="ucRecommend" TagPrefix="ucRec" %>
 
 <div class="row">
@@ -780,7 +779,7 @@
 </div>
 <div class="row" style="margin-top: 20px;">
     <ucIMB:ucIndexMenuBar ID="ucIndexMenuBar" runat="server" />
-    <ucCT:ucContent ID="ucContent" runat="server" />
+    <%--<ucCT:ucContent ID="ucContent" runat="server" />--%>
     <ucRec:ucRecommend ID="ucRecommend" runat="server" />
     <%--<ucNF:ucNewsFeed ID="ucNewsFeed" runat="server" />--%>
 </div>
