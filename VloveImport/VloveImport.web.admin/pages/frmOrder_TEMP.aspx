@@ -1,21 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site2.Master" AutoEventWireup="true" CodeBehind="frmOrder_TEMP.aspx.cs" Inherits="VloveImport.web.admin.pages.frmOrder_TEMP" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="frmOrder_TEMP.aspx.cs" Inherits="VloveImport.web.admin.pages.frmOrder_TEMP" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <%@ Register Src="../UserControls/ucEmail.ascx" TagName="ucEmail" TagPrefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
 
     <h3>ORDER DETAIL</h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="0">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="3">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -307,7 +305,7 @@
     <asp:TabPanel ID="TabPanel3" runat="server" HeaderText="Product Detail">
         <ContentTemplate>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width="100%"
-                    DataKeyNames="ORDER_SHOP_ID,SHOP_ORDER_ID,SHOPNAME,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,OD_ID,OD_AMOUNT,OD_AMOUNT_ACTIVE,OD_PRICE,OD_SIZE,OD_COLOR,OD_REMARK,OD_URL,OD_PICURL,OD_STATUS,ROW_INDEX_SHOP,TOTAL_PROD_PRICE,TOTAL_PROD_PRICE_ACTIVE,ROW_INDEX,ROW_RANK_PROD,PRODUCT_TYPE,OD_PRICE_ACTIVE" OnRowDataBound="gv_detail_RowDataBound">
+                    DataKeyNames="ORDER_SHOP_ID,SHOP_ORDER_ID,SHOPNAME,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,OD_ID,OD_AMOUNT,OD_AMOUNT_ACTIVE,OD_PRICE,OD_SIZE,OD_COLOR,OD_REMARK,OD_URL,OD_PICURL,OD_STATUS,ROW_INDEX_SHOP,TOTAL_PROD_PRICE,TOTAL_PROD_PRICE_ACTIVE,ROW_INDEX,ROW_RANK_PROD,PRODUCT_TYPE,OD_PRICE_ACTIVE,CAL_TRANSPORT_SHOP_RATE,SHOP_REMARK" OnRowDataBound="gv_detail_RowDataBound">
                     <Columns>
                         <asp:TemplateField HeaderText="No.">
                             <EditItemTemplate>
@@ -404,7 +402,7 @@
                 <table>
                     <tr>
                         <td colspan ="4">
-                            <asp:GridView ID="gv_detail_shopname" runat="server" AutoGenerateColumns="False" Width="100%">
+                            <asp:GridView ID="gv_detail_shopname" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames ="ORDER_CURRENCY,ORDER_TRANS_RATE,TRANSPORT_DATE,TRANSPORT_DETAIL,TRANSPORT_CUSTOMER_PRICE,ORDER_SHOP_ID,SHOPNAME,SHOP_ORDER_ID,TRACKING_NO,WEIGHT,SIZE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,PRODUCT_TYPE,CAL_TRANSPORT_SHOP_RATE,EMP_USER,TRAN_DATE_TEXT,TRANSPORT_CHINA_TEXT,TRANSPORT_THAI_TEXT,TRANSPORT_STATUS_TEXT,SUM_TRANSPORT_CHINA_PRICE,SUM_TRANSPORT_THAI_PRICE,SHOP_REMARK" OnRowDataBound="gv_detail_shopname_RowDataBound">
                                 <Columns>
                                     <asp:BoundField HeaderText="No." DataField="ROW_INDEX">
                                     <HeaderStyle CssClass="width5" />
@@ -426,7 +424,7 @@
                                     <HeaderStyle CssClass="width10" />
                                     <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Product Type" DataField="PRODUCT_TYPE">
+                                    <asp:BoundField HeaderText="Product Type" DataField="PRODUCT_TYPE_TEXT">
                                     <HeaderStyle CssClass="width15" />
                                     </asp:BoundField>
                                     <asp:BoundField HeaderText="Transport China To Thai (THB)" DataField="TRANSPORT_THAI_PRICE" DataFormatString="{0:#,##0.00}">
@@ -482,7 +480,9 @@
                         <td class ="width15 ItemStyle-right">
                             <asp:Label ID="lbl_tb3_Total_Transport_China_Price" runat="server"></asp:Label>
                         </td>
-                        <td class ="width15"></td>
+                        <td class ="width15">
+                            <asp:Label ID="lbl_tb3_Total_Transport_China_Price_CNY" runat="server"></asp:Label>
+                        </td>
                         <td class ="width50"></td>
                     </tr>
                     <tr>
@@ -496,7 +496,9 @@
                     <tr>
                         <td>Total Transport To Customer :</td>
                         <td class ="ItemStyle-right">
-                            <asp:Label ID="lbl_tb3_Total_Transport_To_Customer" runat="server"></asp:Label>
+                            <u>
+                                <asp:Label ID="lbl_tb3_Total_Transport_To_Customer" runat="server"></asp:Label>
+                            </u>
                         </td>
                         <td></td>
                         <td></td>
@@ -504,7 +506,9 @@
                     <tr>
                         <td>Total Transport Price :</td>
                         <td class ="ItemStyle-right">
-                            <asp:Label ID="lbl_tb3_Total_Transport" runat="server"></asp:Label>
+                            <span class ="doubleUnderline">
+                                <asp:Label ID="lbl_tb3_Total_Transport" runat="server"></asp:Label>
+                            </span>
                         </td>
                         <td></td>
                         <td></td>
@@ -528,7 +532,7 @@
 <asp:ModalPopupExtender ID="Modal_ShopDetail" runat="server" BackgroundCssClass="modalBackground"
     PopupControlID="Panel5" TargetControlID="lbl_modal_ShopDetail">
 </asp:ModalPopupExtender>
-<asp:Panel ID="Panel5" Height="350px" Width="800px" runat="server" Style="display: none;">
+<asp:Panel ID="Panel5" Height="420px" Width="800px" runat="server">
     <%--Style="display: none;"--%>
     <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -547,7 +551,7 @@
         <tr style="background-color: #CFCDCD;">
             <td style="text-align: center; padding: 0px 0px;" colspan="3">
                 <center>
-                <asp:Panel Width="96%" Height="250px" ID="Panel6" runat="server" BackColor="#FFFFFF">
+                <asp:Panel Width="96%" Height="320px" ID="Panel6" runat="server" BackColor="#FFFFFF">
                         <br />
                         <table>
                             <tr>
@@ -624,20 +628,20 @@
                                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex ="0">
                                         <asp:View ID="View1" runat="server">
                                             <asp:DropDownList ID="ddl_TRANS_METHOD_AirPlane" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_TRANS_METHOD_AirPlane_SelectedIndexChanged">
-                                                <asp:ListItem Value="-1">Please Select</asp:ListItem>
+<%--                                                <asp:ListItem Value="-1">Please Select</asp:ListItem>
                                                 <asp:ListItem Value="1">Product General</asp:ListItem>
                                                 <asp:ListItem Value="2">Product Soft</asp:ListItem>
                                                 <asp:ListItem Value="3">Product Brand</asp:ListItem>
-                                                <asp:ListItem Value="4">Other</asp:ListItem>
+                                                <asp:ListItem Value="4">Other</asp:ListItem>--%>
                                             </asp:DropDownList>
                                         </asp:View>
                                         <asp:View ID="View2" runat="server">
                                             <asp:DropDownList ID="ddl_TRANS_METHOD_OTHER" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_TRANS_METHOD_OTHER_SelectedIndexChanged">
-                                                <asp:ListItem Value="-1">Please Select</asp:ListItem>
+<%--                                                <asp:ListItem Value="-1">Please Select</asp:ListItem>
                                                 <asp:ListItem Value="1">Product Dress Grneral</asp:ListItem>
                                                 <asp:ListItem Value="2">Product Grneral</asp:ListItem>
                                                 <asp:ListItem Value="3">Product Cal Cubi</asp:ListItem>
-                                                <asp:ListItem Value="4">Product Brand</asp:ListItem>
+                                                <asp:ListItem Value="4">Product Brand</asp:ListItem>--%>
                                             </asp:DropDownList>
                                         </asp:View>
                                     </asp:MultiView>
@@ -649,9 +653,12 @@
                                 </asp:FilteredTextBoxExtender>
                                 </td>
                             </tr>
-                        <tr>
-                            <td colspan ="4">&nbsp;</td>
-                        </tr>
+                            <tr>
+                                <td>Remark :</td>
+                                <td colspan ="3">
+                                    <asp:TextBox ID="txt_sd_tran_remark" runat="server" TextMode ="MultiLine" Height ="80px" Width ="98%"></asp:TextBox>
+                                </td>
+                            </tr>
                             <tr>
                                 <td colspan ="4" class ="ItemStyle-center">
                                     <asp:Button ID="btnUpdateShopDetail" runat="server" Text="Update" CssClass="btnSave" OnClick="btnUpdateShopDetail_Click"></asp:Button>
