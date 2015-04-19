@@ -172,7 +172,7 @@ namespace VloveImport.dal
                             SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(drr["CUS_BK_AMOUNT"].ToString()));
                             
                             Price = Convert.ToDouble(drr["CUS_BK_PRICE"].ToString());
-                            Price = Rate * Price;
+                            //Price = Rate * Price;
                             SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Price);
                             SqlCommandData.SetParameter("OD_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, drr["CUS_BK_SIZE"].ToString());
                             SqlCommandData.SetParameter("OD_COLOR", SqlDbType.NVarChar, ParameterDirection.Input, drr["CUS_BK_COLOR"].ToString());
