@@ -1785,4 +1785,7 @@ opacity: 0.5;
     padding-right:6px;
     margin-right: 2px;
 }
+.doubleUnderline{
+border-bottom: 3px double;
+}
 
