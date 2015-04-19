@@ -48,7 +48,7 @@ Default skin template. The following skins are provided as examples only.
 
 
 <%-- Grid Vieww --%>
-<asp:GridView  runat="server" EmptyDataText="ไม่พบข้อมูล" 
+<asp:GridView  runat="server" EmptyDataText="Data Not Found" 
     AutoGenerateColumns="False" CssClass="GridViewStyle" GridLines="None">   
     <RowStyle CssClass="RowStyle" verticalalign="Bottom" /> 
     <EmptyDataRowStyle CssClass="EmptyRowStyle" />   
