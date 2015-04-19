@@ -285,5 +285,34 @@ namespace VloveImport.web.App_Code
             biz.WriteLog(Page, Function, Error);
         }
         #endregion
+
+        #region Format
+        public string NumbertoString(double Input, string Type)
+        {
+            string Result = "";
+            switch (Type)
+            {
+                case "Money":
+                    Result = Input.ToString("###,##0.00");
+                    break;
+            }
+            
+            return Result;
+        }
+        public string NumberStringtoString(string Input, string Type)
+        {
+            string Result = "";
+            double Num = 0;
+            Num = Convert.ToDouble(Input);
+            switch (Type)
+            {
+                case "Money":
+                    Result = Num.ToString("###,##0.00");
+                    break;
+            }
+
+            return Result;
+        }
+        #endregion
     }
 }

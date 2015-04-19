@@ -87,7 +87,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ราคา">
                         <ItemTemplate>
-                            <asp:Label ID="lbPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'></asp:Label>
+                            <asp:Label ID="lbPrice" runat="server" Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "PRICE_TH").ToString(), "Money") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="จำนวนที่สั่ง">
@@ -102,7 +102,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="รวมทั้งหมด">
                         <ItemTemplate>
-                            <asp:Label ID="lbTotal" runat="server" Text='<%# Convert.ToDouble(DataBinder.Eval(Container.DataItem, "OD_PRICE")) * Convert.ToDouble(DataBinder.Eval(Container.DataItem, "OD_AMOUNT_ACTIVE")) %>'></asp:Label>
+                            <asp:Label ID="lbTotal" runat="server" Text='<%# Convert.ToDouble(DataBinder.Eval(Container.DataItem, "PRICE_TH")) * Convert.ToDouble(DataBinder.Eval(Container.DataItem, "OD_AMOUNT_ACTIVE")) %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

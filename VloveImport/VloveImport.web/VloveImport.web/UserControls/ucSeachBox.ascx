@@ -200,6 +200,7 @@
                     success: function (data) {
                         $('#loadingMaster').closeModal();
                         $('#modalItem').closeModal();
+                        $('#MastermodalItem').closeModal();
                         toast('Item Added.', 5000)
                     },
                     error: function (err) {
@@ -312,7 +313,7 @@
             if (arrayColor[i].indexOf("ttp:") > 0) {
                 txt += 'col s2 m2 l2 childliColor"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect waves-light btn'
                 if (firstColor == true) {
-                    txt += ' orange white-text selected';
+                    txt += ' orange white-text selected selectedBorder';
                 }
                 else
                     txt += ' white orange-text';

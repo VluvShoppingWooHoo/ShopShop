@@ -15,8 +15,12 @@
     <script type="text/javascript">
         $(function () {
             var txt = getUrlParameter('txt');
-            var decodedString = atob(txt);
-            $('#txtSearch').val(decodedString);
+            if (typeof txt === 'undefined') {
+            }
+            else {
+                var decodedString = atob(txt);
+                $('#txtSearch').val(decodedString);
+            }
             SetFadeout();
         });
     </script>
