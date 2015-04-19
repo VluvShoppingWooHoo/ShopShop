@@ -69,10 +69,11 @@
             <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="false" OnRowDataBound="gvOrder_RowDataBound">
                 <Columns>
                     <asp:TemplateField ItemStyle-Width="70px" ItemStyle-Height="70px">
-                        <ItemTemplate>
-                            <asp:Label ID="lbShopName" runat="server"></asp:Label>
+                        <ItemTemplate>                           
                             <asp:Image ID="imgItem" runat="server" Width="50px" Height="70px"
                                 ImageUrl='<%# DataBinder.Eval(Container.DataItem, "OD_PICURL") %>'/>
+                            <asp:Label ID="lbShopName" runat="server" Width ="90%"></asp:Label>                            
+                            <asp:Label ID="lbRemark" runat="server" Width ="900px" CssClass="red-text bold word-wrap"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="สินค้า">
@@ -104,11 +105,22 @@
                                 Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "OD_AMOUNT_ACTIVE").ToString(), "Amount") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ราคาสินค้า">
+                        <ItemTemplate>
+                            <asp:Label ID="lbTotalItemPrice" runat="server" CssClass="right-align" Width="80%"
+                                Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TOTALITEMAMOUNT").ToString(), "Money") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ค่าขนส่ง">
+                        <ItemTemplate>
+                            <asp:Label ID="lbTransportAmount" runat="server" CssClass="right-align" Width="80%"
+                                Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRANSPORTAMOUNT").ToString(), "Money") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="รวมทั้งหมด (THB)">
                         <ItemTemplate>
                             <asp:Label ID="lbTotal" runat="server" CssClass="right-align" Width="80%"
-                                Text='<%# NumbertoString(Convert.ToDouble(DataBinder.Eval(Container.DataItem, "PRICE_TH")) * 
-                            Convert.ToDouble(DataBinder.Eval(Container.DataItem, "OD_AMOUNT_ACTIVE")), "Money") %>'></asp:Label>
+                                Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TOTAL").ToString(), "Money") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

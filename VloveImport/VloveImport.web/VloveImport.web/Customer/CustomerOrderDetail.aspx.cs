@@ -122,11 +122,13 @@ namespace VloveImport.web.Customer
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 int Count = 0;
+                string ShopRemark = DataBinder.Eval(e.Row.DataItem, "SHOP_REMARK").ToString();   
                 string ShopName = DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString();                
                 if (ViewState["OldShopName"] == null || ViewState["OldShopName"].ToString() != ShopName)
                 {
                     Count = ViewState["Count"] == null ? 1 : Convert.ToInt32(ViewState["Count"]);
                     Label lbShopName = ((Label)e.Row.FindControl("lbShopName"));
+                    Label lbRemark = ((Label)e.Row.FindControl("lbRemark"));
                     GridViewRow row = new GridViewRow(e.Row.RowIndex + Count, -1, DataControlRowType.DataRow, DataControlRowState.Insert);
                     TableCell cell = new TableCell();
                     cell.ColumnSpan = gvOrder.Columns.Count;
@@ -135,10 +137,16 @@ namespace VloveImport.web.Customer
 
                     ShowShop += "Shop name : " + DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString() + "&nbsp;&nbsp;";
                     ShowShop += "Tracking No. " + DataBinder.Eval(e.Row.DataItem, "TRACKING_NO").ToString() + "&nbsp;&nbsp;";
-                    ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";
+                    ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";                                                                               
 
                     lbShopName.Text = ShowShop;
                     cell.Controls.Add(lbShopName);
+                    if (ShopRemark != "")
+                    {
+                        lbRemark.Text = "<br/>หมายเหตุ : <br/>" + ShopRemark;
+                        cell.Controls.Add(lbRemark);
+                    }
+
                     row.Cells.Add(cell);
                     row.CssClass = "gv-shopname";
                     ((GridView)sender).Controls[0].Controls.AddAt(e.Row.RowIndex + Count, row);
