@@ -777,3 +777,8 @@ div[class~="card-image"] a span[class~="card-title"]
 	background-color:yellow;
 	padding:7px 5px !important;
 }
+
+.word-wrap
+{
+	word-wrap: break-word;
+}
