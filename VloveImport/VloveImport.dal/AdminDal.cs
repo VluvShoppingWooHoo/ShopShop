@@ -145,6 +145,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("TRANSPORT_THAI_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_THAI_PRICE);
                 SqlCommandData.SetParameter_Input_INT("PRODUCT_TYPE", SqlDbType.Int, ParameterDirection.Input, En.PRODUCT_TYPE);
                 SqlCommandData.SetParameter("CAL_TRANSPORT_SHOP_RATE", SqlDbType.VarChar, ParameterDirection.Input, En.CAL_TRANSPORT_SHOP_RATE);
+                SqlCommandData.SetParameter("SHOP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, En.SHOP_REMARK);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
