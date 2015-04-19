@@ -9,7 +9,7 @@
             <asp:GridView ID="gvOrder" CssClass="GridStyle" runat="server" AutoGenerateColumns="false" OnDataBound="gvOrder_DataBound"
                 AllowPaging="true" PageSize="10" OnPageIndexChanging="gvOrder_PageIndexChanging">
                 <Columns>
-                    <asp:TemplateField HeaderText="รหัสใบสั่งซื้อ" ItemStyle-Width="130px">
+                    <asp:TemplateField HeaderText="รหัสใบสั่งซื้อ" ItemStyle-Width="150px">
                         <ItemTemplate>
                             <asp:HiddenField ID="hdOrder_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' />
                             <asp:HiddenField ID="hdOrder_Pay" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_PAY") %>' />
@@ -18,25 +18,35 @@
                             <%--<asp:Label ID="lbOrderCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_CODE") %>'></asp:Label>--%>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="วันที่สั่งซื้อ" ItemStyle-Width="120px" ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField HeaderText="วันที่สั่งซื้อ" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label ID="lbOrderDate" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DATE") %>'></asp:Label>
+                            <asp:Label ID="lbOrderDate" runat="server" CssClass="center-align" Width="100%"
+                                Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DATE") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="สถานะ" ItemStyle-Width="120px" ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField HeaderText="สถานะ" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label ID="lbStatus" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DESC") %>'></asp:Label>
+                            <asp:Label ID="lbStatus" runat="server" CssClass="center-align" Width="80%"
+                                Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DESC") %>'></asp:Label>
                             <asp:HiddenField ID="hddStatus" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_STATUS") %>'></asp:HiddenField>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="อัตราแลกเปลี่ยน" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Label ID="lbCurrency" runat="server" CssClass="right-align" Width="50%"
+                                Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_CURRENCY") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="รวมรายการ"  ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label ID="lbAmount" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_AMOUNT") %>'></asp:Label>
+                            <asp:Label ID="lbAmount" runat="server" CssClass="right-align" Width="50%"
+                                Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "OD_AMOUNT").ToString(), "Amount") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="รวมราคาสินค้า" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label ID="lbPRICE" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_PRICE") %>'></asp:Label>
+                            <asp:Label ID="lbPRICE" runat="server" CssClass="right-align" Width="50%"
+                                Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "OD_PRICE").ToString(), "Money") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <%--<asp:TemplateField HeaderText="ชำระเพิ่ม" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
@@ -63,11 +73,6 @@
                                 <asp:Button ID="btnDelete" runat="server" Text="ลบใบสั่งซื้อ" OnClick="btnDelete_Click" CssClass=""
                                     CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' OnClientClick="return confirm('ต้องการลบใบสั่งซื้อ?');" />
                             </button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Image ID="imgItem" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

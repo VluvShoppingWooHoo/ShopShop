@@ -77,9 +77,11 @@
         <h1 id="lblItemName" class="card center">Modal Header</h1>
         <h1 id="lblShopName" class="card center" hidden></h1>
         <div class="row">
-            <div class="card-image col s4 m4 l4">
-                <img id="imgpicURL" height="200">
-                <%--<img id="imgpicURL" src="http://img04.taobaocdn.com/bao/uploaded/i4/TB12EHiGVXXXXX6XXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" height="200">--%>
+            <div class="card">
+                <div class="card-image col s4 m4 l4" style="min-height: 200px;">
+                    <img id="imgpicURL">
+                    <%--<img id="imgpicURL" src="http://img04.taobaocdn.com/bao/uploaded/i4/TB12EHiGVXXXXX6XXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" height="200">--%>
+                </div>
             </div>
             <div class="col s8 m8 l8">
                 <div id="divPrice" class="row" style="margin-bottom: 5px !important;">
@@ -114,7 +116,7 @@
                     <div class="col s5 m5 l5" style="margin: 0px">
                         <ul class="pagination" style="margin: 0px">
                             <li class="" style="display: inline-block"><a id="aMinus" href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
-                            <li class="" style="display: inline-block; vertical-align:text-bottom;"><a id="aQTY" href="#!" class="">1</a></li>
+                            <li class="" style="display: inline-block; vertical-align: text-bottom;"><a id="aQTY" href="#!" class="">1</a></li>
                             <li class="" style="display: inline-block"><a id="aPlus" href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
                         </ul>
 
@@ -201,6 +203,7 @@
                         $('#loadingMaster').closeModal();
                         $('#modalItem').closeModal();
                         $('#MastermodalItem').closeModal();
+                        $('#txtSearch').val('');
                         toast('Item Added.', 5000)
                     },
                     error: function (err) {
@@ -270,6 +273,7 @@
         $("#divSize").show();
         $("#divColor").show();
         $("#txtRemark").val('');
+        $('#aQTY').html('1');
         $(".childliSize").remove();
         $(".childliColor").remove();
         var obj = JSON.parse(data.d);
@@ -285,7 +289,7 @@
         var firstColor = true;
         $("#hdPrice").val(obj.Price);
         $("#hdWeb").val(obj.Web);
-        
+
         if (obj.Price.indexOf(" - ") > 0)
             isBetween = true;
 
@@ -321,7 +325,8 @@
             }
             else
                 if (arrayColor[i] != "") {
-                    txt += 'col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColorText(' + i + ')" class="waves-effect waves-light btn';
+                    //txt += 'col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColorText(' + i + ')" class="waves-effect waves-light btn';
+                    txt += 'col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect waves-light btn';
                     if (firstColor == true) {
                         if (isBetween == true) {
                             chkPrice(arrayColor[i])
@@ -331,7 +336,6 @@
                     else
                         txt += ' white orange-text';
                     txt += '" style="margin-right:10px">' + arrayColor[i] + '</a></div>';
-                    //$("#liColor").append('<div class="col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColorText(' + i + ')" class="waves-effect white orange-text waves-light btn" style="margin-right:10px">' + arrayColor[i] + '</a></div>');
                 }
             firstColor = false;
 
@@ -352,14 +356,23 @@
     }
 
     function selectColor(e) {
+        $('#liColor div a').addClass('white orange-text');
+        $('#liColor div a').removeClass('orange white-text');
         $('#liColor div a').removeClass('selected');
         $('#liColor div a').removeClass('selectedBorder');
+        $('#aColor' + e).removeClass('white orange-text');
+        $('#aColor' + e).addClass('orange white-text');
         $('#aColor' + e).addClass('selectedBorder');
         $('#aColor' + e).addClass('selected');
         var url = $('#aColor' + e + ' img').attr('src');
-        if ($("#hdWeb").val() == 1) {
-            $("#imgpicURL").attr("src", url.replace('30x30', '400x400'));
+        if (typeof url === 'undefined') {
         }
+        else {
+            $("#imgpicURL").attr("src", url.replace('30x30', '300x300').replace('40x40', '300x300'));
+        }
+        //if ($("#hdWeb").val() == 1) {
+        //$("#imgpicURL").attr("src", url.replace('30x30', '400x400'));
+        //}
     }
 
     function selectColorText(e) {

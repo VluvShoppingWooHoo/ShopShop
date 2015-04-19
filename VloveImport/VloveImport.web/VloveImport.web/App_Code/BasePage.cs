@@ -287,13 +287,16 @@ namespace VloveImport.web.App_Code
         #endregion
 
         #region Format
-        public string NumbertoString(double Input, string Type)
+        public string NumbertoString(double Num, string Type)
         {
             string Result = "";
             switch (Type)
             {
                 case "Money":
-                    Result = Input.ToString("###,##0.00");
+                    Result = Num.ToString("###,##0.00");
+                    break;
+                case "Amount":
+                    Result = Num.ToString("###,##0");
                     break;
             }
             
@@ -308,6 +311,9 @@ namespace VloveImport.web.App_Code
             {
                 case "Money":
                     Result = Num.ToString("###,##0.00");
+                    break;
+                case "Amount":
+                    Result = Num.ToString("###,##0");
                     break;
             }
 
