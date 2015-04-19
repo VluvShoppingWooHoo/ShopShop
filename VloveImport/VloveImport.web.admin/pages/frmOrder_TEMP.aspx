@@ -15,7 +15,7 @@
     <h3>ORDER DETAIL</h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabBooking" runat="server" Width="100%" ActiveTabIndex="1">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="0">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -127,12 +127,187 @@
                     </tr>
                 </table>
             </fieldset>
+        </ContentTemplate>
+    </asp:TabPanel>
+    <asp:TabPanel ID="TabPanel2" runat="server" HeaderText="Payment Detail">
+        <ContentTemplate>
             <fieldset>
-                <legend>
-                    Shop And Product List
-                </legend>
-                <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width="100%"
-                    DataKeyNames="ORDER_SHOP_ID,SHOP_ORDER_ID,SHOPNAME,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,OD_ID,OD_AMOUNT,OD_AMOUNT_ACTIVE,OD_PRICE,OD_SIZE,OD_COLOR,OD_REMARK,OD_URL,OD_PICURL,OD_STATUS,ROW_INDEX_SHOP,TOTAL_PROD_PRICE,TOTAL_PROD_PRICE_ACTIVE,ROW_INDEX,ROW_RANK_PROD,PRODUCT_TYPE" OnRowDataBound="gv_detail_RowDataBound">
+                <table>
+                    <tr>
+                        <td colspan = "4">
+                            <asp:GridView ID="gv_detail_transaction" runat="server" AutoGenerateColumns="False">
+                                <Columns>
+                                    <asp:BoundField HeaderText="No." DataField="ROW_INDEX" >
+                                    <HeaderStyle CssClass="width5" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Transaction Type" DataField="TRAN_TYPE_TEXT" >
+                                    <HeaderStyle CssClass="width15" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Transaction Date" DataField="TRAN_DATE_TEXT" >
+                                    <HeaderStyle CssClass="width15" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Transaction  Amount" DataField="TRAN_AMOUNT" DataFormatString="{0:#,##0.00}" >
+                                    <HeaderStyle CssClass="width15" />
+                                    <ItemStyle CssClass="ItemStyle-right" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="Transaction Detail" DataField="TRAN_DETAIL" >
+                                    <HeaderStyle CssClass="width25" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HtmlEncode ="False" HeaderText="Transaction<br>Employee Detail" DataField="EMP_REMARK" >
+                                    <HeaderStyle CssClass="width25" />
+                                    </asp:BoundField>
+                                </Columns>
+                            </asp:GridView>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class ="width15">Total Income : </td>
+                        <td class ="width30">
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <asp:Label ID="lbl_tb2_Total_Income" runat="server"></asp:Label>
+                                    </td>
+                                    <td class ="width50">&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class ="width20">Total Refund : </td>
+                        <td class ="width35">
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <asp:Label ID="lbl_tb2_Total_Refund" runat="server"></asp:Label>
+                                    </td>
+                                    <td class ="width50 ItemStyle-right"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Additional Amount : </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <asp:Label ID="lbl_tb2_Additional_Amount" runat="server"></asp:Label>
+                                    </td>
+                                    <td class ="width50 ItemStyle-right"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan ="4">
+                            <hr style="width: 100%; text-align: left; background-color: #b6b2b2; height: 2px; color: #8db0ef; border: 0;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Total Product Price :</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <asp:Label ID="lbl_tb2_Total_Prodcut_Price" runat="server"></asp:Label>
+                                    </td>
+                                    <td class ="width50 ItemStyle-right"></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>Total Product Active Price : </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <asp:Label ID="lbl_tb2_Total_Prodcut_Active_Price" runat="server"></asp:Label>
+                                    </td>
+                                    <td class ="width50 ItemStyle-right"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><%--Total Transport Price :--%></td>
+                        <td>
+                            <%--<asp:Label ID="lbl_tb2_Total_Transport_Price" runat="server"></asp:Label>--%>
+                        </td>
+                        <td>Total Transport Active Price :</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <asp:Label ID="lbl_tb2_Total_Transport_Active_Price" runat="server"></asp:Label>
+                                    </td>
+                                    <td class ="width50 ItemStyle-right"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Actually Amount :</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <asp:Label ID="lbl_tb2_Actually_Amounte" runat="server"></asp:Label>
+                                    </td>
+                                    <td class ="width50 ItemStyle-right"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <table>
+                    <tr>
+                        <td width="15%" class="auto-style1">Order Status :</td>
+                        <td width="85%" class="auto-style1">
+                            <asp:DropDownList Width="300px" ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged" >
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Transport Status :</td>
+                        <td>
+                            <asp:DropDownList ID="ddl_ViewDetail_TRANSPORT_STATUS" runat="server" Width="300px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Remark : </td>
+                        <td>
+                            <asp:TextBox ID="txt_Update_STS_EMP_Remark" TextMode ="MultiLine" Width ="300px" Height ="50px" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr id="trTranCusPrice" runat="server" visible="False">
+                        <td runat="server">Transport Customer Price :</td>
+                        <td runat="server">
+                            <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="300px"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
+                            </asp:FilteredTextBoxExtender>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <asp:Button ID="btn_detail_update" runat="server" Text="Update Status" CssClass="btnSave" OnClick="btn_detail_update_Click"></asp:Button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+        </ContentTemplate>
+    </asp:TabPanel>
+    <asp:TabPanel ID="TabPanel3" runat="server" HeaderText="Product Detail">
+        <ContentTemplate>
+            <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width="100%"
+                    DataKeyNames="ORDER_SHOP_ID,SHOP_ORDER_ID,SHOPNAME,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,OD_ID,OD_AMOUNT,OD_AMOUNT_ACTIVE,OD_PRICE,OD_SIZE,OD_COLOR,OD_REMARK,OD_URL,OD_PICURL,OD_STATUS,ROW_INDEX_SHOP,TOTAL_PROD_PRICE,TOTAL_PROD_PRICE_ACTIVE,ROW_INDEX,ROW_RANK_PROD,PRODUCT_TYPE,OD_PRICE_ACTIVE" OnRowDataBound="gv_detail_RowDataBound">
                     <Columns>
                         <asp:TemplateField HeaderText="No.">
                             <EditItemTemplate>
@@ -151,8 +326,8 @@
                         <asp:BoundField DataField="OD_REMARK" HeaderText="Remark">
                             <HeaderStyle CssClass="width15" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Price">
-                            <HeaderStyle CssClass="width10" />
+                        <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HtmlEncode ="false" HeaderText="Price">
+                            <HeaderStyle CssClass="width10"/>
                             <ItemStyle CssClass="ItemStyle-right" />
                         </asp:BoundField>
                         <asp:BoundField DataField="OD_AMOUNT" HeaderText="Order amount">
@@ -221,125 +396,9 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-            </fieldset>
         </ContentTemplate>
     </asp:TabPanel>
-    <asp:TabPanel ID="TabPanel2" runat="server" HeaderText="Payment Detail">
-        <ContentTemplate>
-            <fieldset>
-                <table>
-                    <tr>
-                        <td colspan = "4">
-                            <asp:GridView ID="gv_detail_transaction" runat="server" AutoGenerateColumns="False">
-                                <Columns>
-                                    <asp:BoundField HeaderText="No." DataField="ROW_INDEX" >
-                                    <HeaderStyle CssClass="width5" />
-                                    </asp:BoundField>
-                                    <asp:BoundField HeaderText="Transaction Type" DataField="TRAN_TYPE_TEXT" >
-                                    <HeaderStyle CssClass="width15" />
-                                    </asp:BoundField>
-                                    <asp:BoundField HeaderText="Transaction Date" DataField="TRAN_DATE_TEXT" >
-                                    <HeaderStyle CssClass="width15" />
-                                    </asp:BoundField>
-                                    <asp:BoundField HeaderText="Transaction  Amount" DataField="TRAN_AMOUNT" >
-                                    <HeaderStyle CssClass="width15" />
-                                    </asp:BoundField>
-                                    <asp:BoundField HeaderText="Transaction Detail" DataField="TRAN_DETAIL" >
-                                    <HeaderStyle CssClass="width25" />
-                                    </asp:BoundField>
-                                    <asp:BoundField HtmlEncode ="False" HeaderText="Transaction<br>Employee Detail" DataField="EMP_REMARK" >
-                                    <HeaderStyle CssClass="width25" />
-                                    </asp:BoundField>
-                                </Columns>
-                            </asp:GridView>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class ="width15">Total Income : </td>
-                        <td class ="width30">
-                            <asp:Label ID="lbl_tb2_Total_Income" runat="server"></asp:Label>
-                        </td>
-                        <td class ="width20">Total Refund : </td>
-                        <td class ="width35">
-                            <asp:Label ID="lbl_tb2_Total_Refund" runat="server"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Additional Amount : </td>
-                        <td>
-                            <asp:Label ID="lbl_tb2_Additional_Amount" runat="server"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan ="4">
-                            <hr style="width: 100%; text-align: left; background-color: #b6b2b2; height: 2px; color: #8db0ef; border: 0;" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Total Product Price :</td>
-                        <td></td>
-                        <td>Total Product Active Price : </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Total Transport Price :</td>
-                        <td></td>
-                        <td>Total Transport Active Price :</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Actually Amount :</td>
-                        <td></td>
-                    </tr>
-                </table>
-            </fieldset>
-
-            <fieldset>
-                <table>
-                    <tr>
-                        <td width="15%" class="auto-style1">Order Status :</td>
-                        <td width="85%" class="auto-style1">
-                            <asp:DropDownList Width="300px" ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged" >
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Transport Status :</td>
-                        <td>
-                            <asp:DropDownList ID="ddl_ViewDetail_TRANSPORT_STATUS" runat="server" Width="300px">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Remark : </td>
-                        <td>
-                            <asp:TextBox ID="txt_Update_STS_EMP_Remark" TextMode ="MultiLine" Width ="300px" Height ="50px" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr id="trTranCusPrice" runat="server" visible="False">
-                        <td runat="server">Transport Customer Price :</td>
-                        <td runat="server">
-                            <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="300px"></asp:TextBox>
-                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
-                            </asp:FilteredTextBoxExtender>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:Button ID="btn_detail_update" runat="server" Text="Update Status" CssClass="btnSave" OnClick="btn_detail_update_Click"></asp:Button>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-
-        </ContentTemplate>
-    </asp:TabPanel>
-    <asp:TabPanel ID="TabPanel3" runat="server" HeaderText="Transport Detail">
+    <asp:TabPanel ID="TabPanel4" runat="server" HeaderText="Transport Detail">
         <ContentTemplate>
             <fieldset>
                 <table>
@@ -347,29 +406,32 @@
                         <td colspan ="4">
                             <asp:GridView ID="gv_detail_shopname" runat="server" AutoGenerateColumns="False" Width="100%">
                                 <Columns>
-                                    <asp:BoundField HeaderText="No.">
+                                    <asp:BoundField HeaderText="No." DataField="ROW_INDEX">
                                     <HeaderStyle CssClass="width5" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Shop name">
+                                    <asp:BoundField HeaderText="Shop name" DataField="SHOPNAME">
                                     <HeaderStyle CssClass="width25" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Shop order id">
+                                    <asp:BoundField HeaderText="Shop order id" DataField="SHOP_ORDER_ID">
                                     <HeaderStyle CssClass="width10" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Size&lt;br&gt;(CM)" HtmlEncode="False">
+                                    <asp:BoundField HeaderText="Size&lt;br&gt;(CM)" HtmlEncode="False" DataField="SIZE">
                                     <HeaderStyle CssClass="width10" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Weight&lt;br&gt;(KG)" HtmlEncode="False">
+                                    <asp:BoundField HeaderText="Weight&lt;br&gt;(KG)" HtmlEncode="False" DataField="WEIGHT" DataFormatString="{0:#,##0.00}">
                                     <HeaderStyle CssClass="width10" />
+                                    <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Transport China&lt;br&gt;Price" HtmlEncode="False">
+                                    <asp:BoundField HeaderText="Transport China&lt;br&gt;Price" HtmlEncode="False" DataField="TRANSPORT_CHINA_PRICE" DataFormatString="{0:#,##0.00}">
                                     <HeaderStyle CssClass="width10" />
+                                    <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Product Type">
+                                    <asp:BoundField HeaderText="Product Type" DataField="PRODUCT_TYPE">
                                     <HeaderStyle CssClass="width15" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="Transport China To Thai (THB)">
+                                    <asp:BoundField HeaderText="Transport China To Thai (THB)" DataField="TRANSPORT_THAI_PRICE" DataFormatString="{0:#,##0.00}">
                                     <HeaderStyle CssClass="width10" />
+                                    <ItemStyle CssClass="ItemStyle-right" />
                                     </asp:BoundField>
                                     <asp:TemplateField HeaderText="Tools">
                                         <ItemTemplate>
@@ -417,27 +479,35 @@
                 <table>
                     <tr>
                         <td class ="width20">Total Transport China Price :</td>
-                        <td class ="width80">
+                        <td class ="width15 ItemStyle-right">
                             <asp:Label ID="lbl_tb3_Total_Transport_China_Price" runat="server"></asp:Label>
                         </td>
+                        <td class ="width15"></td>
+                        <td class ="width50"></td>
                     </tr>
                     <tr>
                         <td>Total Transport China To Thai :</td>
-                        <td>
+                        <td class ="ItemStyle-right">
                             <asp:Label ID="lbl_tb3_Total_Transport_CH_TO_TH" runat="server"></asp:Label>
                         </td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Total Transport To Customer :</td>
-                        <td>
+                        <td class ="ItemStyle-right">
                             <asp:Label ID="lbl_tb3_Total_Transport_To_Customer" runat="server"></asp:Label>
                         </td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Total Transport Price :</td>
-                        <td>
+                        <td class ="ItemStyle-right">
                             <asp:Label ID="lbl_tb3_Total_Transport" runat="server"></asp:Label>
                         </td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </table>
             </fieldset>
