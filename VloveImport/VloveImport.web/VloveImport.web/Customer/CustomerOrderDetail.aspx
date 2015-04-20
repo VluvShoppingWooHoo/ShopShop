@@ -89,7 +89,7 @@
                                     Visible='<%# DataBinder.Eval(Container.DataItem, "OD_COLOR").ToString().StartsWith("http") ? false : true %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ราคา (THB)" ItemStyle-Width="90px">
+                        <asp:TemplateField HeaderText="ราคาต่อชิ้น<br/>(THB)" ItemStyle-Width="90px">
                             <ItemTemplate>
                                 <asp:Label ID="lbPrice" runat="server" CssClass="right-align" Width="80%"
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "PRICE_TH").ToString(), "Money") %>'></asp:Label>
@@ -108,7 +108,7 @@
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "OD_AMOUNT_ACTIVE").ToString(), "Amount") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ราคาสินค้า" ItemStyle-Width="90px">
+                        <asp:TemplateField HeaderText="รวมราคาสินค้า<br/>(THB)" ItemStyle-Width="90px">
                             <ItemTemplate>
                                 <asp:Label ID="lbTotalItemPrice" runat="server" CssClass="right-align" Width="80%"
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TOTALITEMAMOUNT").ToString(), "Money") %>'></asp:Label>
