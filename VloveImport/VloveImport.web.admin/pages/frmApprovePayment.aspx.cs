@@ -365,6 +365,12 @@ namespace VloveImport.web.admin.pages
             }
         }
 
+        protected void gv_detail_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            this.gv_detail.PageIndex = e.NewPageIndex;
+            BindData();
+        }
+
         #endregion
 
         protected void BtnImgClose_Click(object sender, ImageClickEventArgs e)

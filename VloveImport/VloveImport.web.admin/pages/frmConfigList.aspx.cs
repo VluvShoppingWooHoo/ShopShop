@@ -80,7 +80,8 @@ namespace VloveImport.web.admin.pages
 
         protected void gv_detail_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            this.gv_detail.PageIndex = e.NewPageIndex;
+            BindData();
         }
 
         protected void gv_detail_RowCreated(object sender, GridViewRowEventArgs e)

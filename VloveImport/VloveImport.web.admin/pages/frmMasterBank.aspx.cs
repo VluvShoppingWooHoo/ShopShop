@@ -65,13 +65,13 @@ namespace VloveImport.web.admin.pages
 
             if (ds.Tables[0].Rows.Count > 0)
             {
-                gv_Deatil.DataSource = ds.Tables[0];
-                gv_Deatil.DataBind();
+                gv_Detail.DataSource = ds.Tables[0];
+                gv_Detail.DataBind();
             }
             else
             {
-                gv_Deatil.DataSource = null;
-                gv_Deatil.DataBind();
+                gv_Detail.DataSource = null;
+                gv_Detail.DataBind();
             }
         }
 
@@ -192,7 +192,7 @@ namespace VloveImport.web.admin.pages
         protected void btnImgEdit_Click(object sender, ImageClickEventArgs e)
         {
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
-            string DataKeys_ID = this.gv_Deatil.DataKeys[rowIndex].Values[0].ToString();
+            string DataKeys_ID = this.gv_Detail.DataKeys[rowIndex].Values[0].ToString();
 
             this._VS_ID = Convert.ToInt32(DataKeys_ID);
             this._VS_ACT = "UPD";
@@ -216,7 +216,7 @@ namespace VloveImport.web.admin.pages
         protected void btnImgDelete_Click(object sender, ImageClickEventArgs e)
         {
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
-            string DataKeys_ID = this.gv_Deatil.DataKeys[rowIndex].Values[0].ToString();
+            string DataKeys_ID = this.gv_Detail.DataKeys[rowIndex].Values[0].ToString();
             this._VS_ID = Convert.ToInt32(DataKeys_ID);
             this._VS_ACT = "DEL";
 
@@ -245,6 +245,12 @@ namespace VloveImport.web.admin.pages
         protected void BtnImgClose_Click(object sender, ImageClickEventArgs e)
         {
             ClearData();
+        }
+
+        protected void gv_Deatil_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            this.gv_Detail.PageIndex = e.NewPageIndex;
+            BindData();
         }
     }
 }

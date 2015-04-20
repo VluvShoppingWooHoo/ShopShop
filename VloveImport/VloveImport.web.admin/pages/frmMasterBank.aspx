@@ -20,7 +20,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:GridView ID="gv_Deatil" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames="BANK_SHOP_ID" OnRowCreated="gv_Deatil_RowCreated">
+                            <asp:GridView ID="gv_Detail" runat="server" AutoGenerateColumns="False" Width="100%" DataKeyNames="BANK_SHOP_ID" OnRowCreated="gv_Deatil_RowCreated" AllowPaging="True" OnPageIndexChanging="gv_Deatil_PageIndexChanging">
                                 <Columns>
                                     <asp:BoundField HeaderText="No." DataField="ROW_INDEX">
                                         <HeaderStyle CssClass="width5" />

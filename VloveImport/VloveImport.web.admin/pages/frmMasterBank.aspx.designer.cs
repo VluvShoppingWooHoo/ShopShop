@@ -31,13 +31,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Button btnAdd;
         
         /// <summary>
-        /// gv_Deatil control.
+        /// gv_Detail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_Deatil;
+        protected global::System.Web.UI.WebControls.GridView gv_Detail;
         
         /// <summary>
         /// ModalPopupExtender1 control.

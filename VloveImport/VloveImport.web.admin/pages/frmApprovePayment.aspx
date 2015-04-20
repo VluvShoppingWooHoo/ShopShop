@@ -69,7 +69,7 @@
                 </tr>
             </table>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="15" Width="100%"
-                DataKeyNames="TRAN_ID,TRAN_DATE_TEXT,TRAN_AMOUNT,TRAN_STATUS_TEXT,CUS_CODE,EMP_NAME,TRAN_STATUS,TRAN_TYPE,TRAN_TABLE_TYPE,TRAN_TYPE_TEXT,TRAN_TABLE_TYPE_TEXT" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound">
+                DataKeyNames="TRAN_ID,TRAN_DATE_TEXT,TRAN_AMOUNT,TRAN_STATUS_TEXT,CUS_CODE,EMP_NAME,TRAN_STATUS,TRAN_TYPE,TRAN_TABLE_TYPE,TRAN_TYPE_TEXT,TRAN_TABLE_TYPE_TEXT" OnRowCreated="gv_detail_RowCreated" OnRowDataBound="gv_detail_RowDataBound" OnPageIndexChanging="gv_detail_PageIndexChanging">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
