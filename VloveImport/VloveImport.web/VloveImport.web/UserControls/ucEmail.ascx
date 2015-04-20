@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucEmail.ascx.cs" Inherits="VloveImport.web.admin.UserControls.ucEmail" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucEmail.ascx.cs" Inherits="VloveImport.web.UserControls.ucEmail" %>
 <table>
     <tr>
         <td class ="width15">From : </td>

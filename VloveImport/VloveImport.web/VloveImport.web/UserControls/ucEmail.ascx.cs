@@ -9,7 +9,7 @@ using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace VloveImport.web.admin.UserControls
+namespace VloveImport.web.UserControls
 {
     public partial class ucEmail : System.Web.UI.UserControl
     {
@@ -38,6 +38,11 @@ namespace VloveImport.web.admin.UserControls
             {
                 txt_email_from.Text = WebConfigurationManager.AppSettings["email"].ToString();
             }
+        }
+
+        public void SetEmailFrom(string strEmailFrom)
+        {
+            txt_email_from.Text = strEmailFrom.Trim();
         }
 
         public void SetEmail(string strEmailTo)

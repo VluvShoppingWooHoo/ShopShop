@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VloveImport.web.admin.UserControls {
+namespace VloveImport.web.UserControls {
     
     
     public partial class ucEmail {

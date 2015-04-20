@@ -13,5 +13,14 @@ namespace VloveImport.web.Customer
         {
 
         }
+
+        protected void imgbtn_SendEmail_Click(object sender, ImageClickEventArgs e)
+        {
+            MadoalPop_Email.Show();
+
+            ucEmail1.SetEmailFrom("");
+            ucEmail1.SetEmail("info@iloveimport.com");
+            //ucEmail1.SetEmail_To_Enabled();
+        }
     }
 }
