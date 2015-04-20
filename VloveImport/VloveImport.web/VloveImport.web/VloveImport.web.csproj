@@ -148,11 +148,6 @@
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Report\ReportViewer.aspx" />
-    <Content Include="Script\20140312.sql" />
-    <Content Include="Script\20150313.sql" />
-    <Content Include="Script\20150315 V2.sql" />
-    <Content Include="Script\20150315.sql" />
-    <Content Include="Script\20150329.sql" />
     <Content Include="Script\Script Init.sql" />
     <Content Include="TestPage.aspx" />
     <Content Include="UserControls\ucContent.ascx" />
@@ -643,21 +638,16 @@
     <Content Include="App_Themes\font\roboto\Roboto-Regular.ttf" />
     <Content Include="App_Themes\font\roboto\Roboto-Thin.ttf" />
     <Content Include="MasterPage\master_page_batt.Master" />
-    <Content Include="Script\20150228.bak" />
     <Content Include="App_Themes\font\flaticon\flaticon.eot" />
     <Content Include="App_Themes\font\flaticon\flaticon.ttf" />
     <Content Include="App_Themes\font\flaticon\flaticon.woff" />
     <Content Include="MasterPage\MasterAdmin.Master" />
-    <Content Include="Script\20150311.bak" />
-    <Content Include="Script\20150312.bak" />
-    <Content Include="Script\20150317.bak" />
-    <Content Include="Script\20150318.bak" />
-    <Content Include="Script\20150325.bak" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Web.pubxml" />
     <Content Include="Script\20150404.bak" />
     <Content Include="Script\20150411.bak" />
     <Content Include="Script\20150416.bak" />
+    <Content Include="Script\20150420.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
