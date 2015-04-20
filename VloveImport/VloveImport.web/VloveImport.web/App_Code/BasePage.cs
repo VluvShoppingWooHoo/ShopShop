@@ -306,7 +306,7 @@ namespace VloveImport.web.App_Code
         {
             string Result = "";
             double Num = 0;
-            Num = Convert.ToDouble(Input);
+            Num = Input == "" ? 0 : Convert.ToDouble(Input);
             switch (Type)
             {
                 case "Money":

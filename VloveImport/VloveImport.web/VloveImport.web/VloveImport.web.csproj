@@ -155,6 +155,7 @@
     <Content Include="Script\Script Init.sql" />
     <Content Include="TestPage.aspx" />
     <Content Include="UserControls\ucContent.ascx" />
+    <Content Include="UserControls\ucEmail.ascx" />
     <Content Include="UserControls\ucNewsFeed.ascx" />
     <Content Include="UserControls\ucAccfuncMypoint.ascx" />
     <Content Include="UserControls\ucAccfuncVoucher.ascx" />
@@ -508,6 +509,13 @@
     </Compile>
     <Compile Include="UserControls\ucContent.ascx.designer.cs">
       <DependentUpon>ucContent.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucEmail.ascx.cs">
+      <DependentUpon>ucEmail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucEmail.ascx.designer.cs">
+      <DependentUpon>ucEmail.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucNewsFeed.ascx.cs">
       <DependentUpon>ucNewsFeed.ascx</DependentUpon>

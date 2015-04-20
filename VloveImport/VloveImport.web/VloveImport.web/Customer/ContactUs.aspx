@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="ContactUs.aspx.cs" Inherits="VloveImport.web.Customer.ContactUs" %>
 
+<%@ Register Src="../UserControls/ucEmail.ascx" TagName="ucEmail" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -12,7 +13,9 @@
             <br />
             Contract us : Wechat : arbow123 ,Line ID : arbow123 , QQ ID : 1484258255<br />
             Tel ; 087-4353118 , 088-3264117, 092-6728160<br />
-            E-Maill : info@iloveimport.com<br />
+            E-Maill : info@iloveimport.com
+            <asp:ImageButton ID="imgbtn_SendEmail" runat="server" ImageUrl="~/img/icon/sendemail.png" Width="45px" Height="35px" OnClick="imgbtn_SendEmail_Click" />
+            <br />
             <br />
 
             <span class="bold">วันทำงาน   จันทร์ –ศุกร์ 10.00 - 20.00
