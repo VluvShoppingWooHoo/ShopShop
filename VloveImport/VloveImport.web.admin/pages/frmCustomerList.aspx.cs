@@ -106,5 +106,11 @@ namespace VloveImport.web.admin.pages
             MadoalPop_Email.Show();
         }
 
+        protected void gv_detail_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            this.gv_detail.PageIndex = e.NewPageIndex;
+            BindData();
+        }
+
     }
 }
