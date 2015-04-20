@@ -49,13 +49,13 @@ namespace VloveImport.web.admin.UserControls {
         protected global::System.Web.UI.WebControls.Label lblDetail_TranAmount;
         
         /// <summary>
-        /// lblDetail_TranDetail control.
+        /// lblDetail_TranStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDetail_TranDetail;
+        protected global::System.Web.UI.WebControls.Label lblDetail_TranStatus;
         
         /// <summary>
         /// imbURL control.
@@ -67,6 +67,15 @@ namespace VloveImport.web.admin.UserControls {
         protected global::System.Web.UI.WebControls.ImageButton imbURL;
         
         /// <summary>
+        /// lblDetail_TranDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDetail_TranDetail;
+        
+        /// <summary>
         /// lblDetail_TranRemark control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,67 @@ namespace VloveImport.web.admin.UserControls {
         protected global::System.Web.UI.WebControls.Label lblDetail_TranRemark;
         
         /// <summary>
-        /// lblDetail_TranStatus control.
+        /// trTransaction_Payment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDetail_TranStatus;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trTransaction_Payment;
+        
+        /// <summary>
+        /// lblDetail_PaymentDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDetail_PaymentDate;
+        
+        /// <summary>
+        /// lblDetail_BankTrasfer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDetail_BankTrasfer;
+        
+        /// <summary>
+        /// trTransaction_WithDraw control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trTransaction_WithDraw;
+        
+        /// <summary>
+        /// lblDetail_Cus_Bank_Name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDetail_Cus_Bank_Name;
+        
+        /// <summary>
+        /// trTransaction_Order control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trTransaction_Order;
+        
+        /// <summary>
+        /// lblDetail_Order_ID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDetail_Order_ID;
         
         /// <summary>
         /// lblDetail_EmpName control.

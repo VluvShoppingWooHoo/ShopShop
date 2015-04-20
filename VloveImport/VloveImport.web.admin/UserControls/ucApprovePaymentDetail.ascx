@@ -4,20 +4,22 @@
 <%@ Register src="../UserControls/ucImage.ascx" tagname="ucImage" tagprefix="uc1" %>
 
 <fieldset style="width: 95%;">
-    <legend>Transaction Detail</legend>
+    <legend>
+        Transaction Detail
+    </legend>
     <table>
         <tr>
-            <td>Transaction Name :</td>
-            <td>
+            <td class ="width20">Transaction Name : </td>
+            <td class ="width30">
                 <asp:Label ID="lblDetail_TranName" runat="server"></asp:Label>
             </td>
-            <td>Transaction Type :</td>
-            <td>
+            <td class ="width20">Transaction Type : </td>
+            <td class ="width30">
                 <asp:Label ID="lblDetail_TranType" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td>Transaction Date :</td>
+            <td>Transaction Date : </td>
             <td>
                 <asp:Label ID="lblDetail_TranDate" runat="server"></asp:Label>
             </td>
@@ -27,29 +29,50 @@
             </td>
         </tr>
         <tr>
-            <td>Transaction Detail :</td>
+            <td>Transaction Status : </td>
             <td>
-                <asp:Label ID="lblDetail_TranDetail" runat="server"></asp:Label>
+                <asp:Label ID="lblDetail_TranStatus" runat="server"></asp:Label>
             </td>
-            <td>Transaction Picture :</td>
-            <td rowspan="2">
+            <td>Transaction Picture : </td>
+            <td>
                 <asp:ImageButton ID="imbURL" runat="server" Width="30px" Height="40px" OnClick="imbURL_Click"/>
             </td>
         </tr>
         <tr>
-            <td>Transaction Remark :</td>
-            <td colspan ="2">
-                <asp:Label ID="lblDetail_TranRemark" runat="server"></asp:Label>
+            <td>Transaction Detail : </td>
+            <td colspan ="3">
+                <asp:Label ID="lblDetail_TranDetail" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td>Transaction Status :</td>
-            <td>
-                <asp:Label ID="lblDetail_TranStatus" runat="server"></asp:Label>
+            <td>Transaction Remark : </td>
+            <td colspan ="3">
+                <asp:Label ID="lblDetail_TranRemark" runat="server"></asp:Label>
             </td>
-            <td>&nbsp;</td>
+        </tr>
+        <tr id = "trTransaction_Payment" runat ="server" visible ="false">
+            <td>Payment Date : </td>
             <td>
-                &nbsp;</td>
+                <asp:Label ID="lblDetail_PaymentDate" runat="server"></asp:Label>
+            </td>
+            <td>Bank Transfer : </td>
+            <td>
+                <asp:Label ID="lblDetail_BankTrasfer" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr id = "trTransaction_WithDraw" runat ="server" visible ="false">
+            <td>Customer Bank Name : </td>
+            <td colspan ="3">
+                <asp:Label ID="lblDetail_Cus_Bank_Name" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr id = "trTransaction_Order" runat ="server" visible ="false">
+            <td>Order ID : </td>
+            <td>
+                <asp:Label ID="lblDetail_Order_ID" runat="server"></asp:Label>
+            </td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>Employee Support :</td>
@@ -66,9 +89,10 @@
             <td colspan ="3">
                 <asp:Label ID="lblDetail_EmpRemark" runat="server"></asp:Label>
             </td>
-        </tr>        
+        </tr> 
     </table>
 </fieldset>
+
 <fieldset style="width: 95%;">
     <legend>Customer Detail
     </legend>
