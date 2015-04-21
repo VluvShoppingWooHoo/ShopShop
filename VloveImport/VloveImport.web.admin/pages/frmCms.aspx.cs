@@ -28,21 +28,34 @@ namespace VloveImport.web.admin.pages
             set { ViewState["_VS_CONTENT_ID"] = value; }
         }
 
+        public string _VS_TYPE
+        {
+            get { return Request.QueryString["type"] == null ? "" : Enc.DecryptData(Request.QueryString["type"]); }
+            set { ViewState["_VS_TYPE"] = value; }
+        }
+
+        public string _VS_HEADER_CONTENT_ID
+        {
+            get { return Request.QueryString["head"] == null ? "" : Enc.DecryptData(Request.QueryString["head"]); }
+            set { ViewState["_VS_HEADER_CONTENT_ID"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             _VS_USER_LOGIN = "admin";
             if (!IsPostBack)
             {
+                chkType(_VS_TYPE);
                 if (_VS_CONTENT_ID != "")
                 {
                     BindData();
                 }
-                else
-                {
-                    trURL.Visible = false;
-                    lblLegend.Text = "Promotion Content";
-                    hdfContentType.Value = "1";
-                }
+                //else
+                //{
+                //    trURL.Visible = false;
+                //    lblLegend.Text = "Promotion Content";
+                //    hdfContentType.Value = "1";
+                //}
             }
         }
 
@@ -52,17 +65,17 @@ namespace VloveImport.web.admin.pages
             {
                 AdminBiz AddBiz = new AdminBiz();
                 DataSet ds = new DataSet();
-                ds = AddBiz.ADMIN_GET_CMS(_VS_CONTENT_ID, string.Empty, "0", 1, "BINDDATA_BYID");
+                ds = AddBiz.ADMIN_GET_CMS(_VS_CONTENT_ID, string.Empty, "0", 1, "0", "BINDDATA_BYID");
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     txtContentTitle.Text = ds.Tables[0].Rows[0]["CONTENT_TITLE"].ToString();
+                    //txtContentDetail.Text = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString().Replace('[', '<').Replace(']', '>');
                     txtContentDetail.Text = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString();
                     ddl_Content_Type.SelectedValue = ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString();
                     hdContentIMG.Value = ds.Tables[0].Rows[0]["CONTENT_IMG"].ToString();
                     if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"]) chkIsActive.Checked = true;
                     else chkIsActive.Checked = false;
-                    chkType(ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString());
                     if (hdfContentType.Value == "3")
                     {
                         txtURL.Text = (ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString()).Split('|')[0].ToString();
@@ -84,6 +97,7 @@ namespace VloveImport.web.admin.pages
                 cd.ContentID = _VS_CONTENT_ID == "" ? 0 : int.Parse(_VS_CONTENT_ID);
                 cd.ContentDate = DateTime.Today;
                 cd.ContentImage = hdContentIMG.Value;
+                cd.HEADER_ORDER = _VS_HEADER_CONTENT_ID == "" ? "0" : _VS_HEADER_CONTENT_ID;
                 if (hdfContentType.Value == "1" || hdfContentType.Value == "2")
                 {
                     if (FileUploadControl.HasFile)
@@ -96,7 +110,8 @@ namespace VloveImport.web.admin.pages
                         string filename = "Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
                         cd.ContentImage = filename;
                     }
-                    cd.ContentDetail = (htmlObject(txtContentDetail.Text)).Replace('<', '[').Replace('>', ']');
+                    //cd.ContentDetail = (htmlObject(txtContentDetail.Text)).Replace('<', '[').Replace('>', ']');
+                    cd.ContentDetail = (htmlObject(txtContentDetail.Text));
                     cd.ContentTitle = txtContentTitle.Text;
                 }
                 else
@@ -130,7 +145,12 @@ namespace VloveImport.web.admin.pages
                 cd.ContentType = hdfContentType.Value;
 
                 Result = ab.ADMIN_INS_UPD_CMS(cd, Act);
-                Response.Redirect("frmCmsList.aspx");
+                if (Result != string.Empty)
+                {
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + Result + "');", false);
+                }
+                util.EncrypUtil En = new util.EncrypUtil();
+                Response.Redirect("frmCmsList.aspx?CID=" + Server.UrlEncode(En.EncrypData(_VS_HEADER_CONTENT_ID)));
             }
             catch (Exception ex)
             {

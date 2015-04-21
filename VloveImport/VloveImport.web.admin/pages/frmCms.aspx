@@ -14,7 +14,7 @@
 
         </Triggers>
         <ContentTemplate>
-            <fieldset style="width: 95%;">
+            <fieldset style="width: 95%;" hidden>
                 <%--<legend>Content Type
                 </legend>--%>
                 <table>
@@ -79,6 +79,7 @@
                             <asp:CheckBox ID="chkIsActive" runat="server" Checked="true"/>
                         </td>
                     </tr>
+                    <tr></tr>
                     <tr style="margin-top: 20px;">
                         <td colspan="5" style="text-align: right;">
                             <asp:Button ID="btnSave" runat="server" Text="Save " CssClass=" btnSave" OnClick="btnSave_Click"></asp:Button>
