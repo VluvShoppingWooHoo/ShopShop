@@ -758,8 +758,8 @@
     <div class="col s2 m2 l2">
         <div id="hotlink" class="collection">
             <a href="/Customer/CustomerOrder.aspx" class="collection-item" style="padding-left: 0px"><i class="flaticon-telemarketing"></i>สั่งซื้อขนส่ง</a>
-            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
-            <a href="#!" class="collection-item" style="padding-left: 0px"><i class="flaticon-logistics3"></i>ส่งแบบออฟไลน์</a>
+            <a href="/Customer/CustomerTransOnly.aspx" class="collection-item" style="padding-left: 0px"><i class="flaticon-packages2"></i>ขนส่งอย่างเดียว</a>
+            <a href="/Customer/CustomerUploadPIList.aspx" class="collection-item" style="padding-left: 0px"><i class="flaticon-logistics3"></i>ส่งแบบออฟไลน์</a>
             <a target="_blank" href="http://www.bangkokbank.com/bangkokbankthai/webservices/rates/pages/fx_rates.aspx" class="collection-item" style="padding-left: 0px"><i class="flaticon-coins1"></i>แลกเปลี่ยนค่าเงิน</a>
         </div>
         <iframe marginwidth="0" marginheight="0" src="http://www.bangkokbank.com/fxbanner/banner1.htm" frameborder="0" width="173" scrolling="no" height="165"></iframe>
