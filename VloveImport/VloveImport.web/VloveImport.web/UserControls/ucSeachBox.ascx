@@ -207,7 +207,7 @@
                         toast('Item Added.', 5000)
                     },
                     error: function (err) {
-                        alert('Something wrong, please contact admin.');
+                        alert('Something wrong, please contact admin.  (Code : 2002)');
                     }
                 });
             }
@@ -247,7 +247,7 @@
                     $('#btnAddCart').show();
                 },
                 error: function (err) {
-                    alert('Something wrong, please contact admin.');
+                    alert('Something wrong, please contact admin.  (Code : 2001)');
                 }
             });
         });

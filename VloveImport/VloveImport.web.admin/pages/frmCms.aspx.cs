@@ -96,7 +96,7 @@ namespace VloveImport.web.admin.pages
                         string filename = "Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
                         cd.ContentImage = filename;
                     }
-                    cd.ContentDetail = htmlObject(txtContentDetail.Text);
+                    cd.ContentDetail = (htmlObject(txtContentDetail.Text)).Replace('<', '[').Replace('>', ']');
                     cd.ContentTitle = txtContentTitle.Text;
                 }
                 else

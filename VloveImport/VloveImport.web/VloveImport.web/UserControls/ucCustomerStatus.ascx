@@ -174,13 +174,13 @@
                                     location.reload();
                                 },
                                 error: function (err) {
-                                    alert('Something wrong, please contact admin.');
+                                    alert('Something wrong, please contact admin. (Code : 1002)');
                                 }
                             });
                         }
                     },
                     error: function (err) {
-                        alert('Something wrong, please contact admin.');
+                        alert('Something wrong, please contact admin. (Code : 1001)');
                     }
                 });
             }

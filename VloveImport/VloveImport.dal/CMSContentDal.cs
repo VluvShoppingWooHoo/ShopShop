@@ -63,7 +63,7 @@ namespace VloveImport.dal
                     DataRow item = ds.Tables[0].Rows[0];
                     model.ContentID = Convert.ToInt16(item["CONTENT_ID"]);
                     model.ContentTitle = item["CONTENT_TITLE"].ToString();
-                    model.ContentDetail = item["CONTENT_DETAIL"].ToString();
+                    model.ContentDetail = item["CONTENT_DETAIL"].ToString().Replace('[', '<').Replace(']', '>');
                     model.ContentImage = item["CONTENT_IMG"].ToString();
                     model.ContentType = item["CONTENT_TYPE"].ToString();
                     model.ContentDate = Convert.ToDateTime(item["CREATE_DATE"]);
