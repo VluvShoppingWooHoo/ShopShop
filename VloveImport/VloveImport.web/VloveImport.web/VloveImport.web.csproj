@@ -90,6 +90,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\ContentDetail.aspx" />
     <Content Include="Customer\ContentList.aspx" />
+    <Content Include="Customer\CustomerUploadPIList.aspx" />
     <Content Include="Customer\CustomerUploadPI.aspx" />
     <Content Include="Customer\CustomerTransOnly.aspx" />
     <Content Include="Customer\CustomerOrderDetail.aspx" />
@@ -259,6 +260,13 @@
     </Compile>
     <Compile Include="Customer\ContentList.aspx.designer.cs">
       <DependentUpon>ContentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerUploadPIList.aspx.cs">
+      <DependentUpon>CustomerUploadPIList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerUploadPIList.aspx.designer.cs">
+      <DependentUpon>CustomerUploadPIList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerUploadPI.aspx.cs">
       <DependentUpon>CustomerUploadPI.aspx</DependentUpon>
