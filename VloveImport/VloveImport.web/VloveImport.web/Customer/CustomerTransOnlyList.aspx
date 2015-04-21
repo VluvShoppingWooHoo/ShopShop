@@ -7,7 +7,9 @@
         <ContentTemplate>
             <div class="row">
                 <div class="col s12 m12 l12 TestBox1">                    
-                    <span class="bold FontHeader orange-text">รายการสินค้าฝากจ่าย</span>          
+                    <span class="bold FontHeader orange-text">รายการขนส่งสินค้า</span>&nbsp;&nbsp;
+                    <a href="CustomerTransOnly.aspx" class="blue-text">สร้างรายการใหม่</a>
+                    <br />        
                     <asp:GridView ID="gvOrder" CssClass="GridStyle" runat="server" AutoGenerateColumns="false" OnDataBound="gvOrder_DataBound"
                         AllowPaging="true" PageSize="10" OnPageIndexChanging="gvOrder_PageIndexChanging">
                         <Columns>
