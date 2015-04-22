@@ -24,6 +24,8 @@ namespace VloveImport.data
         public string EMP_USER { get; set; }
         public DateTime EMP_UPDATE_DATE { get; set; }
         public string ORDER_EMP_REMARK { get; set; }
+        public string ORDER_TYPE { get; set; }
+        public string ORDER_PI { get; set; }
         #endregion
 
         #region Optional
