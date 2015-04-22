@@ -213,11 +213,31 @@ namespace VloveImport.biz
 
         #region CMS
 
-        public DataSet ADMIN_GET_CMS(string ID, string Title, string Content_Type, int Active, string Act)
+        public DataSet ADMIN_GET_CMS_HEADER(string ID, string Title, int Active, string Act)
         {
             DataSet ds = new DataSet();
             AdminDal dal = new AdminDal("LocalConnection");
-            ds = dal.ADMIN_GET_CMS(ID, Title, Content_Type, Active, Act);
+            ds = dal.ADMIN_GET_CMS_HEADER(ID, Title, Active, Act);
+            return ds;
+        }
+
+        public string ADMIN_INS_UPD_CMS_HEADER(ContentData cd, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.ADMIN_INS_UPD_CMS_HEADER(cd, Act);
+            }
+            catch (Exception ex) { }
+            return Result;
+        }
+
+        public DataSet ADMIN_GET_CMS(string ID, string Title, string Content_Type, int Active, string Header_ID, string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.ADMIN_GET_CMS(ID, Title, Content_Type, Active, Header_ID, Act);
             return ds;
         }
 

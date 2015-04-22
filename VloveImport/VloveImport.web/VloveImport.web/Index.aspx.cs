@@ -10,7 +10,6 @@ using VloveImport.data;
 using VloveImport.util;
 using VloveImport.biz;
 using VloveImport.data.Extension;
-using Facebook;
 using System.Xml;
 using System.Web.Configuration;
 using System.ServiceModel.Syndication;

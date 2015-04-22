@@ -422,7 +422,50 @@ namespace VloveImport.dal
         #endregion
 
         #region CMS
-        public DataSet ADMIN_GET_CMS(string ID, string Title, string Content_Type, int Active, string Act)
+        public DataSet ADMIN_GET_CMS_HEADER(string ID, string Title, int Active, string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_CMS_HEADER");
+
+                SqlCommandData.SetParameter_Input_INT("HEADER_ID", SqlDbType.Int, ParameterDirection.Input, ID);
+                SqlCommandData.SetParameter("HEADER_TITLE", SqlDbType.VarChar, ParameterDirection.Input, Title);
+                SqlCommandData.SetParameter_Input_INT("IS_ACTIVE", SqlDbType.Int, ParameterDirection.Input, Active);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ADMIN_GET_CMS_HEADER -> msg : " + ex.Message);
+            }
+        }
+        public string ADMIN_INS_UPD_CMS_HEADER(ContentData cd, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_INS_UPD_CMS_HEADER");
+
+                SqlCommandData.SetParameter_Input_INT("HEADER_ID", SqlDbType.Int, ParameterDirection.Input, cd.ContentID);
+                SqlCommandData.SetParameter("HEADER_TITLE", SqlDbType.NVarChar, ParameterDirection.Input, cd.ContentTitle);
+                SqlCommandData.SetParameter("HEADER_IMG", SqlDbType.VarChar, ParameterDirection.Input, cd.ContentImage);
+                SqlCommandData.SetParameter_Input_INT("HEADER_ORDER", SqlDbType.Int, ParameterDirection.Input, int.Parse(cd.HEADER_ORDER));
+                SqlCommandData.SetParameter_Input_INT("IS_ACTIVE", SqlDbType.Int, ParameterDirection.Input, cd.IsActive);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("ADMIN_INS_UPD_CMS -> msg : " + ex.Message);
+            }
+        }
+        public DataSet ADMIN_GET_CMS(string ID, string Title, string Content_Type, int Active, string Header_ID, string Act)
         {
             try
             {
@@ -432,6 +475,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CONTENT_TITLE", SqlDbType.VarChar, ParameterDirection.Input, Title);
                 SqlCommandData.SetParameter_Input_INT("CONTENT_TYPE", SqlDbType.Int, ParameterDirection.Input, Content_Type);
                 SqlCommandData.SetParameter_Input_INT("IS_ACTIVE", SqlDbType.Int, ParameterDirection.Input, Active);
+                SqlCommandData.SetParameter_Input_INT("HEADER_ID", SqlDbType.Int, ParameterDirection.Input, Header_ID);
                 SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
                 return SqlCommandData.ExecuteDataSet();
@@ -454,6 +498,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CONTENT_IMG", SqlDbType.VarChar, ParameterDirection.Input, cd.ContentImage);
                 SqlCommandData.SetParameter("CONTENT_DETAIL", SqlDbType.NVarChar, ParameterDirection.Input, cd.ContentDetail);
                 SqlCommandData.SetParameter_Input_INT("CONTENT_TYPE", SqlDbType.Int, ParameterDirection.Input, int.Parse(cd.ContentType));
+                SqlCommandData.SetParameter_Input_INT("HEADER_ID", SqlDbType.Int, ParameterDirection.Input, int.Parse(cd.HEADER_ORDER));
                 SqlCommandData.SetParameter_Input_INT("IS_ACTIVE", SqlDbType.Int, ParameterDirection.Input, cd.IsActive);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
 
