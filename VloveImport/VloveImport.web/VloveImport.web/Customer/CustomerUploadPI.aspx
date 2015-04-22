@@ -50,6 +50,10 @@
                 <div class="col s12 m12 l12 TestBox1">                                        
                     <div style="margin-left: 10px;">                
                         <div class="row s6 m6 l6 TestBox1">
+                            <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
+                                name="action" class="btn waves-effect orange waves-light">
+                                ย้อนกลับ                                
+                            </button>&nbsp;&nbsp;
                             <button id="btnUploadPI" runat="server" type="submit" onserverclick="btnUploadPI_ServerClick"
                                 name="action" class="btn waves-effect orange waves-light">
                                 ฝากจ่าย                                

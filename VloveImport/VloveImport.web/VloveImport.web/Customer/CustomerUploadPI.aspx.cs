@@ -18,8 +18,15 @@ namespace VloveImport.web.Customer
             CheckSession();
             if (!IsPostBack)
             {
-                                
+                string OID = Request.QueryString["OID"] == null ? "" : DecryptData(Request.QueryString["OID"].ToString());
+                if(OID != "")
+                    BindData(OID);
             }
+        }
+
+        protected void BindData(string OID)
+        {
+
         }
 
         protected void btnOrder_ServerClick(object sender, EventArgs e)
@@ -53,7 +60,7 @@ namespace VloveImport.web.Customer
         protected void btnUploadPI_ServerClick(object sender, EventArgs e)
         {
             Session.Remove("TRANS");
-            string CUS_ID = GetCusID().ToString();
+            string OID = GetCusID().ToString();
             CUS_ID = en.EncrypData(CUS_ID);
             Response.Redirect("CustomerTransport.aspx?CID=" + CUS_ID);
         }
