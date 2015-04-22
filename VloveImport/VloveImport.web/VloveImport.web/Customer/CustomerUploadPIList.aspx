@@ -7,7 +7,9 @@
         <ContentTemplate>
             <div class="row">
                 <div class="col s12 m12 l12 TestBox1">                    
-                    <span class="bold FontHeader orange-text">รายการสินค้าฝากจ่าย</span>          
+                    <span class="bold FontHeader orange-text">รายการสินค้าฝากจ่าย</span>  &nbsp;&nbsp;
+                    <a href="CustomerUploadPI.aspx" class="blue-text">สร้างรายการใหม่</a>    
+                    <br />    
                     <asp:GridView ID="gvOrder" CssClass="GridStyle" runat="server" AutoGenerateColumns="false" OnDataBound="gvOrder_DataBound"
                         AllowPaging="true" PageSize="10" OnPageIndexChanging="gvOrder_PageIndexChanging">
                         <Columns>
@@ -20,7 +22,7 @@
                                     <%--<asp:Label ID="lbOrderCode" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_CODE") %>'></asp:Label>--%>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="วันที่สั่งซื้อ" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Center">
+                            <asp:TemplateField HeaderText="วันที่ทำรายการ" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbOrderDate" runat="server" CssClass="center-align" Width="100%"
                                         Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_DATE") %>'></asp:Label>

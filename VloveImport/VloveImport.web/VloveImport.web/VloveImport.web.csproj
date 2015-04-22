@@ -47,7 +47,7 @@
       <HintPath>..\..\SolutionItem\EncrypDLL.dll</HintPath>
     </Reference>
     <Reference Include="Facebook">
-      <HintPath>..\..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
+      <HintPath>..\..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
@@ -90,6 +90,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\ContentDetail.aspx" />
     <Content Include="Customer\ContentList.aspx" />
+    <Content Include="Customer\CustomerTransOnlyList.aspx" />
     <Content Include="Customer\CustomerUploadPIList.aspx" />
     <Content Include="Customer\CustomerUploadPI.aspx" />
     <Content Include="Customer\CustomerTransOnly.aspx" />
@@ -260,6 +261,13 @@
     </Compile>
     <Compile Include="Customer\ContentList.aspx.designer.cs">
       <DependentUpon>ContentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerTransOnlyList.aspx.cs">
+      <DependentUpon>CustomerTransOnlyList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerTransOnlyList.aspx.designer.cs">
+      <DependentUpon>CustomerTransOnlyList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerUploadPIList.aspx.cs">
       <DependentUpon>CustomerUploadPIList.aspx</DependentUpon>

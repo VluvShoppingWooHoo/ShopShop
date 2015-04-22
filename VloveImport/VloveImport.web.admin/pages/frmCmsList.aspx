@@ -7,7 +7,89 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <Triggers>
+
+            <asp:PostBackTrigger ControlID="btnSave" />
+
+        </Triggers>
         <ContentTemplate>
+            <fieldset style="width: 95%;" hidden>
+                <%--<legend>Content Type
+                </legend>--%>
+                <table>
+                    <tr id="trContent_Type" runat="server">
+                        <td style="text-align: right;">Content Type :</td>
+                        <td>
+                            <asp:DropDownList ID="ddl_Header_Content_Type" Enabled="false" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_Header_Content_Type_SelectedIndexChanged">
+                                <asp:ListItem Selected="True" Value="1">Promotion</asp:ListItem>
+                                <asp:ListItem Value="2">News</asp:ListItem>
+                                <asp:ListItem Value="3">Recommend</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <%--<td></td>--%>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset style="width: 95%;">
+                <legend>
+                    <asp:Label ID="lblLegend" runat="server" Text="Label"></asp:Label>
+                </legend>
+                <table>
+                    <tr hidden>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="trTitle" runat="server">
+                        <td style="text-align: right;">Header Title :</td>
+                        <td colspan="4">
+                            <asp:TextBox ID="txtHeaderTitle" runat="server" Width="100%"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr id="trIMG" runat="server">
+                        <td style="text-align: right;">Header Image :</td>
+                        <td colspan="4">
+                            <asp:FileUpload ID="FileUploadControl" runat="server" Width="100%" />
+                            <asp:HiddenField ID="hdHeaderContentIMG" runat="server" />
+                        </td>
+                    </tr>
+                    <tr id="trHtmlEditor" runat="server" hidden>
+                        <td style="text-align: right;">Header Order :</td>
+                        <td colspan="4">
+                            <asp:TextBox ID="txtOrder" runat="server" Width="100%"></asp:TextBox>
+                            <asp:numericupdownextender
+                                id="NumericUpDownExtender1"
+                                runat="server"
+                                targetcontrolid="txtOrder"
+                                width="120"
+                                refvalues=""
+                                servicedownmethod=""
+                                serviceupmethod=""
+                                targetbuttondownid=""
+                                targetbuttonupid=""
+                                minimum="1"
+                                maximum="7" />
+                        </td>
+                    </tr>
+                    <%--<tr>
+                        <td style="text-align: right;">Active :</td>
+                        <td colspan="4">
+                            <asp:CheckBox ID="CheckBox1" runat="server" Checked="true" />
+                        </td>
+                    </tr>--%>
+                    <tr style="margin-top: 20px;">
+                        <td colspan="5" style="text-align: right;">
+                            <asp:Button ID="btnSave" runat="server" Text="Save " CssClass=" btnSave" OnClick="btnSave_Click"></asp:Button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <asp:HiddenField ID="hdfContentType" runat="server" />
             <fieldset style="width: 98.5%;">
                 <legend>Search Criteria</legend>
                 <table style="border: 1 solid;">
@@ -35,12 +117,10 @@
                             <asp:Label ID="Label3" runat="server" Text="Active :"></asp:Label>
                         </td>
                         <td class="width35">
-                            <asp:CheckBox ID="chkIsActive" runat="server" Checked="true"/>
+                            <asp:CheckBox ID="chkIsActive" runat="server" Checked="true" />
                         </td>
-                        <td class="width15">
-                        </td>
-                        <td class="width35">
-                        </td>
+                        <td class="width15"></td>
+                        <td class="width35"></td>
                     </tr>
                     <tr>
                         <td colspan="4" style="text-align: center;">
@@ -56,7 +136,7 @@
                         <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
                     </td>
                     <td style="text-align: right;">
-                            <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btnSave" OnClick="btnAdd_Click" />
+                        <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btnSave" OnClick="btnAdd_Click" />
                         &nbsp;</td>
                 </tr>
             </table>

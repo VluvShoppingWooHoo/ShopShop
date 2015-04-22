@@ -49,19 +49,7 @@
 
     <script type="text/javascript">
         $(function () {
-            $('.divAddress').hide();
             SetFadeout();
-            $('.rdbThai label').click(function (e) {
-                //alert(e.currentTarget.control.id);
-                //$("#" + e.currentTarget.control.id).attr('checked', 'checked');
-                if (e.currentTarget.innnerHtml == "มารับเอง" || e.currentTarget.control.value == 1) {
-                    $('.divAddress').hide();
-                }
-                else {
-                    $('.divAddress').show();
-                }
-            });
-            //$('select').material_select();
         });
     </script>
 </asp:Content>
