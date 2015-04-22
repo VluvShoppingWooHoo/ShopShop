@@ -12,7 +12,7 @@ namespace VloveImport.biz
 {
     public class LogonBiz
     {
-        public CustomerData LogonDBCustomer(string User, string Pass)
+        public CustomerData LogonDBCustomer(string User, string Pass , int isFB)
         {
             CustomerData Cust = new CustomerData();
             LogonDal dal = new LogonDal("LocalConnection");
@@ -22,8 +22,11 @@ namespace VloveImport.biz
             {
                 EncrypUtil en = new EncrypUtil();
                 string PassDB = "";
-                PassDB = dt.Rows[0]["Cus_Password"].ToString();
-                PassDB = en.DecryptData(PassDB);
+                if (isFB != 1)
+                {
+                    PassDB = dt.Rows[0]["Cus_Password"].ToString();
+                    PassDB = en.DecryptData(PassDB);
+                }
                 if (PassDB == Pass)
                 {
                     Cust.Cus_ID = dt.Rows[0]["Cus_ID"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["Cus_ID"].ToString());

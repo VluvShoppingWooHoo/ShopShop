@@ -181,7 +181,7 @@ namespace VloveImport.web.Customer
         public static string fbRegis(string email, string first_name, string id, string last_name, string gender)
         {
             string Result = string.Empty;
-            string password = string.Empty;
+            string password = "1234";
             JavaScriptSerializer js = new JavaScriptSerializer();
             JSONData jData = new JSONData();
             CustomerData cust = new CustomerData();

@@ -28,7 +28,7 @@ namespace VloveImport.web.Customer
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            LoginProcess(txtUser.Text, txtPass.Text);
+            LoginProcess(txtUser.Text, txtPass.Text, 0);
             if (Session["User"] != null)
             {
                 if (ViewState["url"] != null && ViewState["url"].ToString() != "")
@@ -42,11 +42,11 @@ namespace VloveImport.web.Customer
             Response.Redirect("~/Index.aspx");
         }
 
-        protected void LoginProcess(string UserName, string Password)
+        protected void LoginProcess(string UserName, string Password , int isFB)
         {
             LogonBiz Logon = new LogonBiz();
             CustomerData Cust = new CustomerData();
-            Cust = Logon.LogonDBCustomer(UserName, Password);
+            Cust = Logon.LogonDBCustomer(UserName, Password, isFB);
             if (Cust != null)
                 Session["User"] = Cust;
         }
@@ -58,7 +58,7 @@ namespace VloveImport.web.Customer
             EncrypUtil en = new EncrypUtil();
             JavaScriptSerializer js = new JavaScriptSerializer();
             JSONData jData = new JSONData();
-            Login.LoginProcess(email, en.DecryptData(password));
+            Login.LoginProcess(email, string.Empty, 1);
             jData.Result = Constant.Fact.T;
             return js.Serialize(jData);
         }

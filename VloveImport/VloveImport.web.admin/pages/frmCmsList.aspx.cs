@@ -41,8 +41,8 @@ namespace VloveImport.web.admin.pages
         private void BindData()
         {
             DataSet ds = new DataSet();
-            if (!IsPostBack)
-            {
+            //if (!IsPostBack)
+            //{
                 try
                 {
                     AdminBiz AdBiz = new AdminBiz();
@@ -79,7 +79,7 @@ namespace VloveImport.web.admin.pages
                 {
 
                 }
-            }
+            //}
         }
         #endregion
         #region btn click
