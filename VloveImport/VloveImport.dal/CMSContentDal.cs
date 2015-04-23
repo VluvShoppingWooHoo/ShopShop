@@ -38,7 +38,11 @@ namespace VloveImport.dal
                         model.ContentTitle = item["CONTENT_TITLE"].ToString();
                         model.ContentDetail = item["CONTENT_DETAIL"].ToString();
                         model.ContentImage = item["CONTENT_IMG"].ToString();
-                        model.ContentType = item["CONTENT_TYPE"].ToString();
+                        model.ContentType = item["HEADER_TYPE"].ToString();
+                        model.HEADER_TITLE = item["HEADER_TITLE"].ToString();
+                        model.HEADER_IMG = item["HEADER_IMG"].ToString();
+                        model.HEADER_TYPE = item["HEADER_TYPE"].ToString();
+                        model.HEADER_ORDER = item["HEADER_ORDER"].ToString();
                         model.ContentDate = Convert.ToDateTime(item["CREATE_DATE"]);
                         models.Add(model);
                     }

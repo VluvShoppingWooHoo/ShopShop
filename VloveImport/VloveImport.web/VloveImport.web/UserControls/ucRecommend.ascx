@@ -1,23 +1,28 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucRecommend.ascx.cs" Inherits="VloveImport.web.UserControls.ucRecommend" %>
 <%@ Register Src="~/UserControls/ucContent.ascx" TagName="ucContent" TagPrefix="ucCT" %>
 
-<div class="z-depth-1">
-    <span class="oblique bold orange-text" style="font-size: 16px !important;">Recommend</span>
-    <div id="divMainRecommend">
-        <div class="row">
-            <div id="divMainRecommendNewest" class="col s4 m4 l4" style="padding-right:0px;min-height:350px;min-width:350px;"></div>
+<div>
+    <div id="divSeasonRecommend" class="" style="margin: 20px;">
+        <div class="row recGradaint" style="text-align: center;">
+            <span class="white-text" style="font-size: 20px !important; padding-left: 10px;">RecommendMain</span>
+        </div>
+        <div class="row backIMG">
+            <div id="divSeasonRecommendNewest" class="col s4 m4 l4" style="padding-right: 0px; min-height: 350px; min-width: 350px;"></div>
             <div class="col s8 m8 l8">
-                <div id="divMainSubRecommend1" class="row">
+                <div id="divSeasonSubRecommend1" class="row">
                 </div>
-                <div id="divMainSubRecommend2" class="row">
+                <div id="divSeasonSubRecommend2" class="row">
                 </div>
             </div>
         </div>
     </div>
     <ucCT:ucContent ID="ucContent" runat="server" />
-    <div id="divRecommend">
-        <div class="row">
-            <div id="divRecommendNewest" class="col s4 m4 l4" style="padding-right:0px;min-height:350px;min-width:350px;"></div>
+    <div id="divRecommend" class="" style="margin: 20px;">
+        <div class="row recGradaint">
+            <span class="white-text" style="font-size: 16px !important; padding-left: 10px;">Recommend</span>
+        </div>
+        <div class="row backIMG">
+            <div id="divRecommendNewest" class="col s4 m4 l4" style="padding-right: 0px; min-height: 350px; min-width: 350px;"></div>
             <div class="col s8 m8 l8">
                 <div id="divSubRecommend1" class="row">
                 </div>

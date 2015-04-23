@@ -220,7 +220,8 @@ namespace VloveImport.web
                     string path = WebConfigurationManager.AppSettings["AdminURL"];
                     for (int i = 0; i < models.Count; i++)
                     {
-                        models[i].ContentImage = path + models[i].ContentImage;
+                        models[i].ContentImage = (path + models[i].ContentImage).Replace("\\", "/");
+                        models[i].HEADER_IMG = (path + models[i].HEADER_IMG).Replace("\\", "/");
                     }
                     jData.Result = Constant.Fact.T;
                     jData.ReturnVal = models;

@@ -809,12 +809,21 @@
                 var obj = JSON.parse(data.d);
                 if (obj.Result == 1) {
                     var txtPromo = '<div class="row">';
+                    var countPromo = 0;
+
                     var txtNews = '<div class="row">';
+                    var countNews = 0;
+
+                    var txtSeasonRecommendMain = '<div class="row">';
+                    var txtSeasonRecommendSub1 = '<div class="row">';
+                    var txtSeasonRecommendSub2 = '<div class="row">';
+                    var countSeasonRecommend = 0;
+                    var countSeasonRecommend1 = 0;
+                    var countSeasonRecommend2 = 0;
+
                     var txtRecommendMain = '<div class="row">';
                     var txtRecommendSub1 = '<div class="row">';
                     var txtRecommendSub2 = '<div class="row">';
-                    var countPromo = 0;
-                    var countNews = 0;
                     var countRecommend = 0;
                     var countRecommend1 = 0;
                     var countRecommend2 = 0;
@@ -836,18 +845,41 @@
                             var img = obj.ReturnVal[i].ContentDetail.split("|")[0];
                             var name = obj.ReturnVal[i].ContentDetail.split("|")[1];
                             var url = obj.ReturnVal[i].ContentDetail.split("|")[2];
-                            if (countRecommend == 0) {
-                                countRecommend++;
-                                txtRecommendMain += '<div class="card hvr-float" style="min-height:300px;"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" style="min-height:400px;min-width:350px;"/><span id="ReccommendMainItem" class="card-title">' + name + '</span></a></div></div>';
-                            }
-                            else if (countRecommend1 < 4 || countRecommend2 < 4) {
-                                if (countRecommend1 == countRecommend2) {
-                                    countRecommend1++;
-                                    txtRecommendSub1 += '<div class="col s3 m3 l3 hvr-float" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
+
+                            if (obj.ReturnVal[i].HEADER_ORDER == '1') {
+                                if (countSeasonRecommend == 0) {
+                                    countSeasonRecommend++;
+                                    $('#divSeasonRecommend span').html(obj.ReturnVal[i].HEADER_TITLE);
+                                    $('#divSeasonRecommend div[class~="backIMG"]').css('background-image', 'url(' + obj.ReturnVal[i].HEADER_IMG + ')');
+                                    txtSeasonRecommendMain += '<div class="card hvr-float" style="min-height:300px;"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" style="min-height:400px;min-width:350px;"/><span id="ReccommendMainItem" class="card-title">' + name + '</span></a></div></div>';
                                 }
-                                else {
-                                    countRecommend2++;
-                                    txtRecommendSub2 += '<div class="col s3 m3 l3 hvr-float" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
+                                else if (countSeasonRecommend1 < 4 || countSeasonRecommend2 < 4) {
+                                    if (countSeasonRecommend1 == countSeasonRecommend2) {
+                                        countSeasonRecommend1++;
+                                        txtSeasonRecommendSub1 += '<div class="col s3 m3 l3 hvr-float" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
+                                    }
+                                    else {
+                                        countSeasonRecommend2++;
+                                        txtSeasonRecommendSub2 += '<div class="col s3 m3 l3 hvr-float" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
+                                    }
+                                }
+                            }
+                            else {
+                                if (countRecommend == 0) {
+                                    countRecommend++;
+                                    $('#divRecommend span').html(obj.ReturnVal[i].HEADER_TITLE);
+                                    $('#divRecommend div[class~="backIMG"]').css('background-image', 'url(' + obj.ReturnVal[i].HEADER_IMG + ')');
+                                    txtRecommendMain += '<div class="card hvr-float" style="min-height:300px;"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" style="min-height:400px;min-width:350px;"/><span id="ReccommendMainItem" class="card-title">' + name + '</span></a></div></div>';
+                                }
+                                else if (countRecommend1 < 4 || countRecommend2 < 4) {
+                                    if (countRecommend1 == countRecommend2) {
+                                        countRecommend1++;
+                                        txtRecommendSub1 += '<div class="col s3 m3 l3 hvr-float" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
+                                    }
+                                    else {
+                                        countRecommend2++;
+                                        txtRecommendSub2 += '<div class="col s3 m3 l3 hvr-float" style="min-height:200px;padding-right:0px;"><div class="card" style="min-height:200px;"><div class="card-image" style="min-height:200px;"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '"/><span class="card-title">' + name + '</span></a></div></div></div>';
+                                    }
                                 }
                             }
                         }
@@ -855,7 +887,12 @@
                     //txtPromo += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=1">ดูเพิ่มเติม</a></div></div>';
                     txtNews += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=2">ดูเพิ่มเติม</a></div></div>';
                     //$('#divPromotionBar').html(txtPromo);
-                    $('#divNewsBar').html(txtNews);
+                    $('#divNewsBar').append(txtNews);
+
+                    $('#divSeasonRecommendNewest').html(txtSeasonRecommendMain);
+                    $('#divSeasonSubRecommend1').html(txtSeasonRecommendSub1);
+                    $('#divSeasonSubRecommend2').html(txtSeasonRecommendSub2);
+
                     $('#divRecommendNewest').html(txtRecommendMain);
                     $('#divSubRecommend1').html(txtRecommendSub1);
                     $('#divSubRecommend2').html(txtRecommendSub2);

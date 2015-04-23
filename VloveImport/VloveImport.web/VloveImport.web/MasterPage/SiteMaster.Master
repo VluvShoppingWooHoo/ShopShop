@@ -37,7 +37,8 @@
                 <uc1:ucMenubar ID="ucMenubar1" runat="server" />
             </div>
             <div id="divcontent" class="col s10 m10 l10">
-                <div id="divcard" class="card .z-depth-5" style="padding: 20px">
+                <div id="divcard" class="" style="padding: 20px">
+                <%--<div id="divcard" class="card" style="padding: 20px">--%>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>

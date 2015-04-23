@@ -13,6 +13,9 @@ namespace VloveImport.data
         public string ContentDetail { get; set; }
         public string ContentImage { get; set; }
         public string ContentType { get; set; }
+        public string HEADER_TITLE { get; set; }
+        public string HEADER_IMG { get; set; }
+        public string HEADER_TYPE { get; set; }
         public string HEADER_ORDER { get; set; }
         public int IsActive { get; set; }
         public DateTime ContentDate { get; set; }

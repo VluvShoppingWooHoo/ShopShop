@@ -233,6 +233,11 @@ nav
                 font-size: 12px !important;
             }
 
+.borderBox
+{
+    border: 1px solid #bdbdbd;
+}
+
 .page-footer
 {
     border-top: 1px solid #bdbdbd;
@@ -781,4 +786,9 @@ div[class~="card-image"] a span[class~="card-title"]
 .word-wrap
 {
 	word-wrap: break-word;
+}
+
+.recGradaint {
+    background: -moz-linear-gradient(right, grey, black); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, grey , black); /* Standard syntax (must be last) */
 }

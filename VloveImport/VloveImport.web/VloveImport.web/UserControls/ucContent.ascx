@@ -2,8 +2,10 @@
 <%--<span class="oblique bold orange-text" style="font-size: 16px !important;">Promotion</span>--%>
 <%--<div id="divPromotionBar">
 </div>--%>
-<span class="oblique bold orange-text" style="font-size: 16px !important;">News</span>
-<div id="divNewsBar">
+<div id="divNewsBar" class="" style="margin: 20px;">
+    <div class="row recGradaint">
+        <span class="white-text" style="font-size: 16px !important; padding-left: 10px;"">News</span>
+    </div>
 </div>
 <script type="text/javascript">
     $(function () {
