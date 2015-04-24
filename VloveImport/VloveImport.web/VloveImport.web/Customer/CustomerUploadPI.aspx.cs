@@ -80,6 +80,8 @@ namespace VloveImport.web.Customer
             OrderData data = new OrderData();
             data.CUS_ID = GetCusID();
             data.ORDER_PI = txtPINo.Text;
+            data.OD_PRICE = txtAmount.Text == "" ? 0 : Convert.ToDouble(txtAmount.Text);
+            data.OD_AMOUNT = 1;
 
             string filename = Server.MapPath("~/Images/PI/") + Path.GetFileName(Ifile.FileName);
             if (!Directory.Exists(Server.MapPath("~/Images/PI/")))
@@ -89,7 +91,7 @@ namespace VloveImport.web.Customer
             data.OD_PICURL = filename;
 
             Session["ORDER"] = data;
-            Response.Redirect("CustomerTransport.aspx?");
+            Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("PI"));
         }
 
     }

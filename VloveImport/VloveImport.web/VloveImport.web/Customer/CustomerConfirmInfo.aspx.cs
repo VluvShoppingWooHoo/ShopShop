@@ -19,30 +19,50 @@ namespace VloveImport.web.Customer
         {
             CheckSession();     
             if (!IsPostBack)
-            {                         
-                BindDataGrid();
+            {
+                string Type = Request.QueryString["Type"] == null ? "" : DecryptData(Request.QueryString["Type"].ToString());
+                BindDataGrid(Type);
                 BindDataTrans();
                 BindDataSummary();
             }
         }
 
-        protected void BindDataGrid()
+        protected void BindDataGrid(string Type)
         {
-            if (Session["ORDER"] != null)
+            switch (Type)
             {
-                DataTable dtSelected = (DataTable)Session["ORDER"];
-                if (dtSelected != null && dtSelected.Rows.Count > 0)
-                    gvBasket.DataSource = dtSelected;
-                else
-                    gvBasket.DataSource = null;
+                case "ORDER":
+                    if (Session["ORDER"] != null)
+                    {
+                        DataTable dtSelected = (DataTable)Session["ORDER"];
+                        if (dtSelected != null && dtSelected.Rows.Count > 0)
+                            gvBasket.DataSource = dtSelected;
+                        else
+                            gvBasket.DataSource = null;
 
-                gvBasket.DataBind();
+                        gvBasket.DataBind();
+                        gvBasket.Visible = true;
+                    }
+                    break;
+                case "PI":
+                    if (Session["ORDER"] != null)
+                    {
+                        OrderData data = (OrderData)Session["ORDER"];
+                        if (data != null)
+                        {
+                            lbPINo.Text = data.ORDER_PI;
+                            lbAmount.Text = data.OD_AMOUNT.ToString();
+                            imgURL.ImageUrl = data.OD_PICURL;
+                        }
+                    }
+                    break;
+                case "TRANS":
+                    break;
+                default:
+                    GoToIndex();
+                    break;
             }
-            else
-            {
-                GoToIndex();
-                //Error
-            }
+            
         }
         protected void BindDataTrans()
         {

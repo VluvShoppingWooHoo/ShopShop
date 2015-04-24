@@ -11,7 +11,7 @@
             <span class="bold FontHeader2 orange-text">ข้อมูลสินค้า</span>            
             
         <div class="row s6 m6 l6 TestBox1">
-            <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false" Visible="false">
                 <Columns>
                     <asp:TemplateField ItemStyle-Width="70px" ItemStyle-Height="70px">
                         <ItemTemplate>
@@ -45,12 +45,19 @@
                         <ItemTemplate>
                             <asp:Label ID="lbTotal" runat="server" CssClass="right-align" Width="50%"
                                 Text='<%# NumbertoString(Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE")) * 
-                            Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")), "Money") %>'>></asp:Label>
+                            Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")), "Money") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
                 <HeaderStyle BackColor="Orange" />
             </asp:GridView>
+            <asp:MultiView ID="mView" runat="server" ActiveViewIndex="0" Visible="false">               
+                <asp:View ID="vPI" runat="server">
+                    หมายเลข PI : <asp:Label ID="lbPINo" runat="server"></asp:Label><br />
+                    จำนวน : <asp:Label ID="lbAmount" runat="server"></asp:Label><br />
+                    รูป Upload : <asp:Image ID="imgURL" runat="server" Width="200px" Height="200px"/>
+                </asp:View>
+            </asp:MultiView>            
         </div>
             <br />
             <span class="bold FontHeader2 orange-text">ข้อมูลการขนส่ง</span>            

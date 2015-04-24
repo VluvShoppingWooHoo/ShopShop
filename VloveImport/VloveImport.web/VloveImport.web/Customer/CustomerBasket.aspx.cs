@@ -94,7 +94,7 @@ namespace VloveImport.web.Customer
                 EncrypUtil en = new EncrypUtil();
                 string CUS_ID = GetCusID().ToString();
                 CUS_ID = en.EncrypData(CUS_ID);
-                Response.Redirect("CustomerTransport.aspx?CID=" + CUS_ID);
+                Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("ORDER"));
             }
         }
 
