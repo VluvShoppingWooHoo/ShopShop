@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -40,7 +41,8 @@ namespace VloveImport.web.Customer
 
                 txtPINo.ReadOnly = true;
                 txtAmount.ReadOnly = true;
-                Ifile.Enabled = false;
+                Ifile.Visible = false;
+                imgPI.Visible = true;
             }
         }
 
@@ -78,6 +80,13 @@ namespace VloveImport.web.Customer
             OrderData data = new OrderData();
             data.CUS_ID = GetCusID();
             data.ORDER_PI = txtPINo.Text;
+
+            string filename = Server.MapPath("~/Images/PI/") + Path.GetFileName(Ifile.FileName);
+            if (!Directory.Exists(Server.MapPath("~/Images/PI/")))
+                Directory.CreateDirectory(Server.MapPath("~/Images/PI/"));
+
+            Ifile.SaveAs(filename);
+            data.OD_PICURL = filename;
 
             Session["ORDER"] = data;
             Response.Redirect("CustomerTransport.aspx?");

@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="col s4 m4 l4 TestBox1">                    
-                        <asp:Image ID="imgPI" runat="server" ImageUrl="~/Images/icon/close-icon.png" 
+                        <asp:Image ID="imgPI" runat="server" ImageUrl="~/Images/icon/close-icon.png" Visible="false"    
                             Width="180px" Height="200px" BorderWidth="2px" BorderColor="Gray"/>
                     </div>
                 </div>                
