@@ -14,7 +14,7 @@
     <h3>ORDER DETAIL</h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="2">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="0">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>

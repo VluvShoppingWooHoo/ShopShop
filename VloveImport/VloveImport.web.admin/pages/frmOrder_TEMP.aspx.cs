@@ -161,7 +161,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb1_Emp_Remark.Text = dt.Rows[0]["EMP_REMARK"].ToString().Replace("|", "<br>");
                 lbl_tb1_Customer_Code.Text = dt.Rows[0]["CUS_CODE"].ToString();
                 lbl_tb1_Customer_Email.Text = dt.Rows[0]["CUS_EMAIL"].ToString();
-                lbl_tb1_Customer_Balance.Text = dt.Rows[0]["CUS_BALANCE"].ToString();
+                lbl_tb1_Customer_Balance.Text = Convert.ToDouble(dt.Rows[0]["CUS_BALANCE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb1_Customer_Address.Text = dt.Rows[0]["CUS_REC_NAME"].ToString() + " " + dt.Rows[0]["CUS_ADDRESS"].ToString();
                 lbl_tb1_Customer_Remark.Text = dt.Rows[0]["CUS_REMARK"].ToString().Replace("|", "<br>");
                 //Label Right
