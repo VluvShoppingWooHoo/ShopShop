@@ -35,10 +35,10 @@
 
     <a class="collection-item mCus black" disabled>รายการ</a>
     <a class="collection-item mCus" href="../Customer/CustomerOrder.aspx">สั่งซื้อสินค้า</a>
-    <a class="collection-item mCus" href="../Customer/CustomerOrder.aspx">สั่งซื้อสินค้า</a>
-    <a class="collection-item mCus" href="../Customer/CustomerOrder.aspx">สั่งซื้อสินค้า</a>
     <a class="collection-item mCus" href="../Customer/CustomerOrderList.aspx">รายการสั่งซื้อ</a>
     <a class="collection-item mCus" href="../Customer/CustomerBasket.aspx">ตะกร้า</a>
+    <a class="collection-item mCus" href="../Customer/CustomerTransOnlyList.aspx">ขนส่งอย่างเดียว</a>
+    <a class="collection-item mCus" href="../Customer/CustomerUploadPIList.aspx">ส่งแบบฝากจ่าย</a>
 
     <a class="collection-item mCus black" disabled>บัญชี</a>
     <a class="collection-item mCus" href="../Customer/CustomerMyAccount.aspx?tab=topup">เติมเงิน</a>
