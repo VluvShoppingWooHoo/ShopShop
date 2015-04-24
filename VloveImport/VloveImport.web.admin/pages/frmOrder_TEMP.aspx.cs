@@ -214,12 +214,13 @@ namespace VloveImport.web.admin.pages
             if (dt.Rows.Count > 0)
             {
                 lbl_tb2_Total_Income.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_INCOME"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lbl_tb2_Total_Prodcut_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_tb2_Total_Prodcut_Price.Text = (Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE"].ToString()) * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)<br><span style =\"color:red;\">(" + Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US")) + ")(CNY)</span>";
                 //lbl_tb2_Total_Transport_Price.Text = "********";
 
                 lbl_tb2_Total_Refund.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_REFUND"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Additional_Amount.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_ADDITIONAL_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lbl_tb2_Total_Prodcut_Active_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_tb2_Total_Prodcut_Active_Price.Text = (Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()) * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)<br><span style =\"color:red;\">(" + Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US")) + ")(CNY)</span>";
+                
                 lbl_tb2_Total_Transport_Active_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_TRANSPORT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Actually_Amounte.Text = Convert.ToDouble(dt.Rows[0]["ACTUALLY_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
             }
