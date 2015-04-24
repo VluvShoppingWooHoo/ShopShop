@@ -56,19 +56,30 @@ namespace VloveImport.web.Customer
             
             string Trans = China + "," + Thai + "," + Address;                          
 
-            Session.Add("TRANS", Trans);
-            EncrypUtil en = new EncrypUtil();
-            string CUS_ID = GetCusID().ToString();
-            CUS_ID = en.EncrypData(CUS_ID);
-            Response.Redirect("CustomerConfirmInfo.aspx?CID=" + CUS_ID);
+            Session.Add("TRANS", Trans);                        
+            string Type = Request.QueryString["Type"] == null ? "" : DecryptData(Request.QueryString["Type"].ToString());
+            Response.Redirect("CustomerConfirmInfo.aspx?Type=" + EncrypData(Type));
         }
 
         protected void btnBack_ServerClick(object sender, EventArgs e)
         {
-            EncrypUtil en = new EncrypUtil();
-            string CUS_ID = GetCusID().ToString();
-            CUS_ID = en.EncrypData(CUS_ID);
-            Response.Redirect("CustomerBasket.aspx?CID=" + CUS_ID);
+            string Type = Request.QueryString["Type"] == null ? "" : DecryptData(Request.QueryString["Type"].ToString());
+            string Cus_ID = GetCusID().ToString();
+            switch (Type)
+            {
+                case "ORDER":
+                    Response.Redirect("CustomerBasket.aspx");
+                    break;
+                case "PI":
+                    Response.Redirect("CustomerUploadPIList.aspx");
+                    break;
+                case "TRANS":
+                    Response.Redirect("CustomerTransOnlyList.aspx");
+                    break;
+                default:
+                    break;
+            }
+            
         }
 
     }

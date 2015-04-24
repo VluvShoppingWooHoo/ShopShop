@@ -46,6 +46,17 @@ namespace VloveImport.biz
             else
                 return null;
         }
+        public DataTable GetRate()
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetRate();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+        #region ORDER
         public string[] MakeOrder(OrderData Data, DataTable dt, string User, double Rate)
         {
             commonBiz biz = new commonBiz();
@@ -69,11 +80,6 @@ namespace VloveImport.biz
             //Oeder_Shop
             bool chkShop = false;
             Res[0] = dal.MakeOrderShop(dt, OID, User, ref chkShop, Rate);
-            //if (chkShop)
-            //{
-            ////    //Order_Detail
-            ////    Res[0] = dal.MakeOrderDetail(dt, int.Parse(Res[0]), User);
-            //}
             return Res;
         }
         public string UpdateOrderPrice(Int32 Order_ID)
@@ -110,17 +116,19 @@ namespace VloveImport.biz
             else
                 return null;
         }
-        public DataTable GetRate()
+        #endregion        
+        
+        #region UploadPI
+        public string[] MakeOrderByPI(OrderData Data)
         {
+            commonBiz biz = new commonBiz();
             ShoppingDal dal = new ShoppingDal("LocalConnection");
-            DataSet ds = new DataSet();
-            ds = dal.GetRate();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
-                return ds.Tables[0];
-            else
-                return null;
-        }
 
+            string[] Result = new string[2];
+            Result = dal.MakeOrderByPI(Data);
+            return Result;
+        }
+        #endregion
         #region Admin Manage
         public DataTable GetOrderList(string Login, string ShopName)
         {

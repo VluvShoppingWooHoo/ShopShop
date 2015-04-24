@@ -23,7 +23,7 @@ namespace VloveImport.web.Customer
                 string Type = Request.QueryString["Type"] == null ? "" : DecryptData(Request.QueryString["Type"].ToString());
                 BindDataGrid(Type);
                 BindDataTrans();
-                BindDataSummary();
+                BindDataSummary(Type);
             }
         }
 
@@ -53,6 +53,9 @@ namespace VloveImport.web.Customer
                             lbPINo.Text = data.ORDER_PI;
                             lbAmount.Text = data.OD_AMOUNT.ToString();
                             imgURL.ImageUrl = data.OD_PICURL;
+
+                            mView.Visible = true;
+                            mView.ActiveViewIndex = 0;
                         }
                     }
                     break;
@@ -80,25 +83,63 @@ namespace VloveImport.web.Customer
                 //Error
             }
         }
-        protected void BindDataSummary()
+        protected void BindDataSummary(string Type)
         {
-            DataTable dtSelected = (DataTable)Session["ORDER"];
             double Total_Amount = 0, Price = 0, Amount = 0, Transport_Amount = 0, Rate = 0;
             Rate = GetRateCurrency();
-
-            foreach (DataRow dr in dtSelected.Rows)
+            switch (Type)
             {
-                Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
-                Price = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
-                Total_Amount = Total_Amount + (Amount * (Price * Rate));
-            }
+                case "ORDER":
+                    DataTable dtSelected = (DataTable)Session["ORDER"];                                        
+                    foreach (DataRow dr in dtSelected.Rows)
+                    {
+                        Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
+                        Price = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
+                        Total_Amount = Total_Amount + (Amount * (Price * Rate));
+                    }
 
-            Transport_Amount = Total_Amount * 10 / 100;
-            lbPay1.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,###.00") + " + " + Transport_Amount.ToString("###,###.00")
-                + " = " + (Total_Amount + Transport_Amount).ToString("###,###.00") + " บาท";
+                    Transport_Amount = Total_Amount * 10 / 100;
+                    lbPay1.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
+                        + " = " + (Total_Amount + Transport_Amount).ToString("###,##0.00") + " บาท";
+                    break;
+
+                case "PI":
+                    OrderData data = (OrderData)Session["ORDER"];
+                    Transport_Amount = data.OD_PRICE * 10 / 100;
+                    lbPay1.Text = "ชำระเงินรอบแรก = " + data.OD_PRICE.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
+                        + " = " + (data.OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";
+                    break;
+
+                case "TRANS":
+                    break;
+            }
         }
 
         protected void btnConfirm_ServerClick(object sender, EventArgs e)
+        {
+            string Type = Request.QueryString["Type"] == null ? "" : DecryptData(Request.QueryString["Type"].ToString());
+            switch (Type)
+            {
+                case "ORDER":
+                    SaveOrder();
+                    break;
+                case "PI":
+                    SavePI();
+                    break;
+                case "TRANS":
+                    SaveTrans();
+                    break;
+            }
+        }
+
+        protected void btnBack_ServerClick(object sender, EventArgs e)
+        {
+            string Type = Request.QueryString["Type"] == null ? "" : DecryptData(Request.QueryString["Type"].ToString());
+            Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData(Type));
+        }
+
+        #region SaveData
+        protected void SaveOrder()
         {
             if (Session["TRANS"] != null && Session["ORDER"] != null)
             {
@@ -118,7 +159,8 @@ namespace VloveImport.web.Customer
                 Data.CUS_ADDRESS_ID = spl[2].Split('|')[0] == "-" ? -1 : Convert.ToInt32(spl[2].Split('|')[0]);
                 Data.TRANSPORT_CH_TH_METHOD = Convert.ToInt32(spl[0].Split('|')[0]);
                 Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
-                Data.Create_User = User; 
+                Data.ORDER_TYPE = 1; //Order
+                Data.Create_User = User;
 
                 Result = Biz.MakeOrder(Data, dt, User, Rate);
                 if (Result[0] == "")
@@ -141,12 +183,52 @@ namespace VloveImport.web.Customer
             }
         }
 
-        protected void btnBack_ServerClick(object sender, EventArgs e)
+        protected void SavePI()
         {
-            EncrypUtil en = new EncrypUtil();
-            string CUS_ID = GetCusID().ToString();
-            CUS_ID = en.EncrypData(CUS_ID);
-            Response.Redirect("CustomerTransport.aspx?CID=" + CUS_ID);
+            if (Session["TRANS"] != null && Session["ORDER"] != null)
+            {
+                string[] Result;
+                string Trans = Session["TRANS"].ToString();
+                string[] spl = Trans.Split(',');
+                OrderData Data = (OrderData)Session["ORDER"];
+                string User = GetCusCode();
+                double Rate = GetRateCurrency();
+                ShoppingBiz Biz = new ShoppingBiz();
+
+                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_CODE = GetNoSeries("PI");
+                Data.ORDER_CURRENCY = Rate;
+                Data.CUS_ID = GetCusID();
+                Data.CUS_ADDRESS_ID = spl[2].Split('|')[0] == "-" ? -1 : Convert.ToInt32(spl[2].Split('|')[0]);
+                Data.TRANSPORT_CH_TH_METHOD = Convert.ToInt32(spl[0].Split('|')[0]);
+                Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
+                Data.ORDER_TYPE = 2; //PI
+                Data.Create_User = User;
+
+                Result = Biz.MakeOrderByPI(Data);
+                if (Result[0] == "")
+                {
+                    string Res = "";
+                    Int32 OID = Result[1] == "" ? 0 : Convert.ToInt32(Result[1]);
+                    Res = Biz.UpdateOrderPrice(OID);
+                    if (Res == "")
+                    {
+                        string Order_ID;//SessionUser
+                        Order_ID = EncrypData(Result[1]);
+                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                    }
+                }
+                else
+                {
+                    //Error
+                }
+            }
         }
+
+        protected void SaveTrans()
+        {
+
+        }
+        #endregion
     }
 }

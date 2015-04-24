@@ -46,31 +46,10 @@ namespace VloveImport.web.Customer
             }
         }
 
-        protected void btnOrder_ServerClick(object sender, EventArgs e)
-        {
-            //Session.Remove("TRANS");
-            //string China = rdbChina.SelectedItem.Value + "|" + rdbChina.SelectedItem.Text;
-            //string Thai = rdbThai.SelectedItem.Value + "|" + rdbThai.SelectedItem.Text;
-            //string Address = "";
-            //if (rdbThai.SelectedItem.Value == "1") //มารับเอง
-            //    Address = "-|-";
-            //else
-            //    Address = rdbAddress.SelectedItem.Value + "|" + rdbAddress.SelectedItem.Text;
-            
-            //string Trans = China + "," + Thai + "," + Address;                          
-
-            //Session.Add("TRANS", Trans);
-            //EncrypUtil en = new EncrypUtil();
-            //string CUS_ID = GetCusID().ToString();
-            //CUS_ID = en.EncrypData(CUS_ID);
-            //Response.Redirect("CustomerConfirmInfo.aspx?CID=" + CUS_ID);
-        }
-
         protected void btnBack_ServerClick(object sender, EventArgs e)
         {
-            EncrypUtil en = new EncrypUtil();
             string CUS_ID = GetCusID().ToString();
-            CUS_ID = en.EncrypData(CUS_ID);
+            CUS_ID = EncrypData(CUS_ID);
             Response.Redirect("CustomerUploadPIList.aspx?CID=" + CUS_ID);
         }
 
@@ -82,10 +61,11 @@ namespace VloveImport.web.Customer
             data.ORDER_PI = txtPINo.Text;
             data.OD_PRICE = txtAmount.Text == "" ? 0 : Convert.ToDouble(txtAmount.Text);
             data.OD_AMOUNT = 1;
+            data.OD_REMARK = txtRemark.Text;
 
-            string filename = Server.MapPath("~/Images/PI/") + Path.GetFileName(Ifile.FileName);
-            if (!Directory.Exists(Server.MapPath("~/Images/PI/")))
-                Directory.CreateDirectory(Server.MapPath("~/Images/PI/"));
+            string filename = Server.MapPath("~/Attachment/PI/") + Path.GetFileName(Ifile.FileName);
+            if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))
+                Directory.CreateDirectory(Server.MapPath("~/Attachment/PI/"));
 
             Ifile.SaveAs(filename);
             data.OD_PICURL = filename;

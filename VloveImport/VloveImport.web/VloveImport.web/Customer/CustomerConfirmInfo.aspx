@@ -55,7 +55,8 @@
                 <asp:View ID="vPI" runat="server">
                     หมายเลข PI : <asp:Label ID="lbPINo" runat="server"></asp:Label><br />
                     จำนวน : <asp:Label ID="lbAmount" runat="server"></asp:Label><br />
-                    รูป Upload : <asp:Image ID="imgURL" runat="server" Width="200px" Height="200px"/>
+                    รูป Upload <br />
+                    <asp:Image ID="imgURL" runat="server" Width="200px" Height="200px"/>
                 </asp:View>
             </asp:MultiView>            
         </div>

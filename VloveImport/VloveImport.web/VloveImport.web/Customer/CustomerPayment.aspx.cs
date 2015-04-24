@@ -65,7 +65,7 @@ namespace VloveImport.web.Customer
             Int32 Order_ID = OID == "" ? 0 : Convert.ToInt32(OID);            
             CustomerBiz biz = new CustomerBiz();
             ShoppingBiz bizShop = new ShoppingBiz();
-            double Total = 0, Rate = 0;
+            double Total = 0, Rate = 0, Amount = 0, Price = 0;
             Rate = GetRateCurrency();
             
             //Description
@@ -73,12 +73,12 @@ namespace VloveImport.web.Customer
             if (dtDetail != null && dtDetail.Rows.Count > 0)
             {
                 ViewState["ORDER_STATUS"] = dtDetail.Rows[0]["ORDER_STATUS"].ToString();
-                //foreach (DataRow dr in dtDetail.Rows)
-                //{
-                //    Amount = dr["OD_AMOUNT_ACTIVE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_AMOUNT_ACTIVE"].ToString());
-                //    Price = dr["OD_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_PRICE"].ToString());
-                //    Total = Total + (Amount * Price);
-                //}
+                foreach (DataRow dr in dtDetail.Rows)
+                {
+                    Amount = dr["OD_AMOUNT_ACTIVE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_AMOUNT_ACTIVE"].ToString());
+                    Price = dr["OD_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_PRICE"].ToString());
+                    Total = Total + (Amount * Price);
+                }
                 Total = dtDetail.Rows[0]["ORDER_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dtDetail.Rows[0]["ORDER_PAY"].ToString());
 
                 hlOrderCode.Text = dtDetail.Rows[0]["ORDER_CODE"].ToString().Trim();

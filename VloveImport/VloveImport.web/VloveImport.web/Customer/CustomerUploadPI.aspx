@@ -32,6 +32,15 @@
                                 </asp:FilteredTextBoxExtender>
                             </div>
                         </div>
+                        <div class="row s7 m7 l7 TestBox1" style="height:100px;">                           
+                            <div class="col s2 m2 l2 TestBox1"
+                                style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                <b>หมายเหตุ</b>
+                            </div>
+                            <div class="col s4 m4 l4 TestBox1">
+                                <asp:TextBox ID="txtRemark" runat="server" Width="250px" Height="90px" Rows="4" TextMode="MultiLine"></asp:TextBox>
+                            </div>
+                        </div>
                         <div class="row s7 m7 l7 TestBox1">                           
                             <div class="col s2 m2 l2 TestBox1"
                                 style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
