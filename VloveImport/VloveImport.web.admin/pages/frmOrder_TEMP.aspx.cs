@@ -79,6 +79,7 @@ namespace VloveImport.web.admin.pages
                 if (_VS_ORDER_ID != "")
                     BindData();
                 BindData_Product_Type();
+                TabORDER.ActiveTabIndex = 0;
             }
 
             ucEmail1.ucEmail_OpenpopClick += new System.EventHandler(ucEmail_OpenpopClick);
@@ -160,7 +161,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb1_Emp_Remark.Text = dt.Rows[0]["EMP_REMARK"].ToString().Replace("|", "<br>");
                 lbl_tb1_Customer_Code.Text = dt.Rows[0]["CUS_CODE"].ToString();
                 lbl_tb1_Customer_Email.Text = dt.Rows[0]["CUS_EMAIL"].ToString();
-                lbl_tb1_Customer_Balance.Text = dt.Rows[0]["CUS_BALANCE"].ToString();
+                lbl_tb1_Customer_Balance.Text = Convert.ToDouble(dt.Rows[0]["CUS_BALANCE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb1_Customer_Address.Text = dt.Rows[0]["CUS_REC_NAME"].ToString() + " " + dt.Rows[0]["CUS_ADDRESS"].ToString();
                 lbl_tb1_Customer_Remark.Text = dt.Rows[0]["CUS_REMARK"].ToString().Replace("|", "<br>");
                 //Label Right
@@ -213,12 +214,13 @@ namespace VloveImport.web.admin.pages
             if (dt.Rows.Count > 0)
             {
                 lbl_tb2_Total_Income.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_INCOME"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lbl_tb2_Total_Prodcut_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_tb2_Total_Prodcut_Price.Text = (Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE"].ToString()) * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)<br><span style =\"color:red;\">(" + Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US")) + ")(CNY)</span>";
                 //lbl_tb2_Total_Transport_Price.Text = "********";
 
                 lbl_tb2_Total_Refund.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_REFUND"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Additional_Amount.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_ADDITIONAL_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lbl_tb2_Total_Prodcut_Active_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_tb2_Total_Prodcut_Active_Price.Text = (Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()) * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)<br><span style =\"color:red;\">(" + Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US")) + ")(CNY)</span>";
+                
                 lbl_tb2_Total_Transport_Active_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_TRANSPORT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Actually_Amounte.Text = Convert.ToDouble(dt.Rows[0]["ACTUALLY_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
             }
@@ -682,10 +684,10 @@ namespace VloveImport.web.admin.pages
 
         public bool Calculation()
         {
-            if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
-            {
-                return true;
-            }
+            //if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
+            //{
+            //    return true;
+            //}
 
             string CONFIG_GROUP = "";
             bool CAL_Q = false;
@@ -697,6 +699,7 @@ namespace VloveImport.web.admin.pages
                 CAL_Q = true;
                 CONFIG_GROUP = "TRANS_SHIP_Q";
             }
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "1" && ddl_TRANS_METHOD_OTHER.SelectedValue == "4") CONFIG_GROUP = "TRANS_SHIP_BRAND";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "1") CONFIG_GROUP = "TRANS_CAR_DRESS_GENERAL";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "2") CONFIG_GROUP = "TRANS_CAR_GENERAL";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "3")
@@ -704,6 +707,7 @@ namespace VloveImport.web.admin.pages
                 CAL_Q = true;
                 CONFIG_GROUP = "TRANS_CAR_Q";
             }
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "4") CONFIG_GROUP = "TRANS_CAR_BRAND";
             //Case Transport Airplane
             else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_AirPlane.SelectedValue == "1") CONFIG_GROUP = "TRANS_AIR_PLANE_GENERAL";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_AirPlane.SelectedValue == "2") CONFIG_GROUP = "TRANS_AIR_PLANE_SOFT";
@@ -728,7 +732,8 @@ namespace VloveImport.web.admin.pages
             }
 
             AdminBiz AdBiz = new AdminBiz();
-            DataSet ds = AdBiz.ADMIN_GET_CONFIG("", CONFIG_GROUP, "BINDDATA", CAL_Q == true ? "-1" : txt_sd_weight.Text.Trim());
+            DataSet ds = AdBiz.ADMIN_GET_CONFIG("", CONFIG_GROUP, "BINDDATA_BYGROUP", txt_sd_weight.Text.Trim());
+            //DataSet ds = AdBiz.ADMIN_GET_CONFIG("", CONFIG_GROUP, "BINDDATA_BYGROUP", CAL_Q == true ? "-1" : txt_sd_weight.Text.Trim());
 
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
