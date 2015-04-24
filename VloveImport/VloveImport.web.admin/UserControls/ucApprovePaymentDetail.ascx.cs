@@ -32,13 +32,12 @@ namespace VloveImport.web.admin.UserControls
         public void BindData(int TRAN_ID)
         {
             DataSet ds = new DataSet(); 
-            string Path = "";
             AdminBiz AdBiz = new AdminBiz();
             ds = AdBiz.GET_ADMIN_TRANSACTION(TRAN_ID, null,null, "", -1, -1, -1, "BINDDATA_BYID");
 
             if (ds.Tables[0].Rows.Count > 0)
             {
-                Path = Server.MapPath(ds.Tables[0].Rows[0]["TRANS_PICURL"].ToString());
+                imbURL.ImageUrl = ds.Tables[0].Rows[0]["TRANS_PICURL"].ToString();
                 #region ORDER DATA
                 lblDetail_TranName.Text = ds.Tables[0].Rows[0]["TRAN_TABLE_TYPE_TEXT"].ToString();
                 lblDetail_TranType.Text = ds.Tables[0].Rows[0]["TRAN_TYPE_TEXT"].ToString();
@@ -47,8 +46,7 @@ namespace VloveImport.web.admin.UserControls
                 lblDetail_TranDetail.Text = ds.Tables[0].Rows[0]["TRAN_DETAIL_TEXT"].ToString();
                 lblDetail_TranRemark.Text = ds.Tables[0].Rows[0]["TRAN_REMARK_TEXT"].ToString();
                 lblDetail_TranStatus.Text = ds.Tables[0].Rows[0]["TRAN_STATUS_TEXT"].ToString();
-                imbURL.ImageUrl = Path;
-
+               
                 lblDetail_EmpName.Text = ds.Tables[0].Rows[0]["EMP_NAME"].ToString();
                 lblDetail_EmpUpdateDate.Text = ds.Tables[0].Rows[0]["EMP_APPROVE_DATE_TEXT"].ToString();
                 lblDetail_EmpRemark.Text = ds.Tables[0].Rows[0]["EMP_REMARK"].ToString();
