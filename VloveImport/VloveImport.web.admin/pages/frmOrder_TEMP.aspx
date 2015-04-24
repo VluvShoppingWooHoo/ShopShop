@@ -618,7 +618,7 @@
                             </tr>--%>
                             <tr>
                                 <td>
-                                    Transport china price :
+                                    Transport china price : <span style ="color:red">(CNY)</span>
                                 </td>
                                 <td>
                                 <asp:TextBox ID="txt_sd_tran_china_price" runat="server"></asp:TextBox>

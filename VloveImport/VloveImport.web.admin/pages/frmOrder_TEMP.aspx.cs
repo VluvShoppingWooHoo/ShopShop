@@ -79,6 +79,7 @@ namespace VloveImport.web.admin.pages
                 if (_VS_ORDER_ID != "")
                     BindData();
                 BindData_Product_Type();
+                TabORDER.ActiveTabIndex = 0;
             }
 
             ucEmail1.ucEmail_OpenpopClick += new System.EventHandler(ucEmail_OpenpopClick);
@@ -682,10 +683,10 @@ namespace VloveImport.web.admin.pages
 
         public bool Calculation()
         {
-            if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
-            {
-                return true;
-            }
+            //if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
+            //{
+            //    return true;
+            //}
 
             string CONFIG_GROUP = "";
             bool CAL_Q = false;
@@ -697,6 +698,7 @@ namespace VloveImport.web.admin.pages
                 CAL_Q = true;
                 CONFIG_GROUP = "TRANS_SHIP_Q";
             }
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "1" && ddl_TRANS_METHOD_OTHER.SelectedValue == "4") CONFIG_GROUP = "TRANS_SHIP_BRAND";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "1") CONFIG_GROUP = "TRANS_CAR_DRESS_GENERAL";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "2") CONFIG_GROUP = "TRANS_CAR_GENERAL";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "3")
@@ -704,6 +706,7 @@ namespace VloveImport.web.admin.pages
                 CAL_Q = true;
                 CONFIG_GROUP = "TRANS_CAR_Q";
             }
+            else if (_VS_TRANSPORT_CH_TH_METHOD == "3" && ddl_TRANS_METHOD_OTHER.SelectedValue == "4") CONFIG_GROUP = "TRANS_CAR_BRAND";
             //Case Transport Airplane
             else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_AirPlane.SelectedValue == "1") CONFIG_GROUP = "TRANS_AIR_PLANE_GENERAL";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_AirPlane.SelectedValue == "2") CONFIG_GROUP = "TRANS_AIR_PLANE_SOFT";
@@ -728,7 +731,8 @@ namespace VloveImport.web.admin.pages
             }
 
             AdminBiz AdBiz = new AdminBiz();
-            DataSet ds = AdBiz.ADMIN_GET_CONFIG("", CONFIG_GROUP, "BINDDATA", CAL_Q == true ? "-1" : txt_sd_weight.Text.Trim());
+            DataSet ds = AdBiz.ADMIN_GET_CONFIG("", CONFIG_GROUP, "BINDDATA_BYGROUP", txt_sd_weight.Text.Trim());
+            //DataSet ds = AdBiz.ADMIN_GET_CONFIG("", CONFIG_GROUP, "BINDDATA_BYGROUP", CAL_Q == true ? "-1" : txt_sd_weight.Text.Trim());
 
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
