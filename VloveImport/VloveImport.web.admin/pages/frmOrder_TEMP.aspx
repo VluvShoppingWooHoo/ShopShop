@@ -13,7 +13,7 @@
     <h3>ORDER DETAIL</h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="0">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="2">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -283,9 +283,15 @@
                             <asp:TextBox ID="txt_Update_STS_EMP_Remark" TextMode ="MultiLine" Width ="300px" Height ="50px" runat="server"></asp:TextBox>
                         </td>
                     </tr>
+                    <tr id="trTranCusPrice1" runat="server" visible="False">
+                        <td>Transport Detail : </td>
+                        <td>
+                            <asp:TextBox ID="txt_Transport_Cus_Detail" TextMode ="MultiLine" Width ="300px" Height ="50px" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
                     <tr id="trTranCusPrice" runat="server" visible="False">
-                        <td runat="server">Transport Customer Price :</td>
-                        <td runat="server">
+                        <td id="Td1" runat="server">Transport Customer Price :</td>
+                        <td id="Td2" runat="server">
                             <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="300px"></asp:TextBox>
                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                             </asp:FilteredTextBoxExtender>

@@ -85,6 +85,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("ORDER_STAUTS", SqlDbType.VarChar, ParameterDirection.Input, En.ORDER_STATUS);
                 SqlCommandData.SetParameter("ORDER_ID_LIST", SqlDbType.VarChar, ParameterDirection.Input, En.ORDER_ID_LIST);
                 SqlCommandData.SetParameter("TRANSPORT_CUSTOMER_PRICE", SqlDbType.Float, ParameterDirection.Input, En.TRANSPORT_CUSTOMER_PRICE);
+                SqlCommandData.SetParameter("TRANSPORT_CUSTOMER_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, En.TRANSPORT_CUSTOMER_DETAIL);
                 SqlCommandData.SetParameter("ORDER_EMP_REMARK", SqlDbType.VarChar, ParameterDirection.Input, En.ORDER_EMP_REMARK);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
                 SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
