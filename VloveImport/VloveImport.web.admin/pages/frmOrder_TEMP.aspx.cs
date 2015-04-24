@@ -504,6 +504,15 @@ namespace VloveImport.web.admin.pages
             ((MultiView)gv_detail.Rows[rowIndex].FindControl("MultiView_Price_Active")).ActiveViewIndex = 0;
         }
 
+        protected void imgbtn_gv_prod_pic_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string OD_PICURL = this.gv_detail.DataKeys[rowIndex].Values[18].ToString();
+            ModalViewPic.Show();
+            ucImage.URL = OD_PICURL;
+            ucImage.SetImage();
+        }
+
         protected void gv_detail_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -547,7 +556,16 @@ namespace VloveImport.web.admin.pages
                     string ItemName = DataBinder.Eval(e.Row.DataItem, "OD_ITEMNAME").ToString();
                     string ItemUrl = DataBinder.Eval(e.Row.DataItem, "OD_URL").ToString();
 
-                    e.Row.Cells[1].Text = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a>";
+                    string OD_SIZE = DataBinder.Eval(e.Row.DataItem, "OD_SIZE").ToString();
+                    string OD_COLOR = DataBinder.Eval(e.Row.DataItem, "OD_COLOR").ToString();
+
+                    ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_pic")).ImageUrl = DataBinder.Eval(e.Row.DataItem, "OD_PICURL").ToString();
+
+                    string ProdItemDetail = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a><br>";
+                    ProdItemDetail += "Size : " + OD_SIZE + "<br>";
+                    ProdItemDetail += "Color : " + OD_COLOR;
+
+                    e.Row.Cells[1].Text = ProdItemDetail;
 
                     if ((ROW % 2) == 0)
                     {

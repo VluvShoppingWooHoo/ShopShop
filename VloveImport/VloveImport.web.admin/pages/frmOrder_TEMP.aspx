@@ -3,6 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <%@ Register Src="../UserControls/ucEmail.ascx" TagName="ucEmail" TagPrefix="uc1" %>
+<%@ Register src="../UserControls/ucImage.ascx" tagname="ucImage" tagprefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -324,13 +325,20 @@
                             <HeaderStyle CssClass="width5" />
                             <ItemStyle CssClass="ItemStyle-center" />
                         </asp:TemplateField>
-                        <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail">
-                            <HeaderStyle CssClass="width15" />
+                        <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail" HtmlEncode ="False">
+                            <HeaderStyle CssClass="width30" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="OD_REMARK" HeaderText="Remark">
-                            <HeaderStyle CssClass="width15" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HtmlEncode ="false" HeaderText="Price">
+                        <asp:TemplateField HeaderText="Picture">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("OD_REMARK") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:ImageButton ID="imgbtn_gv_prod_pic" runat="server" Width ="50px" Height = "100px" OnClick="imgbtn_gv_prod_pic_Click"/>
+                            </ItemTemplate>
+                            <HeaderStyle CssClass="width10" Width="60px" />
+                            <ItemStyle CssClass="ItemStyle-center" />
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="OD_PRICE" DataFormatString="{0:#,##0.00}" HtmlEncode ="False" HeaderText="Price">
                             <HeaderStyle CssClass="width10"/>
                             <ItemStyle CssClass="ItemStyle-right" />
                         </asp:BoundField>
@@ -378,7 +386,7 @@
                             <HeaderStyle CssClass="width10" />
                             <ItemStyle CssClass="ItemStyle-right" />
                         </asp:TemplateField>
-                        <asp:BoundField DataField="TOTAL_PROD_PRICE_ACTIVE" DataFormatString="{0:#,##0.00}" HtmlEncode="false" HeaderText="Total active<br>price">
+                        <asp:BoundField DataField="TOTAL_PROD_PRICE_ACTIVE" DataFormatString="{0:#,##0.00}" HtmlEncode="False" HeaderText="Total active<br>price">
                             <HeaderStyle CssClass="width10" />
                             <ItemStyle CssClass="ItemStyle-right" />
                         </asp:BoundField>
@@ -702,6 +710,41 @@
                         <uc1:ucEmail ID="ucEmail1" runat="server" />                 
                 </asp:Panel>
             </center>
+            </td>
+        </tr>
+        <tr style="background-color: #CFCDCD;">
+            <td height="15px" style="padding: 0px 0px;" align="center" colspan="3"></td>
+        </tr>
+    </table>
+</asp:Panel>
+
+<asp:ModalPopupExtender ID="ModalViewPic" runat="server" BackgroundCssClass="modalBackground"
+    PopupControlID="Panl_ViewPic" TargetControlID="lbl_modal_ViewPic">
+</asp:ModalPopupExtender>
+<asp:Panel ID="Panl_ViewPic" Height="600px" Width="900px" runat="server" Style="display: none;">
+    <%--Style="display: none;"--%>
+    <table width="800px" style="border-collapse: separate; border-spacing: 0px; height: 600px;" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
+            <td align="left" class="trLogin_CENTER" style="padding: 0px 0px;">
+                <div style="margin-left: -40px; margin-top: 10px;">
+                    <asp:Label ID="lbl_modal_ViewPic" runat="server" Text="Image"></asp:Label>
+                </div>
+            </td>
+            <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
+                <div style="text-align: right; margin-right: 10px; margin-top: 10px;">
+                    <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px"/>
+                </div>
+            </td>
+        </tr>
+        <tr style="background-color: #CFCDCD;">
+            <td style="text-align: center; padding: 0px 0px;" colspan="3">
+                <center>
+                    <asp:Panel Width="96%" Height="580px" ID="Panel4" runat="server" BackColor="#FFFFFF">
+                        <br />
+                            <uc2:ucImage ID="ucImage" runat="server" />                            
+                    </asp:Panel>
+                </center>
             </td>
         </tr>
         <tr style="background-color: #CFCDCD;">
