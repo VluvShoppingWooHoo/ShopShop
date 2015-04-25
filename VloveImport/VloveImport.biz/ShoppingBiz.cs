@@ -75,6 +75,7 @@ namespace VloveImport.biz
             else
             {
                 biz.WriteLog("CustomerConfirmInfo", "MakeOrderHeader", Result[0]);
+                return Result;
             }
 
             //Oeder_Shop
