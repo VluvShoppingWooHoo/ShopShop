@@ -121,12 +121,42 @@ namespace VloveImport.web.Customer
         protected void btnBack_ServerClick(object sender, EventArgs e)
         {
             string Page = Request.QueryString["P"] == null ? "" : DecryptData(Request.QueryString["P"].ToString());
+            string Type = Request.QueryString["T"] == null ? "" : DecryptData(Request.QueryString["T"].ToString());
             string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
 
             if (Page == "LIST")
-                Redirect("~/Customer/CustomerOrderList.aspx");
+            {
+                switch (Type)
+                {
+                    case "ORDER":
+                        Redirect("~/Customer/CustomerOrderList.aspx");
+                        break;
+                    case "PI":
+                        Redirect("~/Customer/CustomerUplodaPIList.aspx");
+                        break;
+                    case "TRANS":
+                        Redirect("~/Customer/CustomerTransOnlyList.aspx");
+                        break;
+                }
+
+            }
             else
+            {
                 Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
+                //switch (Type)
+                //{
+                //    case "ORDER":
+                //        Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
+                //        break;
+                //    case "PI":
+                //        Redirect("~/Customer/CustomerUplodaPIList.aspx");
+                //        break;
+                //    case "TRANS":
+                //        Redirect("~/Customer/CustomerTransOnlyList.aspx");
+                //        break;
+                //}
+            }
+                
         }
     }
 }
