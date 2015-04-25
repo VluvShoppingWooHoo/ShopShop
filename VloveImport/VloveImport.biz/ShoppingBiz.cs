@@ -96,11 +96,11 @@ namespace VloveImport.biz
             Result = dal.CancelOrder(CUS_ID, ORDER_ID);
             return Result;
         }
-        public DataTable GetOrderList(Int32 CUS_ID)
+        public DataTable GetOrderList(Int32 CUS_ID, Int32 Type)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             DataSet ds = new DataSet();
-            ds = dal.GetOrderList(CUS_ID);
+            ds = dal.GetOrderList(CUS_ID, Type);
             if (ds != null && ds.Tables.Count > 0)
                 return ds.Tables[0];
             else

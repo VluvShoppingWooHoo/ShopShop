@@ -26,7 +26,7 @@ namespace VloveImport.web.Customer
         protected void BindData()
         {
             ShoppingBiz Biz = new ShoppingBiz();
-            DataTable dt = Biz.GetOrderList(GetCusID());
+            DataTable dt = Biz.GetOrderList(GetCusID(), 2); //PI
             if (dt != null && dt.Rows.Count > 0)
             {
                 gvOrder.DataSource = dt;

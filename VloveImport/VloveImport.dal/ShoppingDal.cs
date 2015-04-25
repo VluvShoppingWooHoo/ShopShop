@@ -258,12 +258,13 @@ namespace VloveImport.dal
                 throw new Exception("UPDATE_CANCEL_ORDER -> msg : " + ex.Message);
             }
         }
-        public DataSet GetOrderList(Int32 CUS_ID)
+        public DataSet GetOrderList(Int32 CUS_ID, Int32 Type)
         {
             try
             {
                 SqlCommandData.SetStoreProcedure("GET_ORDER_LIST");
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter_Input_INT("TYPE", SqlDbType.Int, ParameterDirection.Input, Type);
 
                 return SqlCommandData.ExecuteDataSet();
             }
