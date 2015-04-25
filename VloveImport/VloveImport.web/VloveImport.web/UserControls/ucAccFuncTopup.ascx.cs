@@ -161,20 +161,33 @@ namespace VloveImport.web.UserControls
             TransactionData EnTran = new TransactionData();
             try
             {
+                EnTran.Cus_ID = bp.GetCusID();
                 if (Ifile.HasFile)
                 {
-                    //if (Ifile.PostedFile.ContentType == "image/jpg")
-                    //{
-                    //    if (Ifile.PostedFile.ContentLength < 102400)
-                    //    {
-                    string filename = Server.MapPath("~/Images/transaction/") + Path.GetFileName(Ifile.FileName);
-                    Ifile.SaveAs(filename);
+                    string folder = Server.MapPath("~/" + EnTran.Cus_ID).Replace("www.iloveimport.com", "Attachment\\IMG_PAYMENT");
+                    folder = folder.Replace("iloveimport.com", "Attachment\\IMG_PAYMENT");
+                    bool exists = System.IO.Directory.Exists(folder);
+                    //if (!exists)
+                    //    System.IO.Directory.CreateDirectory(folder);
+
+                    //folder = folder + "\\" + EnTran.Cus_ID;
+                    //exists = System.IO.Directory.Exists(folder);
+
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(folder);
+
+                    string filename = "Tran_Attachment\\" + EnTran.Cus_ID + "\\" + Path.GetFileName(Ifile.FileName);
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + filename + "');</script>", false);
+
+                    Ifile.SaveAs(folder + "\\" + Path.GetFileName(Ifile.FileName));
+                    EnTran.TRANS_PICURL = filename;
+
+                    //string filename = Server.MapPath("~/Images/transaction/") + Path.GetFileName(Ifile.FileName);
+                    //Ifile.SaveAs(filename);
                     EnTran.TRANS_PICURL = filename;
                     //    }
                     //}
                 }
-
-                EnTran.Cus_ID = bp.GetCusID();
 
                 EnTran.TRAN_TYPE = 1;
                 EnTran.TRAN_TABLE_TYPE = 1;

@@ -43,10 +43,27 @@ namespace VloveImport.web.admin.pages
             DataSet ds = new DataSet();
             //if (!IsPostBack)
             //{
-                try
+            try
+            {
+                AdminBiz AdBiz = new AdminBiz();
+                ds = AdBiz.ADMIN_GET_CMS_HEADER(_VS_CONTENT_ID, string.Empty, 1, "BINDDATA_BYID");
+
+                if (ds.Tables[0].Rows.Count > 0)
                 {
-                    AdminBiz AdBiz = new AdminBiz();
-                    ds = AdBiz.ADMIN_GET_CMS("0", txtTitle.Text.Trim(), ddl_Content_Type.SelectedValue.Trim(), chkIsActive.Checked == true ? 1 : 0, _VS_CONTENT_ID, "BINDDATA");
+                    lblLegend.Text = ds.Tables[0].Rows[0]["HEADER_TITLE"].ToString();
+                    txtHeaderTitle.Text = ds.Tables[0].Rows[0]["HEADER_TITLE"].ToString();
+                    txtOrder.Text = ds.Tables[0].Rows[0]["HEADER_ORDER"].ToString();
+                    ddl_Header_Content_Type.SelectedValue = ds.Tables[0].Rows[0]["HEADER_TYPE"].ToString();
+                    hd_Header_Content_Type.Value = ds.Tables[0].Rows[0]["HEADER_TYPE"].ToString();
+                    hdHeaderContentIMG.Value = ds.Tables[0].Rows[0]["HEADER_IMG"].ToString();
+                    hdfContentType.Value = ds.Tables[0].Rows[0]["HEADER_TYPE"].ToString();
+                    if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"]) chkIsActive.Checked = true;
+                    else chkIsActive.Checked = false;
+
+                    AdBiz = new AdminBiz();
+                    ds = new DataSet();
+
+                    ds = AdBiz.ADMIN_GET_CMS("0", txtTitle.Text.Trim(), hd_Header_Content_Type.Value.Trim(), chkIsActive.Checked == true ? 1 : 0, _VS_CONTENT_ID, "BINDDATA");
 
                     if (ds.Tables[0].Rows.Count > 0)
                     {
@@ -58,27 +75,12 @@ namespace VloveImport.web.admin.pages
                         gv_detail.DataSource = null;
                         gv_detail.DataBind();
                     }
-
-                    AdBiz = new AdminBiz();
-                    ds = new DataSet();
-                    ds = AdBiz.ADMIN_GET_CMS_HEADER(_VS_CONTENT_ID, string.Empty, 1, "BINDDATA_BYID");
-
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        lblLegend.Text = ds.Tables[0].Rows[0]["HEADER_TITLE"].ToString();
-                        txtHeaderTitle.Text = ds.Tables[0].Rows[0]["HEADER_TITLE"].ToString();
-                        txtOrder.Text = ds.Tables[0].Rows[0]["HEADER_ORDER"].ToString();
-                        ddl_Header_Content_Type.SelectedValue = ds.Tables[0].Rows[0]["HEADER_TYPE"].ToString();
-                        hdHeaderContentIMG.Value = ds.Tables[0].Rows[0]["HEADER_IMG"].ToString();
-                        hdfContentType.Value = ds.Tables[0].Rows[0]["HEADER_TYPE"].ToString();
-                        if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"]) chkIsActive.Checked = true;
-                        else chkIsActive.Checked = false;
-                    }
                 }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
 
-                }
+            }
             //}
         }
         #endregion
@@ -90,7 +92,7 @@ namespace VloveImport.web.admin.pages
         protected void btnReset_Click(object sender, EventArgs e)
         {
             txtTitle.Text = "";
-            ddl_Content_Type.SelectedIndex = 0;
+            //ddl_Content_Type.SelectedIndex = 0;
             chkIsActive.Checked = true;
         }
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -131,12 +133,18 @@ namespace VloveImport.web.admin.pages
                 cd.HEADER_ORDER = txtOrder.Text;
                 if (FileUploadControl.HasFile)
                 {
-                    string folder = Server.MapPath("~/HeaderAttachment");
+                    string folder = (Server.MapPath("~/HeaderAttachment")).Replace("admin.iloveimport.com", "Attachment\\IMG_CMS");
+
+                    //lblERR2.Text = folder;
+
                     bool exists = System.IO.Directory.Exists(folder);
                     if (!exists)
                         System.IO.Directory.CreateDirectory(folder);
                     FileUploadControl.SaveAs(folder + "\\" + Path.GetFileName(FileUploadControl.FileName));
                     string filename = "HeaderAttachment\\" + Path.GetFileName(FileUploadControl.FileName);
+
+                    //lblERR3.Text = filename;
+
                     cd.ContentImage = filename;
                 }
                 //cd.ContentDetail = (htmlObject(txtContentDetail.Text)).Replace('<', '[').Replace('>', ']');
@@ -146,12 +154,15 @@ namespace VloveImport.web.admin.pages
                 Result = ab.ADMIN_INS_UPD_CMS_HEADER(cd, Act);
                 if (Result != string.Empty)
                 {
-                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + Result + "');", false);
+                    lblERR.Text = Result;
+                    //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + Result + "');", false);
                 }
                 Response.Redirect("frmCmsHeaderList.aspx");
             }
             catch (Exception ex)
             {
+                lblERR.Text = ex.ToString(); ;
+                //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + ex.ToString() + "');", false);
             }
         }
     }

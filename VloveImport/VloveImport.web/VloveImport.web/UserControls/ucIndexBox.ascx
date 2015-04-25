@@ -830,7 +830,7 @@
                     for (var i = 0; i < obj.ReturnVal.length; i++) {
                         if (obj.ReturnVal[i].ContentType == 1) {
                             if (countPromo < 5) {
-                                $(".slider li.li" + (countPromo + 1)).append('<a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%;" /></a>')
+                                $(".slider li.li" + (countPromo + 1)).append('<a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%; max-height: 300px;" /></a>')
                                 countPromo++;
                                 //txtPromo += '<div class="col s3 m3 l3 hvr-float"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
                             }

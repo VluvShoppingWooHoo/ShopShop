@@ -85,6 +85,33 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.HiddenField hdContentIMG;
         
         /// <summary>
+        /// lblERR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblERR;
+        
+        /// <summary>
+        /// lblERR2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblERR2;
+        
+        /// <summary>
+        /// lblERR3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblERR3;
+        
+        /// <summary>
         /// trHtmlEditor control.
         /// </summary>
         /// <remarks>

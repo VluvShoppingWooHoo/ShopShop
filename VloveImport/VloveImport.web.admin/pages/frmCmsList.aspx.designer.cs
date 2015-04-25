@@ -40,6 +40,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_Header_Content_Type;
         
         /// <summary>
+        /// hd_Header_Content_Type control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hd_Header_Content_Type;
+        
+        /// <summary>
         /// lblLegend control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,33 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdHeaderContentIMG;
+        
+        /// <summary>
+        /// lblERR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblERR;
+        
+        /// <summary>
+        /// lblERR2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblERR2;
+        
+        /// <summary>
+        /// lblERR3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblERR3;
         
         /// <summary>
         /// trHtmlEditor control.
@@ -164,15 +200,6 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// ddl_Content_Type control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_Content_Type;
         
         /// <summary>
         /// Label3 control.

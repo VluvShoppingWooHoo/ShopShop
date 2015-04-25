@@ -127,6 +127,9 @@
         <div class="row">
             <%--<div class="col s2"></div>--%>
             <div class="input-field col s12 m12 l12">
+                <span class="red-text">หากลูกค้าสั่งซื้อแล้วระบบขึ้นราคาที่ไม่ตรงกับที่เห็นจากเวปต้นทาง ให้ลูกค้าทำการกดสั่งซื้อไปก่อน แล้วราคาจะปรับลดลงหลังจากเจ้าหน้าที่ทำการตรวจเช็คเรียบร้อยค่ะ</span>
+            </div>
+            <div class="input-field col s12 m12 l12">
                 <i class="mdi-editor-mode-edit orange-text prefix"></i>
                 <input id="txtRemark" type="text" class="validate">
                 <%--<textarea id="txtRemark" class="materialize-textarea"></textarea>--%>
@@ -239,12 +242,16 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (data) {
-                    bindModal(data);
-                    $('#loadingCircle').hide();
-                    $('#loadingLine').hide();
-                    $('#showData').show();
-                    //$('#footer').show();
-                    $('#btnAddCart').show();
+                    if (data.d == "")
+                        alert('Something wrong, please contact admin.  (Code : 2001)');
+                    else {
+                        bindModal(data);
+                        $('#loadingCircle').hide();
+                        $('#loadingLine').hide();
+                        $('#showData').show();
+                        //$('#footer').show();
+                        $('#btnAddCart').show();
+                    }
                 },
                 error: function (err) {
                     alert('Something wrong, please contact admin.  (Code : 2001)');
@@ -288,10 +295,17 @@
         var firstSize = true;
         var firstColor = true;
         $("#hdPrice").val(obj.Price);
+
+        if (obj.Price.split(" - ").length > 1) {
+            var prices = $("#hdPrice").val().split(" - ");
+            $("#hdPrice").val(prices[1])
+            $("#lblPrice").html(prices[1])
+        }
+
         $("#hdWeb").val(obj.Web);
 
-        if (obj.Price.indexOf(" - ") > 0)
-            isBetween = true;
+        //if (obj.Price.indexOf(" - ") > 0)
+        //    isBetween = true;
 
         for (var i = 0; i < arraySize.length; i++) {
             var txt = '<div class="col s1 m1 l1 modalItemDiv childliSize"><a id="aSize' + i + '" onclick="selectSize(' + i + ')" class="waves-effect waves-light btn';

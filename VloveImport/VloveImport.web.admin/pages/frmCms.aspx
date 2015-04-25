@@ -59,6 +59,9 @@
                             <asp:HiddenField ID="hdContentIMG" runat="server" />
                         </td>
                     </tr>
+                    <asp:Label ID="lblERR" runat="server"></asp:Label><br />
+                    <asp:Label ID="lblERR2" runat="server"></asp:Label><br />
+                    <asp:Label ID="lblERR3" runat="server"></asp:Label>
                     <tr id="trHtmlEditor" runat="server">
                         <td style="text-align: right;">Content Detail :</td>
                         <td colspan="4">

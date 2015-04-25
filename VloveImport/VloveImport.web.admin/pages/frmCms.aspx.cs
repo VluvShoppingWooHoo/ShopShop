@@ -102,12 +102,18 @@ namespace VloveImport.web.admin.pages
                 {
                     if (FileUploadControl.HasFile)
                     {
-                        string folder = Server.MapPath("~/Attachment");
+                        string folder = Server.MapPath("~/Line_Attachment").Replace("admin.iloveimport.com", "Attachment\\IMG_CMS");
+
+                        //lblERR2.Text = folder;
+
                         bool exists = System.IO.Directory.Exists(folder);
                         if (!exists)
                             System.IO.Directory.CreateDirectory(folder);
                         FileUploadControl.SaveAs(folder + "\\" + Path.GetFileName(FileUploadControl.FileName));
-                        string filename = "Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
+                        string filename = "Line_Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
+
+                        //lblERR3.Text = filename;
+
                         cd.ContentImage = filename;
                     }
                     //cd.ContentDetail = (htmlObject(txtContentDetail.Text)).Replace('<', '[').Replace('>', ']');
@@ -147,13 +153,16 @@ namespace VloveImport.web.admin.pages
                 Result = ab.ADMIN_INS_UPD_CMS(cd, Act);
                 if (Result != string.Empty)
                 {
-                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + Result + "');", false);
+                    lblERR.Text = Result;
+                    //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + Result + "');", false);
                 }
                 util.EncrypUtil En = new util.EncrypUtil();
                 Response.Redirect("frmCmsList.aspx?CID=" + Server.UrlEncode(En.EncrypData(_VS_HEADER_CONTENT_ID)));
             }
             catch (Exception ex)
             {
+                lblERR.Text = ex.ToString(); ;
+                //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + ex.ToString() + "');", false);
             }
         }
 

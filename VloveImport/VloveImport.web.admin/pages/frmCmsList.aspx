@@ -25,6 +25,7 @@
                                 <asp:ListItem Value="2">News</asp:ListItem>
                                 <asp:ListItem Value="3">Recommend</asp:ListItem>
                             </asp:DropDownList>
+                            <asp:HiddenField ID="hd_Header_Content_Type" runat="server" />
                         </td>
                         <td></td>
                         <td></td>
@@ -58,22 +59,26 @@
                             <asp:HiddenField ID="hdHeaderContentIMG" runat="server" />
                         </td>
                     </tr>
+                    <asp:Label ID="lblERR" runat="server"></asp:Label><br />
+                    <asp:Label ID="lblERR2" runat="server"></asp:Label><br />
+                    <asp:Label ID="lblERR3" runat="server"></asp:Label>
+
                     <tr id="trHtmlEditor" runat="server" hidden>
                         <td style="text-align: right;">Header Order :</td>
                         <td colspan="4">
                             <asp:TextBox ID="txtOrder" runat="server" Width="100%"></asp:TextBox>
-                            <asp:numericupdownextender
-                                id="NumericUpDownExtender1"
+                            <asp:NumericUpDownExtender
+                                ID="NumericUpDownExtender1"
                                 runat="server"
-                                targetcontrolid="txtOrder"
-                                width="120"
-                                refvalues=""
-                                servicedownmethod=""
-                                serviceupmethod=""
-                                targetbuttondownid=""
-                                targetbuttonupid=""
-                                minimum="1"
-                                maximum="7" />
+                                TargetControlID="txtOrder"
+                                Width="120"
+                                RefValues=""
+                                ServiceDownMethod=""
+                                ServiceUpMethod=""
+                                TargetButtonDownID=""
+                                TargetButtonUpID=""
+                                Minimum="1"
+                                Maximum="7" />
                         </td>
                     </tr>
                     <%--<tr>
@@ -104,12 +109,12 @@
                             <asp:Label ID="Label2" runat="server" Text="Content Type :"></asp:Label>
                         </td>
                         <td class="width35">
-                            <asp:DropDownList ID="ddl_Content_Type" runat="server">
+                            <%--<asp:DropDownList ID="ddl_Content_Type" runat="server" hidden>
                                 <asp:ListItem Selected="True" Value="0">All</asp:ListItem>
                                 <asp:ListItem Value="1">Promotion</asp:ListItem>
                                 <asp:ListItem Value="2">News</asp:ListItem>
                                 <asp:ListItem Value="3">Recommend</asp:ListItem>
-                            </asp:DropDownList>
+                            </asp:DropDownList>--%>
                         </td>
                     </tr>
                     <tr>

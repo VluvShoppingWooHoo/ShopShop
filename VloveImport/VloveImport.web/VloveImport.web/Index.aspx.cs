@@ -135,7 +135,7 @@ namespace VloveImport.web
                 data.ItemID = txt;
                 #endregion
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { return ""; }
             return js.Serialize(data);
         }
 
@@ -217,7 +217,7 @@ namespace VloveImport.web
                 models = CMS.GetList(0);
                 if (models.Count > 0)
                 {
-                    string path = WebConfigurationManager.AppSettings["AdminURL"];
+                    string path = (WebConfigurationManager.AppSettings["AdminURL"]).Replace("IMG_CMS/Attachment", "IMG_CMS");
                     for (int i = 0; i < models.Count; i++)
                     {
                         models[i].ContentImage = (path + models[i].ContentImage).Replace("\\", "/");
