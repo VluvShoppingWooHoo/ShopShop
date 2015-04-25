@@ -60,6 +60,19 @@ namespace VloveImport.web.Customer
                     }
                     break;
                 case "TRANS":
+                    if (Session["ORDER"] != null)
+                    {
+                        OrderData data = (OrderData)Session["ORDER"];
+                        if (data != null)
+                        {
+                            lbPINo.Text = data.ORDER_PI;
+                            lbAmount.Text = data.OD_AMOUNT.ToString();
+                            imgURL.ImageUrl = data.OD_PICURL;
+
+                            mView.Visible = true;
+                            mView.ActiveViewIndex = 1;
+                        }
+                    }
                     break;
                 default:
                     GoToIndex();

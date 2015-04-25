@@ -52,13 +52,12 @@ namespace VloveImport.web.Customer
 
         protected void btnBack_ServerClick(object sender, EventArgs e)
         {
-            string CUS_ID = GetCusID().ToString();
-            CUS_ID = EncrypData(CUS_ID);
-            Response.Redirect("CustomerUploadPIList.aspx?CID=" + CUS_ID);
+            Response.Redirect("CustomerUploadPIList.aspx");
         }
 
         protected void btnUploadPI_ServerClick(object sender, EventArgs e)
         {
+            Session.Remove("TRANS");
             Session.Remove("ORDER");
             OrderData data = new OrderData();
             data.CUS_ID = GetCusID();

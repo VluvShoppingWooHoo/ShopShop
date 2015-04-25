@@ -6,42 +6,69 @@
         <ContentTemplate>
             <div class="row">
                 <div class="col s12 m12 l12 TestBox1">                    
-                    <span class="bold FontHeader orange-text">ข้อมูลการขนส่ง</span>
-                <br />
+                    <span class="bold FontHeader orange-text">รายการขนส่ง</span>   
                     <br />
-
-                    <div class="row s6 m6 l6 TestBox1">
-                        1. ขนส่งจากจีนถึงไทย โดยวิธี 
-                        <br />
-                        <asp:RadioButtonList ID="rdbChina" runat="server" DataTextField="STATUS_DESCRIPTION" DataValueField="STATUS_NAME">
-                        </asp:RadioButtonList>
-                
-                        <br />
-                        2. ขนส่งภายในประเทศ โดยวิธี
-                        <br />
-                        <asp:RadioButtonList ID="rdbThai" CssClass="rdbThai" runat="server" DataTextField="STATUS_DESCRIPTION" DataValueField="STATUS_NAME">
-                        </asp:RadioButtonList>
-                
-                        <br />
-                        <div id="divAddress" class="divAddress" runat="server">
-                            3. เลือกที่อยู่ในการจัดส่ง
-                            <br />
-                            <asp:RadioButtonList ID="rdbAddress" runat="server" DataTextField="ADDRESS_FULL" DataValueField="CUS_ADD_ID">
-                            </asp:RadioButtonList>
+                    <br />                    
+                    <div class="col s7 m7 l7 TestBox1">                    
+                        <div class="row s7 m7 l7 TestBox1">                           
+                            <div class="col s2 m2 l2 TestBox1"
+                                style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                <b>หมายเลข Tracking</b>
+                            </div>
+                            <div class="col s4 m4 l4 TestBox1">
+                                <asp:TextBox ID="txtTrackingNo" runat="server" Width="250px"></asp:TextBox>
+                            </div>
                         </div>
-
-                        <br />
-                        <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
-                            name="action" class="btn waves-effect orange waves-light">
-                            Back                                
-                        </button>
-                        <button id="btnOrder" runat="server" type="submit" onserverclick="btnOrder_ServerClick"
-                            name="action" class="btn waves-effect orange waves-light">
-                            Order                                
-                        </button>
+                        <div class="row s7 m7 l7 TestBox1">                           
+                            <div class="col s2 m2 l2 TestBox1"
+                                style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                <b>หมายเลข Shop ID</b>
+                            </div>
+                            <div class="col s4 m4 l4 TestBox1">
+                                <asp:TextBox ID="txtShopID" runat="server" Width="250px"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="row s7 m7 l7 TestBox1" style="height:100px;">                           
+                            <div class="col s2 m2 l2 TestBox1"
+                                style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                <b>หมายเหตุ</b>
+                            </div>
+                            <div class="col s4 m4 l4 TestBox1">
+                                <asp:TextBox ID="txtRemark" runat="server" Width="250px" Height="90px" Rows="4" TextMode="MultiLine"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="row s7 m7 l7 TestBox1" style="height:100px;">                           
+                            <asp:Button ID="btnAdd" runat="server" Text="เพิ่มรายการ" OnClick="btnAdd_Click" />  
+                        </div>
+                        <div class="col s12 m12 l12 TestBox1">                                        
+                            <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false">
+                                <Columns>
+                                    <asp:BoundField DataField="No" HeaderText="ลำดับ" />
+                                    <asp:BoundField DataField="TRACKING_NO" HeaderText="เลข Tracking" />
+                                    <asp:BoundField DataField="SHOP_ORDER_ID" HeaderText="เลข Shop" />
+                                </Columns>
+                                <EmptyDataTemplate>
+                                    <table>
+                                        <tr>
+                                            <td>ลำดับ</td>
+                                            <td>เลข Tracking</td>
+                                            <td>เลข Shop</td>
+                                        </tr>
+                                    </table>
+                                </EmptyDataTemplate>
+                        </asp:GridView>
+                        </div>
+                        <div class="col s12 m12 l12 TestBox1">                                        
+                            <div style="margin-left: 10px;">                
+                                <div class="row s6 m6 l6 TestBox1">
+                                    <asp:Button ID="btnBack" runat="server" Text="ย้อนกลับ" OnClick="btnBack_Click" />                                    
+                                    &nbsp;&nbsp;
+                                    <asp:Button ID="btnTrans" runat="server" Text="ดำเนินการต่อ" OnClick="btnTrans_Click" />                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                </div>
+                </div>                
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>

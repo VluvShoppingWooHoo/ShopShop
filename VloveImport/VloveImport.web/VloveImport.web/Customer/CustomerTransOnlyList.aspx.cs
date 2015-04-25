@@ -60,7 +60,7 @@ namespace VloveImport.web.Customer
 
             Result = biz.CancelOrder(GetCusID(), OID);
             if (Result != "")
-                WriteLog("CustomerOrderList", "DeleteOrder", Result);
+                WriteLog("CustomerTransOnlyList", "DeleteOrder", Result);
 
             BindData();
         }

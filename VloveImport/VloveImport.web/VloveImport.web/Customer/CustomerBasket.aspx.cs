@@ -44,8 +44,8 @@ namespace VloveImport.web.Customer
 
         protected void btnOrder_Click(object sender, EventArgs e)
         {
+            Session.Remove("TRANS");
             Session.Remove("ORDER");
-            //string Selected = "";
             CheckBox cb;
             HiddenField hd;
             DataTable dtSelected = new DataTable();

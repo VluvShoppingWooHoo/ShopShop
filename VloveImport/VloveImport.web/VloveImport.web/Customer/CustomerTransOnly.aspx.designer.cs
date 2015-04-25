@@ -22,40 +22,49 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// rdbChina control.
+        /// txtTrackingNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdbChina;
+        protected global::System.Web.UI.WebControls.TextBox txtTrackingNo;
         
         /// <summary>
-        /// rdbThai control.
+        /// txtShopID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdbThai;
+        protected global::System.Web.UI.WebControls.TextBox txtShopID;
         
         /// <summary>
-        /// divAddress control.
+        /// txtRemark control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAddress;
+        protected global::System.Web.UI.WebControls.TextBox txtRemark;
         
         /// <summary>
-        /// rdbAddress control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdbAddress;
+        protected global::System.Web.UI.WebControls.Button btnAdd;
+        
+        /// <summary>
+        /// gvTrans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvTrans;
         
         /// <summary>
         /// btnBack control.
@@ -64,15 +73,15 @@ namespace VloveImport.web.Customer {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnBack;
+        protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
-        /// btnOrder control.
+        /// btnTrans control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnOrder;
+        protected global::System.Web.UI.WebControls.Button btnTrans;
     }
 }

@@ -58,6 +58,15 @@
                     รูป Upload <br />
                     <asp:Image ID="imgURL" runat="server" Width="200px" Height="200px"/>
                 </asp:View>
+                <asp:View ID="vTRANS" runat="server">
+                    <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false">
+                        <Columns>
+                            <asp:BoundField DataField="No" HeaderText="ลำดับ" />
+                            <asp:BoundField DataField="TRACKING_NO" HeaderText="เลข Tracking" />
+                            <asp:BoundField DataField="SHOP_ORDER_ID" HeaderText="เลข Shop" />
+                        </Columns>
+                    </asp:GridView>
+                </asp:View>
             </asp:MultiView>            
         </div>
             <br />

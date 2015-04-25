@@ -13,7 +13,7 @@
                     <asp:GridView ID="gvOrder" CssClass="GridStyle" runat="server" AutoGenerateColumns="false" OnDataBound="gvOrder_DataBound"
                         AllowPaging="true" PageSize="10" OnPageIndexChanging="gvOrder_PageIndexChanging">
                         <Columns>
-                            <asp:TemplateField HeaderText="รหัสใบฝากจ่าย" ItemStyle-Width="150px">
+                            <asp:TemplateField HeaderText="รหัสการขนส่ง" ItemStyle-Width="150px">
                                 <ItemTemplate>
                                     <asp:HiddenField ID="hdOrder_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' />
                                     <asp:HiddenField ID="hdOrder_Pay" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_PAY") %>' />

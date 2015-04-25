@@ -67,6 +67,24 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Image imgURL;
         
         /// <summary>
+        /// vTRANS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View vTRANS;
+        
+        /// <summary>
+        /// gvTrans control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvTrans;
+        
+        /// <summary>
         /// lbgroup1 control.
         /// </summary>
         /// <remarks>
