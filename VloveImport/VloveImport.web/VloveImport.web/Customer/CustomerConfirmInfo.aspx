@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/SiteMaster.Master" AutoEventWireup="true" CodeBehind="CustomerConfirmInfo.aspx.cs" Inherits="VloveImport.web.Customer.CustomerConfirmInfo" %>
-
+<%@ Import Namespace="VloveImport.data" %>
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -59,11 +59,33 @@
                     <asp:Image ID="imgURL" runat="server" Width="200px" Height="200px"/>
                 </asp:View>
                 <asp:View ID="vTRANS" runat="server">
-                    <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false">
+                    <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false" Width="400px" BorderColor="Orange" BorderWidth="2px">
+                        <HeaderStyle BackColor="Gray" />
                         <Columns>
-                            <asp:BoundField DataField="No" HeaderText="ลำดับ" />
-                            <asp:BoundField DataField="TRACKING_NO" HeaderText="เลข Tracking" />
-                            <asp:BoundField DataField="SHOP_ORDER_ID" HeaderText="เลข Shop" />
+                            <asp:TemplateField>
+                                <HeaderTemplate>ลำดับ</HeaderTemplate>
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <HeaderTemplate>เลข Tracking</HeaderTemplate>
+                                <ItemTemplate>
+                                    <%# ((OrderData)Container.DataItem).TRACKING_NO %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <HeaderTemplate>เลข Shop</HeaderTemplate>
+                                <ItemTemplate>
+                                    <%# ((OrderData)Container.DataItem).SHOP_ORDER_ID %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <HeaderTemplate>หมายเหตุ</HeaderTemplate>
+                                <ItemTemplate>
+                                    <%# ((OrderData)Container.DataItem).OD_REMARK %>
+                                </ItemTemplate>
+                            </asp:TemplateField>                            
                         </Columns>
                     </asp:GridView>
                 </asp:View>

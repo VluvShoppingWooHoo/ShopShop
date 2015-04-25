@@ -23,6 +23,11 @@ namespace VloveImport.web.Customer
                 string OID = Request.QueryString["OID"] == null ? "" : DecryptData(Request.QueryString["OID"].ToString());
                 if (OID != "")
                     BindData(OID);
+                else
+                {
+                    gvTrans.DataSource = null;
+                    gvTrans.DataBind();
+                }
             }
         }
 
@@ -66,12 +71,12 @@ namespace VloveImport.web.Customer
                 foreach (DataRow dr in dt.Rows)
                 {
                     data = new OrderData();
-                    data.CUS_ID = GetCusID();
-                    data.TRACKING_NO = txtTrackingNo.Text;
-                    data.SHOP_ORDER_ID = txtShopID.Text;
+                    data.CUS_ID = CusID;
+                    data.TRACKING_NO = dr["TRACKING_NO"].ToString();
+                    data.SHOP_ORDER_ID = dr["SHOP_ORDER_ID"].ToString();
                     data.OD_PRICE = 1;
                     data.OD_AMOUNT = 1;
-                    data.OD_REMARK = txtRemark.Text;
+                    data.OD_REMARK = dr["OD_REMARK"].ToString();
 
                     lstData.Add(data);
                 }
@@ -95,9 +100,9 @@ namespace VloveImport.web.Customer
             }
             else
             {
-                dt.Columns.Add("NO");
                 dt.Columns.Add("TRACKING_NO");
                 dt.Columns.Add("SHOP_ORDER_ID");
+                dt.Columns.Add("OD_REMARK");
                 dr = dt.NewRow();
                 dt.Rows.Add(AddRow(dr));
             }
@@ -110,11 +115,9 @@ namespace VloveImport.web.Customer
 
         protected DataRow AddRow(DataRow dr)
         {
-            int row = 1;
-            row = ViewState["TRACK"] == null ? 1 : ((DataTable)ViewState["TRACK"]).Rows.Count + 1;
-            dr["NO"] = row.ToString();
             dr["TRACKING_NO"] = txtTrackingNo.Text;
             dr["SHOP_ORDER_ID"] = txtShopID.Text;
+            dr["OD_REMARK"] = txtRemark.Text;
             return dr;
         }
 
@@ -125,14 +128,25 @@ namespace VloveImport.web.Customer
             txtRemark.Text = "";
         }
 
+        protected void BindGrid()
+        {
+            if (ViewState["TRACK"] != null)
+            {
+                gvTrans.DataSource = (DataTable)ViewState["TRACK"];
+                gvTrans.DataBind();
+            }
+        }
+
         protected void imbDelete_Click(object sender, ImageClickEventArgs e)
         {
             ImageButton imb = (ImageButton)sender;
             if (imb != null && ViewState["TRACK"] != null)
             {
-                int row = imb.CommandArgument == "" ? 0 : Convert.ToInt32(imb.CommandArgument);
+                int row = imb.CommandArgument == "" ? -1 : Convert.ToInt32(imb.CommandArgument);
                 DataTable dt = (DataTable)ViewState["TRACK"];
-                dt.Rows.RemoveAt(row-1);
+                dt.Rows.RemoveAt(row);
+                ViewState["TRACK"] = dt;
+                BindGrid();
             }
         }
     }

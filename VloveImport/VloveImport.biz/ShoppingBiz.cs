@@ -129,6 +129,18 @@ namespace VloveImport.biz
             return Result;
         }
         #endregion
+
+        #region TransOnly
+        public string[] MakeOrderByTrans(OrderData Data, List<OrderData> lstData)
+        {
+            commonBiz biz = new commonBiz();
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+
+            string[] Result = new string[2];
+            Result = dal.MakeOrderByTrans(Data, lstData);
+            return Result;
+        }
+        #endregion
         #region Admin Manage
         public DataTable GetOrderList(string Login, string ShopName)
         {

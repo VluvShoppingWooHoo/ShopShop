@@ -43,13 +43,19 @@
                         <div class="col s12 m12 l12 TestBox1">                                        
                             <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false">
                                 <Columns>
-                                    <asp:BoundField DataField="No" HeaderText="ลำดับ" />
+                                    <asp:TemplateField>
+                                        <HeaderTemplate>ลำดับ</HeaderTemplate>
+                                        <ItemTemplate>
+                                            <%# Container.DataItemIndex + 1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>                                    
                                     <asp:BoundField DataField="TRACKING_NO" HeaderText="เลข Tracking" />
                                     <asp:BoundField DataField="SHOP_ORDER_ID" HeaderText="เลข Shop" />
+                                    <asp:BoundField DataField="OD_REMARK" HeaderText="หมายเหตุ" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:ImageButton ID="imbDelete" runat="server" ImageUrl="~/Images/icon/Sign-Close-icon.png"
-                                                Width="15px" Height="15px" OnClick="imbDelete_Click" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "NO") %>' />
+                                                Width="15px" Height="15px" OnClick="imbDelete_Click" CommandArgument='<%# Container.DataItemIndex %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

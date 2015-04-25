@@ -20,6 +20,9 @@ namespace VloveImport.web.Customer
             CheckSession();     
             if (!IsPostBack)
             {
+                if (Session["ORDER"] == null)
+                    GoToIndex();
+
                 string Type = Request.QueryString["Type"] == null ? "" : DecryptData(Request.QueryString["Type"].ToString());
                 BindDataGrid(Type);
                 BindDataTrans();
@@ -62,12 +65,11 @@ namespace VloveImport.web.Customer
                 case "TRANS":
                     if (Session["ORDER"] != null)
                     {
-                        OrderData data = (OrderData)Session["ORDER"];
-                        if (data != null)
+                        List<OrderData> lstData = (List<OrderData>)Session["ORDER"];
+                        if (lstData != null && lstData.Count > 0)
                         {
-                            lbPINo.Text = data.ORDER_PI;
-                            lbAmount.Text = data.OD_AMOUNT.ToString();
-                            imgURL.ImageUrl = data.OD_PICURL;
+                            gvTrans.DataSource = lstData;
+                            gvTrans.DataBind();                            
 
                             mView.Visible = true;
                             mView.ActiveViewIndex = 1;
@@ -124,6 +126,10 @@ namespace VloveImport.web.Customer
                     break;
 
                 case "TRANS":
+                    List<OrderData> lstdata = (List<OrderData>)Session["ORDER"];
+                    Transport_Amount = lstdata[0].OD_PRICE * 10 / 100;
+                    lbPay1.Text = "ชำระเงินรอบแรก = " + lstdata[0].OD_PRICE.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
+                        + " = " + (lstdata[0].OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";                    
                     break;
             }
         }
@@ -240,7 +246,45 @@ namespace VloveImport.web.Customer
 
         protected void SaveTrans()
         {
+            if (Session["TRANS"] != null && Session["ORDER"] != null)
+            {
+                string[] Result;
+                string Trans = Session["TRANS"].ToString();
+                string[] spl = Trans.Split(',');
+                List<OrderData> lstData = (List<OrderData>)Session["ORDER"];
+                string User = GetCusCode();
+                double Rate = GetRateCurrency();
+                ShoppingBiz Biz = new ShoppingBiz();
+                OrderData Data = new OrderData();
 
+                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_CODE = GetNoSeries("TRANSPORT");
+                Data.ORDER_CURRENCY = Rate;
+                Data.CUS_ID = GetCusID();
+                Data.CUS_ADDRESS_ID = spl[2].Split('|')[0] == "-" ? -1 : Convert.ToInt32(spl[2].Split('|')[0]);
+                Data.TRANSPORT_CH_TH_METHOD = Convert.ToInt32(spl[0].Split('|')[0]);
+                Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
+                Data.ORDER_TYPE = 3; //TRANS
+                Data.Create_User = User;
+
+                Result = Biz.MakeOrderByTrans(Data, lstData);
+                if (Result[0] == "")
+                {
+                    string Res = "";
+                    Int32 OID = Result[1] == "" ? 0 : Convert.ToInt32(Result[1]);
+                    Res = Biz.UpdateOrderPrice(OID);
+                    if (Res == "")
+                    {
+                        string Order_ID;//SessionUser
+                        Order_ID = EncrypData(Result[1]);
+                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                    }
+                }
+                else
+                {
+                    //Error
+                }
+            }
         }
         #endregion
     }
