@@ -37,12 +37,16 @@ namespace VloveImport.web.Customer
             {
                 txtPINo.Text = dt.Rows[0]["ORDER_PI"].ToString();
                 txtAmount.Text = dt.Rows[0]["OD_PRICE_ACTIVE"].ToString();
+                txtRemark.Text = dt.Rows[0]["OD_REMARK"].ToString();
                 imgPI.ImageUrl = dt.Rows[0]["OD_URL"].ToString();
 
                 txtPINo.ReadOnly = true;
                 txtAmount.ReadOnly = true;
+                txtRemark.ReadOnly = true;
                 Ifile.Visible = false;
                 imgPI.Visible = true;
+
+                btnUploadPI.Visible = false;
             }
         }
 
