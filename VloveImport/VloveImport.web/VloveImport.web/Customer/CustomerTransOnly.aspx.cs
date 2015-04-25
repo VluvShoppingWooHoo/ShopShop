@@ -86,9 +86,9 @@ namespace VloveImport.web.Customer
             DataTable dt = new DataTable();
             DataRow dr;
             if (ViewState["TRACK"] != null)
-            {
-                dr = dt.NewRow();
+            {                
                 dt = (DataTable)ViewState["TRACK"];
+                dr = dt.NewRow();
                 dt.Rows.Add(AddRow(dr));                
                 gvTrans.DataSource = dt;
                 gvTrans.DataBind();
@@ -104,6 +104,8 @@ namespace VloveImport.web.Customer
             ViewState["TRACK"] = dt;
             gvTrans.DataSource = dt;
             gvTrans.DataBind();
+
+            Reset();
         }
 
         protected DataRow AddRow(DataRow dr)
@@ -114,6 +116,24 @@ namespace VloveImport.web.Customer
             dr["TRACKING_NO"] = txtTrackingNo.Text;
             dr["SHOP_ORDER_ID"] = txtShopID.Text;
             return dr;
+        }
+
+        protected void Reset()
+        {
+            txtTrackingNo.Text = "";
+            txtShopID.Text = "";
+            txtRemark.Text = "";
+        }
+
+        protected void imbDelete_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton imb = (ImageButton)sender;
+            if (imb != null && ViewState["TRACK"] != null)
+            {
+                int row = imb.CommandArgument == "" ? 0 : Convert.ToInt32(imb.CommandArgument);
+                DataTable dt = (DataTable)ViewState["TRACK"];
+                dt.Rows.RemoveAt(row-1);
+            }
         }
     }
 }
