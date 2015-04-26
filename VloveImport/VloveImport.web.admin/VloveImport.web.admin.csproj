@@ -65,6 +65,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="App_Themes\v_th1\css.css" />
     <Content Include="App_Themes\v_th1\images\input-background-notice.png" />
     <Content Include="App_Themes\v_th1\images\input-background-readonly.png" />
@@ -129,7 +132,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\BasePage.cs" />
     <Compile Include="frmAdminIndex.aspx.cs">
       <DependentUpon>frmAdminIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
