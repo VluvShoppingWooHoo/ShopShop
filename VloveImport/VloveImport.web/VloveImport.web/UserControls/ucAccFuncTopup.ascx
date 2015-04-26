@@ -131,7 +131,9 @@
                 </button>
             </div>
         </div>
-
+        <div>
+            <asp:Label ID="lblERR1" runat="server"></asp:Label>
+        </div>
     </ContentTemplate>
 </asp:UpdatePanel>
 <script type="text/javascript">

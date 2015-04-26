@@ -164,8 +164,9 @@ namespace VloveImport.web.UserControls
                 EnTran.Cus_ID = bp.GetCusID();
                 if (Ifile.HasFile)
                 {
-                    string folder = Server.MapPath("~/" + EnTran.Cus_ID).Replace("www.iloveimport.com", "Attachment\\IMG_PAYMENT");
-                    folder = folder.Replace("iloveimport.com", "Attachment\\IMG_PAYMENT");
+                    string folder = Server.MapPath("~/" + EnTran.Cus_ID).Replace("www.iloveimport.com", "iloveimport.com\\Attachment\\IMG_PAYMENT");
+                    folder = folder.Replace("iloveimport.com", "iloveimport.com\\Attachment\\IMG_PAYMENT");
+                    folder = folder.Replace("\\httpdocs", "");
                     bool exists = System.IO.Directory.Exists(folder);
                     //if (!exists)
                     //    System.IO.Directory.CreateDirectory(folder);
@@ -177,8 +178,8 @@ namespace VloveImport.web.UserControls
                         System.IO.Directory.CreateDirectory(folder);
 
                     string filename = "Tran_Attachment\\" + EnTran.Cus_ID + "\\" + Path.GetFileName(Ifile.FileName);
-                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + filename + "');</script>", false);
-
+                    //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + filename + "');</script>", false);
+                    //lblERR1.Text = filename;
                     Ifile.SaveAs(folder + "\\" + Path.GetFileName(Ifile.FileName));
                     EnTran.TRANS_PICURL = filename;
 
@@ -211,7 +212,10 @@ namespace VloveImport.web.UserControls
                     //Response.Redirect("~/Customer/CustomerMyAccount.aspx");
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                lblERR1.Text = ex.ToString();
+            }
         }
 
     }
