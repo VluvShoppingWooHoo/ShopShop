@@ -565,7 +565,18 @@ namespace VloveImport.web.admin.pages
                     ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_pic")).ImageUrl = DataBinder.Eval(e.Row.DataItem, "OD_PICURL").ToString();
 
                     string ProdItemDetail = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a><br>";
-                    ProdItemDetail += "Size : " + OD_SIZE + "<br>";
+                   
+                    if (OD_SIZE.Contains("http"))
+                    {
+                        ProdItemDetail += "Color : <img src = \"" + OD_SIZE + "\" width = \"30px\" Height = \"30px\" />";
+                    }
+                    else
+                    {
+                        ProdItemDetail += "Color : " + OD_SIZE;
+                    }
+
+                    ProdItemDetail += "<br>";
+
                     if (OD_COLOR.Contains("http"))
                     {
                         ProdItemDetail += "Color : <img src = \"" + OD_COLOR + "\" width = \"30px\" Height = \"30px\" />";
