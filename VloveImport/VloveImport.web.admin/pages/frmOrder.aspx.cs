@@ -63,7 +63,10 @@ namespace VloveImport.web.admin.pages
         {
             if (!IsPostBack)
             {
-                _VS_USER_LOGIN = "admin";
+                AdminUserData Data = new AdminUserData();
+                Data = (AdminUserData)(Session["AdminUser"]);
+                _VS_USER_LOGIN = Data.USERNAME;
+
                 BindData_order_status(ddl_ViewDetail_ORDER_STATUS);
                 BindData_transport_status(ddl_ViewDetail_TRANSPORT_STATUS);
 

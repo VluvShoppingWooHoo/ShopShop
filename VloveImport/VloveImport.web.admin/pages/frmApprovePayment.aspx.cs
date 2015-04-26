@@ -41,10 +41,13 @@ namespace VloveImport.web.admin.pages
         {
             if (!IsPostBack)
             {
+                AdminUserData Data = new AdminUserData();
+                Data = (AdminUserData)(Session["AdminUser"]);
+                _VS_USER_LOGIN = Data.USERNAME;
+                _VS_USER_EMP_ID = Data.EMP_ID;
+
                 ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
                 ucCalendar2.ClearData();
-                _VS_USER_LOGIN = "admin";
-                _VS_USER_EMP_ID = 1;
                 BindData_Transaction_status(ddlTranSactionStatus, "S");
                 BindData_Transaction_TYPE(ddlTranSactionType, "S");
                 BindData_Transaction_status(ddlview_Tran_Status, "A", "BIND_DDL_STS_IN");

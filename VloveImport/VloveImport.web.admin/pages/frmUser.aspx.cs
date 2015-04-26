@@ -36,7 +36,10 @@ namespace VloveImport.web.admin.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _VS_USER_LOGIN = "admin";
+            AdminUserData Data = new AdminUserData();
+            Data = (AdminUserData)(Session["AdminUser"]);
+            _VS_USER_LOGIN = Data.USERNAME;
+
             if (!IsPostBack)
             {
                 BindDataGroupUser();

@@ -12,6 +12,12 @@ namespace VloveImport.web.admin.pages
 {
     public partial class frmMasterBank : System.Web.UI.Page
     {
+        public string _VS_USER_LOGIN
+        {
+            get { return ViewState["__VS_USER_LOGIN"].ToString(); }
+            set { ViewState["__VS_USER_LOGIN"] = value; }
+        }
+
         public int _VS_ID
         {
             get { return Convert.ToInt32(ViewState["__VS_ID"]); }
@@ -28,6 +34,10 @@ namespace VloveImport.web.admin.pages
         {
             if (!IsPostBack)
             {
+                AdminUserData Data = new AdminUserData();
+                Data = (AdminUserData)(Session["AdminUser"]);
+                _VS_USER_LOGIN = Data.USERNAME;
+
                 BindData_MS_BANK();
                 BindData();
             }
@@ -105,7 +115,7 @@ namespace VloveImport.web.admin.pages
                 En.BANK_SHOP_ACCOUNT_NO = txt_acc_no.Text.Trim();
                 En.BANK_SHOP_REMARK = txt_remark.Text.Trim();
                 En.BANK_SHOP_STATUS = Convert.ToInt32(ddl_Status.SelectedValue);
-                En.Create_User = "Batt";
+                En.Create_User = _VS_USER_LOGIN;
             }
             return En;
         }
