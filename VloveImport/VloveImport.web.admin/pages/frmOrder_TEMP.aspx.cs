@@ -566,7 +566,15 @@ namespace VloveImport.web.admin.pages
 
                     string ProdItemDetail = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a><br>";
                     ProdItemDetail += "Size : " + OD_SIZE + "<br>";
-                    ProdItemDetail += "Color : " + OD_COLOR;
+                    if (OD_COLOR.Contains("http"))
+                    {
+                        ProdItemDetail += "Color : <img src = \"" + OD_COLOR + "\" width = \"30px\" Height = \"30px\" />";
+                    }
+                    else
+                    {
+                        ProdItemDetail += "Color : " + OD_COLOR;
+                    }
+                    
 
                     e.Row.Cells[1].Text = ProdItemDetail;
 
