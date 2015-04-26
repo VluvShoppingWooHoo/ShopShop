@@ -3,6 +3,8 @@
 <%@ Register Src="../UserControls/ucCalendar.ascx" TagName="ucCalendar" TagPrefix="uc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
+<%@ Register src="../UserControls/ucEmail.ascx" tagname="ucEmail" tagprefix="uc2" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -72,36 +74,83 @@
                 </tr>
             </table>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="15" Width="100%"
-                DataKeyNames="CUS_ID,CUS_CODE">
+                DataKeyNames="CUS_ID,CUS_CODE,CUS_EMAIL" OnPageIndexChanging="gv_detail_PageIndexChanging">
                 <Columns>
                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No.">
                         <HeaderStyle CssClass="width5" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="CUS_CODE" HeaderText="Customer code">
+                    <asp:BoundField DataField="CUS_CODE" HeaderText="<nobr>Customer</nobr><br>code" HtmlEncode ="false">
+                    <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Customer name" DataField="CUS_FULLNAME">
+                    <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Birthday" DataField="CUS_BIRTHDAY_TEXT">
+                    <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="Telephone" DataField="CUS_TELEPHONE" />
-                    <asp:BoundField HeaderText="Email" DataField="CUS_EMAIL"/>
+                    <asp:BoundField HeaderText="Telephone" DataField="CUS_TELEPHONE" >
+                    <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField HeaderText="Email" DataField="CUS_EMAIL">
+                    <HeaderStyle CssClass="width15" />
+                    </asp:BoundField>
                     <asp:BoundField HeaderText="Amount" DataField="CUS_TOTAL_AMOUNT" DataFormatString="{0:#,##0.00}">
+                    <HeaderStyle CssClass="width10" />
                     <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Point" DataField="CUS_POINT">
+                    <HeaderStyle CssClass="width5" />
                     <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>
                     <asp:BoundField DataField="CUS_STATUS_TEXT" HeaderText="Status">
+                    <HeaderStyle CssClass="width5" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
-                            <asp:ImageButton ID="imgBtn_view" runat="server" ImageUrl="~/img/icon/View.png" Width ="20px" Height ="20px" />
+                           <%-- <asp:ImageButton ID="imgBtn_view" runat="server" ImageUrl="~/img/icon/View.png" Width ="20px" Height ="20px" />&nbsp;&nbsp;--%>
+                            <asp:ImageButton ID="imgBtn_Email" runat="server" ImageUrl="~/img/icon/sendemail.png" Width ="30px" Height ="30px" OnClick="imgBtn_Email_Click" />
                         </ItemTemplate>
                         <HeaderStyle CssClass="width5" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+
+            <asp:ModalPopupExtender ID="MadoalPop_Email" runat="server" BackgroundCssClass="modalBackground"
+                PopupControlID="Panel1" TargetControlID="lbl_modal_email">
+            </asp:ModalPopupExtender>
+            <asp:Panel ID="Panel1" Height="520" Width="800px" runat="server" Style="display: none;">
+                <%--Style="display: none;"--%>
+                <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
+                        <td align="left" class="trLogin_CENTER" style="padding: 0px 0px;">
+                            <div style="margin-left: -40px; margin-top: 10px;">
+                                <asp:Label ID="lbl_modal_email" runat="server" Text="Send Email"></asp:Label>
+                            </div>
+                        </td>
+                        <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
+                            <div style="text-align: right; margin-right: 10px; margin-top: 10px;">
+                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #CFCDCD;">
+                        <td style="text-align: center; padding: 0px 0px;" colspan="3">
+                            <center>
+                            <asp:Panel Width="96%" Height="420px" ID="Panel2" runat="server" BackColor="#FFFFFF">
+                                 <br />
+                                 <uc2:ucEmail ID="ucEmail1" runat="server" />                 
+                            </asp:Panel>
+                        </center>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #CFCDCD;">
+                        <td height="15px" style="padding: 0px 0px;" align="center" colspan="3"></td>
+                    </tr>
+                </table>
+            </asp:Panel>
+
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
