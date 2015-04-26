@@ -129,6 +129,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\BasePage.cs" />
     <Compile Include="frmAdminIndex.aspx.cs">
       <DependentUpon>frmAdminIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -326,7 +327,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\" />
     <Folder Include="Attachment\" />
     <Folder Include="HeaderAttachment\" />
     <Folder Include="img\CMSimg\" />
