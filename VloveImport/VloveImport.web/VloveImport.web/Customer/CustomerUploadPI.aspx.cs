@@ -57,25 +57,47 @@ namespace VloveImport.web.Customer
 
         protected void btnUploadPI_ServerClick(object sender, EventArgs e)
         {
-            Session.Remove("TRANS");
-            Session.Remove("ORDER");
-            OrderData data = new OrderData();
-            data.CUS_ID = GetCusID();
-            data.ORDER_PI = txtPINo.Text;
-            data.OD_PRICE = txtAmount.Text == "" ? 0 : Convert.ToDouble(txtAmount.Text);
-            data.OD_AMOUNT = 1;
-            data.OD_REMARK = txtRemark.Text;
+            if (CheckInput())
+            {
+                Session.Remove("TRANS");
+                Session.Remove("ORDER");
+                OrderData data = new OrderData();
+                data.CUS_ID = GetCusID();
+                data.ORDER_PI = txtPINo.Text;
+                data.OD_PRICE = txtAmount.Text == "" ? 0 : Convert.ToDouble(txtAmount.Text);
+                data.OD_AMOUNT = 1;
+                data.OD_REMARK = txtRemark.Text;
 
-            string filename = Server.MapPath("~/Attachment/PI/") + Path.GetFileName(Ifile.FileName);
-            if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))
-                Directory.CreateDirectory(Server.MapPath("~/Attachment/PI/"));
+                string filename = Server.MapPath("~/Attachment/PI/") + Path.GetFileName(Ifile.FileName);
+                if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))
+                    Directory.CreateDirectory(Server.MapPath("~/Attachment/PI/"));
 
-            Ifile.SaveAs(filename);
-            data.OD_PICURL = filename;
+                Ifile.SaveAs(filename);
+                data.OD_PICURL = filename;
 
-            Session["ORDER"] = data;
-            Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("PI"));
+                Session["ORDER"] = data;
+                Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("PI"));
+            }
         }
 
+        protected bool CheckInput()
+        {
+            if (txtPINo.Text == "")
+            {
+                ShowMessageBox("กรุณากรอก หมายเลข PI");
+                return false;
+            }
+            if (txtAmount.Text == "")
+            {
+                ShowMessageBox("กรุณากรอก จำนวนเงิน");
+                return false;
+            }
+            if (!Ifile.HasFile)
+            {
+                ShowMessageBox("กรุณาแนบไฟล์ PI ที่ต้องการ");
+                return false;
+            }
+            return true;
+        }
     }
 }

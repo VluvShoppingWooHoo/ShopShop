@@ -80,6 +80,17 @@ namespace VloveImport.web.Customer
 
                     lstData.Add(data);
                 }
+
+                if (lstData.Count == 0)
+                {
+                    ShowMessageBox("กรุณาบันทึกอย่างน้อย 1 รายการ");
+                    return;
+                }
+            }
+            else
+            {
+                ShowMessageBox("กรุณาบันทึกอย่างน้อย 1 รายการ");
+                return;
             }
 
             Session["ORDER"] = lstData;
