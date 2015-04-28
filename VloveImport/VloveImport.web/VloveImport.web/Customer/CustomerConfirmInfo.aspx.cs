@@ -17,7 +17,7 @@ namespace VloveImport.web.Customer
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
-            CheckSession();     
+            CheckSession();
             if (!IsPostBack)
             {
                 if (Session["ORDER"] == null)
@@ -69,7 +69,7 @@ namespace VloveImport.web.Customer
                         if (lstData != null && lstData.Count > 0)
                         {
                             gvTrans.DataSource = lstData;
-                            gvTrans.DataBind();                            
+                            gvTrans.DataBind();
 
                             mView.Visible = true;
                             mView.ActiveViewIndex = 1;
@@ -80,7 +80,7 @@ namespace VloveImport.web.Customer
                     GoToIndex();
                     break;
             }
-            
+
         }
         protected void BindDataTrans()
         {
@@ -105,7 +105,7 @@ namespace VloveImport.web.Customer
             switch (Type)
             {
                 case "ORDER":
-                    DataTable dtSelected = (DataTable)Session["ORDER"];                                        
+                    DataTable dtSelected = (DataTable)Session["ORDER"];
                     foreach (DataRow dr in dtSelected.Rows)
                     {
                         Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
@@ -129,7 +129,7 @@ namespace VloveImport.web.Customer
                     List<OrderData> lstdata = (List<OrderData>)Session["ORDER"];
                     Transport_Amount = lstdata[0].OD_PRICE * 10 / 100;
                     lbPay1.Text = "ชำระเงินรอบแรก = " + lstdata[0].OD_PRICE.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
-                        + " = " + (lstdata[0].OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";                    
+                        + " = " + (lstdata[0].OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";
                     break;
             }
         }
@@ -171,7 +171,7 @@ namespace VloveImport.web.Customer
 
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 3; //รอชำระเงิน
                 Data.ORDER_CODE = GetNoSeries("ORDER");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
@@ -214,7 +214,7 @@ namespace VloveImport.web.Customer
                 double Rate = GetRateCurrency();
                 ShoppingBiz Biz = new ShoppingBiz();
 
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 1; //รอ Admin Approve
                 Data.ORDER_CODE = GetNoSeries("PI");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
@@ -234,7 +234,7 @@ namespace VloveImport.web.Customer
                     {
                         string Order_ID;//SessionUser
                         Order_ID = EncrypData(Result[1]);
-                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                        Response.Redirect("CustomerUploadPIList.aspx");
                     }
                 }
                 else
@@ -257,7 +257,7 @@ namespace VloveImport.web.Customer
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
 
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 2; //รอสินค้า
                 Data.ORDER_CODE = GetNoSeries("TRANSPORT");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
@@ -277,7 +277,7 @@ namespace VloveImport.web.Customer
                     {
                         string Order_ID;//SessionUser
                         Order_ID = EncrypData(Result[1]);
-                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                        Response.Redirect("CustomerTransOnlyList.aspx");
                     }
                 }
                 else
