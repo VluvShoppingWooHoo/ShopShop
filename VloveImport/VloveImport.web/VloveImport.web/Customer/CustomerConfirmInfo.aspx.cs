@@ -171,7 +171,7 @@ namespace VloveImport.web.Customer
 
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 3; //รอชำระเงิน
                 Data.ORDER_CODE = GetNoSeries("ORDER");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
@@ -214,7 +214,7 @@ namespace VloveImport.web.Customer
                 double Rate = GetRateCurrency();
                 ShoppingBiz Biz = new ShoppingBiz();
 
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 1; //รอ Admin Approve
                 Data.ORDER_CODE = GetNoSeries("PI");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
@@ -234,7 +234,7 @@ namespace VloveImport.web.Customer
                     {
                         string Order_ID;//SessionUser
                         Order_ID = EncrypData(Result[1]);
-                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                        Response.Redirect("CustomerUploadPIList.aspx");
                     }
                 }
                 else
@@ -257,7 +257,7 @@ namespace VloveImport.web.Customer
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
 
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 2; //รอสินค้า
                 Data.ORDER_CODE = GetNoSeries("TRANSPORT");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
@@ -277,7 +277,7 @@ namespace VloveImport.web.Customer
                     {
                         string Order_ID;//SessionUser
                         Order_ID = EncrypData(Result[1]);
-                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                        Response.Redirect("CustomerTransOnlyList.aspx");
                     }
                 }
                 else
