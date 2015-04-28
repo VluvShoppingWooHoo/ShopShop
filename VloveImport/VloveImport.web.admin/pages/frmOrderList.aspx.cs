@@ -27,7 +27,7 @@ namespace VloveImport.web.admin.pages
                 _VS_USER_LOGIN = Data.USERNAME;
 
                 BindData_order_status(ddl_search_order_status, "S");
-                ddl_search_order_status.SelectedValue = "2";
+                ddl_search_order_status.SelectedValue = "4";
                 ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
                 ucCalendar2.SET_DATE_DEFAULT();
                 BindData();

@@ -22,6 +22,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// lbl_header_detail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_header_detail;
+        
+        /// <summary>
         /// TabORDER control.
         /// </summary>
         /// <remarks>

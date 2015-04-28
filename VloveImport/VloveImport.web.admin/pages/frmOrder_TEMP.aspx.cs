@@ -67,6 +67,12 @@ namespace VloveImport.web.admin.pages
             set { ViewState["__VS_EXCH_RATE"] = value; }
         }
 
+        public string _VS_ORDER_TYPE
+        {
+            get { return ViewState["__VS_ORDER_TYPE"].ToString(); }
+            set { ViewState["__VS_ORDER_TYPE"] = value; }
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -221,7 +227,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb2_Total_Refund.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_REFUND"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Additional_Amount.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_ADDITIONAL_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Total_Prodcut_Active_Price.Text = (Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()) * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)<br><span style =\"color:red;\">(" + Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US")) + ")(CNY)</span>";
-                
+
                 lbl_tb2_Total_Transport_Active_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_TRANSPORT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Actually_Amounte.Text = Convert.ToDouble(dt.Rows[0]["ACTUALLY_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
             }
@@ -264,6 +270,9 @@ namespace VloveImport.web.admin.pages
             _VS_ORDER_TRAN_STS = dt.Rows[0]["TRANSPORT_STATUS"].ToString();
             _VS_TRANSPORT_CH_TH_METHOD = dt.Rows[0]["TRANSPORT_CH_TH_METHOD"].ToString();
             _VS_EXCH_RATE = Convert.ToDouble(dt.Rows[0]["ORDER_CURRENCY"].ToString());
+            _VS_ORDER_TYPE = dt.Rows[0]["ORDER_TYPE"].ToString();
+
+            lbl_header_detail.Text = dt.Rows[0]["ORDER_TYPE_TEXT"].ToString();
 
             //Update Order Status, Transport Status
             BindData_order_status(ddl_ViewDetail_ORDER_STATUS, STS_NAME: _VS_ORDER_STS, Act: "BIND_DDL_STS_ID");
@@ -282,40 +291,46 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
             }
-            else if (_VS_ORDER_STS == "1")
-            {
-                ddl_ViewDetail_ORDER_STATUS.Enabled = false;
-                ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
-                btn_detail_update.Visible = false;
-            }
-            else if (_VS_ORDER_STS == "2")
+            else if ((_VS_ORDER_STS == "1" && _VS_ORDER_TYPE == "2") || (_VS_ORDER_STS == "2" && _VS_ORDER_TYPE == "3"))
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
             }
-            else if (_VS_ORDER_STS == "3" || _VS_ORDER_STS == "5")
+            else if (_VS_ORDER_STS == "3")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = false;
-                btnUpdateShopDetail.Visible = false;
             }
             else if (_VS_ORDER_STS == "4")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
+            }
+            else if (_VS_ORDER_STS == "5" || _VS_ORDER_STS == "7")
+            {
+                ddl_ViewDetail_ORDER_STATUS.Enabled = false;
+                ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+                btn_detail_update.Visible = false;
+                btnUpdateShopDetail.Visible = false;
+            }
+            else if (_VS_ORDER_STS == "6")
+            {
+                ddl_ViewDetail_ORDER_STATUS.Enabled = true;
+                ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+                btn_detail_update.Visible = true;
                 btnUpdateShopDetail.Visible = true;
             }
-            else if (_VS_ORDER_STS == "6" || _VS_ORDER_STS == "7")
+            else if (_VS_ORDER_STS == "8" || _VS_ORDER_STS == "9")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
                 btn_detail_update.Visible = true;
                 btnUpdateShopDetail.Visible = false;
             }
-            else if (_VS_ORDER_STS == "8")
+            else if (_VS_ORDER_STS == "10")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
@@ -400,7 +415,7 @@ namespace VloveImport.web.admin.pages
             string Result = "";
 
             //if (_VS_ORDER_STS == "2" && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5"))
-            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "8")
+            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
             {
                 Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
             }
@@ -542,9 +557,9 @@ namespace VloveImport.web.admin.pages
                     lblRowIndex.Text = ShowShop;
 
                     #region
-                    if (Convert.ToInt32(_VS_ORDER_STS) >= 5) btnUpdateShopDetail.Visible = false;
-                    else if (Convert.ToInt32(_VS_ORDER_STS) >= 3) btnUpdateShopDetail.Visible = true;
-                    else if (Convert.ToInt32(_VS_ORDER_STS) == 2) btnUpdateShopDetail.Visible = true;
+                    if (Convert.ToInt32(_VS_ORDER_STS) >= 7) btnUpdateShopDetail.Visible = false;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) >= 5) btnUpdateShopDetail.Visible = true;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) == 4) btnUpdateShopDetail.Visible = true;
                     else btnUpdateShopDetail.Visible = false;
                     #endregion
 
@@ -564,28 +579,36 @@ namespace VloveImport.web.admin.pages
 
                     ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_pic")).ImageUrl = DataBinder.Eval(e.Row.DataItem, "OD_PICURL").ToString();
 
-                    string ProdItemDetail = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a><br>";
-                   
-                    if (OD_SIZE.Contains("http"))
+                    string ProdItemDetail = "";
+
+                    if (_VS_ORDER_TYPE == "1")
                     {
-                        ProdItemDetail += "Color : <img src = \"" + OD_SIZE + "\" width = \"30px\" Height = \"30px\" />";
+                        ProdItemDetail = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a><br>";
+
+                        if (OD_SIZE.Contains("http"))
+                        {
+                            ProdItemDetail += "Size : <img src = \"" + OD_SIZE + "\" width = \"30px\" Height = \"30px\" />";
+                        }
+                        else
+                        {
+                            ProdItemDetail += "Size : " + OD_SIZE;
+                        }
+
+                        ProdItemDetail += "<br>";
+
+                        if (OD_COLOR.Contains("http"))
+                        {
+                            ProdItemDetail += "Color : <img src = \"" + OD_COLOR + "\" width = \"30px\" Height = \"30px\" />";
+                        }
+                        else
+                        {
+                            ProdItemDetail += "Color : " + OD_COLOR;
+                        }
                     }
                     else
                     {
-                        ProdItemDetail += "Color : " + OD_SIZE;
+                        ProdItemDetail = ItemName;
                     }
-
-                    ProdItemDetail += "<br>";
-
-                    if (OD_COLOR.Contains("http"))
-                    {
-                        ProdItemDetail += "Color : <img src = \"" + OD_COLOR + "\" width = \"30px\" Height = \"30px\" />";
-                    }
-                    else
-                    {
-                        ProdItemDetail += "Color : " + OD_COLOR;
-                    }
-                    
 
                     e.Row.Cells[1].Text = ProdItemDetail;
 
@@ -612,9 +635,9 @@ namespace VloveImport.web.admin.pages
                     e.Row.Cells[8].Text = (TOTAL_PROD_PRICE_ACTIVE * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB) <BR><span style =\"color:red;\">" + TOTAL_PROD_PRICE_ACTIVE.ToString("N", new CultureInfo("en-US")) + "(CNY)</span>";
 
                     #region
-                    if (Convert.ToInt32(_VS_ORDER_STS) >= 5) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
-                    else if (Convert.ToInt32(_VS_ORDER_STS) >= 3) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
-                    else if (Convert.ToInt32(_VS_ORDER_STS) == 2) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = true;
+                    if (Convert.ToInt32(_VS_ORDER_STS) >= 7) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) >= 5) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) == 4) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = true;
                     else ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
                     #endregion
 
