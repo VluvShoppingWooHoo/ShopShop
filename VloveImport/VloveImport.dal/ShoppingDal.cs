@@ -135,7 +135,6 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("TRANSPORT_TH_CU_METHOD", SqlDbType.Int, ParameterDirection.Input, Data.TRANSPORT_TH_CU_METHOD);
                 SqlCommandData.SetParameter("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
                 SqlCommandData.SetParameter_Input_INT("ORDER_TYPE", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TYPE);
-                SqlCommandData.SetParameter("ORDER_PI", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
 
                 SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);
@@ -312,10 +311,6 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("TRANSPORT_TH_CU_METHOD", SqlDbType.Int, ParameterDirection.Input, Data.TRANSPORT_TH_CU_METHOD);
                 SqlCommandData.SetParameter("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
                 SqlCommandData.SetParameter_Input_INT("ORDER_TYPE", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TYPE);
-                if(Data.ORDER_PI == null)
-                    SqlCommandData.SetParameter("ORDER_PI", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
-                else
-                    SqlCommandData.SetParameter("ORDER_PI", SqlDbType.NVarChar, ParameterDirection.Input, Data.ORDER_PI);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
 
                 SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);
@@ -338,7 +333,7 @@ namespace VloveImport.dal
                 store = "INS_ORDER_DETAIL";
                 SqlCommandData.SetStoreProcedure(store);
                 SqlCommandData.SetParameter_Input_INT("ORDER_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, int.Parse(OS_ID));
-                SqlCommandData.SetParameter("OD_ITEMNAME", SqlDbType.NVarChar, ParameterDirection.Input, Data.ORDER_PI);
+                SqlCommandData.SetParameter("OD_ITEMNAME", SqlDbType.NVarChar, ParameterDirection.Input, Data.OD_ITEMNAME);
                 SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Data.OD_AMOUNT);
                 SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Data.OD_PRICE);
                 SqlCommandData.SetParameter("OD_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
@@ -389,10 +384,6 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("TRANSPORT_TH_CU_METHOD", SqlDbType.Int, ParameterDirection.Input, Data.TRANSPORT_TH_CU_METHOD);
                 SqlCommandData.SetParameter("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
                 SqlCommandData.SetParameter_Input_INT("ORDER_TYPE", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TYPE);
-                if (Data.ORDER_PI == null)
-                    SqlCommandData.SetParameter("ORDER_PI", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
-                else
-                    SqlCommandData.SetParameter("ORDER_PI", SqlDbType.NVarChar, ParameterDirection.Input, Data.ORDER_PI);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
 
                 SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);

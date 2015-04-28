@@ -107,16 +107,40 @@
                 <%--กรุณาทำการชำระเงินภายใน 3 วัน หลังจาก 3 วัน ใบสั่งซื้อจะถูกยกเลิกโดยอัตโนมัติ--%>
                 <br />                                
             </div>
-            <br />
-            <span class="bold FontHeader orange-text">สรุปยอดค่าใช้จ่าย</span>            
-            <br />
-            <div class="row s6 m6 l6 TestBox1">
-                <asp:Label ID="lbPay1" runat="server"></asp:Label> <br /><br />
-                <span class="bold FontHeader2 orange-text">วิธีคิดค่าใช้จ่าย</span> <br />           
-                ชำระเงินรอบแรก = ค่าสินค้า(บาท) + ค่าขนส่ง (10% ของค่าสินค้า) <br />                
-                ชำระเงินรอบที่ 2 = ค่าขนส่ง (เฉพาะค่าขนส่งที่เกินจาก 10%)                                       
-            </div>
-            <br />
+            <div id="Order" runat="server" visible="false">
+                <br />
+                <span class="bold FontHeader orange-text">สรุปยอดค่าใช้จ่าย</span>            
+                <br />
+                <div class="row s6 m6 l6 TestBox1">
+                    <asp:Label ID="lbPayOrder" runat="server"></asp:Label> <br /><br />
+                    <span class="bold FontHeader2 orange-text">วิธีคิดค่าใช้จ่าย</span> <br />           
+                    ชำระเงินรอบแรก = ค่าสินค้า(บาท) + ค่าขนส่ง (10% ของค่าสินค้า) <br />                
+                    ชำระเงินรอบที่ 2 = ค่าขนส่ง (เฉพาะค่าขนส่งที่เกินจาก 10%)                                       
+                </div>
+                <br />                
+            </div>  
+            <div id="PI" runat="server" visible="false">
+                <br />
+                <span class="bold FontHeader orange-text">สรุปยอดค่าใช้จ่าย</span>            
+                <br />
+                <div class="row s6 m6 l6 TestBox1">
+                    <asp:Label ID="lbPayPI" runat="server"></asp:Label> <br /><br />
+                    <span class="bold FontHeader2 orange-text">วิธีคิดค่าใช้จ่าย</span> <br />           
+                    ชำระเงินรอบแรก = สินค้าฝากจ่าย(บาท) + ค่าขนส่ง (10% ของค่าสินค้า) + ค่าดำเนินการ(<asp:Label ID="lbPI" runat="server"></asp:Label>) <br />                
+                    ชำระเงินรอบที่ 2 = ค่าขนส่ง (เฉพาะค่าขนส่งที่เกินจาก 10%)                                       
+                </div>
+                <br />                
+            </div>   
+            <div id="Trans" runat="server" visible="false">
+                <br />
+                <div class="row s6 m6 l6 TestBox1">
+                    <asp:Label ID="lbPayTrans" runat="server"></asp:Label> <br /><br />
+                    <span class="bold FontHeader2 orange-text">วิธีคิดค่าใช้จ่าย</span> <br />           
+                    ชำระเงินรอบแรก = ค่าขนส่ง (10% ของค่าสินค้า) + ค่าดำเนินการ(<asp:Label ID="lbTrans" runat="server"></asp:Label>) <br />                
+                    ชำระเงินรอบที่ 2 = ค่าขนส่ง (เฉพาะค่าขนส่งที่เกินจาก 10%)                                       
+                </div>
+                <br />                
+            </div>   
             <div class="row s6 m6 l6 TestBox1">
                 <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
                     name="action" class="btn waves-effect orange waves-light">
@@ -126,7 +150,7 @@
                     name="action" class="btn waves-effect orange waves-light">
                     Confirm                                
                 </button>
-            </div>
+            </div>        
         </div>
     </div>
 
