@@ -17,7 +17,7 @@ namespace VloveImport.web.Customer
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
-            CheckSession();     
+            CheckSession();
             if (!IsPostBack)
             {
                 if (Session["ORDER"] == null)
@@ -45,6 +45,7 @@ namespace VloveImport.web.Customer
 
                         gvBasket.DataBind();
                         gvBasket.Visible = true;
+                        Order.Visible = true;
                     }
                     break;
                 case "PI":
@@ -53,12 +54,13 @@ namespace VloveImport.web.Customer
                         OrderData data = (OrderData)Session["ORDER"];
                         if (data != null)
                         {
-                            lbPINo.Text = data.ORDER_PI;
+                            lbPINo.Text = data.OD_ITEMNAME;
                             lbAmount.Text = data.OD_AMOUNT.ToString();
                             imgURL.ImageUrl = data.OD_PICURL;
 
                             mView.Visible = true;
                             mView.ActiveViewIndex = 0;
+                            PI.Visible = true;
                         }
                     }
                     break;
@@ -69,10 +71,11 @@ namespace VloveImport.web.Customer
                         if (lstData != null && lstData.Count > 0)
                         {
                             gvTrans.DataSource = lstData;
-                            gvTrans.DataBind();                            
+                            gvTrans.DataBind();
 
                             mView.Visible = true;
                             mView.ActiveViewIndex = 1;
+                            Trans.Visible = true;
                         }
                     }
                     break;
@@ -80,7 +83,7 @@ namespace VloveImport.web.Customer
                     GoToIndex();
                     break;
             }
-            
+
         }
         protected void BindDataTrans()
         {
@@ -100,12 +103,13 @@ namespace VloveImport.web.Customer
         }
         protected void BindDataSummary(string Type)
         {
-            double Total_Amount = 0, Price = 0, Amount = 0, Transport_Amount = 0, Rate = 0;
-            Rate = GetRateCurrency();
+            double Total_Amount = 0, Price = 0, Amount = 0, Transport_Amount = 0, Rate = 0, Charge = 0;
+            Rate = GetRateCurrency();            
+
             switch (Type)
             {
                 case "ORDER":
-                    DataTable dtSelected = (DataTable)Session["ORDER"];                                        
+                    DataTable dtSelected = (DataTable)Session["ORDER"];
                     foreach (DataRow dr in dtSelected.Rows)
                     {
                         Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
@@ -114,22 +118,25 @@ namespace VloveImport.web.Customer
                     }
 
                     Transport_Amount = Total_Amount * 10 / 100;
-                    lbPay1.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
+                    lbPayOrder.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
                         + " = " + (Total_Amount + Transport_Amount).ToString("###,##0.00") + " บาท";
                     break;
 
                 case "PI":
+                    string[] Config = Get_Config("CHARGE");
+                    if (Config != null && Config.Length > 0)
+                        Charge = Convert.ToDouble(Config[0]);
                     OrderData data = (OrderData)Session["ORDER"];
                     Transport_Amount = data.OD_PRICE * 10 / 100;
-                    lbPay1.Text = "ชำระเงินรอบแรก = " + data.OD_PRICE.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
-                        + " = " + (data.OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";
+                    lbPayPI.Text = "ชำระเงินรอบแรก = " + data.OD_PRICE.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
+                        + Charge.ToString("###,##0.00") + " = " + (data.OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";
                     break;
 
                 case "TRANS":
-                    List<OrderData> lstdata = (List<OrderData>)Session["ORDER"];
-                    Transport_Amount = lstdata[0].OD_PRICE * 10 / 100;
-                    lbPay1.Text = "ชำระเงินรอบแรก = " + lstdata[0].OD_PRICE.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
-                        + " = " + (lstdata[0].OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";                    
+                    //List<OrderData> lstdata = (List<OrderData>)Session["ORDER"];
+                    //Transport_Amount = lstdata[0].OD_PRICE * 10 / 100;
+                    //lbPayTrans.Text = "ชำระเงินรอบแรก = " + lstdata[0].OD_PRICE.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
+                    //    + " = " + (lstdata[0].OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";
                     break;
             }
         }
@@ -171,7 +178,7 @@ namespace VloveImport.web.Customer
 
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 3; //รอชำระเงิน
                 Data.ORDER_CODE = GetNoSeries("ORDER");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
@@ -214,14 +221,14 @@ namespace VloveImport.web.Customer
                 double Rate = GetRateCurrency();
                 ShoppingBiz Biz = new ShoppingBiz();
 
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 1; //รอ Admin Approve
                 Data.ORDER_CODE = GetNoSeries("PI");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
                 Data.CUS_ADDRESS_ID = spl[2].Split('|')[0] == "-" ? -1 : Convert.ToInt32(spl[2].Split('|')[0]);
                 Data.TRANSPORT_CH_TH_METHOD = Convert.ToInt32(spl[0].Split('|')[0]);
                 Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
-                Data.ORDER_TYPE = 2; //PI
+                Data.ORDER_TYPE = 2; //PI                
                 Data.Create_User = User;
 
                 Result = Biz.MakeOrderByPI(Data);
@@ -234,7 +241,7 @@ namespace VloveImport.web.Customer
                     {
                         string Order_ID;//SessionUser
                         Order_ID = EncrypData(Result[1]);
-                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                        Response.Redirect("CustomerUploadPIList.aspx");
                     }
                 }
                 else
@@ -257,7 +264,7 @@ namespace VloveImport.web.Customer
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
 
-                Data.ORDER_STATUS = 1; //ยังไม่ไดชำระเงิน
+                Data.ORDER_STATUS = 2; //รอสินค้า
                 Data.ORDER_CODE = GetNoSeries("TRANSPORT");
                 Data.ORDER_CURRENCY = Rate;
                 Data.CUS_ID = GetCusID();
@@ -277,7 +284,7 @@ namespace VloveImport.web.Customer
                     {
                         string Order_ID;//SessionUser
                         Order_ID = EncrypData(Result[1]);
-                        Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
+                        Response.Redirect("CustomerTransOnlyList.aspx");
                     }
                 }
                 else

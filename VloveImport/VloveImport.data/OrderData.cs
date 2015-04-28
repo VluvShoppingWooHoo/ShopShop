@@ -24,8 +24,7 @@ namespace VloveImport.data
         public string EMP_USER { get; set; }
         public DateTime EMP_UPDATE_DATE { get; set; }
         public string ORDER_EMP_REMARK { get; set; }
-        public int ORDER_TYPE { get; set; }
-        public string ORDER_PI { get; set; }
+        public int ORDER_TYPE { get; set; }        
         public string TRANSPORT_CUSTOMER_DETAIL { get; set; }
         #endregion
 
@@ -69,6 +68,7 @@ namespace VloveImport.data
         public int OD_AMOUNT { get; set; }
         public int OD_AMOUNT_ACTIVE { get; set; }
         public double OD_PRICE { get; set; }
+        public double OD_PRICE_ACTIVE { get; set; }
         public string OD_SIZE { get; set; }
         public string OD_COLOR { get; set; }
         public string OD_REMARK { get; set; }
