@@ -85,14 +85,19 @@ namespace VloveImport.web.Customer
 
                 if (hdd != null)
                 {
-                    if (hdd.Value == "0" || hdd.Value == "2" || hdd.Value == "4" || hdd.Value == "6" || hdd.Value == "7")
+                    //0 = ยกเลิก, 1 = รออนุมัติรายการ, 2 = รอสินค้ามาถึงโกดังจีน
+                    if (hdd.Value == "0" || hdd.Value == "1" || hdd.Value == "2")
                     {
                         gvr.Cells[6].Visible = false;
                         gvr.Cells[7].Visible = false;
                     }
 
+                    //4 = ชำระเงินแล้ว, 6 = ชำระเงินแล้ว(เพิ่ม)
+                    if (hdd.Value == "4" || hdd.Value == "6")                    
+                        gvr.Cells[6].Visible = false;                    
+
                     Pay = hdd_Pay.Value == "" ? 0 : Convert.ToDouble(hdd_Pay.Value);
-                    if (hdd.Value == "8" && Pay <= 0)
+                    if ((hdd.Value == "8" || hdd.Value == "9" || hdd.Value == "10") && Pay <= 0)
                         gvr.Cells[6].Visible = false;
 
                     if (hdd.Value != "1")

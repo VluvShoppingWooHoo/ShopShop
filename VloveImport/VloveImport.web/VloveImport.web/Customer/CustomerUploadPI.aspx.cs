@@ -57,14 +57,21 @@ namespace VloveImport.web.Customer
 
         protected void btnUploadPI_ServerClick(object sender, EventArgs e)
         {
+            double Charge = 0;
+            string[] Config = Get_Config("CHARGE");
+            if (Config != null && Config.Length > 0)
+                Charge = Convert.ToDouble(Config[0]);
+
             if (CheckInput())
             {
                 Session.Remove("TRANS");
                 Session.Remove("ORDER");
                 OrderData data = new OrderData();
                 data.CUS_ID = GetCusID();
-                data.ORDER_PI = txtPINo.Text;
+                //data.ORDER_PI = txtPINo.Text;
+                data.OD_ITEMNAME = txtPINo.Text;
                 data.OD_PRICE = txtAmount.Text == "" ? 0 : Convert.ToDouble(txtAmount.Text);
+                data.OD_PRICE_ACTIVE = Charge;
                 data.OD_AMOUNT = 1;
                 data.OD_REMARK = txtRemark.Text;
 
