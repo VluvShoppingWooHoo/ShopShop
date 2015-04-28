@@ -123,7 +123,21 @@ namespace VloveImport.web.Customer
                 gvOrder.DataSource = dt;
                 gvOrder.DataBind();
             }
-        } 
+        }
+
+        public string GridCalPrice_TH(string Price, string Currency)
+        {
+            string Result = "";
+            double Price_Y = 0, Price_TH = 0, Cur = 0;
+            if (Price != "")
+                Price_Y = Convert.ToDouble(Price);
+            if (Currency != "")
+                Cur = Convert.ToDouble(Currency);
+
+            Price_TH = Price_Y * Cur;
+            Result = Price_TH.ToString("###,##0.00");
+            return Result;
+        }
 
     }
 }

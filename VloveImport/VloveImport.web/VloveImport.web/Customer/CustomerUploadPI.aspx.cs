@@ -35,7 +35,8 @@ namespace VloveImport.web.Customer
             dt = biz.GetOrderDetail(Order_ID);
             if (dt != null && dt.Rows.Count > 0)
             {
-                txtPINo.Text = dt.Rows[0]["ORDER_PI"].ToString();
+                lbOrderCode.Text = dt.Rows[0]["ORDER_CODE"].ToString();
+                txtPINo.Text = dt.Rows[0]["OD_ITEMNAME"].ToString();
                 txtAmount.Text = dt.Rows[0]["OD_PRICE_ACTIVE"].ToString();
                 txtRemark.Text = dt.Rows[0]["OD_REMARK"].ToString();
                 imgPI.ImageUrl = dt.Rows[0]["OD_URL"].ToString();
@@ -46,7 +47,10 @@ namespace VloveImport.web.Customer
                 Ifile.Visible = false;
                 imgPI.Visible = true;
 
+                Code.Visible = true;
+                Uploadpi.Visible = false;
                 btnUploadPI.Visible = false;
+                Tracking.Visible = true;
             }
         }
 

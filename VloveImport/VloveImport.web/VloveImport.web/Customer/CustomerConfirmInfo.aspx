@@ -136,7 +136,7 @@
                 <div class="row s6 m6 l6 TestBox1">
                     <asp:Label ID="lbPayTrans" runat="server"></asp:Label> <br /><br />
                     <span class="bold FontHeader2 orange-text">วิธีคิดค่าใช้จ่าย</span> <br />           
-                    ชำระเงินรอบแรก = ค่าขนส่ง (10% ของค่าสินค้า) + ค่าดำเนินการ(<asp:Label ID="lbTrans" runat="server"></asp:Label>) <br />                
+                    ชำระเงินรอบแรก = ค่าขนส่ง (10% ของค่าสินค้า) <br />                
                     ชำระเงินรอบที่ 2 = ค่าขนส่ง (เฉพาะค่าขนส่งที่เกินจาก 10%)                                       
                 </div>
                 <br />                

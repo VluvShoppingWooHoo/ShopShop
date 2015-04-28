@@ -126,10 +126,13 @@ namespace VloveImport.web.Customer
                     string[] Config = Get_Config("CHARGE");
                     if (Config != null && Config.Length > 0)
                         Charge = Convert.ToDouble(Config[0]);
+
+                    lbPI.Text = Charge.ToString("###,##0.00");
                     OrderData data = (OrderData)Session["ORDER"];
-                    Transport_Amount = data.OD_PRICE * 10 / 100;
-                    lbPayPI.Text = "ชำระเงินรอบแรก = " + data.OD_PRICE.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
-                        + Charge.ToString("###,##0.00") + " = " + (data.OD_PRICE + Transport_Amount).ToString("###,##0.00") + " บาท";
+                    Amount = data.OD_PRICE * Rate;
+                    Transport_Amount = Amount * 10 / 100;
+                    lbPayPI.Text = "ชำระเงินรอบแรก = " + Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
+                         + " + " + Charge.ToString("###,##0.00") + " = " + (Amount + Transport_Amount + Charge).ToString("###,##0.00") + " บาท";
                     break;
 
                 case "TRANS":
