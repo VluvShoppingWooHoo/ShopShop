@@ -114,7 +114,7 @@
                 <div id="divQTY" class="row">
                     <div class="col s1 m1 l1" style="margin-top: 3%;">QTY:</div>
                     <div class="col s5 m5 l5" style="margin: 0px">
-                        <input id="aQTY" type="NUMBER" min="0" step="1" size="6" style="text-align:right;">
+                        <input id="aQTY" class="numberFormat" type="NUMBER" min="0" step="1" size="6" style="text-align:right;">
                         <%-- <ul class="pagination" style="margin: 0px">
                             <li class="" style="display: inline-block"><a id="aMinus" href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
                             <li class="" style="display: inline-block; vertical-align: text-bottom;"><a id="aQTY" href="#!" class="">1</a></li>
@@ -152,8 +152,22 @@
 </div>
 
 <script type="text/javascript">
+
+    //$("[class*='numberFormat']").keyup(function (evt) {
+    //    txtWithcomma_onkeyup(evt);
+    //});
+    //$("[class*='numberFormat']").keydown(function (evt) {
+    //    txtWithcomma_onkeydown(evt);
+    //});
+    //$("[class*='numberFormat']").blur(function (evt) {
+    //    txtWithcomma_onblur(evt);
+    //});
+    //$("[class*='numberFormatNoneDecimal']").blur(function (evt) {
+    //    txtWithcomma_onblurnonedecimal(evt);
+    //});
     var isBetween = false;
     $(function () {
+        //numberFormat();
         //$('.childliSize').addClass('orange white-text');
         $('.modal-trigger').leanModal({
             dismissible: false

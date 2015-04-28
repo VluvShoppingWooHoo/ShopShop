@@ -1,15 +1,4 @@
 ﻿
-function showDialog(msg) {
-    $("#windowMessage2").html(msg + '<br><center><a onclick=\"closeDialog()\" class=\"k-button\" style=\"text-decoration:none;padding:1px 20px;margin-top:25px;\">OK</a></center>');
-    $("#windowMessage").data("kendoWindow").center().open();
-}
-
-function closeDialog() {
-    $("#windowMessage").data("kendoWindow").close();
-    //e.focus();
-}
-
-
 function txtWithcomma_onkeydown(e) {
     //debugger
     var key = e.keyCode || e.charCode;

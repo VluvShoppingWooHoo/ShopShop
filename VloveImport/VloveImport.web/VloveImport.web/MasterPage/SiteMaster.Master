@@ -20,7 +20,7 @@
     <script type="text/javascript" src="../App_Themes/js/jquery-2.1.1.min.js"></script>
     <script src="../App_Themes/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="../App_Themes/js/materialize.min.js"></script>
-
+    <%--<script src="../App_Themes/js/myscript.js"></script>--%>
     <%--<script type="text/javascript" src="../App_Themes/js/bootstrap.min.js"></script>--%>
     <%--<script type="text/javascript" src="../App_Themes/js/jssor.slider.mini.js"></script>--%>
     <link href="../App_Themes/th1/css.css" rel="stylesheet" />
