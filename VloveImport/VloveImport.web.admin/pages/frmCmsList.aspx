@@ -106,7 +106,7 @@
                             <asp:TextBox ID="txtTitle" runat="server" Width="300px"></asp:TextBox>
                         </td>
                         <td class="width15">
-                            <asp:Label ID="Label2" runat="server" Text="Content Type :"></asp:Label>
+                            <%--<asp:Label ID="Label2" runat="server" Text="Content Type :"></asp:Label>--%>
                         </td>
                         <td class="width35">
                             <%--<asp:DropDownList ID="ddl_Content_Type" runat="server" hidden>

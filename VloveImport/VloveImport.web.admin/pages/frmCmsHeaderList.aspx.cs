@@ -32,7 +32,8 @@ namespace VloveImport.web.admin.pages
             try
             {
                 AdminBiz AdBiz = new AdminBiz();
-                ds = AdBiz.ADMIN_GET_CMS_HEADER("0", txtTitle.Text.Trim(), chkIsActive.Checked == true ? 1 : 0, "BINDDATA");
+                //ds = AdBiz.ADMIN_GET_CMS_HEADER("0", txtTitle.Text.Trim(), chkIsActive.Checked == true ? 1 : 0, "BINDDATA");
+                ds = AdBiz.ADMIN_GET_CMS_HEADER("0", txtTitle.Text.Trim(), 1, "BINDDATA");
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -60,7 +61,7 @@ namespace VloveImport.web.admin.pages
         protected void btnReset_Click(object sender, EventArgs e)
         {
             txtTitle.Text = "";
-            chkIsActive.Checked = true;
+            //chkIsActive.Checked = true;
             //ddl_Content_Type.SelectedIndex = 0;
         }
         //protected void btnAdd_Click(object sender, EventArgs e)

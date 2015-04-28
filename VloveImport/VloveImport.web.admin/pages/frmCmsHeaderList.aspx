@@ -32,10 +32,10 @@
                     </tr>
                     <tr>
                         <td class="width15">
-                            <asp:Label ID="Label3" runat="server" Text="Active :"></asp:Label>
+                            <%--<asp:Label ID="Label3" runat="server" Text="Active :"></asp:Label>--%>
                         </td>
                         <td class="width35">
-                            <asp:CheckBox ID="chkIsActive" runat="server" Checked="true"/>
+                            <%--<asp:CheckBox ID="chkIsActive" runat="server" Checked="true"/>--%>
                         </td>
                         <td class="width15">
                         </td>

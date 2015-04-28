@@ -46,6 +46,7 @@ namespace VloveImport.web.admin.pages
             try
             {
                 AdminBiz AdBiz = new AdminBiz();
+
                 ds = AdBiz.ADMIN_GET_CMS_HEADER(_VS_CONTENT_ID, string.Empty, 1, "BINDDATA_BYID");
 
                 if (ds.Tables[0].Rows.Count > 0)
@@ -57,13 +58,16 @@ namespace VloveImport.web.admin.pages
                     hd_Header_Content_Type.Value = ds.Tables[0].Rows[0]["HEADER_TYPE"].ToString();
                     hdHeaderContentIMG.Value = ds.Tables[0].Rows[0]["HEADER_IMG"].ToString();
                     hdfContentType.Value = ds.Tables[0].Rows[0]["HEADER_TYPE"].ToString();
-                    if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"]) chkIsActive.Checked = true;
-                    else chkIsActive.Checked = false;
+                    if (!(txtOrder.Text == "1" && ds.Tables[0].Rows[0]["HEADER_TYPE"].ToString() == "3"))
+                        trIMG.Visible = false;
 
                     AdBiz = new AdminBiz();
                     ds = new DataSet();
 
                     ds = AdBiz.ADMIN_GET_CMS("0", txtTitle.Text.Trim(), hd_Header_Content_Type.Value.Trim(), chkIsActive.Checked == true ? 1 : 0, _VS_CONTENT_ID, "BINDDATA");
+
+                    //if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"]) chkIsActive.Checked = true;
+                    //else chkIsActive.Checked = false;
 
                     if (ds.Tables[0].Rows.Count > 0)
                     {

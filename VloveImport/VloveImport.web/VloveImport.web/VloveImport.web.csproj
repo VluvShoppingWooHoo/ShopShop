@@ -82,8 +82,11 @@
     <Content Include="App_Themes\css\materialize.min.css" />
     <Content Include="App_Themes\font\flaticon\flaticon.svg" />
     <Content Include="App_Themes\font\material-design-icons\Material-Design-Icons.svg" />
+    <Content Include="App_Themes\js\jquery-2.1.1.min.js" />
+    <Content Include="App_Themes\js\jquery.cookie.js" />
     <Content Include="App_Themes\js\materialize.js" />
     <Content Include="App_Themes\js\materialize.min.js" />
+    <Content Include="App_Themes\js\myscript.js" />
     <Content Include="App_Themes\th1\css.css" />
     <Content Include="Customer\Activate.aspx" />
     <Content Include="Customer\ContactUs.aspx" />

@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="pages\frmCmsHeaderList.aspx.cs">
       <DependentUpon>frmCmsHeaderList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\frmCmsHeaderList.aspx.designer.cs">
       <DependentUpon>frmCmsHeaderList.aspx</DependentUpon>

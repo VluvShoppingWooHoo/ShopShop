@@ -718,23 +718,18 @@
 
     </div>
     <div class="col s8 m8 l8">
-        <div class="row slider">
+        <div id="divPromo" class="row slider">
             <ul class="slides" style="height: 300px;">
                 <li class="li1">
-                    <%--<img src="../Images/pic/Banner/ILoveImport.jpg" style="background-size: 100%;" />--%>
                 </li>
                 <li class="li2">
-                    <%--<img src="../Images/pic/Banner/Sale.jpg" style="background-size: 100%;" />--%>
                 </li>
                 <li class="li3">
-                    <%--<img src="../Images/pic/Banner/Tour1.jpg" style="background-size: 100%;" />--%>
                 </li>
-                <li class="li4">
-                    <%--<img src="../Images/pic/Banner/Tour1.jpg" style="background-size: 100%;" />--%>
+              <%--  <li class="li4">
                 </li>
                 <li class="li5">
-                    <%--<img src="../Images/pic/Banner/Tour1.jpg" style="background-size: 100%;" />--%>
-                </li>
+                </li>--%>
             </ul>
         </div>
         <div id="divShop" class="row">
@@ -808,7 +803,7 @@
             success: function (data) {
                 var obj = JSON.parse(data.d);
                 if (obj.Result == 1) {
-                    var txtPromo = '<div class="row">';
+                    var txtPromo = '<ul class="slides" style="height: 300px;">';
                     var countPromo = 0;
 
                     var txtNews = '<div class="row">';
@@ -829,13 +824,18 @@
                     var countRecommend2 = 0;
                     for (var i = 0; i < obj.ReturnVal.length; i++) {
                         if (obj.ReturnVal[i].ContentType == 1) {
-                            if (countPromo < 5) {
+                            if (countPromo < 3) {
                                 $(".slider li.li" + (countPromo + 1)).append('<a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%; max-height: 300px;" /></a>')
+                                //$(".slider .slides").append('<li class="li' + (countPromo + 1) + '"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%; max-height: 300px;" /></a></li>')
+                                //txtPromo += '<li class="li' + (countPromo + 1) + '"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%; max-height: 300px;" /></a></li>';
                                 countPromo++;
                                 //txtPromo += '<div class="col s3 m3 l3 hvr-float"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
                             }
                         }
                         else if (obj.ReturnVal[i].ContentType == 2) {
+                            if (countNews == 0) {
+                                $('#divNewsBar span').html(obj.ReturnVal[i].HEADER_TITLE);
+                            }
                             if (countNews < 4) {
                                 countNews++;
                                 txtNews += '<div class="col s3 m3 l3 hvr-float"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><div class="card contentCard"><div class="card-image waves-effect waves-block waves-light"><img src="' + obj.ReturnVal[i].ContentImage + '" style="max-height:100px;"/></div><div class="card-content"><span class="card-title grey-text text-darken-4">' + obj.ReturnVal[i].ContentTitle + '</span></div></div></a></div>';
@@ -868,7 +868,7 @@
                                 if (countRecommend == 0) {
                                     countRecommend++;
                                     $('#divRecommend span').html(obj.ReturnVal[i].HEADER_TITLE);
-                                    $('#divRecommend div[class~="backIMG"]').css('background-image', 'url(' + obj.ReturnVal[i].HEADER_IMG + ')');
+                                    //$('#divRecommend div[class~="backIMG"]').css('background-image', 'url(' + obj.ReturnVal[i].HEADER_IMG + ')');
                                     txtRecommendMain += '<div class="card hvr-float" style="min-height:300px;"><div class="card-image"><a target="_blank" class="txtalignCenter" href="' + url + '"><img src="' + img + '" style="min-height:400px;min-width:350px;"/><span id="ReccommendMainItem" class="card-title">' + name + '</span></a></div></div>';
                                 }
                                 else if (countRecommend1 < 4 || countRecommend2 < 4) {
@@ -884,9 +884,10 @@
                             }
                         }
                     }
-                    //txtPromo += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=1">ดูเพิ่มเติม</a></div></div>';
+                    //txtPromo += '</ul>';
+                    //$('#divPromo').append(txtPromo);
                     txtNews += '</div><div class="row"><div class="col s12 m12 l12" style="text-align: right;"><a href="/Customer/ContentList.aspx?ctype=2">ดูเพิ่มเติม</a></div></div>';
-                    //$('#divPromotionBar').html(txtPromo);
+                   
                     $('#divNewsBar').append(txtNews);
 
                     $('#divSeasonRecommendNewest').html(txtSeasonRecommendMain);
