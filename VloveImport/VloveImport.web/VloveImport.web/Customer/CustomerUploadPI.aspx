@@ -10,7 +10,16 @@
                     <span class="bold FontHeader orange-text">สินค้าฝากจ่าย</span>   
                     <br />
                     <br />                    
-                    <div class="col s7 m7 l7 TestBox1">                    
+                    <div class="col s7 m7 l7 TestBox1">                                                  
+                        <div class="row s7 m7 l7 TestBox1" id="Code" runat="server" visible="false" style="padding-bottom:2px;">                           
+                            <div class="col s2 m2 l2 TestBox1"
+                                style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                <b>รหัสสินค้าฝากจ่าย</b>
+                            </div>
+                            <div class="col s4 m4 l4 TestBox1">
+                                <asp:Label ID="lbOrderCode" runat="server"></asp:Label>
+                            </div>
+                        </div>     
                         <div class="row s7 m7 l7 TestBox1">                           
                             <div class="col s2 m2 l2 TestBox1"
                                 style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
@@ -18,6 +27,15 @@
                             </div>
                             <div class="col s4 m4 l4 TestBox1">
                                 <asp:TextBox ID="txtPINo" runat="server" Width="250px"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="row s7 m7 l7 TestBox1" id="Tracking" runat="server" visible="false">                           
+                            <div class="col s2 m2 l2 TestBox1"
+                                style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                <b>หมายเลข Tracking</b>
+                            </div>
+                            <div class="col s4 m4 l4 TestBox1">
+                                <asp:TextBox ID="txtTracking" runat="server" Width="250px"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row s7 m7 l7 TestBox1">                           
@@ -41,7 +59,7 @@
                                 <asp:TextBox ID="txtRemark" runat="server" Width="250px" Height="90px" Rows="4" TextMode="MultiLine"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="row s7 m7 l7 TestBox1">                           
+                        <div class="row s7 m7 l7 TestBox1" id="Uploadpi" runat="server">                           
                             <div class="col s2 m2 l2 TestBox1"
                                 style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
                                 <b>อัพโหลดใบ PI</b>
@@ -55,7 +73,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
                         <div class="col s12 m12 l12 TestBox1">                                        
                             <div style="margin-left: 10px;">                
                                 <div class="row s6 m6 l6 TestBox1">

@@ -9,8 +9,28 @@
     </div>
     <script type="text/javascript">
         $(function () {
+
             var ctype = getUrlParameter('ctype');
-            var param = { "page": '0' };
+            var mny = getUrlParameter('mny');
+            var pag = getUrlParameter('pag');
+            if (typeof mny === 'undefined') {
+                mny = '';
+            }
+            
+            var PRO_MONTH = '<%= Session["PRO_MONTH"]%>';
+            if (PRO_MONTH != '') {
+                var txt = '';
+                var obj = JSON.parse(PRO_MONTH);
+                for (var i = 0; i < obj.ReturnVal.length; i++) {
+                    txt += '<a href="/Customer/ContentList.aspx?ctype=' + ctype + '&pag=' + pag  + '&mny=' + obj.ReturnVal[i].MNY + '" class="collection-item mMonth" data-id="' + obj.ReturnVal[i].MNY + '">' + obj.ReturnVal[i].MONTH + ' ' + obj.ReturnVal[i].YEAR + '</a>';
+                }
+                $('#divSide').append(txt);                
+            }
+            else {
+                window.location.href = "/Index.aspx";
+            }
+
+            var param = { "page": '0', "MNY": mny };
             $.ajax({
                 type: 'POST',
                 data: JSON.stringify(param),

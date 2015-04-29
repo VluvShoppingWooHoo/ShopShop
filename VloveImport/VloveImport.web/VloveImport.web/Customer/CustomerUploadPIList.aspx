@@ -50,7 +50,11 @@
                             <asp:TemplateField HeaderText="รวมราคาสินค้า" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbPRICE" runat="server" CssClass="right-align" Width="50%"
-                                        Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "OD_PRICE").ToString(), "Money") %>'></asp:Label>
+                                        Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "OD_PRICE").ToString(), "Money") + "(¥)" %>'></asp:Label>                                    
+                                    <br />
+                                    <asp:Label ID="lbPRICE_TH" runat="server" CssClass="right-align" Width="50%"
+                                        Text='<%# CalPRICE_TH(DataBinder.Eval(Container.DataItem, "OD_PRICE").ToString(), 
+                                        DataBinder.Eval(Container.DataItem, "ORDER_CURRENCY").ToString()) + "(THB)" %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderStyle-Width="80px">

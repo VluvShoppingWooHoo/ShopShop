@@ -25,6 +25,7 @@ namespace VloveImport.web.Customer
                     BindData(OID);
                 else
                 {
+                    btn3.Visible = false;
                     gvTrans.DataSource = null;
                     gvTrans.DataBind();
                 }
@@ -36,18 +37,53 @@ namespace VloveImport.web.Customer
             DataTable dt = new DataTable();
             ShoppingBiz biz = new ShoppingBiz();
             Int32 Order_ID = OID == "" ? 0 : Convert.ToInt32(OID);
+            string Stauts = "", strPay = "";
+            double Pay = 0; ;
             dt = biz.GetOrderDetail(Order_ID);
             if (dt != null && dt.Rows.Count > 0)
             {
-                txtTrackingNo.Text = dt.Rows[0]["TRANKING_NO"].ToString();
-                txtShopID.Text = dt.Rows[0]["SHOP_ORDER_ID"].ToString();
-                txtRemark.Text = dt.Rows[0]["OD_REMARK"].ToString();
+                lbOrderCode.Text = dt.Rows[0]["ORDER_CODE"].ToString();
+                gvTrans.DataSource = dt;
+                gvTrans.DataBind();
 
-                txtTrackingNo.ReadOnly = true;
-                txtShopID.ReadOnly = true;
-                txtRemark.ReadOnly = true;
+                Trans1.Visible = false;
+                Trans2.Visible = false;
+                Trans3.Visible = false;
+                btn1.Visible = false;
+                
+                Code.Visible = true;
+                gvTrans.Columns[4].Visible = false;
 
-                btnTrans.Visible = false;
+                Stauts = dt.Rows[0]["ORDER_STATUS"].ToString();
+                strPay = dt.Rows[0]["ORDER_PAY"].ToString();
+                if (Stauts != "")
+                {
+                    //0 = ยกเลิก, 1 = รออนุมัติรายการ, 2 = รอสินค้ามาถึงโกดังจีน
+                    if (Stauts == "0" || Stauts == "1" || Stauts == "2")
+                    {
+                        btn2.Visible = false;
+                        btn3.Visible = false;
+                    }
+
+                    //4 = ชำระเงินแล้ว, 6 = ชำระเงินแล้ว(เพิ่ม)
+                    if (Stauts == "4" || Stauts == "6")
+                    {
+                        btn2.Visible = false;
+                        btn3.Visible = false;
+                    }
+
+                    Pay = strPay == "" ? 0 : Convert.ToDouble(strPay);
+                    if ((Stauts == "8" || Stauts == "9" || Stauts == "10") && Pay <= 0)
+                    {
+                        btn2.Visible = false;
+                        btn3.Visible = false;
+                    }
+
+                    //if (Stauts != "1")
+                    //{
+                    //    gvr.Cells[7].Visible = false;
+                    //}
+                }
             }
 
         }        
@@ -159,6 +195,13 @@ namespace VloveImport.web.Customer
                 ViewState["TRACK"] = dt;
                 BindGrid();
             }
+        }
+
+        protected void btnPay_Click(object sender, EventArgs e)
+        {
+            string OID = Request.QueryString["OID"] == null ? "" : DecryptData(Request.QueryString["OID"].ToString());
+            OID = EncrypData(OID);
+            Response.Redirect("CustomerPayment.aspx?OID=" + OID);
         }
     }
 }

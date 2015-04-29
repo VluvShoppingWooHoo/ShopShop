@@ -14,13 +14,25 @@ namespace VloveImport.biz
 {
     public class CMSContentBiz
     {
-        public List<ContentData> GetList(int page)
+        public List<PromotionMonth> GetPromotionMonthList()
+        {
+            List<PromotionMonth> models = new List<PromotionMonth>();
+            CMSContentDal dal = new CMSContentDal("LocalConnection");
+            try
+            {
+                models = dal.GetPromotionMonth();
+            }
+            catch (Exception ex) { }
+            return models;
+        }
+
+        public List<ContentData> GetList(int page, string MNY)
         {
             List<ContentData> models = new List<ContentData>();
             CMSContentDal dal = new CMSContentDal("LocalConnection");
             try
             {
-                models = dal.GetContent(page);
+                models = dal.GetContent(page, MNY);
             }
             catch (Exception ex) { }
             return models;

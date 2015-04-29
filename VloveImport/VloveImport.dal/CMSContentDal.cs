@@ -19,7 +19,33 @@ namespace VloveImport.dal
         }
         #endregion
 
-        public List<ContentData> GetContent(int page)
+        public List<PromotionMonth> GetPromotionMonth()
+        {
+            List<PromotionMonth> models = new List<PromotionMonth>();
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_PROMOTION_MONTH");
+
+                DataSet ds = new DataSet();
+                ds = SqlCommandData.ExecuteDataSet();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    foreach (DataRow item in ds.Tables[0].Rows)
+                    {
+                        PromotionMonth model = new PromotionMonth();
+                        model.MNY = item["MNY"].ToString();
+                        model.MONTH = item["MONTH"].ToString();
+                        model.YEAR = item["YEAR"].ToString();
+                        models.Add(model);
+                    }
+                }
+            }
+            catch (Exception ex) { }
+            return models;
+        }
+
+
+        public List<ContentData> GetContent(int page, string MNY)
         {
             List<ContentData> models = new List<ContentData>();
             try
@@ -27,6 +53,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("GET_CONTENT");
 
                 SqlCommandData.SetParameter_Input_INT("Page", SqlDbType.Int, ParameterDirection.Input, page);
+                SqlCommandData.SetParameter("MNY", SqlDbType.VarChar, ParameterDirection.Input, MNY);
                 DataSet ds = new DataSet();
                 ds = SqlCommandData.ExecuteDataSet();
                 if (ds != null && ds.Tables.Count > 0)
@@ -39,6 +66,7 @@ namespace VloveImport.dal
                         model.ContentDetail = item["CONTENT_DETAIL"].ToString();
                         model.ContentImage = item["CONTENT_IMG"].ToString();
                         model.ContentType = item["HEADER_TYPE"].ToString();
+                        model.ContentMNY = item["MNY"].ToString();
                         model.HEADER_TITLE = item["HEADER_TITLE"].ToString();
                         model.HEADER_IMG = item["HEADER_IMG"].ToString();
                         model.HEADER_TYPE = item["HEADER_TYPE"].ToString();

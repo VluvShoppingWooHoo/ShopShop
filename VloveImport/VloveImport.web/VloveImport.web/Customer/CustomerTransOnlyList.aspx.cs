@@ -80,7 +80,7 @@ namespace VloveImport.web.Customer
                 if (hl != null)
                 {
                     Order_ID = EncrypData(hl.NavigateUrl);
-                    hl.NavigateUrl = "~/Customer/CustomerUploadPI.aspx?P=" + EncrypData("LIST") + "&OID=" + Order_ID;
+                    hl.NavigateUrl = "~/Customer/CustomerTransOnly.aspx?P=" + EncrypData("LIST") + "&OID=" + Order_ID;
                 }
 
                 if (hdd != null)

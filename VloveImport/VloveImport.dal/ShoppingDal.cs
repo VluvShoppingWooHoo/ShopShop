@@ -411,11 +411,11 @@ namespace VloveImport.dal
                     SqlCommandData.SetStoreProcedure(store);
                     SqlCommandData.SetParameter_Input_INT("ORDER_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, int.Parse(OS_ID));
                     SqlCommandData.SetParameter("OD_ITEMNAME", SqlDbType.NVarChar, ParameterDirection.Input, "รายการขนส่ง" + i.ToString());
-                    SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Data.OD_AMOUNT);
-                    SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Data.OD_PRICE);
+                    SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, item.OD_AMOUNT);
+                    SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, item.OD_PRICE);
                     SqlCommandData.SetParameter("OD_SIZE", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
                     SqlCommandData.SetParameter("OD_COLOR", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
-                    SqlCommandData.SetParameter("OD_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, Data.OD_REMARK == null ? "" : Data.OD_REMARK);
+                    SqlCommandData.SetParameter("OD_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, item.OD_REMARK == null ? "" : item.OD_REMARK);
                     SqlCommandData.SetParameter("OD_URL", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
                     SqlCommandData.SetParameter("OD_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
 
