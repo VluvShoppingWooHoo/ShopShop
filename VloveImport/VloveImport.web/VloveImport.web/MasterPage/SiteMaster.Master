@@ -38,7 +38,7 @@
             </div>
             <div id="divcontent" class="col s10 m10 l10">
                 <div id="divcard" class="" style="padding: 20px">
-                <%--<div id="divcard" class="card" style="padding: 20px">--%>
+                    <%--<div id="divcard" class="card" style="padding: 20px">--%>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
@@ -145,11 +145,20 @@
         $('.translateFlag').on("click", function () {
             var aid = $(this).data("id");
             if (aid == 1) {
-                $.cookie('googtrans', '/th/zh-CN');
+                $.cookie('googtrans', '/th/zh-CN', { path: '/' });
             }
             else {
-                //$.cookie('googtrans', '/zh-TW/th');
-                $.cookie('googtrans', null);
+                $.removeCookie('googtrans');
+                if ($.cookie('googtrans') != null) {
+                    $.removeCookie('googtrans', { path: '/' });
+                    if ($.cookie('googtrans') != null) {
+                        $.removeCookie('googtrans', { path: '/', domain: 'iloveimport.com' });
+                        if ($.cookie('googtrans') != null) {
+                            $.removeCookie('googtrans', { path: '/', domain: 'www.iloveimport.com' });
+                        }
+                    }
+                }
+
             }
             location.reload();
         });
@@ -160,6 +169,7 @@
         else
             $('#fbLoginbtn').hide();
 
+        alert($.cookie('googtrans'))
         var coo = $.cookie('googtrans');
         if (coo == '/th/zh-CN') {
             $('#Master_link').click();
@@ -167,7 +177,7 @@
             setTimeout(waitTrans, 500);
         }
         else {
-            $.cookie('googtrans', null);
+            //$.cookie('googtrans', '/th/zh-CN', { path: '/', expires: -5 })
             //if (coo == null) {
             //    $.cookie('googtrans', '/zh-TW/th');
             //    location.reload();
