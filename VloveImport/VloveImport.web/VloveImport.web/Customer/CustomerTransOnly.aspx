@@ -55,8 +55,10 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="row TestBox1">
-                                <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false">
+                            <br />
+                            <div class="row TestBox1">                                
+                                <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false" Width="400px" BorderColor="Orange" BorderWidth="2px">
+                                    <HeaderStyle BackColor="Gray" />
                                     <Columns>
                                         <asp:TemplateField>
                                             <HeaderTemplate>ลำดับ</HeaderTemplate>
@@ -90,6 +92,7 @@
                                     </EmptyDataTemplate>
                                 </asp:GridView>
                             </div>
+                            <br />
                             <div class="row TestBox1">
                                 <div class="col s6 m6 l6 TestBox1" style="text-align: center;">
                                     <button type="button" class="btn waves-effect red waves-light" name="action">
