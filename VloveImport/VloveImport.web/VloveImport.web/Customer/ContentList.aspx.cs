@@ -18,11 +18,21 @@ namespace VloveImport.web.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //CheckSession();
+            if (!IsPostBack)
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                CMSContentBiz CMS = new CMSContentBiz();
+                List<PromotionMonth> models = new List<PromotionMonth>();
+                models = CMS.GetPromotionMonthList();
+                JSONData jData = new JSONData();
+                jData.Result = Constant.Fact.T;
+                jData.ReturnVal = models;
+                Session["PRO_MONTH"] = js.Serialize(jData);
+            }
         }
 
         [WebMethod]
-        public static string GetContent(string page)
+        public static string GetContent(string page, string MNY = "")
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             JSONData jData = new JSONData();
@@ -30,7 +40,13 @@ namespace VloveImport.web.Customer
             List<ContentData> models = new List<ContentData>();
             try
             {
-                models = CMS.GetList(0);
+                if (MNY == string.Empty)
+                {
+                    MNY = (DateTime.Now.ToString("yyyy-MM-dd h:mm tt")).Substring(0, 7);
+                    if (int.Parse(MNY.Substring(0, 4)) > 2500)
+                        MNY = (int.Parse(MNY.Substring(0, 4)) - 543).ToString() + MNY.Substring(4, 3);
+                }
+                models = CMS.GetList(0, MNY);
                 if (models.Count > 0)
                 {
                     string path = (WebConfigurationManager.AppSettings["AdminURL"]).Replace("IMG_CMS/Attachment", "IMG_CMS");

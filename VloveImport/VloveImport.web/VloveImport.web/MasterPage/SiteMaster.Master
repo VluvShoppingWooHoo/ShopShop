@@ -72,7 +72,7 @@
             </footer>
         </div>
         <a href="#MastermodalItem" class="modal-trigger" id="Master_link" hidden>content</a>
-        <span id="translateFact" hidden>Де</span>
+        <span id="translateFact" hidden>good</span>
         <%--<input id="translateFact" type="text" value="Де" />--%>
         <div id="MastermodalItem" class="modal modal-fixed-footer row" style="background: transparent; box-shadow: none;">
             <div id="loadingMaster" class="preloader-wrapper big active center-Preload-Circle" style="background: transparent; box-shadow: none;">
@@ -148,7 +148,8 @@
                 $.cookie('googtrans', '/th/zh-CN');
             }
             else {
-                $.cookie('googtrans', '/zh-CN/th');
+                //$.cookie('googtrans', '/zh-TW/th');
+                $.cookie('googtrans', null);
             }
             location.reload();
         });
@@ -164,6 +165,18 @@
             $('#Master_link').click();
             $('#loadingMaster').show();
             setTimeout(waitTrans, 500);
+        }
+        else {
+            $.cookie('googtrans', null);
+            //if (coo == null) {
+            //    $.cookie('googtrans', '/zh-TW/th');
+            //    location.reload();
+            //}
+            //else {
+            //    $('#Master_link').click();
+            //    $('#loadingMaster').show();
+            //    setTimeout(waitTrans, 500);
+            //}
         }
     });
     function getUrlParameter(sParam) {
@@ -211,8 +224,12 @@
 </script>
 <script type="text/javascript">
     function googleTranslateElementInit() {
+
         new google.translate.TranslateElement({ pageLanguage: 'th', includedLanguages: 'th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
     }
+    //function googleTranslateElementInit() {
+    //    new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+    //}
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 

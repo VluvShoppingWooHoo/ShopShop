@@ -214,7 +214,7 @@ namespace VloveImport.web
             List<ContentData> models = new List<ContentData>();
             try
             {
-                models = CMS.GetList(0);
+                models = CMS.GetList(0 , "");
                 if (models.Count > 0)
                 {
                     string path = (WebConfigurationManager.AppSettings["AdminURL"]).Replace("IMG_CMS/Attachment", "IMG_CMS");
