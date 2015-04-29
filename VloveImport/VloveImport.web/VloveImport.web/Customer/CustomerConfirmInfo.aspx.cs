@@ -199,9 +199,8 @@ namespace VloveImport.web.Customer
                     Res = Biz.UpdateOrderPrice(OID);
                     if (Res == "")
                     {
-                        EncrypUtil en = new EncrypUtil();
                         string Order_ID;//SessionUser
-                        Order_ID = en.EncrypData(Result[1]);
+                        Order_ID = EncrypData(Result[1]);
                         Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
                     }
                 }

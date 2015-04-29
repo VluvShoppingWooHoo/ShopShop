@@ -319,7 +319,16 @@ namespace VloveImport.web.App_Code
 
             return Result;
         }
-        
+        protected string CalPRICE_TH(string Price, string Currency)
+        {
+            string Result = "";
+            double Pri = 0, Cur = 0, Price_TH = 0;
+            Pri = Price == "" ? 0 : Convert.ToDouble(Price);
+            Cur = Currency == "" ? 0 : Convert.ToDouble(Currency);
+            Price_TH = Pri * Cur;
+            Result = Price_TH.ToString("###,##0.00");
+            return Result;
+        }
 
         #endregion
     }

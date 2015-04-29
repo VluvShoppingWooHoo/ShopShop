@@ -101,6 +101,11 @@
                                         <asp:Button ID="btnTrans" runat="server" Text="ดำเนินการต่อ" OnClick="btnTrans_Click" />
                                     </button>
                                 </div>
+                                <div class="col s6 m6 l6 TestBox1" style="text-align: center;" id="btn3" runat="server">
+                                    <button type="button" class="btn waves-effect orange waves-light" name="action">
+                                        <asp:Button ID="btnPay" runat="server" Text="ชำระเงิน" OnClick="btnPay_Click" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
