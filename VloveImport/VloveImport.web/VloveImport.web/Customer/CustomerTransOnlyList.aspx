@@ -35,22 +35,28 @@
                                     <asp:HiddenField ID="hddStatus" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_STATUS") %>'></asp:HiddenField>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="อัตราแลกเปลี่ยน" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
+                            <%--<asp:TemplateField HeaderText="อัตราแลกเปลี่ยน" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbCurrency" runat="server" CssClass="right-align" Width="50%"
                                         Text='<%# DataBinder.Eval(Container.DataItem, "ORDER_CURRENCY") %>'></asp:Label>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                             <asp:TemplateField HeaderText="รวมรายการ"  ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
                                     <asp:Label ID="lbAmount" runat="server" CssClass="right-align" Width="50%"
                                         Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "OD_AMOUNT").ToString(), "Amount") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="รวมราคาสินค้า" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
+                            <asp:TemplateField HeaderText="ค่าขนส่งระหว่างประเทศ" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbPRICE" runat="server" CssClass="right-align" Width="50%"
-                                        Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "OD_PRICE").ToString(), "Money") %>'></asp:Label>
+                                    <asp:Label ID="lbThaiPrice" runat="server" CssClass="right-align" Width="50%"
+                                        Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRANSPORT_THAI_PRICE").ToString(), "Money") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="ค่าขนส่งในประเทศ" ItemStyle-Height="80px" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbCustPrice" runat="server" CssClass="right-align" Width="50%"
+                                        Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRANSPORT_CUSTOMER_PRICE").ToString(), "Money") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderStyle-Width="80px">
