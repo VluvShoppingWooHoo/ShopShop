@@ -14,7 +14,7 @@
     <h3>ORDER DETAIL : <asp:Label ID="lbl_header_detail" Font-Size ="Large" runat="server" Text="" ForeColor ="RED"></asp:Label></h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="0">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="2">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -327,9 +327,17 @@
                             <HeaderStyle CssClass="width5" />
                             <ItemStyle CssClass="ItemStyle-center" />
                         </asp:TemplateField>
-                        <asp:BoundField DataField="OD_ITEMNAME" HeaderText="Product detail" HtmlEncode ="False">
+                        <asp:TemplateField HeaderText="Product detail">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("OD_ITEMNAME") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("OD_ITEMNAME") %>'></asp:Label>
+                                <br />
+                                <asp:ImageButton ID="imgbtn_gv_prod_detail_upload" runat="server" />
+                            </ItemTemplate>
                             <HeaderStyle CssClass="width30" />
-                        </asp:BoundField>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Picture">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("OD_REMARK") %>'></asp:TextBox>

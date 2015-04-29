@@ -607,6 +607,7 @@ namespace VloveImport.web.admin.pages
                     }
                     else
                     {
+                        //imgbtn_gv_prod_detail_upload
                         ProdItemDetail = ItemName;
                     }
 
@@ -635,9 +636,13 @@ namespace VloveImport.web.admin.pages
                     e.Row.Cells[8].Text = (TOTAL_PROD_PRICE_ACTIVE * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB) <BR><span style =\"color:red;\">" + TOTAL_PROD_PRICE_ACTIVE.ToString("N", new CultureInfo("en-US")) + "(CNY)</span>";
 
                     #region
-                    if (Convert.ToInt32(_VS_ORDER_STS) >= 7) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
-                    else if (Convert.ToInt32(_VS_ORDER_STS) >= 5) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
-                    else if (Convert.ToInt32(_VS_ORDER_STS) == 4) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = true;
+                    if (_VS_ORDER_TYPE == "1")
+                    {
+                        if (Convert.ToInt32(_VS_ORDER_STS) >= 7) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                        else if (Convert.ToInt32(_VS_ORDER_STS) >= 5) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                        else if (Convert.ToInt32(_VS_ORDER_STS) == 4) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = true;
+                        else ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                    }
                     else ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
                     #endregion
 
