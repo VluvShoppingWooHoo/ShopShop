@@ -163,6 +163,30 @@ namespace VloveImport.dal
             }
         }
 
+        public string UPDATE_ORDER_DETAIL_RECEIP(OrderData En, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_UPDATE_ORDER_DETAIL_RECEIPT");
+
+                SqlCommandData.SetParameter_Input_INT("ORDER_DETAIL_ID", SqlDbType.Int, ParameterDirection.Input, En.OD_ID);
+                SqlCommandData.SetParameter("ORDER_SIZE", SqlDbType.VarChar, ParameterDirection.Input, En.OD_SIZE);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("UPD_ADMIN_ORDER -> msg : " + ex.Message);
+            }
+        }
+
         #endregion
 
         #region Admin Transaction

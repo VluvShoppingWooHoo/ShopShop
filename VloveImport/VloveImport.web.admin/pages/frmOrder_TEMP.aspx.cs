@@ -50,6 +50,12 @@ namespace VloveImport.web.admin.pages
             set { ViewState["__VS_ORDER_SHOP_ID"] = value; }
         }
 
+        public int _VS_ORDER_DETAIL_ID
+        {
+            get { return Convert.ToInt32(ViewState["__VS_ORDER_DETAIL_ID"].ToString()); }
+            set { ViewState["__VS_ORDER_DETAIL_ID"] = value; }
+        }
+
         public string _VS_TRANSPORT_CH_TH_METHOD
         {
             get { return ViewState["__VS_TRANSPORT_CH_TH_METHOD"].ToString(); }
@@ -534,6 +540,8 @@ namespace VloveImport.web.admin.pages
 
         protected void imgbtn_gv_prod_detail_upload_Click(object sender, ImageClickEventArgs e)
         {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            _VS_ORDER_DETAIL_ID = Convert.ToInt32(this.gv_detail.DataKeys[rowIndex].Values[10].ToString());
             Modal_Upload.Show();
         }
 
@@ -543,17 +551,37 @@ namespace VloveImport.web.admin.pages
             {
                 string Extension = Path.GetExtension(FL_UPLOAD_RECEIPT.PostedFile.FileName);
 
-                if (Extension.ToUpper() == "jpg" || Extension.ToUpper() == "GIF" || Extension.ToUpper() == "PNG")
+                if (Extension.ToUpper() == ".JPG" || Extension.ToUpper() == ".GIF" || Extension.ToUpper() == ".PNG")
                 {
-                    string AttPath = @"~\Attachment\RECEIPT";
-                    string fileName = FL_UPLOAD_RECEIPT.FileName.Replace(Extension, "") + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss", new CultureInfo("en-US")) + "." + Extension;
-                    FL_UPLOAD_RECEIPT.PostedFile.SaveAs(AttPath + "\\" + fileName);
+                    string AttPath = Server.MapPath(@"~/Attachment/RECEIPT");
+                    string fileName = FL_UPLOAD_RECEIPT.FileName.Replace(Extension, "") + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss", new CultureInfo("en-US")) + Extension;
+                    FL_UPLOAD_RECEIPT.PostedFile.SaveAs(AttPath + "/" + fileName);
+
+                    OrderData En = new OrderData();
+                    En.OD_ID = _VS_ORDER_DETAIL_ID;
+                    En.OD_SIZE = @"~/Attachment/RECEIPT" + "/" + fileName;
+                    En.Create_User = _VS_USER_LOGIN;
+
+                    AdminBiz AdBiz = new AdminBiz();
+                    AdBiz.UPDATE_ORDER_DETAIL_RECEIP(En, "UPD_UPLOAD_RECEIPT_PI");
+                    ShowMessageBox("Upload Complete", this.Page);
+                    BindData();
                 }
                 else
                 {
-                    ShowMessageBox("Please Upload File type is only png,jpg,gif !!",this.Page);
+                    Modal_Upload.Show();
+                    ShowMessageBox("Please Upload File type is only png,jpg,gif !!", this.Page);
                 }
             }
+        }
+
+        protected void imgbtn_gv_prod_detail_upload_pic_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string OD_SIZE = this.gv_detail.DataKeys[rowIndex].Values[14].ToString();
+            ModalViewPic.Show();
+            ucImage.URL = OD_SIZE;
+            ucImage.SetImage();
         }
 
         protected void gv_detail_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -640,11 +668,18 @@ namespace VloveImport.web.admin.pages
                         imgUpload.Height = Unit.Pixel(20);
                         imgUpload.ToolTip = "Upload Receipt File";
 
+                        ImageButton imgbtn_gv_prod_detail_upload_pic = ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_detail_upload_pic"));
                         if (OD_SIZE != "")
                         {
-                            ProdItemDetail += "<img src = \"" + OD_SIZE + "\" width = \"80px\" Height = \"80px\" />";
+                            imgbtn_gv_prod_detail_upload_pic.Visible = true;
+                            imgbtn_gv_prod_detail_upload_pic.Width = Unit.Pixel(40);
+                            imgbtn_gv_prod_detail_upload_pic.Height = Unit.Pixel(40);
+                            imgbtn_gv_prod_detail_upload_pic.ImageUrl = OD_SIZE;
+                            ProdItemDetail += "<br>";
+                                //"<img src = \"" + OD_SIZE + "\" width = \"80px\" Height = \"80px\" />";
                         }
-                        
+                        else imgbtn_gv_prod_detail_upload_pic.Visible = false;
+
                     }
 
                     ((Label)e.Row.FindControl("lbl_gv_prod_detail_Item")).Text = ProdItemDetail;
