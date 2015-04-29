@@ -39,15 +39,17 @@ namespace VloveImport.web.Customer
             dt = biz.GetOrderDetail(Order_ID);
             if (dt != null && dt.Rows.Count > 0)
             {
-                txtTrackingNo.Text = dt.Rows[0]["TRANKING_NO"].ToString();
-                txtShopID.Text = dt.Rows[0]["SHOP_ORDER_ID"].ToString();
-                txtRemark.Text = dt.Rows[0]["OD_REMARK"].ToString();
+                lbOrderCode.Text = dt.Rows[0]["ORDER_CODE"].ToString();
+                gvTrans.DataSource = dt;
+                gvTrans.DataBind();
 
-                txtTrackingNo.ReadOnly = true;
-                txtShopID.ReadOnly = true;
-                txtRemark.ReadOnly = true;
-
-                btnTrans.Visible = false;
+                Trans1.Visible = false;
+                Trans2.Visible = false;
+                Trans3.Visible = false;
+                btn1.Visible = false;
+                btn2.Visible = false;
+                Code.Visible = true;
+                gvTrans.Columns[4].Visible = false;
             }
 
         }        

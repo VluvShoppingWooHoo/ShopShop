@@ -48,6 +48,13 @@ namespace VloveImport.web.Customer
                     Body = Temp[1].Replace("{0}", Link);
                     Result = SendMail(txtEmail.Text, Temp[0], Body);
 
+                    //Error
+                    if (Result != "")
+                    {
+                        URL = Page.Request.Url.ToString().Split('/');
+                        WriteLog(URL[URL.Length - 1], "btnRegis", Result);
+                    }
+
                     //Success
                     mView.ActiveViewIndex = 1;
                     //GoToIndex();

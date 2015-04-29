@@ -11,7 +11,16 @@
                     <br />
                     <div class="row">
                         <div class="col s7 m7 l7 TestBox1">
-                            <div class="row TestBox1">
+                            <div class="row s7 m7 l7 TestBox1" id="Code" runat="server" visible="false" style="padding-bottom:2px;">                           
+                                <div class="col s2 m2 l2 TestBox1"
+                                    style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                    <b>รหัสสินค้าฝากจ่าย</b>
+                                </div>
+                                <div class="col s4 m4 l4 TestBox1">
+                                    <asp:Label ID="lbOrderCode" runat="server"></asp:Label>
+                                </div>
+                            </div> 
+                            <div class="row TestBox1" id="Trans1" runat="server">
                                 <div class="col s2 m2 l2 TestBox1"
                                     style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
                                     <b>หมายเลข Tracking</b>
@@ -20,7 +29,7 @@
                                     <asp:TextBox ID="txtTrackingNo" runat="server" Width="250px"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="row TestBox1">
+                            <div class="row TestBox1" id="Trans2" runat="server">
                                 <div class="col s2 m2 l2 TestBox1"
                                     style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
                                     <b>หมายเลข Shop ID</b>
@@ -29,7 +38,7 @@
                                     <asp:TextBox ID="txtShopID" runat="server" Width="250px"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="row TestBox1" style="height: 100px;">
+                            <div class="row TestBox1" style="height: 100px;" id="Trans3" runat="server">
                                 <div class="col s2 m2 l2 TestBox1"
                                     style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
                                     <b>หมายเหตุ</b>
@@ -38,7 +47,7 @@
                                     <asp:TextBox ID="txtRemark" runat="server" Width="250px" Height="90px" Rows="4" TextMode="MultiLine"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="row TestBox1" style="height: 100px; text-align: center;">
+                            <div class="row TestBox1" style="height: 100px; text-align: center;" id="btn1" runat="server">
                                 <div class="col s6 m6 l6"></div>
                                 <div class="col s6 m6 l6">
                                     <button type="button" class="btn waves-effect orange waves-light" name="action">
@@ -87,7 +96,7 @@
                                         <asp:Button ID="btnBack" runat="server" Text="ย้อนกลับ" OnClick="btnBack_Click" />
                                     </button>
                                 </div>
-                                <div class="col s6 m6 l6 TestBox1" style="text-align: center;">
+                                <div class="col s6 m6 l6 TestBox1" style="text-align: center;" id="btn2" runat="server">
                                     <button type="button" class="btn waves-effect orange waves-light" name="action">
                                         <asp:Button ID="btnTrans" runat="server" Text="ดำเนินการต่อ" OnClick="btnTrans_Click" />
                                     </button>
