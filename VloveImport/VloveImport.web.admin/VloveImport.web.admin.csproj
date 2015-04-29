@@ -331,7 +331,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Attachment\" />
+    <Folder Include="Attachment\RECEIPT\" />
     <Folder Include="HeaderAttachment\" />
     <Folder Include="img\CMSimg\" />
   </ItemGroup>

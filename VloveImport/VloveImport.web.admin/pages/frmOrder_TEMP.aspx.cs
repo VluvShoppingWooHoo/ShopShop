@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -531,6 +532,30 @@ namespace VloveImport.web.admin.pages
             ucImage.SetImage();
         }
 
+        protected void imgbtn_gv_prod_detail_upload_Click(object sender, ImageClickEventArgs e)
+        {
+            Modal_Upload.Show();
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            if (FL_UPLOAD_RECEIPT.HasFile)
+            {
+                string Extension = Path.GetExtension(FL_UPLOAD_RECEIPT.PostedFile.FileName);
+
+                if (Extension.ToUpper() == "jpg" || Extension.ToUpper() == "GIF" || Extension.ToUpper() == "PNG")
+                {
+                    string AttPath = @"~\Attachment\RECEIPT";
+                    string fileName = FL_UPLOAD_RECEIPT.FileName.Replace(Extension, "") + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss", new CultureInfo("en-US")) + "." + Extension;
+                    FL_UPLOAD_RECEIPT.PostedFile.SaveAs(AttPath + "\\" + fileName);
+                }
+                else
+                {
+                    ShowMessageBox("Please Upload File type is only png,jpg,gif !!",this.Page);
+                }
+            }
+        }
+
         protected void gv_detail_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -607,11 +632,22 @@ namespace VloveImport.web.admin.pages
                     }
                     else
                     {
-                        //imgbtn_gv_prod_detail_upload
                         ProdItemDetail = ItemName;
+
+                        ImageButton imgUpload = ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_detail_upload"));
+                        imgUpload.ImageUrl = "~/img/icon/attachment.png";
+                        imgUpload.Width = Unit.Pixel(20);
+                        imgUpload.Height = Unit.Pixel(20);
+                        imgUpload.ToolTip = "Upload Receipt File";
+
+                        if (OD_SIZE != "")
+                        {
+                            ProdItemDetail += "<img src = \"" + OD_SIZE + "\" width = \"80px\" Height = \"80px\" />";
+                        }
+                        
                     }
 
-                    e.Row.Cells[1].Text = ProdItemDetail;
+                    ((Label)e.Row.FindControl("lbl_gv_prod_detail_Item")).Text = ProdItemDetail;
 
                     if ((ROW % 2) == 0)
                     {

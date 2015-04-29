@@ -332,9 +332,9 @@
                                 <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("OD_ITEMNAME") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("OD_ITEMNAME") %>'></asp:Label>
-                                <br />
-                                <asp:ImageButton ID="imgbtn_gv_prod_detail_upload" runat="server" />
+                                <asp:Label ID="lbl_gv_prod_detail_Item" runat="server" Text='<%# Bind("OD_ITEMNAME") %>'></asp:Label>
+                                <br /><br />
+                                <b>Upload Receipt File :</b> <asp:ImageButton ID="imgbtn_gv_prod_detail_upload" runat="server" OnClick="imgbtn_gv_prod_detail_upload_Click" Width="16px" />
                             </ItemTemplate>
                             <HeaderStyle CssClass="width30" />
                         </asp:TemplateField>
@@ -753,6 +753,63 @@
                     <asp:Panel Width="96%" Height="580px" ID="Panel4" runat="server" BackColor="#FFFFFF">
                         <br />
                             <uc2:ucImage ID="ucImage" runat="server" />                            
+                    </asp:Panel>
+                </center>
+            </td>
+        </tr>
+        <tr style="background-color: #CFCDCD;">
+            <td height="15px" style="padding: 0px 0px;" align="center" colspan="3"></td>
+        </tr>
+    </table>
+</asp:Panel>
+
+<asp:ModalPopupExtender ID="Modal_Upload" runat="server" BackgroundCssClass="modalBackground"
+    PopupControlID="Panel_Upload" TargetControlID="lbl_modal_Upload">
+</asp:ModalPopupExtender>
+<asp:Panel ID="Panel_Upload" Height="200px" Width="900px" runat="server" Style="display: none;">
+    <%--Style="display: none;"--%>
+    <table width="800px" style="border-collapse: separate; border-spacing: 0px; height: 200px;" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
+            <td align="left" class="trLogin_CENTER" style="padding: 0px 0px;">
+                <div style="margin-left: -40px; margin-top: 10px;">
+                    <asp:Label ID="lbl_modal_Upload" runat="server" Text="UploadFile Image"></asp:Label>
+                </div>
+            </td>
+            <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
+                <div style="text-align: right; margin-right: 10px; margin-top: 10px;">
+                    <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px"/>
+                </div>
+            </td>
+        </tr>
+        <tr style="background-color: #CFCDCD;">
+            <td style="text-align: center; padding: 0px 0px;" colspan="3">
+                <center>
+                    <asp:Panel Width="96%" Height="180px" ID="Panel7" runat="server" BackColor="#FFFFFF">
+                        <br />
+                            <fieldset style ="width:95%;">
+                                <legend>
+                                    Upload Receipt File
+                                </legend>
+                                <table>
+                                    <tr>
+                                        <td class ="width15">Choose File :</td>
+                                        <td class ="width85">
+                                            <asp:FileUpload ID="FL_UPLOAD_RECEIPT" runat="server"></asp:FileUpload>
+                                            <br />
+                                            <span style ="color:red;">
+                                                File type is only png,jpg,gif
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <asp:Button ID="btnUpload" runat="server" Text="Upload" CssClass =" btnSave" OnClick="btnUpload_Click"></asp:Button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>                           
                     </asp:Panel>
                 </center>
             </td>
