@@ -197,6 +197,8 @@ namespace VloveImport.web.admin.pages
         protected void imgbtn_SendEmail_Click(object sender, ImageClickEventArgs e)
         {
             MadoalPop_Email.Show();
+            ucEmail1.SetEmail(lbl_tb1_Customer_Email.Text.Trim());
+            ucEmail1.SetEmail_To_Enabled();
         }
 
         public void ucEmail_OpenpopClick(object sender, System.EventArgs e)
