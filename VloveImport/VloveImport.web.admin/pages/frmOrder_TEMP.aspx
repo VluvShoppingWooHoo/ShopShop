@@ -335,7 +335,8 @@
                                 <asp:Label ID="lbl_gv_prod_detail_Item" runat="server" Text='<%# Bind("OD_ITEMNAME") %>'></asp:Label>
                                 <asp:ImageButton ID="imgbtn_gv_prod_detail_upload_pic" runat="server" Visible ="false" OnClick="imgbtn_gv_prod_detail_upload_pic_Click"/>
                                 <br /><br />
-                                <b>Upload Receipt File :</b> <asp:ImageButton ID="imgbtn_gv_prod_detail_upload" runat="server" OnClick="imgbtn_gv_prod_detail_upload_Click" Width="16px" />
+                                <asp:Label ID="lbl_gv_prod_detail_UploadText" runat="server" Font-Bold = "true" Text= "Upload Receipt File :" Visible ="false"></asp:Label>
+                                <asp:ImageButton ID="imgbtn_gv_prod_detail_upload" runat="server" OnClick="imgbtn_gv_prod_detail_upload_Click" Width="16px" Visible ="false"/>
                             </ItemTemplate>
                             <HeaderStyle CssClass="width30" />
                         </asp:TemplateField>

@@ -663,8 +663,12 @@ namespace VloveImport.web.admin.pages
                     else
                     {
                         ProdItemDetail = ItemName;
-
+                        Label lbl_gv_prod_detail_UploadText = ((Label)e.Row.FindControl("lbl_gv_prod_detail_UploadText"));
                         ImageButton imgUpload = ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_detail_upload"));
+
+                        lbl_gv_prod_detail_UploadText.Visible = true;
+                        imgUpload.Visible = true;
+
                         imgUpload.ImageUrl = "~/img/icon/attachment.png";
                         imgUpload.Width = Unit.Pixel(20);
                         imgUpload.Height = Unit.Pixel(20);
