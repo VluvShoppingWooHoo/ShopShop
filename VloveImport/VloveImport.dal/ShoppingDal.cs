@@ -214,7 +214,7 @@ namespace VloveImport.dal
                 return ("INS_ORDER_SHOP -> msg : " + ex.Message);
             }
         }
-        public string UpdateOrderPrice(Int32 Order_ID)
+        public string UpdateOrderPricePIC(Int32 Order_ID, string FileName)
         {
             try
             {
@@ -224,6 +224,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("UPDATE_ORDER_PRICE");
 
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, Order_ID);
+                SqlCommandData.SetParameter("FILENAME", SqlDbType.NVarChar, ParameterDirection.Input, FileName);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();

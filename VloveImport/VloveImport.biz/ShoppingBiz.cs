@@ -83,11 +83,11 @@ namespace VloveImport.biz
             Res[0] = dal.MakeOrderShop(dt, OID, User, ref chkShop, Rate);
             return Res;
         }
-        public string UpdateOrderPrice(Int32 Order_ID)
+        public string UpdateOrderPricePIC(Int32 Order_ID, string FileName)
         {
             string Result = "";
             ShoppingDal dal = new ShoppingDal("LocalConnection");
-            Result = dal.UpdateOrderPrice(Order_ID);
+            Result = dal.UpdateOrderPricePIC(Order_ID, FileName);
             return Result;
         }        
         public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)
