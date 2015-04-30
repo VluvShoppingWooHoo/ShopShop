@@ -169,7 +169,6 @@
         else
             $('#fbLoginbtn').hide();
 
-        alert($.cookie('googtrans'))
         var coo = $.cookie('googtrans');
         if (coo == '/th/zh-CN') {
             $('#Master_link').click();

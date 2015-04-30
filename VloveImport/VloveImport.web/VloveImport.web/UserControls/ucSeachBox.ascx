@@ -66,24 +66,25 @@
     <div id="loadingLine" class="progress center-Preload-Line">
         <div class="indeterminate"></div>
     </div>
-    <div id="showData" class="modal-content row">
-        <div class="row card" style="margin-bottom: 15px">
+    <div id="showData" class="modal-content row" style="padding: 5px 5px 60px 5px;">
+        <div class="row card" style="margin-bottom: 10px">
             <div class="col s1 m1 l1" style="text-align: right">Link:</div>
             <div id="lblURL" class="col s11 m11 l11" style="overflow-x: auto;">
                 <%--<h5 id="lblURL" class="card">Modal Header</h5>--%>
             </div>
         </div>
 
-        <h1 id="lblItemName" class="card center">Modal Header</h1>
+        <h3 id="lblItemName" class="card center">Modal Header</h3>
         <h1 id="lblShopName" class="card center" hidden></h1>
         <div class="row">
+            <%--<div class="card col s4 m4 l4" style="max-height: 400px;">--%>
             <div class="card">
                 <div class="card-image col s4 m4 l4" style="min-height: 200px;">
                     <img id="imgpicURL">
                     <%--<img id="imgpicURL" src="http://img04.taobaocdn.com/bao/uploaded/i4/TB12EHiGVXXXXX6XXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg" height="200">--%>
                 </div>
             </div>
-            <div class="col s8 m8 l8">
+            <div class="col s8 m8 l8" style="max-height: 200px; overflow-y: scroll;">
                 <div id="divPrice" class="row" style="margin-bottom: 5px !important;">
                     <div class="col s1 m1 l1">Price:</div>
                     <div class="col s11 m11 l11">
@@ -114,10 +115,10 @@
                 <div id="divQTY" class="row">
                     <div class="col s1 m1 l1" style="margin-top: 3%;">QTY:</div>
                     <div class="col s5 m5 l5" style="margin: 0px">
-                        <input id="aQTY" class="numberFormat" type="NUMBER" min="0" step="1" size="6" style="text-align:right;">
+                        <input id="aQTY" class="numberFormat" type="NUMBER" min="1" step="1" size="6" style="text-align: right;" value="1">
                         <%-- <ul class="pagination" style="margin: 0px">
                             <li class="" style="display: inline-block"><a id="aMinus" href="#!"><i class="mdi-navigation-chevron-left"></i></a></li>
-                            <li class="" style="display: inline-block; vertical-align: text-bottom;"><a id="aQTY" href="#!" class="">1</a></li>
+                            <li class="" style="display: inline-block; vertical-align: text-bottom;"><a id="aQTY" href="#!" clss="">1</a></li>
                             <li class="" style="display: inline-block"><a id="aPlus" href="#!"><i class="mdi-navigation-chevron-right"></i></a></li>
                         </ul>--%>
                     </div>
@@ -127,7 +128,7 @@
         <div class="row">
             <%--<div class="col s2"></div>--%>
             <div class="input-field col s12 m12 l12">
-                <span class="red-text">หากลูกค้าสั่งซื้อแล้วระบบขึ้นราคาที่ไม่ตรงกับที่เห็นจากเวปต้นทาง ให้ลูกค้าทำการกดสั่งซื้อไปก่อน แล้วราคาจะปรับลดลงหลังจากเจ้าหน้าที่ทำการตรวจเช็คเรียบร้อยค่ะ</span>
+                <span class="red-text">หากราคาแสดงไม่ตรงกับที่เห็นจากเวปต้นทาง ให้ลูกค้าทำการกดสั่งซื้อไปก่อน แล้วราคาจะปรับใหม่หลังจากเจ้าหน้าที่ตรวจเช็คเรียบร้อยค่ะ</span>
             </div>
             <div class="input-field col s12 m12 l12">
                 <i class="mdi-editor-mode-edit orange-text prefix"></i>
@@ -138,7 +139,7 @@
             <div class="col s2"></div>
         </div>
     </div>
-    <div id="footer" class="modal-footer">
+    <div id="footer" class="modal-footer" style="max-height:50px; padding:0 5px 0 0;">
         <input type="hidden" id="hdWeb">
         <input type="hidden" id="hdPrice">
         <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
@@ -256,8 +257,12 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (data) {
-                    if (data.d == "")
-                        alert('Something wrong, please contact admin.  (Code : 2001)');
+                    if (data.d == "") {
+                        alert('Something wrong, please try again.  (Code : 2001)');
+                        $('#loadingMaster').closeModal();
+                        $('#modalItem').closeModal();
+                        $('#MastermodalItem').closeModal();
+                    }
                     else {
                         bindModal(data);
                         $('#loadingCircle').hide();
@@ -268,7 +273,10 @@
                     }
                 },
                 error: function (err) {
-                    alert('Something wrong, please contact admin.  (Code : 2001)');
+                    alert('Something wrong, please try again.  (Code : 2001)');
+                    $('#loadingMaster').closeModal();
+                    $('#modalItem').closeModal();
+                    $('#MastermodalItem').closeModal();
                 }
             });
         });
@@ -294,7 +302,8 @@
         $("#divSize").show();
         $("#divColor").show();
         $("#txtRemark").val('');
-        $('#aQTY').html('1');
+        //$('#aQTY').html('1');
+        $('#aQTY').val(1);
         $(".childliSize").remove();
         $(".childliColor").remove();
         var obj = JSON.parse(data.d);
