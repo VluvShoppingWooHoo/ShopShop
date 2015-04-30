@@ -749,7 +749,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb3_Total_Transport_China_Price_CNY.Text = "<span style =\"color:red;\">" + TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(CNY)</span>";
                 lbl_tb3_Total_Transport_CH_TO_TH.Text = TRAN_TH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Total_Transport_To_Customer.Text = TRAN_CUS_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
-                lbl_tb3_Total_Transport.Text = (TRAN_CH_PRICE + TRAN_TH_PRICE + TRAN_CUS_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+                lbl_tb3_Total_Transport.Text = ((TRAN_CH_PRICE * _VS_EXCH_RATE) + TRAN_TH_PRICE + TRAN_CUS_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
             }
             else
             {
