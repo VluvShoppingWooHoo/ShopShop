@@ -79,12 +79,13 @@ namespace VloveImport.web.Customer
                 data.OD_AMOUNT = 1;
                 data.OD_REMARK = txtRemark.Text;
 
-                string filename = Server.MapPath("~/Attachment/PI/") + Path.GetFileName(Ifile.FileName);
-                if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))
-                    Directory.CreateDirectory(Server.MapPath("~/Attachment/PI/"));
-
-                Ifile.SaveAs(filename);
-                data.OD_PICURL = filename;
+                Session["PICPI"] = Ifile;
+                //ย้ายไปทำหลังจากได้ เลข Order_code แล้ว
+                //string filename = Server.MapPath("~/Attachment/PI/") + Path.GetFileName(Ifile.FileName);
+                //if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))
+                //    Directory.CreateDirectory(Server.MapPath("~/Attachment/PI/"));
+                //Ifile.SaveAs(filename);
+                //data.OD_PICURL = filename;
 
                 Session["ORDER"] = data;
                 Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("PI"));

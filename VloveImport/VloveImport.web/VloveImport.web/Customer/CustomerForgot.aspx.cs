@@ -32,7 +32,7 @@ namespace VloveImport.web.Customer
             DataTable dt = biz.Get_Customer_Profile_By_Email(email);
             if (dt != null && dt.Rows.Count == 1)
             {
-                CUS_ID = dt.Rows[0]["CUS_PASSWORD"].ToString() == "" ? -1 : Convert.ToInt32(dt.Rows[0]["CUS_PASSWORD"].ToString());
+                CUS_ID = dt.Rows[0]["CUS_ID"].ToString() == "" ? -1 : Convert.ToInt32(dt.Rows[0]["CUS_ID"].ToString());
                 CUS_CODE = dt.Rows[0]["CUS_CODE"].ToString();
             }
             else

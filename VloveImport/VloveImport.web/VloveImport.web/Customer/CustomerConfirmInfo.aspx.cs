@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -196,7 +197,7 @@ namespace VloveImport.web.Customer
                 {
                     string Res = "";
                     Int32 OID = Result[1] == "" ? 0 : Convert.ToInt32(Result[1]);
-                    Res = Biz.UpdateOrderPrice(OID);
+                    Res = Biz.UpdateOrderPricePIC(OID, "");
                     if (Res == "")
                     {
                         string Order_ID;//SessionUser
@@ -238,9 +239,25 @@ namespace VloveImport.web.Customer
                 {
                     string Res = "";
                     Int32 OID = Result[1] == "" ? 0 : Convert.ToInt32(Result[1]);
-                    Res = Biz.UpdateOrderPrice(OID);
+                    if(Session["PICPI"] != null && OID != 0)
+                    {
+                        FileUpload Upl = (FileUpload)Session["PICPI"];
+                        string filename = Server.MapPath("~/Attachment/PI/") + Data.ORDER_CODE + "_1";
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/PI/"));
+                        Upl.SaveAs(filename);
+
+                        Res = Biz.UpdateOrderPricePIC(OID, filename);
+                    }
+                    
                     if (Res == "")
                     {
+                        if (Session["PICPI"] != null)
+                        {
+                            
+                            
+                        }
+
                         string Order_ID;//SessionUser
                         Order_ID = EncrypData(Result[1]);
                         Response.Redirect("CustomerUploadPIList.aspx");
@@ -281,7 +298,7 @@ namespace VloveImport.web.Customer
                 {
                     string Res = "";
                     Int32 OID = Result[1] == "" ? 0 : Convert.ToInt32(Result[1]);
-                    Res = Biz.UpdateOrderPrice(OID);
+                    Res = Biz.UpdateOrderPricePIC(OID, "");
                     if (Res == "")
                     {
                         string Order_ID;//SessionUser
