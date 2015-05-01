@@ -50,7 +50,7 @@ namespace VloveImport.web.Customer
             Button btn = (Button)sender;
             string Order_ID;//SessionUser
             Order_ID = en.EncrypData(btn.CommandArgument);
-            Response.Redirect("CustomerPayment.aspx?P=" + EncrypData("LIST") + "&OID=" + Order_ID + "T=" + EncrypData("ORDER"));
+            Response.Redirect("CustomerPayment.aspx?P=" + EncrypData("LIST") + "&OID=" + Order_ID + "&T=" + EncrypData("ORDER"));
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
