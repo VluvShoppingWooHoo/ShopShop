@@ -49,9 +49,12 @@
             
             </div>
             <div class="col s9 m9 l9 paddingTop15">
-                <div style="margin-left: 10px;">
-                    <input type="date" class="datepicker dtMaterial" id="dtMaterial" runat="server" style="width: 300px;" />
-                </div>
+                <asp:DropDownList ID="ddlDay" runat="server" AppendDataBoundItems="true" 
+                    Style="display: inline" Width="100px"></asp:DropDownList>&nbsp;&nbsp;
+                <asp:DropDownList ID="ddlMonth" runat="server" AppendDataBoundItems="true" 
+                    Style="display: inline" Width="100px"></asp:DropDownList>&nbsp;&nbsp;
+                <asp:DropDownList ID="ddlYear" runat="server" AppendDataBoundItems="true" 
+                    Style="display: inline" Width="100px"></asp:DropDownList>
             </div>
         </div>
         <div class="row divRowBlock">
@@ -89,7 +92,7 @@
     <div class="col s4 m4 l4">
         <div class="row">
             <asp:Image ID="img" runat="server" ImageUrl="~/Images/pic/User.png" BorderWidth="1px"
-                Width="100px" Height="200px"/>
+                Width="150px" Height="200px"/>
         </div>
         <div class="row">
             <asp:FileUpload ID="uplImg" runat="server" />
