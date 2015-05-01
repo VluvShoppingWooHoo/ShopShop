@@ -660,7 +660,7 @@ namespace VloveImport.web.admin.pages
                             ProdItemDetail += "Color : " + OD_COLOR;
                         }
                     }
-                    else
+                    else if (_VS_ORDER_TYPE == "2")
                     {
                         ProdItemDetail = ItemName;
                         Label lbl_gv_prod_detail_UploadText = ((Label)e.Row.FindControl("lbl_gv_prod_detail_UploadText"));
@@ -685,6 +685,18 @@ namespace VloveImport.web.admin.pages
                                 //"<img src = \"" + OD_SIZE + "\" width = \"80px\" Height = \"80px\" />";
                         }
                         else imgbtn_gv_prod_detail_upload_pic.Visible = false;
+
+                    }
+                    else if (_VS_ORDER_TYPE == "3")
+                    {
+                        ProdItemDetail = ItemName;
+                        Label lbl_gv_prod_detail_UploadText = ((Label)e.Row.FindControl("lbl_gv_prod_detail_UploadText"));
+                        ImageButton imgUpload = ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_detail_upload"));
+                        ImageButton imgbtn_gv_prod_detail_upload_pic = ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_detail_upload_pic"));
+
+                        lbl_gv_prod_detail_UploadText.Visible = false;
+                        imgUpload.Visible = false;
+                        imgbtn_gv_prod_detail_upload_pic.Visible = false;
 
                     }
 
