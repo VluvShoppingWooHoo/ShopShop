@@ -28,6 +28,8 @@ namespace VloveImport.data
         public int Cus_Status { get; set; }
         public DateTime Activate_Date { get; set; }
 
+        public string CUS_Pic { get; set; }
+
         #region TB_CUSTOMER_ADDRESS
 
         public int CUS_ADD_ID { get; set; }

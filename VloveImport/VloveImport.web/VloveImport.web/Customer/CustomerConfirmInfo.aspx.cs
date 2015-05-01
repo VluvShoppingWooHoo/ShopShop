@@ -252,12 +252,6 @@ namespace VloveImport.web.Customer
                     
                     if (Res == "")
                     {
-                        if (Session["PICPI"] != null)
-                        {
-                            
-                            
-                        }
-
                         string Order_ID;//SessionUser
                         Order_ID = EncrypData(Result[1]);
                         Response.Redirect("CustomerUploadPIList.aspx");

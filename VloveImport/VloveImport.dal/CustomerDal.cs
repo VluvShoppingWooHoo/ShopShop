@@ -60,13 +60,13 @@ namespace VloveImport.dal
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_ID);
 
-                SqlCommandData.SetParameter("CUS_NAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_Name);
-                SqlCommandData.SetParameter("CUS_LNAME", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_LName);
-                SqlCommandData.SetParameter("CUS_BIRTHDAY", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_BirthDay);
-                SqlCommandData.SetParameter_Input_INT("CUS_GENDER", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_Gender);
-                SqlCommandData.SetParameter_Input_INT("CUS_EMAIL", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_Email);
-                SqlCommandData.SetParameter_Input_INT("CUS_LINK_SHOP", SqlDbType.Int, ParameterDirection.Input, EnCus.Cus_Link_Shop);
-                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Create_User);
+                SqlCommandData.SetParameter("CUS_NAME", SqlDbType.NVarChar, ParameterDirection.Input, EnCus.Cus_Name);
+                SqlCommandData.SetParameter("CUS_LNAME", SqlDbType.NVarChar, ParameterDirection.Input, EnCus.Cus_LName);
+                SqlCommandData.SetParameter("CUS_BIRTHDAY", SqlDbType.Date, ParameterDirection.Input, EnCus.Cus_BirthDay);
+                SqlCommandData.SetParameter("CUS_GENDER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_Gender);
+                SqlCommandData.SetParameter("CUS_LINK_SHOP", SqlDbType.NVarChar, ParameterDirection.Input, EnCus.Cus_Link_Shop);
+                SqlCommandData.SetParameter("CUS_PIC", SqlDbType.NVarChar, ParameterDirection.Input, EnCus.CUS_Pic);
+                SqlCommandData.SetParameter("UPDATE_USER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Update_Date);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();

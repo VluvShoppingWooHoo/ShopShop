@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -42,9 +43,23 @@ namespace VloveImport.web.Customer
             Data.Cus_Name = txtName.Text;
             Data.Cus_LName = txtLName.Text;
             Data.Cus_Gender = ddlGender.SelectedValue;
-            //Data.Cus_BirthDay = txtName.Text;
-            //Data.Cus_Email = txtEmail.Text;
-            //Data.Cus_Link_Shop = txtEmail.Text;
+
+            string FileName = "";
+            if(uplImg.HasFile)
+            {
+                if (!Directory.Exists(Server.MapPath("~/Attachment/Profile/")))
+                    Directory.CreateDirectory(Server.MapPath("~/Attachment/Profile/"));
+
+                FileName = Server.MapPath("~/Attachment/Profile/") + lbCode.Text;
+                if (File.Exists(FileName))
+                    File.Delete(FileName);                
+                
+                uplImg.SaveAs(FileName);
+                Data.CUS_Pic = FileName;
+            }
+
+            Data.Cus_BirthDay = Convert.ToDateTime(Convert_DateYYYYMMDD(dtMaterial.Value, '-', "YYYYMMDD", 0));
+            Data.Cus_Link_Shop = txtLinkShop.Text;
 
             return Data;
         }

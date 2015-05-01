@@ -49,7 +49,9 @@
             
             </div>
             <div class="col s9 m9 l9 paddingTop15">
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <div style="margin-left: 10px;">
+                    <input type="date" class="datepicker dtMaterial" id="dtMaterial" runat="server" style="width: 300px;" />
+                </div>
             </div>
         </div>
         <div class="row divRowBlock">
@@ -88,6 +90,9 @@
         <div class="row">
             <asp:Image ID="img" runat="server" ImageUrl="~/Images/pic/User.png" BorderWidth="1px"
                 Width="100px" Height="200px"/>
+        </div>
+        <div class="row">
+            <asp:FileUpload ID="uplImg" runat="server" />
         </div>
     </div>
     
