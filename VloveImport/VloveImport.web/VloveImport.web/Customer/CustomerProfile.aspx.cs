@@ -44,7 +44,7 @@ namespace VloveImport.web.Customer
             }
 
             ddlYear.Items.Add("ปี");
-            int Year = DateTime.Now.Year - 100;
+            int Year = DateTime.Now.Year - 80;
             Year = Year < 2500 ? Year + 543 : Year;
             for (int i = Year + 80; i > Year; i--)
             {
@@ -132,7 +132,7 @@ namespace VloveImport.web.Customer
                 string DateDB = dt.Rows[0]["Cus_Birthday"].ToString();
                 if (DateDB != "")
                 {
-                    string[] Date = DateDB.Split('-');
+                    string[] Date = DateDB.Split('/');
                     ddlYear.SelectedItem.Text = Date[0];
                     ddlMonth.SelectedIndex = Convert.ToInt32(Date[1]) - 1;
                     ddlDay.SelectedIndex = Convert.ToInt32(Date[2]) - 1;
