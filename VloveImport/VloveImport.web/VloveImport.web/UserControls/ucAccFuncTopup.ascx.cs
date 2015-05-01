@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -161,33 +162,23 @@ namespace VloveImport.web.UserControls
             TransactionData EnTran = new TransactionData();
             try
             {
+                string Extension = "", FileName = "";
                 EnTran.Cus_ID = bp.GetCusID();
                 if (Ifile.HasFile)
                 {
-                    string folder = Server.MapPath("~/" + EnTran.Cus_ID).Replace("www.iloveimport.com", "iloveimport.com\\Attachment\\IMG_PAYMENT");
-                    folder = folder.Replace("iloveimport.com", "iloveimport.com\\Attachment\\IMG_PAYMENT");
-                    folder = folder.Replace("\\httpdocs", "");
-                    bool exists = System.IO.Directory.Exists(folder);
-                    //if (!exists)
-                    //    System.IO.Directory.CreateDirectory(folder);
+                    if (!Directory.Exists(Server.MapPath("~/Attachment/Topup/")))
+                        Directory.CreateDirectory(Server.MapPath("~/Attachment/Topup/"));
 
-                    //folder = folder + "\\" + EnTran.Cus_ID;
-                    //exists = System.IO.Directory.Exists(folder);
+                    Extension = Path.GetExtension(Ifile.PostedFile.FileName);
 
-                    if (!exists)
-                        System.IO.Directory.CreateDirectory(folder);
+                    if (Extension.ToUpper() == ".JPG" || Extension.ToUpper() == ".GIF" || Extension.ToUpper() == ".PNG")
+                    {
+                        string AttPath = Server.MapPath(@"~/Attachment/Topup");
+                        FileName = bp.GetCusCode() + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss", new CultureInfo("en-US")) + Extension;
 
-                    string filename = "Tran_Attachment\\" + EnTran.Cus_ID + "\\" + Path.GetFileName(Ifile.FileName);
-                    //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('" + filename + "');</script>", false);
-                    //lblERR1.Text = filename;
-                    Ifile.SaveAs(folder + "\\" + Path.GetFileName(Ifile.FileName));
-                    EnTran.TRANS_PICURL = filename;
-
-                    //string filename = Server.MapPath("~/Images/transaction/") + Path.GetFileName(Ifile.FileName);
-                    //Ifile.SaveAs(filename);
-                    EnTran.TRANS_PICURL = filename;
-                    //    }
-                    //}
+                        Ifile.PostedFile.SaveAs(AttPath + "/" + FileName);
+                    }
+                    EnTran.TRANS_PICURL = FileName;
                 }
 
                 EnTran.TRAN_TYPE = 1;
