@@ -55,6 +55,9 @@
                     Style="display: inline" Width="100px"></asp:DropDownList>&nbsp;&nbsp;
                 <asp:DropDownList ID="ddlYear" runat="server" AppendDataBoundItems="true" 
                     Style="display: inline" Width="100px"></asp:DropDownList>
+                <asp:HiddenField ID="hddDay" runat="server" />
+                <asp:HiddenField ID="hddMonth" runat="server" />
+                <asp:HiddenField ID="hddYear" runat="server" />
             </div>
         </div>
         <div class="row divRowBlock">
@@ -93,6 +96,7 @@
         <div class="row">
             <asp:Image ID="img" runat="server" ImageUrl="~/Images/pic/User.png" BorderWidth="1px"
                 Width="150px" Height="200px"/>
+            <asp:HiddenField ID="hddImg" runat="server" />
         </div>
         <div class="row">
             <asp:FileUpload ID="uplImg" runat="server" />

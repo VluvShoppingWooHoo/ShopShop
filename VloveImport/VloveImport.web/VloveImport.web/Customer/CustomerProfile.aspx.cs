@@ -46,7 +46,7 @@ namespace VloveImport.web.Customer
             ddlYear.Items.Add("ปี");
             int Year = DateTime.Now.Year - 100;
             Year = Year < 2500 ? Year + 543 : Year;
-            for (int i = Year + 100; i > Year; i--)
+            for (int i = Year + 80; i > Year; i--)
             {
                 ddlYear.Items.Add(i.ToString());
             }
@@ -70,7 +70,7 @@ namespace VloveImport.web.Customer
             Data.Cus_LName = txtLName.Text;
             Data.Cus_Gender = ddlGender.SelectedValue;
 
-            string FileName = "";
+            string FileName = hddImg.Value;
             if(uplImg.HasFile)
             {
                 if (!Directory.Exists(Server.MapPath("~/Attachment/Profile/")))
@@ -89,16 +89,14 @@ namespace VloveImport.web.Customer
                      uplImg.PostedFile.SaveAs(AttPath + "/" + FileName);
                  }                             
             }
+
             Data.CUS_Pic = FileName;
             string InputDate = "";
-            if (ddlDay.SelectedIndex != 0 && ddlMonth.SelectedIndex != 0 && ddlYear.SelectedIndex != 0)
-            {
-                int Year = Convert.ToInt32(ddlYear.SelectedItem.Text) - 543;
-                InputDate = ddlDay.SelectedItem.Text + "/" + ddlMonth.SelectedItem.Text + "/" + Year.ToString();
-                Data.Cus_BirthDay = Convert.ToDateTime(Convert_DateYYYYMMDD(InputDate, '/', "DDMMYYYY", 0));
-            }
-            else
-                Data.Cus_BirthDay = DateTime.MinValue;
+            InputDate = ddlDay.SelectedIndex.ToString() + "/";
+            InputDate = InputDate + ddlMonth.SelectedIndex.ToString() + "/";
+            InputDate = InputDate + ddlYear.SelectedItem.Text;
+            Data.Cus_BirthDay = InputDate;
+
             Data.Cus_Link_Shop = txtLinkShop.Text;
             Data.Update_User = lbCode.Text;
             return Data;
@@ -110,6 +108,11 @@ namespace VloveImport.web.Customer
             CustomerBiz Biz = new CustomerBiz();
             DataTable dt = Biz.Get_Customer_Profile(Cus_ID);
             string Gender = "";
+            hddDay.Value = "";
+            hddMonth.Value = "";
+            hddYear.Value = "";
+            hddImg.Value = "";
+
             if (dt != null && dt.Rows.Count > 0)
             {
                 Gender = dt.Rows[0]["Cus_Gender"].ToString() == "" ? "1" : dt.Rows[0]["Cus_Gender"].ToString();
@@ -117,19 +120,22 @@ namespace VloveImport.web.Customer
                 lbCode.Text = dt.Rows[0]["Cus_Code"].ToString();
                 txtName.Text = dt.Rows[0]["Cus_Name"].ToString();
                 txtLName.Text = dt.Rows[0]["Cus_LName"].ToString();
-                ddlGender.SelectedIndex = Convert.ToInt32(Gender);
+                ddlGender.SelectedIndex = Convert.ToInt32(Gender) - 1;
                 txtLinkShop.Text = dt.Rows[0]["Cus_Link_shop"].ToString();
 
                 if (dt.Rows[0]["Cus_Pic"].ToString() != "")
+                {
                     img.ImageUrl = "~/Attachment/Profile/" + dt.Rows[0]["Cus_Pic"].ToString();
+                    hddImg.Value = dt.Rows[0]["Cus_Pic"].ToString();
+                }
 
                 string DateDB = dt.Rows[0]["Cus_Birthday"].ToString();
                 if (DateDB != "")
                 {
-                    string[] Date = DateDB.Split('/');
-                    ddlDay.SelectedItem.Text = Date[0];
-                    ddlMonth.SelectedItem.Text = Date[1];
-                    ddlYear.SelectedItem.Text = Date[2].Substring(0, 4);
+                    string[] Date = DateDB.Split('-');
+                    ddlYear.SelectedItem.Text = Date[0];
+                    ddlMonth.SelectedIndex = Convert.ToInt32(Date[1]) - 1;
+                    ddlDay.SelectedIndex = Convert.ToInt32(Date[2]) - 1;
                 }
             }
 

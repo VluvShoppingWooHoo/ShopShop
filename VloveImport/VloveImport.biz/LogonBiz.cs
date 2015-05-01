@@ -33,8 +33,7 @@ namespace VloveImport.biz
                     Cust.Cus_Code = dt.Rows[0]["Cus_Code"].ToString();
                     Cust.Cus_Name = dt.Rows[0]["Cus_Name"].ToString();
                     Cust.Cus_LName = dt.Rows[0]["Cus_LName"].ToString();
-                    if (dt.Rows[0]["Cus_BirthDay"].ToString() != "")
-                        Cust.Cus_BirthDay = Convert.ToDateTime(dt.Rows[0]["Cus_BirthDay"].ToString());
+                    Cust.Cus_BirthDay = dt.Rows[0]["Cus_BirthDay"].ToString();
 
                     Cust.Cus_Telephone = dt.Rows[0]["Cus_Telephone"].ToString();
                     Cust.Cus_Mobile = dt.Rows[0]["Cus_Mobile"].ToString();
