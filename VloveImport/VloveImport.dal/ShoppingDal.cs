@@ -341,7 +341,10 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("OD_COLOR", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
                 SqlCommandData.SetParameter("OD_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, Data.OD_REMARK == null ? "" : Data.OD_REMARK);
                 SqlCommandData.SetParameter("OD_URL", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
-                SqlCommandData.SetParameter("OD_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, Data.OD_PICURL);
+                if (Data.OD_PICURL == null)
+                    SqlCommandData.SetParameter("OD_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, DBNull.Value);
+                else
+                    SqlCommandData.SetParameter("OD_PICURL", SqlDbType.NVarChar, ParameterDirection.Input, Data.OD_PICURL);
 
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
                 SqlCommandData.SetParameter_Input_INT("OD_REF_BASKET", SqlDbType.Int, ParameterDirection.Input, DBNull.Value);

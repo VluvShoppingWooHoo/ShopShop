@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -39,7 +40,7 @@ namespace VloveImport.web.Customer
                 txtPINo.Text = dt.Rows[0]["OD_ITEMNAME"].ToString();
                 txtAmount.Text = dt.Rows[0]["OD_PRICE_ACTIVE"].ToString();
                 txtRemark.Text = dt.Rows[0]["OD_REMARK"].ToString();
-                imgPI.ImageUrl = dt.Rows[0]["OD_URL"].ToString();
+                imgPI.ImageUrl = "~/Attachment/PI/" + dt.Rows[0]["OD_PICURL"].ToString();
 
                 txtPINo.ReadOnly = true;
                 txtAmount.ReadOnly = true;
@@ -79,7 +80,23 @@ namespace VloveImport.web.Customer
                 data.OD_AMOUNT = 1;
                 data.OD_REMARK = txtRemark.Text;
 
-                Session["PICPI"] = Ifile;
+                string FileName = "";
+                if (Ifile.HasFile)
+                {
+                    if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))
+                        Directory.CreateDirectory(Server.MapPath("~/Attachment/PI/"));
+
+                    string Extension = Path.GetExtension(Ifile.PostedFile.FileName);
+
+                    if (Extension.ToUpper() == ".JPG" || Extension.ToUpper() == ".GIF" || Extension.ToUpper() == ".PNG")
+                    {
+                        string AttPath = Server.MapPath(@"~/Attachment/PI");
+                        FileName = Ifile.FileName.Replace(Extension, "") + DateTime.Now.ToString("yyyyMMdd_hhmmss", new CultureInfo("en-US")) + Extension;
+
+                        Ifile.PostedFile.SaveAs(AttPath + "/" + FileName);
+                    }
+                }
+                Session["PICPI"] = FileName;
                 //ย้ายไปทำหลังจากได้ เลข Order_code แล้ว
                 //string filename = Server.MapPath("~/Attachment/PI/") + Path.GetFileName(Ifile.FileName);
                 //if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))

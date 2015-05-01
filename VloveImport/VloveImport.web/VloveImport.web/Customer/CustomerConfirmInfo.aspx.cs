@@ -52,12 +52,13 @@ namespace VloveImport.web.Customer
                 case "PI":
                     if (Session["ORDER"] != null)
                     {
+                        string FileName = Session["PICPI"] == null ? "" : Session["PICPI"].ToString();   
                         OrderData data = (OrderData)Session["ORDER"];
                         if (data != null)
                         {
                             lbPINo.Text = data.OD_ITEMNAME;
                             lbAmount.Text = data.OD_AMOUNT.ToString();
-                            imgURL.ImageUrl = data.OD_PICURL;
+                            imgURL.ImageUrl = "~/Attachment/PI/" + FileName;
 
                             mView.Visible = true;
                             mView.ActiveViewIndex = 0;
@@ -237,18 +238,18 @@ namespace VloveImport.web.Customer
                 Result = Biz.MakeOrderByPI(Data);
                 if (Result[0] == "")
                 {
-                    string Res = "";
+                    string Res = "", FileName = "", NewFileName = "";
                     Int32 OID = Result[1] == "" ? 0 : Convert.ToInt32(Result[1]);
-                    if(Session["PICPI"] != null && OID != 0)
-                    {
-                        FileUpload Upl = (FileUpload)Session["PICPI"];
-                        string filename = Server.MapPath("~/Attachment/PI/") + Data.ORDER_CODE + "_1";
-                        if (!Directory.Exists(Server.MapPath("~/Attachment/PI/")))
-                            Directory.CreateDirectory(Server.MapPath("~/Attachment/PI/"));
-                        Upl.SaveAs(filename);
 
-                        Res = Biz.UpdateOrderPricePIC(OID, filename);
-                    }
+                    if (OID != 0)
+                    {
+                        FileName = Session["PICPI"] == null ? "" : Session["PICPI"].ToString();
+                        NewFileName = Data.ORDER_CODE + Path.GetExtension(FileName);
+                        FileInfo fInfo = new FileInfo(FileName);
+                        fInfo.Name.Replace(FileName, NewFileName);
+                        
+                        Res = Biz.UpdateOrderPricePIC(OID, FileName);
+                    }                    
                     
                     if (Res == "")
                     {
