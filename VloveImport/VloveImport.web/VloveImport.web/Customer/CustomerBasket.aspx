@@ -95,7 +95,9 @@
                         name="action" class="btn waves-effect orange waves-light">
                         Order                                
                     </button>--%>
-                    <asp:Button ID="btnOrder" runat="server" OnClick="btnOrder_Click" Text="Order" />
+                    <button type="button" class="btn waves-effect orange waves-light" name="action">
+                        <asp:Button ID="btnOrder" runat="server" OnClick="btnOrder_Click" Text="Order" />
+                    </button>
                 </div>
             </div>
             </ContentTemplate>

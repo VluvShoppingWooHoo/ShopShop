@@ -129,14 +129,19 @@ namespace VloveImport.web.Customer
                     hddImg.Value = dt.Rows[0]["Cus_Pic"].ToString();
                 }
 
-                string DateDB = dt.Rows[0]["Cus_Birthday"].ToString();
-                if (DateDB != "")
+                try
                 {
-                    string[] Date = DateDB.Split('/');
-                    ddlYear.SelectedItem.Text = Date[2];
-                    ddlMonth.SelectedIndex = Convert.ToInt32(Date[1]);
-                    ddlDay.SelectedIndex = Convert.ToInt32(Date[0]);
+                    string DateDB = dt.Rows[0]["Cus_Birthday"].ToString();
+                    if (DateDB != "")
+                    {
+                        string[] Date = DateDB.Split('/');
+                        ddlYear.SelectedItem.Text = Date[2];
+                        ddlMonth.SelectedIndex = Convert.ToInt32(Date[1]);
+                        ddlDay.SelectedIndex = Convert.ToInt32(Date[0]);
+                    }
                 }
+                catch { }
+                
             }
 
         }
