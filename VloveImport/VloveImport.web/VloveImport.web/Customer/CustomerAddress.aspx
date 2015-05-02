@@ -7,7 +7,7 @@
         <ContentTemplate>
 
             <div>
-                ข้อมูลที่อยุ่
+                <span class="FontHeader black-text bold">ข้อมูลที่อยุ่</span> &nbsp;&nbsp;               
 
     <%--<asp:Button ID="btnAdd2" class="btn waves-effect orange waves-light modal-trigger" runat="server" Text="เพิ่มข้อมูล" OnClick="btnAdd_Click" />--%>
 

@@ -59,12 +59,12 @@
                                 <asp:TextBox ID="txtRemark" runat="server" Width="250px" Height="90px" Rows="4" TextMode="MultiLine"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="row s7 m7 l7 TestBox1" id="Uploadpi" runat="server">                           
+                        <div class="row s9 m9 l9 TestBox1" id="Uploadpi" runat="server">                           
                             <div class="col s2 m2 l2 TestBox1"
                                 style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
                                 <b>อัพโหลดใบ PI</b>
                             </div>
-                            <div class="col s3 m3 l3">
+                            <div class="col s7 m7 l7">
                                 <div class="file-field input-field">
                                     <input class="file-path validate" id="filetext" type="text" style="width: 250px; margin-left: 0px; margin-right: 20px;" />
                                     <div class="btn">
@@ -89,9 +89,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s4 m4 l4 TestBox1">                    
+                    <div class="col s5 m5 l5 TestBox1">                    
                         <asp:Image ID="imgPI" runat="server" ImageUrl="~/Images/icon/close-icon.png" Visible="false"    
-                            Width="220px" Height="300px" BorderWidth="2px" BorderColor="Gray"/>
+                            Width="350px" Height="380px" BorderWidth="2px" BorderColor="Gray"/>
                     </div>
                 </div>                
             </div>

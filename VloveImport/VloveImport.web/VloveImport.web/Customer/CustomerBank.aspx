@@ -9,19 +9,22 @@
     <ContentTemplate>
 
     <div >
-    ข้อมูลธนาคาร &nbsp;&nbsp;&nbsp;
+        <span class="FontHeader black-text bold">ข้อมูลธนาคาร</span> &nbsp;&nbsp;               
+     
     <%--<button id="btnAdd" type="button" class="btn waves-effect orange waves-light" 
         name="action" runat="server" onserverclick="btnAdd_Click">
         เพิ่มข้อมูล     
     </button>--%>
-    <asp:Button ID="btnAdd" runat="server" Text="เพิ่มข้อมูล" OnClick="btnAdd_Click"  />
-         
+        <button type="button" class="btn waves-effect orange waves-light" name="action">
+            <asp:Button ID="btnAdd" runat="server" Text="เพิ่มข้อมูล" OnClick="btnAdd_Click"  />
+         </button>
     <hr style="width:100%; text-align:left; background-color :#FFD700; height:5px; color: #6ACAE1; border :0;"/>
 
 <table width ="100%">
     <tr>
         <td align ="center">
-            <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width ="90%" DataKeyNames="CUS_ACC_NAME_ID" OnRowCreated="gv_detail_RowCreated">
+            <asp:GridView ID="gv_detail" runat="server" CssClass="GridStyle"
+                AutoGenerateColumns="False" Width ="90%" DataKeyNames="CUS_ACC_NAME_ID" OnRowCreated="gv_detail_RowCreated">
                 <Columns>
                     <asp:BoundField HeaderText="ลำดับ" DataField="ROW_INDEX" >
                     <ItemStyle HorizontalAlign="Right" Width="5%" />
