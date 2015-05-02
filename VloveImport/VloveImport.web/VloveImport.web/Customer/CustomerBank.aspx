@@ -70,25 +70,25 @@
             PopupControlID="Panel1" TargetControlID="lblheader">
         </asp:ModalPopupExtender>
 
-        <asp:Panel ID="Panel1" Height="400px" Width="600px" runat="server" Style="display: none;"><%--Style="display: none;"--%>
-            <table width="600px" style ="border-collapse:separate;" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                    <td width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_LEFT"></td>
-                    <td align="left" class="trLogin_CENTER" style ="padding:0px 0px;">
+        <asp:Panel ID="Panel1" Height="600px" Width="600px" runat="server" Style="display: none;"><%--Style="display: none;"--%>
+            <table width="600px" style ="border-collapse:separate; height:550px;" cellpadding="0" cellspacing="0" border="0">
+                <tr style="background-color:orange;">
+                    <td width="52px" height="43px" style ="padding:0px 0px;" class=""></td>
+                    <td align="left" class="" style ="padding:0px 0px;">
                         <div style ="margin-left:-40px;">
-                            <asp:Label ID="lblheader" runat="server" Text="gfsgdfg"></asp:Label>
+                            <asp:Label ID="lblheader" runat="server" Text="" CssClass="black-text FontHeader bold"></asp:Label>
                         </div>
                     </td>
-                    <td align="right" width="52px" height="43px" style ="padding:0px 0px;" class="trLogin_RIGHT">
+                    <td align="right" width="52px" height="43px" style ="padding:0px 0px;" class="">
                         <div style="text-align:right;margin-right: 10px; margin-top: 5px;">
                             <asp:ImageButton ID="BtnImgClose" runat="server" ImageUrl="~/Images/icon/Close.png" Width="20px" Height="20px" OnClick="BtnImgClose_Click" />
                         </div>
                     </td>
                 </tr>
-                <tr style="background-color: #CFCDCD;">
+                <tr style="background-color:orange;">
                     <td style ="text-align:center; padding:0px 0px;" colspan="3">
                         <center>
-                            <asp:Panel Width="96%" Height="350px" ID="Panel2" runat="server" BackColor="#FFFFFF">
+                            <asp:Panel Width="96%" Height="500px" ID="Panel2" runat="server" BackColor="#FFFFFF">
                                 <table width ="100%">
                                     <tr>
                                         <td align ="left" Width ="25%">ธนาคาร : </td>
@@ -108,9 +108,9 @@
                                         <td align ="left" Width ="25%">เลขที่บัญชี : </td>
                                         <td align ="left" Width ="70%">
                                             <asp:TextBox ID="txt_acc_no" runat="server" Width ="300px"></asp:TextBox>
-                                        <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_acc_no" ID="txt_acc_no_FilteredTextBoxExtender" ValidChars ="-1234567890">
-                                        </asp:FilteredTextBoxExtender>
-</td>
+                                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_acc_no" ID="txt_acc_no_FilteredTextBoxExtender" ValidChars ="-1234567890">
+                                            </asp:FilteredTextBoxExtender>
+                                        </td>
                                         <td align ="center" Width ="5%"><span style="color:#F00">*</span></td>
                                     </tr>
                                     <tr>
@@ -123,15 +123,19 @@
                                     <tr>
                                         <td valign="top" align ="left">หมายเหตุ :</td>
                                         <td align ="left">
-                                            <asp:TextBox ID="txt_remark" runat="server" TextMode = "MultiLine" Width ="300px" Height ="50px"></asp:TextBox>
+                                            <asp:TextBox ID="txt_remark" runat="server" TextMode = "MultiLine" Width ="300px" Height ="70px"></asp:TextBox>
                                         </td>
                                         <td valign="top" align ="center"></td>
                                     </tr>
                                     <tr>
                                         <td colspan ="2">
-                                            <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล" OnClick="btnSave_Click"></asp:Button>
+                                            <button type="button" class="btn waves-effect orange waves-light" name="action">
+                                                <asp:Button ID="btnSave" runat="server" Text="บันทึกข้อมูล" OnClick="btnSave_Click"></asp:Button>
+                                            </button>
                                             &nbsp;&nbsp;
-                                            <asp:Button ID="btnReset" runat="server" Text="ล้างข้อมูล" OnClick="btnReset_Click"></asp:Button>
+                                            <button type="button" class="btn waves-effect orange waves-light" name="action">
+                                                <asp:Button ID="btnReset" runat="server" Text="ล้างข้อมูล" OnClick="btnReset_Click"></asp:Button>
+                                            </button>
                                         </td>
                                     </tr>
                                 </table>
@@ -139,7 +143,7 @@
                         </center>
                     </td>
                 </tr>
-                <tr style="background-color: #CFCDCD;">
+                <tr style="background-color:orange;">
                     <td height="15px" style ="padding:0px 0px;" align="center" colspan="3"></td>
                 </tr>
             </table>
