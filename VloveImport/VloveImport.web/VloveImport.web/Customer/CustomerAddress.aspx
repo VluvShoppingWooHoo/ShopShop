@@ -161,6 +161,11 @@
                 </table>
             </asp:Panel>
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="dll_region" />
+            <asp:PostBackTrigger ControlID="dll_province" />
+            <asp:PostBackTrigger ControlID="dll_District" />
+        </Triggers>
     </asp:UpdatePanel>
     <script type="text/javascript">
         $(function () {
