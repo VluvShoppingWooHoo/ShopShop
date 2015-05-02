@@ -133,7 +133,7 @@ namespace VloveImport.web.Customer
                 if (DateDB != "")
                 {
                     string[] Date = DateDB.Split('/');
-                    ddlYear.SelectedItem.Text = Date[4];
+                    ddlYear.SelectedItem.Text = Date[2];
                     ddlMonth.SelectedIndex = Convert.ToInt32(Date[1]);
                     ddlDay.SelectedIndex = Convert.ToInt32(Date[0]);
                 }
