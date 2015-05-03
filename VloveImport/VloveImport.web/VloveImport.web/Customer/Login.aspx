@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col s1 m1 l1">&nbsp;</div>
                 <div class="col s2 m2 l2">
-                    <span class="orange-text bold">ชื่อผู้ใช้</span>
+                    <span class="orange-text bold">อีเมลล์</span>
                 </div>
                 <div class="col s4 m4 l4">
                     <asp:TextBox ID="txtUser" runat="server" Width="400px"></asp:TextBox>

@@ -17,7 +17,7 @@
                         <asp:TextBox ID="txtName" runat="server" ></asp:TextBox>
                     </div>
                     <div class="row">
-                        <span class="orange-text bold">อีเมลล์</span>
+                        <span class="orange-text bold">อีเมลล์ สำหรับเข้าใช้ระบบ</span>
                     </div>
                     <div class="row">
                         <asp:TextBox ID="txtEmail" runat="server" TextMode="Email"></asp:TextBox>
