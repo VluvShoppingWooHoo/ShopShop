@@ -36,7 +36,7 @@
         <div style="vertical-align: middle; width: 40%; height: 50px; margin-left: 32%; margin-top: -40px;">
             <div style="margin-left: 10px;">
                 <asp:DropDownList ID="ddlBank" DataTextField="BANK_SHOP_ACCOUNT_NO" DataValueField="BANK_SHOP_ID" runat="server"
-                    CssClass="dpBlock ddlBank" Width="300px">
+                    CssClass="dpBlock ddlBank" Width="350px">
                 </asp:DropDownList>
             </div>
         </div>
