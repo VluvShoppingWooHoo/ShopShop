@@ -33,11 +33,11 @@
                         <br />
                         <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
                             name="action" class="btn waves-effect orange waves-light">
-                            Back                                
+                            ย้อนกลับ                                
                         </button>
                         <button id="btnOrder" runat="server" type="submit" onserverclick="btnOrder_ServerClick"
                             name="action" class="btn waves-effect orange waves-light">
-                            Order                                
+                            สั่งสินค้า                                
                         </button>
                     </div>
 

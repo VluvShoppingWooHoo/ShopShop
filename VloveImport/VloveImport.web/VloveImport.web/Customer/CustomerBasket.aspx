@@ -100,9 +100,11 @@
                         name="action" class="btn waves-effect orange waves-light">
                         Order                                
                     </button>--%>
-                    <button type="button" class="btn waves-effect orange waves-light" name="action">
+                    <asp:ImageButton ID="imbOrder" runat="server" ImageUrl="~/Images/btn/สั่งสินค้า.gif"
+                        OnClick="imbOrder_Click" />
+                    <%--<button type="button" class="btn waves-effect orange waves-light" name="action">
                         <asp:Button ID="btnOrder" runat="server" OnClick="btnOrder_Click" Text="Order" />
-                    </button>
+                    </button>--%>
                 </div>
             </div>
             </ContentTemplate>

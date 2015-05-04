@@ -184,5 +184,58 @@ namespace VloveImport.web.Customer
             lbTotal.Text = Total.ToString("###,##0.00") + " (¥)";
         }
         #endregion                       
+
+        protected void imbOrder_Click(object sender, ImageClickEventArgs e)
+        {
+            Session.Remove("TRANS");
+            Session.Remove("ORDER");
+            CheckBox cb;
+            HiddenField hd;
+            DataTable dtSelected = new DataTable();
+            if (ViewState["SOURCE"] != null)
+            {
+                dtSelected = ((DataTable)ViewState["SOURCE"]).Copy();
+                foreach (GridViewRow gvr in gvBasket.Rows)
+                {
+                    cb = new CheckBox();
+                    hd = new HiddenField();
+                    cb = (CheckBox)gvr.FindControl("cbItem");
+                    if (cb != null && !cb.Checked)
+                    {
+                        hd = (HiddenField)gvr.FindControl("hdBK_ID");
+                        dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
+                    }
+                }
+
+                if (dtSelected.Rows.Count == 0)
+                {
+                    ShowMessageBox("กรุณาเลือกรายการที่ต้องการสั่งซื้อ");
+                    return;
+                }
+
+                if (dtSelected.Rows.Count > 10)
+                {
+                    ShowMessageBox("สั่งซื้อได้ไม่เกิน 10 รายการต่อ 1 ใบสั่งซื้อ");
+                    return;
+                }
+
+                double Price = 0, Amount = 0, Total = 0;
+                foreach (DataRow dr in dtSelected.Rows)
+                {
+                    Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
+                    Price = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
+                    Total = Total + (Amount * Price);
+                }
+
+                if (Total < 100)
+                {
+                    ShowMessageBox("มูลค่าของใบสั่งซื้อไม่ต้ำกว่า 100 หยวน");
+                    return;
+                }
+
+                Session.Add("ORDER", dtSelected);
+                Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("ORDER"));
+            }
+        }
     }
 }
