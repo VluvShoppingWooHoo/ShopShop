@@ -122,6 +122,7 @@
     <Content Include="Customer\Recommend.aspx" />
     <Content Include="Customer\Register.aspx" />
     <Content Include="Customer\TourMarket.aspx" />
+    <Content Include="Images\btn\สั่งสินค้า.gif" />
     <Content Include="Images\demo\logo_all_company.png" />
     <Content Include="Images\icon\check-icon.png" />
     <Content Include="Images\icon\Flag\China-Flag-icon.png" />

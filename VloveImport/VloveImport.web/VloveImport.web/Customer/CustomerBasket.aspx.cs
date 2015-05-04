@@ -21,6 +21,7 @@ namespace VloveImport.web.Customer
             if (!IsPostBack)
             {                                     
                 BindData();
+                lbTotal.Text = "0.00 (¥)";
             }
         }
 
@@ -93,34 +94,7 @@ namespace VloveImport.web.Customer
                 Session.Add("ORDER", dtSelected);
                 Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("ORDER"));
             }
-        }
-
-        protected void cbItem_CheckedChanged(object sender, EventArgs e)
-        {
-            CalTotalAmount();
-        }
-
-        protected void CalTotalAmount()
-        {
-            CheckBox cb;
-            Label Price, Amount;
-            double Total = 0, dPrice = 0, dAmount = 0;
-            foreach (GridViewRow gvr in gvBasket.Rows)
-            {                
-                cb = (CheckBox)gvr.Cells[0].FindControl("cbItem");
-                Price = (Label)gvr.Cells[3].FindControl("lbPrice");
-                Amount = (Label)gvr.Cells[4].FindControl("lbAmount");
-
-                if (cb != null && cb.Checked)
-                {
-                    dPrice = Price.Text == "" ? 0 : Convert.ToDouble(Price.Text);
-                    dAmount = Amount.Text == "" ? 0 : Convert.ToDouble(Amount.Text);
-                    Total = Total + (dPrice * dAmount);
-                }
-            }
-
-            //lbTotal.Text = Total.ToString("###,###.00") + "หยวน";
-        }
+        }        
 
         protected void gvBasket_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -167,6 +141,48 @@ namespace VloveImport.web.Customer
             ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 0;
             ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 0;
         }
-        #endregion               
+
+        protected void cbItemAll_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb, cbHead;
+            cbHead = (CheckBox)sender;
+            foreach (GridViewRow gvr in gvBasket.Rows)
+            {
+                cb = (CheckBox)gvr.Cells[0].FindControl("cbItem");
+                if (cb != null)
+                    cb.Checked = cbHead.Checked;
+                
+            }
+
+            CalTotalAmount();
+        }
+
+        protected void cbItem_CheckedChanged(object sender, EventArgs e)
+        {
+            CalTotalAmount();
+        }
+
+        protected void CalTotalAmount()
+        {
+            CheckBox cb;
+            Label Price, Amount;
+            double Total = 0, dPrice = 0, dAmount = 0;
+            foreach (GridViewRow gvr in gvBasket.Rows)
+            {
+                cb = (CheckBox)gvr.Cells[0].FindControl("cbItem");
+                Price = (Label)gvr.Cells[3].FindControl("lbPrice");
+                Amount = (Label)gvr.Cells[4].FindControl("lbAmount");
+
+                if (cb != null && cb.Checked)
+                {
+                    dPrice = Price.Text == "" ? 0 : Convert.ToDouble(Price.Text);
+                    dAmount = Amount.Text == "" ? 0 : Convert.ToDouble(Amount.Text);
+                    Total = Total + (dPrice * dAmount);
+                }
+            }
+
+            lbTotal.Text = Total.ToString("###,##0.00") + " (¥)";
+        }
+        #endregion                       
     }
 }
