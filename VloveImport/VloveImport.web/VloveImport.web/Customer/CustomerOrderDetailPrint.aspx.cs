@@ -20,7 +20,7 @@ namespace VloveImport.web.Customer
             CheckSession(); 
             if (!IsPostBack)
             {
-                string OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
+                string OID = "1044";// Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
                 if (OID == "")
                     GoToIndex();
 
