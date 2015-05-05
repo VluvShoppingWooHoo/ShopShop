@@ -116,19 +116,7 @@ namespace VloveImport.web.Customer
 
         protected void btnPrint_ServerClick(object sender, EventArgs e)
         {
-            using (MemoryStream ms = new MemoryStream())
-            using (Document document = new Document(PageSize.A4, 25, 25, 30, 30))
-            using (PdfWriter writer = PdfWriter.GetInstance(document, ms))
-            {
-                document.Open();
-                document.Add(new Paragraph("Hello World"));
-                document.Close();
-                writer.Close();
-                ms.Close();
-                Response.ContentType = "pdf/application";
-                Response.AddHeader("content-disposition", "attachment;filename=First_PDF_document.pdf");
-                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
-            }
+            PDF();
         }
 
         protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -171,6 +159,34 @@ namespace VloveImport.web.Customer
                 }
 
             }
+        }
+
+        protected void PDF()
+        {
+            string OrderCode = "";
+            MemoryStream ms = new MemoryStream();
+            Document document = new Document(PageSize.A4, 25, 25, 30, 30);
+            PdfWriter writer = PdfWriter.GetInstance(document, ms);
+
+            //Write Content
+            //Init
+            Paragraph pf = new Paragraph();
+
+            //Set
+            pf.Add("สรุปรายการ");
+            pf.Add("รหัสใบสั่งซื้อ" + lbOrder_Code.Text);
+            pf.Add("วันที่" + lbOrder_Date.Text);
+
+            //Add Content into PDF
+            document.Open();
+            document.Add(pf);
+            document.Close();
+            writer.Close();
+            ms.Close();
+            Response.ContentType = "pdf/application";
+            Response.AddHeader("content-disposition", "attachment;filename=Order.pdf");
+            Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+
         }
     }
 }
