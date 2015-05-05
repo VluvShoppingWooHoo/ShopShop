@@ -163,23 +163,35 @@ namespace VloveImport.web.Customer
 
         protected void PDF()
         {
-            string OrderCode = "";
             MemoryStream ms = new MemoryStream();
             Document document = new Document(PageSize.A4, 25, 25, 30, 30);
             PdfWriter writer = PdfWriter.GetInstance(document, ms);
-
+            BaseFont bfComic = BaseFont.CreateFont("c:\\windows\\fonts\\Tahoma.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            Font font = new Font(bfComic, 12);
             //Write Content
             //Init
             Paragraph pf = new Paragraph();
 
             //Set
+            string Header = "";
             pf.Add("สรุปรายการ");
-            pf.Add("รหัสใบสั่งซื้อ" + lbOrder_Code.Text);
-            pf.Add("วันที่" + lbOrder_Date.Text);
+            pf.Add("รหัสใบสั่งซื้อ " + lbOrder_Code.Text + "<br/><br/>");
+            pf.Add("วันที่ " + lbOrder_Date.Text + "<br/><br/>");
 
             //Add Content into PDF
             document.Open();
-            document.Add(pf);
+            document.Add(new Paragraph("สรุปรายการ", font));
+            document.Add(new Paragraph("รหัสใบสั่งซื้อ", font));
+            document.Add(Chunk.TABBING);
+            document.Add(Chunk.TABBING);
+            document.Add(new Paragraph(lbOrder_Code.Text));
+            document.Add(Chunk.TABBING);
+            document.Add(Chunk.TABBING);
+            document.Add(Chunk.TABBING);
+            document.Add(new Paragraph("วันที่สั่งซื้อ"));
+            document.Add(Chunk.TABBING);
+            document.Add(Chunk.TABBING);
+            document.Add(new Paragraph(lbOrder_Date.Text));
             document.Close();
             writer.Close();
             ms.Close();
@@ -188,5 +200,7 @@ namespace VloveImport.web.Customer
             Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
 
         }
+
+        
     }
 }
