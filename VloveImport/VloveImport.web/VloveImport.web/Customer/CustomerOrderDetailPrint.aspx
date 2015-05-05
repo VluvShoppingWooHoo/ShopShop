@@ -67,8 +67,7 @@
      <div class="row">        
         <div class="col s12 m12 l12">
             <%--<asp:Panel ID="panelGrid" runat="server" ScrollBars="Horizontal" Width="950px">--%>
-                <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="false" CssClass="HeaderFreez"
-                    OnRowDataBound="gvOrder_RowDataBound">
+                <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="false" CssClass="HeaderFreez">
                     <Columns>
                         <asp:TemplateField ItemStyle-Width="70px" ItemStyle-Height="70px">
                             <ItemTemplate>                           
@@ -149,40 +148,7 @@
                 </asp:GridView>
             <%--</asp:Panel>  --%>                     
         </div>     
-    </div>
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
-                name="action" class="btn waves-effect orange waves-light">
-                ย้อนกลับ                                
-            </button>&nbsp;&nbsp;
-            <button id="btnPay" runat="server" type="submit" onserverclick="btnPay_ServerClick"
-                name="action" class="btn waves-effect orange waves-light">
-                ชำระเงิน                                
-            </button>&nbsp;&nbsp;
-            <button id="btnPrint" runat="server" type="submit" onserverclick="btnPrint_ServerClick"
-                name="action" class="btn waves-effect orange waves-light">
-                พิมพ์                                
-            </button>
-        </div>
-    </div>
-    <div class="row"> 
-        <span class="FontHeader black-text">ข้อมูลการชำระเงิน</span>       
-        <asp:GridView ID="gvTran" runat="server" AutoGenerateColumns="false" BorderColor="Orange" BorderWidth="2px" Width="800px">
-            <Columns>
-                <asp:BoundField DataField="TRAN_DATE" HeaderText="วันที่ชำระเงิน" HeaderStyle-Width="200px"/>
-                <asp:TemplateField HeaderText="จำนวนเงิน (บาท)" ItemStyle-Width="150px">
-                    <ItemTemplate>
-                        <asp:Label ID="lbTransportThaiAmount" runat="server" CssClass="right-align" Width="70%"
-                            Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRAN_AMOUNT").ToString(), "Money") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <%--<asp:BoundField DataField="TRAN_AMOUNT" HeaderText="" />--%>
-                <%--<asp:BoundField DataField="TRAN_STATUS_DESC" HeaderText="สถานะ" />--%>
-                <asp:BoundField DataField="TRAN_REMARK" HeaderText="หมายเหตุ" HeaderStyle-Width="400px"/>
-            </Columns>
-        </asp:GridView> 
-    </div>
+    </div>    
     <script type="text/javascript">
         $(function () {
             SetFadeout();

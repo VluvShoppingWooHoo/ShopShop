@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
@@ -17,7 +20,6 @@ namespace VloveImport.web.Customer
         EncrypUtil en = new EncrypUtil();
         protected void Page_Load(object sender, EventArgs e)
         {
-            CheckSession(); 
             if (!IsPostBack)
             {
                 string OID = "1044";// Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
@@ -25,6 +27,7 @@ namespace VloveImport.web.Customer
                     GoToIndex();
 
                 BindData(OID);
+                GenPDF();
             }
         }
         protected void BindData(string Order_ID)
@@ -50,112 +53,37 @@ namespace VloveImport.web.Customer
                 lbOrderStatus.Text = dt.Rows[0]["ORDER_DESC"].ToString();
 
                 Status = dt.Rows[0]["ORDER_STATUS"].ToString();
-                if (Status == "0" || Status == "2" || Status == "4" || Status == "6" || Status == "7")
-                    btnPay.Visible = false;
-
-                Order_Pay = dt.Rows[0]["ORDER_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["ORDER_PAY"].ToString());
-                if (Status == "8" && Order_Pay <= 0)
-                    btnPay.Visible = false;
-
+                
                 //Grid                          
                 gvOrder.DataSource = dt;   
-                gvOrder.DataBind();
-
-                //Grid
-                CustomerBiz biz_Cus = new CustomerBiz();
-                DataTable dtTran = biz_Cus.GET_TRANSACTION_BY_ORDERID(OID);
-                if (dtTran != null && dtTran.Rows.Count > 0)
-                {
-                    gvTran.DataSource = dtTran;
-                }                 
-                else
-                    gvTran.DataSource = null;
-
-                gvTran.DataBind();
+                gvOrder.DataBind();                                
+                
             }
         }
 
-        protected DataTable GenShopName(DataTable dt)
+        protected void GenPDF()
         {
-            string Result = "";
-            string ShopName = "", OldShopName = "";
-            string Tracking = "", ShopID = "";
-            foreach (DataRow dr in dt.Rows)
+            //FileStream fs = new FileStream("Chapter1_Example1.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+            //Document doc = new Document(PageSize.A4, 72,72,36,36);
+            //PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+            //doc.Open();
+            //doc.Add(new Paragraph("Hello World"));
+
+            //doc.Close();
+
+
+            using (MemoryStream ms = new MemoryStream())
+            using (Document document = new Document(PageSize.A4, 25, 25, 30, 30))
+            using (PdfWriter writer = PdfWriter.GetInstance(document, ms))
             {
-                ShopName = dr["SHOPNAME"].ToString();
-                if(ShopName != OldShopName)
-                {
-                    Result += "Shop name : " + ShopName + "&nbsp;&nbsp;";
-                    Result += "Tracking No. : " + dr["TRACKING_NO"].ToString() + "&nbsp;&nbsp;";
-                    Result += "Order ID " + dr["SHOP_ORDER_ID"].ToString() + "&nbsp;&nbsp;";
-                }
-                OldShopName = ShopName;
-            }
-            return dt;
-        }
-
-        protected void btnBack_ServerClick(object sender, EventArgs e)
-        {
-            string Page = Request.QueryString["P"] == null ? "" : DecryptData(Request.QueryString["P"].ToString());
-            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
-
-            //if(Page == "LIST")
-                Redirect("~/Customer/CustomerOrderList.aspx");
-            //else
-            //    Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
-        }
-
-        protected void btnPay_ServerClick(object sender, EventArgs e)
-        {
-            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
-            Redirect("~/Customer/CustomerPayment.aspx?OID=" + OID);
-        }
-
-        protected void btnPrint_ServerClick(object sender, EventArgs e)
-        {
-            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
-            Redirect("~/Report/ReportViewer.aspx?ID=" + OID + "&RN=" + EncrypData("ORDER"));
-        }
-
-        protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                int Count = 0;
-                string ShopRemark = DataBinder.Eval(e.Row.DataItem, "SHOP_REMARK").ToString();   
-                string ShopName = DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString();                
-                if (ViewState["OldShopName"] == null || ViewState["OldShopName"].ToString() != ShopName)
-                {
-                    Count = ViewState["Count"] == null ? 1 : Convert.ToInt32(ViewState["Count"]);
-                    Label lbShopName = ((Label)e.Row.FindControl("lbShopName"));
-                    Label lbRemark = ((Label)e.Row.FindControl("lbRemark"));
-                    GridViewRow row = new GridViewRow(e.Row.RowIndex + Count, -1, DataControlRowType.DataRow, DataControlRowState.Insert);
-                    TableCell cell = new TableCell();
-                    cell.ColumnSpan = gvOrder.Columns.Count;
-                    cell.CssClass = "gv-shopname";
-                    string ShowShop = "";
-
-                    ShowShop += "Shop name : " + DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString() + "&nbsp;&nbsp;";
-                    ShowShop += "Tracking No. " + DataBinder.Eval(e.Row.DataItem, "TRACKING_NO").ToString() + "&nbsp;&nbsp;";
-                    ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";                                                                               
-
-                    lbShopName.Text = ShowShop;
-                    cell.Controls.Add(lbShopName);
-                    if (ShopRemark != "")
-                    {
-                        lbRemark.Visible = true;
-                        lbRemark.Text = "<br/>หมายเหตุ : <br/>" + ShopRemark;
-                        cell.Controls.Add(lbRemark);
-                    }
-
-                    row.Cells.Add(cell);
-                    row.CssClass = "gv-shopname";
-                    ((GridView)sender).Controls[0].Controls.AddAt(e.Row.RowIndex + Count, row);
-                    
-                    ViewState["OldShopName"] = ShopName;
-                    ViewState["Count"] = ++Count;
-                }
-
+                document.Open();
+                document.Add(new Paragraph("Hello World"));
+                document.Close();
+                writer.Close();
+                ms.Close();
+                Response.ContentType = "pdf/application";
+                Response.AddHeader("content-disposition", "attachment;filename=First_PDF_document.pdf");
+                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
             }
         }
     }

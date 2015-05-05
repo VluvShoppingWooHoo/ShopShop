@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
@@ -113,8 +116,19 @@ namespace VloveImport.web.Customer
 
         protected void btnPrint_ServerClick(object sender, EventArgs e)
         {
-            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
-            Redirect("~/Report/ReportViewer.aspx?ID=" + OID + "&RN=" + EncrypData("ORDER"));
+            using (MemoryStream ms = new MemoryStream())
+            using (Document document = new Document(PageSize.A4, 25, 25, 30, 30))
+            using (PdfWriter writer = PdfWriter.GetInstance(document, ms))
+            {
+                document.Open();
+                document.Add(new Paragraph("Hello World"));
+                document.Close();
+                writer.Close();
+                ms.Close();
+                Response.ContentType = "pdf/application";
+                Response.AddHeader("content-disposition", "attachment;filename=First_PDF_document.pdf");
+                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+            }
         }
 
         protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
