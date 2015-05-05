@@ -409,7 +409,7 @@
         if (typeof url === 'undefined') {
         }
         else {
-            $("#imgpicURL").attr("src", url.replace('30x30', '300x300').replace('40x40', '300x300'));
+            $("#imgpicURL").attr("src", url.replace('30x30', '300x300').replace('32x32', '300x300').replace('35x35', '300x300').replace('40x40', '300x300'));
         }
         var aid = $('#aColor' + e).data("id");
         $("#lblPrice").html(aid);

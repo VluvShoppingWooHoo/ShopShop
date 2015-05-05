@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -556,45 +556,64 @@ namespace VloveImport.web
                             switch (propertyInfo.Name)
                             {
                                 case Constant.ScrapModel.ItemName:
-                                    try { model.ItemName = driver.FindElement(By.Id("J_Title")).FindElement(By.ClassName("tb-main-title")).Text; }
+                                    try
+                                    {
+                                        model.ItemName = driver.FindElement(By.Id("mod-detail-title")).Text;
+                                        if (model.ItemName.Contains("\r\n")) model.ItemName = model.ItemName.Substring(0, model.ItemName.IndexOf("\r\n"));
+                                    }
                                     catch (Exception ex) { model.ItemName = string.Empty; }
                                     break;
                                 case Constant.ScrapModel.picURL:
-                                    try { model.picURL = driver.FindElement(By.Id("J_ImgBooth")).GetAttribute("data-src").ToString(); }
+                                    try { model.picURL = driver.FindElement(By.ClassName("tab-pane")).FindElement(By.TagName("img")).GetAttribute("src").ToString(); }
                                     catch (Exception ex) { model.picURL = string.Empty; }
                                     break;
                                 case Constant.ScrapModel.Price:
-                                    try { model.Price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text; }
+                                    try
+                                    {
+                                        IWebElement Eprice = driver.FindElement(By.ClassName("offerdetail_orderingGroup_retailPrice-new"));
+                                        string price = Eprice.FindElement(By.ClassName("unit")).Text;
+                                        model.Price = price;
+                                        //string digit = Eprice.FindElement(By.ClassName("price-fen")).Text;
+                                        //model.Price = price + digit;
+                                    }
                                     catch (Exception ex) { model.Price = "0"; }
                                     break;
                                 case Constant.ScrapModel.ProPrice:
-                                    try { model.ProPrice = driver.FindElement(By.Id("J_PromoPriceNum")).Text; }
+                                    try
+                                    {
+                                        IWebElement Eprice = driver.FindElement(By.ClassName("counter-price"));
+                                        string price = Eprice.FindElement(By.ClassName("price-yen")).Text;
+                                        string digit = Eprice.FindElement(By.ClassName("price-fen")).Text;
+                                        model.ProPrice = price + digit;
+                                    }
                                     catch (Exception ex) { model.ProPrice = "0"; }
                                     break;
                                 case Constant.ScrapModel.Color:
                                     try
                                     {
                                         string Color = string.Empty;
-                                        IReadOnlyCollection<IWebElement> elements = driver.FindElement(By.ClassName("J_Prop_Color")).FindElement(By.ClassName("J_TSaleProp")).FindElements(By.TagName("li"));
+                                        IReadOnlyCollection<IWebElement> elements = driver.FindElement(By.ClassName("list-leading")).FindElements(By.TagName("li"));
                                         for (int i = 0; i < elements.Count; i++)
                                         {
                                             int start = 0, end = 0;
                                             string price = "0";
+                                            string val = string.Empty;
                                             IWebElement elem = elements.ToList()[i].FindElement(By.TagName("a"));
-                                            string val = elem.GetAttribute("style").ToString();
-                                            if (val.Contains("background-image: url"))
+                                            try
                                             {
-                                                start = val.IndexOf('(') + 1;
-                                                end = val.IndexOf(')');
-                                                Color += val.Substring(start, (end - start));
+                                                IWebElement elem2 = elem.FindElement(By.ClassName("vertical-img"));
+                                                if (elem2 != null)
+                                                { val = elem2.FindElement(By.TagName("img")).GetAttribute("src").ToString(); }
+
+                                                if (val != string.Empty)
+                                                    Color += val;
                                             }
-                                            else
-                                                Color += elem.Text;
-                                            elem.Click();
+                                            catch (Exception ex) { Color += elem.Text; }
+
                                             if (model.ProPrice != "0")
-                                                price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
+                                                price = model.ProPrice;
                                             else
-                                                price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
+                                                price = model.Price;
                                             Color += "^p^" + price;
                                             Color += "||";
                                         }
@@ -607,27 +626,27 @@ namespace VloveImport.web
                                     try
                                     {
                                         string Size = string.Empty;
-                                        IReadOnlyCollection<IWebElement> elements = driver.FindElement(By.ClassName("J_TMySizeProp")).FindElement(By.ClassName("J_TSaleProp")).FindElements(By.TagName("li"));
+                                        IReadOnlyCollection<IWebElement> elements = driver.FindElement(By.ClassName("table-sku")).FindElements(By.TagName("tr"));
                                         for (int i = 0; i < elements.Count; i++)
                                         {
                                             string price = "0";
-                                            IWebElement elem = elements.ToList()[i].FindElement(By.TagName("a"));
+                                            IWebElement elem = elements.ToList()[i].FindElement(By.ClassName("name"));
                                             Size += elem.Text;
-                                            elem.Click();
+
                                             if (model.ProPrice != "0")
-                                                price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
+                                                price = model.ProPrice;
                                             else
-                                                price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
+                                                price = model.Price;
                                             Size += "^p^" + price;
                                             Size += "||";
                                         }
-                                        //Size = Size.Remove(Size.Length - 2, 2);
+                                        Size = Size.Remove(Size.Length - 2, 2);
                                         model.Size = Size;
                                     }
                                     catch (Exception ex) { model.Size = string.Empty; }
                                     break;
                                 case Constant.ScrapModel.ShopName:
-                                    try { model.ShopName = driver.FindElement(By.ClassName("tb-shop-name")).Text; }
+                                    try { model.ShopName = driver.FindElement(By.ClassName("companyname")).FindElement(By.ClassName("has-tips")).Text; }
                                     catch (Exception ex) { model.ShopName = string.Empty; }
                                     break;
                                 default:
@@ -640,149 +659,93 @@ namespace VloveImport.web
             catch (Exception ex) { return null; }
             return model;
         }
-        //private string GetItemName(string html, int web, HtmlAgilityPack.HtmlDocument doc)
+        //private string GetSizeOrColor1688(string txt)
         //{
-        //    string ItemName = string.Empty;
+        //    string result = string.Empty;
         //    try
         //    {
-        //        HtmlNode node = null;
-        //        switch (web)
+        //        if (txt == "Color")
         //        {
-        //            case 3:
-        //                node = doc.GetElementbyId("mod-detail-title");
-        //                ItemName = node.ChildNodes[1].InnerHtml.Trim();
-        //                break;
-        //            default:
-        //                break;
         //        }
-        //    }
-        //    catch (Exception ex) { }
-        //    return ItemName;
-        //}
-        //private string GetpicURL(string html, int web, HtmlAgilityPack.HtmlDocument doc)
-        //{
-        //    string picURL = string.Empty;
-        //    try
-        //    {
-        //        HtmlNode node = null;
-        //        switch (web)
+        //        else
         //        {
-        //            case 3:
-        //                var result = doc.DocumentNode.Descendants("div").Where(l =>
-        //                    l.Attributes.Contains("class") &&
-        //                    l.Attributes["class"].Value.Contains("tab-pane"));
-        //                node = result.FirstOrDefault().ChildNodes[1].ChildNodes[1].ChildNodes[1];
-        //                picURL = node.Attributes[0].Value;
-        //                break;
-        //            default:
-        //                break;
         //        }
-        //    }
-        //    catch (Exception ex) { }
-        //    return picURL;
-        //}
-        //private string GetPrice(string html, int web, HtmlAgilityPack.HtmlDocument doc)
-        //{
-        //    string Price = "0";
-        //    try
-        //    {
-        //        HtmlNode node = null;
-        //        switch (web)
-        //        {
-        //            case 3:
-        //                var result = doc.DocumentNode.Descendants("tr").Where(l =>
-        //                    l.Attributes.Contains("class") &&
-        //                    l.Attributes["class"].Value.Contains("price"));
-        //                node = result.FirstOrDefault().ChildNodes[1].ChildNodes[3];
-        //                Price = node.InnerText.Trim();
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception ex) { }
-        //    return Price;
-        //}
-        //private string GetProPrice(string html, int web, HtmlAgilityPack.HtmlDocument doc)
-        //{
-        //    string ProPrice = "0";
-        //    try
-        //    {
-        //        switch (web)
-        //        {
-        //            case 3:
-        //                var result3 = doc.DocumentNode.Descendants("div").Where(l =>
-        //                    l.Attributes.Contains("class") &&
-        //                    l.Attributes["class"].Value.Contains("counter-price"));
-        //                node = result3.FirstOrDefault().ChildNodes[2];
-        //                ProPrice = node.InnerText;
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception ex) { }
-        //    return ProPrice;
-        //}
-        //private string GetColor(string html, int web, HtmlAgilityPack.HtmlDocument doc)
-        //{
-        //    string Color = string.Empty;
-        //    try
-        //    {
-        //        HtmlNode node = null;
 
-        //        switch (web)
+        //        HtmlNode nodeLead;
+        //        HtmlNode nodeSku;
+        //        bool Lead = false;
+        //        bool Sku = false;
+        //        var objLeading = doc.DocumentNode.Descendants("div").Where(l =>
+        //               l.Attributes.Contains("class") &&
+        //               l.Attributes["class"].Value.Contains("obj-leading"));
+
+        //        var objSku = doc.DocumentNode.Descendants("div").Where(l =>
+        //               l.Attributes.Contains("class") &&
+        //               l.Attributes["class"].Value.Contains("obj-sku"));
+
+        //        nodeLead = objLeading.FirstOrDefault();
+        //        nodeSku = objSku.FirstOrDefault();
+
+        //        if (txt == "Color")
         //        {
-        //            case 3:
-        //                Color = GetSizeOrColor1688("Color", doc);
-        //                //Color = Color.Remove(Color.Length - 2, 2);
-        //                break;
-        //            default:
-        //                break;
+        //            if (nodeLead != null)
+        //                if (nodeLead.ChildNodes[1].InnerText.Trim() == "Color" || nodeLead.ChildNodes[1].InnerText.Trim() == "颜色")
+        //                    Lead = true;
+
+        //            if (nodeSku != null)
+        //                if (nodeSku.ChildNodes[1].InnerText.Trim() == "Color" || nodeSku.ChildNodes[1].InnerText.Trim() == "颜色")
+        //                    Sku = true;
+        //        }
+        //        else
+        //        {
+        //            if (nodeLead != null)
+        //                if (nodeLead.ChildNodes[1].InnerText.Trim() != "Color" && nodeLead.ChildNodes[1].InnerText.Trim() != "颜色")
+        //                    Lead = true;
+
+        //            if (nodeSku != null)
+        //                if (nodeSku.ChildNodes[1].InnerText.Trim() != "Color" && nodeSku.ChildNodes[1].InnerText.Trim() != "颜色")
+        //                    Sku = true;
+        //        }
+        //        if (Lead)
+        //        {
+        //            //Can't use foreach
+        //            for (int i = 0; i < nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes.Count; i++)
+        //            {
+        //                if (nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes[i].Name.Contains("li"))
+        //                {
+        //                    HtmlNode item = nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes[i].ChildNodes[1].ChildNodes[1];
+        //                    if (item.InnerHtml.Contains("vertical-img"))
+        //                    {
+        //                        result += item.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[1].Value;
+        //                    }
+        //                    else
+        //                        result += item.ChildNodes[1].ChildNodes[0].InnerHtml;
+        //                    result += "||";
+        //                }
+        //            }
+        //        }
+        //        else if (Sku)
+        //        {
+        //            //Can't use foreach
+        //            for (int i = 0; i < nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes.Count(); i++)
+        //            {
+        //                if (nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes[i].Name.Contains("tr"))
+        //                {
+        //                    HtmlNode item = nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes[i].ChildNodes[1].ChildNodes[1];
+        //                    int start = 0, end = 0;
+        //                    if (item.InnerHtml.Contains("vertical-img"))
+        //                    {
+        //                        result += item.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[1].Value;
+        //                    }
+        //                    else
+        //                        result += item.InnerHtml;
+        //                    result += "||";
+        //                }
+        //            }
         //        }
         //    }
-        //    catch (Exception ex) { }
-        //    return Color;
-        //}
-        //private string GetSize(string html, int web, HtmlAgilityPack.HtmlDocument doc)
-        //{
-        //    string Size = string.Empty;
-        //    try
-        //    {
-        //        HtmlNode node = null;
-        //        switch (web)
-        //        {
-        //            case 3:
-        //                Size = GetSizeOrColor1688("Size", doc);
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception ex) { }
-        //    return Size;
-        //}
-        //private string GetShopName(string html, int web, HtmlAgilityPack.HtmlDocument doc)
-        //{
-        //    string ShopName = string.Empty;
-        //    try
-        //    {
-        //        HtmlNode node = null;
-        //        switch (web)
-        //        {
-        //            case 3:
-        //                var result3 = doc.DocumentNode.Descendants("div").Where(l =>
-        //                    l.Attributes.Contains("class") &&
-        //                    l.Attributes["class"].Value.Contains("companyname"));
-        //                node = result3.FirstOrDefault().ChildNodes[1].ChildNodes[1].ChildNodes[0].ChildNodes[0].ChildNodes[1].ChildNodes[0];
-        //                ShopName = node.InnerHtml;
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception ex) { }
-        //    return ShopName;
+        //    catch (Exception ex) { result = string.Empty; }
+        //    return result;
         //}
         #endregion
         #endregion
