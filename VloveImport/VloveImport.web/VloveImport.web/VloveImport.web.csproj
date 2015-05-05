@@ -49,6 +49,9 @@
     <Reference Include="Facebook">
       <HintPath>..\..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\packages\iTextSharp.5.5.5\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Selenium.WebDriverBackedSelenium">
@@ -106,6 +109,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\ContentDetail.aspx" />
     <Content Include="Customer\ContentList.aspx" />
+    <Content Include="Customer\CustomerOrderDetailPrint.aspx" />
     <Content Include="Customer\CustomerTransOnlyList.aspx" />
     <Content Include="Customer\CustomerUploadPIList.aspx" />
     <Content Include="Customer\CustomerUploadPI.aspx" />
@@ -135,6 +139,7 @@
     <Content Include="Customer\Recommend.aspx" />
     <Content Include="Customer\Register.aspx" />
     <Content Include="Customer\TourMarket.aspx" />
+    <Content Include="Images\btn\สั่งสินค้า.gif" />
     <Content Include="Images\demo\logo_all_company.png" />
     <Content Include="Images\icon\check-icon.png" />
     <Content Include="Images\icon\Flag\China-Flag-icon.png" />
@@ -278,6 +283,13 @@
     </Compile>
     <Compile Include="Customer\ContentList.aspx.designer.cs">
       <DependentUpon>ContentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerOrderDetailPrint.aspx.cs">
+      <DependentUpon>CustomerOrderDetailPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerOrderDetailPrint.aspx.designer.cs">
+      <DependentUpon>CustomerOrderDetailPrint.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerTransOnlyList.aspx.cs">
       <DependentUpon>CustomerTransOnlyList.aspx</DependentUpon>
