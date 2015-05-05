@@ -14,6 +14,10 @@
 
         </Triggers>
         <ContentTemplate>
+            <div style ="margin-top:10px;">
+                <h2 style ="color:#318DBF;">Content Managemaent</h2>
+                <hr style="width:100%; text-align:left; margin-top:-15px; background-color :#D1DBE0; height:5px; color: #D1DBE0; border :0;"/>  
+            </div>
             <fieldset style="width: 95%;" hidden>
                 <%--<legend>Content Type
                 </legend>--%>
