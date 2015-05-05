@@ -166,7 +166,7 @@
     //$("[class*='numberFormatNoneDecimal']").blur(function (evt) {
     //    txtWithcomma_onblurnonedecimal(evt);
     //});
-    var isBetween = false;
+    //var isBetween = false;
     $(function () {
         //numberFormat();
         //$('.childliSize').addClass('orange white-text');
@@ -331,11 +331,13 @@
         //    isBetween = true;
 
         for (var i = 0; i < arraySize.length; i++) {
-            var txt = '<div class="col s1 m1 l1 modalItemDiv childliSize"><a id="aSize' + i + '" onclick="selectSize(' + i + ')" class="waves-effect waves-light btn';
+
+            var txt = '<div class="col s1 m1 l1 modalItemDiv childliSize"><a id="aSize' + i + '" data-id="' + arraySize[i].split("^p^")[1] + '" onclick="selectSize(' + i + ')" class="waves-effect waves-light btn';
+            arraySize[i] = arraySize[i].split("^p^")[0];
             if (firstSize == true) {
-                if (isBetween == true) {
-                    chkPrice(arraySize[i])
-                }
+                //if (isBetween == true) {
+                //    chkPrice(arraySize[i])
+                //}
                 txt += ' orange white-text selected';
             }
             else
@@ -352,7 +354,8 @@
             var txt = '<div class="';
 
             if (arrayColor[i].indexOf("ttp:") > 0) {
-                txt += 'col s2 m2 l2 childliColor"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect waves-light btn'
+                txt += 'col s2 m2 l2 childliColor"><a id="aColor' + i + '" data-id="' + arrayColor[i].split("^p^")[1] + '" onclick="selectColor(' + i + ')" class="waves-effect waves-light btn';
+                arrayColor[i] = arrayColor[i].split("^p^")[0];
                 if (firstColor == true) {
                     txt += ' orange white-text selected selectedBorder';
                 }
@@ -363,11 +366,12 @@
             else
                 if (arrayColor[i] != "") {
                     //txt += 'col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColorText(' + i + ')" class="waves-effect waves-light btn';
-                    txt += 'col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" onclick="selectColor(' + i + ')" class="waves-effect waves-light btn';
+                    txt += 'col s1 m1 l1 modalItemDiv childliColor"><a id="aColor' + i + '" data-id="' + arrayColor[i].split("^p^")[1] + '"  onclick="selectColor(' + i + ')" class="waves-effect waves-light btn';
+                    arrayColor[i] = arrayColor[i].split("^p^")[0];
                     if (firstColor == true) {
-                        if (isBetween == true) {
-                            chkPrice(arrayColor[i])
-                        }
+                        //if (isBetween == true) {
+                        //    chkPrice(arrayColor[i])
+                        //}
                         txt += ' orange white-text selected';
                     }
                     else
@@ -384,13 +388,13 @@
         //alert(data.d);
     }
 
-    function chkPrice(e) {
-        var prices = $("#hdPrice").val().split(" - ");
-        if (e.indexOf(prices[0].split(".")[0]) > 0)
-            $("#lblPrice").html(prices[0]);
-        else
-            $("#lblPrice").html(prices[1]);
-    }
+    //function chkPrice(e) {
+    //    var prices = $("#hdPrice").val().split(" - ");
+    //    if (e.indexOf(prices[0].split(".")[0]) > 0)
+    //        $("#lblPrice").html(prices[0]);
+    //    else
+    //        $("#lblPrice").html(prices[1]);
+    //}
 
     function selectColor(e) {
         $('#liColor div a').addClass('white orange-text');
@@ -407,6 +411,8 @@
         else {
             $("#imgpicURL").attr("src", url.replace('30x30', '300x300').replace('40x40', '300x300'));
         }
+        var aid = $('#aColor' + e).data("id");
+        $("#lblPrice").html(aid);
         //if ($("#hdWeb").val() == 1) {
         //$("#imgpicURL").attr("src", url.replace('30x30', '400x400'));
         //}
@@ -419,7 +425,9 @@
         $('#aColor' + e).removeClass('white orange-text');
         $('#aColor' + e).addClass('orange white-text');
         $('#aColor' + e).addClass('selected');
-        chkPrice($('#aColor' + e)[0].innerText);
+        var aid = $('#aColor' + e).data("id");
+        $("#lblPrice").html(aid);
+        //chkPrice($('#aColor' + e)[0].innerText);
     }
 
     function selectSize(e) {
@@ -429,7 +437,9 @@
         $('#aSize' + e).removeClass('white orange-text');
         $('#aSize' + e).addClass('orange white-text');
         $('#aSize' + e).addClass('selected');
-        chkPrice($('#aSize' + e)[0].innerText);
+        var aid = $('#aSize' + e).data("id");
+        $("#lblPrice").html(aid);
+        //chkPrice($('#aSize' + e)[0].innerText);
     }
 
 </script>

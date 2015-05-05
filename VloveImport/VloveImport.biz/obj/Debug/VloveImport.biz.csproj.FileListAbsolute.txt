@@ -89,6 +89,7 @@ D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\HtmlAgilityPack.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.dll
+D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\WebDriver.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\EncrypDLL.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.pdb

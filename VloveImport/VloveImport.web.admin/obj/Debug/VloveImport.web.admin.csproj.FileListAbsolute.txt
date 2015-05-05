@@ -69,6 +69,7 @@ D:\Work\V_I_IMPORT\shop3\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.web.admin.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.web.admin.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\AjaxControlToolkit.dll
+D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\Facebook.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.biz.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.data.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.util.dll
@@ -79,6 +80,7 @@ D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.biz.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.data.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.util.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\AjaxControlToolkit.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\Facebook.xml
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.dal.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\ar\AjaxControlToolkit.resources.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\cs\AjaxControlToolkit.resources.dll
@@ -100,5 +102,3 @@ D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHT\AjaxControlToolkit
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.csprojResolveAssemblyReference.cache
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\Facebook.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\Facebook.xml

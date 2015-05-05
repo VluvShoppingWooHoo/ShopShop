@@ -15,6 +15,30 @@ namespace VloveImport.data
         public string picURL { get; set; }
         public string Price { get; set; }
         public string ProPrice { get; set; }
+        public List<string> _PriceColorList = new List<string>();
+        public List<string> _ProPriceColorList = new List<string>();
+        public List<string> _PriceSizeList = new List<string>();
+        public List<string> _ProPriceSizeList = new List<string>();
+        public List<string> PriceColorList
+        {
+            get { return _PriceColorList; }
+            set { _PriceColorList = value; }
+        }
+        public List<string> ProPriceColorList
+        {
+            get { return _ProPriceColorList; }
+            set { _ProPriceColorList = value; }
+        }
+        public List<string> PriceSizeList
+        {
+            get { return _PriceSizeList; }
+            set { _PriceSizeList = value; }
+        }
+        public List<string> ProPriceSizeList
+        {
+            get { return _ProPriceSizeList; }
+            set { _ProPriceSizeList = value; }
+        }
         public string Color { get; set; }
         public string Size { get; set; }
         public string URL { get; set; }
