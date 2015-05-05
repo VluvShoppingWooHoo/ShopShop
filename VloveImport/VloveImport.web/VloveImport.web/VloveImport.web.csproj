@@ -93,6 +93,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\ContentDetail.aspx" />
     <Content Include="Customer\ContentList.aspx" />
+    <Content Include="Customer\CustomerOrderDetailPrint.aspx" />
     <Content Include="Customer\CustomerTransOnlyList.aspx" />
     <Content Include="Customer\CustomerUploadPIList.aspx" />
     <Content Include="Customer\CustomerUploadPI.aspx" />
@@ -265,6 +266,13 @@
     </Compile>
     <Compile Include="Customer\ContentList.aspx.designer.cs">
       <DependentUpon>ContentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerOrderDetailPrint.aspx.cs">
+      <DependentUpon>CustomerOrderDetailPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerOrderDetailPrint.aspx.designer.cs">
+      <DependentUpon>CustomerOrderDetailPrint.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerTransOnlyList.aspx.cs">
       <DependentUpon>CustomerTransOnlyList.aspx</DependentUpon>
