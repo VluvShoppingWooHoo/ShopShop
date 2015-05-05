@@ -11,7 +11,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-
+            <div style ="margin-top:10px;">
+                <h2 style ="color:#318DBF;">Approve Payment</h2>
+                <hr style="width:100%; text-align:left; margin-top:-15px; background-color :#D1DBE0; height:5px; color: #D1DBE0; border :0;"/>  
+            </div>
             <%--<asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>--%>
 
             <fieldset style="width: 98.5%;">

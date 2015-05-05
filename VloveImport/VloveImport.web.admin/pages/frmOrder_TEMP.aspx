@@ -10,7 +10,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
-
+    <div style ="margin-top:10px;">
+        <h2 style ="color:#318DBF;">Order Managemaent</h2>
+        <hr style="width:100%; text-align:left; margin-top:-15px; background-color :#D1DBE0; height:5px; color: #D1DBE0; border :0;"/>  
+    </div>
     <h3>ORDER DETAIL : <asp:Label ID="lbl_header_detail" Font-Size ="Large" runat="server" Text="" ForeColor ="RED"></asp:Label></h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">

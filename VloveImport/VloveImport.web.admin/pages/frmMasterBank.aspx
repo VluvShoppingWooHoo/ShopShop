@@ -8,6 +8,10 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+            <div style ="margin-top:10px;">
+                <h2 style ="color:#318DBF;">Master Bank</h2>
+                <hr style="width:100%; text-align:left; margin-top:-15px; background-color :#D1DBE0; height:5px; color: #D1DBE0; border :0;"/>  
+            </div>
             <fieldset>
                 <legend>
                     Master Bamk
