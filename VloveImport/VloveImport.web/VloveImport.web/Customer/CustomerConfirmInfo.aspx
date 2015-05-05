@@ -144,11 +144,11 @@
             <div class="row s6 m6 l6 TestBox1">
                 <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
                     name="action" class="btn waves-effect orange waves-light">
-                    Back                                
+                    ย้อนกลับ                                
                 </button>
                 <button id="btnConfirm" runat="server" type="submit" onserverclick="btnConfirm_ServerClick"
                     name="action" class="btn waves-effect orange waves-light">
-                    Confirm                                
+                    ยืนยัน                                
                 </button>
             </div>        
         </div>
