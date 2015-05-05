@@ -40,6 +40,33 @@ namespace VloveImport.web.admin.MasterPage {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
+        /// lblEmpName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpName;
+        
+        /// <summary>
+        /// lblUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUser;
+        
+        /// <summary>
+        /// lblUserGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUserGroup;
+        
+        /// <summary>
         /// ucMenubar1 control.
         /// </summary>
         /// <remarks>

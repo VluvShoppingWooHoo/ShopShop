@@ -18,8 +18,18 @@ namespace VloveImport.web.admin.MasterPage
             {
                 CheckPermission();
                 CheckSessionUser();
+                SetShowUser();
             }
             
+        }
+
+        private void SetShowUser()
+        {
+            AdminUserData Data = new AdminUserData();
+            Data = (AdminUserData)(Session["AdminUser"]);
+            lblEmpName.Text = Data.EMP_NAME + " " + Data.EMP_NAME;
+            lblUser.Text = Data.USERNAME;
+            lblUserGroup.Text = Data.GROUP_NAME;
         }
 
         private void CheckSessionUser()
