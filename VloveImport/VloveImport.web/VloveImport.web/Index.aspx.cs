@@ -311,6 +311,41 @@ namespace VloveImport.web
         #endregion
 
         #region private function
+        private string TranslateToEng(string val)
+        {
+            string result = string.Empty;
+            try
+            {
+                string url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", val, "zh-CN|en");
+                WebClient webClient = new WebClient();
+                webClient.Encoding = System.Text.Encoding.GetEncoding(54936);
+                result = webClient.DownloadString(url);
+                string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
+                selectVal = selectVal.Substring(selectVal.IndexOf(">^ _z ^") + 7, selectVal.IndexOf("^ _zz ^<") - (selectVal.IndexOf(">^ _z ^") + 7));
+                string selectVal2 = string.Empty;
+                do
+                {
+                    if (selectVal.Contains("span"))
+                    {
+                        selectVal2 += selectVal.Substring(0, selectVal.IndexOf("span") + 4);
+                        selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("span", "");
+                        selectVal = selectVal.Substring(selectVal.IndexOf("span") + 4, selectVal.Length - (selectVal.IndexOf("span") + 4));
+                    }
+                    else
+                    {
+                        selectVal2 += selectVal.Substring(selectVal.IndexOf("fff'\">") + 6, selectVal.Length - (selectVal.IndexOf("fff'\">") + 6));
+                        selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("fff'\">", "");
+                        selectVal = selectVal.Substring(selectVal.IndexOf("fff'\">") + 6, selectVal.Length - (selectVal.IndexOf("fff'\">") + 6));
+                    }
+                }
+                while (selectVal.Contains("span") || selectVal.Contains("fff'\">"));
+
+                val = selectVal2.Replace("_ ", "_").Replace(" _", "_").Replace(" _^", "_^").Replace("^_ ", "^_").Replace("^ ", "^").Replace(" ^", "^");
+            }
+            catch (Exception ex) { return string.Empty; }
+            return val;
+        }
+
         IWebDriver driver;
         public ScrapingData Scrap(string url, int web)
         {
@@ -333,6 +368,89 @@ namespace VloveImport.web
                 if (model.ProPrice != "0")
                     model.Price = model.ProPrice;
                 driver.Quit();
+                #region for translate
+                string val = string.Empty;
+                val += "^_z^";
+                val += model.ItemName + "^_b^";
+
+                string[] separators = { "||" };
+                string[] color = model.Color.Split(separators, StringSplitOptions.None);
+                string[] size = model.Size.Split(separators, StringSplitOptions.None);
+                if (color.Count() > 1)
+                {
+                    bool chk = false;
+                    val += "^_c^";
+                    foreach (string item in color)
+                    {
+                        if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
+                        { chk = true; val += item + "||"; }
+                    }
+                    if (chk)
+                        val = val.Remove(val.Length - 2, 2);
+                    val += "^_b^";
+                }
+                if (size.Count() > 1)
+                {
+                    bool chk = false;
+                    val += "^_s^";
+                    foreach (string item in size)
+                    {
+                        if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
+                        { chk = true; val += item + "||"; }
+                    }
+                    if (chk)
+                        val = val.Remove(val.Length - 2, 2);
+                    val += "^_b^";
+                }
+                val += model.ShopName;
+                val += "^_zz^";
+                val = TranslateToEng(val);
+                string[] separators2 = { "^_b^" };
+                string[] result = val.Split(separators2, StringSplitOptions.None);
+                for (int i = 0; i < result.Count(); i++)
+                {
+                    if (i == 0)
+                        model.ItemName = result[i];
+                    else if (result[i].Contains("^_c^"))
+                    {
+                        result[i] = result[i].Remove(0, 4);
+                        if (result[i] != string.Empty)
+                        {
+                            int count = 0;
+                            string col = string.Empty;
+                            for (int j = 0; j < color.Count(); j++)
+                            {
+                                if (!(color[j].Contains(".jpg") || color[j].Contains(".JPG") || color[j].Contains(".png") || color[j].Contains(".PNG") || color[j].Contains(".gif") || color[j].Contains(".GIF")))
+                                { col += result[i].Split(separators, StringSplitOptions.None)[count] + "||"; count++; }
+                                else
+                                { col += color[j] + "||"; }
+                            }
+                            col = col.Remove(col.Length - 2, 2);
+                            model.Color = col;
+                        }
+                    }
+                    else if (result[i].Contains("^_s^"))
+                    {
+                        result[i] = result[i].Remove(0, 4);
+                        if (result[i] != string.Empty)
+                        {
+                            int count = 0;
+                            string siz = string.Empty;
+                            for (int j = 0; j < size.Count(); j++)
+                            {
+                                if (!(size[j].Contains(".jpg") || size[j].Contains(".JPG") || size[j].Contains(".png") || size[j].Contains(".PNG") || size[j].Contains(".gif") || size[j].Contains(".GIF")))
+                                { siz += result[i].Split(separators, StringSplitOptions.None)[count] + "||"; count++; }
+                                else
+                                { siz += size[j] + "||"; }
+                            }
+                            siz = siz.Remove(siz.Length - 2, 2);
+                            model.Size = siz;
+                        }
+                    }
+                    else
+                        model.ShopName = result[i];
+                }
+                #endregion
             }
             catch (Exception ex) { return null; }
             return model;
@@ -395,7 +513,7 @@ namespace VloveImport.web
                                                 price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
-                                            Color += "^p^" + price;
+                                            Color += "^_p^" + price;
                                             Color += "||";
                                         }
                                         Color = Color.Remove(Color.Length - 2, 2);
@@ -418,7 +536,7 @@ namespace VloveImport.web
                                                 price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
-                                            Size += "^p^" + price;
+                                            Size += "^_p^" + price;
                                             Size += "||";
                                         }
                                         Size = Size.Remove(Size.Length - 2, 2);
@@ -497,7 +615,7 @@ namespace VloveImport.web
                                                 price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tm-price")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPriceModBox")).FindElement(By.ClassName("tm-price")).Text;
-                                            Color += "^p^" + price;
+                                            Color += "^_p^" + price;
                                             Color += "||";
                                         }
                                         Color = Color.Remove(Color.Length - 2, 2);
@@ -509,7 +627,7 @@ namespace VloveImport.web
                                     try
                                     {
                                         string Size = string.Empty;
-                                        IReadOnlyCollection<IWebElement> elements = driver.FindElement(By.ClassName("J_TSaleProp")).FindElements(By.TagName("li"));
+                                        IReadOnlyCollection<IWebElement> elements = driver.FindElement(By.ClassName("tm-sale-prop")).FindElement(By.XPath("//ul[@data-property='尺码']")).FindElements(By.TagName("li"));
                                         for (int i = 0; i < elements.Count; i++)
                                         {
                                             string price = "0";
@@ -520,7 +638,7 @@ namespace VloveImport.web
                                                 price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tm-price")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPriceModBox")).FindElement(By.ClassName("tm-price")).Text;
-                                            Size += "^p^" + price;
+                                            Size += "^_p^" + price;
                                             Size += "||";
                                         }
                                         Size = Size.Remove(Size.Length - 2, 2);
@@ -529,7 +647,7 @@ namespace VloveImport.web
                                     catch (Exception ex) { model.Size = string.Empty; }
                                     break;
                                 case Constant.ScrapModel.ShopName:
-                                    try { model.ShopName = driver.FindElement(By.ClassName("tb-shop-name")).FindElement(By.TagName("a")).Text; }
+                                    try { model.ShopName = driver.FindElement(By.Id("side-shop-info")).FindElement(By.TagName("a")).Text; }
                                     catch (Exception ex) { model.ShopName = string.Empty; }
                                     break;
                                 default:
@@ -614,7 +732,7 @@ namespace VloveImport.web
                                                 price = model.ProPrice;
                                             else
                                                 price = model.Price;
-                                            Color += "^p^" + price;
+                                            Color += "^_p^" + price;
                                             Color += "||";
                                         }
                                         Color = Color.Remove(Color.Length - 2, 2);
@@ -637,7 +755,7 @@ namespace VloveImport.web
                                                 price = model.ProPrice;
                                             else
                                                 price = model.Price;
-                                            Size += "^p^" + price;
+                                            Size += "^_p^" + price;
                                             Size += "||";
                                         }
                                         Size = Size.Remove(Size.Length - 2, 2);
