@@ -80,6 +80,24 @@ namespace VloveImport.web.admin.pages
             set { ViewState["__VS_ORDER_TYPE"] = value; }
         }
 
+        public double _VS_CUS_BALANCE
+        {
+            get { return Convert.ToDouble(ViewState["__VS_CUS_BALANCE"].ToString()); }
+            set { ViewState["__VS_CUS_BALANCE"] = value; }
+        }
+
+        public int _VS_USER_EMP_ID
+        {
+            get { return Convert.ToInt32(ViewState["__VS_USER_EMP_ID"].ToString()); }
+            set { ViewState["__VS_USER_EMP_ID"] = value; }
+        }
+
+        public int _VS_CUS_ID
+        {
+            get { return Convert.ToInt32(ViewState["__VS_CUS_ID"].ToString()); }
+            set { ViewState["__VS_CUS_ID"] = value; }
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -89,6 +107,7 @@ namespace VloveImport.web.admin.pages
                 AdminUserData Data = new AdminUserData();
                 Data = (AdminUserData)(Session["AdminUser"]);
                 _VS_USER_LOGIN = Data.USERNAME;
+                _VS_USER_EMP_ID = Data.EMP_ID;
 
                 if (_VS_ORDER_ID != "")
                     BindData();
@@ -187,6 +206,9 @@ namespace VloveImport.web.admin.pages
                 lbl_tb1_Customer_Name.Text = dt.Rows[0]["CUS_FULL_NAME"].ToString();
                 lbl_tb1_Customer_Point.Text = dt.Rows[0]["CUS_POINT"].ToString();
                 lbl_tb1_Customer_Telephone.Text = dt.Rows[0]["CUS_TELEPHONE"].ToString() + " " + dt.Rows[0]["CUS_MOBILE"].ToString();
+                
+                _VS_CUS_BALANCE = Convert.ToDouble(dt.Rows[0]["CUS_BALANCE"].ToString());
+                _VS_CUS_ID = Convert.ToInt32(dt.Rows[0]["CUS_ID"].ToString());
             }
         }
 
@@ -371,14 +393,14 @@ namespace VloveImport.web.admin.pages
         protected void ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged(object sender, EventArgs e)
         {
             int STS = Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue);
-            if (STS == 8)
+            if (STS == 10)
             {
                 ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue = "3";
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 trTranCusPrice.Visible = true;
                 trTranCusPrice1.Visible = true;
             }
-            else if (STS >= 6)
+            else if (STS >= 8)
             {
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
                 trTranCusPrice.Visible = false;
@@ -395,13 +417,42 @@ namespace VloveImport.web.admin.pages
 
         protected void btn_detail_update_Click(object sender, EventArgs e)
         {
-            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "8" && (txt_Transport_Cus_Price.Text.Trim() == "" || Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim()) == 0))
+            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
             {
-                ShowMessageBox("Please enter transport customer price", this.Page);
-                return;
+                if (txt_Transport_Cus_Price.Text.Trim() == "" || Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim()) == 0)
+                {
+                    txt_Transport_Cus_Price.Text = "0.00";
+                    //ShowMessageBox("Please enter transport customer price", this.Page);
+                    //return;
+                }
+                double TranCusPrice = Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim());
+                if (TranCusPrice > 0)
+                {
+                    if (_VS_CUS_BALANCE > TranCusPrice)
+                    {
+                        string ResultTran = "";
+                        TransactionData EnTran = new TransactionData();
+                        string Act = "INS_NON_PROD";
+                        AdminBiz AdBizTran = new AdminBiz();
+
+                        EnTran.EMP_ID_APPROVE = Convert.ToInt32(_VS_USER_EMP_ID);
+                        EnTran.TRAN_TYPE = 2;
+                        EnTran.TRAN_TABLE_TYPE = 3;
+                        EnTran.TRAN_STATUS = 2;
+                        EnTran.TRAN_AMOUNT = TranCusPrice;
+                        EnTran.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
+                        EnTran.EMP_REMARK = "ตัดเงินรายการค่าขนส่งขั้นตอนสุดท้าย";
+                        ResultTran = AdBizTran.INS_UPD_TRANSACTION(EnTran, Act);
+                    }
+                    else
+                    {
+                        ShowMessageBox("Customer amount is not enough.Please check again", this.Page);
+                        return;
+                    }
+                }
             }
 
-            if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5"))
+            if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7"))
             {
                 ShowMessageBox("Not available This is because the amount At no extra cost", this.Page);
                 //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
