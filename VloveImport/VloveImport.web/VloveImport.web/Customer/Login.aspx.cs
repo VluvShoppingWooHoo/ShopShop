@@ -31,11 +31,13 @@ namespace VloveImport.web.Customer
             LoginProcess(txtUser.Text, txtPass.Text, 0);
             if (Session["User"] != null)
             {
+                WriteLog(Page.Request.Url.AbsolutePath, "Login", "Pass");
                 if (ViewState["url"] != null && ViewState["url"].ToString() != "")
                     Response.Redirect(ViewState["url"].ToString());
             }
             else
             {
+                WriteLog(Page.Request.Url.AbsolutePath, "Login", "Fail");
                 ShowMessageBox("รหัสผ่านไม่ถูกต้อง");
                 return;
             }
@@ -49,7 +51,7 @@ namespace VloveImport.web.Customer
             Cust = Logon.LogonDBCustomer(UserName, Password, isFB);
             if (Cust != null)
                 Session["User"] = Cust;
-        }
+        }        
 
         [WebMethod]
         public static string fbLogin(string email, string password)
