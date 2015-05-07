@@ -130,7 +130,9 @@
     <Content Include="UserControls\ucEmail.ascx" />
     <Content Include="UserControls\ucImage.ascx" />
     <Content Include="UserControls\ucMenubar.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frmAdminIndex.aspx.cs">

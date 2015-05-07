@@ -124,11 +124,11 @@ namespace VloveImport.web
                 #endregion
                 data.Web = webMode;
                 #region getID
-                string[] a = txt.Split('?');
-                string[] b = a[1].Split('&');
-                data.URL = txt;
                 if (webMode == 1)
                 {
+                    string[] a = txt.Split('?');
+                    string[] b = a[1].Split('&');
+                    data.URL = txt;
                     foreach (string item in b)
                     {
                         if (item.IndexOf("id=") == 0)
@@ -376,7 +376,7 @@ namespace VloveImport.web
                 string[] separators = { "||" };
                 string[] color = model.Color.Split(separators, StringSplitOptions.None);
                 string[] size = model.Size.Split(separators, StringSplitOptions.None);
-                if (color.Count() > 1)
+                if (color.Count() > 0 && color[0] != string.Empty)
                 {
                     bool chk = false;
                     val += "^_c^";
@@ -389,7 +389,7 @@ namespace VloveImport.web
                         val = val.Remove(val.Length - 2, 2);
                     val += "^_b^";
                 }
-                if (size.Count() > 1)
+                if (size.Count() > 0 && size[0] != string.Empty)
                 {
                     bool chk = false;
                     val += "^_s^";
@@ -513,6 +513,10 @@ namespace VloveImport.web
                                                 price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
+
+                                            if (price.Contains("-"))
+                                                price = price.Split('-')[0].Trim();
+
                                             Color += "^_p^" + price;
                                             Color += "||";
                                         }
@@ -536,6 +540,10 @@ namespace VloveImport.web
                                                 price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
+
+                                            if (price.Contains("-"))
+                                                price = price.Split('-')[0].Trim();
+
                                             Size += "^_p^" + price;
                                             Size += "||";
                                         }
@@ -615,6 +623,10 @@ namespace VloveImport.web
                                                 price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tm-price")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPriceModBox")).FindElement(By.ClassName("tm-price")).Text;
+
+                                            if (price.Contains("-"))
+                                                price = price.Split('-')[0].Trim();
+
                                             Color += "^_p^" + price;
                                             Color += "||";
                                         }
@@ -638,6 +650,10 @@ namespace VloveImport.web
                                                 price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tm-price")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPriceModBox")).FindElement(By.ClassName("tm-price")).Text;
+
+                                            if (price.Contains("-"))
+                                                price = price.Split('-')[0].Trim();
+
                                             Size += "^_p^" + price;
                                             Size += "||";
                                         }
@@ -688,21 +704,35 @@ namespace VloveImport.web
                                 case Constant.ScrapModel.Price:
                                     try
                                     {
-                                        IWebElement Eprice = driver.FindElement(By.ClassName("offerdetail_orderingGroup_retailPrice-new"));
-                                        string price = Eprice.FindElement(By.ClassName("unit")).Text;
-                                        model.Price = price;
-                                        //string digit = Eprice.FindElement(By.ClassName("price-fen")).Text;
-                                        //model.Price = price + digit;
+                                        IReadOnlyCollection<IWebElement> eAmount = driver.FindElement(By.Id("mod-detail-price")).FindElement(By.ClassName("amount")).FindElements(By.TagName("td"));
+                                        IReadOnlyCollection<IWebElement> ePrice = driver.FindElement(By.Id("mod-detail-price")).FindElement(By.ClassName("price")).FindElements(By.TagName("td"));
+                                        string amt = string.Empty;
+                                        string prc = string.Empty;
+                                        for (int i = 1; i < eAmount.Count; i++)
+                                        {
+                                            amt += eAmount.ToList()[i].FindElement(By.ClassName("value")).Text + "||";
+                                            prc += ePrice.ToList()[i].FindElement(By.ClassName("value")).Text + "||";
+                                            //model.AmountList.Add(eAmount.ToList()[i].FindElement(By.ClassName("value")).Text);
+                                            //model.PriceList.Add(eAmount.ToList()[i].FindElement(By.ClassName("value")).Text);
+                                            if (i == 1)
+                                                model.Price = ePrice.ToList()[i].FindElement(By.ClassName("value")).Text;
+                                        }
+                                        model.AmountRange = amt.Remove(amt.Length - 2, 2);
+                                        model.PriceRange = prc.Remove(prc.Length - 2, 2);
+                                        //IWebElement Eprice = driver.FindElement(By.ClassName("offerdetail_orderingGroup_retailPrice-new"));
+                                        //string price = Eprice.FindElement(By.ClassName("unit")).Text;
+                                        //model.Price = price;
                                     }
                                     catch (Exception ex) { model.Price = "0"; }
                                     break;
                                 case Constant.ScrapModel.ProPrice:
                                     try
                                     {
-                                        IWebElement Eprice = driver.FindElement(By.ClassName("counter-price"));
-                                        string price = Eprice.FindElement(By.ClassName("price-yen")).Text;
-                                        string digit = Eprice.FindElement(By.ClassName("price-fen")).Text;
-                                        model.ProPrice = price + digit;
+                                        model.ProPrice = "0";
+                                        //IWebElement Eprice = driver.FindElement(By.ClassName("counter-price"));
+                                        //string price = Eprice.FindElement(By.ClassName("price-yen")).Text;
+                                        //string digit = Eprice.FindElement(By.ClassName("price-fen")).Text;
+                                        //model.ProPrice = price + digit;
                                     }
                                     catch (Exception ex) { model.ProPrice = "0"; }
                                     break;

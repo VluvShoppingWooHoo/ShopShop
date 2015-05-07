@@ -142,6 +142,8 @@
     <div id="footer" class="modal-footer" style="max-height:50px; padding:0 5px 0 0;">
         <input type="hidden" id="hdWeb">
         <input type="hidden" id="hdPrice">
+        <input type="hidden" id="hdAmountRange">
+        <input type="hidden" id="hdPriceRange">
         <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
             <i class="mdi-action-shopping-cart NoFont"></i>
         </button>
@@ -281,19 +283,30 @@
             });
         });
 
-        $('#aMinus').on("click", function () {
-            var qty = $('#aQTY').html();
-            if (qty != "1") {
-                qty--;
-                $('#aQTY').html(qty);
+        $("#aQTY").change(function () {
+            if ($("#hdAmountRange").val() != "" && $("#hdAmountRange").val() != null) {
+                var val = parseInt($("#aQTY").val());
+                var amt = $("#hdAmountRange").val().split("||");
+                var prc = $("#hdPriceRange").val().split("||");
+                for (var i = 0; i < amt.length; i++) {
+                    if (amt[i].indexOf('-') > 0) {
+                        var range = amt[i].split("-");
+                        if (val < parseInt(amt[0].split("-")[0])) {
+                            $("#lblPrice").html(prc[0]);
+                            break;
+                        }
+                        else if (parseInt(range[0]) <= val && parseInt(range[1]) >= val) {
+                            $("#lblPrice").html(prc[i]);
+                            break;
+                        }
+                    }
+                    else {
+                        $("#lblPrice").html(prc[i]);
+                        break;
+                    }
+                }
             }
-        })
-
-        $('#aPlus').on("click", function () {
-            var qty = $('#aQTY').html();
-            qty++;
-            $('#aQTY').html(qty);
-        })
+        });
     });
 
     function bindModal(data) {
@@ -302,7 +315,6 @@
         $("#divSize").show();
         $("#divColor").show();
         $("#txtRemark").val('');
-        //$('#aQTY').html('1');
         $('#aQTY').val(1);
         $(".childliSize").remove();
         $(".childliColor").remove();
@@ -318,6 +330,8 @@
         var firstSize = true;
         var firstColor = true;
         $("#hdPrice").val(obj.Price);
+        $("#hdAmountRange").val(obj.AmountRange);
+        $("#hdPriceRange").val(obj.PriceRange);
 
         if (obj.Price.split(" - ").length > 1) {
             var prices = $("#hdPrice").val().split(" - ");
