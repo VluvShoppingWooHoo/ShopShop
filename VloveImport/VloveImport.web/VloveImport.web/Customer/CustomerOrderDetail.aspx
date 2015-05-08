@@ -160,10 +160,10 @@
                 name="action" class="btn waves-effect orange waves-light">
                 ชำระเงิน                                
             </button>&nbsp;&nbsp;
-            <button id="btnPrint" runat="server" type="submit" onserverclick="btnPrint_ServerClick"
+            <%--<button id="btnPrint" runat="server" type="submit" onserverclick="btnPrint_ServerClick"
                 name="action" class="btn waves-effect orange waves-light">
                 พิมพ์                                
-            </button>
+            </button>--%>
         </div>
     </div>
     <div class="row"> 
