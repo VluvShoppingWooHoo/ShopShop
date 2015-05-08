@@ -31,7 +31,7 @@ namespace VloveImport.web.Customer
             LoginProcess(txtUser.Text, txtPass.Text, 0);
             if (Session["User"] != null)
             {
-                WriteLog(Page.Request.Url.AbsolutePath, "Login", "Pass");
+                WriteLog(Page.Request.Url.AbsolutePath, "Login", "Pass --> User : " + txtUser.Text);
                 if (ViewState["url"] != null && ViewState["url"].ToString() != "")
                     Response.Redirect(ViewState["url"].ToString());
             }
