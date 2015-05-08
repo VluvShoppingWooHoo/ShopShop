@@ -37,7 +37,8 @@ namespace VloveImport.web.Customer
             }
             else
             {
-                WriteLog(Page.Request.Url.AbsolutePath, "Login", "Fail");
+                string Desc = "Fail --> User : " + txtUser.Text + "||  Pass : " + txtPass.Text;
+                WriteLog(Page.Request.Url.AbsolutePath, "Login", Desc);
                 ShowMessageBox("รหัสผ่านไม่ถูกต้อง");
                 return;
             }
