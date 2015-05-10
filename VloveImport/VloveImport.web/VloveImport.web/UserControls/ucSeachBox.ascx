@@ -139,7 +139,7 @@
             <div class="col s2"></div>
         </div>
     </div>
-    <div id="footer" class="modal-footer" style="max-height:50px; padding:0 5px 0 0;">
+    <div id="footer" class="modal-footer" style="max-height: 50px; padding: 0 5px 0 0;">
         <input type="hidden" id="hdWeb">
         <input type="hidden" id="hdPrice">
         <input type="hidden" id="hdAmountRange">
@@ -425,8 +425,10 @@
         else {
             $("#imgpicURL").attr("src", url.replace('30x30', '300x300').replace('32x32', '300x300').replace('35x35', '300x300').replace('40x40', '300x300'));
         }
-        var aid = $('#aColor' + e).data("id");
-        $("#lblPrice").html(aid);
+        if ($("#hdAmountRange").val() == "" || $("#hdAmountRange").val() == null) {
+            var aid = $('#aColor' + e).data("id");
+            $("#lblPrice").html(aid);
+        }
         //if ($("#hdWeb").val() == 1) {
         //$("#imgpicURL").attr("src", url.replace('30x30', '400x400'));
         //}
@@ -439,8 +441,10 @@
         $('#aColor' + e).removeClass('white orange-text');
         $('#aColor' + e).addClass('orange white-text');
         $('#aColor' + e).addClass('selected');
-        var aid = $('#aColor' + e).data("id");
-        $("#lblPrice").html(aid);
+        if ($("#hdAmountRange").val() == "" || $("#hdAmountRange").val() == null) {
+            var aid = $('#aColor' + e).data("id");
+            $("#lblPrice").html(aid);
+        }
         //chkPrice($('#aColor' + e)[0].innerText);
     }
 
@@ -451,8 +455,10 @@
         $('#aSize' + e).removeClass('white orange-text');
         $('#aSize' + e).addClass('orange white-text');
         $('#aSize' + e).addClass('selected');
-        var aid = $('#aSize' + e).data("id");
-        $("#lblPrice").html(aid);
+        if ($("#hdAmountRange").val() == "" || $("#hdAmountRange").val() == null) {
+            var aid = $('#aSize' + e).data("id");
+            $("#lblPrice").html(aid);
+        }
         //chkPrice($('#aSize' + e)[0].innerText);
     }
 

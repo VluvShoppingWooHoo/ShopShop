@@ -325,11 +325,15 @@ namespace VloveImport.web
                 string selectVal2 = string.Empty;
                 do
                 {
+                    if (selectVal.IndexOf(">") == 0 || selectVal.IndexOf(">") == 1)
+                        selectVal = selectVal.Substring(0, selectVal.IndexOf(">") + 1);
                     if (selectVal.Contains("span"))
                     {
-                        selectVal2 += selectVal.Substring(0, selectVal.IndexOf("span") + 4);
+                        selectVal2 += selectVal.Substring(0, selectVal.IndexOf("span") + 5);
                         selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("span", "");
-                        selectVal = selectVal.Substring(selectVal.IndexOf("span") + 4, selectVal.Length - (selectVal.IndexOf("span") + 4));
+                        //selectVal = selectVal.Substring(selectVal.IndexOf("span") + 5, selectVal.Length - (selectVal.IndexOf("span") + 4));
+                        //selectVal = selectVal.Substring(selectVal.IndexOf("span") + 5, selectVal.Length - (selectVal.IndexOf(">") + 1));
+                        selectVal = selectVal.Substring((selectVal.IndexOf(">") + 1), selectVal.Length - (selectVal.IndexOf(">") + 1));
                     }
                     else
                     {
@@ -339,8 +343,8 @@ namespace VloveImport.web
                     }
                 }
                 while (selectVal.Contains("span") || selectVal.Contains("fff'\">"));
-
-                val = selectVal2.Replace("_ ", "_").Replace(" _", "_").Replace(" _^", "_^").Replace("^_ ", "^_").Replace("^ ", "^").Replace(" ^", "^");
+                selectVal2 += selectVal;
+                val = selectVal2.Replace("  _p ^", "^_p^").Replace("_ ", "_").Replace(" _", "_").Replace(" _^", "_^").Replace("^_ ", "^_").Replace("^ ", "^").Replace(" ^", "^");
             }
             catch (Exception ex) { return string.Empty; }
             return val;
@@ -365,7 +369,7 @@ namespace VloveImport.web
                 else if (web == Constant.Web.W1688)
                     model = Get1688(driver);
 
-                if (model.ProPrice != "0")
+                if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
                     model.Price = model.ProPrice;
                 driver.Quit();
                 #region for translate
@@ -410,7 +414,10 @@ namespace VloveImport.web
                 for (int i = 0; i < result.Count(); i++)
                 {
                     if (i == 0)
+                    {
                         model.ItemName = result[i];
+                        //model.ItemName.Replace("^", "");
+                    }
                     else if (result[i].Contains("^_c^"))
                     {
                         result[i] = result[i].Remove(0, 4);
@@ -427,6 +434,7 @@ namespace VloveImport.web
                             }
                             col = col.Remove(col.Length - 2, 2);
                             model.Color = col;
+                            //model.Color.Replace("^", "");
                         }
                     }
                     else if (result[i].Contains("^_s^"))
@@ -445,10 +453,14 @@ namespace VloveImport.web
                             }
                             siz = siz.Remove(siz.Length - 2, 2);
                             model.Size = siz;
+                            //model.Size.Replace("^", "");
                         }
                     }
                     else
+                    {
                         model.ShopName = result[i];
+                        //model.ShopName.Replace("^", "");
+                    }
                 }
                 #endregion
             }
@@ -509,7 +521,7 @@ namespace VloveImport.web
                                             else
                                                 Color += elem.Text;
                                             elem.Click();
-                                            if (model.ProPrice != "0")
+                                            if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
                                                 price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
@@ -536,7 +548,7 @@ namespace VloveImport.web
                                             IWebElement elem = elements.ToList()[i].FindElement(By.TagName("a"));
                                             Size += elem.Text;
                                             elem.Click();
-                                            if (model.ProPrice != "0")
+                                            if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
                                                 price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
@@ -619,7 +631,7 @@ namespace VloveImport.web
                                             else
                                                 Color += elem.Text;
                                             elem.Click();
-                                            if (model.ProPrice != "0")
+                                            if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
                                                 price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tm-price")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPriceModBox")).FindElement(By.ClassName("tm-price")).Text;
@@ -646,7 +658,7 @@ namespace VloveImport.web
                                             IWebElement elem = elements.ToList()[i].FindElement(By.TagName("a"));
                                             Size += elem.Text;
                                             elem.Click();
-                                            if (model.ProPrice != "0")
+                                            if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
                                                 price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tm-price")).Text;
                                             else
                                                 price = driver.FindElement(By.Id("J_StrPriceModBox")).FindElement(By.ClassName("tm-price")).Text;
@@ -758,7 +770,7 @@ namespace VloveImport.web
                                             }
                                             catch (Exception ex) { Color += elem.Text; }
 
-                                            if (model.ProPrice != "0")
+                                            if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
                                                 price = model.ProPrice;
                                             else
                                                 price = model.Price;
@@ -781,7 +793,7 @@ namespace VloveImport.web
                                             IWebElement elem = elements.ToList()[i].FindElement(By.ClassName("name"));
                                             Size += elem.Text;
 
-                                            if (model.ProPrice != "0")
+                                            if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
                                                 price = model.ProPrice;
                                             else
                                                 price = model.Price;
