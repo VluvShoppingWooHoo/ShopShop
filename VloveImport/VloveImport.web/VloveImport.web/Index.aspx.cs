@@ -311,43 +311,53 @@ namespace VloveImport.web
         #endregion
 
         #region private function
-        private string TranslateToEng(string val)
+        private List<string> TranslateToEng(List<string> val)
         {
-            string result = string.Empty;
+            List<string> listResult = new List<string>();
             try
             {
-                string url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", val, "zh-CN|en");
                 WebClient webClient = new WebClient();
                 webClient.Encoding = System.Text.Encoding.GetEncoding(54936);
-                result = webClient.DownloadString(url);
-                string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
-                selectVal = selectVal.Substring(selectVal.IndexOf(">^ _z ^") + 7, selectVal.IndexOf("^ _zz ^<") - (selectVal.IndexOf(">^ _z ^") + 7));
-                string selectVal2 = string.Empty;
-                do
+                string url = string.Empty;
+
+                foreach (string item in val)
                 {
-                    if (selectVal.IndexOf(">") == 0 || selectVal.IndexOf(">") == 1)
-                        selectVal = selectVal.Substring(0, selectVal.IndexOf(">") + 1);
-                    if (selectVal.Contains("span"))
-                    {
-                        selectVal2 += selectVal.Substring(0, selectVal.IndexOf("span") + 5);
-                        selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("span", "");
-                        //selectVal = selectVal.Substring(selectVal.IndexOf("span") + 5, selectVal.Length - (selectVal.IndexOf("span") + 4));
-                        //selectVal = selectVal.Substring(selectVal.IndexOf("span") + 5, selectVal.Length - (selectVal.IndexOf(">") + 1));
-                        selectVal = selectVal.Substring((selectVal.IndexOf(">") + 1), selectVal.Length - (selectVal.IndexOf(">") + 1));
-                    }
-                    else
-                    {
-                        selectVal2 += selectVal.Substring(selectVal.IndexOf("fff'\">") + 6, selectVal.Length - (selectVal.IndexOf("fff'\">") + 6));
-                        selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("fff'\">", "");
-                        selectVal = selectVal.Substring(selectVal.IndexOf("fff'\">") + 6, selectVal.Length - (selectVal.IndexOf("fff'\">") + 6));
-                    }
+                    string result = string.Empty;
+                    url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", item, "zh-CN|en");
+                    result = webClient.DownloadString(url);
+                    string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
+                    selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
+                    //string selectVal2 = string.Empty;
+                    //do
+                    //{
+                    //    if (selectVal.IndexOf(">") == 0 || selectVal.IndexOf(">") == 1)
+                    //        selectVal = selectVal.Substring(0, selectVal.IndexOf(">") + 1);
+                    //    if (selectVal.Contains("span"))
+                    //    {
+                    //        selectVal2 += selectVal.Substring(0, selectVal.IndexOf("span") + 5);
+                    //        selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("span", "");
+                    //        selectVal = selectVal.Substring((selectVal.IndexOf(">") + 1), selectVal.Length - (selectVal.IndexOf(">") + 1));
+                    //    }
+                    //    else
+                    //    {
+                    //        selectVal2 += selectVal.Substring(selectVal.IndexOf("fff'\">") + 6, selectVal.Length - (selectVal.IndexOf("fff'\">") + 6));
+                    //        selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("fff'\">", "");
+                    //        selectVal = selectVal.Substring(selectVal.IndexOf("fff'\">") + 6, selectVal.Length - (selectVal.IndexOf("fff'\">") + 6));
+                    //    }
+                    //}
+                    //while (selectVal.Contains("span") || selectVal.Contains("fff'\">"));
+                    //listResult.Add(selectVal2);
+                    selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^");
+                    listResult.Add(selectVal);
                 }
-                while (selectVal.Contains("span") || selectVal.Contains("fff'\">"));
-                selectVal2 += selectVal;
-                val = selectVal2.Replace("  _p ^", "^_p^").Replace("_ ", "_").Replace(" _", "_").Replace(" _^", "_^").Replace("^_ ", "^_").Replace("^ ", "^").Replace(" ^", "^");
+
+                //selectVal = selectVal.Replace(">_zz ^", ">^ _zz ^").Replace("> _zz ^", ">^ _zz ^").Replace(">  _zz ^", ">^ _zz ^");
+                //selectVal = selectVal.Substring(selectVal.IndexOf(">^ _z ^") + 7, selectVal.IndexOf("^ _zz ^") - (selectVal.IndexOf(">^ _z ^") + 7));
+                //selectVal2 += selectVal;
+                //val = selectVal2.Replace("  _p ^", "^_p^").Replace("_ ", "_").Replace(" _", "_").Replace(" _^", "_^").Replace("^_ ", "^_").Replace("^ ", "^").Replace(" ^", "^");
             }
-            catch (Exception ex) { return string.Empty; }
-            return val;
+            catch (Exception ex) { return new List<string>(); }
+            return listResult;
         }
 
         IWebDriver driver;
@@ -372,63 +382,100 @@ namespace VloveImport.web
                 if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
                     model.Price = model.ProPrice;
                 driver.Quit();
+                model.URL = url;
                 #region for translate
-                string val = string.Empty;
-                val += "^_z^";
-                val += model.ItemName + "^_b^";
+                #region v1.
+                //string val = string.Empty;
+                //val += "^_z^";
+                //val += model.ItemName + "^_b^";
 
+                //string[] separators = { "||" };
+                //string[] color = model.Color.Split(separators, StringSplitOptions.None);
+                //string[] size = model.Size.Split(separators, StringSplitOptions.None);
+                //if (color.Count() > 0 && color[0] != string.Empty)
+                //{
+                //    bool chk = false;
+                //    val += "^_c^";
+                //    foreach (string item in color)
+                //    {
+                //        if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
+                //        { chk = true; val += item + "||"; }
+                //    }
+                //    if (chk)
+                //        val = val.Remove(val.Length - 2, 2);
+                //    val += "^_b^";
+                //}
+                //if (size.Count() > 0 && size[0] != string.Empty)
+                //{
+                //    bool chk = false;
+                //    val += "^_s^";
+                //    foreach (string item in size)
+                //    {
+                //        if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
+                //        { chk = true; val += item + "||"; }
+                //    }
+                //    if (chk)
+                //        val = val.Remove(val.Length - 2, 2);
+                //    val += "^_b^";
+                //}
+                //val += model.ShopName;
+                //val += "^_zz^";
+                #endregion
+                #region v2.
+                List<string> val = new List<string>();
+                val.Add("__z__" + model.ItemName + "__zzz__");
                 string[] separators = { "||" };
                 string[] color = model.Color.Split(separators, StringSplitOptions.None);
                 string[] size = model.Size.Split(separators, StringSplitOptions.None);
                 if (color.Count() > 0 && color[0] != string.Empty)
                 {
                     bool chk = false;
-                    val += "^_c^";
+                    string txt = string.Empty;
                     foreach (string item in color)
                     {
                         if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
-                        { chk = true; val += item + "||"; }
+                        { chk = true; txt += item + "||"; }
                     }
                     if (chk)
-                        val = val.Remove(val.Length - 2, 2);
-                    val += "^_b^";
+                        txt = txt.Remove(txt.Length - 2, 2);
+                    val.Add("__z__" + txt + "__zzz__");
                 }
                 if (size.Count() > 0 && size[0] != string.Empty)
                 {
                     bool chk = false;
-                    val += "^_s^";
+                    string txt = string.Empty;
                     foreach (string item in size)
                     {
                         if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
-                        { chk = true; val += item + "||"; }
+                        { chk = true; txt += item + "||"; }
                     }
                     if (chk)
-                        val = val.Remove(val.Length - 2, 2);
-                    val += "^_b^";
+                        txt = txt.Remove(txt.Length - 2, 2);
+                    val.Add("__z__" + txt + "__zzz__");
                 }
-                val += model.ShopName;
-                val += "^_zz^";
+                val.Add("__z__" + model.ShopName + "__zzz__");
+                #endregion
                 val = TranslateToEng(val);
-                string[] separators2 = { "^_b^" };
-                string[] result = val.Split(separators2, StringSplitOptions.None);
-                for (int i = 0; i < result.Count(); i++)
+                //string[] separators2 = { "^_b^" };
+                //string[] result = val.Split(separators2, StringSplitOptions.None);
+                for (int i = 0; i < val.Count(); i++)
                 {
+                    val[i] = val[i].Replace("__z__", "").Replace("__zzz__" , "");
                     if (i == 0)
                     {
-                        model.ItemName = result[i];
+                        model.ItemName = val[i];
                         //model.ItemName.Replace("^", "");
                     }
-                    else if (result[i].Contains("^_c^"))
+                    else if (i == 1)
                     {
-                        result[i] = result[i].Remove(0, 4);
-                        if (result[i] != string.Empty)
+                        if (val[i] != string.Empty)
                         {
                             int count = 0;
                             string col = string.Empty;
                             for (int j = 0; j < color.Count(); j++)
                             {
                                 if (!(color[j].Contains(".jpg") || color[j].Contains(".JPG") || color[j].Contains(".png") || color[j].Contains(".PNG") || color[j].Contains(".gif") || color[j].Contains(".GIF")))
-                                { col += result[i].Split(separators, StringSplitOptions.None)[count] + "||"; count++; }
+                                { col += val[i].Split(separators, StringSplitOptions.None)[count].Trim() + "||"; count++; }
                                 else
                                 { col += color[j] + "||"; }
                             }
@@ -437,17 +484,16 @@ namespace VloveImport.web
                             //model.Color.Replace("^", "");
                         }
                     }
-                    else if (result[i].Contains("^_s^"))
+                    else if (i == 2)
                     {
-                        result[i] = result[i].Remove(0, 4);
-                        if (result[i] != string.Empty)
+                        if (val[i] != string.Empty)
                         {
                             int count = 0;
                             string siz = string.Empty;
                             for (int j = 0; j < size.Count(); j++)
                             {
                                 if (!(size[j].Contains(".jpg") || size[j].Contains(".JPG") || size[j].Contains(".png") || size[j].Contains(".PNG") || size[j].Contains(".gif") || size[j].Contains(".GIF")))
-                                { siz += result[i].Split(separators, StringSplitOptions.None)[count] + "||"; count++; }
+                                { siz += val[i].Split(separators, StringSplitOptions.None)[count].Trim() + "||"; count++; }
                                 else
                                 { siz += size[j] + "||"; }
                             }
@@ -458,7 +504,7 @@ namespace VloveImport.web
                     }
                     else
                     {
-                        model.ShopName = result[i];
+                        model.ShopName = val[i];
                         //model.ShopName.Replace("^", "");
                     }
                 }
