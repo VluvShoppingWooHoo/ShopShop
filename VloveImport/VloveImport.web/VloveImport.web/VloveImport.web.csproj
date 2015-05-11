@@ -49,17 +49,11 @@
     <Reference Include="Facebook">
       <HintPath>..\..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="Ionic.Zip">
-      <HintPath>..\..\packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Ionic.Zip.dll</HintPath>
-    </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\packages\iTextSharp.5.5.5\lib\itextsharp.dll</HintPath>
+      <HintPath>..\..\packages\iTextSharp.5.5.6\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium">
       <HintPath>..\..\packages\Selenium.WebDriverBackedSelenium.2.45.0\lib\net40\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
@@ -84,7 +78,7 @@
       <HintPath>..\..\packages\Selenium.RC.2.45.0\lib\net40\ThoughtWorks.Selenium.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
-      <HintPath>..\..\packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\WebDriver.dll</HintPath>
+      <HintPath>..\..\packages\Selenium.WebDriver.ASPNET5.Beta.2.44.0\lib\net40\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver.Support">
       <HintPath>..\..\packages\Selenium.Support.2.45.0\lib\net40\WebDriver.Support.dll</HintPath>
