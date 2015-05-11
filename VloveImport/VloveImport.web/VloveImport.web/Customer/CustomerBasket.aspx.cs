@@ -71,11 +71,11 @@ namespace VloveImport.web.Customer
                     return;
                 }
 
-                if (dtSelected.Rows.Count > 10)
-                {
-                    ShowMessageBox("สั่งซื้อได้ไม่เกิน 10 รายการต่อ 1 ใบสั่งซื้อ");
-                    return;
-                }
+                //if (dtSelected.Rows.Count > 10)
+                //{
+                //    ShowMessageBox("สั่งซื้อได้ไม่เกิน 10 รายการต่อ 1 ใบสั่งซื้อ");
+                //    return;
+                //}
 
                 double Price = 0, Amount = 0, Total = 0;
                 foreach (DataRow dr in dtSelected.Rows)
@@ -213,11 +213,11 @@ namespace VloveImport.web.Customer
                     return;
                 }
 
-                if (dtSelected.Rows.Count > 10)
-                {
-                    ShowMessageBox("สั่งซื้อได้ไม่เกิน 10 รายการต่อ 1 ใบสั่งซื้อ");
-                    return;
-                }
+                //if (dtSelected.Rows.Count > 10)
+                //{
+                //    ShowMessageBox("สั่งซื้อได้ไม่เกิน 10 รายการต่อ 1 ใบสั่งซื้อ");
+                //    return;
+                //}
 
                 double Price = 0, Amount = 0, Total = 0;
                 foreach (DataRow dr in dtSelected.Rows)
