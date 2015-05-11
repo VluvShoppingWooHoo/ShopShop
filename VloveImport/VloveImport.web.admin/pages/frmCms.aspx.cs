@@ -146,7 +146,8 @@ namespace VloveImport.web.admin.pages
 
                     data = sc.Handle(txt, webMode);
                     #endregion
-                    cd.ContentDetail = data.picURL + "|" + data.ItemName.Replace("|", "_") + "|" + txtURL.Text;
+                    cd.ContentDetail = data.picURL == null ? "" : data.picURL + "|" 
+                        + data.ItemName == null ? "" : data.ItemName.Replace("|", "_") + "|" + txtURL.Text;
                 }
                 cd.ContentType = hdfContentType.Value;
 
