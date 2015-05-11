@@ -101,7 +101,7 @@
                         name="action" class="btn waves-effect orange waves-light">
                         Order                                
                     </button>--%>
-                    <asp:ImageButton ID="imbOrder" runat="server" ImageUrl="~/Images/btn/สั่งสินค้า.gif"
+                    <asp:ImageButton ID="imbOrder" runat="server" ImageUrl="~/Images/btn/Order.gif"
                         OnClick="imbOrder_Click" />
                     <%--<button type="button" class="btn waves-effect orange waves-light" name="action">
                         <asp:Button ID="btnOrder" runat="server" OnClick="btnOrder_Click" Text="Order" />
