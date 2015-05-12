@@ -50,10 +50,12 @@
                         <br />
                         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 20%;">            
                             <div style ="margin-left:10px;">
-                                <button id="btnConfirm" type="button" class="btn waves-effect orange waves-light" 
+                                <%--<button id="btnConfirm" type="button" class="btn waves-effect orange waves-light" 
                                     name="action">
                                     ยืนยัน
-                                </button>
+                                </button>--%>
+                                <asp:ImageButton ID="imbConfirm" runat="server" ImageUrl="~/Images/btn/confirm.gif"
+                                    OnClick="imbConfirm_Click" />
                             </div>
                         </div>
                     </div>                      
@@ -63,9 +65,9 @@
                 </div>
                 <div class="col s12 m12 l12">
                     <span class="FontHeader2 orange-text bold">รหัสผ่านสำหรับถอนเงิน</span> <br />
-                    <asp:LinkButton ID="lbReset" runat="server" Text="รีเซตรหัสผ่านสำหรับการชำระเงิน"
+                    <%--<asp:LinkButton ID="lbReset" runat="server" Text="รีเซตรหัสผ่านสำหรับการชำระเงิน"
                         CssClass="blue-grey-text textUnderline" OnClick="lbReset_Click"></asp:LinkButton>
-                    <br />
+                    <br />--%>
                     <div id="withdraw" class="col s7 m7 l7">
                         <br />
                         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
@@ -77,6 +79,7 @@
                         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
                             <div style ="margin-left:10px;">
                                 <asp:TextBox ID="txtW_OldPass" runat="server" TextMode="Password"></asp:TextBox>
+                                <asp:Label ID="lb1" runat="server" Text="ยังไม่เคยบันทึกรหัสผ่าน" Visible="false"></asp:Label>
                             </div>
                         </div>
                         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:30%; height:50px;">
@@ -104,10 +107,12 @@
                         <br />
                         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 20%;">            
                             <div class="col" style ="margin-left:10px;">
-                                <button id="btnW_Confirm" type="button" class="btn waves-effect orange waves-light" 
+                                <%--<button id="btnW_Confirm" type="button" class="btn waves-effect orange waves-light" 
                                     name="action">
                                     ยืนยัน
-                                </button>
+                                </button>--%>
+                                <asp:ImageButton ID="imbW_Confirm" runat="server" ImageUrl="~/Images/btn/confirm.gif"
+                                    OnClick="imbW_Confirm_Click" />
                             </div>
                         </div>
                     </div>
@@ -133,86 +138,7 @@
 
     <script type="text/javascript"> 
         $(function () {
-            SetFadeout();               
-
-        $('#btnConfirm').click(function () {
-
-            var old = $('#<%= txtOldPass.ClientID %>').val();
-            var newp = $('#<%= txtNewPass.ClientID %>').val();
-            var conf = $('#<%= txtConfirm.ClientID %>').val();
-            
-            if (newp != conf) {
-                alert("รหัสผ่านใหม่ไม่ถูกต้อง");
-                return;
-            }
-
-            if (old == newp) {
-                alert("รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสผ่านเดิม");
-                return;
-            }
-            
-            var param = {
-                "old": old, "newp": newp, "conf": conf
-            };
-            $.ajax({
-                type: 'POST',
-                url: "../Customer/CustomerChangePassword.aspx/btnConfirm",
-                data: JSON.stringify(param),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (data) {
-                    var spl = data.d.replace(/"/g, '').split('|')
-                    if (spl[0] == 1) //1 = Success, 2 = Error
-                        window.location = spl[1];
-                    else
-                        alert(spl[1]);
-                  
-                },
-                error: function (err) {
-                    alert('Something wrong, please contact admin.');
-                }
-            });
-
-        });
-
-        $('#btnW_Confirm').click(function () {
-
-            var Wold = $('#<%= txtW_OldPass.ClientID %>').val();
-            var Wnewp = $('#<%= txtW_NewPass.ClientID %>').val();
-            var Wconf = $('#<%= txtW_Confirm.ClientID %>').val();
-
-            if (Wnewp != Wconf) {
-                alert("รหัสผ่านใหม่ไม่ถูกต้อง");
-                return;
-            }
-
-            if (Wold == Wnewp) {
-                alert("รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสผ่านเดิม");
-                return;
-            }
-
-            var param = {
-                "old": Wold, "newp": Wnewp, "conf": Wconf
-            };
-            $.ajax({
-                type: 'POST',
-                url: "../Customer/CustomerChangePassword.aspx/btnW_Confirm",
-                data: JSON.stringify(param),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (data) {
-                    var spl = data.d.replace(/"/g, '').split('|')
-                    if (spl[0] == 1) //1 = Success, 2 = Error
-                        window.location = spl[1];
-                    else
-                        alert(spl[1]);
-
-                },
-                error: function (err) {
-                    alert('Something wrong, please contact admin.');
-                }
-            });
-        });
-    });
+            SetFadeout();                       
+        });       
     </script>
 </asp:Content>

@@ -192,22 +192,34 @@ namespace VloveImport.web.Customer
             CheckBox cb;
             HiddenField hd;
             DataTable dtSelected = new DataTable();
+            string strCheck = "";
             if (ViewState["SOURCE"] != null)
             {
-                dtSelected = ((DataTable)ViewState["SOURCE"]).Copy();
+                dtSelected = ((DataTable)ViewState["SOURCE"]).Copy();                
                 foreach (GridViewRow gvr in gvBasket.Rows)
                 {
                     cb = new CheckBox();
                     hd = new HiddenField();
                     cb = (CheckBox)gvr.FindControl("cbItem");
-                    if (cb != null && !cb.Checked)
+                    if (cb != null && cb.Checked)
                     {
                         hd = (HiddenField)gvr.FindControl("hdBK_ID");
-                        dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
+                        strCheck = hd.Value + ",";
+                        
+                        //dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
                     }
                 }
 
-                if (dtSelected.Rows.Count == 0)
+                if (strCheck != "")
+                {
+                    //List
+                    List<DataRow> lstDr = dtSelected.Select("CUS_BK_ID not in (" + strCheck.Remove(strCheck.Length-1) + ")").ToList();
+                    foreach (DataRow dr in lstDr)
+                    {
+                        dtSelected.Rows.Remove(dr);
+                    }
+                }
+                else
                 {
                     ShowMessageBox("กรุณาเลือกรายการที่ต้องการสั่งซื้อ");
                     return;

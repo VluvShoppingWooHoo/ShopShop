@@ -23,88 +23,141 @@ namespace VloveImport.web.Customer
             if (!IsPostBack)
             {
                 CheckSession();    
-                //BindData();
+                BindData();
             }
         }
 
         private void BindData()
         {
-            Int32 Cus_ID = GetCusID();
-            CustomerBiz Biz = new CustomerBiz();
-            DataTable dt = Biz.GET_CUSTOMER_MYACCOUNT(Cus_ID);
-
-            if (dt != null && dt.Rows.Count > 0)
+            if (GetCusSession().Cus_Withdraw_Code == "")
             {
-                //lblWelcome.InnerText = "สวัสดี " + dt.Rows[0]["CUS_NAME"].ToString() + "";
-                //lblBalance.InnerText = "ยอดเงินคงเหลือ " + dt.Rows[0]["test"].ToString() + "บาท";
-                //lblPoint.InnerText = "คะแนนสะสม " + dt.Rows[0]["test"].ToString() + "คะแนน";
+                txtW_OldPass.Visible = false;
+                lb1.Visible = true;
+            }
+            else
+            {
+                txtW_OldPass.Visible = true;
+                lb1.Visible = false;
             }
         }
 
         #region Event
-        [WebMethod]
-        public static string btnConfirm(string old, string newp, string conf)
+        protected void imbConfirm_Click(object sender, ImageClickEventArgs e)
         {
             string PassDB = "", DBDecrypt = "";
-            BasePage bp = new BasePage();
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            string Result = "";
+            string Result = "", old = "", newp = "";
+
+            old = txtOldPass.Text;
+            newp = txtNewPass.Text;
             CustomerBiz biz = new CustomerBiz();
-            DataTable dt = biz.Get_Customer_Profile(bp.GetCusID());
+            DataTable dt = biz.Get_Customer_Profile(GetCusID());
             if (dt != null && dt.Rows.Count > 0)
             {
                 PassDB = dt.Rows[0]["CUS_PASSWORD"].ToString();
-                DBDecrypt = bp.DecryptData(PassDB);
+                DBDecrypt = DecryptData(PassDB);
                 if (old == DBDecrypt)
                 {
-                    Result = biz.CHANGE_PASSWORD(bp.GetCusID(), bp.EncrypData(newp), "LOGIN");
+                    if (txtNewPass.Text != txtConfirm.Text)
+                    {
+                        Result = "รหัสผ่านใหม่กับยืนยันรหัสผ่านไม่ตรงกัน!!!";
+                        ShowMessageBox(Result);
+                        return;
+                    }
+
+                    Result = biz.CHANGE_PASSWORD(GetCusID(), EncrypData(newp), "LOGIN");
                     if (Result == "")
-                        return js.Serialize("1|CustomerChangePassword.aspx#login");
+                    {
+                        LoginProcess(GetCusEmail(), newp, 0);
+                        ShowMessageBox("เปลี่ยนรหัสเข้าสู่ระบบสำเร็จ", Page, "../Index.aspx");                        
+                    }
                     else
-                        return js.Serialize("2|โปรดติดต่อเจ้าหน้าที่");
+                    {
+                        WriteLog(Page.Request.Url.AbsolutePath, "imbConfirm_Click", Result);
+                        ShowMessageBox("กรุณาติดต่อผู้ดูแลระบบ");
+                        return;
+                    }
                 }
                 else
                 {
-                    return js.Serialize("2|รหัสผ่านผิด!!!");
+                    ShowMessageBox("รหัสผ่านเดิมไม่ถูกต้อง!!!");
+                    return;
                 }
             }
             else
             {
-                return js.Serialize("2|Session Timeout");
+                ShowMessageBox("หมดเวลาเชื่อมต่อ กรุณาเข้าสู่ระบบอีกครั้ง", Page, "../Index.aspx");   
             }
-
-            
-            //return js.Serialize(Result);
         }
-        [WebMethod]
-        public static string btnW_Confirm(string old, string newp, string conf)
+
+        protected void imbW_Confirm_Click(object sender, ImageClickEventArgs e)
         {
             string PassDB = "", DBDecrypt = "";
-            BasePage bp = new BasePage();
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            string Result = "";
+            string Result = "", old = "", newp = "";
+
+            old = txtW_OldPass.Text;
+            newp = txtW_NewPass.Text;
             CustomerBiz biz = new CustomerBiz();
-            DataTable dt = biz.Get_Customer_Profile(bp.GetCusID());
+            DataTable dt = biz.Get_Customer_Profile(GetCusID());
             if (dt != null && dt.Rows.Count > 0)
             {
                 PassDB = dt.Rows[0]["CUS_WITHDRAW_CODE"].ToString();
-                DBDecrypt = bp.DecryptData(PassDB);
-                if (old == DBDecrypt)
+                if (PassDB != "")
                 {
-                    Result = biz.CHANGE_PASSWORD(bp.GetCusID(), bp.EncrypData(newp), "WITHDRAW");
-                    if (Result == "")
-                        return js.Serialize("1|CustomerChangePassword.aspx#withdraw");
+                    DBDecrypt = DecryptData(PassDB);
+                    if (old == DBDecrypt)
+                    {
+                        if (txtW_NewPass.Text != txtW_Confirm.Text)
+                        {
+                            Result = "รหัสผ่านใหม่กับยืนยันรหัสผ่านไม่ตรงกัน!!!";
+                            ShowMessageBox(Result);
+                            return;
+                        }
+
+                        Result = biz.CHANGE_PASSWORD(GetCusID(), EncrypData(newp), "WITHDRAW");
+                        if (Result == "")
+                        {
+                            LoginProcess(GetCusEmail(), DecryptData(GetCusSession().Cus_Password), 0);
+                            ShowMessageBox("เปลี่ยนรหัสการถอนเงินสำเร็จ", Page, "../Index.aspx");
+                        }
+                        else
+                        {
+                            WriteLog(Page.Request.Url.AbsolutePath, "imbW_Confirm_Click", Result);
+                            ShowMessageBox("กรุณาติดต่อผู้ดูแลระบบ");
+                            return;
+                        }
+                    }
                     else
-                        return js.Serialize("2|โปรดติดต่อเจ้าหน้าที่");
+                    {
+                        ShowMessageBox("รหัสผ่านเดิมไม่ถูกต้อง!!!");
+                        return;
+                    }
                 }
                 else
                 {
-                    return js.Serialize("2|รหัสผ่านผิด!!!");
+                    if (txtW_NewPass.Text != txtW_Confirm.Text)
+                    {
+                        Result = "รหัสผ่านใหม่กับยืนยันรหัสผ่านไม่ตรงกัน!!!";
+                        ShowMessageBox(Result);
+                        return;
+                    }
+
+                    Result = biz.CHANGE_PASSWORD(GetCusID(), EncrypData(newp), "WITHDRAW");
+                    if (Result == "")
+                    {
+                        LoginProcess(GetCusEmail(), DecryptData(GetCusSession().Cus_Password), 0);
+                        ShowMessageBox("เปลี่ยนรหัสการถอนเงินสำเร็จ", Page, "../Index.aspx");
+                    }
+                    else
+                    {
+                        WriteLog(Page.Request.Url.AbsolutePath, "imbW_Confirm_Click", Result);
+                        ShowMessageBox("กรุณาติดต่อผู้ดูแลระบบ");
+                        return;
+                    }                    
                 }
             }
             else
             {
-                return js.Serialize("2|Session Timeout");
+                ShowMessageBox("หมดเวลาเชื่อมต่อ กรุณาเข้าสู่ระบบอีกครั้ง", Page, "../Index.aspx");   
             }
         }
         #endregion
@@ -113,7 +166,7 @@ namespace VloveImport.web.Customer
         {
             ModalPopupExtender1.Show();
         }
-
+        
         protected void btnConf_Click(object sender, EventArgs e)
         {
             string Body = "", Result = "";
@@ -136,5 +189,14 @@ namespace VloveImport.web.Customer
         {
             ModalPopupExtender1.Hide();
         }
+        
+        protected void LoginProcess(string UserName, string Password, int isFB)
+        {
+            LogonBiz Logon = new LogonBiz();
+            CustomerData Cust = new CustomerData();
+            Cust = Logon.LogonDBCustomer(UserName, Password, isFB);
+            if (Cust != null)
+                Session["User"] = Cust;
+        }  
     }
 }

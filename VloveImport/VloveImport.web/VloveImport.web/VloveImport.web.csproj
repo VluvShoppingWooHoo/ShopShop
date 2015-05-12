@@ -140,6 +140,7 @@
     <Content Include="Customer\TourMarket.aspx" />
     <Content Include="exe\chromedriver.exe" />
     <Content Include="exe\phantomjs.exe" />
+    <Content Include="Images\btn\confirm.gif" />
     <Content Include="Images\btn\Order.gif" />
     <Content Include="Images\demo\logo_all_company.png" />
     <Content Include="Images\icon\check-icon.png" />

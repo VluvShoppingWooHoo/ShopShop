@@ -49,13 +49,13 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtConfirm;
         
         /// <summary>
-        /// lbReset control.
+        /// imbConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbReset;
+        protected global::System.Web.UI.WebControls.ImageButton imbConfirm;
         
         /// <summary>
         /// txtW_OldPass control.
@@ -65,6 +65,15 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtW_OldPass;
+        
+        /// <summary>
+        /// lb1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb1;
         
         /// <summary>
         /// txtW_NewPass control.
@@ -83,6 +92,15 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtW_Confirm;
+        
+        /// <summary>
+        /// imbW_Confirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imbW_Confirm;
         
         /// <summary>
         /// ModalPopupExtender1 control.

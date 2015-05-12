@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -38,9 +39,25 @@ namespace VloveImport.web.Customer
             rdbThai.DataBind();
             rdbThai.SelectedIndex = 0;
 
-            rdbAddress.DataSource = BizCus.GetData_Customer_Address(GetCusID(), 0, 0, "BINDDATA");
-            rdbAddress.DataBind();
-            rdbAddress.SelectedIndex = 0;
+            DataSet ds = BizCus.GetData_Customer_Address(GetCusID(), 0, 0, "BINDDATA");
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+            {
+                rdbAddress.DataSource = ds;
+                rdbAddress.DataBind();
+                rdbAddress.SelectedIndex = 0;
+                lb1.Visible = false;
+            }
+            else
+            {
+                lb1.Visible = true;
+                rdbAddress.Visible = false;
+                int c = rdbThai.Items.Count;
+                for (int i = 1; i < c; i++)
+                {
+                    rdbThai.Items.RemoveAt(c - i);
+                }
+            }
+            
         }
 
         protected void btnOrder_ServerClick(object sender, EventArgs e)

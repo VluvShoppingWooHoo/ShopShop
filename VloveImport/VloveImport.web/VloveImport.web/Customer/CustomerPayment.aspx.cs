@@ -32,30 +32,38 @@ namespace VloveImport.web.Customer
             Int32 Status = 0;
             CustomerBiz biz = new CustomerBiz();
             withdrawDB = GetCusSession().Cus_Withdraw_Code;
-            withdrawDBEn = DecryptData(withdrawDB);
-            pwd = txtPass.Text;
-            if (withdrawDBEn == pwd)
+            if (withdrawDB != "")
             {
-                double Bal = lbBalance.Text == "" ? 0 : Convert.ToDouble(lbBalance.Text);
-                double Tol = lbTotalAmount.Text == "" ? 0 : Convert.ToDouble(lbTotalAmount.Text);
-                if (Bal > Tol)
+                withdrawDBEn = DecryptData(withdrawDB);
+                pwd = txtPass.Text;
+                if (withdrawDBEn == pwd)
                 {
-                    if (ViewState["ORDER_STATUS"] != null)
-                        Status = Convert.ToInt32(ViewState["ORDER_STATUS"].ToString());
+                    double Bal = lbBalance.Text == "" ? 0 : Convert.ToDouble(lbBalance.Text);
+                    double Tol = lbTotalAmount.Text == "" ? 0 : Convert.ToDouble(lbTotalAmount.Text);
+                    if (Bal > Tol)
+                    {
+                        if (ViewState["ORDER_STATUS"] != null)
+                            Status = Convert.ToInt32(ViewState["ORDER_STATUS"].ToString());
 
-                    Status = Status == 8 ? Status : Status + 1;
+                        Status = Status == 8 ? Status : Status + 1;
 
-                    TransactionData data = GetDataTran();
-                    string Result = biz.INS_UPD_TRANSACTION(data, "INS", Status);
+                        TransactionData data = GetDataTran();
+                        string Result = biz.INS_UPD_TRANSACTION(data, "INS", Status);
 
-                    Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
+                        Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
+                    }
+                    else
+                        ShowMessageBox("เงินในบัญชีไม่พอ กรุณาเติมเงินก่อนค่ะ");
                 }
                 else
-                    ShowMessageBox("เงินในบัญชีไม่พอ กรุณาเติมเงินก่อนค่ะ");
+                {
+                    ShowMessageBox("รหัสผ่านการชำระเงินไม่ถูกต้อง");
+                    return;
+                }
             }
             else
             {
-                ShowMessageBox("รหัสผ่านการชำระเงินไม่ถูกต้อง");
+                ShowMessageBox("ยังไม่ทำการตั้งรหัสผ่านการชำระเงิน กรุณาตั้งรหัสผ่านการชำระเงินก่อน");
                 return;
             }
         } 

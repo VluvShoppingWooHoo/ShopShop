@@ -24,12 +24,13 @@
                 
                         <br />
                         <div id="divAddress" class="divAddress" runat="server">
-                            3. เลือกที่อยู่ในการจัดส่ง
-                            <br />
+                            3. เลือกที่อยู่ในการจัดส่ง                            
+                            <br />                            
                             <asp:RadioButtonList ID="rdbAddress" runat="server" DataTextField="ADDRESS_FULL" DataValueField="CUS_ADD_ID">
                             </asp:RadioButtonList>
                         </div>
-
+                        <asp:Label ID="lb1" runat="server" Text="ไม่มีการระบุที่อยู่ไว้ในระบบ" Visible="false"></asp:Label>
+                        <br />
                         <br />
                         <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
                             name="action" class="btn waves-effect orange waves-light">
