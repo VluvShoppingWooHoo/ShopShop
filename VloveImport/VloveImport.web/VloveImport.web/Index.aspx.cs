@@ -21,6 +21,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support;
 using System.Reflection;
+using System.Text.RegularExpressions;
 //using SimpleBrowser;
 //using OpenQA.Selenium.PhantomJS;
 //using OpenQA.Selenium;
@@ -427,10 +428,10 @@ namespace VloveImport.web
                 string[] separators = { "||" };
                 string[] color = model.Color.Split(separators, StringSplitOptions.None);
                 string[] size = model.Size.Split(separators, StringSplitOptions.None);
+                string txt = string.Empty;
                 if (color.Count() > 0 && color[0] != string.Empty)
                 {
                     bool chk = false;
-                    string txt = string.Empty;
                     foreach (string item in color)
                     {
                         if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
@@ -438,12 +439,13 @@ namespace VloveImport.web
                     }
                     if (chk)
                         txt = txt.Remove(txt.Length - 2, 2);
-                    val.Add("__z__" + txt + "__zzz__");
+                    //txt = RemoveSpecialCharacters(txt);
                 }
+                val.Add("__z__" + txt + "__zzz__");
                 if (size.Count() > 0 && size[0] != string.Empty)
                 {
                     bool chk = false;
-                    string txt = string.Empty;
+                    txt = string.Empty;
                     foreach (string item in size)
                     {
                         if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
@@ -451,8 +453,9 @@ namespace VloveImport.web
                     }
                     if (chk)
                         txt = txt.Remove(txt.Length - 2, 2);
-                    val.Add("__z__" + txt + "__zzz__");
+                    //txt = RemoveSpecialCharacters(txt);
                 }
+                val.Add("__z__" + txt + "__zzz__");
                 val.Add("__z__" + model.ShopName + "__zzz__");
                 #endregion
                 val = TranslateToEng(val);
@@ -460,7 +463,7 @@ namespace VloveImport.web
                 //string[] result = val.Split(separators2, StringSplitOptions.None);
                 for (int i = 0; i < val.Count(); i++)
                 {
-                    val[i] = val[i].Replace("__z__", "").Replace("__zzz__" , "");
+                    val[i] = val[i].Replace("__z__", "").Replace("__zzz__", "");
                     if (i == 0)
                     {
                         model.ItemName = val[i];
@@ -554,29 +557,38 @@ namespace VloveImport.web
                                         IReadOnlyCollection<IWebElement> elements = driver.FindElement(By.ClassName("J_Prop_Color")).FindElement(By.ClassName("J_TSaleProp")).FindElements(By.TagName("li"));
                                         for (int i = 0; i < elements.Count; i++)
                                         {
-                                            int start = 0, end = 0;
-                                            string price = "0";
-                                            IWebElement elem = elements.ToList()[i].FindElement(By.TagName("a"));
-                                            string val = elem.GetAttribute("style").ToString().Trim();
-                                            if (val.Contains("background-image"))
+                                            try
                                             {
-                                                start = val.IndexOf('(') + 1;
-                                                end = val.IndexOf(')');
-                                                Color += val.Substring(start, (end - start));
+                                                int start = 0, end = 0;
+                                                string price = "0";
+                                                string c = Color;
+                                                IWebElement elem = elements.ToList()[i].FindElement(By.TagName("a"));
+                                                elem.Click();
+                                                string val = elem.GetAttribute("style").ToString().Trim();
+                                                if (val.Contains("background-image"))
+                                                {
+                                                    start = val.IndexOf('(') + 1;
+                                                    end = val.IndexOf(')');
+                                                    Color += val.Substring(start, (end - start));
+                                                }
+                                                else
+                                                    Color += elem.Text;
+
+                                                if (c != Color)
+                                                {
+                                                    if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
+                                                        price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
+                                                    else
+                                                        price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
+
+                                                    if (price.Contains("-"))
+                                                        price = price.Split('-')[0].Trim();
+
+                                                    Color += "^_p^" + price;
+                                                    Color += "||";
+                                                }
                                             }
-                                            else
-                                                Color += elem.Text;
-                                            elem.Click();
-                                            if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
-                                                price = driver.FindElement(By.Id("J_PromoPriceNum")).Text;
-                                            else
-                                                price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
-
-                                            if (price.Contains("-"))
-                                                price = price.Split('-')[0].Trim();
-
-                                            Color += "^_p^" + price;
-                                            Color += "||";
+                                            catch (Exception ex) { }
                                         }
                                         Color = Color.Remove(Color.Length - 2, 2);
                                         model.Color = Color;
@@ -664,29 +676,38 @@ namespace VloveImport.web
                                         IReadOnlyCollection<IWebElement> elements = driver.FindElement(By.ClassName("tb-img")).FindElements(By.TagName("li"));
                                         for (int i = 0; i < elements.Count; i++)
                                         {
-                                            int start = 0, end = 0;
-                                            string price = "0";
-                                            IWebElement elem = elements.ToList()[i].FindElement(By.TagName("a"));
-                                            string val = elem.GetAttribute("style").ToString().Trim();
-                                            if (val.Contains("background-image"))
+                                            try
                                             {
-                                                start = val.IndexOf('(') + 1;
-                                                end = val.IndexOf(')');
-                                                Color += val.Substring(start, (end - start));
+                                                int start = 0, end = 0;
+                                                string price = "0";
+                                                string c = Color;
+                                                IWebElement elem = elements.ToList()[i].FindElement(By.TagName("a"));
+                                                elem.Click();
+                                                string val = elem.GetAttribute("style").ToString().Trim();
+                                                if (val.Contains("background-image"))
+                                                {
+                                                    start = val.IndexOf('(') + 1;
+                                                    end = val.IndexOf(')');
+                                                    Color += val.Substring(start, (end - start));
+                                                }
+                                                else
+                                                    Color += elem.Text;
+
+                                                if (c != Color)
+                                                {
+                                                    if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
+                                                        price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tm-price")).Text;
+                                                    else
+                                                        price = driver.FindElement(By.Id("J_StrPriceModBox")).FindElement(By.ClassName("tm-price")).Text;
+
+                                                    if (price.Contains("-"))
+                                                        price = price.Split('-')[0].Trim();
+
+                                                    Color += "^_p^" + price;
+                                                    Color += "||";
+                                                }
                                             }
-                                            else
-                                                Color += elem.Text;
-                                            elem.Click();
-                                            if (model.ProPrice != "0" && (model.ProPrice != string.Empty))
-                                                price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tm-price")).Text;
-                                            else
-                                                price = driver.FindElement(By.Id("J_StrPriceModBox")).FindElement(By.ClassName("tm-price")).Text;
-
-                                            if (price.Contains("-"))
-                                                price = price.Split('-')[0].Trim();
-
-                                            Color += "^_p^" + price;
-                                            Color += "||";
+                                            catch (Exception ex) { }
                                         }
                                         Color = Color.Remove(Color.Length - 2, 2);
                                         model.Color = Color;
@@ -864,6 +885,10 @@ namespace VloveImport.web
             }
             catch (Exception ex) { return null; }
             return model;
+        }
+        public string RemoveSpecialCharacters(string str)
+        {
+            return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
         }
         //private string GetSizeOrColor1688(string txt)
         //{
