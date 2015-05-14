@@ -38,25 +38,43 @@
         <div class="col s2 m2 l2">          
             <span class="black-text FontHeader">ที่อยู่สำหรับจัดส่ง</span>
         </div>
-        <div class="col s10 m10 l10">           
+        <div class="col s4 m4 l4">            
             <asp:Label ID="lbAddress" runat="server" CssClass="lbCaption"></asp:Label>
-        </div>       
+        </div>  
+        <div class="col s2 m2 l2">
+            <span class="black-text FontHeader">รวมค่าสินค้า (THB)</span>
+        </div>
+        <div class="col s4 m4 l4">        
+            <asp:Label ID="lbTotalItemPrice" runat="server" CssClass="lbCaption">777.60</asp:Label>
+        </div>      
     </div>
     <div class="row">        
         <div class="col s2 m2 l2">              
             <span class="black-text FontHeader">วิธีการขนส่ง</span><br />            
         </div>
-        <div class="col s10 m10 l10">             
+        <div class="col s4 m4 l4">              
             <asp:Label ID="lbOrderTransport" runat="server" CssClass="lbCaption"></asp:Label>
         </div>     
+        <div class="col s2 m2 l2">
+            <span class="black-text FontHeader">รวมค่าขนส่ง (THB)</span>
+        </div>
+        <div class="col s4 m4 l4">        
+            <asp:Label ID="Label2" runat="server" CssClass="lbCaption">&nbsp;&nbsp;77.76</asp:Label>
+        </div> 
     </div>
     <div class="row">        
         <div class="col s2 m2 l2">              
             <span class="black-text FontHeader">สถานะใบสั่งซื้อ</span><br />            
         </div>
-        <div class="col s10 m10 l10">             
+        <div class="col s4 m4 l4">             
             <asp:Label ID="lbOrderStatus" runat="server" CssClass="lbCaption"></asp:Label>
-        </div>     
+        </div>   
+        <div class="col s2 m2 l2">
+            <asp:Label ID="lbPay" runat="server" CssClass="black-text FontHeader">คืนเงิน (THB)</asp:Label>
+        </div>
+        <div class="col s4 m4 l4">        
+            <asp:Label ID="Label3" runat="server" CssClass="lbCaption">&nbsp;&nbsp;80.00</asp:Label>
+        </div>   
     </div>
     <div class="row">        
         <div class="col s12 m12 l12">           

@@ -58,6 +58,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Label lbAddress;
         
         /// <summary>
+        /// lbTotalItemPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbTotalItemPrice;
+        
+        /// <summary>
         /// lbOrderTransport control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Label lbOrderTransport;
         
         /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
         /// lbOrderStatus control.
         /// </summary>
         /// <remarks>
@@ -74,6 +92,24 @@ namespace VloveImport.web.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbOrderStatus;
+        
+        /// <summary>
+        /// lbPay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPay;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
         /// lbOrderAmount control.
