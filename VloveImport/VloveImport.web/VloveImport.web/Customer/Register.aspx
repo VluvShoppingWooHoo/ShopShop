@@ -77,10 +77,11 @@
         <asp:View ID="V1" runat="server">
             <div class="row">
                 <div class="row s4 m4 l4">
-                    <span class="FontHeader orange-text">สมัครสมาชิกสำเร็จ</span> 
+                    <span class="FontHeader orange-text bold">สมัครสมาชิกสำเร็จ</span> 
                 </div>
                 <div class="row s4 m4 l4">
-                    กรุณาตรวจสอบที่อีเมลล์ของคุณ และยืนยันการสมัครสมาชิก
+                    <br />
+                    <span class="black-text FontHeader">กรุณาตรวจสอบที่อีเมลล์ของคุณ และยืนยันการสมัครสมาชิก</span>
                 </div>
             </div>
         </asp:View>

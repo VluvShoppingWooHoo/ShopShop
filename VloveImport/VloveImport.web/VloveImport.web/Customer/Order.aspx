@@ -876,26 +876,29 @@
                 <br />
                 <br />
                 <br />
-                <br />
                 <span class="bold">2. กรอกข้อมูลให้ครบถ้วน</span>    <br />            
                 <img src="../Images/HowTo/RegisStep2.png" style="height: 450px; width: 550px;" />
-                <br />
-                <br />
                 <br />
                 <br />
                 <span class="bold">1 อีเมล์ สมัครสมาชิกได้เพียง 1 ครั้งเท่านั้น</span>    <br />            
                 <img src="../Images/HowTo/RegisStep3.png" style="height: 70px; width: 500px;" />
                 <br />
                 <br />
-                <span class="bold">อ่านเงื่อนไข และกดยอมรับเงื่อนไขการเป็นสมาชิก</span>    <br />            
+                <span class="bold">3. อ่านเงื่อนไข และกดยอมรับเงื่อนไขการเป็นสมาชิก</span>    <br />            
                 <img src="../Images/HowTo/RegisStep4.png" style="height: 200px; width: 500px;" />
                 <br />
                 <br />
-                <span class="bold">กดปุ่ม Register</span>    <br />            
-                <img src="../Images/HowTo/RegisStep4.png" style="height: 200px; width: 500px;" />
+                <span class="bold">4. กดปุ่ม Register</span>   <br />          
+                <img src="../Images/HowTo/RegisStep5.png" style="height: 58px; width: 145px;" />
                 <br />
                 <br />
-                
+                <span class="bold">เมื่อการสมัครสำเร็จ ระบบจะส่งข้อมูลสมาชิกไปที่อีเมล์ของคุณ</span>   <br />          
+                <img src="../Images/HowTo/RegisStep6.png" style="height: 124px; width: 464px;" />
+                <br />
+                <br />
+                <hr />
+                <br />
+                <span class="bold orange-text">•	การยืนยันการสมัครสมาชิก</span><br />
                 <%--<span class="bold">เงื่อนไขสมาชิกเว็บไซต์  (เนื้อหาเงื่อนไข)</span>
                 <br />
                 
