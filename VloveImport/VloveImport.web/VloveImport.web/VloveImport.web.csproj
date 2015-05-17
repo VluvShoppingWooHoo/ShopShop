@@ -143,6 +143,10 @@
     <Content Include="Images\btn\confirm.gif" />
     <Content Include="Images\btn\Order.gif" />
     <Content Include="Images\demo\logo_all_company.png" />
+    <Content Include="Images\HowTo\RegisStep1.png" />
+    <Content Include="Images\HowTo\RegisStep2.png" />
+    <Content Include="Images\HowTo\RegisStep3.png" />
+    <Content Include="Images\HowTo\RegisStep4.png" />
     <Content Include="Images\icon\check-icon.png" />
     <Content Include="Images\icon\Flag\China-Flag-icon.png" />
     <Content Include="Images\icon\Flag\Thailand-Flag-icon.png" />
@@ -170,7 +174,6 @@
     <Content Include="Images\pic\shop\1688.jpg" />
     <Content Include="Images\pic\shop\taobao.jpg" />
     <Content Include="Images\pic\shop\Tmall.jpg" />
-    <Content Include="Images\HowTo\RegisStep1-1.png" />
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="phantomjs-license.txt" />
