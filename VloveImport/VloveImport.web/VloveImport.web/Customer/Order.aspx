@@ -130,11 +130,36 @@
     <div id="mOR7" class="mContent">
         <div class="row">
             <div class="s12 m12 l12 ContentTitle">
-                การโอนเงินและการเติมเงิน
+                การเติมเงิน
             </div>
         </div>
         <div class="row">
             <div class="s12 m12 l12">
+                span class="bold orange-text">•	การเติมเงินเข้าระบบ</span><br />
+                <br />
+                <span class="bold">1. กดเมนู "กระเป๋าเงินของฉัน" </span>      <br />          
+                <img src="../Images/HowTo/Topup1.png" style="height: 146px; width: 552px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">2. เลือก "เติมเงิน"</span>    <br />            
+                <img src="../Images/HowTo/Topup2.png" style="height: 190px; width: 510px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">3. กรอกข้อมูลให้ครบถ้วน</span>    <br />            
+                <img src="../Images/HowTo/Topup3.png" style="height: 300px; width: 580px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">4. เมื่อกด Submit ระบบจะแสดงข้อความ "เติมเงินสำเร็จ"</span>    <br />            
+                <img src="../Images/HowTo/Topup4.png" style="height: 164px; width: 364px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">เมื่อทาง ผู้ดูแลระบบ ทำการอนุมัติการเติมเงิน เงินจะเข้าสู่ระบบ</span>    <br />  
+                <img src="../Images/HowTo/Topup5.png" style="height: 185px; width: 490px;" />  
+                <br />
             </div>
         </div>
     </div>

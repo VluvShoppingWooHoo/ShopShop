@@ -152,6 +152,11 @@
     <Content Include="Images\HowTo\RegisStep4.png" />
     <Content Include="Images\HowTo\RegisStep5.png" />
     <Content Include="Images\HowTo\RegisStep6.png" />
+    <Content Include="Images\HowTo\Topup1.png" />
+    <Content Include="Images\HowTo\Topup2.png" />
+    <Content Include="Images\HowTo\Topup3.png" />
+    <Content Include="Images\HowTo\Topup4.png" />
+    <Content Include="Images\HowTo\Topup5.png" />
     <Content Include="Images\icon\check-icon.png" />
     <Content Include="Images\icon\Flag\China-Flag-icon.png" />
     <Content Include="Images\icon\Flag\Thailand-Flag-icon.png" />
