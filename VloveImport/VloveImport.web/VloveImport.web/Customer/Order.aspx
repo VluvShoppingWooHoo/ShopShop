@@ -899,6 +899,23 @@
                 <hr />
                 <br />
                 <span class="bold orange-text">•	การยืนยันการสมัครสมาชิก</span><br />
+                <span class="bold black-text indent">ทาง iLoveImport จะส่งอีเมล์ไปยังอีเมล์ของคุณ เพื่อให้คุณทำการยืนยันตัวตน</span><br />
+                <br />
+                <span class="bold">1. เปิดอีเมล์ที่คุณได้ทำการลงทะเบียนไว้</span>      <br />          
+                <img src="../Images/HowTo/ConfirmRegis1.png" style="height: 230px; width: 700px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">2. คลิ๊กที่ URL ด้านล่าง เพื่อทำการยืนยันการเป็นสมาชิก</span>      <br />          
+                <img src="../Images/HowTo/ConfirmRegis2.png" style="height: 230px; width: 700px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">3. iLoveImport จะตรวจสอบและแสดงผลการยืนยัน</span>      <br />  <br />        
+                <img src="../Images/HowTo/ConfirmRegis3.png" style="height: 161px; width: 326px;" />
+                <br />
+                <br />
+                <br />
                 <%--<span class="bold">เงื่อนไขสมาชิกเว็บไซต์  (เนื้อหาเงื่อนไข)</span>
                 <br />
                 

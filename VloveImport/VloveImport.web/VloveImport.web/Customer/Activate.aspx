@@ -7,7 +7,11 @@
             <table>
                 <tr>
                     <td>
-                        ยืนยันสำเร็จ
+                        <span class="black-text bold">ยืนยันสำเร็จ</span>
+                        <br />
+                        <br />
+                        <asp:LinkButton runat="server" Text="กดที่นี่" PostBackUrl="~/Index.aspx"></asp:LinkButton>&nbsp;
+                        <span class="black-text">เพื่อเริ่มสั่งซื้อสินค้า</span>
                     </td>
                 </tr>
             </table>

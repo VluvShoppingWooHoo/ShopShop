@@ -15,6 +15,8 @@ namespace VloveImport.web.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            mView.ActiveViewIndex = 0;
+            return;
             EncrypUtil en = new EncrypUtil();
             string Email = Request.QueryString["e"] == null ? "" : en.DecryptData(Request.QueryString["e"]);
             string Pass = Request.QueryString["c"] == null ? "" : en.DecryptData(Request.QueryString["c"]);

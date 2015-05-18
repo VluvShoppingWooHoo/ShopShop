@@ -143,6 +143,9 @@
     <Content Include="Images\btn\confirm.gif" />
     <Content Include="Images\btn\Order.gif" />
     <Content Include="Images\demo\logo_all_company.png" />
+    <Content Include="Images\HowTo\ConfirmRegis1.png" />
+    <Content Include="Images\HowTo\ConfirmRegis2.png" />
+    <Content Include="Images\HowTo\ConfirmRegis3.png" />
     <Content Include="Images\HowTo\RegisStep1.png" />
     <Content Include="Images\HowTo\RegisStep2.png" />
     <Content Include="Images\HowTo\RegisStep3.png" />
