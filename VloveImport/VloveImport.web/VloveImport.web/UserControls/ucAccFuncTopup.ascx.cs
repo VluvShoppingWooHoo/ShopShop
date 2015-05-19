@@ -161,6 +161,20 @@ namespace VloveImport.web.UserControls
             TransactionData EnTran = new TransactionData();
             try
             {
+                //Check Input               
+                if (txt_tranfer_amount.Text == "")
+                {
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('กรุณาระบุจำนวนเงิน');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                    return;
+                }
+
+                if (dtMaterial.Value == "")
+                {
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('กรุณาระบุวันที่โอนเงิน');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                    return;
+                }
+
+                //Process
                 string Extension = "", FileName = "";
                 EnTran.Cus_ID = bp.GetCusID();
                 if (Ifile.HasFile)
@@ -178,6 +192,11 @@ namespace VloveImport.web.UserControls
                         Ifile.PostedFile.SaveAs(AttPath + "/" + FileName);
                     }
                     EnTran.TRANS_PICURL = FileName;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('กรุณาเลือกไฟล์');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                    return;
                 }
 
                 EnTran.TRAN_TYPE = 1;

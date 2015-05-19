@@ -65,10 +65,6 @@ namespace VloveImport.web.UserControls
                 DataRow Data_Row;
                 Data_Row = ds.Tables[0].NewRow();
 
-                Data_Row["CUS_ACC_NAME_ID"] = -1;
-                Data_Row["CUS_ACC_DETAIL"] = "กรุณาเลือก";
-                ds.Tables[0].Rows.InsertAt(Data_Row, 0);
-
                 ddl_account_name.DataTextField = "CUS_ACC_DETAIL";
                 ddl_account_name.DataValueField = "CUS_ACC_NAME_ID";
 
@@ -119,12 +115,27 @@ namespace VloveImport.web.UserControls
 
         protected void btnWithdraw_Click(object sender, EventArgs e)
         {
+            //Check Input               
+            if (txt_amount.Text == "")
+            {
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('กรุณาระบุจำนวนเงิน');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                return;
+            }
+
+            if (txt_remark.Text == "")
+            {
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('กรุณาระบุหมายเหตุ');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                return;
+            }
+
+            //Init & Set
             string Result = "", withdrawDB = "", withdrawDBEn = "", pwd = "";
             withdrawDB = bp.GetCusSession().Cus_Withdraw_Code;
             withdrawDBEn = bp.DecryptData(withdrawDB);
             pwd = txt_Withraw_Password.Text;
             try
             {
+                //Process
                 if (withdrawDBEn == pwd)
                 {
                     TransactionData EnTran = new TransactionData();
@@ -153,6 +164,8 @@ namespace VloveImport.web.UserControls
                 else
                 {
                     bp.WriteLog("ucWithDraw", "btnWithDraw", Result);
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('รหัสผ่านไม่ถูกต้อง');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                    return;
                 }
             }
             catch (Exception ex)
