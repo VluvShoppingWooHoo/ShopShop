@@ -15,11 +15,13 @@ namespace VloveImport.web.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            mView.ActiveViewIndex = 0;
-            return;
-            EncrypUtil en = new EncrypUtil();
-            string Email = Request.QueryString["e"] == null ? "" : en.DecryptData(Request.QueryString["e"]);
-            string Pass = Request.QueryString["c"] == null ? "" : en.DecryptData(Request.QueryString["c"]);
+            //string ee = EncrypData("yusaki@gmail.com");
+            //string cc = "CHp11H5Dm1sdKq8HiZFjBdgPaYgLDVZH+QQCNv877RA=	";            
+            //string Email = DecryptData(ee);
+            //string Pass = DecryptData(cc);
+
+            string Email = Request.QueryString["e"] == null ? "" : DecryptData(Request.QueryString["e"]);
+            string Pass = Request.QueryString["c"] == null ? "" : DecryptData(Request.QueryString["c"]);
             UpdateActivateCustomer(Email, Pass);
         }
 
@@ -45,7 +47,13 @@ namespace VloveImport.web.Customer
                     return;
                 }
             }
-            
+            else
+            {
+                //WriteLog
+                mView.ActiveViewIndex = 1;
+                return;
+            }
+
             if (Result == "")
             {
                 mView.ActiveViewIndex = 0;
