@@ -17,6 +17,12 @@
                         <asp:TextBox ID="txtName" runat="server" ></asp:TextBox>
                     </div>
                     <div class="row">
+                        <span class="orange-text bold">นามสกุล</span><span class="red-text">&nbsp;*</span>
+                    </div>
+                    <div class="row">
+                        <asp:TextBox ID="txtLastName" runat="server" ></asp:TextBox>
+                    </div>
+                    <div class="row">
                         <span class="orange-text bold">อีเมลล์ สำหรับเข้าใช้ระบบ</span><span class="red-text">&nbsp;*</span>
                     </div>
                     <div class="row">

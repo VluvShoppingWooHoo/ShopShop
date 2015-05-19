@@ -69,6 +69,7 @@ namespace VloveImport.dal
 
                 SqlCommandData.SetParameter("Cus_Code", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Code);
                 SqlCommandData.SetParameter("Cus_Name", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Name);
+                SqlCommandData.SetParameter("Cus_LName", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_LName);
                 SqlCommandData.SetParameter("Cus_Email", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Email);
                 SqlCommandData.SetParameter("Cus_Password", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Password);
                 SqlCommandData.SetParameter("Cus_Mobile", SqlDbType.VarChar, ParameterDirection.Input, Cust.Cus_Mobile);

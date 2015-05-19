@@ -95,6 +95,7 @@ namespace VloveImport.web.Customer
 
                     Cust.Cus_Code = GetNoSeries("CUSTOMER");
                     Cust.Cus_Name = txtName.Text;
+                    Cust.Cus_LName = txtLastName.Text;
                     Cust.Cus_Email = txtEmail.Text;
                     Cust.Cus_Password = en.EncrypData(txtPassword.Text);
                     Cust.Cus_Mobile = txtMobile.Text;
