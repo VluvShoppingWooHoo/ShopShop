@@ -117,18 +117,21 @@
                 <button type="button" class="btn waves-effect orange waves-light" name="action">
                 <asp:Button ID="btnTopup" runat="server" Text="SUBMIT" OnClick="btnTopup_Click" />
                 </button>
-
+                &nbsp;&nbsp;
+                <button type="button" class="btn waves-effect orange waves-light" name="action">
+                <asp:Button ID="btnClear" runat="server" Text="CLEAR" OnClick="btnClear_Click" />
+                </button>
                 <%--<button id="btnSaveUcTopup" type="button" class="btn waves-effect orange waves-light"
                     name="action">
                     SUBMIT
                
                 </button>--%>
-                &nbsp;&nbsp;
-                <button id="btnClear" type="button" class="btn waves-effect orange waves-light"
+                
+                <%--<button id="btnClear" type="button" class="btn waves-effect orange waves-light"
                     name="action">
                     CLEAR     
                
-                </button>
+                </button>--%>
             </div>
         </div>
         <div>
@@ -136,57 +139,5 @@
         </div>
     </ContentTemplate>
 </asp:UpdatePanel>
-<script type="text/javascript">
-    $(function () {
-        $('#filetext').attr("disabled", "disabled")
 
-        $('#btnSaveUcTopup').click(function () {
 
-            var Bank = $('.ddlBank').val();
-            var amt = $('.txt_tranfer_amount').val();
-            var date = $('.dtMaterial').val();
-            var time = $('.ddlH').val() + ':' + $('.ddlM').val() + ':' + $('.ddls').val()
-            var remark = $('.txt_remark').val();
-
-            var param = {
-                "Bank": Bank, "amt": amt, "date": date, "time": time,
-                "remark": remark, "file": $('#hdFile').val()
-            };
-            $.ajax({
-                type: 'POST',
-                url: "../Customer/CustomerMyAccount.aspx/btnTopup",
-                data: JSON.stringify(param),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (data) {
-                    //$('#modalItem').closeModal();
-                    //toast('Item Added.', 5000)
-                    $('.ddlBank').val("1");
-                    $('.txt_tranfer_amount').val("");
-                    $('.dtMaterial').val("");
-                    $('.ddlH').val("00");
-                    $('.ddlM').val("00");
-                    $('.ddls').val("00");
-                    $('.txt_remark').val("");
-                    $('#file').val("");
-                },
-                error: function (err) {
-                    alert('Something wrong, please contact admin.');
-                }
-            });
-        });
-
-        $('#btnClear').click(function () {
-
-            $('.ddlBank').val("1");
-            $('.txt_tranfer_amount').val("");
-            $('.dtMaterial').val("");
-            $('.ddlH').val("00");
-            $('.ddlM').val("00");
-            $('.ddls').val("00");
-            $('.txt_remark').val("");
-            $('#file').val("");
-
-        });
-    });
-</script>

@@ -19,7 +19,7 @@
     <a class="collection-item mOrder" data-id="mOR4">วิธีสั่งซื้อสินค้าสำหรับลูกค้าที่สั่งแบบ ฝากจ่ายเงิน</a>
     <a class="collection-item mOrder" data-id="mOR5">วิธีการฝากส่งสินค้าอย่างเดียว</a>
     <a class="collection-item mOrder" data-id="mOR6">วิธีการสั่งซื้อแบบ Grab Url หน้าเว็บไซด์</a>
-    <a class="collection-item mOrder" data-id="mOR7">การเติมเงิน</a>
+    <a class="collection-item mOrder" data-id="mOR7">วิธีเติมเงินเข้าระบบ</a>
     <a class="collection-item mOrder" data-id="mOR8">รายละเอียดขั้นตอนการชำระเงิน</a>
     <a class="collection-item mOrder" data-id="mOR9">วิธีการชำระเงินและแจ้งยืนยันการชำระเงิน</a>
     <a class="collection-item mOrder" data-id="mOR10">วิธีถอนเงินในระบบ</a>

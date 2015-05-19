@@ -130,12 +130,12 @@
     <div id="mOR7" class="mContent">
         <div class="row">
             <div class="s12 m12 l12 ContentTitle">
-                การเติมเงิน
+                วิธีเติมเงินเข้าระบบ
             </div>
         </div>
         <div class="row">
             <div class="s12 m12 l12">
-                span class="bold orange-text">•	การเติมเงินเข้าระบบ</span><br />
+                span class="bold orange-text">•	การเติมเงิน</span><br />
                 <br />
                 <span class="bold">1. กดเมนู "กระเป๋าเงินของฉัน" </span>      <br />          
                 <img src="../Images/HowTo/Topup1.png" style="height: 146px; width: 552px;" />
@@ -221,6 +221,29 @@
         </div>
         <div class="row">
             <div class="s12 m12 l12">
+                <span class="bold orange-text">•	การถอนเงิน</span><br />
+                <br />
+                <span class="bold">1. กดเมนู "กระเป๋าเงินของฉัน" </span>      <br />          
+                <img src="../Images/HowTo/WithDraw1.png" style="height: 146px; width: 552px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">2. เลือก "ถอนเงิน"</span>    <br />            
+                <img src="../Images/HowTo/WithDraw2.png" style="height: 188px; width: 521px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">3. กรอกข้อมูลให้ครบถ้วน</span>    <br />            
+                <img src="../Images/HowTo/WithDraw3.png" style="height: 260px; width: 580px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">4. เมื่อกด Submit ระบบจะแสดงข้อความ "ส่งคำขอถอนเงินสำเร็จ"</span>    <br />            
+                <img src="../Images/HowTo/WithDraw4.png" style="height: 164px; width: 364px;" />
+                <br />
+                <br />
+                <span class="bold">เมื่อทาง ผู้ดูแลระบบ ทำการอนุมัติการถอนเงินแล้ว เงินจะถูกตัดจากระบบ</span>  
+                <br />
             </div>
         </div>
     </div>

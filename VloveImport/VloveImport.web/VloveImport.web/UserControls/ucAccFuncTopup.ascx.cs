@@ -158,7 +158,6 @@ namespace VloveImport.web.UserControls
         protected void btnTopup_Click(object sender, EventArgs e)
         {
             string Result = "";
-            BasePage bp = new BasePage();
             TransactionData EnTran = new TransactionData();
             try
             {
@@ -202,11 +201,21 @@ namespace VloveImport.web.UserControls
                     //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>window.location.href = '/Customer/CustomerMyAccount.aspx'", false);
                     //Response.Redirect("~/Customer/CustomerMyAccount.aspx");
                 }
+                else
+                {
+                    bp.WriteLog("ucTopup", "btnTopup", Result);
+                }
             }
             catch (Exception ex)
             {
+                bp.WriteLog("ucTopup", "btnTopup", ex.Message);
                 lblERR1.Text = ex.ToString();
             }
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearData();
         }
 
     }

@@ -117,19 +117,54 @@ namespace VloveImport.web.UserControls
             return IsReturn;
         }
 
-        //protected void Button1_Click(object sender, EventArgs e)
-        //{
-        //    if (hd_submit.Value == "S")
-        //    {
-        //        SaveData();
-        //    }
-        //    else
-        //    {
-        //        ClearData();
-        //        ShowMessageBox("1", this.Page, "CustomerMyAccount.aspx#withdraw");
-        //    }
+        protected void btnWithdraw_Click(object sender, EventArgs e)
+        {
+            string Result = "", withdrawDB = "", withdrawDBEn = "", pwd = "";
+            withdrawDB = bp.GetCusSession().Cus_Withdraw_Code;
+            withdrawDBEn = bp.DecryptData(withdrawDB);
+            pwd = txt_Withraw_Password.Text;
+            try
+            {
+                if (withdrawDBEn == pwd)
+                {
+                    TransactionData EnTran = new TransactionData();
+                    EnTran.Cus_ID = bp.GetCusID();
 
-        //}
+                    EnTran.TRAN_TYPE = 2;
+                    EnTran.TRAN_TABLE_TYPE = 2;
+                    EnTran.TRAN_DETAIL = "รายการถอนเงิน";
+
+                    EnTran.TRAN_AMOUNT = Convert.ToDouble(txt_amount.Text);
+                    EnTran.TRAN_REMARK = txt_remark.Text.Trim();
+                    EnTran.Cus_Withdraw_Code = pwd.Trim();
+                    EnTran.TRAN_STATUS = 1;
+                    EnTran.CUS_ACC_NAME_ID = Convert.ToInt32(ddl_account_name.SelectedValue);
+                    EnTran.Create_User = bp.GetCusCode();
+
+                    CustomerBiz CusBiz = new CustomerBiz();
+                    Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
+                    if (Result == string.Empty)
+                    {
+                        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('ส่งคำขอถอนเงินสำเร็จ');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                        //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>window.location.href = '/Customer/CustomerMyAccount.aspx'", false);
+                        //Response.Redirect("~/Customer/CustomerMyAccount.aspx");
+                    }
+                }
+                else
+                {
+                    bp.WriteLog("ucWithDraw", "btnWithDraw", Result);
+                }
+            }
+            catch (Exception ex)
+            {
+                bp.WriteLog("ucWithDraw", "btnWithDraw", ex.Message);
+            }
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearData();
+        }
 
        
         

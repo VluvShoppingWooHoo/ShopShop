@@ -9,7 +9,7 @@
                 ถอนเงิน : ในกรณีกดถอนเงิน เมื่อเจ้าหน้าที่ตรวจสอบผ่านแล้ว ระบบจะตัดเงินคงเหลือทันที
                 <%--หากลูกค้าต้องการชำระบิล กรุณากดเมนู “ชำระเงิน” ที่หน้ารายการสั่งซื้อคะ--%>
                 <br /><br />
-                แต่เงินจะเข้าบัญชีลูกค้าในช่วงระยะเวลาดำเนินการ 7-10 วัน
+                เงินจะเข้าบัญชีลูกค้าในช่วงระยะเวลาดำเนินการ 7-10 วัน
                 <%--การชำระเงิน : เป็นการเลือกชำระเงินในบิลนั้นๆ ระบบจะทำการสั่งซื้อให้หลังจากได้รับยืนยันการชำระบิลจากลูกค้า--%>
             </span>
         </b>
@@ -18,7 +18,7 @@
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
-                <b>เลขที่บัญชีโอนเงินกลับ</b>                                        
+                <b>* เลขที่บัญชีโอนเงินกลับ</b>                                        
             </div>
         </div>
         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
@@ -30,7 +30,7 @@
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
-                <b>จำนวนเงิน</b>                                        
+                <b>* จำนวนเงิน</b>                                        
             </div>
         </div>
         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
@@ -43,7 +43,7 @@
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
-                <b>หมายเหตุ</b>                                        
+                <b>* หมายเหตุ</b>                                        
             </div>
         </div>
         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
@@ -54,7 +54,7 @@
         <div style = "border:2px solid #B7B2AF; background-color:#B7B2AF; vertical-align :middle; width:25%; height:50px;">
             <br />
             <div style ="margin-left:10px;">
-                <span style="color:red; font-weight:600;">รหัสผ่านสำหรับการถอนเงิน</span>
+                <span style="color:red; font-weight:600;">* รหัสผ่านสำหรับการถอนเงิน</span>
             </div>
         </div>
         <div style = "vertical-align :middle; width:50%; height:50px; margin-left: 32%; margin-top: -40px;">            
@@ -66,7 +66,14 @@
         <br /><br />
          <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 20%;">            
             <div style ="margin-left:10px;">
-                <button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light"
+                <button type="button" class="btn waves-effect orange waves-light" name="action">
+                <asp:Button ID="btnWithdraw" runat="server" Text="SUBMIT" OnClick="btnWithdraw_Click" />
+                </button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn waves-effect orange waves-light" name="action">
+                <asp:Button ID="btnClear" runat="server" Text="CLEAR" OnClick="btnClear_Click" />
+                </button>
+                <%--<button id="btnSaveUcWithdraw" type="button" class="btn waves-effect orange waves-light"
                     name="action">
                     SUBMIT               
                 </button>
@@ -74,65 +81,7 @@
                 <button id="Button2" type="button" class="btn waves-effect orange waves-light"
                     name="action" runat="server" onclick="return funsubmit('C');">
                     CLEAR                    
-                </button>
+                </button>--%>
             </div>
         </div>      
-<script type="text/javascript">
-    $(function () {
-        //var newOption = "<option value='" + "1" + "'>Some Text</option>";
-        //$(".ddl_account_name").append(newOption);
-        //var newOption1 = "<option value='" + "2" + "'>Some Text2</option>";
-        //$(".ddl_account_name").append(newOption1);
-        $('#btnSaveUcWithdraw').click(function () {                            
 
-            var accname = $('#<%= ddl_account_name.ClientID %>').val();
-            var amt = $('.txt_amount').val();
-            var remark = $('.txt_remark').val();
-            var pwd = $('.txt_Withraw_Password').val();            
-
-            var param = {
-                "accname": accname, "amt": amt, "remark": remark, "pwd": pwd
-            };
-    
-            var mymoney = $('#<%=lbMymoney.ClientID%>').text();
-            if ($('#<%= ddl_account_name.ClientID %>').val() == "-1") {
-                alert("กรุณาเลือกบัญชี");
-                return;
-            }
-
-            if (amt == "") {
-                alert("กรุณากรอก จำนวนเงิน");
-                return;
-            }
-
-            if (pwd == "") {
-                alert("กรุณากรอก Password");
-                return;
-            }
-
-            $.ajax({
-                type: 'POST',
-                url: "../Customer/CustomerMyAccount.aspx/btnWithdraw",
-                data: JSON.stringify(param),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (data) {
-                    var obj = JSON.parse(data.d);
-                    if (obj.Result == 1) {
-                        alert('ส่งคำขอถอนเงินเรียบร้อยแล้ว');
-                        location.reload();
-                    }
-                    else
-                        alert(obj.ReturnVal);
-                    //$('#modalItem').closeModal();
-                    //toast('Item Added.', 5000)
-                },
-                error: function (err) {
-                    alert('Something wrong, please contact admin.');
-                }
-            });
-            
-            
-        });
-    });
-</script>
