@@ -175,6 +175,14 @@
     <Content Include="Images\HowTo\Topup3.png" />
     <Content Include="Images\HowTo\Topup4.png" />
     <Content Include="Images\HowTo\Topup5.png" />
+    <Content Include="Images\HowTo\Trans1-1.png" />
+    <Content Include="Images\HowTo\Trans1.png" />
+    <Content Include="Images\HowTo\Trans2.png" />
+    <Content Include="Images\HowTo\Trans3.png" />
+    <Content Include="Images\HowTo\Trans4.png" />
+    <Content Include="Images\HowTo\Trans5.png" />
+    <Content Include="Images\HowTo\Trans6.png" />
+    <Content Include="Images\HowTo\Trans7.png" />
     <Content Include="Images\HowTo\WithDraw1.png" />
     <Content Include="Images\HowTo\WithDraw2.png" />
     <Content Include="Images\HowTo\WithDraw3.png" />

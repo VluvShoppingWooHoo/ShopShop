@@ -130,7 +130,33 @@
         </div>
         <div class="row">
             <div class="s12 m12 l12">
-                ระบบจะเป็นการให้สมาชิกแจ้งเลขแทร็กกิ้งทั้งหมดแล้วกดSubmit เข้าระบบให้ทางบริษัททราบ
+                <span class="bold orange-text">• ระบบจะเป็นการให้สมาชิกแจ้งเลขแทร็กกิ้งทั้งหมดแล้วกดSubmit เข้าระบบให้ทางบริษัททราบ</span><br /><%--ช่องทางสมัครสมาชิก --%>
+                <br />
+                <span class="bold">1. ไปที่เมนู "ขนส่งอย่างเดียว" </span>      <br />          
+                <img src="../Images/HowTo/Trans1.png" style="height: 298px; width: 286px;" /> &nbsp;&nbsp;
+                <img src="../Images/HowTo/Trans1-1.png" style="height: 298px; width: 286px;" />
+                <br />
+                <br />
+                <span class="bold">2: กด "สร้างรายการใหม่"</span><br />
+                <img src="../Images/HowTo/Trans2.png" style="height: 88px; width: 367px;" />
+                <br />
+                <br />
+                <span class="bold">3: กรอกรายละเอียดการขนส่ง แล้วกด เพิ่มรายการ</span><br />
+                <img src="../Images/HowTo/Trans3.png" style="height: 322px; width: 530px;" />
+                <br />
+                <br />
+                <span class="bold">เมื่อเพิ่มรายการครบแล้ว กด ดำเนินการต่อ</span><br />
+                <img src="../Images/HowTo/Trans4.png" style="height: 261px; width: 538px;" />
+                <br />
+                <br />
+                <span class="bold">4: เลือกวิธีการขนส่งสินค้า</span><br />
+                <img src="../Images/HowTo/Trans5.png" style="height: 665px; width: 390px;" />
+                <br />
+                <br />
+                <span class="bold">5: ตรวจสอบข้อมูล และทำการยืนยันการขนส่ง</span><br />
+                <img src="../Images/HowTo/Trans6.png" style="height: 530px; width: 485px;" />
+                <br />
+                <br />
             </div>
         </div>
     </div>
