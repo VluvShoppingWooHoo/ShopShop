@@ -320,36 +320,36 @@ namespace VloveImport.web
                 WebClient webClient = new WebClient();
                 webClient.Encoding = System.Text.Encoding.GetEncoding(54936);
                 string url = string.Empty;
-
+                int i = 0;
                 foreach (string item in val)
                 {
                     string result = string.Empty;
-                    url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", item, "zh-CN|en");
-                    result = webClient.DownloadString(url);
-                    string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
-                    selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
-                    //string selectVal2 = string.Empty;
-                    //do
-                    //{
-                    //    if (selectVal.IndexOf(">") == 0 || selectVal.IndexOf(">") == 1)
-                    //        selectVal = selectVal.Substring(0, selectVal.IndexOf(">") + 1);
-                    //    if (selectVal.Contains("span"))
-                    //    {
-                    //        selectVal2 += selectVal.Substring(0, selectVal.IndexOf("span") + 5);
-                    //        selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("span", "");
-                    //        selectVal = selectVal.Substring((selectVal.IndexOf(">") + 1), selectVal.Length - (selectVal.IndexOf(">") + 1));
-                    //    }
-                    //    else
-                    //    {
-                    //        selectVal2 += selectVal.Substring(selectVal.IndexOf("fff'\">") + 6, selectVal.Length - (selectVal.IndexOf("fff'\">") + 6));
-                    //        selectVal2 = selectVal2.Replace("</", "").Replace("<", "").Replace(">", "").Replace("fff'\">", "");
-                    //        selectVal = selectVal.Substring(selectVal.IndexOf("fff'\">") + 6, selectVal.Length - (selectVal.IndexOf("fff'\">") + 6));
-                    //    }
-                    //}
-                    //while (selectVal.Contains("span") || selectVal.Contains("fff'\">"));
-                    //listResult.Add(selectVal2);
-                    selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^");
-                    listResult.Add(selectVal);
+                    string[] separators = { "||" };
+                    if (i == 1 || i == 2)
+                    {
+                        string strloop = string.Empty;
+                        foreach (string txt in item.Split(separators, StringSplitOptions.None))
+                        {
+                            url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", txt, "zh-CN|en");
+                            result = webClient.DownloadString(url);
+                            string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
+                            selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
+                            selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^");
+                            strloop += selectVal + "||";
+                        }
+                        strloop = strloop.Remove(strloop.Length - 2, 2);
+                        listResult.Add(strloop);
+                    }
+                    else
+                    {
+                        url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", item, "zh-CN|en");
+                        result = webClient.DownloadString(url);
+                        string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
+                        selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
+                        selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"); ;
+                        listResult.Add(selectVal);
+                    }
+                    i++;
                 }
 
                 //selectVal = selectVal.Replace(">_zz ^", ">^ _zz ^").Replace("> _zz ^", ">^ _zz ^").Replace(">  _zz ^", ">^ _zz ^");
@@ -435,13 +435,13 @@ namespace VloveImport.web
                     foreach (string item in color)
                     {
                         if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
-                        { chk = true; txt += item + "||"; }
+                        { chk = true; txt += "__z__" + item + "__zzz__||"; }
                     }
                     if (chk)
                         txt = txt.Remove(txt.Length - 2, 2);
                     //txt = RemoveSpecialCharacters(txt);
                 }
-                val.Add("__z__" + txt + "__zzz__");
+                val.Add(txt);
                 if (size.Count() > 0 && size[0] != string.Empty)
                 {
                     bool chk = false;
@@ -449,13 +449,13 @@ namespace VloveImport.web
                     foreach (string item in size)
                     {
                         if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
-                        { chk = true; txt += item + "||"; }
+                        { chk = true; txt += "__z__" + item + "__zzz__||"; }
                     }
                     if (chk)
                         txt = txt.Remove(txt.Length - 2, 2);
                     //txt = RemoveSpecialCharacters(txt);
                 }
-                val.Add("__z__" + txt + "__zzz__");
+                val.Add(txt);
                 val.Add("__z__" + model.ShopName + "__zzz__");
                 #endregion
                 val = TranslateToEng(val);
