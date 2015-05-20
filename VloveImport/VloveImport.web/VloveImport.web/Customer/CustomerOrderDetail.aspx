@@ -45,7 +45,7 @@
             <span class="black-text FontHeader">รวมค่าสินค้า (THB)</span>
         </div>
         <div class="col s4 m4 l4">        
-            <asp:Label ID="lbTotalItemPrice" runat="server" CssClass="lbCaption">777.60</asp:Label>
+            <asp:Label ID="lbTotalItemPrice" runat="server" CssClass="lbCaption right-align" Width="150px"></asp:Label>
         </div>      
     </div>
     <div class="row">        
@@ -59,7 +59,7 @@
             <span class="black-text FontHeader">รวมค่าขนส่ง (THB)</span>
         </div>
         <div class="col s4 m4 l4">        
-            <asp:Label ID="Label2" runat="server" CssClass="lbCaption">&nbsp;&nbsp;77.76</asp:Label>
+            <asp:Label ID="Label2" runat="server" CssClass="lbCaption right-align" Width="150px"></asp:Label>
         </div> 
     </div>
     <div class="row">        
@@ -70,10 +70,10 @@
             <asp:Label ID="lbOrderStatus" runat="server" CssClass="lbCaption"></asp:Label>
         </div>   
         <div class="col s2 m2 l2">
-            <asp:Label ID="lbPay" runat="server" CssClass="black-text FontHeader">คืนเงิน (THB)</asp:Label>
+            <asp:Label ID="lbPay" runat="server" CssClass="black-text FontHeader"></asp:Label>
         </div>
         <div class="col s4 m4 l4">        
-            <asp:Label ID="Label3" runat="server" CssClass="lbCaption">&nbsp;&nbsp;80.00</asp:Label>
+            <asp:Label ID="Label3" runat="server" CssClass="lbCaption right-align" Width="150px"></asp:Label>
         </div>   
     </div>
     <div class="row">        
