@@ -88,19 +88,37 @@
         <div class="row">
             <div class="s12 m12 l12">
                 การสั่งสินค้าแบบ ฝากจ่ายเงิน คือทางลูกค้าได้ทำการติดต่อร้านค้าเอง และต้องการให้ทางเราโอนเงินเพื่อชำระค่าสินค้าให้กับทางร้านค้า และใช้บริการของทาง i  Love import   ในการขนส่ง<br />
-                <span class="bold">Step 1: ลูกค้า Log in เข้าสู่ระบบ และ เข้าไปที่เมนู "สั่งซื้อสินค้าแบบฝากจ่ายเงิน "และฝากส่ง</span><br />
-                <span class="bold">Step 2:กรอกรายละเอียดใบสั่งซื้อ และข้อมูลเกี่ยวกับร้านค้า</span><br />
+                <span class="bold">1: ไปที่เมนู "ส่งแบบฝากจ่าย"</span><br />
+                <img src="../Images/HowTo/PI1.png" style="height: 289px; width: 286px;" /> &nbsp;&nbsp;
+                <img src="../Images/HowTo/PI1-1.png" style="height: 298px; width: 285px;" />
                 <br />
-                แจ้งก่อนสั่งซื้อ
+                <br />
+                <span class="bold">2: กด "สร้างรายการใหม่"</span><br />
+                <img src="../Images/HowTo/PI2.png" style="height: 88px; width: 367px;" />
+                <br />
+                <br />
+                <span class="bold">3: กรอกรายละเอียดใบสั่งซื้อ และอัพโหลดใบ PI</span><br />
+                <img src="../Images/HowTo/PI3.png" style="height: 378px; width: 619px;" />
+                <br />
+                <br />
+                <span class="bold">4: เลือกวิธีการขนส่งสินค้า</span><br />
+                <img src="../Images/HowTo/PI4.png" style="height: 665px; width: 390px;" />
+                <br />
+                <br />
+                <span class="bold">5: ตรวจสอบข้อมูล และทำการยืนยันการฝากจ่ายสินค้า</span><br />
+                <img src="../Images/HowTo/PI5.png" style="height: 646px; width: 545px;" />
+                <br />
+                <br />
+                <span class="bold">ระบบจะทำการส่งออเดอร์ไปยังเจ้าหน้าที่อัตโนมัติ และทางเจ้าหน้าที่จำดำเนินการติดต่อประสานงาน สั่งซื้อในขั้นตอนต่อไป</span><br />
+                <img src="../Images/HowTo/PI6.png" style="height: 260px; width: 750px;" />
+                <br />
+                <br />
+                <span class="bold red-text">แจ้งก่อนสั่งซื้อ</span>
                 <br />
                 การสั่งซื้อแบบฝากจ่ายเงิน ลุกค้าต้องแจ้งข้อมูลให้ครบถ้วน เพื่อทางเราจะได้ติดต่อทางจีนได้อย่างรวดเร็ว<br />
-                และการสั่งวินค้าแบบฝากจ่ายเงิน ทางเราจะไม่มีบริการเช็คสถานะสินค้า<br />
-                ทุกครั้งที่สั่งซื้อสินค้า ลุกค้าสามารถยื่นคำร้องและแจ้งประเภทสินค้า จำนวนกิโล โดยประมาน ทางเราจะแจ้งที่อยู่โกดังของเราให้ลูกค้าแจ้งทางโรงงานจีนได้เลย<br />
-                หนึ่งออเดอร์/หนึ่งคำยื่น หากมีหลายออเดอร์กรุณาแจ้งและยื่นคำร้องอีกครั้ง<br />
-                <br />
-                <span class="bold">Step 3 : ลูกค้าทำการยืนยันออเดอร์ และกรอกข้อมูลต่างๆให้ครบถ้วน</span><br />
-                <br />
-                <span class="bold">Step 4 : เมื่อลูกค้ากรอกรายละเอียดเรียบร้อยแล้ว กดปุ่ม “ตกลง หรือ submit” เพื่อระบบจะทำการส่งออเดอร์ไปยังเจ้าหน้าที่อัตโนมัติ และทางเจ้าหน้าที่จำดำเนินการติดต่อประสานงาน สั่งซื้อในขั้นตอนต่อไป</span><br />
+                และการสั่งสินค้าแบบฝากจ่ายเงิน ทางเราจะไม่มีบริการเช็คสถานะสินค้า<br />
+                ทุกครั้งที่สั่งซื้อสินค้า ลุกค้าสามารถยื่นคำร้องและแจ้งประเภทสินค้า จำนวนกิโล โดยประมาณ ทางเราจะแจ้งที่อยู่โกดังของเราให้ลูกค้าแจ้งทางโรงงานจีนได้เลย<br />
+                หนึ่งออเดอร์/หนึ่งคำยื่น หากมีหลายออเดอร์กรุณาแจ้งและยื่นคำร้องอีกครั้ง<br />                                
             </div>
         </div>
     </div>
@@ -119,11 +137,55 @@
     <div id="mOR6" class="mContent">
         <div class="row">
             <div class="s12 m12 l12 ContentTitle">
-                วิธีการสั่งซื้อแบบ Grab Url หน้าเว็บไซด์
+                วิธีการสั่งซื้อแบบ Grab Url 
             </div>
         </div>
         <div class="row">
             <div class="s12 m12 l12">
+                <span class="bold orange-text">• Step 1 สั่งสินค้าลงตะกร้า</span><br /><%--ช่องทางสมัครสมาชิก --%>
+                <br />
+                <span class="bold">1. Copy URL จากเว็ปเลือกซื้อสินค้า Taobao TMall 1688 </span>      <br />          
+                <img src="../Images/HowTo/Basket1.png" style="height: 189px; width: 938px;" />
+                <br />
+                <br />
+                <br />
+                <span class="bold">2. Paste URL ลงในกล่องข้อความ แล้วกด Search</span>    <br />            
+                <img src="../Images/HowTo/Basket2.png" style="height: 130px; width: 600px;" />
+                <br />
+                <br />
+                <span class="bold">3. ทำการเลือก ขนาด/รูปแบบ สี และ จำนวน แล้วกดรูปตะกร้าสินค้า</span>    <br />            
+                <img src="../Images/HowTo/Basket3.png" style="height: 500px; width: 600px;" />
+                <br />
+                <br />
+                <span class="bold">4. ระบบจะแสดง Balloon พร้อมกับนำสินค้าลงสู่ตะกร้า</span>    <br />            
+                <img src="../Images/HowTo/Basket4.png" style="height: 100px; width: 300px;" />
+                <br />
+                <br />
+                <hr />
+                <br />
+                <span class="bold orange-text">• Step 2 เลือกสินค้าในตะกร้าเพื่อชำระเงิน</span><br /><%--ช่องทางสมัครสมาชิก --%>
+                <br />
+                <span class="bold">1. เลือกเมนู ตะกร้า </span>      <br />          
+                <img src="../Images/HowTo/Order1.png" style="height: 107px; width: 521px;" />
+                <br />
+                <br />
+                <span class="bold">2. เลือกสินค้าในตะกร้าที่ต้องการ แล้วกด สั่งสินค้า</span>    <br />            
+                <img src="../Images/HowTo/Order2.png" style="height: 330px; width: 700px;" />
+                <br />
+                <br />
+                <span class="bold">3. เลือกวิธีขนส่งสินค้า</span>    <br />            
+                <img src="../Images/HowTo/Order3.png" style="height: 665px; width: 390px;" />
+                <br />
+                <br />
+                <span class="bold">4. ตรวจสอบรายละเอียดใบสั่งซื้อ แล้วกด ยืนยัน</span>    <br />            
+                <img src="../Images/HowTo/Order4.png" style="height: 480px; width: 700px;" />
+                <br />
+                <br />
+                <span class="bold">5. ระบบจะแจ้งยอดเงินที่ต้องชำระ ให้ลูกค้ากรอกรหัสผ่านการชำระเงิน แล้วกด ชำระเงิน</span>    <br />            
+                <span class="bold red-text">ในกรณีที่ไม่มีการตั้งค่า รหัสผ่านการชำระเงิน จะเป็นรหัสเดียวกับรหัสผ่านการเข้าระบบ</span>    <br />            
+                <img src="../Images/HowTo/Order5.png" style="height: 330px; width: 493px;" />
+                <br />
+                <br />
             </div>
         </div>
     </div>

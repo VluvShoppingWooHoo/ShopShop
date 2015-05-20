@@ -204,7 +204,7 @@ namespace VloveImport.web.Customer
                     if (cb != null && cb.Checked)
                     {
                         hd = (HiddenField)gvr.FindControl("hdBK_ID");
-                        strCheck = hd.Value + ",";
+                        strCheck = strCheck + hd.Value + ",";
                         
                         //dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
                     }
@@ -231,19 +231,19 @@ namespace VloveImport.web.Customer
                 //    return;
                 //}
 
-                double Price = 0, Amount = 0, Total = 0;
-                foreach (DataRow dr in dtSelected.Rows)
-                {
-                    Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
-                    Price = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
-                    Total = Total + (Amount * Price);
-                }
+                //double Price = 0, Amount = 0, Total = 0;
+                //foreach (DataRow dr in dtSelected.Rows)
+                //{
+                //    Amount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
+                //    Price = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
+                //    Total = Total + (Amount * Price);
+                //}
 
-                if (Total < 100)
-                {
-                    ShowMessageBox("มูลค่าของใบสั่งซื้อไม่ต้ำกว่า 100 หยวน");
-                    return;
-                }
+                //if (Total < 100)
+                //{
+                //    ShowMessageBox("มูลค่าของใบสั่งซื้อไม่ต้ำกว่า 100 หยวน");
+                //    return;
+                //}
 
                 Session.Add("ORDER", dtSelected);
                 Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("ORDER"));

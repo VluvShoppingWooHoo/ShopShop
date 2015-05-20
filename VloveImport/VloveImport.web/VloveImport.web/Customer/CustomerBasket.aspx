@@ -9,14 +9,14 @@
                 <div class="col s12 m12 l12 TestBox1" style="min-height:500px;">
                     <span class="bold FontHeader orange-text">ตะกร้าสินค้าของฉัน</span><br />                        
                     <div class="col s10 m10 l10">
-                        <span class="bold FontHeader2 red-text">มูลค่าของใบสั่งซื้อไม่ต้ำกว่า 100 หยวน</span>
+                        <%--<span class="bold FontHeader2 red-text">มูลค่าของใบสั่งซื้อไม่ต้ำกว่า 100 หยวน</span>--%>
                     </div>
                     <div class="col s2 m2 l2">
                         <span class="bold FontHeader2 orange-text"><asp:Label ID="lbTotal" runat="server"></asp:Label></span>
                     </div>
                     <div class="col s12 m12 l12">
                         <br />
-                        <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" 
+                        <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false" AllowPaging="true"
                             OnPageIndexChanging="gvBasket_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField ItemStyle-Width="30px">
