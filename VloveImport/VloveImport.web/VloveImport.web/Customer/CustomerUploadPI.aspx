@@ -10,7 +10,7 @@
                     <span class="bold FontHeader orange-text">สินค้าฝากจ่าย</span>   
                     <br />
                     <br />                    
-                    <div class="col s7 m7 l7 TestBox1">                                                  
+                    <div class="col s9 m9 l9 TestBox1">                                                  
                         <div class="row s7 m7 l7 TestBox1" id="Code" runat="server" visible="false" style="padding-bottom:2px;">                           
                             <div class="col s2 m2 l2 TestBox1"
                                 style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">

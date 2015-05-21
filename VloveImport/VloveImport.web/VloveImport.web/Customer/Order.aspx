@@ -6,7 +6,7 @@
     <div id="mOR1" class="mContent mIndex">
         <div class="row">
             <div class="s12 m12 l12 ContentTitle">
-                กฏ กติกาในการสั่งซื้อ
+                กฏ กติกาในการสั่งซื้อ                
             </div>
         </div>
         <div class="row">
@@ -223,7 +223,7 @@
         </div>
         <div class="row">
             <div class="s12 m12 l12">
-                span class="bold orange-text">•	การเติมเงิน</span><br />
+                <span class="bold orange-text">•	การเติมเงิน</span><br />
                 <br />
                 <span class="bold">1. กดเมนู "กระเป๋าเงินของฉัน" </span>      <br />          
                 <img src="../Images/HowTo/Topup1.png" style="height: 146px; width: 552px;" />
