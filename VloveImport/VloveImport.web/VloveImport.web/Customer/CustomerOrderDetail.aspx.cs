@@ -64,6 +64,21 @@ namespace VloveImport.web.Customer
                 gvOrder.DataSource = dt;   
                 gvOrder.DataBind();
 
+                //Add 21/05/2558
+                double TotalItem = 0, TotalTrans = 0, Item = 0, Cus = 0, Chi = 0, Thi = 0;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Cus = dr["TRANSPORT_CUSTOMER_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CUSTOMER_PRICE"].ToString());
+                    Chi = dr["TRANSPORT_CHINA_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CHINA_PRICE"].ToString());
+                    Thi = dr["TRANSPORT_THAI_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_THAI_PRICE"].ToString());
+                    Item = dr["TOTALITEMAMOUNT_TH"].ToString() == "" ? 0 : Convert.ToDouble(dr["TOTALITEMAMOUNT_TH"].ToString());
+
+                    TotalTrans = TotalTrans + Cus + Chi + Thi; 
+                    TotalItem = TotalItem + Item;
+                }
+                lbTotalTran.Text = TotalTrans.ToString("###,##0.00");
+                lbTotalItemPrice.Text = TotalItem.ToString("###,##0.00");
+
                 //Grid
                 CustomerBiz biz_Cus = new CustomerBiz();
                 DataTable dtTran = biz_Cus.GET_TRANSACTION_BY_ORDERID(OID);

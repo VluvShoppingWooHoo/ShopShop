@@ -56,10 +56,10 @@
             <asp:Label ID="lbOrderTransport" runat="server" CssClass="lbCaption"></asp:Label>
         </div>     
         <div class="col s2 m2 l2">
-            <span class="black-text FontHeader">รวมค่าขนส่ง (THB)</span>
+            <span class="black-text FontHeader">รวมค่าขนส่งและค่าบริการ (THB)</span>
         </div>
         <div class="col s4 m4 l4">        
-            <asp:Label ID="Label2" runat="server" CssClass="lbCaption right-align" Width="150px"></asp:Label>
+            <asp:Label ID="lbTotalTran" runat="server" CssClass="lbCaption right-align" Width="150px"></asp:Label>
         </div> 
     </div>
     <div class="row">        
