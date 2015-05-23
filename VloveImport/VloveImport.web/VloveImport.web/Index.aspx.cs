@@ -76,19 +76,8 @@ namespace VloveImport.web
         [WebMethod]
         public static string GetModelFromURL(string txt)
         {
-            //try
-            //{
-            //    string PhantomDirectory = @"..\..\..\packages\PhantomJS.2.0.0\tools\phantomjs";
-            //    using (IWebDriver phantomDriver = new PhantomJSDriver(PhantomDirectory))
-            //    {
-            //        phantomDriver.Url = txt;
-            //        //Assert.Contains("Google", phantomDriver.Title);
-            //    }
-            //}
-            //catch (Exception ex) { }
-            //txt = "http://item.taobao.com/item.htm?spm=a215z.1607468.a214yav.11.ssGwcK&id=42865704337";
-            //txt = "http://item.taobao.com/item.htm?id=42400927372&ali_refid=a3_420435_1006:1106126314:N:%B2%CA%BA%E7%D0%AC:7055520b07090b98fe54085c41bad517&ali_trackid=1_7055520b07090b98fe54085c41bad517&spm=a230r.1.1005.40.wn70vl";
-            ScrapingBiz sc = new ScrapingBiz();
+            //ScrapingBiz sc = new ScrapingBiz();
+            ShoppingBiz sc = new ShoppingBiz();
             Index ix = new Index();
             ScrapingData data = new ScrapingData();
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -96,6 +85,7 @@ namespace VloveImport.web
             {
                 int webMode = 1;
                 #region for use
+                #region branch web
                 if (txt.Contains("taobao.com"))
                 {
                     webMode = Constant.Web.WTaoBao;
@@ -109,37 +99,41 @@ namespace VloveImport.web
                     }
                 }
                 else if (txt.Contains("tmall.com"))
-                    webMode = Constant.Web.WTmall;
-                else
-                    webMode = Constant.Web.W1688;
-
-                //data = sc.Handle(txt, webMode);
-                data = ix.Scrap(txt, webMode);
-                #endregion
-                #region for test
-                //data.Color = "http://img03.taobaocdn.com/bao/uploaded/i3/1060829869/TB2_8NXbpXXXXXkXXXXXXXXXXXX_!!1060829869.jpg_30x30.jpg||http://img03.taobaocdn.com/bao/uploaded/i3/1060829869/TB2j6oZbXXXXXbTXpXXXXXXXXXX_!!1060829869.jpg_30x30.jpg||http://img03.taobaocdn.com/bao/uploaded/i3/1060829869/TB2QDs2bXXXXXXWXpXXXXXXXXXX_!!1060829869.jpg_30x30.jpg||http://img02.taobaocdn.com/bao/uploaded/i2/1060829869/TB2yD25bXXXXXaMXpXXXXXXXXXX_!!1060829869.jpg_30x30.jpg||http://img04.taobaocdn.com/bao/uploaded/i4/1060829869/TB2LQj6bXXXXXc2XXXXXXXXXXXX_!!1060829869.jpg_30x30.jpg||http://img01.taobaocdn.com/bao/uploaded/i1/1060829869/TB2zmr.bXXXXXbOXXXXXXXXXXXX_!!1060829869.jpg_30x30.jpg";
-                //data.ItemName = "[Bommy]Test Test";
-                //data.picURL = "http://img04.taobaocdn.com/bao/uploaded/i4/TB12EHiGVXXXXX6XXXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg";
-                //data.Price = "69";
-                //data.Size = "70/32AB||75/34AB||80/36AB";
-                #endregion
-                data.Web = webMode;
-                #region getID
-                if (webMode == 1)
                 {
-                    string[] a = txt.Split('?');
-                    string[] b = a[1].Split('&');
-                    data.URL = txt;
-                    foreach (string item in b)
-                    {
-                        if (item.IndexOf("id=") == 0)
-                        {
-                            data.URL = a[0] + '?' + item;
-                            txt = item.Replace("id=", "");
-                        }
-                    }
+                    webMode = Constant.Web.WTmall;
                 }
-                data.ItemID = txt;
+                else
+                {
+                    webMode = Constant.Web.W1688;
+                }
+                #endregion
+                #region getID
+                string id = string.Empty;
+                if (webMode == 1)//taobao
+                {
+                    id = txt.Substring(txt.IndexOf("&id="), txt.Length - txt.IndexOf("&id="));
+                    id = id.Remove(0, 4);
+                    id = id.Substring(0, id.IndexOf("&"));
+                }
+                else if (webMode == 2)//tmall
+                {
+                    id = txt.Substring(txt.IndexOf("&id="), txt.Length - txt.IndexOf("&id="));
+                    id = id.Remove(0, 4);
+                    id = id.Substring(0, id.IndexOf("&"));
+                }
+                else if (webMode == 3)//1688
+                {
+                    id = txt.Substring(txt.IndexOf("offer/"), txt.Length - txt.IndexOf("offer/"));
+                    id = id.Remove(0, 6);
+                    id = id.Substring(0, id.IndexOf(".html"));
+                }
+                #endregion
+                data = sc.GetItemID(id, webMode);
+                if (data == null)
+                    data = ix.Scrap(txt, webMode);
+
+                data.ItemID = id;
+                data.Web = webMode;
                 #endregion
             }
             catch (Exception ex) { return ""; }

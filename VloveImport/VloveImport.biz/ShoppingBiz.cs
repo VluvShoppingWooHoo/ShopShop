@@ -9,11 +9,11 @@ using VloveImport.data;
 using VloveImport.util;
 
 namespace VloveImport.biz
-{    
+{
     public class ShoppingBiz
     {
         public string AddtoCart(ScrapingData Shop)
-        {            
+        {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             string Result = "";
             Result = dal.AddtoCart(Shop);
@@ -56,12 +56,19 @@ namespace VloveImport.biz
             else
                 return null;
         }
+        public ScrapingData GetItemID(string id, int web)
+        {
+            ScrapingData model = new ScrapingData();
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            model = dal.GetItemID(id, web);
+            return model;
+        }
         #region ORDER
         public string[] MakeOrder(OrderData Data, DataTable dt, string User, double Rate)
         {
             commonBiz biz = new commonBiz();
             ShoppingDal dal = new ShoppingDal("LocalConnection");
-            
+
             string[] Result = new string[2];
             string[] Res = new string[2];
             int OID = -1;
@@ -89,7 +96,7 @@ namespace VloveImport.biz
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             Result = dal.UpdateOrderPricePIC(Order_ID, FileName);
             return Result;
-        }        
+        }
         public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
@@ -117,8 +124,8 @@ namespace VloveImport.biz
             else
                 return null;
         }
-        #endregion        
-        
+        #endregion
+
         #region UploadPI
         public string[] MakeOrderByPI(OrderData Data)
         {

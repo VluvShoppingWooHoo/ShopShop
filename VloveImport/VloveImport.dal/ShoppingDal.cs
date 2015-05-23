@@ -116,7 +116,42 @@ namespace VloveImport.dal
                 throw new Exception("GET_RATE -> msg : " + ex.Message);
             }
         }
+        public ScrapingData GetItemID(string id, int web)
+        {
+            ScrapingData model = null;
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlCommandData.SetStoreProcedure("GET_ITEM");
 
+                SqlCommandData.SetParameter("ITEM_ID", SqlDbType.VarChar, ParameterDirection.Input, id);
+                SqlCommandData.SetParameter_Input_INT("WEB", SqlDbType.Int, ParameterDirection.Input, web);
+
+                ds = SqlCommandData.ExecuteDataSet();
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    model = new ScrapingData();
+                    DataRow dr = ds.Tables[0].Rows[0];
+                    model.ItemID = dr["ITEM_ID"].ToString();
+                    model.Web = int.Parse(dr["WEB"].ToString());
+                    model.ItemName = dr["ITEM_NAME"].ToString();
+                    model.picURL = dr["PIC_URL"].ToString();
+                    model.Price = dr["PRICE"].ToString();
+                    model.ProPrice = dr["PRO_PRICE"].ToString();
+                    model.AmountRange = dr["AMOUNT_RANGE"].ToString();
+                    model.PriceRange = dr["PRICE_RANGE"].ToString();
+                    model.Color = dr["COLOR"].ToString();
+                    model.Size = dr["SIZE"].ToString();
+                    model.URL = dr["URL"].ToString();
+                    model.ShopName = dr["SHOPNAME"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                model = null;
+            }
+            return model;
+        }
         #region Order
         public string[] MakeOrderHeader(OrderData Data)
         {
@@ -185,7 +220,7 @@ namespace VloveImport.dal
                             SqlCommandData.SetParameter_Input_INT("ORDER_SHOP_ID", SqlDbType.Int, ParameterDirection.Input, int.Parse(shop_id));
                             SqlCommandData.SetParameter("OD_ITEMNAME", SqlDbType.NVarChar, ParameterDirection.Input, drr["CUS_BK_ITEMNAME"].ToString());
                             SqlCommandData.SetParameter_Input_INT("OD_AMOUNT", SqlDbType.Int, ParameterDirection.Input, Convert.ToInt32(drr["CUS_BK_AMOUNT"].ToString()));
-                            
+
                             Price = Convert.ToDouble(drr["CUS_BK_PRICE"].ToString());
                             //Price = Rate * Price;
                             SqlCommandData.SetParameter_Input_INT("OD_PRICE", SqlDbType.Float, ParameterDirection.Input, Price);
@@ -236,7 +271,7 @@ namespace VloveImport.dal
                 SqlCommandData.RollBack();
                 return ex.Message;
             }
-        }        
+        }
         public string CancelOrder(Int32 CUS_ID, Int32 ORDER_ID)
         {
             try
@@ -247,7 +282,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("UPDATE_CANCEL_ORDER");
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
-                
+
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
 
@@ -300,7 +335,7 @@ namespace VloveImport.dal
                 string OID = "", OS_ID = "";
                 SqlCommandData.OpenConnection();
                 SqlCommandData.BeginTransaction();
-                
+
                 //Header
                 store = "INS_ORDER";
                 SqlCommandData.SetStoreProcedure(store);
@@ -326,7 +361,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, int.Parse(OID));
 
                 SqlCommandData.SetParameter("ORDER_SHOP_ID", SqlDbType.Int, ParameterDirection.Output);
-                
+
                 SqlCommandData.ExecuteNonQuery();
                 OS_ID = SqlCommandData.GetOutputStoreProcedure("ORDER_SHOP_ID");
 
@@ -362,7 +397,7 @@ namespace VloveImport.dal
                 SqlCommandData.RollBack();
                 return new string[2] { store + " -> msg : " + ex.Message, "" };
             }
-        }    
+        }
         #endregion
 
         #region Trans
@@ -428,7 +463,7 @@ namespace VloveImport.dal
 
                     SqlCommandData.ExecuteNonQuery();
                 }
-                
+
                 SqlCommandData.Commit();
 
                 Result[0] = "";
