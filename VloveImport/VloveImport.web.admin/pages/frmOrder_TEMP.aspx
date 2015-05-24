@@ -17,7 +17,7 @@
     <h3>ORDER DETAIL : <asp:Label ID="lbl_header_detail" Font-Size ="Large" runat="server" Text="" ForeColor ="RED"></asp:Label></h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="2">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="1">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -249,6 +249,22 @@
                     </tr>
                     <tr>
                         <td></td>
+                        <td>
+                        </td>
+                        <td>Service Charge :</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <asp:Label ID="lbl_tb2_Service_Charge" runat="server"></asp:Label>
+                                    </td>
+                                    <td class ="width50 ItemStyle-right"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
                         <td></td>
                         <td>Actually Amount :</td>
                         <td>
@@ -300,6 +316,14 @@
                         <td id="Td2" runat="server">
                             <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="300px"></asp:TextBox>
                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
+                            </asp:FilteredTextBoxExtender>
+                        </td>
+                    </tr>
+                    <tr id="trTranCusPrice2" runat="server" visible="False">
+                        <td id="Td3" runat="server">Service Charge :</td>
+                        <td id="Td4" runat="server">
+                            <asp:TextBox ID="txt_Service_Charge" runat="server" Width="300px"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Service_Charge" ID="txt_Service_Charge_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                             </asp:FilteredTextBoxExtender>
                         </td>
                     </tr>
@@ -525,8 +549,16 @@
                     <tr>
                         <td>Total Transport To Customer :</td>
                         <td class ="ItemStyle-right">
+                            <asp:Label ID="lbl_tb3_Total_Transport_To_Customer" runat="server"></asp:Label>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Service Charge :</td>
+                        <td class ="ItemStyle-right">
                             <u>
-                                <asp:Label ID="lbl_tb3_Total_Transport_To_Customer" runat="server"></asp:Label>
+                                <asp:Label ID="lbl_tb3_Service_Charge" runat="server"></asp:Label>
                             </u>
                         </td>
                         <td></td>

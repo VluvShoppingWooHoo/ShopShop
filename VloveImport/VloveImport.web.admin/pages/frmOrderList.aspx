@@ -111,7 +111,7 @@
                     <asp:BoundField DataField="EMP_NAME" HeaderText="Employee Name">
                         <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="TOTAL_PRICE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount">
+                    <asp:BoundField DataField="TOTAL_AMOUNT_PROCE" DataFormatString="{0:#,##0.00}" HeaderText="Total Amount">
                         <HeaderStyle CssClass="width10" />
                         <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>

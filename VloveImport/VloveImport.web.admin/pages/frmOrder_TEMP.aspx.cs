@@ -260,6 +260,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb2_Total_Prodcut_Active_Price.Text = (Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()) * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)<br><span style =\"color:red;\">(" + Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US")) + ")(CNY)</span>";
 
                 lbl_tb2_Total_Transport_Active_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_TRANSPORT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_tb2_Service_Charge.Text = Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Actually_Amounte.Text = Convert.ToDouble(dt.Rows[0]["ACTUALLY_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
             }
         }
@@ -399,12 +400,14 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 trTranCusPrice.Visible = true;
                 trTranCusPrice1.Visible = true;
+                trTranCusPrice2.Visible = true;
             }
             else if (STS >= 8)
             {
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
                 trTranCusPrice.Visible = false;
                 trTranCusPrice1.Visible = false;
+                trTranCusPrice2.Visible = false;
             }
             else
             {
@@ -412,6 +415,7 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 trTranCusPrice.Visible = false;
                 trTranCusPrice1.Visible = false;
+                trTranCusPrice2.Visible = false;
             }
         }
 
@@ -463,6 +467,7 @@ namespace VloveImport.web.admin.pages
             AdminBiz AdBiz = new AdminBiz();
             En.Create_User = _VS_USER_LOGIN;
             En.TRANSPORT_CUSTOMER_PRICE = txt_Transport_Cus_Price.Text.Trim() == "" ? 0.00 : Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim());
+            En.SERVICE_CHARGE = txt_Service_Charge.Text.Trim() == "" ? 0.00 : Convert.ToDouble(txt_Service_Charge.Text.Trim());
             En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue);
             En.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
             En.TRANSPORT_CUSTOMER_DETAIL = txt_Transport_Cus_Detail.Text.Trim();
@@ -811,11 +816,13 @@ namespace VloveImport.web.admin.pages
                 double TRAN_CH_PRICE = Convert.ToDouble(dt.Rows[0]["SUM_TRANSPORT_CHINA_PRICE"].ToString());
                 double TRAN_TH_PRICE = Convert.ToDouble(dt.Rows[0]["SUM_TRANSPORT_THAI_PRICE"].ToString());
                 double TRAN_CUS_PRICE = Convert.ToDouble(dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE"].ToString());
+                double SERVICE_CHARGE = Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE"].ToString());
 
                 lbl_tb3_Total_Transport_China_Price.Text = (TRAN_CH_PRICE * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Total_Transport_China_Price_CNY.Text = "<span style =\"color:red;\">" + TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(CNY)</span>";
                 lbl_tb3_Total_Transport_CH_TO_TH.Text = TRAN_TH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Total_Transport_To_Customer.Text = TRAN_CUS_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
+                lbl_tb3_Service_Charge.Text = SERVICE_CHARGE.ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Total_Transport.Text = ((TRAN_CH_PRICE * _VS_EXCH_RATE) + TRAN_TH_PRICE + TRAN_CUS_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
             }
             else
