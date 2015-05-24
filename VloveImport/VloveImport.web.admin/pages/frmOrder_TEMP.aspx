@@ -256,7 +256,9 @@
                             <table>
                                 <tr>
                                     <td class ="width50 ItemStyle-right">
-                                        <asp:Label ID="lbl_tb2_Service_Charge" runat="server"></asp:Label>
+                                        <u>
+                                            <asp:Label ID="lbl_tb2_Service_Charge" runat="server"></asp:Label>
+                                        </u>
                                     </td>
                                     <td class ="width50 ItemStyle-right"></td>
                                 </tr>

@@ -369,8 +369,13 @@ namespace VloveImport.web.admin.pages
                 btn_detail_update.Visible = false;
                 trTranCusPrice.Visible = true;
                 trTranCusPrice1.Visible = true;
+                trTranCusPrice2.Visible = true;
                 btnUpdateShopDetail.Visible = false;
                 txt_Transport_Cus_Price.Text = Convert.ToDouble(dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                txt_Service_Charge.Text = Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE"].ToString()).ToString("N", new CultureInfo("en-US"));
+
+                txt_Update_STS_EMP_Remark.Text = dt.Rows[0]["EMP_REMARK"].ToString();
+                txt_Transport_Cus_Detail.Text = dt.Rows[0]["TRANSPORT_DETAIL"].ToString();
             }
             else
             {
@@ -742,6 +747,12 @@ namespace VloveImport.web.admin.pages
                         }
                         else imgbtn_gv_prod_detail_upload_pic.Visible = false;
 
+                        if (Convert.ToInt32(_VS_ORDER_STS) >= 8)
+                        {
+                            lbl_gv_prod_detail_UploadText.Visible = false;
+                            imgUpload.Visible = false;
+                        }
+
                     }
                     else if (_VS_ORDER_TYPE == "3")
                     {
@@ -823,7 +834,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb3_Total_Transport_CH_TO_TH.Text = TRAN_TH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Total_Transport_To_Customer.Text = TRAN_CUS_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Service_Charge.Text = SERVICE_CHARGE.ToString("N", new CultureInfo("en-US")) + "(THB)";
-                lbl_tb3_Total_Transport.Text = ((TRAN_CH_PRICE * _VS_EXCH_RATE) + TRAN_TH_PRICE + TRAN_CUS_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+                lbl_tb3_Total_Transport.Text = ((TRAN_CH_PRICE * _VS_EXCH_RATE) + TRAN_TH_PRICE + TRAN_CUS_PRICE + SERVICE_CHARGE).ToString("N", new CultureInfo("en-US")) + "(THB)";
             }
             else
             {
