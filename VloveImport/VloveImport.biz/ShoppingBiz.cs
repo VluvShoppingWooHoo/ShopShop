@@ -63,6 +63,13 @@ namespace VloveImport.biz
             model = dal.GetItemID(id, web);
             return model;
         }
+        public string InsertUpdateItemID(ScrapingData model, string Act)
+        {
+            string Result = "";
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            Result = dal.InsertUpdateItemID(model, Act);
+            return Result;
+        }
         #region ORDER
         public string[] MakeOrder(OrderData Data, DataTable dt, string User, double Rate)
         {

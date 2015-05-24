@@ -152,6 +152,39 @@ namespace VloveImport.dal
             }
             return model;
         }
+        public string InsertUpdateItemID(ScrapingData model, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_UPD_ITEM");
+
+                SqlCommandData.SetParameter("ITEM_ID", SqlDbType.NVarChar, ParameterDirection.Input, model.ItemID);
+                SqlCommandData.SetParameter_Input_INT("WEB", SqlDbType.Int, ParameterDirection.Input, model.Web);
+                SqlCommandData.SetParameter("ITEM_NAME", SqlDbType.NVarChar, ParameterDirection.Input, model.ItemName);
+                SqlCommandData.SetParameter("PIC_URL", SqlDbType.NVarChar, ParameterDirection.Input, model.picURL);
+                SqlCommandData.SetParameter("PRICE", SqlDbType.NVarChar, ParameterDirection.Input, model.Price);
+                SqlCommandData.SetParameter("PRO_PRICE", SqlDbType.NVarChar, ParameterDirection.Input, model.ProPrice);
+                SqlCommandData.SetParameter("AMOUNT_RANGE", SqlDbType.NVarChar, ParameterDirection.Input, model.AmountRange == null ? "" : model.AmountRange);
+                SqlCommandData.SetParameter("PRICE_RANGE", SqlDbType.NVarChar, ParameterDirection.Input, model.PriceRange == null ? "" : model.PriceRange);
+                SqlCommandData.SetParameter("COLOR", SqlDbType.NVarChar, ParameterDirection.Input, model.Color);
+                SqlCommandData.SetParameter("SIZE", SqlDbType.NVarChar, ParameterDirection.Input, model.Size);
+                SqlCommandData.SetParameter("URL", SqlDbType.NVarChar, ParameterDirection.Input, model.URL);
+                SqlCommandData.SetParameter("SHOPNAME", SqlDbType.NVarChar, ParameterDirection.Input, model.ShopName);
+                SqlCommandData.SetParameter("Act", SqlDbType.NVarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return ("InsertUpdateItemID -> msg : " + ex.Message);
+            }
+        }
         #region Order
         public string[] MakeOrderHeader(OrderData Data)
         {

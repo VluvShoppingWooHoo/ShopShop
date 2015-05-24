@@ -130,10 +130,13 @@ namespace VloveImport.web
                 #endregion
                 data = sc.GetItemID(id, webMode);
                 if (data == null)
+                {
+                    data = new ScrapingData();
                     data = ix.Scrap(txt, webMode);
-
-                data.ItemID = id;
-                data.Web = webMode;
+                    data.ItemID = id;
+                    data.Web = webMode;
+                    sc.InsertUpdateItemID(data, "INS");
+                }
                 #endregion
             }
             catch (Exception ex) { return ""; }
@@ -317,32 +320,37 @@ namespace VloveImport.web
                 int i = 0;
                 foreach (string item in val)
                 {
-                    string result = string.Empty;
-                    string[] separators = { "||" };
-                    if (i == 1 || i == 2)
+                    if (item != string.Empty)
                     {
-                        string strloop = string.Empty;
-                        foreach (string txt in item.Split(separators, StringSplitOptions.None))
+                        string result = string.Empty;
+                        string[] separators = { "||" };
+                        if (i == 1 || i == 2)
                         {
-                            url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", txt, "zh-CN|en");
+                            string strloop = string.Empty;
+                            foreach (string txt in item.Split(separators, StringSplitOptions.None))
+                            {
+                                url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", txt, "zh-CN|en");
+                                result = webClient.DownloadString(url);
+                                string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
+                                selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
+                                selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^");
+                                strloop += selectVal + "||";
+                            }
+                            strloop = strloop.Remove(strloop.Length - 2, 2);
+                            listResult.Add(strloop);
+                        }
+                        else
+                        {
+                            url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", item, "zh-CN|en");
                             result = webClient.DownloadString(url);
                             string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
                             selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
-                            selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^");
-                            strloop += selectVal + "||";
+                            selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"); ;
+                            listResult.Add(selectVal);
                         }
-                        strloop = strloop.Remove(strloop.Length - 2, 2);
-                        listResult.Add(strloop);
                     }
                     else
-                    {
-                        url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", item, "zh-CN|en");
-                        result = webClient.DownloadString(url);
-                        string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
-                        selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
-                        selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"); ;
-                        listResult.Add(selectVal);
-                    }
+                        listResult.Add(string.Empty);
                     i++;
                 }
 
