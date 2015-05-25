@@ -37,6 +37,7 @@ namespace VloveImport.web.Customer
             }
             else
             {
+                WriteLog(Page.Request.Url.AbsolutePath, "Forgot", email);
                 lbMsg.Text = "โปรดตรวจสอบอีเมลล์ของคุณ";
                 return;
             }
@@ -47,25 +48,28 @@ namespace VloveImport.web.Customer
             string[] Temp;
             Temp = Get_Config("REPASS");
             if (Temp.Length > 0)
-            {
+            {                
                 Body = Temp[1].Replace("{1}", CUS_CODE).Replace("{2}", ResetPass);
                 Result = SendMail(email, Temp[0], Body);
             }
             else
             {
                 //WriteLog
+                WriteLog(Page.Request.Url.AbsolutePath, "Forgot", email + "|| 1. ไม่สามารถส่งเมลล์ได้");
                 lbMsg.Text = "ไม่สามารถส่งเมลล์ได้";
                 return;
             }
 
             if (Result == "")
             {
+                WriteLog(Page.Request.Url.AbsolutePath, "Forgot", email + "|| อีเมลล์ของคุณเรียบร้อย");
                 txtEmail.Text = "";
                 lbMsg.Text = "รหัสผ่านถูกส่งไปที่อีเมลล์ของคุณเรียบร้อย";
             }
             else
             {
                 //WriteLog
+                WriteLog(Page.Request.Url.AbsolutePath, "Forgot", email + "|| 2. ไม่สามารถส่งเมลล์ได้");
                 lbMsg.Text = "ไม่สามารถส่งเมลล์ได้";
                 return;
             }
