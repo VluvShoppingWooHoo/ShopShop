@@ -70,10 +70,10 @@
             <asp:Label ID="lbOrderStatus" runat="server" CssClass="lbCaption"></asp:Label>
         </div>   
         <div class="col s2 m2 l2">
-            <asp:Label ID="lbPay" runat="server" CssClass="black-text FontHeader"></asp:Label>
+            <asp:Label ID="lbPay" runat="server" CssClass="black-text FontHeader">รอชำระ</asp:Label>
         </div>
         <div class="col s4 m4 l4">        
-            <asp:Label ID="Label3" runat="server" CssClass="lbCaption right-align" Width="150px"></asp:Label>
+            <asp:Label ID="lbPayAdd" runat="server" CssClass="lbCaption right-align" Width="150px"></asp:Label>
         </div>   
     </div>
     <div class="row">        

@@ -65,7 +65,7 @@ namespace VloveImport.web.Customer
                 gvOrder.DataBind();
 
                 //Add 21/05/2558
-                double TotalItem = 0, TotalTrans = 0, Item = 0, Cus = 0, Chi = 0, Thi = 0;
+                double TotalItem = 0, TotalTrans = 0, Item = 0, Cus = 0, Chi = 0, Thi = 0, Pay_Add = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
                     Cus = dr["TRANSPORT_CUSTOMER_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CUSTOMER_PRICE"].ToString());
@@ -78,7 +78,8 @@ namespace VloveImport.web.Customer
                 }
                 lbTotalTran.Text = TotalTrans.ToString("###,##0.00");
                 lbTotalItemPrice.Text = TotalItem.ToString("###,##0.00");
-
+                Pay_Add = dt.Rows[0]["ADDITIONAL_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["ADDITIONAL_PAY"].ToString());
+                lbPayAdd.Text = Pay_Add < 0 ? "0.00" : Pay_Add.ToString("###,##0.00");
                 //Grid
                 CustomerBiz biz_Cus = new CustomerBiz();
                 DataTable dtTran = biz_Cus.GET_TRANSACTION_BY_ORDERID(OID);
