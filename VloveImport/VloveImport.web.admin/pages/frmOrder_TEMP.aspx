@@ -17,7 +17,7 @@
     <h3>ORDER DETAIL : <asp:Label ID="lbl_header_detail" Font-Size ="Large" runat="server" Text="" ForeColor ="RED"></asp:Label></h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="1">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="2">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -343,7 +343,7 @@
     <asp:TabPanel ID="TabPanel3" runat="server" HeaderText="Product Detail">
         <ContentTemplate>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" Width="100%"
-                    DataKeyNames="ORDER_SHOP_ID,SHOP_ORDER_ID,SHOPNAME,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,OD_ID,OD_AMOUNT,OD_AMOUNT_ACTIVE,OD_PRICE,OD_SIZE,OD_COLOR,OD_REMARK,OD_URL,OD_PICURL,OD_STATUS,ROW_INDEX_SHOP,TOTAL_PROD_PRICE,TOTAL_PROD_PRICE_ACTIVE,ROW_INDEX,ROW_RANK_PROD,PRODUCT_TYPE,OD_PRICE_ACTIVE,CAL_TRANSPORT_SHOP_RATE,SHOP_REMARK" OnRowDataBound="gv_detail_RowDataBound">
+                    DataKeyNames="ORDER_SHOP_ID,SHOP_ORDER_ID,SHOPNAME,TRACKING_NO,WEIGHT,SIZE,WEIGHT_PRICE,SIZE_PRICE,TRANSPORT_CHINA_PRICE,TRANSPORT_THAI_PRICE,OD_ID,OD_AMOUNT,OD_AMOUNT_ACTIVE,OD_PRICE,OD_SIZE,OD_COLOR,OD_REMARK,OD_URL,OD_PICURL,OD_STATUS,ROW_INDEX_SHOP,TOTAL_PROD_PRICE,TOTAL_PROD_PRICE_ACTIVE,ROW_INDEX,ROW_RANK_PROD,PRODUCT_TYPE,OD_PRICE_ACTIVE,CAL_TRANSPORT_SHOP_RATE,SHOP_REMARK" OnRowDataBound="gv_detail_RowDataBound" OnRowCreated="gv_detail_RowCreated">
                     <Columns>
                         <asp:TemplateField HeaderText="No.">
                             <EditItemTemplate>

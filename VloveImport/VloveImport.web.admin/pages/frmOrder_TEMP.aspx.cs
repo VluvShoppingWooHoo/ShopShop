@@ -1000,21 +1000,21 @@ namespace VloveImport.web.admin.pages
         {
             if (_VS_TRANSPORT_CH_TH_METHOD == "2")
             {
-                if (ddl_TRANS_METHOD_AirPlane.SelectedValue == "-1")
-                {
-                    ShowMessageBox("Please select product type !!", this.Page);
-                    Modal_ShopDetail.Show();
-                    return;
-                }
+                //if (ddl_TRANS_METHOD_AirPlane.SelectedValue == "-1")
+                //{
+                //    ShowMessageBox("Please select product type !!", this.Page);
+                //    Modal_ShopDetail.Show();
+                //    return;
+                //}
             }
             else
             {
-                if (ddl_TRANS_METHOD_OTHER.SelectedValue == "-1")
-                {
-                    ShowMessageBox("Please select product type !!", this.Page);
-                    Modal_ShopDetail.Show();
-                    return;
-                }
+                //if (ddl_TRANS_METHOD_OTHER.SelectedValue == "-1")
+                //{
+                //    ShowMessageBox("Please select product type !!", this.Page);
+                //    Modal_ShopDetail.Show();
+                //    return;
+                //}
             }
 
             if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
@@ -1056,6 +1056,25 @@ namespace VloveImport.web.admin.pages
         }
 
         #endregion
+
+        protected void gv_detail_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                if (_VS_ORDER_TYPE == "3")
+                {
+                    e.Row.Cells[2].Visible = false;
+                }
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (_VS_ORDER_TYPE == "3")
+                {
+                    e.Row.Cells[2].Visible = false;
+                }
+            }
+        }
 
     }
 }
