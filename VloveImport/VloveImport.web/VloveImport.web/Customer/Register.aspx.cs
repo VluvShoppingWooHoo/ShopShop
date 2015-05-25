@@ -32,8 +32,9 @@ namespace VloveImport.web.Customer
         protected void btnRegis_Click(object sender, EventArgs e)
         {
             string[] URL;
-            string Body = "", Link = "",emailEn = "", passEn = "", Path = "";
-            string Result = Insert();
+            string Body = "", Link = "",emailEn = "", passEn = "", Path = "", Pass = "";
+            Pass = EncrypData(txtPassword.Text);
+            string Result = Insert(Pass);
             string[] Temp;
             if (Result == "")
             {
@@ -42,7 +43,7 @@ namespace VloveImport.web.Customer
                 if (Temp.Length > 0)
                 {
                     emailEn = EncrypData(txtEmail.Text);
-                    passEn = EncrypData(txtPassword.Text);
+                    passEn = Pass;
                     Path = Page.Request.Url.Authority;
                     Link = Path + "/Customer/Activate.aspx?e=" + Server.UrlEncode(emailEn) + "&c=" + Server.UrlEncode(passEn);
                     Body = Temp[1].Replace("{0}", Link);
@@ -82,7 +83,7 @@ namespace VloveImport.web.Customer
             
         }
 
-        protected string Insert()
+        protected string Insert(string Pass)
         {
             string Result = "";
             if (CheckInput())
@@ -97,7 +98,7 @@ namespace VloveImport.web.Customer
                     Cust.Cus_Name = txtName.Text;
                     Cust.Cus_LName = txtLastName.Text;
                     Cust.Cus_Email = txtEmail.Text;
-                    Cust.Cus_Password = en.EncrypData(txtPassword.Text);
+                    Cust.Cus_Password = Pass;
                     Cust.Cus_Mobile = txtMobile.Text;
                     Cust.Cus_Ref_ID = hddRefCust.Value == "" ? 0 : Convert.ToInt32(hddRefCust.Value);
 
@@ -146,6 +147,13 @@ namespace VloveImport.web.Customer
             {
                 IsReturn = false;
                 ShowMessageBox("กรุณากรอกยืนยันรหัสผ่าน", this.Page);
+                return IsReturn;
+            }
+
+            if (txtPassword.Text.Length < 8)
+            {
+                IsReturn = false;
+                ShowMessageBox("กรุณากรอกตัวอักษรหรือตัวเลขไม่น้อยกว่า 8 ตัวอักษร", this.Page);
                 return IsReturn;
             }
 

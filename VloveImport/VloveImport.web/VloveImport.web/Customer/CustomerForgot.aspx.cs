@@ -41,7 +41,7 @@ namespace VloveImport.web.Customer
                 return;
             }
 
-            string ResetPass = System.Web.Security.Membership.GeneratePassword(10, 3);
+            string ResetPass = System.Web.Security.Membership.GeneratePassword(10, 0);
             string Result = biz.RESET_PASSWORD(EncrypData(ResetPass), CUS_ID, "LOGIN");
             
             string[] Temp;
