@@ -14,13 +14,12 @@ namespace VloveImport.web.admin.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSessionUser();
             if (!IsPostBack)
             {
                 CheckPermission();
-                CheckSessionUser();
                 SetShowUser();
             }
-            
         }
 
         private void SetShowUser()
@@ -55,8 +54,6 @@ namespace VloveImport.web.admin.MasterPage
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)            
                 if (!CheckPage(ds.Tables[0].Rows[0]["PAGE_CODE"].ToString()))
                     Response.Redirect("~/Logout.aspx");
-           
-
         }
 
         /// <summary>
