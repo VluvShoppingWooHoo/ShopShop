@@ -19,7 +19,9 @@
             }
             else {
                 var decodedString = atob(txt);
+                decodedString = decodedString.replace("&amp;", "&");
                 $('#txtSearch').val(decodedString);
+
             }
             SetFadeout();
         });
