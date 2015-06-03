@@ -188,6 +188,7 @@
     <Content Include="Images\HowTo\WithDraw3.png" />
     <Content Include="Images\HowTo\WithDraw4.png" />
     <Content Include="Images\icon\check-icon.png" />
+    <Content Include="Images\icon\delete.png" />
     <Content Include="Images\icon\Flag\China-Flag-icon.png" />
     <Content Include="Images\icon\Flag\Thailand-Flag-icon.png" />
     <Content Include="Images\icon\Payment2.png" />
