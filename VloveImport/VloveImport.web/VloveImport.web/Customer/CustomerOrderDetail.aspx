@@ -101,7 +101,7 @@
                             <ItemTemplate>
                                 <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "OD_ID") %>' />
                                 <asp:HyperLink ID="hlItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OD_ITEMNAME") %>'
-                                    NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "OD_URL").ToString().Trim() %>'></asp:HyperLink> <br />  <%--OD_SIZE--%>
+                                    NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "OD_URL").ToString().Trim().Replace("amp;","") %>'></asp:HyperLink> <br />  <%--OD_SIZE--%>
                                 <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "OD_SIZE") %>'></asp:Label><br />
                                 <asp:Label ID="lbColor" runat="server" Text='<%# "สี " + DataBinder.Eval(Container.DataItem, "OD_COLOR") %>'
                                     Visible='<%# DataBinder.Eval(Container.DataItem, "OD_COLOR").ToString().StartsWith("http") ? false : true %>'></asp:Label>
