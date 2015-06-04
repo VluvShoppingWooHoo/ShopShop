@@ -245,10 +245,15 @@ namespace VloveImport.web.Customer
             Result = Biz.DeleteBasket(BK_ID);
             if (Result == "")
             {
+                Session.Remove("CUS_BK_ID");
+                CalTotalAmount();
                 BindData();
                 //ShowMessageBox("Update product amount success", this.Page);
-                ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 0;
-                ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 0;
+                if (gvBasket.Rows.Count > 0)
+                {
+                    ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 0;
+                    ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 0;
+                }
             }
         }
         #endregion                       
