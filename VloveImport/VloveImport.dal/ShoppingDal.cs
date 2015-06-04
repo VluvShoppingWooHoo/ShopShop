@@ -89,6 +89,28 @@ namespace VloveImport.dal
                 return ex.Message;
             }
         }
+        public string DeleteBasket(Int32 CUS_BK_ID)
+        {
+            try
+            {
+                string Result = "";
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("DELETE_BASKET");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_BK_ID", SqlDbType.Int, ParameterDirection.Input, CUS_BK_ID);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return ex.Message;
+            }
+        }
         public DataSet GetTransList(string Type)
         {
             try

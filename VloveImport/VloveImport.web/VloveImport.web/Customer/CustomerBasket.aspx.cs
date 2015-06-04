@@ -19,14 +19,17 @@ namespace VloveImport.web.Customer
         {
             CheckSession();  
             if (!IsPostBack)
-            {                                     
+            {
+                Session.Remove("CUS_BK_ID");
+                Session.Remove("TRANS");
+                Session.Remove("ORDER");            
                 BindData();
                 lbTotal.Text = "0.00 (¥)";
             }
         }
 
         protected void BindData()
-        {
+        {            
             ShoppingBiz Biz = new ShoppingBiz();
             DataTable dt = Biz.GetBasketList(GetCusID());
             if (dt != null && dt.Rows.Count > 0)
@@ -41,10 +44,34 @@ namespace VloveImport.web.Customer
             }
 
             gvBasket.DataBind();
+            BindSession();
+        }
+
+        protected void BindSession()
+        {
+            if (Session["CUS_BK_ID"] != null)
+            {
+                CheckBox cb;
+                HiddenField hd;
+                List<string> Chk = (List<string>)Session["CUS_BK_ID"];
+                foreach (GridViewRow gvr in gvBasket.Rows)
+                {
+                    cb = new CheckBox();
+                    hd = new HiddenField();
+                    hd = (HiddenField)gvr.FindControl("hdBK_ID");
+                    cb = (CheckBox)gvr.FindControl("cbItem");
+                    if (hd != null && Chk.Contains(hd.Value))
+                    {
+                        if (cb != null)
+                            cb.Checked = true;
+                    }
+                }
+            }
         }
 
         protected void btnOrder_Click(object sender, EventArgs e)
-        {
+        {            
+            Session.Remove("CUS_BK_ID");
             Session.Remove("TRANS");
             Session.Remove("ORDER");
             CheckBox cb;
@@ -105,6 +132,8 @@ namespace VloveImport.web.Customer
                 gvBasket.PageIndex = e.NewPageIndex;
                 gvBasket.DataSource = dt;
                 gvBasket.DataBind();
+
+                BindSession();
             }
         }
 
@@ -165,23 +194,62 @@ namespace VloveImport.web.Customer
         protected void CalTotalAmount()
         {
             CheckBox cb;
-            Label Price, Amount;
+            HiddenField hdd;
             double Total = 0, dPrice = 0, dAmount = 0;
+            List<string> Chk;
+
+            if(Session["CUS_BK_ID"] != null)
+                Chk = (List<string>)Session["CUS_BK_ID"];
+            else
+                Chk = new List<string>();
+            
             foreach (GridViewRow gvr in gvBasket.Rows)
             {
                 cb = (CheckBox)gvr.Cells[0].FindControl("cbItem");
-                Price = (Label)gvr.Cells[3].FindControl("lbPrice");
-                Amount = (Label)gvr.Cells[4].FindControl("lbAmount");
+                hdd = (HiddenField)gvr.Cells[0].FindControl("hdBK_ID");
 
-                if (cb != null && cb.Checked)
+                if (cb != null && cb.Checked && hdd != null && !Chk.Contains(hdd.Value))
                 {
-                    dPrice = Price.Text == "" ? 0 : Convert.ToDouble(Price.Text);
-                    dAmount = Amount.Text == "" ? 0 : Convert.ToDouble(Amount.Text);
-                    Total = Total + (dPrice * dAmount);
+                    Chk.Add(hdd.Value); 
+                }
+            }
+
+            Session["CUS_BK_ID"] = Chk;
+
+            if (ViewState["SOURCE"] != null)
+            {
+                DataTable dt = new DataTable();
+                dt = (DataTable)ViewState["SOURCE"];
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (Chk.Contains(dr["CUS_BK_ID"].ToString()))
+                    {
+                        dPrice = dr["CUS_BK_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_PRICE"].ToString());
+                        dAmount = dr["CUS_BK_AMOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dr["CUS_BK_AMOUNT"].ToString());
+                        Total = Total + (dPrice * dAmount);
+                    }
                 }
             }
 
             lbTotal.Text = Total.ToString("###,##0.00") + " (¥)";
+        }
+
+        protected void imbDelete_Click(object sender, ImageClickEventArgs e)
+        {
+            string Result = "";
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent.Parent.Parent).RowIndex;
+            int Amount = ((TextBox)gvBasket.Rows[rowIndex].FindControl("txtAmount")).Text == "" ? 0 : Convert.ToInt32(((TextBox)gvBasket.Rows[rowIndex].FindControl("txtAmount")).Text);
+            int BK_ID = ((HiddenField)gvBasket.Rows[rowIndex].FindControl("hdBK_ID")).Value == "" ? 0 : Convert.ToInt32(((HiddenField)gvBasket.Rows[rowIndex].FindControl("hdBK_ID")).Value);
+
+            ShoppingBiz Biz = new ShoppingBiz();
+            Result = Biz.DeleteBasket(BK_ID);
+            if (Result == "")
+            {
+                BindData();
+                //ShowMessageBox("Update product amount success", this.Page);
+                ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 0;
+                ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 0;
+            }
         }
         #endregion                       
 
@@ -191,33 +259,36 @@ namespace VloveImport.web.Customer
             Session.Remove("ORDER");
             CheckBox cb;
             HiddenField hd;
+            List<string> Chk;
             DataTable dtSelected = new DataTable();
-            string strCheck = "";
             if (ViewState["SOURCE"] != null)
             {
                 dtSelected = ((DataTable)ViewState["SOURCE"]).Copy();                
-                foreach (GridViewRow gvr in gvBasket.Rows)
-                {
-                    cb = new CheckBox();
-                    hd = new HiddenField();
-                    cb = (CheckBox)gvr.FindControl("cbItem");
-                    if (cb != null && cb.Checked)
-                    {
-                        hd = (HiddenField)gvr.FindControl("hdBK_ID");
-                        strCheck = strCheck + hd.Value + ",";
+                //foreach (GridViewRow gvr in gvBasket.Rows)
+                //{
+                //    cb = new CheckBox();
+                //    hd = new HiddenField();
+                //    cb = (CheckBox)gvr.FindControl("cbItem");
+                //    if (cb != null && cb.Checked)
+                //    {
+                //        hd = (HiddenField)gvr.FindControl("hdBK_ID");
+                //        strCheck = strCheck + hd.Value + ",";
                         
-                        //dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
-                    }
-                }
-
-                if (strCheck != "")
+                //        //dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
+                //    }
+                //}
+                if (Session["CUS_BK_ID"] != null)
                 {
-                    //List
-                    List<DataRow> lstDr = dtSelected.Select("CUS_BK_ID not in (" + strCheck.Remove(strCheck.Length-1) + ")").ToList();
-                    foreach (DataRow dr in lstDr)
+                    Chk = (List<string>)Session["CUS_BK_ID"];
+                    foreach (DataRow dr in dtSelected.Rows)
                     {
-                        dtSelected.Rows.Remove(dr);
+                        if(!Chk.Contains(dr["CUS_BK_ID"].ToString()))
+                        {
+                            dr.Delete();
+                            //dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + dr["CUD_BK_ID"].ToString()).FirstOrDefault());
+                        }
                     }
+                    dtSelected.AcceptChanges();
                 }
                 else
                 {

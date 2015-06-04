@@ -79,10 +79,12 @@
                                             <asp:View ID="vB1" runat="server">
                                                 <asp:ImageButton ID="imbEdit" runat="server" ImageUrl="~/Images/icon/b_edit.png" 
                                                     Width="15px" Height="15px" OnClick="imbEdit_Click" />
+                                                <asp:ImageButton ID="imbDelete" runat="server" ImageUrl="~/Images/icon/delete.png" 
+                                                    Width="15px" Height="15px" OnClick="imbDelete_Click" OnClientClick="return confirm('คุณต้องการลบรายการ?');"/>
                                             </asp:View>
                                             <asp:View ID="vB2" runat="server">
                                                 <asp:ImageButton ID="imgbtn_Updateprod_amount" runat="server" ImageUrl="~/Images/icon/check-icon.png" 
-                                                    Width="15px" Height="15px" OnClick="imgbtn_Updateprod_amount_Click" />
+                                                    Width="15px" Height="15px" OnClick="imgbtn_Updateprod_amount_Click"/>
                                             &nbsp;&nbsp;
                                             <asp:ImageButton ID="imgbtn_Cancelprod_amount" runat="server" ImageUrl="~/Images/icon/Close-2-icon.png" 
                                                 Width="15px" Height="15px" OnClick="imgbtn_Cancelprod_amount_Click" />

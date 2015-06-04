@@ -36,6 +36,13 @@ namespace VloveImport.biz
             Result = dal.UpdateBasketAmount(CUS_BK_ID, Amount);
             return Result;
         }
+        public string DeleteBasket(Int32 CUS_BK_ID)
+        {
+            string Result = "";
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            Result = dal.DeleteBasket(CUS_BK_ID);
+            return Result;
+        }
         public DataTable GetTransList(string Type)
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
