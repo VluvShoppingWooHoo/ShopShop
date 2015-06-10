@@ -927,7 +927,7 @@ namespace VloveImport.web.admin.pages
             else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_AirPlane.SelectedValue == "2") CONFIG_GROUP = "TRANS_AIR_PLANE_SOFT";
             else if (_VS_TRANSPORT_CH_TH_METHOD == "2" && ddl_TRANS_METHOD_AirPlane.SelectedValue == "3") CONFIG_GROUP = "TRANS_AIR_PLANE_BRAND";
 
-            string Size_Pattern = "^([0-9]\\d{0,5})+[*]+([0-9]\\d{0,5})+[*]+([0-9]\\d{0,5})$";
+            string Size_Pattern = "^([0-9.]\\d{0,5})+[*]+([0-9.]\\d{0,5})+[*]+([0-9.]\\d{0,5})$";
 
             if (CAL_Q == true && txt_sd_size.Text.Trim() == "")
             {

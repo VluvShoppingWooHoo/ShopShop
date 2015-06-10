@@ -643,7 +643,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txt_sd_size" runat="server" onblur ="Fun_CalShopProduct_Detail();"></asp:TextBox>
-                                <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_size" ID="txt_sd_size_FilteredTextBoxExtender1" ValidChars="1234567890*">
+                                <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_size" ID="txt_sd_size_FilteredTextBoxExtender1" ValidChars="1234567890*.">
                                 </asp:FilteredTextBoxExtender>
                                 </td>
                                 <td>Weight : <span style ="color:red">(KG)</span></td>
