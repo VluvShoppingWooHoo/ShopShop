@@ -323,11 +323,18 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
             }
-            else if ((_VS_ORDER_STS == "1" && _VS_ORDER_TYPE == "2") || (_VS_ORDER_STS == "2" && _VS_ORDER_TYPE == "3"))
+            else if (_VS_ORDER_STS == "1" && _VS_ORDER_TYPE == "2")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
+            }
+            else if (_VS_ORDER_STS == "2" && _VS_ORDER_TYPE == "3")
+            {
+                ddl_ViewDetail_ORDER_STATUS.Enabled = true;
+                ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
+                btn_detail_update.Visible = true;
+                btnUpdateShopDetail.Visible = true;
             }
             else if (_VS_ORDER_STS == "3")
             {
@@ -676,6 +683,7 @@ namespace VloveImport.web.admin.pages
                     if (Convert.ToInt32(_VS_ORDER_STS) >= 7) btnUpdateShopDetail.Visible = false;
                     else if (Convert.ToInt32(_VS_ORDER_STS) >= 5) btnUpdateShopDetail.Visible = true;
                     else if (Convert.ToInt32(_VS_ORDER_STS) == 4) btnUpdateShopDetail.Visible = true;
+                    else if (Convert.ToInt32(_VS_ORDER_STS) == 2) btnUpdateShopDetail.Visible = true;
                     else btnUpdateShopDetail.Visible = false;
                     #endregion
 
