@@ -215,6 +215,7 @@
     <Content Include="Images\pic\shop\1688.jpg" />
     <Content Include="Images\pic\shop\taobao.jpg" />
     <Content Include="Images\pic\shop\Tmall.jpg" />
+    <Content Include="Images\pic\Voucher500.png" />
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="phantomjs-license.txt" />
