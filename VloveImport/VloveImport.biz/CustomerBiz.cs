@@ -171,7 +171,20 @@ namespace VloveImport.biz
             else
                 return null;            
         }
-
+        public string INS_Voucher(int CUS_ID)
+        {
+            string Result = "";
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.INS_VOUCHER(CUS_ID);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
         #endregion
 
         #region GET CUSTOMER ...
@@ -206,6 +219,17 @@ namespace VloveImport.biz
                 return ds.Tables[0];
             else
                 return null;
+        }
+
+        public int GET_CUSTOMER_POINT(int CUS_ID)
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.GET_CUSTOMER_POINT(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+                return Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+            else
+                return 0;
         }
         #endregion
 

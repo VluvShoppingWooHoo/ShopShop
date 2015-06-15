@@ -46,7 +46,7 @@
                 <b>หลักฐานการชำระเงิน</b>
             </div>
         </div>
-        <div style="vertical-align: middle; width: 50%; height: 50px; margin-left: 33%; margin-top: -60px;">
+        <div style="vertical-align: middle; width: 60%; height: 50px; margin-left: 33%; margin-top: -60px;">
             <div style="margin-left: 10px;">
                 <div class="file-field input-field">
                     <input class="file-path validate" id="filetext" type="text" style="width: 300px; margin-left: 0px; margin-right: 20px;" />

@@ -91,6 +91,14 @@ namespace VloveImport.web.App_Code
             return Balance;
         }
 
+        public int GetPoint()
+        {
+            CustomerBiz biz = new CustomerBiz();
+            int Point = 0;
+            Point = biz.GET_CUSTOMER_POINT(GetCusID());
+            return Point;
+        }
+
         public void CheckSession()
         {
             if (HttpContext.Current.Session["User"] != null)

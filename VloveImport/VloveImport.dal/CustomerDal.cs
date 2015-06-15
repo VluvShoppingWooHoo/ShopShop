@@ -324,6 +324,26 @@ namespace VloveImport.dal
                 throw new Exception("GET_TRANSACTION_BY_ORDERID -> msg : " + ex.Message);
             }
         }
+        public string INS_VOUCHER(int CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_VOUCHER");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);                
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("INS_VOUCHER -> msg : " + ex.Message);
+            }
+        }
         #endregion
 
         #region GET CUSTOMER ...
@@ -369,6 +389,21 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 throw new Exception("GET_CUSTOMER_TRANS_AMOUNT -> msg : " + ex.Message);
+            }
+        }
+
+        public DataSet GET_CUSTOMER_POINT(int CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_POINT");
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_CUSTOMER_POINT -> msg : " + ex.Message);
             }
         }
         #endregion
