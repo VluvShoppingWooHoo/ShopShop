@@ -551,5 +551,21 @@ namespace VloveImport.dal
             }
         }
         #endregion
+
+        #region 
+        public DataSet GetMasterVoucher()
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_MASTER_VOUCHER");
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_MASTER_VOUCHER -> msg : " + ex.Message);
+            }
+        }
+        #endregion
     }
 }

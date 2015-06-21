@@ -15,30 +15,9 @@ namespace VloveImport.web.UserControls
         {
             if (!IsPostBack)
             {
-                SetPoint();
+                
             }
         }
 
-        protected void SetPoint()
-        {
-            lbMyPoint.Text = "0";
-        }
-
-        protected void btnVoucher500_Click(object sender, EventArgs e)
-        {
-            int Point = 0;
-            CustomerBiz biz = new CustomerBiz();
-            BasePage bp = new BasePage();
-            Point = bp.GetPoint();
-            if (Point > 100)
-            {
-                biz.INS_UPD_TRANSACTION
-            }
-            else
-            {
-                bp.ShowMessageBox("คะแนนไม่พอ สะสมคะแนนอีกนิดนะคะ");
-                return;
-            }
-        }
     }
 }

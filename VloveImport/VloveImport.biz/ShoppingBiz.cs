@@ -175,5 +175,18 @@ namespace VloveImport.biz
                 return null;
         }
         #endregion
+
+        #region
+        public DataTable GetMasterVoucher()
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetMasterVoucher();
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+        #endregion
     }
 }

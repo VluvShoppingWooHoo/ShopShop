@@ -13,13 +13,13 @@ namespace VloveImport.web.UserControls {
     public partial class ucAccfuncVoucher {
         
         /// <summary>
-        /// lbMyPoint control.
+        /// gvVoucher control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbMyPoint;
+        protected global::System.Web.UI.WebControls.GridView gvVoucher;
         
         /// <summary>
         /// img control.
@@ -31,12 +31,12 @@ namespace VloveImport.web.UserControls {
         protected global::System.Web.UI.WebControls.Image img;
         
         /// <summary>
-        /// btnVoucher500 control.
+        /// lb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVoucher500;
+        protected global::System.Web.UI.WebControls.Label lb;
     }
 }
