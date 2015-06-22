@@ -58,6 +58,7 @@ namespace VloveImport.data
         public double TRANSPORT_THAI_PRICE { get; set; }
         public double TRANSPORT_CUSTOMER_PRICE { get; set; }
         public double SERVICE_CHARGE { get; set; }
+        public double DISCOUNT { get; set; }
         public int PRODUCT_TYPE { get; set; }
         public string CAL_TRANSPORT_SHOP_RATE { get; set; }
         public string SHOP_REMARK { get; set; } 

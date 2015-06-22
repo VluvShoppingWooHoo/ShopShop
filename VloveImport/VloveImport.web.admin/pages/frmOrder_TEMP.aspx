@@ -17,7 +17,7 @@
     <h3>ORDER DETAIL : <asp:Label ID="lbl_header_detail" Font-Size ="Large" runat="server" Text="" ForeColor ="RED"></asp:Label></h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="2">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="1">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -267,6 +267,24 @@
                     </tr>
                     <tr>
                         <td></td>
+                        <td>
+                        </td>
+                        <td>Discount :</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class ="width50 ItemStyle-right">
+                                        <u>
+                                            <asp:Label ID="lbl_tb2_Discount" runat="server"></asp:Label>
+                                        </u>
+                                    </td>
+                                    <td class ="width50 ItemStyle-right"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
                         <td></td>
                         <td>Actually Amount :</td>
                         <td>
@@ -326,6 +344,14 @@
                         <td id="Td4" runat="server">
                             <asp:TextBox ID="txt_Service_Charge" runat="server" Width="300px"></asp:TextBox>
                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Service_Charge" ID="txt_Service_Charge_FilteredTextBoxExtender1" ValidChars="1234567890.,">
+                            </asp:FilteredTextBoxExtender>
+                        </td>
+                    </tr>
+                    <tr id="trTranCusPrice3" runat="server" visible="False">
+                        <td id="Td5" runat="server">Discount :</td>
+                        <td id="Td6" runat="server">
+                            <asp:TextBox ID="txt_Discount" runat="server" Width="300px"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Discount" ID="FilteredTextBoxExtender1" ValidChars="1234567890.,">
                             </asp:FilteredTextBoxExtender>
                         </td>
                     </tr>
