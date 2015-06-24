@@ -23,7 +23,8 @@ namespace VloveImport.web.UserControls
 
         protected void SetPoint()
         {
-            lbMyPoint.Text = "0";
+            BasePage bp = new BasePage();
+            lbMyPoint.Text = bp.GetPoint().ToString("###,##0");
         }
 
         protected void BindData()
@@ -41,30 +42,24 @@ namespace VloveImport.web.UserControls
 
         protected void btnVoucher_Click(object sender, EventArgs e)
         {
-            int Point = 0;
-            CustomerBiz biz = new CustomerBiz();
+            int CurrentPoint = 0, VoucherPoint = 0, MV_ID = 0, CUS_ID = 0;
+            string Result = "";
+            ShoppingBiz biz = new ShoppingBiz();
             BasePage bp = new BasePage();
-            Point = bp.GetPoint();
-            if (Point > 100)
+            CurrentPoint = bp.GetPoint();
+            CUS_ID = bp.GetCusID();
+            MV_ID = ((Button)sender).CommandArgument == "" ? 0 : Convert.ToInt32(((Button)sender).CommandArgument);
+            VoucherPoint = ((Button)sender).CommandName == "" ? 1000 : Convert.ToInt32(((Button)sender).CommandName);
+            if (CurrentPoint > VoucherPoint)
             {
-                //biz.INS_UPD_TRANSACTION
-            }
-            else
-            {
-                bp.ShowMessageBox("คะแนนไม่พอ สะสมคะแนนอีกนิดนะคะ");
-                return;
-            }
-        }
-
-        protected void btnVoucher500_Click(object sender, EventArgs e)
-        {
-            int Point = 0;
-            CustomerBiz biz = new CustomerBiz();
-            BasePage bp = new BasePage();
-            Point = bp.GetPoint();
-            if (Point > 100)
-            {
-                //biz.INS_UPD_TRANSACTION
+                Result = biz.CreateVoucher(CUS_ID, MV_ID, VoucherPoint);
+                if (Result != "")
+                {
+                    bp.ShowMessageBox("การแลก Voucher มีปัญหา กรูณาติดต่อผู้ดูแลระบบค่ะ!!");                    
+                    bp.WriteLog("ucAccfuncMypoint", "btnVoucher_Click", Result);
+                    return;
+                }
+                bp.Redirect("CustomerMyAccount.aspx#voucher");
             }
             else
             {

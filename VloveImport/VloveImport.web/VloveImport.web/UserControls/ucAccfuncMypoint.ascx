@@ -21,7 +21,8 @@
                     <ItemTemplate>
                         <button type="button" class="btn waves-effect orange waves-light" name="action">
                             <asp:Button ID="btnVoucher" runat="server" Text="แลก Voucher" OnClick="btnVoucher_Click"
-                                CommandArgument='<%# DataBinder.Eval(Container.DataItem, "MV_ID") %>'/>
+                                CommandArgument='<%# DataBinder.Eval(Container.DataItem, "MV_ID") %>'
+                                CommandName='<%# DataBinder.Eval(Container.DataItem, "MV_POINT") %>'/>
                             </button>
                     </ItemTemplate>
                 </asp:TemplateField>

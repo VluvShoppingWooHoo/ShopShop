@@ -93,6 +93,39 @@
                                 </asp:GridView>
                             </div>
                             <br />
+                            <div id="divTran" class="row s8 m8 l8">
+                                <div class="row TestBox1" runat="server">
+                                    <div class="col s2 m2 l2 TestBox1"
+                                        style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                        <b>ค่าขนส่งในจีน</b>
+                                    </div>
+                                    <div class="col s4 m4 l4 TestBox1">
+                                        <asp:Label ID="lbChina" runat="server"></asp:Label>
+                                    </div>
+                                </div>   
+                                <br />                                                             
+                                <div class="row TestBox1" runat="server">
+                                    <div class="col s2 m2 l2 TestBox1"
+                                        style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                        <b>ค่าขนส่งระหว่างประเทศ</b>
+                                    </div>
+                                    <div class="col s4 m4 l4 TestBox1">
+                                        <asp:Label ID="lbThai" runat="server"></asp:Label>                                    
+                                    </div>
+                                </div>
+                                <br />
+                                <div id="Div1" class="row TestBox1" runat="server">
+                                    <div class="col s2 m2 l2 TestBox1"
+                                        style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                        <b>ค่าขนส่งในไทย</b>
+                                    </div>
+                                    <div class="col s4 m4 l4 TestBox1">
+                                        <asp:Label ID="lbCustomer" runat="server"></asp:Label>
+                                    </div>                                
+                                </div>
+                            </div>
+                            <br />
+                            <br />
                             <div class="row TestBox1">
                                 <div class="col s6 m6 l6 TestBox1" style="text-align: center;">
                                     <button type="button" class="btn waves-effect red waves-light" name="action">
@@ -111,9 +144,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div>                    
+                </div>                
+            </div>                        
         </ContentTemplate>
     </asp:UpdatePanel>
 

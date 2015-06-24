@@ -13,6 +13,15 @@ namespace VloveImport.web.UserControls {
     public partial class ucAccfuncVoucher {
         
         /// <summary>
+        /// divMyVoucher control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMyVoucher;
+        
+        /// <summary>
         /// gvVoucher control.
         /// </summary>
         /// <remarks>
@@ -20,23 +29,5 @@ namespace VloveImport.web.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvVoucher;
-        
-        /// <summary>
-        /// img control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img;
-        
-        /// <summary>
-        /// lb control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb;
     }
 }

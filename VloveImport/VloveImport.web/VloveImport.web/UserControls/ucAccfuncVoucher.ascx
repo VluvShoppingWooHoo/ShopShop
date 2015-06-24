@@ -4,29 +4,28 @@
 <b>บัตรกำนัลของฉัน</b> : <b>    
 <br />
 <br />
-<div class="row s8 m8 l8" style="border: 2px solid red;">    
-    <div class="row s6 m6 l6"> 
-        <asp:GridView ID="gvVoucher" runat="server" AutoGenerateColumns="false">
-            <Columns>
-                <asp:ImageField DataImageUrlField="~/Images/pic/Voucher500.png" ItemStyle-Width="200px" ItemStyle-Height="200px"></asp:ImageField>
-                <asp:BoundField DataField=""/>
-            </Columns>
-        </asp:GridView>       
-        <div class="col s4 m4 l4">            
-            <br />&nbsp;&nbsp;
-            <asp:Image ID="img" runat="server" ImageUrl="~/Images/pic/Voucher500.png" BorderWidth="1px"
-                Width="200px" Height="200px"/>
-            <br />
-            <br />
-        </div>        
-        <div class="col s6 m6 l6">
-            <br />
-            <br />
-            <br />
-            Voucher No.
-            &nbsp;&nbsp; :
-            &nbsp;&nbsp;
-            <asp:Label ID="lb" runat="server" Text="VC00001"></asp:Label>
-        </div>
-    </div>    
+<div id="divMyVoucher" runat="server" class="row s6 m6 l6" style="border: 2px solid red;">        
+    <asp:GridView ID="gvVoucher" runat="server" AutoGenerateColumns="false" Width="500px">
+        <Columns>
+            <asp:TemplateField ItemStyle-Width="80px">
+                <ItemTemplate>
+                    &nbsp;
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField ItemStyle-Width="300px">
+                <ItemTemplate>
+                    <asp:Image ID="img" runat="server" ImageUrl='<%# DataBinder.Eval(Container.DataItem, "MV_URL") %>' BorderWidth="1px"
+                        Width="200px" Height="200px"/>
+                </ItemTemplate>
+            </asp:TemplateField>                           
+            <asp:BoundField DataField="VOUCHER_CODE"/>
+            <asp:TemplateField ItemStyle-Width="100px">
+                <ItemTemplate>
+                    &nbsp;
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>       
+          
+    <br />
 </div>

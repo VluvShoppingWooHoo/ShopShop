@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,9 +16,27 @@ namespace VloveImport.web.UserControls
         {
             if (!IsPostBack)
             {
-                
+                BindData();
             }
         }
 
+        protected void BindData()
+        {
+            BasePage bp = new BasePage();
+            ShoppingBiz biz = new ShoppingBiz();
+            DataTable dt = biz.GetCustomerVoucher(bp.GetCusID());
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                gvVoucher.DataSource = dt;
+                gvVoucher.DataBind();
+                divMyVoucher.Visible = true;
+            }
+            else
+            {
+                gvVoucher.DataSource = null;
+                gvVoucher.DataBind();
+                divMyVoucher.Visible = false;
+            }
+        }
     }
 }

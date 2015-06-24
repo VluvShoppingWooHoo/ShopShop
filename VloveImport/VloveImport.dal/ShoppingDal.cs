@@ -566,6 +566,45 @@ namespace VloveImport.dal
                 throw new Exception("GET_MASTER_VOUCHER -> msg : " + ex.Message);
             }
         }
+
+        public DataSet GetCustomerVoucher(Int32 CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_VOUCHER");
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_CUSTOMER_VOUCHER -> msg : " + ex.Message);
+            }
+        }
+
+        public string CreateVoucher(Int32 CUS_ID, Int32 MV_ID, Int32 POINT)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_TRAN_VOUCHER");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter_Input_INT("MV_ID", SqlDbType.Int, ParameterDirection.Input, MV_ID);
+                SqlCommandData.SetParameter_Input_INT("POINT", SqlDbType.Int, ParameterDirection.Input, POINT);               
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return "INS_ORDER -> msg : " + ex.Message;
+            }
+        }
         #endregion
     }
 }
