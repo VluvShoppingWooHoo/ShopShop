@@ -18,11 +18,14 @@ namespace VloveImport.web.Customer
         public string OID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            CheckSession(); 
-            OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
-            if (OID != "")
+            CheckSession();
+            if (!IsPostBack)
             {
-                BindData();
+                OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
+                if (OID != "")
+                {
+                    BindData();
+                }
             }
         }
 
@@ -31,6 +34,7 @@ namespace VloveImport.web.Customer
             string withdrawDB = "", withdrawDBEn = "", pwd = "";
             Int32 Status = 0;
             CustomerBiz biz = new CustomerBiz();
+            ShoppingBiz bizShop = new ShoppingBiz();
             withdrawDB = GetCusSession().Cus_Withdraw_Code;
             if (withdrawDB != "")
             {
@@ -38,9 +42,20 @@ namespace VloveImport.web.Customer
                 pwd = txtPass.Text;
                 if (withdrawDBEn == pwd)
                 {
+                    int ORDER_ID = OID == "" ? 0 : Convert.ToInt32(OID);
+                    string ValueField = "";
+                    string Cash = "";
+                    double VoucherValue = 0;
+                    if (ddlVoucher.SelectedItem.Text != "-----เลือก-----")
+                    {
+                        ValueField = ddlVoucher.SelectedValue;
+                        Cash = (ValueField.Split('|'))[1].ToString();
+                        VoucherValue = Cash == "" ? 0 : Convert.ToDouble(Cash);
+                    }
+
                     double Bal = lbBalance.Text == "" ? 0 : Convert.ToDouble(lbBalance.Text);
                     double Tol = lbTotalAmount.Text == "" ? 0 : Convert.ToDouble(lbTotalAmount.Text);
-                    if (Bal > Tol)
+                    if (VoucherValue + Bal > Tol)
                     {
                         if (ViewState["ORDER_STATUS"] != null)
                             Status = Convert.ToInt32(ViewState["ORDER_STATUS"].ToString());
@@ -49,11 +64,18 @@ namespace VloveImport.web.Customer
 
                         TransactionData data = GetDataTran();
                         string Result = biz.INS_UPD_TRANSACTION(data, "INS", Status);
+                        if (VoucherValue > 0)
+                        {
+                            Result = bizShop.USE_VOUCHER(0, ORDER_ID, VoucherValue, GetCusID());
+                        }
 
                         Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
                     }
                     else
+                    {
                         ShowMessageBox("เงินในบัญชีไม่พอ กรุณาเติมเงินก่อนค่ะ");
+                        return;
+                    }
                 }
                 else
                 {
@@ -103,7 +125,31 @@ namespace VloveImport.web.Customer
                 gvTran.DataSource = null;
 
             gvTran.DataBind();
-            
+
+            //Voucher
+            DataTable dtVoucher = new DataTable();
+            string VCCode = "";
+            dtVoucher = bizShop.CheckVoucherUse(Order_ID);
+            if (dtVoucher != null && dtVoucher.Rows.Count > 0)
+            {
+                VCCode = dt.Rows[0]["VOUCHER_CODE"].ToString();
+                ddlVoucher.Enabled = false;
+                lbVoucher.Text = "ออร์เดอร์นี้มีการใช้ Voucher(" + VCCode + ") แล้ว";                
+            }
+            else
+            {
+                dtVoucher = new DataTable();
+                dtVoucher = bizShop.GetVoucherByCusID(GetCusID());
+                if (dtVoucher != null && dtVoucher.Rows.Count > 0)
+                {
+                    ddlVoucher.DataSource = null;
+                    ddlVoucher.DataSource = dtVoucher;
+                    ddlVoucher.DataTextField = "TextFiled";
+                    ddlVoucher.DataValueField = "ValueField";
+                    ddlVoucher.DataBind();
+                }
+                ddlVoucher.Items.Insert(0, "-----เลือก-----");
+            }
         }
 
         protected TransactionData GetDataTran()
@@ -150,21 +196,31 @@ namespace VloveImport.web.Customer
             }
             else
             {
-                Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
-                //switch (Type)
-                //{
-                //    case "ORDER":
-                //        Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
-                //        break;
-                //    case "PI":
-                //        Redirect("~/Customer/CustomerUplodaPIList.aspx");
-                //        break;
-                //    case "TRANS":
-                //        Redirect("~/Customer/CustomerTransOnlyList.aspx");
-                //        break;
-                //}
+                Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);        
             }
                 
+        }
+
+        protected void ddlVoucher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlVoucher.SelectedItem.Text != "-----เลือก-----")
+            {
+                string ValueField = "";
+                string Cash = "";
+                double VoucherValue = 0;
+                double TotalAmount = 0;
+
+                ValueField = ddlVoucher.SelectedValue;
+                Cash = (ValueField.Split('|'))[1].ToString();
+                VoucherValue = Cash == "" ? 0 : Convert.ToDouble(Cash);
+                TotalAmount = Convert.ToDouble(lbTotalAmount.Text.Replace(",", ""));
+                TotalAmount = TotalAmount - VoucherValue;
+                lbTotalAmount.Text = TotalAmount.ToString("###,##0.00");
+            }
+            else
+            {               
+                RefreshPage();
+            }
         }
     }
 }

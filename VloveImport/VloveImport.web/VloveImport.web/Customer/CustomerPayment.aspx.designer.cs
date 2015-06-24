@@ -40,22 +40,22 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.Label lbBalance;
         
         /// <summary>
-        /// txtVoucher control.
+        /// ddlVoucher control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVoucher;
+        protected global::System.Web.UI.WebControls.DropDownList ddlVoucher;
         
         /// <summary>
-        /// btnVoucher control.
+        /// lbVoucher control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVoucher;
+        protected global::System.Web.UI.WebControls.Label lbVoucher;
         
         /// <summary>
         /// txtPass control.

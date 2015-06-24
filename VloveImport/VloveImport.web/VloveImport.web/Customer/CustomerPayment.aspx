@@ -42,14 +42,12 @@
         <div class="col s2 m2 l2">           
             <span class="black-text FontHeader2">เลือกใช้ Voucher</span>
         </div>        
-        <div class="col s3 m3 l3 right-align"> 
-            &nbsp; 
-            <asp:TextBox ID="txtVoucher" runat="server" ReadOnly="true"></asp:TextBox>
-            <%--<asp:Label ID="lbVoucher" runat="server" CssClass="lbCaption"></asp:Label>--%>
-            <%--<a href="CustomerMyAccount.aspx">เติมเงิน</a>--%>
-        </div>
-        <div class="col s1 m1 l1 right-align">
-            <asp:Button ID="btnVoucher" runat="server" Text="เลือก" />
+        <div class="col s3 m3 l3 right-align">             
+            <asp:DropDownList ID="ddlVoucher" runat="server" AppendDataBoundItems="true" AutoPostBack="true"
+                Style="display: inline;" OnSelectedIndexChanged="ddlVoucher_SelectedIndexChanged">
+            </asp:DropDownList>  
+            <br />
+            <asp:Label ID="lbVoucher" runat="server"></asp:Label>         
         </div>
     </div>
     <br />
@@ -58,8 +56,7 @@
             <span class="black-text FontHeader2">รหัสผ่านการชำระเงิน</span>
         </div>        
         <div class="col s3 m3 l3 right-align">  
-            <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>
-            <%--<a href="CustomerMyAccount.aspx">เติมเงิน</a>--%>
+            <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>            
         </div>
     </div>
     <br />
@@ -83,6 +80,7 @@
             name="action" class="btn waves-effect orange waves-light">เติมเงิน                                
         </button> 
     </div>
+
     <script type="text/javascript">
         $(function () {
             SetFadeout();

@@ -206,6 +206,43 @@ namespace VloveImport.biz
             Result = dal.CreateVoucher(CUS_ID, MV_ID, POINT);
             return Result;
         }
+
+        public DataTable CheckVoucherUse(Int32 ORDER_ID)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.CheckVoucherUse(ORDER_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+
+        public DataTable GetVoucherByCusID(Int32 CUS_ID)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetVoucherByCusID(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+
+        public string USE_VOUCHER(Int32 TP_ID, Int32 ORDER_ID, double AMOUNT, Int32 CUS_ID)
+        {
+            string Result = "";
+            try
+            {
+                ShoppingDal dal = new ShoppingDal("LocalConnection");
+                Result = dal.USE_VOUCHER(TP_ID, ORDER_ID, AMOUNT, CUS_ID);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
         #endregion
     }
 }

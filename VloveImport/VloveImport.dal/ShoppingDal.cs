@@ -602,7 +602,64 @@ namespace VloveImport.dal
             {
                 //throw new Exception("AddtoCart -> msg : " + ex.Message);                
                 SqlCommandData.RollBack();
-                return "INS_ORDER -> msg : " + ex.Message;
+                return "INS_TRAN_VOUCHER -> msg : " + ex.Message;
+            }
+        }
+
+        public DataSet CheckVoucherUse(Int32 ORDER_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_VOUCHER_BY_ORDERID");
+
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_VOUCHER_BY_ORDERID -> msg : " + ex.Message);
+            }
+        }
+
+        public DataSet GetVoucherByCusID(Int32 CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_VOUCHER_BY_CUSID");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_VOUCHER_BY_CUSID -> msg : " + ex.Message);
+            }
+        }
+
+        public string USE_VOUCHER(Int32 TP_ID, Int32 ORDER_ID, double AMOUNT, Int32 CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_TRAN_USE_VOUCHER");
+
+                SqlCommandData.SetParameter_Input_INT("TP_ID", SqlDbType.Int, ParameterDirection.Input, TP_ID);
+                SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
+                SqlCommandData.SetParameter_Input_INT("AMOUNT", SqlDbType.Float, ParameterDirection.Input, AMOUNT);
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                //throw new Exception("AddtoCart -> msg : " + ex.Message);                
+                SqlCommandData.RollBack();
+                return "INS_TRAN_VOUCHER -> msg : " + ex.Message;
             }
         }
         #endregion
