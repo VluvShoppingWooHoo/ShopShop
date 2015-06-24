@@ -5,7 +5,7 @@
 <br />
 <br />
 <div id="divMyVoucher" runat="server" class="row s6 m6 l6" style="border: 2px solid red;">        
-    <asp:GridView ID="gvVoucher" runat="server" AutoGenerateColumns="false" Width="500px">
+    <asp:GridView ID="gvVoucher" runat="server" AutoGenerateColumns="false" Width="700px">
         <Columns>
             <asp:TemplateField ItemStyle-Width="80px">
                 <ItemTemplate>
@@ -19,9 +19,10 @@
                 </ItemTemplate>
             </asp:TemplateField>                           
             <asp:BoundField DataField="VOUCHER_CODE"/>
+            <asp:BoundField DataField="STATUS_DESCRIPTION"/>
             <asp:TemplateField ItemStyle-Width="100px">
                 <ItemTemplate>
-                    &nbsp;
+                    <%# DataBinder.Eval(Container.DataItem, "USE_DATE") %>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

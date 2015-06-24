@@ -647,7 +647,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("INS_TRAN_USE_VOUCHER");
 
                 SqlCommandData.SetParameter_Input_INT("TP_ID", SqlDbType.Int, ParameterDirection.Input, TP_ID);
-                SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
                 SqlCommandData.SetParameter_Input_INT("AMOUNT", SqlDbType.Float, ParameterDirection.Input, AMOUNT);
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
 
