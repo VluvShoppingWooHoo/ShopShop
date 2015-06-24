@@ -111,15 +111,15 @@ namespace VloveImport.web
                 string id = string.Empty;
                 if (webMode == 1)//taobao
                 {
-                    id = txt.Substring(txt.IndexOf("&id="), txt.Length - txt.IndexOf("&id="));
-                    id = id.Remove(0, 4);
-                    id = id.Substring(0, id.IndexOf("&"));
+                    id = txt.Substring(txt.IndexOf("id="), txt.Length - txt.IndexOf("id="));
+                    id = id.Remove(0, 3);
+                    //id = id.Substring(0, id.IndexOf("&"));
                 }
                 else if (webMode == 2)//tmall
                 {
-                    id = txt.Substring(txt.IndexOf("&id="), txt.Length - txt.IndexOf("&id="));
-                    id = id.Remove(0, 4);
-                    id = id.Substring(0, id.IndexOf("&"));
+                    id = txt.Substring(txt.IndexOf("id="), txt.Length - txt.IndexOf("id="));
+                    id = id.Remove(0, 3);
+                    //id = id.Substring(0, id.IndexOf("&"));
                 }
                 else if (webMode == 3)//1688
                 {
