@@ -31,6 +31,7 @@ namespace VloveImport.web.Customer
 
         protected void btnPayment_ServerClick(object sender, EventArgs e)
         {
+            OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
             string withdrawDB = "", withdrawDBEn = "", pwd = "";
             Int32 Status = 0;
             CustomerBiz biz = new CustomerBiz();
@@ -43,19 +44,23 @@ namespace VloveImport.web.Customer
                 if (withdrawDBEn == pwd)
                 {
                     int ORDER_ID = OID == "" ? 0 : Convert.ToInt32(OID);
+                    int TP_ID = 0;
                     string ValueField = "";
                     string Cash = "";
                     double VoucherValue = 0;
+                    string[] Value;
+                    Value = ValueField.Split('|');
                     if (ddlVoucher.SelectedItem.Text != "-----เลือก-----")
                     {
                         ValueField = ddlVoucher.SelectedValue;
-                        Cash = (ValueField.Split('|'))[1].ToString();
+                        Value = ValueField.Split('|');
+                        Cash = Value[1].ToString();
                         VoucherValue = Cash == "" ? 0 : Convert.ToDouble(Cash);
                     }
 
                     double Bal = lbBalance.Text == "" ? 0 : Convert.ToDouble(lbBalance.Text);
                     double Tol = lbTotalAmount.Text == "" ? 0 : Convert.ToDouble(lbTotalAmount.Text);
-                    if (VoucherValue + Bal > Tol)
+                    if (Bal > Tol)
                     {
                         if (ViewState["ORDER_STATUS"] != null)
                             Status = Convert.ToInt32(ViewState["ORDER_STATUS"].ToString());
@@ -66,7 +71,8 @@ namespace VloveImport.web.Customer
                         string Result = biz.INS_UPD_TRANSACTION(data, "INS", Status);
                         if (VoucherValue > 0)
                         {
-                            Result = bizShop.USE_VOUCHER(0, ORDER_ID, VoucherValue, GetCusID());
+                            TP_ID = Value[0] == "" ? 0 : Convert.ToInt32(Value[0]);
+                            Result = bizShop.USE_VOUCHER(TP_ID, ORDER_ID, VoucherValue, GetCusID());
                         }
 
                         Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
