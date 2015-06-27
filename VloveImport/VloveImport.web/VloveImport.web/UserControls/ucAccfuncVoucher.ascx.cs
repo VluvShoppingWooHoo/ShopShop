@@ -38,5 +38,15 @@ namespace VloveImport.web.UserControls
                 divMyVoucher.Visible = false;
             }
         }
+
+        public string ConvertDate(string Input)
+        {
+            string Result = "";
+            if (Input != "")
+            {
+                Result = Convert.ToDateTime(Input).ToString("dd/MM/yyyy hh:mm");
+            }
+            return Result;
+        }
     }
 }
