@@ -11,6 +11,7 @@ using VloveImport.biz;
 using VloveImport.data;
 using System.Globalization;
 using VloveImport.web.App_Code;
+using System.Web.Configuration;
 
 namespace VloveImport.web.UserControls
 {
@@ -156,6 +157,11 @@ namespace VloveImport.web.UserControls
                     Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
                     if (Result == string.Empty)
                     {
+                        string EmailTo = WebConfigurationManager.AppSettings["email"].ToString();
+                        string Subject = "Withdraw : " + bp.GetCusCode();
+                        string Body = "มีการถอนเงินจาก " + bp.GetCusCode() + " เป็นจำนวน " + txt_amount.Text + " บาท <br/> หมายุเหตุ : " + txt_remark.Text;
+                        bp.SendMail(EmailTo, Subject, Body);
+
                         ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('ส่งคำขอถอนเงินสำเร็จ');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
                         //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>window.location.href = '/Customer/CustomerMyAccount.aspx'", false);
                         //Response.Redirect("~/Customer/CustomerMyAccount.aspx");

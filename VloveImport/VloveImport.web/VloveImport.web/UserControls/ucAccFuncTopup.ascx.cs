@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
@@ -216,6 +217,11 @@ namespace VloveImport.web.UserControls
                 Result = CusBiz.INS_UPD_TRANSACTION(EnTran, "INS", 0);
                 if (Result == string.Empty)
                 {
+                    string EmailTo = WebConfigurationManager.AppSettings["email"].ToString();
+                    string Subject = "Topup : " + bp.GetCusCode();
+                    string Body = "มีการเติมเงินจาก " + bp.GetCusCode() + " เป็นจำนวน " + txt_tranfer_amount.Text + " บาท <br/> หมายุเหตุ : " + txt_remark.Text;
+                    bp.SendMail(EmailTo, Subject, Body);
+
                     ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('เติมเงินสำเร็จ');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
                     //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>window.location.href = '/Customer/CustomerMyAccount.aspx'", false);
                     //Response.Redirect("~/Customer/CustomerMyAccount.aspx");
