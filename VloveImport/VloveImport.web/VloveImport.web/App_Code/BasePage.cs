@@ -337,7 +337,16 @@ namespace VloveImport.web.App_Code
             Result = Price_TH.ToString("###,##0.00");
             return Result;
         }
+        public string DateStringtoString(string Input)
+        {
+            string Result = "";
+            if (Input != "")
+            {
+                Result = Convert.ToDateTime(Input).ToString("dd/MM/yyyy");
+            }
 
+            return Result;
+        }
         #endregion
     }
 }

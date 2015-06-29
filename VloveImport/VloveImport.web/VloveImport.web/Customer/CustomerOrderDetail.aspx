@@ -156,6 +156,12 @@
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRANSPORT_CUSTOMER_PRICE").ToString(), "Money") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="วันที่<br/>จัดส่งสินค้า" ItemStyle-Width="90px">
+                            <ItemTemplate>
+                                <asp:Label ID="lbTransportDate" runat="server" CssClass="right-align" Width="80%"
+                                    Text='<%# DateStringtoString(DataBinder.Eval(Container.DataItem, "OD_TRANS_STAMP").ToString()) %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <%--<asp:TemplateField HeaderText="รวมทั้งหมด (THB)">
                             <ItemTemplate>
                                 <asp:Label ID="lbTotal" runat="server" CssClass="right-align" Width="80%"

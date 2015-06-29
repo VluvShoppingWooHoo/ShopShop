@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
@@ -74,6 +75,11 @@ namespace VloveImport.web.Customer
                             TP_ID = Value[0] == "" ? 0 : Convert.ToInt32(Value[0]);
                             Result = bizShop.USE_VOUCHER(TP_ID, ORDER_ID, VoucherValue, GetCusID());
                         }
+
+                        string EmailTo = WebConfigurationManager.AppSettings["email"].ToString();
+                        string Subject = "Payment : " + hlOrderCode.Text;
+                        string Body = "มีการชำระเงินจาก " + hlOrderCode.Text + " <br/><br/>เมื่อวันที่ " + DateTime.Now.ToString("dd/MM/yyyy hh:mm");
+                        SendMail(EmailTo, Subject, Body);
 
                         Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + EncrypData(OID));
                     }
@@ -155,6 +161,7 @@ namespace VloveImport.web.Customer
                     ddlVoucher.DataBind();
                 }
                 ddlVoucher.Items.Insert(0, "-----เลือก-----");
+                lbVoucher.Text = "Voucher ไม่สามารถแลกเป็นเงินสดได้นะคะ";
             }
         }
 
@@ -221,10 +228,18 @@ namespace VloveImport.web.Customer
                 VoucherValue = Cash == "" ? 0 : Convert.ToDouble(Cash);
                 TotalAmount = Convert.ToDouble(lbTotalAmount.Text.Replace(",", ""));
                 TotalAmount = TotalAmount - VoucherValue;
-                lbTotalAmount.Text = TotalAmount.ToString("###,##0.00");
+                if (TotalAmount < 0)
+                {
+                    lbTotalAmount.Text = "0.00";
+                    ShowMessageBox("Voucher มีมูลค่ามากกว่าจำนวนงินที่ต้องจ่าย!!!");
+                }
+                else
+                {
+                    lbTotalAmount.Text = TotalAmount.ToString("###,##0.00");
+                }
             }
             else
-            {               
+            {
                 RefreshPage();
             }
         }

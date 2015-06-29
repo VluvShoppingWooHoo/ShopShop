@@ -41,12 +41,12 @@ namespace VloveImport.web.Customer
             if (dt != null && dt.Rows.Count > 0)
             {
                 lbOrder_Code.Text = dt.Rows[0]["ORDER_CODE"].ToString();
-                lbOrder_Date.Text = dt.Rows[0]["ORDER_DATE"].ToString();
+                lbOrder_Date.Text = Convert.ToDateTime(dt.Rows[0]["ORDER_DATE"].ToString()).ToString("dd/MM/yyyy hh:mm");
                 
                 lbCusName.Text = dt.Rows[0]["CUS_NAME"].ToString();
                 lbMobile.Text = dt.Rows[0]["CUS_MOBILE"].ToString();
 
-                lbAddress.Text = dt.Rows[0]["CUS_ADDRESS"].ToString();
+                lbAddress.Text = dt.Rows[0]["CUS_ADDRESS"].ToString() == "" ? "&nbsp;" : dt.Rows[0]["CUS_ADDRESS"].ToString();
                 Trans = "1. " + dt.Rows[0]["TRANS_CH_TH"].ToString() + "<br/>2. " + dt.Rows[0]["TRANS_TH_CU"].ToString();
                 lbOrderTransport.Text = Trans;
                 lbOrderAmount.Text = dt.Rows.Count.ToString();
