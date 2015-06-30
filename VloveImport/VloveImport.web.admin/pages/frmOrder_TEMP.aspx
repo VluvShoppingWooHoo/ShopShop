@@ -17,7 +17,7 @@
     <h3>ORDER DETAIL : <asp:Label ID="lbl_header_detail" Font-Size ="Large" runat="server" Text="" ForeColor ="RED"></asp:Label></h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="1">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="2">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -393,7 +393,7 @@
                                 <asp:Label ID="lbl_gv_prod_detail_UploadText" runat="server" Font-Bold = "true" Text= "Upload Receipt File :" Visible ="false"></asp:Label>
                                 <asp:ImageButton ID="imgbtn_gv_prod_detail_upload" runat="server" OnClick="imgbtn_gv_prod_detail_upload_Click" Width="16px" Visible ="false"/>
                             </ItemTemplate>
-                            <HeaderStyle CssClass="width30" />
+                            <HeaderStyle CssClass="width25" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Picture">
                             <EditItemTemplate>
@@ -458,12 +458,14 @@
                             <ItemStyle CssClass="ItemStyle-right" />
                         </asp:BoundField>
                         <asp:TemplateField HeaderText="Tools">
-                            <HeaderStyle CssClass="width5" />
+                            <HeaderStyle CssClass="width10" />
                             <ItemStyle CssClass="ItemStyle-center" VerticalAlign="Middle" />
                             <ItemTemplate>
                                 <asp:MultiView ID="MultiView3" runat="server" ActiveViewIndex="0">
                                     <asp:View ID="View5" runat="server">
                                         <asp:ImageButton ID="imgbtn_Editprod_amount" runat="server" ImageUrl="~/img/icon/b_edit.png" Width="15px" Height="15px" OnClick="imgbtn_Editprod_amount_Click"/>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <asp:ImageButton ID="imgbtn_Send_Product" AlternateText = "Remark Flag Send Product" runat="server" OnClick="imgbtn_Send_Product_Click" />
                                     </asp:View>
                                     <asp:View ID="View6" runat="server">
                                         <asp:ImageButton ID="imgbtn_Updateprod_amount" runat="server" ImageUrl="~/img/icon/check-icon.png" Width="15px" Height="15px" OnClick="imgbtn_Updateprod_amount_Click"/>

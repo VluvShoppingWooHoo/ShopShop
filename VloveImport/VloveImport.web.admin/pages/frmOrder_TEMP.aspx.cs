@@ -1091,5 +1091,10 @@ namespace VloveImport.web.admin.pages
             }
         }
 
+        protected void imgbtn_Send_Product_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
     }
 }
