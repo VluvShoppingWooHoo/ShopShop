@@ -99,6 +99,7 @@
     <Content Include="img\icon\Close.png" />
     <Content Include="img\icon\c_box.png" />
     <Content Include="img\icon\date.png" />
+    <Content Include="img\icon\icon_transport.png" />
     <Content Include="img\icon\l_box.png" />
     <Content Include="img\icon\nxt-checkbox-checked-not-ok-md.png" />
     <Content Include="img\icon\nxt-checkbox-checked-ok-md.png" />
