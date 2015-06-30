@@ -529,6 +529,22 @@ namespace VloveImport.web.admin.pages
 
         #region Gridview Product Detail
 
+        protected void imgbtn_Send_Product_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent.Parent.Parent).RowIndex;
+
+            int ORDER_DETAIL_ID = Convert.ToInt32(this.gv_detail.DataKeys[rowIndex].Values[10].ToString());
+
+            AdminBiz AdBiz = new AdminBiz();
+            string Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(-1, ORDER_DETAIL_ID, 0, 0.00, _VS_USER_LOGIN, "UPD_PROD_SEND");
+
+            if (Result == "")
+            {
+                BindData();
+                ShowMessageBox("Update product success", this.Page);
+            }
+        }
+
         protected void imgbtn_popup_shopdetail_Click(object sender, ImageClickEventArgs e)
         {
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
@@ -666,7 +682,13 @@ namespace VloveImport.web.admin.pages
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 string OD_STATUS = DataBinder.Eval(e.Row.DataItem, "OD_STATUS").ToString();
+                string STATUS_SEND_PRODUCT = DataBinder.Eval(e.Row.DataItem, "STATUS_SEND_PRODUCT").ToString();
                 Label lblRowIndex = ((Label)e.Row.FindControl("lblRowIndex"));
+
+                if (STATUS_SEND_PRODUCT == "1")
+                {
+                    ((ImageButton)e.Row.FindControl("imgbtn_Send_Product")).Visible = false;
+                }
 
                 if (OD_STATUS == "-1")
                 {
@@ -780,6 +802,14 @@ namespace VloveImport.web.admin.pages
                         imgUpload.Visible = false;
                         imgbtn_gv_prod_detail_upload_pic.Visible = false;
 
+                    }
+
+                    string OD_TRANS_STAMP_TEXT = DataBinder.Eval(e.Row.DataItem, "OD_TRANS_STAMP_TEXT").ToString();
+
+                    if (OD_TRANS_STAMP_TEXT != "")
+                    {
+                        ProdItemDetail += "<br>Transport Date : ";
+                        ProdItemDetail += OD_TRANS_STAMP_TEXT;
                     }
 
                     ((Label)e.Row.FindControl("lbl_gv_prod_detail_Item")).Text = ProdItemDetail;
@@ -1089,11 +1119,6 @@ namespace VloveImport.web.admin.pages
                     e.Row.Cells[2].Visible = false;
                 }
             }
-        }
-
-        protected void imgbtn_Send_Product_Click(object sender, ImageClickEventArgs e)
-        {
-
         }
 
     }
