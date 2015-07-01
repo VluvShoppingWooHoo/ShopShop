@@ -62,7 +62,11 @@ namespace VloveImport.dal
 
                 SqlCommandData.SetParameter("CUS_NAME", SqlDbType.NVarChar, ParameterDirection.Input, EnCus.Cus_Name);
                 SqlCommandData.SetParameter("CUS_LNAME", SqlDbType.NVarChar, ParameterDirection.Input, EnCus.Cus_LName);
-                SqlCommandData.SetParameter("CUS_BIRTHDAY", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_BirthDay);
+                if (EnCus.Cus_BirthDay != "")
+                    SqlCommandData.SetParameter("CUS_BIRTHDAY", SqlDbType.Date, ParameterDirection.Input, Convert.ToDateTime(EnCus.Cus_BirthDay));
+                else
+                    SqlCommandData.SetParameter("CUS_BIRTHDAY", SqlDbType.Date, ParameterDirection.Input, DBNull.Value);
+
                 SqlCommandData.SetParameter("CUS_GENDER", SqlDbType.VarChar, ParameterDirection.Input, EnCus.Cus_Gender);
                 SqlCommandData.SetParameter("CUS_LINK_SHOP", SqlDbType.NVarChar, ParameterDirection.Input, EnCus.Cus_Link_Shop);
                 SqlCommandData.SetParameter("CUS_PIC", SqlDbType.NVarChar, ParameterDirection.Input, EnCus.CUS_Pic);
