@@ -99,7 +99,7 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 SqlCommandData.RollBack();
-                return ("UPD_ADMIN_ORDER -> msg : " + ex.Message);
+                throw new Exception("UPD_ADMIN_ORDER -> msg : " + ex.Message);
             }
         }
 

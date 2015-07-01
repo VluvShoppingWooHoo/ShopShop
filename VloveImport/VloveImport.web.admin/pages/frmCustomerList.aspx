@@ -92,7 +92,7 @@
                     <asp:BoundField HeaderText="Birthday" DataField="CUS_BIRTHDAY_TEXT">
                     <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="Telephone" DataField="CUS_TELEPHONE" >
+                    <asp:BoundField HeaderText="Telephone" DataField="CUS_TELEPHONE_TEXT" >
                     <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Email" DataField="CUS_EMAIL">
