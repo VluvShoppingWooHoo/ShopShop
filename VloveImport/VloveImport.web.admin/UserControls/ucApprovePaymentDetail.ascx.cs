@@ -36,8 +36,8 @@ namespace VloveImport.web.admin.UserControls
             ds = AdBiz.GET_ADMIN_TRANSACTION(TRAN_ID, null,null, "", -1, -1, -1, "BINDDATA_BYID");
 
             if (ds.Tables[0].Rows.Count > 0)
-            {
-                imbURL.ImageUrl = ds.Tables[0].Rows[0]["TRANS_PICURL"].ToString();
+            {                
+                imbURL.ImageUrl = "~/Attachment/IMG_PAYMENT/" + ds.Tables[0].Rows[0]["TRANS_PICURL"].ToString();
                 #region ORDER DATA
                 lblDetail_TranName.Text = ds.Tables[0].Rows[0]["TRAN_TABLE_TYPE_TEXT"].ToString();
                 lblDetail_TranType.Text = ds.Tables[0].Rows[0]["TRAN_TYPE_TEXT"].ToString();
