@@ -465,7 +465,7 @@
                                     <asp:View ID="View5" runat="server">
                                         <asp:ImageButton ID="imgbtn_Editprod_amount" runat="server" ImageUrl="~/img/icon/b_edit.png" Width="15px" Height="15px" OnClick="imgbtn_Editprod_amount_Click"/>
                                         &nbsp;&nbsp;&nbsp;
-                                        <asp:ImageButton ID="imgbtn_Send_Product" AlternateText = "Remark Flag Send Product" runat="server" Height="25px" ImageUrl="~/img/icon/icon_transport.png" OnClick="imgbtn_Send_Product_Click" Width="25px" />
+                                        <asp:ImageButton ID="imgbtn_Send_Product" ToolTip = "Remark Flag Send Product" AlternateText = "Remark Flag Send Product" runat="server" Height="25px" ImageUrl="~/img/icon/icon_transport.png" OnClick="imgbtn_Send_Product_Click" Width="25px" />
                                     </asp:View>
                                     <asp:View ID="View6" runat="server">
                                         <asp:ImageButton ID="imgbtn_Updateprod_amount" runat="server" ImageUrl="~/img/icon/check-icon.png" Width="15px" Height="15px" OnClick="imgbtn_Updateprod_amount_Click"/>
