@@ -227,7 +227,7 @@ namespace VloveImport.biz
             CustomerDal dal = new CustomerDal("LocalConnection");
             ds = dal.GET_CUSTOMER_POINT(CUS_ID);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
-                return Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+                return ds.Tables[0].Rows[0][0].ToString() == "" ? 0 : Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString());
             else
                 return 0;
         }
