@@ -25,6 +25,7 @@ namespace VloveImport.web.Customer
                     BindData(OID);
                 else
                 {
+                    divTran.Visible = false;
                     btn3.Visible = false;
                     gvTrans.DataSource = null;
                     gvTrans.DataBind();
