@@ -179,13 +179,12 @@ namespace VloveImport.web.admin.pages
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
-            ucCalendar2.ClearData();
             ddlTranSactionStatus.SelectedIndex = 0;
             ddlTranSactionType.SelectedIndex = 0;
             txtCusCode.Text = "";
             ucCalendar1.ClearData();
             ucCalendar2.ClearData();
+            ucCalendar1.SET_DATE(DateTime.Now.AddMonths(-1));
         }
 
         protected void btnSelectOrder_Click(object sender, EventArgs e)

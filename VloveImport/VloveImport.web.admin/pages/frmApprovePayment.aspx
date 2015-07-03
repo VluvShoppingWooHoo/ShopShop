@@ -86,7 +86,7 @@
                         <HeaderStyle CssClass="width5" />
                     </asp:BoundField>
                     <asp:BoundField DataField="TRAN_DATE_TEXT" HeaderText="Transaction Date">
-                        <HeaderStyle CssClass="width10" />
+                        <HeaderStyle CssClass="width12" />
                     </asp:BoundField>
                     <asp:BoundField DataField="TRAN_TYPE_TEXT" HeaderText="Transaction Type">
                         <HeaderStyle CssClass="width10" />
