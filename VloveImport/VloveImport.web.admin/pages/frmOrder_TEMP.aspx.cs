@@ -439,6 +439,14 @@ namespace VloveImport.web.admin.pages
 
         protected void btn_detail_update_Click(object sender, EventArgs e)
         {
+            if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) > 0 && Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue) > 7)
+            {
+                ShowMessageBox("Please select the items waiting for payment", this.Page);
+                //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
+                return;
+            }
+
+
             if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
             {
                 if (txt_Transport_Cus_Price.Text.Trim() == "" || Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim()) == 0)
@@ -448,6 +456,9 @@ namespace VloveImport.web.admin.pages
                     //return;
                 }
                 double TranCusPrice = Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim());
+                double Service_Charge = Convert.ToDouble(txt_Service_Charge.Text.Trim());
+                double Discount = Convert.ToDouble(txt_Discount.Text.Trim());
+
                 if (TranCusPrice > 0)
                 {
                     if (_VS_CUS_BALANCE > TranCusPrice)
@@ -461,7 +472,7 @@ namespace VloveImport.web.admin.pages
                         EnTran.TRAN_TYPE = 2;
                         EnTran.TRAN_TABLE_TYPE = 3;
                         EnTran.TRAN_STATUS = 2;
-                        EnTran.TRAN_AMOUNT = TranCusPrice;
+                        EnTran.TRAN_AMOUNT = (TranCusPrice + Service_Charge - Discount);
                         EnTran.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
                         EnTran.EMP_REMARK = "ตัดเงินรายการค่าขนส่งขั้นตอนสุดท้าย";
                         ResultTran = AdBizTran.INS_UPD_TRANSACTION(EnTran, Act);
