@@ -229,13 +229,13 @@ namespace VloveImport.biz
                 return null;
         }
 
-        public string USE_VOUCHER(Int32 TP_ID, Int32 ORDER_ID, double AMOUNT, Int32 CUS_ID)
+        public string USE_VOUCHER(Int32 TP_ID, Int32 ORDER_ID, double AMOUNT, Int32 CUS_ID, string VOUCHER)
         {
             string Result = "";
             try
             {
                 ShoppingDal dal = new ShoppingDal("LocalConnection");
-                Result = dal.USE_VOUCHER(TP_ID, ORDER_ID, AMOUNT, CUS_ID);
+                Result = dal.USE_VOUCHER(TP_ID, ORDER_ID, AMOUNT, CUS_ID, VOUCHER);
             }
             catch (Exception ex)
             {

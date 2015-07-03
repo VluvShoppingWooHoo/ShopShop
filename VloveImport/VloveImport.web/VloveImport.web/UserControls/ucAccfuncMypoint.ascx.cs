@@ -50,7 +50,7 @@ namespace VloveImport.web.UserControls
             CUS_ID = bp.GetCusID();
             MV_ID = ((Button)sender).CommandArgument == "" ? 0 : Convert.ToInt32(((Button)sender).CommandArgument);
             VoucherPoint = ((Button)sender).CommandName == "" ? 1000 : Convert.ToInt32(((Button)sender).CommandName);
-            if (CurrentPoint > VoucherPoint)
+            if (CurrentPoint >= VoucherPoint)
             {
                 Result = biz.CreateVoucher(CUS_ID, MV_ID, VoucherPoint);
                 if (Result != "")
