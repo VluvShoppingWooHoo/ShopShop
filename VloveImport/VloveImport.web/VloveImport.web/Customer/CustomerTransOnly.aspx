@@ -93,7 +93,7 @@
                                 </asp:GridView>
                             </div>
                             <br />
-                            <div id="divTran" class="row s8 m8 l8">
+                            <div id="divTran" runat="server" class="row s8 m8 l8">
                                 <div class="row TestBox1" runat="server">
                                     <div class="col s2 m2 l2 TestBox1"
                                         style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">

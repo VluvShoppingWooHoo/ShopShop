@@ -204,7 +204,7 @@ namespace VloveImport.web.Customer
                     {
                         DataTable dtDetail = new DataTable();
                         string Order_ID;//SessionUser
-                        Order_ID = EncrypData(Result[1]);
+                        Order_ID = Result[1];
                         dtDetail = Biz.GetOrderDetail(Order_ID == "" ? 0 : Convert.ToInt32(Order_ID));
                         if (dtDetail != null && dtDetail.Rows.Count > 0)
                         {
@@ -213,7 +213,8 @@ namespace VloveImport.web.Customer
                             string Body = "มีการสร้างใบสั่งซื้อหมายเลข " + dtDetail.Rows[0]["ORDER_CODE"].ToString();                                
                             SendMail(EmailTo, Subject, Body);
                         }
-                                                
+
+                        Order_ID = EncrypData(Result[1]);                    
                         Response.Redirect("CustomerPayment.aspx?OID=" + Order_ID);
                     }
                 }
