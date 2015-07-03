@@ -79,14 +79,14 @@
                             <asp:ImageButton ID="imgBtn_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-ok-md.png" Width="20px" OnClick="imgBtn_choose_Click" />
                             <asp:ImageButton ID="imgBtn_cancel_choose" runat="server" Height="20px" ImageUrl="~/img/icon/nxt-checkbox-checked-not-ok-md.png" Width="20px" Visible="false" OnClick="imgBtn_cancel_choose_Click" />
                         </ItemTemplate>
-                        <HeaderStyle CssClass="width5" />
+                        <HeaderStyle CssClass="width2" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No.">
-                        <HeaderStyle CssClass="width5" />
+                        <HeaderStyle CssClass="width3" />
                     </asp:BoundField>
                     <asp:BoundField DataField="TRAN_DATE_TEXT" HeaderText="Transaction Date">
-                        <HeaderStyle CssClass="width10" />
+                        <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
                     <asp:BoundField DataField="TRAN_TYPE_TEXT" HeaderText="Transaction Type">
                         <HeaderStyle CssClass="width10" />
