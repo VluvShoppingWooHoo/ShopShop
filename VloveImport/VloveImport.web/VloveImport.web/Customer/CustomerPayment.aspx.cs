@@ -51,7 +51,7 @@ namespace VloveImport.web.Customer
                     double VoucherValue = 0;
                     string[] Value;
                     Value = ValueField.Split('|');
-                    if (ddlVoucher.SelectedItem.Text != "-----เลือก-----")
+                    if (ddlVoucher.SelectedItem != null && ddlVoucher.SelectedItem.Text != "-----เลือก-----")
                     {
                         ValueField = ddlVoucher.SelectedValue;
                         Value = ValueField.Split('|');
@@ -72,8 +72,10 @@ namespace VloveImport.web.Customer
                         string Result = biz.INS_UPD_TRANSACTION(data, "INS", Status);
                         if (VoucherValue > 0)
                         {
+                            string TextField = ddlVoucher.SelectedItem.Text;
+                            string Voucher = TextField.Split(':')[0].Trim();
                             TP_ID = Value[0] == "" ? 0 : Convert.ToInt32(Value[0]);
-                            Result = bizShop.USE_VOUCHER(TP_ID, ORDER_ID, VoucherValue, GetCusID());
+                            Result = bizShop.USE_VOUCHER(TP_ID, ORDER_ID, VoucherValue, GetCusID(), Voucher);
                         }
 
                         string EmailTo = WebConfigurationManager.AppSettings["email"].ToString();
@@ -144,7 +146,7 @@ namespace VloveImport.web.Customer
             dtVoucher = bizShop.CheckVoucherUse(Order_ID);
             if (dtVoucher != null && dtVoucher.Rows.Count > 0)
             {
-                VCCode = dt.Rows[0]["VOUCHER_CODE"].ToString();
+                VCCode = dtVoucher.Rows[0]["VOUCHER_CODE"].ToString();
                 ddlVoucher.Enabled = false;
                 lbVoucher.Text = "ออร์เดอร์นี้มีการใช้ Voucher(" + VCCode + ") แล้ว";                
             }
@@ -181,6 +183,7 @@ namespace VloveImport.web.Customer
 
         protected void btnTopup_ServerClick(object sender, EventArgs e)
         {
+            OID = Request.QueryString["OID"] == null ? "" : en.DecryptData(Request.QueryString["OID"].ToString());
             string Page = "~/Customer/CustomerMyAccount.aspx?OID=" + EncrypData(OID);
             Redirect("~/Customer/CustomerMyAccount.aspx?u=" + EncrypData(Page));
         }

@@ -265,7 +265,7 @@ namespace VloveImport.dal
                         SqlCommandData.Commit();
                         string shop_id = SqlCommandData.GetOutputStoreProcedure("ORDER_SHOP_ID");
                         shopName.Add(dr["CUS_BK_SHOPNAME"].ToString());
-                        string expression = "CUS_BK_SHOPNAME = '" + dr["CUS_BK_SHOPNAME"].ToString() + "'";
+                        string expression = "CUS_BK_SHOPNAME = '" + dr["CUS_BK_SHOPNAME"].ToString().Replace("'", "''") + "'";
                         foreach (DataRow drr in dt.Select(expression))
                         {
                             SqlCommandData.OpenConnection();
@@ -638,7 +638,7 @@ namespace VloveImport.dal
             }
         }
 
-        public string USE_VOUCHER(Int32 TP_ID, Int32 ORDER_ID, double AMOUNT, Int32 CUS_ID)
+        public string USE_VOUCHER(Int32 TP_ID, Int32 ORDER_ID, double AMOUNT, Int32 CUS_ID, string VOUCHER)
         {
             try
             {
@@ -650,6 +650,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
                 SqlCommandData.SetParameter_Input_INT("AMOUNT", SqlDbType.Float, ParameterDirection.Input, AMOUNT);
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter("VOUCHER", SqlDbType.VarChar, ParameterDirection.Input, VOUCHER);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
