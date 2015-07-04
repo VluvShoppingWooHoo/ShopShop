@@ -4,8 +4,13 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Configuration;
+using System.Web.Mail;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
@@ -206,7 +211,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb1_Customer_Name.Text = dt.Rows[0]["CUS_FULL_NAME"].ToString();
                 lbl_tb1_Customer_Point.Text = dt.Rows[0]["CUS_POINT"].ToString();
                 lbl_tb1_Customer_Telephone.Text = dt.Rows[0]["CUS_TELEPHONE"].ToString() + " " + dt.Rows[0]["CUS_MOBILE"].ToString();
-                
+
                 _VS_CUS_BALANCE = Convert.ToDouble(dt.Rows[0]["CUS_BALANCE"].ToString());
                 _VS_CUS_ID = Convert.ToInt32(dt.Rows[0]["CUS_ID"].ToString());
             }
@@ -323,18 +328,21 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
+                tr_tb2_chk_email.Visible = true;
             }
             else if (_VS_ORDER_STS == "1" && _VS_ORDER_TYPE == "2")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
+                tr_tb2_chk_email.Visible = true;
             }
             else if (_VS_ORDER_STS == "2" && _VS_ORDER_TYPE == "3")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
+                tr_tb2_chk_email.Visible = true;
                 btnUpdateShopDetail.Visible = true;
             }
             else if (_VS_ORDER_STS == "3")
@@ -342,18 +350,21 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = false;
+                tr_tb2_chk_email.Visible = false;
             }
             else if (_VS_ORDER_STS == "4")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
+                tr_tb2_chk_email.Visible = true;
             }
             else if (_VS_ORDER_STS == "5" || _VS_ORDER_STS == "7")
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = false;
+                tr_tb2_chk_email.Visible = false;
                 btnUpdateShopDetail.Visible = false;
             }
             else if (_VS_ORDER_STS == "6")
@@ -361,6 +372,7 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
+                tr_tb2_chk_email.Visible = true;
                 btnUpdateShopDetail.Visible = true;
             }
             else if (_VS_ORDER_STS == "8" || _VS_ORDER_STS == "9")
@@ -368,6 +380,7 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_ORDER_STATUS.Enabled = true;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
                 btn_detail_update.Visible = true;
+                tr_tb2_chk_email.Visible = true;
                 btnUpdateShopDetail.Visible = false;
             }
             else if (_VS_ORDER_STS == "10")
@@ -375,6 +388,7 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = false;
+                tr_tb2_chk_email.Visible = false;
                 trTranCusPrice.Visible = true;
                 trTranCusPrice1.Visible = true;
                 trTranCusPrice2.Visible = true;
@@ -392,6 +406,7 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = false;
+                tr_tb2_chk_email.Visible = false;
                 trTranCusPrice.Visible = false;
                 trTranCusPrice1.Visible = false;
                 btnUpdateShopDetail.Visible = false;
@@ -524,6 +539,111 @@ namespace VloveImport.web.admin.pages
             {
                 ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result_order + "  ERROR TRANSPORT : " + Result_transport + "  ERROR TRANSACTION : " + Result), this.Page);
             }
+
+            if (tb_2_chk_email.Checked == true)
+            {
+                SendMail();
+            }
+
+        }
+
+        public string BodyEmail()
+        {
+            StringBuilder AppTextHeader = new StringBuilder();
+
+            AppTextHeader.Append("<table border = \"0\" width = \"100%\">");
+            AppTextHeader.Append("<tr>");
+            AppTextHeader.Append("<td colspan = \"2\" aligh = \"left\">");
+            AppTextHeader.Append("<br>");
+            AppTextHeader.AppendFormat("เรียนคุณ {0}", lbl_tb1_Customer_Name.Text);
+            AppTextHeader.Append("</td>");
+            AppTextHeader.Append("</tr>");
+            AppTextHeader.Append("<tr>");
+            AppTextHeader.Append("<td width = \"5%\" aligh = \"left\"></td>");
+            AppTextHeader.Append("<td width = \"80%\"></td>");
+            AppTextHeader.Append("</tr>");
+            AppTextHeader.Append("<tr>");
+            AppTextHeader.Append("<td aligh = \"left\"></td>");
+            AppTextHeader.Append("<td aligh = \"left\">");
+            AppTextHeader.Append("<br>");
+            AppTextHeader.AppendFormat("ตามที่ท่านได้ทำรายการ กับทาง Web Site iloveimport.com Order Code : {1} <br>", lbl_tb1_order_code.Text);
+            AppTextHeader.Append("ขณะนี้ได้มีการอัพเดทสถานะของ Order Code นี้กรุณาเข้าไปตรวจสอบ ได้ที่ &nbsp;<a href =\"http://www.iloveimport.com\" target = \"_blank\">www.iloveimport.com</a>");
+            AppTextHeader.Append("</td>");
+            AppTextHeader.Append("</tr>");
+            AppTextHeader.Append("<tr>");
+            AppTextHeader.Append("<td colspan = \"2\">");
+            AppTextHeader.Append("<br><br><br><br>");
+            AppTextHeader.Append("ด้วยความขอบคุณ<br>");
+            AppTextHeader.Append("(PWT trading) Phannee World Trading Co.,Ltd <br>");
+            AppTextHeader.Append("<br>");
+            AppTextHeader.Append("Mobile : 087-435-3118, 092-672-8160 <br>");
+            AppTextHeader.Append("Contract us : Wechat : arbow123 ,Line ID : arbow123 , QQ ID : 1484258255<br>");
+            AppTextHeader.Append("Tel ; 087-4353118 , 088-3264117, 092-6728160<br>");
+            AppTextHeader.Append("E-Maill : info@iloveimport.com<br>");
+            AppTextHeader.Append("<br>");
+            AppTextHeader.Append("วันทำงาน จันทร์ –ศุกร์ 10.00 - 20.00 <br>");
+            AppTextHeader.Append("เสาร์ 10.00-12.00 AM<br>");
+            AppTextHeader.Append("ที่อยู่ในการรับสินค้า ซอยโชคชัย4 ถนนลาดพร้าว กทม 10230<br>");
+            AppTextHeader.Append("<br>");
+            AppTextHeader.Append("ติดต่อโกดังที่ไทย<br>");
+            AppTextHeader.Append("+6687-4353118 <br>");
+            AppTextHeader.Append("+6688-3264117<br>");
+            AppTextHeader.Append("<br>");
+            AppTextHeader.Append("ติดต่อโกดังที่จีน<br>");
+            AppTextHeader.Append("+8615017510371<br>");
+            AppTextHeader.Append("+8618523502489");
+            AppTextHeader.Append("</td>");
+            AppTextHeader.Append("</tr>");
+            AppTextHeader.Append("</table>");
+
+            return AppTextHeader.ToString();
+        }
+
+        private string SendMail()
+        {
+            string Result = "";
+            string mailFrom = WebConfigurationManager.AppSettings["email"].ToString();
+            string strMailServer = WebConfigurationManager.AppSettings["SMTP"].ToString();
+            string UserEmail = WebConfigurationManager.AppSettings["email"].ToString();
+            string PassEmail = WebConfigurationManager.AppSettings["emailp"].ToString();
+
+            string MailTo = lbl_tb1_Customer_Email.Text;
+
+            string Subject = "Iloveimport Notifications Update order status";
+            string Body = BodyEmail();
+
+            try
+            {
+                //Send Email ให้คนลำดับถัดไปในกรณี Approve หรือ ส่งให้คนลำดับก่อนหน้าในกรณี Reject
+                System.Net.Mail.MailMessage Mail = new System.Net.Mail.MailMessage();
+                MailAddress mailAdd = new MailAddress(UserEmail);
+                //Email, toEmail
+                Mail.IsBodyHtml = true;
+                Mail.SubjectEncoding = System.Text.Encoding.UTF8;
+                Mail.BodyEncoding = System.Text.Encoding.UTF8;
+                Mail.From = mailAdd;
+                Mail.To.Add(MailTo);
+
+                Mail.Subject = Subject;
+                Mail.Body = Body.Replace("\r\n", "<br/>");
+
+                util.EncrypUtil Enc = new util.EncrypUtil();
+
+                if (strMailServer != "")
+                {
+                    SmtpClient SmtpClient = new SmtpClient(strMailServer, 25);
+                    SmtpClient.Credentials = new NetworkCredential(UserEmail, Enc.DecryptData(PassEmail));
+
+                    SmtpClient.Send(Mail);
+                    Mail.Attachments.Clear();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return Result;
         }
 
         #endregion
@@ -791,7 +911,7 @@ namespace VloveImport.web.admin.pages
                             imgbtn_gv_prod_detail_upload_pic.Height = Unit.Pixel(40);
                             imgbtn_gv_prod_detail_upload_pic.ImageUrl = OD_SIZE;
                             ProdItemDetail += "<br>";
-                                //"<img src = \"" + OD_SIZE + "\" width = \"80px\" Height = \"80px\" />";
+                            //"<img src = \"" + OD_SIZE + "\" width = \"80px\" Height = \"80px\" />";
                         }
                         else imgbtn_gv_prod_detail_upload_pic.Visible = false;
 

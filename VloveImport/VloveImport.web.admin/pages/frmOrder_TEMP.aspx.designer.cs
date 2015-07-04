@@ -508,6 +508,24 @@ namespace VloveImport.web.admin.pages {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
         
         /// <summary>
+        /// tr_tb2_chk_email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow tr_tb2_chk_email;
+        
+        /// <summary>
+        /// tb_2_chk_email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox tb_2_chk_email;
+        
+        /// <summary>
         /// btn_detail_update control.
         /// </summary>
         /// <remarks>

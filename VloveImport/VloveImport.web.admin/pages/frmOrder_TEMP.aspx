@@ -355,6 +355,21 @@
                             </asp:FilteredTextBoxExtender>
                         </td>
                     </tr>
+                    <tr id="tr_tb2_chk_email" runat="server" visible="False">
+                        <td></td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <asp:CheckBox ID="tb_2_chk_email" runat="server" />
+                                    </td>
+                                    <td>
+                                        Send Email TO Customer
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
                     <tr>
                         <td></td>
                         <td>
