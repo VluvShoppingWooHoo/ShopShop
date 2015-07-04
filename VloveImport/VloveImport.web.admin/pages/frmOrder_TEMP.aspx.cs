@@ -566,7 +566,7 @@ namespace VloveImport.web.admin.pages
             AppTextHeader.Append("<td aligh = \"left\"></td>");
             AppTextHeader.Append("<td aligh = \"left\">");
             AppTextHeader.Append("<br>");
-            AppTextHeader.AppendFormat("ตามที่ท่านได้ทำรายการ กับทาง Web Site iloveimport.com Order Code : {1} <br>", lbl_tb1_order_code.Text);
+            AppTextHeader.AppendFormat("ตามที่ท่านได้ทำรายการ กับทาง Web Site iloveimport.com Order Code : {0} <br>", lbl_tb1_order_code.Text);
             AppTextHeader.Append("ขณะนี้ได้มีการอัพเดทสถานะของ Order Code นี้กรุณาเข้าไปตรวจสอบ ได้ที่ &nbsp;<a href =\"http://www.iloveimport.com\" target = \"_blank\">www.iloveimport.com</a>");
             AppTextHeader.Append("</td>");
             AppTextHeader.Append("</tr>");
