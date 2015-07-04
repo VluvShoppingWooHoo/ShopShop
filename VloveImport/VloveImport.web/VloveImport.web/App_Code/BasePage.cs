@@ -15,6 +15,34 @@ namespace VloveImport.web.App_Code
 {
     public class BasePage : System.Web.UI.Page
     {
+        public struct ErrorInfo
+        {
+            public string ErrorUrl;
+            public string ErrorMessage;
+            public string ErrorSource;
+            public string ErrorStackTrace;
+        }
+
+        #region
+        /// <summary>
+        /// Use this method to handle any "unhandled" exceptions on the page.
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnError(EventArgs e)
+        {
+            Exception error = Server.GetLastError();
+            ErrorInfo errorInfo = new ErrorInfo();
+            errorInfo.ErrorUrl = Request.CurrentExecutionFilePath;
+            errorInfo.ErrorMessage = error.Message;
+            errorInfo.ErrorSource = error.Source;
+            errorInfo.ErrorStackTrace = error.StackTrace;
+            Session.Add("Error", errorInfo);
+            Server.ClearError();
+
+            Response.Redirect("~/frmError.aspx");
+        }
+        #endregion
+
         public string EncrypData(string strText)
         {
             EncrypUtil en = new EncrypUtil();
