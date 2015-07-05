@@ -360,10 +360,10 @@
                         <td>
                             <table>
                                 <tr>
-                                    <td>
+                                    <td class ="width5">
                                         <asp:CheckBox ID="tb_2_chk_email" runat="server" />
                                     </td>
-                                    <td>
+                                    <td class ="ItemStyle-left width95">
                                         Send Email TO Customer
                                     </td>
                                 </tr>
