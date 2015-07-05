@@ -47,7 +47,7 @@
     <form id="form1" runat="server">
     <div class="centered">
         <p>
-            <img alt="" height="70" width="70" src="images/error02.png" />
+            <%--<img alt="" height="70" width="70" src="images/error02.png" />--%>
         </p>
         <p>                   
             ไม่พบหน้าที่เรียก หรือมีบางอย่างที่ทำให้หน้าเว็บนี้ไม่ทำงาน หากต้องการดำเนินการต่อให้กด
