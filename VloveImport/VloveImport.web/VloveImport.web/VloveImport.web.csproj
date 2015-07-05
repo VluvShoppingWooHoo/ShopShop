@@ -140,6 +140,7 @@
     <Content Include="Customer\TourMarket.aspx" />
     <Content Include="exe\chromedriver.exe" />
     <Content Include="exe\phantomjs.exe" />
+    <Content Include="frmError.aspx" />
     <Content Include="Images\btn\confirm.gif" />
     <Content Include="Images\btn\Order.gif" />
     <Content Include="Images\demo\logo_all_company.png" />
@@ -541,6 +542,13 @@
     </Compile>
     <Compile Include="Customer\TourMarket.aspx.designer.cs">
       <DependentUpon>TourMarket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmError.aspx.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmError.aspx.designer.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

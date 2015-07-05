@@ -12,7 +12,7 @@ using System.Xml.Linq;
 using System.Collections.Generic;
 using VloveImport.data;
 
-namespace com.krungsri.el.web.AppCode
+namespace VloveImport.web.admin.App_Code
 {
     public class BasePage : Page
     {
