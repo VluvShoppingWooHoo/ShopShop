@@ -8,10 +8,11 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
+using VloveImport.web.admin.App_Code;
 
 namespace VloveImport.web.admin
 {
-    public partial class frmAdminIndex : System.Web.UI.Page
+    public partial class frmAdminIndex : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
