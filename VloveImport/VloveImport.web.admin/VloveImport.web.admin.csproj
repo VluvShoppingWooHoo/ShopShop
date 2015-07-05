@@ -65,9 +65,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\BasePage.cs">
+    <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
-    </Content>
+    </Compile>
     <Content Include="App_Themes\v_th1\css.css" />
     <Content Include="App_Themes\v_th1\images\input-background-notice.png" />
     <Content Include="App_Themes\v_th1\images\input-background-readonly.png" />
@@ -85,6 +85,7 @@
     <Content Include="App_Themes\v_th1\Skin1.skin" />
     <Content Include="css\style.css" />
     <Content Include="frmAdminIndex.aspx" />
+    <Content Include="frmError.aspx" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\bgf.png" />
     <Content Include="images\icons.png" />
@@ -144,6 +145,13 @@
     </Compile>
     <Compile Include="frmAdminIndex.aspx.designer.cs">
       <DependentUpon>frmAdminIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmError.aspx.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmError.aspx.designer.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
