@@ -332,7 +332,8 @@ namespace VloveImport.web
                                 url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", txt, "zh-CN|en");
                                 result = webClient.DownloadString(url);
                                 string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
-                                selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
+                                int IndexEnd = selectVal.IndexOf("__zzz__<") == -1 ? selectVal.IndexOf("__ zzz__<") : selectVal.IndexOf("__zzz__<");
+                                selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, IndexEnd - (selectVal.IndexOf(">__z__") + 6));
                                 selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^");
                                 strloop += selectVal + "||";
                             }
@@ -344,7 +345,8 @@ namespace VloveImport.web
                             url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", item, "zh-CN|en");
                             result = webClient.DownloadString(url);
                             string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
-                            selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, selectVal.IndexOf("__zzz__<") - (selectVal.IndexOf(">__z__") + 6));
+                            int IndexEnd = selectVal.IndexOf("__zzz__<") == -1 ? selectVal.IndexOf("__ zzz__<") : selectVal.IndexOf("__zzz__<");
+                            selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, IndexEnd - (selectVal.IndexOf(">__z__") + 6));
                             selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"); ;
                             listResult.Add(selectVal);
                         }

@@ -232,6 +232,7 @@
                 });
             }
             else {
+                debugger;
                 var encodedString = btoa($("#lblURL").html());
                 //var encodedString = btoa('Hello World');
 
