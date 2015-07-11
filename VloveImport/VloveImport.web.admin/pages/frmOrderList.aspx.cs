@@ -32,6 +32,7 @@ namespace VloveImport.web.admin.pages
                 ucCalendar2.SET_DATE_DEFAULT();
                 BindData();
             }
+            btnclearOrder.Attributes.Add("onClick", "javascript:return confirm('Do you want to cancel order ?')");
         }
 
         public void BindData_order_status(DropDownList ddl, string ddlType = "")
