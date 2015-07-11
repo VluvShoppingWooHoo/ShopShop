@@ -15,6 +15,8 @@ namespace VloveImport.web.admin.pages
         protected void Page_Load(object sender, EventArgs e)
         {
             ucEmail1.ucEmail_OpenpopClick += new System.EventHandler(ucEmail_OpenpopClick);
+            ucCustomerDetail1.ucCusDetail_OpenpopClick += new System.EventHandler(ucCusDetail_OpenpopClick);
+            ucCustomerDetail1.ucCusDetail_ShowMessage += new System.EventHandler(ucCusDetail_ShowMessage);
 
             if (!IsPostBack)
             {
@@ -101,9 +103,39 @@ namespace VloveImport.web.admin.pages
             MadoalPop_Email.Show();
         }
 
+        protected void imgBtn_view_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string CUS_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
+
+            ucCustomerDetail1._VS_CUS_ID = Convert.ToInt32(CUS_ID);
+            ucCustomerDetail1.BindData();
+            ModalPopupExtender1.Show();
+        }
+
         public void ucEmail_OpenpopClick(object sender, System.EventArgs e)
         {
             MadoalPop_Email.Show();
+        }
+
+        public void ucCusDetail_OpenpopClick(object sender, System.EventArgs e)
+        {
+            ModalPopupExtender1.Show();
+        }
+
+        public void ucCusDetail_ShowMessage(object sender, System.EventArgs e)
+        {
+            ShowMessageBox("Data not found", this.Page);
+        }
+
+        public void ShowMessageBox(string message, Page currentPage)
+        {
+            string msgboxScript = "alert('" + message + "');";
+
+            if ((ScriptManager.GetCurrent(currentPage) != null))
+            {
+                ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+            }
         }
 
         protected void gv_detail_PageIndexChanging(object sender, GridViewPageEventArgs e)
