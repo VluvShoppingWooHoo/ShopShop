@@ -14,6 +14,7 @@
 
     <script type="text/javascript">
         $(function () {
+            debugger;
             var txt = getUrlParameter('txt');
             if (typeof txt === 'undefined') {
             }
