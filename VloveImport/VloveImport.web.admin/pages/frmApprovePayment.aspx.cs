@@ -270,6 +270,9 @@ namespace VloveImport.web.admin.pages
             if (Result == "")
             {
                 BindData();
+
+                txtEmpRemark.Text = "";
+
                 ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
             }
             else
@@ -349,6 +352,10 @@ namespace VloveImport.web.admin.pages
                             {
                                 ((ImageButton)e.Row.FindControl("imgBtn_choose")).Visible = false;
                                 ((ImageButton)e.Row.FindControl("imgBtn_cancel_choose")).Visible = true;
+
+                                ((ImageButton)e.Row.FindControl("imgBtn_Approve")).Visible = false;
+                                ((ImageButton)e.Row.FindControl("imgBtn_Reject")).Visible = false;
+
                                 e.Row.CssClass = "label-SELECT";
                                 break;
                             }
@@ -423,6 +430,9 @@ namespace VloveImport.web.admin.pages
                     gv_detail_view.DataSource = null;
                     gv_detail_view.DataBind();
                     BindData();
+
+                    ddlview_Tran_Status.SelectedIndex = 0;
+                    txtview_EMP_Remark.Text = "";
 
                     ShowMessageBox("ทำรายการเรียบร้อยแล้ว", this.Page);
                 }
