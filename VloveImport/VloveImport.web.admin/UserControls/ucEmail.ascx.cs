@@ -52,7 +52,7 @@ namespace VloveImport.web.admin.UserControls
 
         public void Reset()
         {
-            txt_email_from.Text = "";
+            //txt_email_from.Text = "";
             txt_email_to.Text = "";
             txt_email_subject.Text = "";
             txt_email_detail.Text = "";
