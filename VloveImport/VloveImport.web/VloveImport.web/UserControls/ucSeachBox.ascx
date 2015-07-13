@@ -224,6 +224,11 @@
                         $('#modalItem').closeModal();
                         $('#MastermodalItem').closeModal();
                         $('#txtSearch').val('');
+                        var str = $('#ucCustomerStatus_hlBasket').html();
+                        var start = str.indexOf('(');
+                        var end = str.indexOf(')');
+                        var res = str.substring(start + 1, end);
+                        $('#ucCustomerStatus_hlBasket').html('ตะกร้า(' + (parseInt(res) + 1) + ')');
                         toast('Item Added.', 5000)
                     },
                     error: function (err) {

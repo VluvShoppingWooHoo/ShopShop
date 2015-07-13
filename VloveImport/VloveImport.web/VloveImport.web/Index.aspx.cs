@@ -85,6 +85,7 @@ namespace VloveImport.web
             {
                 int webMode = 1;
                 #region for use
+                txt = txt.Replace("&amp;", "&");
                 #region branch web
                 if (txt.Contains("taobao.com"))
                 {
