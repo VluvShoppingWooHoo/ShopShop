@@ -14,10 +14,9 @@ namespace VloveImport.web.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                LoadData();
-            }
+            
+            LoadData();
+            
         }
 
         public void LoadData()
@@ -29,9 +28,14 @@ namespace VloveImport.web.UserControls
                 dt = biz.GET_CUSTOMER_TRANS_AMOUNT(((CustomerData)(Session["User"])).Cus_ID);
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    hlOrder.Text = hlOrder.Text + "(" + dt.Rows[0]["ORDERR"].ToString() + ")";
-                    hlBasket.Text = hlBasket.Text + "(" + dt.Rows[0]["BASKET"].ToString() + ")";
+                    hlOrder.Text = "รายการสั่งซื้อ(" + dt.Rows[0]["ORDERR"].ToString() + ")";
+                    hlBasket.Text = "ตะกร้า(" + dt.Rows[0]["BASKET"].ToString() + ")";
                 }
+            }
+            else
+            {
+                hlOrder.Text = "รายการสั่งซื้อ";
+                hlBasket.Text = "ตะกร้า";
             }
         }
 
