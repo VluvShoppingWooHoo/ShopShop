@@ -102,3 +102,6 @@ D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHT\AjaxControlToolkit
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.csprojResolveAssemblyReference.cache
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\itextsharp.dll
+D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\itextsharp.xmlworker.dll
+D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\itextsharp.xml

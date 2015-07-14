@@ -97,3 +97,6 @@ D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.dll
+D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xmlworker.dll
+D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xml

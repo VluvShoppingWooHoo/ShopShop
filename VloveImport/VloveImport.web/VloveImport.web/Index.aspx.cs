@@ -22,6 +22,13 @@ using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using HtmlAgilityPack;
+
+//using iTextSharp.tool.xml;
+//using iTextSharp.tool
 //using SimpleBrowser;
 //using OpenQA.Selenium.PhantomJS;
 //using OpenQA.Selenium;
@@ -895,94 +902,17 @@ namespace VloveImport.web
         {
             return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
         }
-        //private string GetSizeOrColor1688(string txt)
-        //{
-        //    string result = string.Empty;
-        //    try
-        //    {
-        //        if (txt == "Color")
-        //        {
-        //        }
-        //        else
-        //        {
-        //        }
 
-        //        HtmlNode nodeLead;
-        //        HtmlNode nodeSku;
-        //        bool Lead = false;
-        //        bool Sku = false;
-        //        var objLeading = doc.DocumentNode.Descendants("div").Where(l =>
-        //               l.Attributes.Contains("class") &&
-        //               l.Attributes["class"].Value.Contains("obj-leading"));
-
-        //        var objSku = doc.DocumentNode.Descendants("div").Where(l =>
-        //               l.Attributes.Contains("class") &&
-        //               l.Attributes["class"].Value.Contains("obj-sku"));
-
-        //        nodeLead = objLeading.FirstOrDefault();
-        //        nodeSku = objSku.FirstOrDefault();
-
-        //        if (txt == "Color")
-        //        {
-        //            if (nodeLead != null)
-        //                if (nodeLead.ChildNodes[1].InnerText.Trim() == "Color" || nodeLead.ChildNodes[1].InnerText.Trim() == "颜色")
-        //                    Lead = true;
-
-        //            if (nodeSku != null)
-        //                if (nodeSku.ChildNodes[1].InnerText.Trim() == "Color" || nodeSku.ChildNodes[1].InnerText.Trim() == "颜色")
-        //                    Sku = true;
-        //        }
-        //        else
-        //        {
-        //            if (nodeLead != null)
-        //                if (nodeLead.ChildNodes[1].InnerText.Trim() != "Color" && nodeLead.ChildNodes[1].InnerText.Trim() != "颜色")
-        //                    Lead = true;
-
-        //            if (nodeSku != null)
-        //                if (nodeSku.ChildNodes[1].InnerText.Trim() != "Color" && nodeSku.ChildNodes[1].InnerText.Trim() != "颜色")
-        //                    Sku = true;
-        //        }
-        //        if (Lead)
-        //        {
-        //            //Can't use foreach
-        //            for (int i = 0; i < nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes.Count; i++)
-        //            {
-        //                if (nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes[i].Name.Contains("li"))
-        //                {
-        //                    HtmlNode item = nodeLead.ChildNodes[3].ChildNodes[1].ChildNodes[i].ChildNodes[1].ChildNodes[1];
-        //                    if (item.InnerHtml.Contains("vertical-img"))
-        //                    {
-        //                        result += item.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[1].Value;
-        //                    }
-        //                    else
-        //                        result += item.ChildNodes[1].ChildNodes[0].InnerHtml;
-        //                    result += "||";
-        //                }
-        //            }
-        //        }
-        //        else if (Sku)
-        //        {
-        //            //Can't use foreach
-        //            for (int i = 0; i < nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes.Count(); i++)
-        //            {
-        //                if (nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes[i].Name.Contains("tr"))
-        //                {
-        //                    HtmlNode item = nodeSku.ChildNodes[3].ChildNodes[1].ChildNodes[i].ChildNodes[1].ChildNodes[1];
-        //                    int start = 0, end = 0;
-        //                    if (item.InnerHtml.Contains("vertical-img"))
-        //                    {
-        //                        result += item.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[1].Value;
-        //                    }
-        //                    else
-        //                        result += item.InnerHtml;
-        //                    result += "||";
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex) { result = string.Empty; }
-        //    return result;
-        //}
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            commonBiz biz = new commonBiz();
+            byte[] bytes = biz.PrintPdf(@"<p>This <em>is </em><span class=""headline"" style=""text-decoration: underline;"">some</span> <strong>sample <em> text</em></strong><span style=""color: red;"">!!!</span></p>");
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=foo.pdf");
+            Response.BinaryWrite(bytes);
+            Response.End(); 
+        }
         #endregion
         #endregion
     }

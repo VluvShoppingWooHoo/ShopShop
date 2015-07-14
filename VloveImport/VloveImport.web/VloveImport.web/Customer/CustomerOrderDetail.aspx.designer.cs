@@ -148,6 +148,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.HtmlControls.HtmlButton btnPay;
         
         /// <summary>
+        /// btnPrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnPrint;
+        
+        /// <summary>
         /// gvTran control.
         /// </summary>
         /// <remarks>

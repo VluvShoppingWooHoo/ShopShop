@@ -26,8 +26,9 @@
                 <div class="card" style="padding: 20px">
                     <uc4:ucIndexBox runat="server" ID="ucIndexBox" />
                 </div>
-            </div>
+            </div>            
         </div>
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
     </div>
     <script type="text/javascript">
         $(function () {

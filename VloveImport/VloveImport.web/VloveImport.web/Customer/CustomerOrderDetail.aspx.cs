@@ -124,16 +124,27 @@ namespace VloveImport.web.Customer
             //    Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
         }
 
+        protected void btnPrint_ServerClick(object sender, EventArgs e)
+        {
+            string Page = Request.QueryString["P"] == null ? "" : DecryptData(Request.QueryString["P"].ToString());
+            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
+
+            //if(Page == "LIST")
+            Redirect("~/Customer/CustomerOrderList.aspx");
+            //else
+            //    Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
+        }
+
         protected void btnPay_ServerClick(object sender, EventArgs e)
         {
             string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
             Redirect("~/Customer/CustomerPayment.aspx?OID=" + OID);
         }
 
-        protected void btnPrint_ServerClick(object sender, EventArgs e)
-        {
-            PDF();
-        }
+        //protected void btnPrint_ServerClick(object sender, EventArgs e)
+        //{
+        //    PDF();
+        //}
 
         protected void gvOrder_RowDataBound(object sender, GridViewRowEventArgs e)
         {
