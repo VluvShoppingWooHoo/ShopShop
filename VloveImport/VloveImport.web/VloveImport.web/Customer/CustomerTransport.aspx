@@ -29,7 +29,7 @@
                             <asp:RadioButtonList ID="rdbAddress" runat="server" DataTextField="ADDRESS_FULL" DataValueField="CUS_ADD_ID">
                             </asp:RadioButtonList>
                         </div>
-                        <asp:Label ID="lb1" runat="server" Text="ไม่มีการระบุที่อยู่ไว้ในระบบ" Visible="false"></asp:Label>
+                        <asp:Label ID="lb1" runat="server" Text="ไม่มีการระบุที่อยู่ไว้ในระบบ กรุณาเพื่อที่อยู่ที่ใช้สำหรับการจัดส่ง" Visible="false"></asp:Label>
                         <br />
                         <br />
                         <button id="btnBack" runat="server" type="submit" onserverclick="btnBack_ServerClick"
