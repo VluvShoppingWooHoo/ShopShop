@@ -162,7 +162,7 @@ namespace VloveImport.web.UserControls
                         string Body = "มีการถอนเงินจาก " + bp.GetCusCode() + " เป็นจำนวน " + txt_amount.Text + " บาท <br/> หมายุเหตุ : " + txt_remark.Text;
                         bp.SendMail(EmailTo, Subject, Body);
 
-                        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('ส่งคำขอถอนเงินสำเร็จ');window.location = '/Customer/CustomerMyAccount.aspx#withdraw';</script>", false);
+                        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('ส่งคำขอถอนเงินสำเร็จ');window.location = '/Customer/CustomerMyAccount.aspx#Withdraw';</script>", false);
                         //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>window.location.href = '/Customer/CustomerMyAccount.aspx'", false);
                         //Response.Redirect("~/Customer/CustomerMyAccount.aspx");
                     }

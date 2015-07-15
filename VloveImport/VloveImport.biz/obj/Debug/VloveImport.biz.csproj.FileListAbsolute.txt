@@ -100,3 +100,18 @@ D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xmlworker.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xml
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.dll
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.pdb
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.dll
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xmlworker.dll
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.dll
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.dll
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.dll
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\EncrypDLL.dll
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.pdb
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.pdb
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.pdb
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xml
+D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
