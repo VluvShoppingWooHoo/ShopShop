@@ -906,7 +906,10 @@ namespace VloveImport.web
         protected void Button1_Click(object sender, EventArgs e)
         {
             commonBiz biz = new commonBiz();
-            byte[] bytes = biz.PrintPdf(@"<p>This <em>is </em><span class=""headline"" style=""text-decoration: underline;"">some</span> <strong>sample <em> text</em></strong><span style=""color: red;"">!!!</span></p>");
+            //byte[] bytes = biz.PrintPdf(@"<p>This <em>is </em><span class=""headline"" style=""text-decoration: underline;"">some</span> <strong>sample <em> text</em></strong><span style=""color: red;"">!!!</span></p>");
+            //byte[] bytes = biz.PrintPdf(@"<html><head><body><table><tr><td style=""border:2px solid"">asd<td style=""border:2px solid"">fda<tr><td style=""border:2px solid"">gfd<td style=""border:2px solid"">rter</table>");
+
+            byte[] bytes = biz.PrintPdf(@"<html><head></head><body><table><tr><td style=""border:2px solid"">asd</td><td style=""border:2px solid"">fda</td></tr><tr><td style=""border:2px solid"">gfd</td><td style=""border:2px solid"">rter</td></tr></table></body></html>");
             Response.Clear();
             Response.ContentType = "application/pdf";
             Response.AppendHeader("Content-Disposition", "attachment; filename=foo.pdf");

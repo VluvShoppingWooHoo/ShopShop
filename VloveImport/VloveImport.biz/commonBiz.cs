@@ -74,14 +74,6 @@ namespace VloveImport.biz
 
         public Byte[] PrintPdf(string html)
         {
-            string url =
-                //HttpContext.Current.Request.Url.AbsoluteUri;
-            "https://www.google.co.th/?gws_rd=cr,ssl&ei=zgOlVbb2MoK0uASPr4CACA";
-            var HtmlWeb = new HtmlWeb
-            {
-                AutoDetectEncoding = false
-            };
-            HtmlAgilityPack.HtmlDocument web = HtmlWeb.Load(url);
             //Create a byte array that will eventually hold our final PDF
             Byte[] bytes;
 
@@ -89,7 +81,6 @@ namespace VloveImport.biz
             //Create a stream that we can write to, in this case a MemoryStream
             using (var ms = new MemoryStream())
             {
-
                 //Create an iTextSharp Document which is an abstraction of a PDF but **NOT** a PDF
                 using (var doc = new Document())
                 {
@@ -169,11 +160,6 @@ namespace VloveImport.biz
                 //close the MemoryStream, grab all of the active bytes from the stream
                 bytes = ms.ToArray();
             }
-
-            //Now we just need to do something with those bytes.
-            //Here I'm writing them to disk but if you were in ASP.Net you might Response.BinaryWrite() them.
-            //You could also write the bytes to a database in a varbinary() column (but please don't) or you
-            //could pass them to another function for further PDF processing.
             return bytes;
         }
     }
