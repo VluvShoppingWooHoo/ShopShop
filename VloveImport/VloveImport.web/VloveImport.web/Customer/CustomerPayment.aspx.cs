@@ -61,7 +61,7 @@ namespace VloveImport.web.Customer
 
                     double Bal = lbBalance.Text == "" ? 0 : Convert.ToDouble(lbBalance.Text);
                     double Tol = lbTotalAmount.Text == "" ? 0 : Convert.ToDouble(lbTotalAmount.Text);
-                    if (Bal > Tol)
+                    if (Bal >= Tol)
                     {
                         if (ViewState["ORDER_STATUS"] != null)
                             Status = Convert.ToInt32(ViewState["ORDER_STATUS"].ToString());

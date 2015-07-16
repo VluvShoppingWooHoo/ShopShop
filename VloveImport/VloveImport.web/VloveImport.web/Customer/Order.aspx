@@ -81,15 +81,16 @@
     </div>
     <div id="mOR4" class="mContent">
         <div class="row">
-            <div class="s12 m12 l12 ContentTitle">
-                วิธีสั่งซื้อสินค้าสำหรับลูกค้าที่สั่งแบบ ฝากจ่ายเงิน
+            <div class="s12 m12 l12">
+                <span class="ContentTitle"> วิธีสั่งซื้อสินค้าสำหรับลูกค้าที่สั่งแบบ ฝากจ่ายเงิน</span> &nbsp;&nbsp;
+                <asp:ImageButton ID="imbYoutube" runat="server" PostBackUrl="https://youtu.be/BhldGynlIvY" 
+                    ImageUrl="~/Images/icon/Youtube1.png" Width="50px" Height="50px"/>          
             </div>
+            
         </div>
         <div class="row">
             <div class="s12 m12 l12">
                 การสั่งสินค้าแบบ ฝากจ่ายเงิน คือทางลูกค้าได้ทำการติดต่อร้านค้าเอง และต้องการให้ทางเราโอนเงินเพื่อชำระค่าสินค้าให้กับทางร้านค้า และใช้บริการของทาง i  Love import   ในการขนส่ง
-                &nbsp;&nbsp;
-                <asp:ImageButton ID="imbYoutube" runat="server" PostBackUrl="https://youtu.be/BhldGynlIvY" ImageUrl=""/>
                 <br />
                 <span class="bold">1: ไปที่เมนู "ส่งแบบฝากจ่าย"</span><br />
                 <img src="../Images/HowTo/PI1.png" style="height: 289px; width: 286px;" /> &nbsp;&nbsp;
