@@ -903,6 +903,7 @@ namespace VloveImport.web
             return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
         }
 
+<<<<<<< HEAD
         //protected void Button1_Click(object sender, EventArgs e)
         //{
         //    commonBiz biz = new commonBiz();
@@ -916,6 +917,18 @@ namespace VloveImport.web
         //    Response.BinaryWrite(bytes);
         //    Response.End(); 
         //}
+=======
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            commonBiz biz = new commonBiz();
+            byte[] bytes = biz.PrintPdf(@"<p>This <em>is </em><span class=""headline"" style=""text-decoration: underline;"">some</span> <strong>sample <em> text</em></strong><span style=""color: red;"">!!!</span></p>");
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=foo.pdf");
+            Response.BinaryWrite(bytes);
+            Response.End(); 
+        }
+>>>>>>> origin/master
         #endregion
         #endregion
     }
