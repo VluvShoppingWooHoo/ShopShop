@@ -38,8 +38,3 @@ D:\Work\ShopShop\VloveImport\VloveImport.util\bin\Debug\VloveImport.util.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.util\bin\Debug\EncrypDLL.dll
 D:\Work\ShopShop\VloveImport\VloveImport.util\obj\Debug\VloveImport.util.dll
 D:\Work\ShopShop\VloveImport\VloveImport.util\obj\Debug\VloveImport.util.pdb
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.util\bin\Debug\VloveImport.util.dll
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.util\bin\Debug\VloveImport.util.pdb
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.util\bin\Debug\EncrypDLL.dll
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.util\obj\Debug\VloveImport.util.dll
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.util\obj\Debug\VloveImport.util.pdb

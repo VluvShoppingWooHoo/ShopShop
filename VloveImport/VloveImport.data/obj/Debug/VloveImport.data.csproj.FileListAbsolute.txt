@@ -25,7 +25,3 @@ D:\Work\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.dll
 D:\Work\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.dll
 D:\Work\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.pdb
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.dll
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.data\bin\Debug\VloveImport.data.pdb
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.dll
-D:\Project\P'Bow\Phase 1\source\ShopShop\VloveImport\VloveImport.data\obj\Debug\VloveImport.data.pdb
