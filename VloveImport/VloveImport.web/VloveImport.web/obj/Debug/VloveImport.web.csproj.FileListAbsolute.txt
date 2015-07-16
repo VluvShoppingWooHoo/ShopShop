@@ -183,6 +183,9 @@ D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.web\Vlo
 D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.csprojResolveAssemblyReference.cache
 D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.dll
 D:\Striker\Project\P'Bow\Phase 1\Source\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.csprojResolveAssemblyReference.cache
+D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\RdlCompile.cache
+D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\RdlCompile.compiled
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.web.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.web.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\AjaxControlToolkit.dll
@@ -223,8 +226,5 @@ D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\th-TH\AjaxContr
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\tr-TR\AjaxControlToolkit.resources.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\zh-CHS\AjaxControlToolkit.resources.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\zh-CHT\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.csprojResolveAssemblyReference.cache
-D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\RdlCompile.cache
-D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\RdlCompile.compiled
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.pdb
