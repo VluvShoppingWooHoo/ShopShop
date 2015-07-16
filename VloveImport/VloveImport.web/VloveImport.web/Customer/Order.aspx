@@ -87,7 +87,10 @@
         </div>
         <div class="row">
             <div class="s12 m12 l12">
-                การสั่งสินค้าแบบ ฝากจ่ายเงิน คือทางลูกค้าได้ทำการติดต่อร้านค้าเอง และต้องการให้ทางเราโอนเงินเพื่อชำระค่าสินค้าให้กับทางร้านค้า และใช้บริการของทาง i  Love import   ในการขนส่ง<br />
+                การสั่งสินค้าแบบ ฝากจ่ายเงิน คือทางลูกค้าได้ทำการติดต่อร้านค้าเอง และต้องการให้ทางเราโอนเงินเพื่อชำระค่าสินค้าให้กับทางร้านค้า และใช้บริการของทาง i  Love import   ในการขนส่ง
+                &nbsp;&nbsp;
+                <asp:ImageButton ID="imbYoutube" runat="server" PostBackUrl="https://youtu.be/BhldGynlIvY" ImageUrl=""/>
+                <br />
                 <span class="bold">1: ไปที่เมนู "ส่งแบบฝากจ่าย"</span><br />
                 <img src="../Images/HowTo/PI1.png" style="height: 289px; width: 286px;" /> &nbsp;&nbsp;
                 <img src="../Images/HowTo/PI1-1.png" style="height: 298px; width: 285px;" />
