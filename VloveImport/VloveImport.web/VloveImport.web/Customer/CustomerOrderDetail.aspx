@@ -138,7 +138,19 @@
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TOTALITEMAMOUNT").ToString(), "Money") + "(¥)" %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="ค่าขนส่ง<br/>ในจีน" ItemStyle-Width="90px">
+                        <asp:TemplateField HeaderText="น้ำหนัก<br/>(กก.)" ItemStyle-Width="90px">
+                            <ItemTemplate>
+                                <asp:Label ID="lbTransWeight" runat="server" CssClass="center-align" Width="80%"
+                                    Text='<%# DataBinder.Eval(Container.DataItem, "WEIGHT").ToString() %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="ขนาด" ItemStyle-Width="90px">
+                            <ItemTemplate>
+                                <asp:Label ID="lbTransSize" runat="server" CssClass="center-align" Width="80%"
+                                    Text='<%# DataBinder.Eval(Container.DataItem, "SIZE").ToString() %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <%--<asp:TemplateField HeaderText="ค่าขนส่ง<br/>ในจีน" ItemStyle-Width="90px">
                             <ItemTemplate>
                                 <asp:Label ID="lbTransportChinaAmount" runat="server" CssClass="right-align" Width="80%"
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRANSPORT_CHINA_PRICE").ToString(), "Money") %>'></asp:Label>
@@ -149,7 +161,7 @@
                                 <asp:Label ID="lbTransportImportAmount" runat="server" CssClass="right-align" Width="80%"
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRANSPORT_THAI_PRICE").ToString(), "Money") %>'></asp:Label>
                             </ItemTemplate>
-                        </asp:TemplateField>
+                        </asp:TemplateField>--%>
                         <asp:TemplateField HeaderText="ค่าขนส่ง<br/>ในไทย(THB)" ItemStyle-Width="90px">
                             <ItemTemplate>
                                 <asp:Label ID="lbTransportThaiAmount" runat="server" CssClass="right-align" Width="80%"

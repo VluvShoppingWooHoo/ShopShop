@@ -65,15 +65,16 @@ namespace VloveImport.web.Customer
                 gvOrder.DataBind();
 
                 //Add 21/05/2558
-                double TotalItem = 0, TotalTrans = 0, Item = 0, Cus = 0, Chi = 0, Thi = 0, Pay_Add = 0;
+                double TotalItem = 0, TotalTrans = 0, Item = 0, Cus = 0, Chi = 0, Thi = 0, Pay_Add = 0, Currency = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
                     Cus = dr["TRANSPORT_CUSTOMER_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CUSTOMER_PRICE"].ToString());
                     Chi = dr["TRANSPORT_CHINA_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CHINA_PRICE"].ToString());
+                    Currency = dr["ORDER_CURRENCY"].ToString() == "" ? 0 : Convert.ToDouble(dr["ORDER_CURRENCY"].ToString());
                     Thi = dr["TRANSPORT_THAI_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_THAI_PRICE"].ToString());
                     Item = dr["TOTALITEMAMOUNT_TH"].ToString() == "" ? 0 : Convert.ToDouble(dr["TOTALITEMAMOUNT_TH"].ToString());
-
-                    TotalTrans = TotalTrans + Cus + Chi + Thi; 
+                    
+                    TotalTrans = TotalTrans + Cus + (Chi * Currency) + Thi; 
                     TotalItem = TotalItem + Item;
                 }
                 lbTotalTran.Text = TotalTrans.ToString("###,##0.00");
@@ -163,10 +164,17 @@ namespace VloveImport.web.Customer
                     cell.ColumnSpan = gvOrder.Columns.Count;
                     cell.CssClass = "gv-shopname";
                     string ShowShop = "";
+                    double China = 0, Thai = 0, Currency = 0;
 
                     ShowShop += "Shop name : " + DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString() + "&nbsp;&nbsp;";
                     ShowShop += "Tracking No. " + DataBinder.Eval(e.Row.DataItem, "TRACKING_NO").ToString() + "&nbsp;&nbsp;";
-                    ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";                                                                               
+                    ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";
+
+                    China = DataBinder.Eval(e.Row.DataItem, "TRANSPORT_CHINA_PRICE") == null ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "TRANSPORT_CHINA_PRICE").ToString());
+                    Currency = DataBinder.Eval(e.Row.DataItem, "ORDER_CURRENCY") == null ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "ORDER_CURRENCY").ToString());
+                    Thai = DataBinder.Eval(e.Row.DataItem, "TRANSPORT_THAI_PRICE") == null ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "TRANSPORT_THAI_PRICE").ToString());
+                    ShowShop += "<br/>ค่าขนส่งในจีน " + (China * Currency).ToString("###,##0.00") + " บาท&nbsp;&nbsp;";
+                    ShowShop += "ค่าขนส่งระหว่างประเทศ " + Thai.ToString("###,##0.00") + " บาท&nbsp;&nbsp;";
 
                     lbShopName.Text = ShowShop;
                     cell.Controls.Add(lbShopName);
