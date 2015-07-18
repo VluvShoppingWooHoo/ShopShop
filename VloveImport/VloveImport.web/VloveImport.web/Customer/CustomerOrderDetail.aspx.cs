@@ -175,6 +175,8 @@ namespace VloveImport.web.Customer
                     Thai = DataBinder.Eval(e.Row.DataItem, "TRANSPORT_THAI_PRICE") == null ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "TRANSPORT_THAI_PRICE").ToString());
                     ShowShop += "<br/>ค่าขนส่งในจีน " + (China * Currency).ToString("###,##0.00") + " บาท&nbsp;&nbsp;";
                     ShowShop += "ค่าขนส่งระหว่างประเทศ " + Thai.ToString("###,##0.00") + " บาท&nbsp;&nbsp;";
+                    ShowShop += "ขนาด " + DataBinder.Eval(e.Row.DataItem, "WEIGHT").ToString() + "&nbsp;&nbsp;";
+                    ShowShop += "น้ำหนัก " + DataBinder.Eval(e.Row.DataItem, "SIZE").ToString() + "&nbsp;&nbsp;";
 
                     lbShopName.Text = ShowShop;
                     cell.Controls.Add(lbShopName);
