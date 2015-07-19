@@ -170,9 +170,9 @@ namespace VloveImport.web.Customer
                     ShowShop += "Tracking No. " + DataBinder.Eval(e.Row.DataItem, "TRACKING_NO").ToString() + "&nbsp;&nbsp;";
                     ShowShop += "Order ID " + DataBinder.Eval(e.Row.DataItem, "SHOP_ORDER_ID").ToString() + "&nbsp;&nbsp;";
 
-                    China = DataBinder.Eval(e.Row.DataItem, "TRANSPORT_CHINA_PRICE") == null ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "TRANSPORT_CHINA_PRICE").ToString());
-                    Currency = DataBinder.Eval(e.Row.DataItem, "ORDER_CURRENCY") == null ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "ORDER_CURRENCY").ToString());
-                    Thai = DataBinder.Eval(e.Row.DataItem, "TRANSPORT_THAI_PRICE") == null ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "TRANSPORT_THAI_PRICE").ToString());
+                    China = DataBinder.Eval(e.Row.DataItem, "TRANSPORT_CHINA_PRICE") == DBNull.Value ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "TRANSPORT_CHINA_PRICE").ToString());
+                    Currency = DataBinder.Eval(e.Row.DataItem, "ORDER_CURRENCY") == DBNull.Value ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "ORDER_CURRENCY").ToString());
+                    Thai = DataBinder.Eval(e.Row.DataItem, "TRANSPORT_THAI_PRICE") == DBNull.Value ? 0 : Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "TRANSPORT_THAI_PRICE").ToString());
                     ShowShop += "<br/>ค่าขนส่งในจีน " + (China * Currency).ToString("###,##0.00") + " บาท&nbsp;&nbsp;";
                     ShowShop += "ค่าขนส่งระหว่างประเทศ " + Thai.ToString("###,##0.00") + " บาท&nbsp;&nbsp;";
                     ShowShop += "ขนาด " + DataBinder.Eval(e.Row.DataItem, "WEIGHT").ToString() + "&nbsp;&nbsp;";
