@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -317,6 +317,23 @@ namespace VloveImport.web
         #endregion
 
         #region private function
+        private void formatUrl(ref string selectVal, ref int IndexStart, ref int IndexEnd, ref int prefix)
+        {
+            selectVal = selectVal.Replace(" __z__", "__z__").Replace("__z__ ", "__z__").Replace("__ z__", "__z__").Replace("__z __", "__z__");
+            selectVal = selectVal.Replace(" __zzz__", "__zzz__").Replace("__zzz__ ", "__zzz__").Replace("__ zzz__", "__zzz__").Replace("__zzz __", "__zzz__");
+            if (selectVal.IndexOf("TRANSLATED_TEXT='__z__") == -1)
+            {
+                IndexStart = selectVal.IndexOf("TRANSLATED_TEXT='");
+                prefix = 17;
+            }
+            else
+            {
+                IndexStart = selectVal.IndexOf("TRANSLATED_TEXT='__z__");
+                prefix = 22;
+            }
+            //IndexStart = selectVal.IndexOf("TRANSLATED_TEXT='__z__") == -1 ? selectVal.IndexOf("TRANSLATED_TEXT='") : selectVal.IndexOf("TRANSLATED_TEXT='__z__");
+            IndexEnd = selectVal.IndexOf("__zzz__';") == -1 ? selectVal.IndexOf("__ zzz__';") : selectVal.IndexOf("__zzz__';");
+        }
         private List<string> TranslateToEng(List<string> val)
         {
             List<string> listResult = new List<string>();
@@ -330,19 +347,22 @@ namespace VloveImport.web
                 {
                     if (item != string.Empty)
                     {
+                        string itemRe = string.Empty;
+                        itemRe = item.Replace("【", "").Replace("】", "");
                         string result = string.Empty;
                         string[] separators = { "||" };
                         if (i == 1 || i == 2)
                         {
                             string strloop = string.Empty;
-                            foreach (string txt in item.Split(separators, StringSplitOptions.None))
+                            foreach (string txt in itemRe.Split(separators, StringSplitOptions.None))
                             {
                                 url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", txt, "zh-CN|en");
                                 result = webClient.DownloadString(url);
-                                string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
-                                int IndexEnd = selectVal.IndexOf("__zzz__<") == -1 ? selectVal.IndexOf("__ zzz__<") : selectVal.IndexOf("__zzz__<");
-                                selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, IndexEnd - (selectVal.IndexOf(">__z__") + 6));
-                                selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^");
+                                string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box")); 
+                                int IndexStart = 0, IndexEnd = 0, prefix = 0;
+                                formatUrl(ref selectVal, ref IndexStart, ref IndexEnd, ref prefix);
+                                selectVal = selectVal.Substring(IndexStart + prefix, IndexEnd - (IndexStart + prefix));
+                                selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^").Replace("__z__", "").Replace("__zzz__", "");
                                 strloop += selectVal + "||";
                             }
                             strloop = strloop.Remove(strloop.Length - 2, 2);
@@ -350,12 +370,13 @@ namespace VloveImport.web
                         }
                         else
                         {
-                            url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", item, "zh-CN|en");
+                            url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", itemRe, "zh-CN|en");
                             result = webClient.DownloadString(url);
                             string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
-                            int IndexEnd = selectVal.IndexOf("__zzz__<") == -1 ? selectVal.IndexOf("__ zzz__<") : selectVal.IndexOf("__zzz__<");
-                            selectVal = selectVal.Substring(selectVal.IndexOf(">__z__") + 6, IndexEnd - (selectVal.IndexOf(">__z__") + 6));
-                            selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"); ;
+                            int IndexStart = 0, IndexEnd = 0, prefix = 0;
+                            formatUrl(ref selectVal, ref IndexStart, ref IndexEnd, ref prefix);
+                            selectVal = selectVal.Substring(IndexStart + prefix, IndexEnd - (IndexStart + prefix));
+                            selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^").Replace("__z__", "").Replace("__zzz__", "");
                             listResult.Add(selectVal);
                         }
                     }
@@ -363,16 +384,10 @@ namespace VloveImport.web
                         listResult.Add(string.Empty);
                     i++;
                 }
-
-                //selectVal = selectVal.Replace(">_zz ^", ">^ _zz ^").Replace("> _zz ^", ">^ _zz ^").Replace(">  _zz ^", ">^ _zz ^");
-                //selectVal = selectVal.Substring(selectVal.IndexOf(">^ _z ^") + 7, selectVal.IndexOf("^ _zz ^") - (selectVal.IndexOf(">^ _z ^") + 7));
-                //selectVal2 += selectVal;
-                //val = selectVal2.Replace("  _p ^", "^_p^").Replace("_ ", "_").Replace(" _", "_").Replace(" _^", "_^").Replace("^_ ", "^_").Replace("^ ", "^").Replace(" ^", "^");
             }
             catch (Exception ex) { return new List<string>(); }
             return listResult;
         }
-
         IWebDriver driver;
         public ScrapingData Scrap(string url, int web)
         {
