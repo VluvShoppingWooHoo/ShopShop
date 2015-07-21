@@ -24,6 +24,11 @@ namespace VloveImport.web.admin.App_Code
             public string ErrorStackTrace;
         }
 
+        public BasePage()
+        {
+
+        }
+
         #region
         /// <summary>
         /// Use this method to handle any "unhandled" exceptions on the page.
@@ -44,6 +49,13 @@ namespace VloveImport.web.admin.App_Code
         }        
         #endregion
 
+        public void CheckSession()
+        {
+            if (Session["AdminUser"] == null)
+            {
+                System.Web.HttpContext.Current.Response.Redirect("~/Logout.aspx");
+            }
+        }
 
         public List<AdminUserData> CheckPermissionPage()
         {
