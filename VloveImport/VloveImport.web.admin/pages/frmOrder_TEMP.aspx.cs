@@ -476,7 +476,7 @@ namespace VloveImport.web.admin.pages
 
                 if (TranCusPrice > 0)
                 {
-                    if (_VS_CUS_BALANCE > TranCusPrice)
+                    if (_VS_CUS_BALANCE > (TranCusPrice + Service_Charge - Discount))
                     {
                         string ResultTran = "";
                         TransactionData EnTran = new TransactionData();
@@ -487,6 +487,7 @@ namespace VloveImport.web.admin.pages
                         EnTran.TRAN_TYPE = 2;
                         EnTran.TRAN_TABLE_TYPE = 3;
                         EnTran.TRAN_STATUS = 2;
+                        EnTran.Cus_ID = _VS_CUS_ID;
                         EnTran.TRAN_AMOUNT = (TranCusPrice + Service_Charge - Discount);
                         EnTran.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
                         EnTran.EMP_REMARK = "ตัดเงินรายการค่าขนส่งขั้นตอนสุดท้าย";
