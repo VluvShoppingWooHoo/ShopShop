@@ -229,6 +229,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="phantomjs-license.txt" />
+    <Content Include="Print.html" />
     <Content Include="Report\ReportViewer.aspx" />
     <Content Include="Script\Script Init.sql" />
     <Content Include="TestPage.aspx" />

@@ -69,7 +69,7 @@ namespace VloveImport.biz
         public void WriteLog(string Page, string Function, string Error)
         {
             Commondal Com = new Commondal("LocalConnection");
-            string Result = Com.WriteLog(Page, Function, Error);         
+            string Result = Com.WriteLog(Page, Function, Error);
         }
 
         public Byte[] PrintPdf(string html)
@@ -104,6 +104,7 @@ namespace VloveImport.biz
                         //Our sample HTML and CSS
                         var example_html = html;
                         var example_css = @".headline{font-size:200%}";
+                        #region 1
                         //example_html = web.DocumentNode.InnerHtml;
                         /**************************************************
                          * Example #1                                     *
@@ -124,43 +125,44 @@ namespace VloveImport.biz
                                 htmlWorker.Parse(sr);
                             }
                         }
+                        #endregion
+                        #region 2
+                        /////**************************************************
+                        //// * Example #2                                     *
+                        //// *                                                *
+                        //// * Use the XMLWorker to parse the HTML.           *
+                        //// * Only inline CSS and absolutely linked          *
+                        //// * CSS is supported                               *
+                        //// * ************************************************/
 
-                        /**************************************************
-                         * Example #2                                     *
-                         *                                                *
-                         * Use the XMLWorker to parse the HTML.           *
-                         * Only inline CSS and absolutely linked          *
-                         * CSS is supported                               *
-                         * ************************************************/
+                        ////XMLWorker also reads from a TextReader and not directly from a string
+                        //using (var srHtml = new StringReader(example_html))
+                        //{
 
-                        //XMLWorker also reads from a TextReader and not directly from a string
-                        using (var srHtml = new StringReader(example_html))
-                        {
+                        //    //Parse the HTML
+                        //    iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, srHtml);
+                        //}
+                        #endregion
+                        #region 3
+                        ///**************************************************
+                        // * Example #3                                     *
+                        // *                                                *
+                        // * Use the XMLWorker to parse HTML and CSS        *
+                        // * ************************************************/
 
-                            //Parse the HTML
-                            iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, srHtml);
-                        }
+                        ////In order to read CSS as a string we need to switch to a different constructor
+                        ////that takes Streams instead of TextReaders.
+                        ////Below we convert the strings into UTF8 byte array and wrap those in MemoryStreams
+                        //using (var msCss = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_css)))
+                        //{
+                        //    using (var msHtml = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_html)))
+                        //    {
 
-                        /**************************************************
-                         * Example #3                                     *
-                         *                                                *
-                         * Use the XMLWorker to parse HTML and CSS        *
-                         * ************************************************/
-
-                        //In order to read CSS as a string we need to switch to a different constructor
-                        //that takes Streams instead of TextReaders.
-                        //Below we convert the strings into UTF8 byte array and wrap those in MemoryStreams
-                        using (var msCss = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_css)))
-                        {
-                            using (var msHtml = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_html)))
-                            {
-
-                                //Parse the HTML
-                                iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, msHtml, msCss);
-                            }
-                        }
-
-
+                        //        //Parse the HTML
+                        //        iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, msHtml, msCss);
+                        //    }
+                        //}
+                        #endregion
                         doc.Close();
                     }
                 }
