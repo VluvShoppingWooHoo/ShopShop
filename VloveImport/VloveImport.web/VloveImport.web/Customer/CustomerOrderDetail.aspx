@@ -161,13 +161,13 @@
                                 <asp:Label ID="lbTransportImportAmount" runat="server" CssClass="right-align" Width="80%"
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRANSPORT_THAI_PRICE").ToString(), "Money") %>'></asp:Label>
                             </ItemTemplate>
-                        </asp:TemplateField>--%>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="ค่าขนส่ง<br/>ในไทย(THB)" ItemStyle-Width="90px">
                             <ItemTemplate>
                                 <asp:Label ID="lbTransportThaiAmount" runat="server" CssClass="right-align" Width="80%"
                                     Text='<%# NumberStringtoString(DataBinder.Eval(Container.DataItem, "TRANSPORT_CUSTOMER_PRICE").ToString(), "Money") %>'></asp:Label>
                             </ItemTemplate>
-                        </asp:TemplateField>
+                        </asp:TemplateField>--%>
                         <asp:TemplateField HeaderText="วันที่<br/>จัดส่งสินค้า" ItemStyle-Width="90px">
                             <ItemTemplate>
                                 <asp:Label ID="lbTransportDate" runat="server" CssClass="right-align" Width="80%"

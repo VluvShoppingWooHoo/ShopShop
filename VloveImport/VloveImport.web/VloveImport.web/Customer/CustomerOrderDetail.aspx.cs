@@ -53,7 +53,7 @@ namespace VloveImport.web.Customer
                 lbOrderStatus.Text = dt.Rows[0]["ORDER_DESC"].ToString();
 
                 Status = dt.Rows[0]["ORDER_STATUS"].ToString();
-                if (Status == "0" || Status == "2" || Status == "4" || Status == "6" || Status == "7")
+                if (!(Status == "3" || Status == "5" || Status == "7"))
                     btnPay.Visible = false;
 
                 Order_Pay = dt.Rows[0]["ORDER_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["ORDER_PAY"].ToString());
