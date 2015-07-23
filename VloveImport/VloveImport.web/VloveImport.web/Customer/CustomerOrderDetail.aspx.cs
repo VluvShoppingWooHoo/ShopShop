@@ -66,16 +66,22 @@ namespace VloveImport.web.Customer
 
                 //Add 21/05/2558
                 double TotalItem = 0, TotalTrans = 0, Item = 0, Cus = 0, Chi = 0, Thi = 0, Pay_Add = 0, Currency = 0;
+                string ShopName = "", OldShopName = "";
                 foreach (DataRow dr in dt.Rows)
                 {
-                    Cus = dr["TRANSPORT_CUSTOMER_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CUSTOMER_PRICE"].ToString());
-                    Chi = dr["TRANSPORT_CHINA_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CHINA_PRICE"].ToString());
-                    Currency = dr["ORDER_CURRENCY"].ToString() == "" ? 0 : Convert.ToDouble(dr["ORDER_CURRENCY"].ToString());
-                    Thi = dr["TRANSPORT_THAI_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_THAI_PRICE"].ToString());
-                    Item = dr["TOTALITEMAMOUNT_TH"].ToString() == "" ? 0 : Convert.ToDouble(dr["TOTALITEMAMOUNT_TH"].ToString());
-                    
-                    TotalTrans = TotalTrans + Cus + (Chi * Currency) + Thi; 
-                    TotalItem = TotalItem + Item;
+                    ShopName = dr["SHOPNAME"].ToString();
+                    if (ShopName != OldShopName)
+                    {
+                        Cus = dr["TRANSPORT_CUSTOMER_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CUSTOMER_PRICE"].ToString());
+                        Chi = dr["TRANSPORT_CHINA_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CHINA_PRICE"].ToString());
+                        Currency = dr["ORDER_CURRENCY"].ToString() == "" ? 0 : Convert.ToDouble(dr["ORDER_CURRENCY"].ToString());
+                        Thi = dr["TRANSPORT_THAI_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_THAI_PRICE"].ToString());
+                        Item = dr["TOTALITEMAMOUNT_TH"].ToString() == "" ? 0 : Convert.ToDouble(dr["TOTALITEMAMOUNT_TH"].ToString());
+
+                        TotalTrans = TotalTrans + Cus + (Chi * Currency) + Thi;
+                        TotalItem = TotalItem + Item;
+                    }
+                    OldShopName = ShopName;
                 }
                 lbTotalTran.Text = TotalTrans.ToString("###,##0.00");
                 lbTotalItemPrice.Text = TotalItem.ToString("###,##0.00");
