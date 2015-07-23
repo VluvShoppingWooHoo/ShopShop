@@ -85,7 +85,7 @@ namespace VloveImport.web.Customer
                 }
                 lbTotalTran.Text = TotalTrans.ToString("###,##0.00");
                 lbTotalItemPrice.Text = TotalItem.ToString("###,##0.00");
-                Pay_Add = dt.Rows[0]["ADDITIONAL_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["ADDITIONAL_PAY"].ToString());
+                Pay_Add = dt.Rows[0]["ORDER_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["ORDER_PAY"].ToString());
                 lbPayAdd.Text = Pay_Add < 0 ? "0.00" : Pay_Add.ToString("###,##0.00");
                 //Grid
                 CustomerBiz biz_Cus = new CustomerBiz();
