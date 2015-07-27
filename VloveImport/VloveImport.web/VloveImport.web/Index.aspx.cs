@@ -26,6 +26,7 @@ using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using HtmlAgilityPack;
+using System.Data;
 
 //using iTextSharp.tool.xml;
 //using iTextSharp.tool
@@ -41,7 +42,6 @@ namespace VloveImport.web
         {
             CheckSession();
         }
-
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             ////if (txtUser.Text == "")
@@ -64,21 +64,22 @@ namespace VloveImport.web
             //    Response.Redirect("~/Index.aspx");
             //}
         }
-
         protected void btnReset_Click(object sender, EventArgs e)
         {
             //txtUser.Text = "";
             //txtPass.Text = "";
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             commonBiz biz = new commonBiz();
+            ReportBiz report = new ReportBiz();
+            DataTable dt = report.GetOrderDetail(1);
+            byte[] bytes = biz.PrintPdf(@"" + report.GetOrderDetailReport(dt));
             //byte[] bytes = biz.PrintPdf(@"<p>This <em>is </em><span class=""headline"" style=""text-decoration: underline;"">some</span> <strong>sample <em> text</em></strong><span style=""color: red;"">!!!</span></p>");
             //byte[] bytes = biz.PrintPdf(@"<html><head><body><table><tr><td style=""border:2px solid"">asd<td style=""border:2px solid"">fda<tr><td style=""border:2px solid"">gfd<td style=""border:2px solid"">rter</table>");
             
             //byte[] bytes = biz.PrintPdf(@"<html><head></head><body><table><tr><td style=""border:2px solid"">asd</td><td style=""border:2px solid"">fda</td></tr><tr><td style=""border:2px solid"">gfd</td><td style=""border:2px solid"">rter</td></tr></table></body></html>");
-            byte[] bytes = biz.PrintPdf(File.ReadAllText("D:\\Work\\ShopShop\\VloveImport\\VloveImport.web\\VloveImport.web\\Print.html"));
+            //byte[] bytes = biz.PrintPdf(File.ReadAllText("D:\\Work\\ShopShop\\VloveImport\\VloveImport.web\\VloveImport.web\\Print.html"));
             
 
             Response.Clear();
@@ -87,7 +88,6 @@ namespace VloveImport.web
             Response.BinaryWrite(bytes);
             Response.End();
         }
-
         private void CheckSession()
         {
             //if (Session["User"] != null)
@@ -95,7 +95,6 @@ namespace VloveImport.web
             //else
             //    Login.Visible = true;
         }
-
         #region for Scraping Web in ucSearchBox & ucIndexBox
         [WebMethod]
         public static string GetModelFromURL(string txt)
@@ -187,7 +186,6 @@ namespace VloveImport.web
 
         }
         #endregion
-
         #region AddToCart
         [WebMethod]
         public static string btnSearch(string Name, string Desc, string Amount, string Price, string Size,
@@ -232,7 +230,6 @@ namespace VloveImport.web
             return Result;
         }
         #endregion
-
         #region News Feed
         [WebMethod]
         public static string GetContent()
@@ -332,7 +329,6 @@ namespace VloveImport.web
 
         }
         #endregion
-
         #region private function
         private void formatUrl(ref string selectVal, ref int IndexStart, ref int IndexEnd, ref int prefix)
         {
@@ -934,7 +930,6 @@ namespace VloveImport.web
         {
             return Regex.Replace(str, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
         }
-
         #endregion
         #endregion
     }
