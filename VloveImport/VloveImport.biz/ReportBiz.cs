@@ -27,15 +27,17 @@ namespace VloveImport.biz
             try
             {
                 #region Header & Grid
-                txt += "<!DOCTYPE html><html><head runat=\"server\"></head><body><table border=\"1\"><thead><tr><td>No</td><td>Shop Name</td><td>Shop Order Id</td><td>Size (CM)</td><td>Weight (KG)</td><td>Transport China Price</td><td>Product Type</td><td>Transport China To Thai (THB)</td></tr></thead><tbody>";
+                int i = 1;
+                txt += "<!DOCTYPE html><html><head runat=\"server\"></head><body class=''small''><table border=\"1\" cellspacing=\"0\"><thead>";
+                txt += "<tr class=''headline''><td>No</td><td>Shop Name</td><td>Shop Order Id</td><td>Size (CM)</td><td>Weight (KG)</td><td>Transport China Price</td><td>Product Type</td><td>Transport China To Thai (THB)</td></tr></thead><tbody>";
                 foreach (DataRow item in dt.Rows)
                 {
-                    txt += "<tr></tr>";
+                    //txt += "<tr><td>" + i + "</td><td>" + item["SHOPNAME"] + "</td></tr>";
                 }
                 txt += "</tbody></table>";
                 #endregion
                 #region Detail
-                txt += "<fieldset><table><thead></thead><tbody><tr><td class=\"width15\">Transport Method China To Thai :</td><td class=\"width30\">" + 12 + "</td>";
+                txt += "<fieldset><table><thead></thead><tbody><tr class=\"small\"><td class=\"width15\">Transport Method China To Thai :</td><td class=\"width30\">" + 12 + "</td>";
                 txt += "<td class=\"width20\">Transport Method To Customer :</td><td class=\"width35\">" + 12 + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Transport To Customer Detail : </td><td>" + 12 + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Transport To Customer Date :</td><td>" + 12 + "</td></tr></tbody></table></fieldset>";

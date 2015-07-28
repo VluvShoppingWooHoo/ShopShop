@@ -72,16 +72,8 @@ namespace VloveImport.biz
             string Result = Com.WriteLog(Page, Function, Error);
         }
 
-        public Byte[] PrintPdf(string html)
+        public Byte[] PrintPdf(string html, string css)
         {
-            string url =
-                //HttpContext.Current.Request.Url.AbsoluteUri;
-            "https://www.google.co.th/?gws_rd=cr,ssl&ei=zgOlVbb2MoK0uASPr4CACA";
-            var HtmlWeb = new HtmlWeb
-            {
-                AutoDetectEncoding = false
-            };
-            HtmlAgilityPack.HtmlDocument web = HtmlWeb.Load(url);
             //Create a byte array that will eventually hold our final PDF
             Byte[] bytes;
 
@@ -103,7 +95,7 @@ namespace VloveImport.biz
 
                         //Our sample HTML and CSS
                         var example_html = html;
-                        var example_css = @".headline{font-size:200%}";
+                        var example_css = css;
                         #region 1
                         //example_html = web.DocumentNode.InnerHtml;
                         /**************************************************
@@ -114,17 +106,15 @@ namespace VloveImport.biz
                          * ************************************************/
 
                         //Create a new HTMLWorker bound to our document
-                        using (var htmlWorker = new iTextSharp.text.html.simpleparser.HTMLWorker(doc))
-                        {
+                        //using (var htmlWorker = new iTextSharp.text.html.simpleparser.HTMLWorker(doc))
+                        //{
 
-                            //HTMLWorker doesn't read a string directly but instead needs a TextReader (which StringReader subclasses)
-                            using (var sr = new StringReader(example_html))
-                            {
-
-                                //Parse the HTML
-                                htmlWorker.Parse(sr);
-                            }
-                        }
+                        //    //HTMLWorker doesn't read a string directly but instead needs a TextReader (which StringReader subclasses)
+                        //    using (var sr = new StringReader(example_html))
+                        //    {
+                        //        htmlWorker.Parse(sr);
+                        //    }
+                        //}
                         #endregion
                         #region 2
                         /////**************************************************
@@ -144,24 +134,24 @@ namespace VloveImport.biz
                         //}
                         #endregion
                         #region 3
-                        ///**************************************************
-                        // * Example #3                                     *
-                        // *                                                *
-                        // * Use the XMLWorker to parse HTML and CSS        *
-                        // * ************************************************/
+                        /**************************************************
+                         * Example #3                                     *
+                         *                                                *
+                         * Use the XMLWorker to parse HTML and CSS        *
+                         * ************************************************/
 
-                        ////In order to read CSS as a string we need to switch to a different constructor
-                        ////that takes Streams instead of TextReaders.
-                        ////Below we convert the strings into UTF8 byte array and wrap those in MemoryStreams
-                        //using (var msCss = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_css)))
-                        //{
-                        //    using (var msHtml = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_html)))
-                        //    {
+                        //In order to read CSS as a string we need to switch to a different constructor
+                        //that takes Streams instead of TextReaders.
+                        //Below we convert the strings into UTF8 byte array and wrap those in MemoryStreams
+                        using (var msCss = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_css)))
+                        {
+                            using (var msHtml = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_html)))
+                            {
 
-                        //        //Parse the HTML
-                        //        iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, msHtml, msCss);
-                        //    }
-                        //}
+                                //Parse the HTML
+                                iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, msHtml, msCss);
+                            }
+                        }
                         #endregion
                         doc.Close();
                     }

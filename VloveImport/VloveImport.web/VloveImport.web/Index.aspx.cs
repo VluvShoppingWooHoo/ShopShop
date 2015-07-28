@@ -71,10 +71,11 @@ namespace VloveImport.web
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            commonBiz biz = new commonBiz();
             ReportBiz report = new ReportBiz();
-            DataTable dt = report.GetOrderDetail(1);
-            byte[] bytes = biz.PrintPdf(@"" + report.GetOrderDetailReport(dt));
+            DataTable dt = report.GetOrderDetail(14);
+            //commonBiz biz = new commonBiz();
+            PdfClass pdf = new PdfClass();
+            byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(dt));
             //byte[] bytes = biz.PrintPdf(@"<p>This <em>is </em><span class=""headline"" style=""text-decoration: underline;"">some</span> <strong>sample <em> text</em></strong><span style=""color: red;"">!!!</span></p>");
             //byte[] bytes = biz.PrintPdf(@"<html><head><body><table><tr><td style=""border:2px solid"">asd<td style=""border:2px solid"">fda<tr><td style=""border:2px solid"">gfd<td style=""border:2px solid"">rter</table>");
             

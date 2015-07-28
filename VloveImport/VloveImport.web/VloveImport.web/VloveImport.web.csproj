@@ -110,6 +110,7 @@
     <Content Include="App_Themes\js\materialize.js" />
     <Content Include="App_Themes\js\materialize.min.js" />
     <Content Include="App_Themes\js\myscript.js" />
+    <Content Include="App_Themes\th1\report.css" />
     <Content Include="App_Themes\th1\css.css" />
     <Content Include="Customer\Activate.aspx" />
     <Content Include="Customer\ContactUs.aspx" />
@@ -308,6 +309,7 @@
     <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="PdfClass.cs" />
     <Compile Include="Customer\Activate.aspx.cs">
       <DependentUpon>Activate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

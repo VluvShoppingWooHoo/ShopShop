@@ -193,12 +193,9 @@ D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\EncrypDLL.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\HtmlAgilityPack.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\itextsharp.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\itextsharp.xmlworker.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\Selenium.WebDriverBackedSelenium.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\ThoughtWorks.Selenium.Core.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.biz.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.data.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.util.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\WebDriver.Support.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.dal.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.biz.pdb
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.data.pdb
