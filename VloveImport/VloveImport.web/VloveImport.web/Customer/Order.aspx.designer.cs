@@ -13,51 +13,6 @@ namespace VloveImport.web.Customer {
     public partial class Order {
         
         /// <summary>
-        /// imbYoutube1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imbYoutube1;
-        
-        /// <summary>
-        /// imbYoutube2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imbYoutube2;
-        
-        /// <summary>
-        /// imbYoutube3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imbYoutube3;
-        
-        /// <summary>
-        /// imbYoutube4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imbYoutube4;
-        
-        /// <summary>
-        /// imbYoutube5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imbYoutube5;
-        
-        /// <summary>
         /// imbYoutube6 control.
         /// </summary>
         /// <remarks>

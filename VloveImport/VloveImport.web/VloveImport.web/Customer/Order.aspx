@@ -88,8 +88,8 @@
         <div class="row">
             <div class="s12 m12 l12">
                 ลูกค้าสามารถดูตัวอย่างได้จาก  
-                <asp:ImageButton ID="imbYoutube1" runat="server" PostBackUrl="https://youtu.be/BhldGynlIvY" 
-                    ImageUrl="~/Images/icon/Youtube1.png" Width="40px" Height="40px"/> หรือ ตัวอย่างด้านล่าง
+                <a href="https://youtu.be/BhldGynlIvY" target="_blank"> Youtube </a>
+                หรือ ตัวอย่างด้านล่าง
                 <br /><br />
                 การสั่งสินค้าแบบ ฝากจ่ายเงิน คือทางลูกค้าได้ทำการติดต่อร้านค้าเอง และต้องการให้ทางเราโอนเงินเพื่อชำระค่าสินค้าให้กับทางร้านค้า และใช้บริการของทาง i  Love import   ในการขนส่ง
                 <br />
@@ -138,8 +138,8 @@
                 <span class="bold orange-text">• ระบบจะเป็นการให้สมาชิกแจ้งเลขแทร็กกิ้งทั้งหมดแล้วกดSubmit เข้าระบบให้ทางบริษัททราบ</span><br /><%--ช่องทางสมัครสมาชิก --%>
                 <br />
                 ลูกค้าสามารถดูตัวอย่างได้จาก  
-                <asp:ImageButton ID="imbYoutube2" runat="server" PostBackUrl="https://youtu.be/HqO3gq-hK-4" 
-                    ImageUrl="~/Images/icon/Youtube1.png" Width="40px" Height="40px"/> หรือ ตัวอย่างด้านล่าง
+                <a href="https://youtu.be/HqO3gq-hK-4" target="_blank"> Youtube </a>
+                หรือ ตัวอย่างด้านล่าง
                 <br /><br />
                 <span class="bold">1. ไปที่เมนู "ขนส่งอย่างเดียว" </span>      <br />          
                 <img src="../Images/HowTo/Trans1.png" style="height: 298px; width: 286px;" /> &nbsp;&nbsp;
@@ -180,8 +180,8 @@
                 <span class="bold orange-text">• Step 1 สั่งสินค้าลงตะกร้า</span><br /><%--ช่องทางสมัครสมาชิก --%>
                 <br />
                 ลูกค้าสามารถดูตัวอย่างได้จาก  
-                <asp:ImageButton ID="imbYoutube3" runat="server" PostBackUrl="https://youtu.be/ZRq_kO47CaQ" 
-                    ImageUrl="~/Images/icon/Youtube1.png" Width="40px" Height="40px"/> หรือ ตัวอย่างด้านล่าง
+                <a href="https://youtu.be/ZRq_kO47CaQ" target="_blank"> Youtube </a>
+                หรือ ตัวอย่างด้านล่าง
                 <br /><br />
                 <span class="bold">1. Copy URL จากเว็ปเลือกซื้อสินค้า Taobao TMall 1688 </span>      <br />          
                 <img src="../Images/HowTo/Basket1.png" style="height: 189px; width: 938px;" />
@@ -239,8 +239,8 @@
                 <span class="bold orange-text">•	การเติมเงิน</span><br />
                 <br />
                 ลูกค้าสามารถดูตัวอย่างได้จาก  
-                <asp:ImageButton ID="imbYoutube4" runat="server" PostBackUrl="https://youtu.be/QpTJRrgIqSM" 
-                    ImageUrl="~/Images/icon/Youtube1.png" Width="40px" Height="40px"/> หรือ ตัวอย่างด้านล่าง
+                <a href="https://youtu.be/QpTJRrgIqSM" target="_blank"> Youtube </a>
+                หรือ ตัวอย่างด้านล่าง
                 <br /><br />
                 <span class="bold">1. กดเมนู "กระเป๋าเงินของฉัน" </span>      <br />          
                 <img src="../Images/HowTo/Topup1.png" style="height: 146px; width: 552px;" />
@@ -329,8 +329,8 @@
                 <span class="bold orange-text">•	การถอนเงิน</span><br />
                 <br />
                 ลูกค้าสามารถดูตัวอย่างได้จาก  
-                <asp:ImageButton ID="imbYoutube5" runat="server" PostBackUrl="https://youtu.be/XXqxfncKh9Q" 
-                    ImageUrl="~/Images/icon/Youtube1.png" Width="40px" Height="40px"/> หรือ ตัวอย่างด้านล่าง
+                <a href="https://youtu.be/XXqxfncKh9Q" target="_blank"> Youtube </a> 
+                หรือ ตัวอย่างด้านล่าง
                 <br /><br />
                 <span class="bold">1. กดเมนู "กระเป๋าเงินของฉัน" </span>      <br />          
                 <img src="../Images/HowTo/WithDraw1.png" style="height: 146px; width: 552px;" />
@@ -1029,8 +1029,8 @@
                 <span class="bold orange-text">•	ลูกค้าสามารถสมัครสมาชิก &nbsp;i Love import โดยไม่มีค่าใช้จ่าย</span><br /><%--ช่องทางสมัครสมาชิก --%>
                 <br />
                 ลูกค้าสามารถดูตัวอย่างได้จาก  
-                <asp:ImageButton ID="imbYoutube6" runat="server" PostBackUrl="https://youtu.be/GRhVzUG67gY" 
-                    ImageUrl="~/Images/icon/Youtube1.png" Width="40px" Height="40px"/> หรือ ตัวอย่างด้านล่าง
+                <a href="https://youtu.be/GRhVzUG67gY" target="_blank"> Youtube </a> 
+                หรือ ตัวอย่างด้านล่าง
                 <br /><br />
                 <span class="bold">1. กดสมัครสมาชิก</span>      <br />          
                 <img src="../Images/HowTo/RegisStep1.png" style="height: 300px; width: 700px;" />
