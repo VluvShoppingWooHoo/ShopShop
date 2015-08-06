@@ -103,6 +103,14 @@ namespace VloveImport.web.admin.pages
             MadoalPop_Email.Show();
         }
 
+        protected void imgBtn_EmailP_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[2].ToString();
+
+            //SendMail
+        }
+
         protected void imgBtn_view_Click(object sender, ImageClickEventArgs e)
         {
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;

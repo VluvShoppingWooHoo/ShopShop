@@ -116,6 +116,8 @@
                            <%-- <asp:ImageButton ID="imgBtn_view" runat="server" ImageUrl="~/img/icon/View.png" Width ="20px" Height ="20px" />&nbsp;&nbsp;--%>
                             <asp:ImageButton ID="imgBtn_Email" runat="server" ImageUrl="~/img/icon/sendemail.png" Width ="30px" Height ="30px" OnClick="imgBtn_Email_Click" />
                             &nbsp;&nbsp;
+                            <asp:ImageButton ID="imgBtn_EmailP" runat="server" ImageUrl="~/img/icon/sendemailP.png" Width ="30px" Height ="30px" OnClick="imgBtn_EmailP_Click" />
+                            &nbsp;&nbsp;
                             <asp:ImageButton ID="imgBtn_view" runat="server" ImageUrl="~/img/icon/View.png" Width ="20px" Height ="20px" OnClick="imgBtn_view_Click" />
                         </ItemTemplate>
                         <HeaderStyle CssClass="width7" />
