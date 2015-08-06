@@ -92,6 +92,7 @@
     <Content Include="images\icon\c_box.png" />
     <Content Include="images\icon\l_box.png" />
     <Content Include="images\icon\r_box.png" />
+    <Content Include="img\icon\sendmailP.png" />
     <Content Include="img\icon\attachment.png" />
     <Content Include="img\icon\b_edit.png" />
     <Content Include="img\icon\check-icon.png" />
