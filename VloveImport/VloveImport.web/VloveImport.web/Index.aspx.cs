@@ -114,7 +114,8 @@ namespace VloveImport.web
                 if (txt.Contains("taobao.com"))
                 {
                     webMode = Constant.Web.WTaoBao;
-                    if (txt.Contains(Constant.WebSubTaobao.TW_Taobao))
+                    if (txt.Contains(Constant.WebSubTaobao.TW_Taobao) ||
+                        txt.Contains(Constant.WebSubTaobao.WORLD_Taobao))
                     {
                         int end = txt.IndexOf(".htm?");
                         string newURL = txt.Substring(0, end);

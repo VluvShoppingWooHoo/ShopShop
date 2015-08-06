@@ -726,10 +726,10 @@
                 </li>
                 <li class="li3">
                 </li>
-              <%--  <li class="li4">
+                <li class="li4">
                 </li>
                 <li class="li5">
-                </li>--%>
+                </li>
             </ul>
         </div>
         <div id="divShop" class="row">
@@ -824,7 +824,7 @@
                     var countRecommend2 = 0;
                     for (var i = 0; i < obj.ReturnVal.length; i++) {
                         if (obj.ReturnVal[i].ContentType == 1) {
-                            if (countPromo < 3) {
+                            if (countPromo < 5) {
                                 $(".slider li.li" + (countPromo + 1)).append('<a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%; max-height: 300px;" /></a>')
                                 //$(".slider .slides").append('<li class="li' + (countPromo + 1) + '"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%; max-height: 300px;" /></a></li>')
                                 //txtPromo += '<li class="li' + (countPromo + 1) + '"><a href="/Customer/ContentDetail.aspx?id=' + obj.ReturnVal[i].ContentID + '"><img src="' + obj.ReturnVal[i].ContentImage + '" style="background-size: 100%; max-height: 300px;" /></a></li>';

@@ -31,6 +31,7 @@ namespace VloveImport.data.Extension
         public static class WebSubTaobao
         {
             public const string TW_Taobao = "tw.taobao";
+            public const string WORLD_Taobao = "world.taobao";
         }
         public static class WebTemplate
         {
