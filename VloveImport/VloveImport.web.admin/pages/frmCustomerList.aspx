@@ -198,6 +198,43 @@
                 </table>
             </asp:Panel>
 
+            <asp:ModalPopupExtender ID="ModalPopupExtender2" runat="server" BackgroundCssClass="modalBackground"
+                PopupControlID="Panel5" TargetControlID="lbConfirm">
+            </asp:ModalPopupExtender>
+            <asp:Panel ID="Panel5" Height="520" Width="800px" runat="server" Style="display: none;">
+                <%--Style="display: none;"--%>
+                <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
+                        <td align="left" class="trLogin_CENTER" style="padding: 0px 0px;">
+                            <div style="margin-left: -40px; margin-top: 10px;">
+                                <asp:Label ID="lbConfirm" runat="server" Text="Confirm"></asp:Label>
+                            </div>
+                        </td>
+                        <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
+                            <div style="text-align: right; margin-right: 10px; margin-top: 10px;">
+                                <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #CFCDCD;">
+                        <td style="text-align: center; padding: 0px 0px;" colspan="3">                                                        
+                            <br />
+                            <asp:HiddenField ID="hddCus" runat="server" />
+                            <asp:Label ID="lbText" runat="server" Text="Confirm"></asp:Label>
+                            <br />
+                            <asp:Button ID="btnConfirm" runat="server" Text="Confirm" OnClick="btnConfirm_Click" />
+                            &nbsp;&nbsp;
+                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>                            
+                        </center>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #CFCDCD;">
+                        <td height="15px" style="padding: 0px 0px;" align="center" colspan="3"></td>
+                    </tr>
+                </table>
+            </asp:Panel>
+
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

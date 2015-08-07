@@ -7,10 +7,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
+using VloveImport.web.admin.App_Code;
 
 namespace VloveImport.web.admin.pages
 {
-    public partial class frmCustomerList : System.Web.UI.Page
+    public partial class frmCustomerList : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -101,15 +102,7 @@ namespace VloveImport.web.admin.pages
             ucEmail1.SetEmail(DataKeys_ID);
             ucEmail1.SetEmail_To_Enabled();
             MadoalPop_Email.Show();
-        }
-
-        protected void imgBtn_EmailP_Click(object sender, ImageClickEventArgs e)
-        {
-            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
-            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[2].ToString();
-
-            //SendMail
-        }
+        }        
 
         protected void imgBtn_view_Click(object sender, ImageClickEventArgs e)
         {
@@ -150,6 +143,48 @@ namespace VloveImport.web.admin.pages
         {
             this.gv_detail.PageIndex = e.NewPageIndex;
             BindData();
+        }
+
+        protected void imgBtn_EmailP_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[2].ToString();
+            hddCus.Value = DataKeys_ID;
+            ModalPopupExtender2.Show();            
+        }
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if (hddCus.Value != null && hddCus.Value != "")
+            {
+                int Cus_id = 0;
+                string Pass = "", Email = "", Body = "", Result = "", Name = "";
+                CustomerBiz biz = new CustomerBiz();
+                Cus_id = Convert.ToInt32(hddCus.Value);
+                DataTable dt = biz.Get_Customer_Profile(Cus_id);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    Name = dt.Rows[0]["CUS_NAME"].ToString();
+                    Email = dt.Rows[0]["CUS_EMAIL"].ToString();  
+                    Pass = dt.Rows[0]["CUS_WITHDRAW_CODE"].ToString();                    
+                    Pass = DecryptData(Pass);
+
+                    //sendmail
+                    string[] Temp;
+                    Temp = Get_Config("REGIS");
+                    if (Temp.Length > 0)
+                    {
+                        Body = Temp[1].Replace("{1}", Name).Replace("{2}", Pass);
+                        Result = SendMail(Email, Temp[0], Body);
+                    }                  
+                    
+                }
+            }
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            ModalPopupExtender2.Hide();
         }
 
     }

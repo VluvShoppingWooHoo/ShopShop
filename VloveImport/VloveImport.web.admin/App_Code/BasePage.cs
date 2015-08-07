@@ -11,6 +11,11 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using VloveImport.data;
+using System.Net.Mail;
+using System.Net;
+using System.Web.Configuration;
+using VloveImport.util;
+using VloveImport.biz;
 
 namespace VloveImport.web.admin.App_Code
 {
@@ -49,6 +54,18 @@ namespace VloveImport.web.admin.App_Code
         }        
         #endregion
 
+        public string EncrypData(string strText)
+        {
+            EncrypUtil en = new EncrypUtil();
+            return en.EncrypData(strText);
+        }
+
+        public string DecryptData(string strText)
+        {
+            EncrypUtil en = new EncrypUtil();
+            return en.DecryptData(strText);
+        }
+
         public void CheckSession()
         {
             if (Session["AdminUser"] == null)
@@ -76,5 +93,68 @@ namespace VloveImport.web.admin.App_Code
             //ListEn_Page_Check = ListEn_Page.Where(w => w.PageURL != "").Where(w => w.PageURL.Contains(Page_name)).ToList();
             return ListEn_Page_Check;
         }
+
+        #region Sendmail
+        public string SendMail(string MailTo, string Subject, string Body)
+        {
+            string Result = "";
+            string strMailServer = WebConfigurationManager.AppSettings["SMTP"].ToString();
+            string UserEmail = WebConfigurationManager.AppSettings["email"].ToString();
+            string PassEmail = WebConfigurationManager.AppSettings["emailp"].ToString();
+            try
+            {
+                //Send Email ให้คนลำดับถัดไปในกรณี Approve หรือ ส่งให้คนลำดับก่อนหน้าในกรณี Reject
+                MailMessage Mail = new MailMessage();
+                MailAddress mailAdd = new MailAddress(UserEmail);
+                //Email, toEmail
+                Mail.IsBodyHtml = true;
+                Mail.SubjectEncoding = System.Text.Encoding.UTF8;
+                Mail.BodyEncoding = System.Text.Encoding.UTF8;
+                Mail.From = mailAdd;
+                Mail.To.Add(MailTo);
+
+                Mail.Subject = Subject;
+                Mail.Body = Body.Replace("\r\n", "<br/>");
+
+                if (strMailServer != "")
+                {
+                    SmtpClient SmtpClient = new SmtpClient(strMailServer, 25);
+                    SmtpClient.Credentials = new NetworkCredential(UserEmail, DecryptData(PassEmail));
+
+                    SmtpClient.Send(Mail);
+                    Mail.Attachments.Clear();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return Result;
+        }
+        #endregion
+
+        #region Get Config
+        public string[] Get_Config(string Group)
+        {
+            string[] Result;
+            DataTable dt = new DataTable();
+            commonBiz biz = new commonBiz();
+
+            dt = biz.Get_ConfigByGroup(Group);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                Result = new string[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Result[i] = dt.Rows[i]["CONFIG_VALUE"].ToString();
+                }
+            }
+            else
+                return null;
+
+            return Result;
+        }
+        #endregion
     }
 }
