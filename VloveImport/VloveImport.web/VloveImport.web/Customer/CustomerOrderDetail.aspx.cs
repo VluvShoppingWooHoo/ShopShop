@@ -76,11 +76,12 @@ namespace VloveImport.web.Customer
                         Chi = dr["TRANSPORT_CHINA_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CHINA_PRICE"].ToString());
                         Currency = dr["ORDER_CURRENCY"].ToString() == "" ? 0 : Convert.ToDouble(dr["ORDER_CURRENCY"].ToString());
                         Thi = dr["TRANSPORT_THAI_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_THAI_PRICE"].ToString());
-                        Item = dr["TOTALITEMAMOUNT_TH"].ToString() == "" ? 0 : Convert.ToDouble(dr["TOTALITEMAMOUNT_TH"].ToString());
 
                         TotalTrans = TotalTrans + Cus + (Chi * Currency) + Thi;
-                        TotalItem = TotalItem + Item;
                     }
+
+                    Item = dr["TOTALITEMAMOUNT_TH"].ToString() == "" ? 0 : Convert.ToDouble(dr["TOTALITEMAMOUNT_TH"].ToString());
+                    TotalItem = TotalItem + Item;
                     OldShopName = ShopName;
                 }
                 lbTotalTran.Text = TotalTrans.ToString("###,##0.00");
