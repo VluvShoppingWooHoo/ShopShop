@@ -104,6 +104,21 @@ namespace VloveImport.biz
             return Result;
         }
 
+        public string ADMIN_UPDATE_ORDER_CANCLE(string ORDER_ID, string CREATE_USER, string Act)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.ADMIN_UPDATE_ORDER_CANCLE(ORDER_ID, CREATE_USER, Act);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+
         #endregion
 
         #region Transaction

@@ -16,11 +16,12 @@ using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
 using VloveImport.util;
+using VloveImport.web.admin.App_Code;
 
 
 namespace VloveImport.web.admin.pages
 {
-    public partial class frmOrder_TEMP : System.Web.UI.Page
+    public partial class frmOrder_TEMP : BasePage
     {
         util.EncrypUtil Enc = new util.EncrypUtil();
 
@@ -107,6 +108,7 @@ namespace VloveImport.web.admin.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession();
             if (!IsPostBack)
             {
                 AdminUserData Data = new AdminUserData();
@@ -119,7 +121,7 @@ namespace VloveImport.web.admin.pages
                 BindData_Product_Type();
                 TabORDER.ActiveTabIndex = 0;
             }
-
+            btnCancleOrder.Attributes.Add("onClick", "javascript:return confirm('Do you want to cancel order ?')");
             ucEmail1.ucEmail_OpenpopClick += new System.EventHandler(ucEmail_OpenpopClick);
         }
 
@@ -132,6 +134,17 @@ namespace VloveImport.web.admin.pages
             if ((ScriptManager.GetCurrent(currentPage) != null))
             {
                 ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+            }
+        }
+
+        public void ShowMessageBox(string message, Page currentPage, string redirectNamePage)
+        {
+            string msgboxScript = "alert('" + message + "');";
+            string redirectPage = "window.location=\"" + redirectNamePage + "\";";
+
+            if ((ScriptManager.GetCurrent(currentPage) != null))
+            {
+                ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript + redirectPage, true);
             }
         }
 
@@ -417,6 +430,20 @@ namespace VloveImport.web.admin.pages
 
         }
 
+        public double strToDouble(string val)
+        {
+            double dou = 0.00;
+            try
+            {
+                dou = Convert.ToDouble(val);
+            }
+            catch (Exception)
+            {
+                dou = 0.00;
+            }
+            return dou;
+        }
+
         #endregion
 
         #region Event Button
@@ -470,13 +497,13 @@ namespace VloveImport.web.admin.pages
                     //ShowMessageBox("Please enter transport customer price", this.Page);
                     //return;
                 }
-                double TranCusPrice = Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim());
-                double Service_Charge = Convert.ToDouble(txt_Service_Charge.Text.Trim());
-                double Discount = Convert.ToDouble(txt_Discount.Text.Trim());
+                double TranCusPrice = strToDouble(txt_Transport_Cus_Price.Text.Trim());
+                double Service_Charge = strToDouble(txt_Service_Charge.Text.Trim());
+                double Discount = strToDouble(txt_Discount.Text.Trim());
 
                 if (TranCusPrice > 0)
                 {
-                    if (_VS_CUS_BALANCE > (TranCusPrice + Service_Charge - Discount))
+                    if (_VS_CUS_BALANCE >= (TranCusPrice + Service_Charge - Discount))
                     {
                         string ResultTran = "";
                         TransactionData EnTran = new TransactionData();
@@ -1250,6 +1277,20 @@ namespace VloveImport.web.admin.pages
                 {
                     e.Row.Cells[2].Visible = false;
                 }
+            }
+        }
+
+        protected void btnCancleOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AdminBiz AdBiz = new AdminBiz();
+                AdBiz.ADMIN_UPDATE_ORDER_CANCLE(this._VS_ORDER_ID, this._VS_USER_LOGIN, "");
+                ShowMessageBox("Cancle Order success", this.Page, "frmOrderList.aspx");
+            }
+            catch (Exception ex)
+            {
+                ShowMessageBox("Error : " + ex.Message,this.Page);
             }
         }
 

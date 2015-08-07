@@ -629,6 +629,8 @@
 <table class="width100">
     <tr>
         <td class="ItemStyle-center">
+            <asp:Button ID="btnCancleOrder" runat="server" Text="Cancle Order" CssClass =" btnCancel" OnClick="btnCancleOrder_Click"></asp:Button>
+            &nbsp;&nbsp;
             <asp:Button ID="btnback" runat="server" Text="Back To Order List" CssClass="btnCancel" OnClick="btnback_Click"></asp:Button>
         </td>
     </tr>

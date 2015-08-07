@@ -189,6 +189,29 @@ namespace VloveImport.dal
             }
         }
 
+        public string ADMIN_UPDATE_ORDER_CANCLE(string ORDER_ID, string CREATE_USER, string Act)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_UPDATE_ORDER_CANCLE");
+
+                SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, ORDER_ID);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, CREATE_USER);
+                SqlCommandData.SetParameter("ACT", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                throw new Exception("ADMIN_UPDATE_ORDER_CANCLE -> msg : " + ex.Message);
+            }
+        }
+
         #endregion
 
         #region Admin Transaction
