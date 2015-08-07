@@ -148,7 +148,7 @@ namespace VloveImport.web.admin.pages
         protected void imgBtn_EmailP_Click(object sender, ImageClickEventArgs e)
         {
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
-            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[2].ToString();
+            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
             hddCus.Value = DataKeys_ID;
             ModalPopupExtender2.Show();            
         }
@@ -171,7 +171,7 @@ namespace VloveImport.web.admin.pages
 
                     //sendmail
                     string[] Temp;
-                    Temp = Get_Config("REGIS");
+                    Temp = Get_Config("WITHDRAW_CODE");
                     if (Temp.Length > 0)
                     {
                         Body = Temp[1].Replace("{1}", Name).Replace("{2}", Pass);

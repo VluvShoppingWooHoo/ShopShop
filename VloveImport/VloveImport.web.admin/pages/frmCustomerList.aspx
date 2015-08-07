@@ -98,7 +98,7 @@
                     <HeaderStyle CssClass="width10" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Email" DataField="CUS_EMAIL">
-                    <HeaderStyle CssClass="width13" />
+                    <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Amount" DataField="CUS_TOTAL_AMOUNT" DataFormatString="{0:#,##0.00}">
                     <HeaderStyle CssClass="width10" />
@@ -114,13 +114,13 @@
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
                            <%-- <asp:ImageButton ID="imgBtn_view" runat="server" ImageUrl="~/img/icon/View.png" Width ="20px" Height ="20px" />&nbsp;&nbsp;--%>
-                            <asp:ImageButton ID="imgBtn_Email" runat="server" ImageUrl="~/img/icon/sendemail.png" Width ="30px" Height ="30px" OnClick="imgBtn_Email_Click" />
+                            <asp:ImageButton ID="imgBtn_Email" runat="server" ImageUrl="~/img/icon/sendemail.png" Width ="25px" Height ="25px" OnClick="imgBtn_Email_Click" />
                             &nbsp;&nbsp;
-                            <asp:ImageButton ID="imgBtn_EmailP" runat="server" ImageUrl="~/img/icon/sendemailP.png" Width ="30px" Height ="30px" OnClick="imgBtn_EmailP_Click" />
+                            <asp:ImageButton ID="imgBtn_EmailP" runat="server" ImageUrl="~/img/icon/sendmailP.png" Width ="25px" Height ="25px" OnClick="imgBtn_EmailP_Click" />
                             &nbsp;&nbsp;
                             <asp:ImageButton ID="imgBtn_view" runat="server" ImageUrl="~/img/icon/View.png" Width ="20px" Height ="20px" OnClick="imgBtn_view_Click" />
                         </ItemTemplate>
-                        <HeaderStyle CssClass="width7" />
+                        <HeaderStyle CssClass="width10" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
                 </Columns>
@@ -201,14 +201,14 @@
             <asp:ModalPopupExtender ID="ModalPopupExtender2" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel5" TargetControlID="lbConfirm">
             </asp:ModalPopupExtender>
-            <asp:Panel ID="Panel5" Height="520" Width="800px" runat="server" Style="display: none;">
+            <asp:Panel ID="Panel5" Height="400" Width="400px" runat="server" Style="display: none;">
                 <%--Style="display: none;"--%>
-                <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
+                <table width="400px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
                         <td align="left" class="trLogin_CENTER" style="padding: 0px 0px;">
                             <div style="margin-left: -40px; margin-top: 10px;">
-                                <asp:Label ID="lbConfirm" runat="server" Text="Confirm"></asp:Label>
+                                <asp:Label ID="lbConfirm" runat="server" Text="Confirm Send Mail"></asp:Label>
                             </div>
                         </td>
                         <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
@@ -221,7 +221,9 @@
                         <td style="text-align: center; padding: 0px 0px;" colspan="3">                                                        
                             <br />
                             <asp:HiddenField ID="hddCus" runat="server" />
-                            <asp:Label ID="lbText" runat="server" Text="Confirm"></asp:Label>
+                            <asp:Label ID="lbText" runat="server" Text="Password will be send to email customer?"></asp:Label>
+                            <br />
+                            <br />
                             <br />
                             <asp:Button ID="btnConfirm" runat="server" Text="Confirm" OnClick="btnConfirm_Click" />
                             &nbsp;&nbsp;
