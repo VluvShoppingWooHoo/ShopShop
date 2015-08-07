@@ -36,7 +36,7 @@
         <div style = "vertical-align :middle; width:40%; height:50px; margin-left: 32%; margin-top: -40px;">            
             <div style ="margin-left:10px;">
                 <asp:TextBox ID="txt_amount" runat="server" Width="300px" CssClass="txt_amount"></asp:TextBox>
-                <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_amount" ID="txt_amount_FilteredTextBoxExtender" ValidChars="1234567890">
+                <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_amount" ID="txt_amount_FilteredTextBoxExtender" ValidChars="1234567890.">
                 </asp:FilteredTextBoxExtender>
             </div>
         </div>
