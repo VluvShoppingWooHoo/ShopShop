@@ -43,7 +43,7 @@
         <div style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 30%; height: 50px;">
             <br />
             <div style="margin-left: 10px;">
-                <b>หลักฐานการชำระเงิน</b>
+                <b>หลักฐานการชำระเงิน (.JPG, .PNG, .GIF)</b>
             </div>
         </div>
         <div style="vertical-align: middle; width: 60%; height: 50px; margin-left: 33%; margin-top: -60px;">
