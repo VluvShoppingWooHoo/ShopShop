@@ -192,6 +192,11 @@ namespace VloveImport.web.UserControls
 
                         Ifile.PostedFile.SaveAs(AttPath + "/" + FileName);
                     }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('ประเภทไฟล์ไม่ถูกต้อง');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+                        return;
+                    }
                     EnTran.TRANS_PICURL = FileName;
                 }
                 else
