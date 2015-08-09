@@ -92,6 +92,12 @@ namespace VloveImport.web.admin.pages
             set { ViewState["__VS_CUS_BALANCE"] = value; }
         }
 
+        public double _VS_ORDER_REFUND
+        {
+            get { return Convert.ToDouble(ViewState["__VS_ORDER_REFUND"].ToString()); }
+            set { ViewState["__VS_ORDER_REFUND"] = value; }
+        }
+
         public int _VS_USER_EMP_ID
         {
             get { return Convert.ToInt32(ViewState["__VS_USER_EMP_ID"].ToString()); }
@@ -274,6 +280,8 @@ namespace VloveImport.web.admin.pages
                 //lbl_tb2_Total_Transport_Price.Text = "********";
 
                 lbl_tb2_Total_Refund.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_REFUND"].ToString()).ToString("N", new CultureInfo("en-US"));
+                _VS_ORDER_REFUND = strToDouble(dt.Rows[0]["TOTAL_REFUND"].ToString());
+
                 lbl_tb2_Additional_Amount.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_ADDITIONAL_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Total_Prodcut_Active_Price.Text = (Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()) * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)<br><span style =\"color:red;\">(" + Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US")) + ")(CNY)</span>";
 
@@ -488,6 +496,13 @@ namespace VloveImport.web.admin.pages
                 return;
             }
 
+            if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7"))
+            {
+                ShowMessageBox("Not available This is because the amount At no extra cost", this.Page);
+                //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
+                return;
+            }
+
 
             if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
             {
@@ -503,7 +518,7 @@ namespace VloveImport.web.admin.pages
 
                 if (TranCusPrice > 0)
                 {
-                    if (_VS_CUS_BALANCE >= (TranCusPrice + Service_Charge - Discount))
+                    if ((_VS_CUS_BALANCE + _VS_ORDER_REFUND) >= (TranCusPrice + Service_Charge - Discount))
                     {
                         string ResultTran = "";
                         TransactionData EnTran = new TransactionData();
@@ -528,13 +543,6 @@ namespace VloveImport.web.admin.pages
                 }
             }
 
-            if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7"))
-            {
-                ShowMessageBox("Not available This is because the amount At no extra cost", this.Page);
-                //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
-                return;
-            }
-
             OrderData En = new OrderData();
             AdminBiz AdBiz = new AdminBiz();
             En.Create_User = _VS_USER_LOGIN;
@@ -545,10 +553,16 @@ namespace VloveImport.web.admin.pages
             En.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
             En.TRANSPORT_CUSTOMER_DETAIL = txt_Transport_Cus_Detail.Text.Trim();
             En.ORDER_EMP_REMARK = txt_Update_STS_EMP_Remark.Text.Trim();
+
+            //---------------------------------------------------------------------------
             string Result_order = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_ORDER");
+            //---------------------------------------------------------------------------
 
             En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue);
+
+            //---------------------------------------------------------------------------
             string Result_transport = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_TRANSPORT");
+            //---------------------------------------------------------------------------
 
             string Result = "";
 
