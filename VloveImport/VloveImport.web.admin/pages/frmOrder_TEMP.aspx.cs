@@ -492,6 +492,7 @@ namespace VloveImport.web.admin.pages
         {
             if (_VS_ORDER_STS == "3")
             {
+                AdminBiz AdBiz = new AdminBiz();
                 string Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
 
                 if (Result == "")
