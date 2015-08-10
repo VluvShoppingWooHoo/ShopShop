@@ -370,8 +370,8 @@ namespace VloveImport.web.admin.pages
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
-                tr_tb2_chk_email.Visible = false;
 
+                tr_tb2_chk_email.Visible = true;
                 btn_detail_update.Visible = true;
             }
             else if (_VS_ORDER_STS == "4")
