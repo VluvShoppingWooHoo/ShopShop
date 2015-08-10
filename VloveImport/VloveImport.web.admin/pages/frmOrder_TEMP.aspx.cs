@@ -370,8 +370,9 @@ namespace VloveImport.web.admin.pages
             {
                 ddl_ViewDetail_ORDER_STATUS.Enabled = false;
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
-                btn_detail_update.Visible = false;
                 tr_tb2_chk_email.Visible = false;
+
+                btn_detail_update.Visible = true;
             }
             else if (_VS_ORDER_STS == "4")
             {
@@ -489,103 +490,117 @@ namespace VloveImport.web.admin.pages
 
         protected void btn_detail_update_Click(object sender, EventArgs e)
         {
-            if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) > 0 && Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue) > 7)
+            if (_VS_ORDER_STS == "3")
             {
-                ShowMessageBox("Please select the items waiting for payment", this.Page);
-                //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
-                return;
-            }
+                string Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
 
-            if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7"))
-            {
-                ShowMessageBox("Not available This is because the amount At no extra cost", this.Page);
-                //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
-                return;
-            }
-
-
-            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
-            {
-                if (txt_Transport_Cus_Price.Text.Trim() == "" || Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim()) == 0)
+                if (Result == "")
                 {
-                    txt_Transport_Cus_Price.Text = "0.00";
-                    //ShowMessageBox("Please enter transport customer price", this.Page);
-                    //return;
+                    BindData();
+                    ShowMessageBox("Update success", this.Page);
                 }
-                double TranCusPrice = strToDouble(txt_Transport_Cus_Price.Text.Trim());
-                double Service_Charge = strToDouble(txt_Service_Charge.Text.Trim());
-                double Discount = strToDouble(txt_Discount.Text.Trim());
-
-                if (TranCusPrice > 0)
+                else
                 {
-                    if ((_VS_CUS_BALANCE + _VS_ORDER_REFUND) >= (TranCusPrice + Service_Charge - Discount))
-                    {
-                        string ResultTran = "";
-                        TransactionData EnTran = new TransactionData();
-                        string Act = "INS_NON_PROD";
-                        AdminBiz AdBizTran = new AdminBiz();
-
-                        EnTran.EMP_ID_APPROVE = Convert.ToInt32(_VS_USER_EMP_ID);
-                        EnTran.TRAN_TYPE = 2;
-                        EnTran.TRAN_TABLE_TYPE = 3;
-                        EnTran.TRAN_STATUS = 2;
-                        EnTran.Cus_ID = _VS_CUS_ID;
-                        EnTran.TRAN_AMOUNT = (TranCusPrice + Service_Charge - Discount);
-                        EnTran.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
-                        EnTran.EMP_REMARK = "ตัดเงินรายการค่าขนส่งขั้นตอนสุดท้าย";
-                        ResultTran = AdBizTran.INS_UPD_TRANSACTION(EnTran, Act);
-                    }
-                    else
-                    {
-                        ShowMessageBox("Customer amount is not enough.Please check again", this.Page);
-                        return;
-                    }
+                    ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result), this.Page);
                 }
-            }
-
-            OrderData En = new OrderData();
-            AdminBiz AdBiz = new AdminBiz();
-            En.Create_User = _VS_USER_LOGIN;
-            En.TRANSPORT_CUSTOMER_PRICE = txt_Transport_Cus_Price.Text.Trim() == "" ? 0.00 : Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim());
-            En.SERVICE_CHARGE = txt_Service_Charge.Text.Trim() == "" ? 0.00 : Convert.ToDouble(txt_Service_Charge.Text.Trim());
-            En.DISCOUNT = txt_Discount.Text.Trim() == "" ? 0.00 : Convert.ToDouble(txt_Discount.Text.Trim());
-            En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue);
-            En.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
-            En.TRANSPORT_CUSTOMER_DETAIL = txt_Transport_Cus_Detail.Text.Trim();
-            En.ORDER_EMP_REMARK = txt_Update_STS_EMP_Remark.Text.Trim();
-
-            //---------------------------------------------------------------------------
-            string Result_order = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_ORDER");
-            //---------------------------------------------------------------------------
-
-            En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue);
-
-            //---------------------------------------------------------------------------
-            string Result_transport = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_TRANSPORT");
-            //---------------------------------------------------------------------------
-
-            string Result = "";
-
-            //if (_VS_ORDER_STS == "2" && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5"))
-            if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
-            {
-                Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
-            }
-
-            if (Result_order == "" && Result_transport == "" && Result == "")
-            {
-                BindData();
-                ShowMessageBox("Update success", this.Page);
             }
             else
             {
-                ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result_order + "  ERROR TRANSPORT : " + Result_transport + "  ERROR TRANSACTION : " + Result), this.Page);
+                if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) > 0 && Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue) > 7)
+                {
+                    ShowMessageBox("Please select the items waiting for payment", this.Page);
+                    //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
+                    return;
+                }
+
+                if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7"))
+                {
+                    ShowMessageBox("Not available This is because the amount At no extra cost", this.Page);
+                    //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
+                    return;
+                }
+
+
+                if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
+                {
+                    if (txt_Transport_Cus_Price.Text.Trim() == "" || Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim()) == 0)
+                    {
+                        txt_Transport_Cus_Price.Text = "0.00";
+                        //ShowMessageBox("Please enter transport customer price", this.Page);
+                        //return;
+                    }
+                    double TranCusPrice = strToDouble(txt_Transport_Cus_Price.Text.Trim());
+                    double Service_Charge = strToDouble(txt_Service_Charge.Text.Trim());
+                    double Discount = strToDouble(txt_Discount.Text.Trim());
+
+                    if (TranCusPrice > 0)
+                    {
+                        if ((_VS_CUS_BALANCE + _VS_ORDER_REFUND) >= (TranCusPrice + Service_Charge - Discount))
+                        {
+                            string ResultTran = "";
+                            TransactionData EnTran = new TransactionData();
+                            string Act = "INS_NON_PROD";
+                            AdminBiz AdBizTran = new AdminBiz();
+
+                            EnTran.EMP_ID_APPROVE = Convert.ToInt32(_VS_USER_EMP_ID);
+                            EnTran.TRAN_TYPE = 2;
+                            EnTran.TRAN_TABLE_TYPE = 3;
+                            EnTran.TRAN_STATUS = 2;
+                            EnTran.Cus_ID = _VS_CUS_ID;
+                            EnTran.TRAN_AMOUNT = (TranCusPrice + Service_Charge - Discount);
+                            EnTran.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
+                            EnTran.EMP_REMARK = "ตัดเงินรายการค่าขนส่งขั้นตอนสุดท้าย";
+                            ResultTran = AdBizTran.INS_UPD_TRANSACTION(EnTran, Act);
+                        }
+                        else
+                        {
+                            ShowMessageBox("Customer amount is not enough.Please check again", this.Page);
+                            return;
+                        }
+                    }
+                }
+
+                OrderData En = new OrderData();
+                AdminBiz AdBiz = new AdminBiz();
+                En.Create_User = _VS_USER_LOGIN;
+                En.TRANSPORT_CUSTOMER_PRICE = txt_Transport_Cus_Price.Text.Trim() == "" ? 0.00 : Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim());
+                En.SERVICE_CHARGE = txt_Service_Charge.Text.Trim() == "" ? 0.00 : Convert.ToDouble(txt_Service_Charge.Text.Trim());
+                En.DISCOUNT = txt_Discount.Text.Trim() == "" ? 0.00 : Convert.ToDouble(txt_Discount.Text.Trim());
+                En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue);
+                En.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
+                En.TRANSPORT_CUSTOMER_DETAIL = txt_Transport_Cus_Detail.Text.Trim();
+                En.ORDER_EMP_REMARK = txt_Update_STS_EMP_Remark.Text.Trim();
+
+                //---------------------------------------------------------------------------
+                string Result_order = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_ORDER");
+                //---------------------------------------------------------------------------
+
+                En.ORDER_STATUS = Convert.ToInt32(ddl_ViewDetail_TRANSPORT_STATUS.SelectedValue);
+
+                //---------------------------------------------------------------------------
+                string Result_transport = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_TRANSPORT");
+                //---------------------------------------------------------------------------
+
+                string Result = "";
+
+                //if (_VS_ORDER_STS == "2" && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "3" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5"))
+                if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
+                {
+                    Result = AdBiz.UPD_ADMIN_ORDER_PROD_AMOUNT(Convert.ToInt32(_VS_ORDER_ID), -1, -1, -1, _VS_USER_LOGIN, "UPD_CAL_PROD_AMOUNT");
+                }
+
+                if (Result_order == "" && Result_transport == "" && Result == "")
+                {
+                    BindData();
+                    ShowMessageBox("Update success", this.Page);
+                }
+                else
+                {
+                    ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result_order + "  ERROR TRANSPORT : " + Result_transport + "  ERROR TRANSACTION : " + Result), this.Page);
+                }
             }
 
-            if (tb_2_chk_email.Checked == true)
-            {
-                SendMail();
-            }
+            if (tb_2_chk_email.Checked == true) SendMail();
 
         }
 
@@ -1012,9 +1027,9 @@ namespace VloveImport.web.admin.pages
                     #region
                     if (_VS_ORDER_TYPE == "1")
                     {
-                        if (Convert.ToInt32(_VS_ORDER_STS) >= 7) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
-                        else if (Convert.ToInt32(_VS_ORDER_STS) >= 5) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
-                        else if (Convert.ToInt32(_VS_ORDER_STS) == 4) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = true;
+                        //if (Convert.ToInt32(_VS_ORDER_STS) >= 7) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                        if (Convert.ToInt32(_VS_ORDER_STS) >= 5) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
+                        else if (Convert.ToInt32(_VS_ORDER_STS) == 3 || Convert.ToInt32(_VS_ORDER_STS) == 4) ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = true;
                         else ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
                     }
                     else ((ImageButton)e.Row.FindControl("imgbtn_Editprod_amount")).Visible = false;
