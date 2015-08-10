@@ -325,5 +325,37 @@ namespace VloveImport.web.Customer
                 Response.Redirect("CustomerTransport.aspx?Type=" + EncrypData("ORDER"));
             }
         }
+
+        protected void gvBasket_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int Count = 0;
+                string ShopName = DataBinder.Eval(e.Row.DataItem, "CUS_BK_SHOPNAME").ToString();
+                if (ViewState["OldShopName"] == null || ViewState["OldShopName"].ToString() != ShopName)
+                {
+                    Count = ViewState["Count"] == null ? 1 : Convert.ToInt32(ViewState["Count"]);
+                    Label lbShopName = ((Label)e.Row.FindControl("lbShopName"));
+                    Label lbRemark = ((Label)e.Row.FindControl("lbRemark"));
+                    GridViewRow row = new GridViewRow(e.Row.RowIndex + Count, -1, DataControlRowType.DataRow, DataControlRowState.Insert);
+                    TableCell cell = new TableCell();
+                    cell.ColumnSpan = gvBasket.Columns.Count;
+                    cell.CssClass = "gv-shopname";
+                    string ShowShop = "";
+                    ShowShop += "Shop name : " + DataBinder.Eval(e.Row.DataItem, "CUS_BK_SHOPNAME").ToString() + "&nbsp;&nbsp;";
+       
+                    lbShopName.Text = ShowShop;
+                    cell.Controls.Add(lbShopName);
+
+                    row.Cells.Add(cell);
+                    row.CssClass = "gv-shopname";
+                    ((GridView)sender).Controls[0].Controls.AddAt(e.Row.RowIndex + Count, row);
+
+                    ViewState["OldShopName"] = ShopName;
+                    ViewState["Count"] = ++Count;
+                }
+
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@
                     <div class="col s12 m12 l12">
                         <br />
                         <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false" AllowPaging="true"
-                            OnPageIndexChanging="gvBasket_PageIndexChanging">
+                            OnPageIndexChanging="gvBasket_PageIndexChanging" OnRowDataBound="gvBasket_RowDataBound">
                             <Columns>
                                 <asp:TemplateField ItemStyle-Width="30px">
                                     <HeaderTemplate>
@@ -27,6 +27,7 @@
                                     <ItemTemplate>                                    
                                         <asp:CheckBox ID="cbItem" runat="server" Text=" " OnCheckedChanged="cbItem_CheckedChanged" 
                                             AutoPostBack="true"/>
+                                        <asp:Label ID="lbShopName" runat="server" Width ="90%"></asp:Label>                            
                                         <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
