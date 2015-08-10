@@ -21,14 +21,14 @@ namespace VloveImport.dal
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("GET_ORDER_DETAIL");
+                SqlCommandData.SetStoreProcedure("GET_PDF_ORDER_DETAIL");
                 SqlCommandData.SetParameter_Input_INT("ORDER_ID", SqlDbType.Int, ParameterDirection.Input, OID);
 
                 return SqlCommandData.ExecuteDataSet();
             }
             catch (Exception ex)
             {
-                throw new Exception("GET_ORDER_DETAIL -> msg : " + ex.Message);
+                throw new Exception("GET_PDF_ORDER_DETAIL -> msg : " + ex.Message);
             }           
         }
 

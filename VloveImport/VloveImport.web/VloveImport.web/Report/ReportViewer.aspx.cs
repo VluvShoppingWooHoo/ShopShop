@@ -47,7 +47,7 @@ namespace VloveImport.web.Report
         {            
             DataTable dt = new DataTable();
             ReportBiz biz = new ReportBiz();
-            dt = biz.GetOrderDetail(OID);
+            //dt = biz.GetOrderDetail(OID);
             if (dt != null && dt.Rows.Count > 0)
             {
                 ReportDataSource ds = new ReportDataSource(Name, dt);
