@@ -283,5 +283,14 @@ namespace VloveImport.biz
             return Result;
         }
         #endregion
+
+        public DataSet GetReportCustomerOrder(DateTime OrderDateStart, DateTime OrderDateEnd, string CustomerCode,string Act)
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.GetReportCustomerOrder(OrderDateStart, OrderDateEnd, CustomerCode, Act);
+            return ds;
+        }
+
     }
 }

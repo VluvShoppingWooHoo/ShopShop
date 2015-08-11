@@ -564,5 +564,25 @@ namespace VloveImport.dal
         }
 
         #endregion
+
+        public DataSet GetReportCustomerOrder(DateTime OrderDateStart, DateTime OrderDateEnd,string CustomerCode,string Act)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_RPT_CUSTOMER_ORDER");
+
+                SqlCommandData.SetParameter("CUS_CODE", SqlDbType.VarChar, ParameterDirection.Input, CustomerCode);
+                SqlCommandData.SetParameter("ORDER_DATE_START", SqlDbType.VarChar, ParameterDirection.Input, OrderDateStart);
+                SqlCommandData.SetParameter("ORDER_DATE_END", SqlDbType.VarChar, ParameterDirection.Input, OrderDateEnd);
+                SqlCommandData.SetParameter("Act", SqlDbType.VarChar, ParameterDirection.Input, Act);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetReportCustomerOrder -> msg : " + ex.Message);
+            }
+        }
+
     }
 }
