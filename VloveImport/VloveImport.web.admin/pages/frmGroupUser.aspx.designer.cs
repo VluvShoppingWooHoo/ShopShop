@@ -148,6 +148,24 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.CheckBox cb7;
         
         /// <summary>
+        /// cb8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cb8;
+        
+        /// <summary>
+        /// cb9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cb9;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

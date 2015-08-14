@@ -99,6 +99,18 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>Content Management : </td>
+                        <td colspan="3">
+                            <asp:CheckBox ID="cb8" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Report : </td>
+                        <td colspan="3">
+                            <asp:CheckBox ID="cb9" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
                         <td colspan="4" style="text-align: center;">
                             <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btnSave" OnClick="btnSave_Click" />&nbsp;&nbsp;
                             <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" OnClick="btnReset_Click" />

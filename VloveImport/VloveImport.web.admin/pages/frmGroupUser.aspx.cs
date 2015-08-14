@@ -99,6 +99,12 @@ namespace VloveImport.web.admin.pages
                         case "07":
                             cb7.Checked = true;
                             break;
+                        case "08":
+                            cb8.Checked = true;
+                            break;
+                        case "09":
+                            cb9.Checked = true;
+                            break;
                         default:
                             break;
                     }
@@ -123,6 +129,10 @@ namespace VloveImport.web.admin.pages
                 Answer += "06|";
             if (cb7.Checked)
                 Answer += "07|";
+            if (cb8.Checked)
+                Answer += "08|";
+            if (cb9.Checked)
+                Answer += "09|";
             return Answer;
         }
 
@@ -241,7 +251,7 @@ namespace VloveImport.web.admin.pages
         {
             ContentPlaceHolder cph = (ContentPlaceHolder)this.Master.FindControl("ContentPlaceHolder1");
 
-            for (int i = 1; i <= 7; i++)
+            for (int i = 1; i <= 9; i++)
             {
                 ((CheckBox)cph.FindControl("cb" + i.ToString())).Checked = chk;
             }
