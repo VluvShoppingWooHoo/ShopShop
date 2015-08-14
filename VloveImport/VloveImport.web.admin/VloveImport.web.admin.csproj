@@ -130,6 +130,7 @@
     <Content Include="pages\frmProductOrderList.aspx" />
     <Content Include="pages\frmUser.aspx" />
     <Content Include="pages\frmUserList.aspx" />
+    <Content Include="Report\frmReportCustomerOrder.aspx" />
     <Content Include="UserControls\ucApprovePaymentDetail.ascx" />
     <Content Include="UserControls\ucCalendar.ascx" />
     <Content Include="UserControls\ucCustomerDetail.ascx" />
@@ -310,6 +311,13 @@
       <DependentUpon>frmUserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\frmReportCustomerOrder.aspx.cs">
+      <DependentUpon>frmReportCustomerOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\frmReportCustomerOrder.aspx.designer.cs">
+      <DependentUpon>frmReportCustomerOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucApprovePaymentDetail.ascx.cs">
       <DependentUpon>ucApprovePaymentDetail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
