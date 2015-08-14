@@ -45,8 +45,8 @@
             </tr>
             <tr>
                 <td colspan="4" style="text-align: center;">
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click" />&nbsp;&nbsp;
-                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" OnClick="btnReset_Click" />
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click1"/>&nbsp;&nbsp;
+                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" OnClick="btnReset_Click1"/>
                 </td>
             </tr>
         </table>
