@@ -43,6 +43,9 @@
     <Reference Include="AjaxControlToolkit">
       <HintPath>..\SolutionItem\AjaxToolkit4\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>C:\Users\Smile\Desktop\WorkBayDoc\TestProject\clsLIB_Test\dll\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook">
       <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
     </Reference>

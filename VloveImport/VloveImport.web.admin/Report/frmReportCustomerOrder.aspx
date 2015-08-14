@@ -15,33 +15,26 @@
         <table style="border: 1 solid;">
             <tr>
                 <td class="width15">
-                    <asp:Label ID="Label4" runat="server" Text="Order Code :"></asp:Label>
+                     <asp:Label ID="Label3" runat="server" Text="Customer Name :"></asp:Label>
                 </td>
                 <td class="width35">
-                    <asp:TextBox ID="txtOrderCode" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtCusName" runat="server" Width="300px"></asp:TextBox>
                 </td>
                 <td class="width15">
-                    <asp:Label ID="Label1" runat="server" Text="Order date :"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="Customer Code:"></asp:Label>
                 </td>
                 <td class="width35">
-                    <uc1:ucCalendar ID="ucCalendar1" runat="server" />
-                    &nbsp;-&nbsp;
-                    <uc1:ucCalendar ID="ucCalendar2" runat="server" />
+                    <asp:TextBox ID="txtCusCode" runat="server" Width="300px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label3" runat="server" Text="Order status :"></asp:Label>
+                   <asp:Label ID="Label1" runat="server" Text="Order date :"></asp:Label>
                 </td>
-                <td>
-                    <asp:DropDownList ID="ddl_search_order_status" runat="server" Width="300px">
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:Label ID="Label2" runat="server" Text="Customer Code:"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtCusCode" runat="server" Width="300px"></asp:TextBox>
+                <td colspan="3">
+                    <uc1:ucCalendar ID="ucCalendar1" runat="server" />
+                    &nbsp;-&nbsp;
+                    <uc1:ucCalendar ID="ucCalendar2" runat="server" />
                 </td>
             </tr>
             <tr>
