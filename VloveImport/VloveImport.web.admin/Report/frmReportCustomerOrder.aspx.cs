@@ -82,13 +82,16 @@ namespace VloveImport.web.admin.Report
                 ws.Cells["M" + SRowTitle].Value = "ขนาดสินค้า คิว";
                 ws.Cells["N" + SRowTitle].Value = "จำนวนเงินรวมทั้งหมด"; //----------
 
-                ws.Cells["B" + SRowTitle + ":N" + SRowTitle].Style.HorizontalAlignment = ExcelHorizontalAlignment.CenterContinuous;
+                ws.Cells["B" + SRowTitle + ":N" + SRowTitle].Style.HorizontalAlignment =
+                    ExcelHorizontalAlignment.CenterContinuous;
                 ws.Cells["B" + SRowTitle + ":N" + SRowTitle].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+
                 #endregion
 
                 #region Set Header Border
 
-                ws.Cells["B" + SRowTitle + ":N" + SRowTitle].Style.Border.BorderAround(ExcelBorderStyle.Medium, Color.Black);
+                ws.Cells["B" + SRowTitle + ":N" + SRowTitle].Style.Border.BorderAround(ExcelBorderStyle.Medium,
+                    Color.Black);
                 ws.Cells["B" + SRowTitle + ":N" + SRowTitle].Style.Border.Right.Style = ExcelBorderStyle.Medium;
                 ws.Cells["B" + SRowTitle + ":N" + SRowTitle].Style.Border.Bottom.Style = ExcelBorderStyle.Medium;
 
@@ -103,7 +106,8 @@ namespace VloveImport.web.admin.Report
                 string EndRowBody = (ds.Tables[0].Rows.Count - 1 + Convert.ToInt32(RowBody)).ToString();
                 ws.Cells["B" + RowBody].LoadFromDataTable(ds.Tables[0], false);
 
-                ws.Cells["B" + RowBody + ":N" + EndRowBody].Style.Border.BorderAround(ExcelBorderStyle.Medium, Color.Black);
+                ws.Cells["B" + RowBody + ":N" + EndRowBody].Style.Border.BorderAround(ExcelBorderStyle.Medium,
+                    Color.Black);
                 ws.Cells["B" + RowBody + ":N" + EndRowBody].Style.Border.Right.Style = ExcelBorderStyle.Medium;
                 ws.Cells["B" + RowBody + ":N" + EndRowBody].Style.Border.Bottom.Style = ExcelBorderStyle.Medium;
 
@@ -117,8 +121,20 @@ namespace VloveImport.web.admin.Report
                 Response.AddHeader("content-disposition", "attachment;  filename=Sample1.xlsx");
                 Response.End();
             }
+            else
+            {
+                ShowMessageBox("Data Not Found", this.Page);
+            }
+        }
 
+        public void ShowMessageBox(string message, Page currentPage)
+        {
+            string msgboxScript = "alert('" + message + "');";
 
+            if ((ScriptManager.GetCurrent(currentPage) != null))
+            {
+                ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript, true);
+            }
         }
 
         protected void btnSearch_Click1(object sender, EventArgs e)
