@@ -24,7 +24,7 @@ namespace VloveImport.web
         }
         private string prePrint(string html)
         {
-            html = html.Replace("''", "\"").Replace(".", "");
+            html = html.Replace("''", "\"");
             return html;
         }
     }

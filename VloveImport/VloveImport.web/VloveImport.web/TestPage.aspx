@@ -129,6 +129,7 @@
                                 </div>
                             </div>
                         </div>
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
                     </div>
                 </div>
                 <div id="datepic" class="row">

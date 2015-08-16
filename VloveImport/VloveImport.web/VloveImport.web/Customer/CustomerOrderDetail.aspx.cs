@@ -134,13 +134,18 @@ namespace VloveImport.web.Customer
 
         protected void btnPrint_ServerClick(object sender, EventArgs e)
         {
-            string Page = Request.QueryString["P"] == null ? "" : DecryptData(Request.QueryString["P"].ToString());
-            string OID = Request.QueryString["OID"] == null ? "" : Request.QueryString["OID"].ToString();
+            string OID = Request.QueryString["OID"] == null ? "0" : Request.QueryString["OID"].ToString();
 
-            //if(Page == "LIST")
-            Redirect("~/Customer/CustomerOrderList.aspx");
-            //else
-            //    Redirect("~/Customer/CustomerOrderDetail.aspx?OID=" + OID);
+            ReportBiz report = new ReportBiz();
+            DataSet ds = report.GetOrderDetail(int.Parse(OID));
+            PdfClass pdf = new PdfClass();
+            byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(ds));
+
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=foo.pdf");
+            Response.BinaryWrite(bytes);
+            Response.End();
         }
 
         protected void btnPay_ServerClick(object sender, EventArgs e)

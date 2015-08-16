@@ -72,7 +72,7 @@ namespace VloveImport.biz
             string Result = Com.WriteLog(Page, Function, Error);
         }
 
-        public Byte[] PrintPdf(string html, string css)
+        public Byte[]PrintPdf(string html, string css)
         {
             //Create a byte array that will eventually hold our final PDF
             Byte[] bytes;
@@ -81,15 +81,14 @@ namespace VloveImport.biz
             //Create a stream that we can write to, in this case a MemoryStream
             using (var ms = new MemoryStream())
             {
-
+                float w = PageSize.A4.Width;
+                float h = PageSize.A4.Height;
                 //Create an iTextSharp Document which is an abstraction of a PDF but **NOT** a PDF
-                using (var doc = new Document())
+                using (var doc = new Document(new Rectangle(w, h), 20f, 20f, 30f, 30f))
                 {
-
                     //Create a writer that's bound to our PDF abstraction and our stream
                     using (var writer = PdfWriter.GetInstance(doc, ms))
                     {
-
                         //Open the document for writing
                         doc.Open();
 

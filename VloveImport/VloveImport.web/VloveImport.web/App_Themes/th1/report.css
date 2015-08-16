@@ -1,8 +1,136 @@
-.small
+.font150
+{
+    font-size: 150%;
+}
+
+.font75
 {
     font-size: 75%;
 }
-.headline
+
+.alignCenter
 {
-    font-size: 200%;
+    text-align: center;
 }
+
+.alignRight
+{
+    text-align: right;
+}
+
+.width90
+{
+    width: 90%;
+}
+
+.width80
+{
+    width: 80%;
+}
+
+.width70
+{
+    width: 70%;
+}
+
+.width60
+{
+    width: 60%;
+}
+
+.width50
+{
+    width: 50%;
+}
+
+.width40
+{
+    width: 40%;
+}
+
+.width30
+{
+    width: 30%;
+}
+
+.width25
+{
+    width: 25%;
+}
+
+.width20
+{
+    width: 20%;
+}
+
+.width15
+{
+    width: 15%;
+}
+
+.width10
+{
+    width: 10%;
+}
+
+.width5
+{
+    width: 5%;
+}
+
+.width2
+{
+    width: 2%;
+}
+
+.width1
+{
+    width: 1%;
+}
+
+div.headSection
+{
+}
+
+    div.headSection .pic
+    {
+        text-align: right;
+    }
+
+        div.headSection .pic img
+        {
+            text-align: right;
+            width: 100%;
+        }
+
+    div.headSection .text
+    {
+        text-align: center;
+        font-size: 150%;
+    }
+
+table
+{
+    margin: 5px 0px 5px 0px;
+}
+
+    table.grid tr td
+    {
+        padding: 3px 3px 3px 3px;
+        text-align: center;
+    }
+
+    table.detail tr td
+    {
+        padding: 3px 3px 3px 3px;
+        width: 25%;
+        font-size: 75%;
+    }
+    /*table.detail tr td.split
+    {
+        width: 5%;
+    }*/
+    table.detail tr td.alignRight
+    {
+        width: 15%;
+    }

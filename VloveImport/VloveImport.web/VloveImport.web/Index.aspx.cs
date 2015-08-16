@@ -69,26 +69,6 @@ namespace VloveImport.web
             //txtUser.Text = "";
             //txtPass.Text = "";
         }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            ReportBiz report = new ReportBiz();
-            DataSet ds = report.GetOrderDetail(109);
-            //commonBiz biz = new commonBiz();
-            PdfClass pdf = new PdfClass();
-            byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(ds));
-            //byte[] bytes = biz.PrintPdf(@"<p>This <em>is </em><span class=""headline"" style=""text-decoration: underline;"">some</span> <strong>sample <em> text</em></strong><span style=""color: red;"">!!!</span></p>");
-            //byte[] bytes = biz.PrintPdf(@"<html><head><body><table><tr><td style=""border:2px solid"">asd<td style=""border:2px solid"">fda<tr><td style=""border:2px solid"">gfd<td style=""border:2px solid"">rter</table>");
-            
-            //byte[] bytes = biz.PrintPdf(@"<html><head></head><body><table><tr><td style=""border:2px solid"">asd</td><td style=""border:2px solid"">fda</td></tr><tr><td style=""border:2px solid"">gfd</td><td style=""border:2px solid"">rter</td></tr></table></body></html>");
-            //byte[] bytes = biz.PrintPdf(File.ReadAllText("D:\\Work\\ShopShop\\VloveImport\\VloveImport.web\\VloveImport.web\\Print.html"));
-            
-
-            Response.Clear();
-            Response.ContentType = "application/pdf";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=foo.pdf");
-            Response.BinaryWrite(bytes);
-            Response.End();
-        }
         private void CheckSession()
         {
             //if (Session["User"] != null)

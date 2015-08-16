@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VloveImport.biz;
 
 namespace VloveImport.web
 {
@@ -25,6 +27,20 @@ namespace VloveImport.web
             //do process
 
             return js.Serialize("");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            ReportBiz report = new ReportBiz();
+            DataSet ds = report.GetOrderDetail(109);
+            PdfClass pdf = new PdfClass();
+            byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(ds));
+
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=foo.pdf");
+            Response.BinaryWrite(bytes);
+            Response.End();
         }
     }
 }
