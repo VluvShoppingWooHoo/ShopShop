@@ -23,7 +23,7 @@ namespace VloveImport.web
         public static string SampleMethod(string cb, string rdb, string dtMat, string dtHTML, string ddl)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
-            
+
             //do process
 
             return js.Serialize("");
@@ -34,8 +34,8 @@ namespace VloveImport.web
             ReportBiz report = new ReportBiz();
             DataSet ds = report.GetOrderDetail(109);
             PdfClass pdf = new PdfClass();
-            byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(ds));
 
+            byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(ds));
             Response.Clear();
             Response.ContentType = "application/pdf";
             Response.AppendHeader("Content-Disposition", "attachment; filename=foo.pdf");

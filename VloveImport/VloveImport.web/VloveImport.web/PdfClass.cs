@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
 using VloveImport.biz;
 
 namespace VloveImport.web
 {
     public class PdfClass
     {
+        #region 1
         public Byte[] PrintPdf(string html)
         {
             string filePath = System.Web.HttpContext.Current.Request.PhysicalApplicationPath;
@@ -27,5 +31,6 @@ namespace VloveImport.web
             html = html.Replace("''", "\"");
             return html;
         }
+        #endregion
     }
 }

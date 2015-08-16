@@ -137,13 +137,13 @@ namespace VloveImport.web.Customer
             string OID = Request.QueryString["OID"] == null ? "0" : Request.QueryString["OID"].ToString();
 
             ReportBiz report = new ReportBiz();
-            DataSet ds = report.GetOrderDetail(int.Parse(OID));
+            DataSet ds = report.GetOrderDetail(int.Parse(DecryptData(OID)));
             PdfClass pdf = new PdfClass();
             byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(ds));
 
             Response.Clear();
             Response.ContentType = "application/pdf";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=Receipt.pdf");
+            Response.AppendHeader("Content-Disposition", "attachment; filename=Receipt_Order_Detail.pdf");
             Response.BinaryWrite(bytes);
             Response.End();
         }

@@ -12,6 +12,7 @@ using HtmlAgilityPack;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
 
 namespace VloveImport.biz
 {
@@ -72,100 +73,46 @@ namespace VloveImport.biz
             string Result = Com.WriteLog(Page, Function, Error);
         }
 
-        public Byte[]PrintPdf(string html, string css)
+        public Byte[] PrintPdf(string html, string css)
         {
-            //Create a byte array that will eventually hold our final PDF
             Byte[] bytes;
-
-            //Boilerplate iTextSharp setup here
-            //Create a stream that we can write to, in this case a MemoryStream
             using (var ms = new MemoryStream())
             {
                 float w = PageSize.A4.Width;
                 float h = PageSize.A4.Height;
-                //Create an iTextSharp Document which is an abstraction of a PDF but **NOT** a PDF
                 using (var doc = new Document(new Rectangle(w, h), 20f, 20f, 30f, 30f))
                 {
-                    //Create a writer that's bound to our PDF abstraction and our stream
                     using (var writer = PdfWriter.GetInstance(doc, ms))
                     {
-                        //Open the document for writing
                         doc.Open();
-
-                        //Our sample HTML and CSS
                         var example_html = html;
                         var example_css = css;
-                        #region 1
-                        //example_html = web.DocumentNode.InnerHtml;
-                        /**************************************************
-                         * Example #1                                     *
-                         *                                                *
-                         * Use the built-in HTMLWorker to parse the HTML. *
-                         * Only inline CSS is supported.                  *
-                         * ************************************************/
-
-                        //Create a new HTMLWorker bound to our document
-                        //using (var htmlWorker = new iTextSharp.text.html.simpleparser.HTMLWorker(doc))
-                        //{
-
-                        //    //HTMLWorker doesn't read a string directly but instead needs a TextReader (which StringReader subclasses)
-                        //    using (var sr = new StringReader(example_html))
-                        //    {
-                        //        htmlWorker.Parse(sr);
-                        //    }
-                        //}
-                        #endregion
-                        #region 2
-                        /////**************************************************
-                        //// * Example #2                                     *
-                        //// *                                                *
-                        //// * Use the XMLWorker to parse the HTML.           *
-                        //// * Only inline CSS and absolutely linked          *
-                        //// * CSS is supported                               *
-                        //// * ************************************************/
-
-                        ////XMLWorker also reads from a TextReader and not directly from a string
-                        //using (var srHtml = new StringReader(example_html))
-                        //{
-
-                        //    //Parse the HTML
-                        //    iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, srHtml);
-                        //}
-                        #endregion
-                        #region 3
-                        /**************************************************
-                         * Example #3                                     *
-                         *                                                *
-                         * Use the XMLWorker to parse HTML and CSS        *
-                         * ************************************************/
-
-                        //In order to read CSS as a string we need to switch to a different constructor
-                        //that takes Streams instead of TextReaders.
-                        //Below we convert the strings into UTF8 byte array and wrap those in MemoryStreams
                         using (var msCss = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_css)))
                         {
                             using (var msHtml = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(example_html)))
                             {
-
-                                //Parse the HTML
-                                iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, msHtml, msCss);
+                                iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, msHtml, msCss, new MyFontFactoryImpl());
                             }
                         }
-                        #endregion
                         doc.Close();
                     }
                 }
-
-                //After all of the PDF "stuff" above is done and closed but **before** we
-                //close the MemoryStream, grab all of the active bytes from the stream
                 bytes = ms.ToArray();
             }
-
-            //Now we just need to do something with those bytes.
-            //Here I'm writing them to disk but if you were in ASP.Net you might Response.BinaryWrite() them.
-            //You could also write the bytes to a database in a varbinary() column (but please don't) or you
-            //could pass them to another function for further PDF processing.
             return bytes;
+        }
+        public class MyFontFactoryImpl : FontFactoryImp
+        {
+            Font defaultFont;
+            public MyFontFactoryImpl()
+            {
+                BaseFont tahoma = BaseFont.CreateFont(@"C:\WINDOWS\Fonts\tahoma.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);                
+                defaultFont = new Font(tahoma, 12);
+            }
+            public override Font GetFont(string fontname, string encoding, Boolean embedded, float size, int style, BaseColor color, Boolean cached)
+            {
+                return defaultFont;
+            }
         }
     }
 }

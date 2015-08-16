@@ -35,11 +35,11 @@ namespace VloveImport.biz
                 DataTable dt4 = ds.Tables[4];
                 #endregion
                 #region Header & Grid
-                txt += "<!DOCTYPE html><html><head runat=\"server\"></head><body class=''font75''>";
+                txt += "<!DOCTYPE html><html><head runat=\"server\"></head><body class=''font150''>";
                 txt += "<div class=''headSection''>";
                 txt += "<div class=''pic''>" + string.Format("<img src=''http://admin.iloveimport.com/img/logo/LOGO-01.jpg''/>") + "</div>";
                 //txt += string.Format("<img src=''http://admin.iloveimport.com/img/logo/LOGO-01.jpg''");
-                txt += "<div class=''text''>Receipt</div>";
+                txt += "<div class=''text''>ใบเสร็จ</div>";
                 txt += "</div>";
                 txt += "<fieldset><table class=''grid'' border=\"1\" cellspacing=\"0\"><thead>";
                 txt += "<tr class=''''><td class=''width5''>No</td><td class=''width20''>Shop Name</td><td class=''width10''>Shop Order Id</td><td class=''width10''>Size (CM)</td><td class=''width10''>Weight (KG)</td><td class=''width10''>Transport China Price</td><td class=''width10''>Product Type</td><td class=''width10''>Transport China To Thai (THB)</td></tr></thead><tbody>";
@@ -53,14 +53,14 @@ namespace VloveImport.biz
                 txt += "<fieldset><table class=''detail''><thead></thead><tbody>";
                 txt += "<tr><td>Transport Method China To Thai :</td><td class=''alignRight''>" + dt1.Rows[0]["TRANSPORT_CH_TH_METHOD"] + "</td><td>Transport Method To Customer :</td><td class=''alignRight''>" + dt1.Rows[0]["TRANSPORT_TH_CU_METHOD"] + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Transport To Customer Detail : </td><td class=''alignRight''>" + dt1.Rows[0]["TRANSPORT_DETAIL"] + "</td></tr>";
-                txt += "<tr><td></td><td></td><td>Transport To Customer Date :</td><td class=''alignRight''>" + dt1.Rows[0]["TRANSPORT_DATE"] + "</td></tr></tbody></table></fieldset>";
+                txt += "<tr><td></td><td></td><td>Transport To Customer Date :</td><td class=''alignRight''>" + dt1.Rows[0]["TRANSPORT_DATE"] + "</td></tr></tbody></table></fieldset><table>";
                 #endregion
                 #region Summary
                 txt += "<fieldset><table class=''detail''><tr><td>Total Transport China Price :</td><td class=''alignRight''>" + dt1.Rows[0]["TOTAL_TRANSPORT_CHINA_PRICE"] + "</td><td></td></tr>";
                 txt += "<tr><td>Total Transport China To Thai :</td><td class=''alignRight''>" + dt1.Rows[0]["TOTAL_TRANSPORT_CHINA_TO_THAI"] + "</td><td></td><td></td></tr>";
                 txt += "<tr><td>Total Transport To Customer :</td><td class=''alignRight''>" + dt1.Rows[0]["TRANSPORT_CUSTOMER_PRICE"] + "</td><td></td><td></td></tr>";
                 txt += "<tr><td>Service Charge :</td><td class=''alignRight''><u>" + dt1.Rows[0]["SERVICE_CHARGE"] + "</u></td><td></td><td></td></tr>";
-                txt += "<tr><td>Total Transport Price :</td><td class=''alignRight''><span>" + dt1.Rows[0]["TOTAL_TRANSPORT_PRICE"] + "</span></td><td></td><td></td></tr></table></fieldset>";
+                txt += "<tr><td>Total Transport Price :</td><td class=''alignRight''><span><u>" + dt1.Rows[0]["TOTAL_TRANSPORT_PRICE"] + "</u></span></td><td></td><td></td></tr></table></fieldset>";
                 #endregion
                 #endregion
                 #region Payment Detail
@@ -78,7 +78,7 @@ namespace VloveImport.biz
                 txt += "<fieldset><table class=''detail''><thead></thead><tbody>";
                 txt += "<tr><td>Total Income :</td><td class=''alignRight''>" + dt3.Rows[0]["TOTAL_INCOME"] + "</td><td>Total Refund :</td><td class=''alignRight''>" + dt3.Rows[0]["TOTAL_REFUND"] + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Additional Amount : </td><td class=''alignRight''>" + dt3.Rows[0]["TOTAL_ADDITIONAL_AMOUNT"] + "</td></tr>";
-                txt += "</tbody></table></fieldset>";
+                txt += "</tbody></table></fieldset><table>";
                 #endregion
                 #region Summary
                 txt += "<fieldset><table class=''detail''><thead></thead><tbody>";
@@ -87,7 +87,7 @@ namespace VloveImport.biz
                 txt += "<tr><td></td><td></td><td>Service Charge : </td><td class=''alignRight''>" + dt3.Rows[0]["SERVICE_CHARGE"] + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Discount : </td><td class=''alignRight''>" + dt3.Rows[0]["ORDER_DISCOUNT"] + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Acually Amount : </td><td class=''alignRight''>" + dt3.Rows[0]["ACTUALLY_AMOUNT"] + "</td></tr>";
-                txt += "</tbody></table></fieldset>";
+                txt += "</tbody></table></fieldset><table>";
                 #endregion
                 #region Status
                 txt += "<fieldset><table class=''detail''><thead></thead><tbody>";
