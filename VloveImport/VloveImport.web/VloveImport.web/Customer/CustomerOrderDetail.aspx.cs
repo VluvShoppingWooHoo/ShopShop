@@ -143,7 +143,7 @@ namespace VloveImport.web.Customer
 
             Response.Clear();
             Response.ContentType = "application/pdf";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=foo.pdf");
+            Response.AppendHeader("Content-Disposition", "attachment; filename=Receipt.pdf");
             Response.BinaryWrite(bytes);
             Response.End();
         }
