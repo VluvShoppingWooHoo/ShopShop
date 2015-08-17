@@ -165,7 +165,7 @@ namespace VloveImport.web.Customer
             {
                 int Count = 0;
                 string ShopRemark = DataBinder.Eval(e.Row.DataItem, "SHOP_REMARK").ToString();   
-                string ShopName = DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString();                
+                string ShopName = DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString();
                 if (ViewState["OldShopName"] == null || ViewState["OldShopName"].ToString() != ShopName)
                 {
                     Count = ViewState["Count"] == null ? 1 : Convert.ToInt32(ViewState["Count"]);
@@ -202,11 +202,17 @@ namespace VloveImport.web.Customer
                     row.Cells.Add(cell);
                     row.CssClass = "gv-shopname";
                     ((GridView)sender).Controls[0].Controls.AddAt(e.Row.RowIndex + Count, row);
-                    
+
                     ViewState["OldShopName"] = ShopName;
                     ViewState["Count"] = ++Count;
+                    
                 }
 
+                string ProdItemDetail = "";
+                string ItemName = DataBinder.Eval(e.Row.DataItem, "OD_ITEMNAME").ToString();
+                string ItemUrl = DataBinder.Eval(e.Row.DataItem, "OD_URL").ToString().Trim().Replace("amp;", "");
+                ProdItemDetail = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a><br>";
+                ((Label)e.Row.FindControl("lbItemName")).Text = ProdItemDetail;
             }
         }
 
