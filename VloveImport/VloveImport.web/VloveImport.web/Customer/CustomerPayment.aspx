@@ -59,6 +59,11 @@
             <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>            
         </div>
     </div>
+    <div class="row">
+        <div class="col s5 m5 l5 right-align">
+            <asp:Label ID="lbWarn" runat="server" Text="ถ้าไม่ตั้งค่ารหัสการถอนเงิน/ชำระเงิน ให้ใช้รหัสการเข้าสู่ระบบในการชำระเงิน"></asp:Label>         
+        </div>
+    </div>
     <br />
     <div class="row">        
         <asp:GridView ID="gvTran" runat="server" AutoGenerateColumns="false">

@@ -65,6 +65,7 @@
                 </div>
                 <div class="col s12 m12 l12">
                     <span class="FontHeader2 orange-text bold">รหัสผ่านสำหรับถอนเงิน</span> <br />
+                    <asp:Label ID="lbWarn" runat="server" Text="กรณีที่ไม่เคยตั้งค่ารหัสผ่านสำหรับถอนเงิน/ชำระเงิน ระบบตั้งให้เป็นรหัสเดียวกับรหัสผ่านสำหรับการเข้าสู่ระบบโดนอัตโนมัติ " ></asp:Label>
                     <%--<asp:LinkButton ID="lbReset" runat="server" Text="รีเซตรหัสผ่านสำหรับการชำระเงิน"
                         CssClass="blue-grey-text textUnderline" OnClick="lbReset_Click"></asp:LinkButton>
                     <br />--%>
