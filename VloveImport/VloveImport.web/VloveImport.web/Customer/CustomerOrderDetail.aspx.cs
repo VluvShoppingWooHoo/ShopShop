@@ -138,12 +138,13 @@ namespace VloveImport.web.Customer
 
             ReportBiz report = new ReportBiz();
             DataSet ds = report.GetOrderDetail(int.Parse(DecryptData(OID)));
+            string name = ds.Tables[4].Rows[0]["ORDER_CODE"].ToString();
             PdfClass pdf = new PdfClass();
             byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(ds));
 
             Response.Clear();
             Response.ContentType = "application/pdf";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=Receipt_Order_Detail.pdf");
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + name + ".pdf");
             Response.BinaryWrite(bytes);
             Response.End();
         }
