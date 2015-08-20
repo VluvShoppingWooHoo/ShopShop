@@ -11,19 +11,21 @@
             <span class="bold FontHeader2 orange-text">ข้อมูลสินค้า</span>            
             
         <div class="row s6 m6 l6 TestBox1">
-            <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false" Visible="false">
+            <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false" Visible="false" OnRowDataBound="gvBasket_RowDataBound">
                 <Columns>
                     <asp:TemplateField ItemStyle-Width="70px" ItemStyle-Height="70px">
                         <ItemTemplate>
                             <asp:Image ID="imgItem" runat="server" Width="50px" Height="70px"
                                 ImageUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_PICURL") %>'/>
+                            <asp:Label ID="lbShopName" runat="server" Width ="90%" ></asp:Label>                            
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="สินค้า">
                         <ItemTemplate>
                             <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>' />
-                            <asp:HyperLink ID="hlItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ITEMNAME") %>'
-                                NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_URL") %>'></asp:HyperLink> <br />  
+                            <asp:Label ID="lbItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ITEMNAME") %>'></asp:Label>    <br />                           
+                            <%--<asp:HyperLink ID="hlItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ITEMNAME") %>'
+                                NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_URL") %>'></asp:HyperLink>  --%>
                             <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "CUS_BK_SIZE") %>'></asp:Label><br />
                             <asp:Label ID="lbColor" runat="server" Text='<%# "สี " + DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR") %>'
                                 Visible='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString().StartsWith("http") ? false : true %>'></asp:Label>

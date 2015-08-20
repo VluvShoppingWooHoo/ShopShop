@@ -102,10 +102,14 @@ namespace VloveImport.web.Customer
                         gvr.Cells[6].Visible = false;
 
                     Pay = hdd_Pay.Value == "" ? 0 : Convert.ToDouble(hdd_Pay.Value);
+                    //8 = ชำระเงินแล้ว(รอบ 2), 9 = กำลังดำเนินการจัดสั่ง, 10 = ส่งสินค้าแล้ว
                     if ((hdd.Value == "8" || hdd.Value == "9" || hdd.Value == "10") && Pay <= 0)
+                    {
                         gvr.Cells[6].Visible = false;
+                        gvr.Cells[7].Visible = false;
+                    }
 
-                    if (hdd.Value != "1")
+                    if (hdd.Value != "3")
                     {
                         gvr.Cells[7].Visible = false;
                     }

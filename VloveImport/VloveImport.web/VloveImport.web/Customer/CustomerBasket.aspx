@@ -16,8 +16,9 @@
                     </div>
                     <div class="col s12 m12 l12">
                         <br />
-                        <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false" AllowPaging="true"
-                            OnPageIndexChanging="gvBasket_PageIndexChanging" OnRowDataBound="gvBasket_RowDataBound">
+                        <%--OnPageIndexChanging="gvBasket_PageIndexChanging" AllowPaging="true"--%>
+                        <asp:GridView ID="gvBasket" runat="server" AutoGenerateColumns="false"
+                             OnRowDataBound="gvBasket_RowDataBound">
                             <Columns>
                                 <asp:TemplateField ItemStyle-Width="30px">
                                     <HeaderTemplate>
@@ -27,7 +28,7 @@
                                     <ItemTemplate>                                    
                                         <asp:CheckBox ID="cbItem" runat="server" Text=" " OnCheckedChanged="cbItem_CheckedChanged" 
                                             AutoPostBack="true"/>
-                                        <asp:Label ID="lbShopName" runat="server" Width ="90%"></asp:Label>                            
+                                        <asp:Label ID="lbShopName" runat="server" Width ="90%" Text='<%# DataBinder.Eval(Container.DataItem, "SHOPHEADER") %>'></asp:Label>                            
                                         <asp:HiddenField ID="hdBK_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ID") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -40,12 +41,15 @@
                                 <asp:TemplateField HeaderText="สินค้า">
                                     <ItemTemplate>
                                         <asp:Label ID="lbItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ITEMNAME") %>'></asp:Label>                             
+                                        <asp:HiddenField ID="hddShopName" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_SHOPNAME") %>'></asp:HiddenField>                             
+                                        <asp:HiddenField ID="hddItemUrl" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_URL") %>'></asp:HiddenField>                             
                                         <%--<asp:HyperLink ID="hlItemName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_ITEMNAME") %>'
                                             NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_URL") %>'></asp:HyperLink>--%> <br />                                                        
                                         <asp:Label ID="lbSize" runat="server" Text='<%# "ขนาด " + DataBinder.Eval(Container.DataItem, "CUS_BK_SIZE") %>'></asp:Label> <br />
                                         <asp:Label ID="lbColor" runat="server" Text='<%# "สี " + DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR") %>' 
                                             Visible='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString().StartsWith("http") ? false : 
                                         DataBinder.Eval(Container.DataItem, "CUS_BK_COLOR").ToString() == "" ? false : true %>'></asp:Label>
+                                        <%--<br /><asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CUS_BK_SHOPNAME") %>'></asp:Label>                             --%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="ราคา (¥)">
@@ -71,8 +75,8 @@
                                 <asp:TemplateField HeaderText="รวมทั้งหมด (¥)">
                                     <ItemTemplate>
                                         <asp:Label ID="lbTotal" runat="server" CssClass="right-align" Width="50%"
-                                            Text='<%# NumbertoString(Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE")) * 
-                                        Convert.ToDouble(DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")), "Money") %>'></asp:Label>
+                                            Text='<%# SumTotal(DataBinder.Eval(Container.DataItem, "CUS_BK_PRICE").ToString(),
+                                        (DataBinder.Eval(Container.DataItem, "CUS_BK_AMOUNT")).ToString()) %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">

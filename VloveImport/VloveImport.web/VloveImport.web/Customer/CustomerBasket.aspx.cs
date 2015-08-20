@@ -23,19 +23,20 @@ namespace VloveImport.web.Customer
                 Session.Remove("CUS_BK_ID");
                 Session.Remove("TRANS");
                 Session.Remove("ORDER");            
-                BindData();
+                BindData("", true);
                 lbTotal.Text = "0.00 (¥)";
             }
         }
 
-        protected void BindData()
+        protected void BindData(string Type, bool Check)
         {            
             ShoppingBiz Biz = new ShoppingBiz();
             DataTable dt = Biz.GetBasketList(GetCusID());
             if (dt != null && dt.Rows.Count > 0)
             {
+                dt = GenShopName(dt);
                 gvBasket.DataSource = dt;
-                ViewState["SOURCE"] = dt;
+                ViewState["SOURCE"] = dt;                
             }
             else
             {
@@ -45,6 +46,21 @@ namespace VloveImport.web.Customer
 
             gvBasket.DataBind();
             BindSession();
+
+            if (Type == "ALL")
+            {
+                ((CheckBox)gvBasket.HeaderRow.Cells[0].FindControl("cbItemAll")).Checked = Check;
+                CheckBox cb;
+                foreach (GridViewRow gvr in gvBasket.Rows)
+                {
+                    cb = (CheckBox)gvr.Cells[0].FindControl("cbItem");
+                    if (cb != null)
+                        cb.Checked = Check;
+
+                }
+            }
+
+            //GenShopname();
         }
 
         protected void BindSession()
@@ -123,19 +139,23 @@ namespace VloveImport.web.Customer
             }
         }        
 
-        protected void gvBasket_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            if (ViewState["SOURCE"] != null)
-            {
-                DataTable dt = new DataTable();
-                dt = (DataTable)ViewState["SOURCE"];
-                gvBasket.PageIndex = e.NewPageIndex;
-                gvBasket.DataSource = dt;
-                gvBasket.DataBind();
+        //protected void gvBasket_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+        //    if (ViewState["SOURCE"] != null)
+        //    {
+        //        ViewState["OldShopName"] = null;
+        //        ViewState["Count"] = null;
 
-                BindSession();
-            }
-        }
+        //        DataTable dt = new DataTable();
+        //        dt = (DataTable)ViewState["SOURCE"];
+        //        gvBasket.PageIndex = e.NewPageIndex;
+        //        gvBasket.DataSource = dt;
+        //        gvBasket.DataBind();
+                
+        //        BindSession();
+        //        GenShopname();
+        //    }
+        //}
 
         #region Event Gridview
         protected void imbEdit_Click(object sender, ImageClickEventArgs e)
@@ -156,7 +176,7 @@ namespace VloveImport.web.Customer
             Result = Biz.UpdateBasketAmount(BK_ID, Amount);
             if (Result == "")
             {
-                BindData();
+                BindData("", true);
                 //ShowMessageBox("Update product amount success", this.Page);
                 ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvA")).ActiveViewIndex = 0;
                 ((MultiView)gvBasket.Rows[rowIndex].FindControl("mvB")).ActiveViewIndex = 0;
@@ -175,14 +195,8 @@ namespace VloveImport.web.Customer
         {
             CheckBox cb, cbHead;
             cbHead = (CheckBox)sender;
-            foreach (GridViewRow gvr in gvBasket.Rows)
-            {
-                cb = (CheckBox)gvr.Cells[0].FindControl("cbItem");
-                if (cb != null)
-                    cb.Checked = cbHead.Checked;
-                
-            }
 
+            BindData("ALL", cbHead.Checked);
             CalTotalAmount();
         }
 
@@ -196,23 +210,34 @@ namespace VloveImport.web.Customer
             CheckBox cb;
             HiddenField hdd;
             double Total = 0, dPrice = 0, dAmount = 0;
-            List<string> Chk;
-
-            if(Session["CUS_BK_ID"] != null)
-                Chk = (List<string>)Session["CUS_BK_ID"];
-            else
-                Chk = new List<string>();
+            List<string> Chk = new List<string>();
+            int cc = 0;
             
+            //if(Session["CUS_BK_ID"] != null)
+            //    Chk = (List<string>)Session["CUS_BK_ID"];
+            //else
+            //    Chk = new List<string>();            
+
             foreach (GridViewRow gvr in gvBasket.Rows)
             {
                 cb = (CheckBox)gvr.Cells[0].FindControl("cbItem");
                 hdd = (HiddenField)gvr.Cells[0].FindControl("hdBK_ID");
 
-                if (cb != null && cb.Checked && hdd != null && !Chk.Contains(hdd.Value))
+                if (cb != null && cb.Checked && hdd != null && hdd.Value != "" && !Chk.Contains(hdd.Value))
                 {
-                    Chk.Add(hdd.Value); 
+                    Chk.Add(hdd.Value);
                 }
+
+                if (cb != null && !cb.Checked)
+                    cc = 1;
+         
+                
             }
+
+            if(cc == 1)
+                ((CheckBox)gvBasket.HeaderRow.Cells[0].FindControl("cbItemAll")).Checked = false;
+            else
+                ((CheckBox)gvBasket.HeaderRow.Cells[0].FindControl("cbItemAll")).Checked = true;
 
             Session["CUS_BK_ID"] = Chk;
 
@@ -247,7 +272,7 @@ namespace VloveImport.web.Customer
             {
                 Session.Remove("CUS_BK_ID");
                 CalTotalAmount();
-                BindData();
+                BindData("", true);
                 //ShowMessageBox("Update product amount success", this.Page);
                 if (gvBasket.Rows.Count > 0)
                 {
@@ -268,20 +293,14 @@ namespace VloveImport.web.Customer
             DataTable dtSelected = new DataTable();
             if (ViewState["SOURCE"] != null)
             {
-                dtSelected = ((DataTable)ViewState["SOURCE"]).Copy();                
-                //foreach (GridViewRow gvr in gvBasket.Rows)
-                //{
-                //    cb = new CheckBox();
-                //    hd = new HiddenField();
-                //    cb = (CheckBox)gvr.FindControl("cbItem");
-                //    if (cb != null && cb.Checked)
-                //    {
-                //        hd = (HiddenField)gvr.FindControl("hdBK_ID");
-                //        strCheck = strCheck + hd.Value + ",";
-                        
-                //        //dtSelected.Rows.Remove(dtSelected.Select("CUS_BK_ID=" + hd.Value).FirstOrDefault());
-                //    }
-                //}
+                dtSelected = ((DataTable)ViewState["SOURCE"]).Copy();
+                DataRow[] drList = dtSelected.Select("SHOPHEADER <> ''");
+                foreach (DataRow row in drList)
+                {
+                    dtSelected.Rows.Remove(row);
+                }
+                dtSelected.AcceptChanges();
+
                 if (Session["CUS_BK_ID"] != null)
                 {
                     Chk = (List<string>)Session["CUS_BK_ID"];
@@ -330,37 +349,131 @@ namespace VloveImport.web.Customer
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                GridViewRow gvr = (GridViewRow)((GridView)sender).Controls[0].Controls[e.Row.RowIndex + 1];
+                if(gvr != null)
+                {
+                    Label lbShopName = (Label)gvr.FindControl("lbShopName");
+                    CheckBox cbItem = (CheckBox)gvr.FindControl("cbItem");                    
+
+                    if (lbShopName != null && lbShopName.Text != "")
+                    {
+                        if (cbItem != null)
+                            cbItem.Visible = false;
+
+                        for (int i = 0; i < gvr.Cells.Count; i++)
+			            {
+                            if (i > 0)
+                            {
+                                gvr.Cells[i].Visible = false;
+                            }
+			            }
+                        gvr.Cells[0].ColumnSpan = gvr.Cells.Count;
+                        gvr.CssClass = "gv-shopname";                     
+                    }
+                }
+            }            
+        }
+
+        protected DataTable GenShopName(DataTable dt)
+        {
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                dt.Columns.Add("SHOPHEADER");
+                ViewState["OldShopName"] = null;
+                ViewState["Count"] = null;
                 int Count = 0;
-                string ShopName = DataBinder.Eval(e.Row.DataItem, "CUS_BK_SHOPNAME").ToString();
+                string ShopName = "", ShowShop = "";
+                DataRow row;
+                for (int i = 0; i < dt.Rows.Count; i++)
+			    {
+			        ShopName = dt.Rows[i]["CUS_BK_SHOPNAME"].ToString(); ;
+                    if (ViewState["OldShopName"] == null || ViewState["OldShopName"].ToString() != ShopName)
+                    {
+                        Count = ViewState["Count"] == null ? 1 : Convert.ToInt32(ViewState["Count"]);
+                        row = dt.NewRow();
+                        
+                        ShowShop = "";
+                        ShowShop += "Shop name : " + ShopName + "&nbsp;&nbsp;";
+
+                        row["SHOPHEADER"] = ShowShop;
+                        dt.Rows.InsertAt(row, i);
+                        //gvBasket.Controls[0].Controls.AddAt(gvr.RowIndex + Count, row);
+
+                        ViewState["OldShopName"] = ShopName;
+                        ViewState["Count"] = ++Count;
+                    }
+			    }
+            }
+            return dt;
+        }
+
+        protected void GenShopname()
+        {
+            ViewState["OldShopName"] = null;
+            ViewState["Count"] = null;
+
+            int Count = 0;
+            string ShopName = "";// DataBinder.Eval(e.Row.DataItem, "CUS_BK_SHOPNAME").ToString();
+
+            HiddenField hddShopName, hddItemUrl;
+            Label lbItemName, lbShopName, lbRemark;
+            GridViewRow row;
+            TableCell cell;
+            string ProdItemDetail, ItemName, ItemUrl, ShowShop;
+
+            foreach (GridViewRow gvr in gvBasket.Rows)
+	        {
+                hddItemUrl = ((HiddenField)gvr.FindControl("hddItemUrl"));
+                hddShopName = ((HiddenField)gvr.FindControl("hddShopName"));
+                lbItemName = ((Label)gvr.FindControl("lbItemName"));
+                lbShopName = ((Label)gvr.FindControl("lbShopName"));
+
+                ShopName = hddShopName.Value;
                 if (ViewState["OldShopName"] == null || ViewState["OldShopName"].ToString() != ShopName)
                 {
                     Count = ViewState["Count"] == null ? 1 : Convert.ToInt32(ViewState["Count"]);
-                    Label lbShopName = ((Label)e.Row.FindControl("lbShopName"));
-                    Label lbRemark = ((Label)e.Row.FindControl("lbRemark"));
-                    GridViewRow row = new GridViewRow(e.Row.RowIndex + Count, -1, DataControlRowType.DataRow, DataControlRowState.Insert);
-                    TableCell cell = new TableCell();
+                    
+                    row = new GridViewRow(gvr.RowIndex + Count, -1, DataControlRowType.DataRow, DataControlRowState.Insert);
+                    cell = new TableCell();
                     cell.ColumnSpan = gvBasket.Columns.Count;
                     cell.CssClass = "gv-shopname";
-                    string ShowShop = "";
-                    ShowShop += "Shop name : " + DataBinder.Eval(e.Row.DataItem, "CUS_BK_SHOPNAME").ToString() + "&nbsp;&nbsp;";
+                    ShowShop = "";
+                    ShowShop += "Shop name : " + hddShopName.Value + "&nbsp;&nbsp;";
        
                     lbShopName.Text = ShowShop;
                     cell.Controls.Add(lbShopName);
 
                     row.Cells.Add(cell);
                     row.CssClass = "gv-shopname";
-                    ((GridView)sender).Controls[0].Controls.AddAt(e.Row.RowIndex + Count, row);
+                    gvBasket.Controls[0].Controls.AddAt(gvr.RowIndex + Count, row);
 
                     ViewState["OldShopName"] = ShopName;
                     ViewState["Count"] = ++Count;
                 }
 
-                string ProdItemDetail = "";
-                string ItemName = DataBinder.Eval(e.Row.DataItem, "CUS_BK_ITEMNAME").ToString();
-                string ItemUrl = DataBinder.Eval(e.Row.DataItem, "CUS_BK_URL").ToString().Trim().Replace("amp;", "");
+                ProdItemDetail = "";
+                ItemName = lbItemName.Text;
+                ItemUrl = hddItemUrl.Value.Trim().Replace("amp;", "");
                 ProdItemDetail = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a><br>";
-                ((Label)e.Row.FindControl("lbItemName")).Text = ProdItemDetail;
+                lbItemName.Text = ProdItemDetail;
+                
+	        }
+            
+        }
+
+        protected string SumTotal(string Price, string Amount)
+        {
+            string Result = "";
+            if (Price != "" && Amount != "")
+            {
+                double P = 0, A = 0, Res = 0;
+                P = Convert.ToDouble(Price);
+                A = Convert.ToDouble(Amount);
+                Res = P * A;
+                Result = Res.ToString("###,##0.00");
             }
+
+            return Result;
         }
     }
 }
