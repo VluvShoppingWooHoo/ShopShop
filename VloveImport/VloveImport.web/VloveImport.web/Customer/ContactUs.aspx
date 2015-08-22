@@ -30,22 +30,26 @@
 
                     <div class="row">
                         <div class="s12 m12 l12 ContentTitle">
-                            ติดต่อโกดังที่ไทย
-                        </div>
-
-                        +6687-4353118
-                        <br />
-                        +6688-3264117<br />
-                        <br />
-                    </div>
-                    <div class="row">
-                        <div class="s12 m12 l12 ContentTitle">
                             ติดต่อโกดังที่จีน
                         </div>
                         +8615017510371<br />
                         +8618523502489<br />
                     </div>
 
+                    <div class="row">
+                        <div class="s12 m12 l12 ContentTitle">
+                            ติดต่อโกดังที่ไทย
+                        </div>
+
+                        +6691-556-5341
+                        <br />
+                        +6692-350-5408
+                        <br />
+                        +6687-435-3118
+                        <br />
+                        <br />
+                    </div>
+                    
                     <asp:ModalPopupExtender ID="MadoalPop_Email" runat="server" BackgroundCssClass="modalBackground"
                         PopupControlID="Panel1" TargetControlID="lbl_modal_email">
                     </asp:ModalPopupExtender>
