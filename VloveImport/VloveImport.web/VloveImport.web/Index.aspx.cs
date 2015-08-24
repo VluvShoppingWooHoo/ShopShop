@@ -27,6 +27,10 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using HtmlAgilityPack;
 using System.Data;
+using Google.Apis.Translate.v2.Data;
+using Google.Apis.Translate.v2;
+using Google.Apis.Services;
+using System.Collections.ObjectModel;
 
 //using iTextSharp.tool.xml;
 //using iTextSharp.tool
@@ -329,56 +333,118 @@ namespace VloveImport.web
             //IndexStart = selectVal.IndexOf("TRANSLATED_TEXT='__z__") == -1 ? selectVal.IndexOf("TRANSLATED_TEXT='") : selectVal.IndexOf("TRANSLATED_TEXT='__z__");
             IndexEnd = selectVal.IndexOf("__zzz__';") == -1 ? selectVal.IndexOf("__ zzz__';") : selectVal.IndexOf("__zzz__';");
         }
+
+        //public string GoogleTranslate(string in_strFromLanguageCode, string in_strToLanguageCode, string in_strString)
+        //{
+        //    string l_strKey = "YOUR_API_KEY_GOES_HERE";
+        //    string l_strURL = "https://www.googleapis.com/language/translate/v2?key=" + l_strKey + "&q=" + in_strString + "&source=" + in_strFromLanguageCode.ToLower() + "&target=" + in_strToLanguageCode.ToLower();
+        //    string l_strTranslation = "";
+
+        //    try
+        //    {
+        //        WebClient l_oWebClient = new WebClient();
+        //        string l_strResult = "";
+
+        //        //Notify the webclient we're expecting UTF-8
+        //        l_oWebClient.Encoding = System.Text.Encoding.UTF8;
+        //        l_strResult = l_oWebClient.DownloadString(l_strURL);
+
+        //        //Unwrap special characters
+        //        l_strResult = HttpUtility.HtmlDecode(l_strResult);
+
+        //        //Deserialize JSON
+        //        JavaScriptSerializer l_oSerializer = new JavaScriptSerializer();
+        //        GoogleTranslation l_oTranslation = l_oSerializer.Deserialize(l_strResult);
+
+        //        l_strTranslation = l_oTranslation.Data.Translations[0].TranslatedText;
+        //    }
+        //    catch (WebException)
+        //    {
+        //        //Evaluate status code
+        //    }
+
+        //    return l_strTranslation;
+        //}
+
         private List<string> TranslateToEng(List<string> val)
         {
             List<string> listResult = new List<string>();
             try
             {
-                WebClient webClient = new WebClient();
-                webClient.Encoding = System.Text.Encoding.GetEncoding(54936);
-                string url = string.Empty;
+                #region V1
+                //WebClient webClient = new WebClient();
+                //webClient.Encoding = System.Text.Encoding.GetEncoding(54936);
+                //string url = string.Empty;
+                //int i = 0;
+                //foreach (string item in val)
+                //{
+                //    if (item != string.Empty)
+                //    {
+                //        string itemRe = string.Empty;
+                //        itemRe = item.Replace("【", "").Replace("】", "");
+                //        string result = string.Empty;
+                //        string[] separators = { "||" };
+                //        if (i == 1 || i == 2)
+                //        {
+                //            string strloop = string.Empty;
+                //            foreach (string txt in itemRe.Split(separators, StringSplitOptions.None))
+                //            {
+                //                //url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", txt, "zh-CN|en");
+                //                url = String.Format("https://www.googleapis.com/language/translate/v2?key={0}&source=zh-CN&target=en&q={1}", "AIzaSyCEj9kInMDPYiAcbS8WcwtGlDF-j0x4Qms", txt);
+                //                //result = webClient.DownloadString(url);
+                //                //string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box")); 
+                //                //int IndexStart = 0, IndexEnd = 0, prefix = 0;
+                //                //formatUrl(ref selectVal, ref IndexStart, ref IndexEnd, ref prefix);
+                //                //selectVal = selectVal.Substring(IndexStart + prefix, IndexEnd - (IndexStart + prefix));
+                //                //selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^").Replace("__z__", "").Replace("__zzz__", "");
+                //                //strloop += selectVal + "||";
+                //            }
+                //            strloop = strloop.Remove(strloop.Length - 2, 2);
+                //            listResult.Add(strloop);
+                //        }
+                //        else
+                //        {
+                //            //url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", itemRe, "zh-CN|en");
+                //            url = String.Format("https://www.googleapis.com/language/translate/v2?key={0}&source=zh-CN&target=en&q={1}", WebConfigurationManager.AppSettings["GreaterGoods"], itemRe);
+
+                //            result = webClient.DownloadString(url);
+                //            string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
+                //            int IndexStart = 0, IndexEnd = 0, prefix = 0;
+                //            formatUrl(ref selectVal, ref IndexStart, ref IndexEnd, ref prefix);
+                //            selectVal = selectVal.Substring(IndexStart + prefix, IndexEnd - (IndexStart + prefix));
+                //            selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^").Replace("__z__", "").Replace("__zzz__", "");
+                //            listResult.Add(selectVal);
+                //        }
+                //    }
+                //    else
+                //        listResult.Add(string.Empty);
+                //    i++;
+                //}
+                #endregion
+                #region V2
+                List<string> items = new List<string>();
+                items.AddRange(val.Where(l => l != string.Empty));
+
+                string tragetlan = "en";
+                string googlekey = WebConfigurationManager.AppSettings["GreaterGoods"];
+
+                var service = new TranslateService(new BaseClientService.Initializer()
+                {
+                    ApiKey = googlekey
+                });
+                TranslationsListResponse response = service.Translations.List(items, tragetlan).Execute();
                 int i = 0;
                 foreach (string item in val)
                 {
                     if (item != string.Empty)
                     {
-                        string itemRe = string.Empty;
-                        itemRe = item.Replace("【", "").Replace("】", "");
-                        string result = string.Empty;
-                        string[] separators = { "||" };
-                        if (i == 1 || i == 2)
-                        {
-                            string strloop = string.Empty;
-                            foreach (string txt in itemRe.Split(separators, StringSplitOptions.None))
-                            {
-                                url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", txt, "zh-CN|en");
-                                result = webClient.DownloadString(url);
-                                string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box")); 
-                                int IndexStart = 0, IndexEnd = 0, prefix = 0;
-                                formatUrl(ref selectVal, ref IndexStart, ref IndexEnd, ref prefix);
-                                selectVal = selectVal.Substring(IndexStart + prefix, IndexEnd - (IndexStart + prefix));
-                                selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^").Replace("__z__", "").Replace("__zzz__", "");
-                                strloop += selectVal + "||";
-                            }
-                            strloop = strloop.Remove(strloop.Length - 2, 2);
-                            listResult.Add(strloop);
-                        }
-                        else
-                        {
-                            url = String.Format("http://www.google.com/translate_t?hl=en&text={0}&langpair={1}", itemRe, "zh-CN|en");
-                            result = webClient.DownloadString(url);
-                            string selectVal = result.Substring(result.IndexOf("id=result_box"), result.Length - result.IndexOf("id=result_box"));
-                            int IndexStart = 0, IndexEnd = 0, prefix = 0;
-                            formatUrl(ref selectVal, ref IndexStart, ref IndexEnd, ref prefix);
-                            selectVal = selectVal.Substring(IndexStart + prefix, IndexEnd - (IndexStart + prefix));
-                            selectVal = selectVal.Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^").Replace("__z__", "").Replace("__zzz__", "");
-                            listResult.Add(selectVal);
-                        }
+                        listResult.Add(response.Translations[i].TranslatedText);
+                        i++;
                     }
                     else
-                        listResult.Add(string.Empty);
-                    i++;
+                        listResult.Add(item);
                 }
+                #endregion
             }
             catch (Exception ex) { return new List<string>(); }
             return listResult;
@@ -445,8 +511,44 @@ namespace VloveImport.web
                 //val += "^_zz^";
                 #endregion
                 #region v2.
+                //List<string> val = new List<string>();
+                //val.Add("__z__" + model.ItemName + "__zzz__");
+                //string[] separators = { "||" };
+                //string[] color = model.Color.Split(separators, StringSplitOptions.None);
+                //string[] size = model.Size.Split(separators, StringSplitOptions.None);
+                //string txt = string.Empty;
+                //if (color.Count() > 0 && color[0] != string.Empty)
+                //{
+                //    bool chk = false;
+                //    foreach (string item in color)
+                //    {
+                //        if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
+                //        { chk = true; txt += "__z__" + item + "__zzz__||"; }
+                //    }
+                //    if (chk)
+                //        txt = txt.Remove(txt.Length - 2, 2);
+                //    //txt = RemoveSpecialCharacters(txt);
+                //}
+                //val.Add(txt);
+                //if (size.Count() > 0 && size[0] != string.Empty)
+                //{
+                //    bool chk = false;
+                //    txt = string.Empty;
+                //    foreach (string item in size)
+                //    {
+                //        if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
+                //        { chk = true; txt += "__z__" + item + "__zzz__||"; }
+                //    }
+                //    if (chk)
+                //        txt = txt.Remove(txt.Length - 2, 2);
+                //    //txt = RemoveSpecialCharacters(txt);
+                //}
+                //val.Add(txt);
+                //val.Add("__z__" + model.ShopName + "__zzz__");
+                #endregion
+                #region v3.
                 List<string> val = new List<string>();
-                val.Add("__z__" + model.ItemName + "__zzz__");
+                val.Add("" + model.ItemName + "");
                 string[] separators = { "||" };
                 string[] color = model.Color.Split(separators, StringSplitOptions.None);
                 string[] size = model.Size.Split(separators, StringSplitOptions.None);
@@ -457,7 +559,7 @@ namespace VloveImport.web
                     foreach (string item in color)
                     {
                         if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
-                        { chk = true; txt += "__z__" + item + "__zzz__||"; }
+                        { chk = true; txt += "" + item + "||"; }
                     }
                     if (chk)
                         txt = txt.Remove(txt.Length - 2, 2);
@@ -471,14 +573,14 @@ namespace VloveImport.web
                     foreach (string item in size)
                     {
                         if (!(item.Contains(".jpg") || item.Contains(".JPG") || item.Contains(".png") || item.Contains(".PNG") || item.Contains(".gif") || item.Contains(".GIF")))
-                        { chk = true; txt += "__z__" + item + "__zzz__||"; }
+                        { chk = true; txt += "" + item + "||"; }
                     }
                     if (chk)
                         txt = txt.Remove(txt.Length - 2, 2);
                     //txt = RemoveSpecialCharacters(txt);
                 }
                 val.Add(txt);
-                val.Add("__z__" + model.ShopName + "__zzz__");
+                val.Add("" + model.ShopName + "");
                 #endregion
                 val = TranslateToEng(val);
                 //string[] separators2 = { "^_b^" };
