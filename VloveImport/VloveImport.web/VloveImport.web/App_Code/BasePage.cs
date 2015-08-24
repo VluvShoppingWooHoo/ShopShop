@@ -325,7 +325,7 @@ namespace VloveImport.web.App_Code
         #region Format
         public string NumbertoString(double Num, string Type)
         {
-            string Result = "";
+            string Result = "";            
             switch (Type)
             {
                 case "Money":

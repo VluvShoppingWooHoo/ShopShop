@@ -49,6 +49,15 @@
                         <br />
                         <br />
                     </div>
+
+                    <div class="row">
+                        <div class="s12 m12 l12 ContentTitle">
+                            แผนที่
+                        </div>
+                        ที่อยู่ : 1/384 วินสตันคอร์ท โชคชัย 4 ซอย 25 ถนนลาดพร้าว เขตลาดพร้าว กทม. 10230
+                        <br />
+                        <img src="../Images/PIC/MapCargo.png" style="height: 652px; width: 596px;" />
+                    </div>
                     
                     <asp:ModalPopupExtender ID="MadoalPop_Email" runat="server" BackgroundCssClass="modalBackground"
                         PopupControlID="Panel1" TargetControlID="lbl_modal_email">

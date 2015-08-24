@@ -218,6 +218,7 @@
     <Content Include="Images\pic\Banner1.png" />
     <Content Include="Images\pic\Banner\ILoveImport.jpg" />
     <Content Include="Images\pic\Logo\LOGO-01.jpg" />
+    <Content Include="Images\pic\MapCargo.png" />
     <Content Include="Images\pic\User.png" />
     <Content Include="Images\pic\RateImport-Q.gif" />
     <Content Include="Images\pic\Banner\Sale.jpg" />
