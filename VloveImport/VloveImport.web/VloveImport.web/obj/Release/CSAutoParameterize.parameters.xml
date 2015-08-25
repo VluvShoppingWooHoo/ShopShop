@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="LocalConnection-Web.config Connection String" description="LocalConnection Connection String used in web.config by the application to access the database." defaultValue="mn/Xz7FTpV2zI4dKzPx+8INnxtZVffW3tHARg0suvryTkzZDnMitvK9z8PYYMkVTJv/s78Au9papasLSH+c7/UbOwT4oaM+uFdBm4MxVs2U=" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Work\\ShopShop\\VloveImport\\VloveImport\.web\\VloveImport\.web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LocalConnection']/@connectionString" />
+  </parameter>
+</parameters>

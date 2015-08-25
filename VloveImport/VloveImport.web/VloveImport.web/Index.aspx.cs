@@ -369,10 +369,10 @@ namespace VloveImport.web
         private List<string> TranslateToEng(List<string> val)
         {
             List<string> listResult = new List<string>();
+            WebClient webClient = new WebClient();
             try
             {
                 #region V1
-                //WebClient webClient = new WebClient();
                 //webClient.Encoding = System.Text.Encoding.GetEncoding(54936);
                 //string url = string.Empty;
                 //int i = 0;
@@ -422,31 +422,70 @@ namespace VloveImport.web
                 //}
                 #endregion
                 #region V2
+                //List<string> items = new List<string>();
+                //items.AddRange(val.Where(l => l != string.Empty));
+
+                //string tragetlan = "en";
+                //string googlekey = WebConfigurationManager.AppSettings["GreaterGoods"];
+
+                //var service = new TranslateService(new BaseClientService.Initializer()
+                //{
+                //    ApiKey = googlekey
+                //});
+                //TranslationsListResponse response = service.Translations.List(items, tragetlan).Execute();
+                //int i = 0;
+                //foreach (string item in val)
+                //{
+                //    if (item != string.Empty)
+                //    {
+                //        listResult.Add(response.Translations[i].TranslatedText);
+                //        i++;
+                //    }
+                //    else
+                //    {
+                //        listResult.Add(item);
+                //    }
+                //}
+                #endregion
+                #region V3
                 List<string> items = new List<string>();
-                items.AddRange(val.Where(l => l != string.Empty));
-
-                string tragetlan = "en";
                 string googlekey = WebConfigurationManager.AppSettings["GreaterGoods"];
-
-                var service = new TranslateService(new BaseClientService.Initializer()
-                {
-                    ApiKey = googlekey
-                });
-                TranslationsListResponse response = service.Translations.List(items, tragetlan).Execute();
-                int i = 0;
+                string url = String.Format("https://www.googleapis.com/language/translate/v2?key={0}&source=zh-CN&target=en", googlekey);
                 foreach (string item in val)
                 {
                     if (item != string.Empty)
                     {
-                        listResult.Add(response.Translations[i].TranslatedText);
-                        i++;
+                        url += "&q=" + item;
                     }
-                    else
-                        listResult.Add(item);
                 }
+                string result = webClient.DownloadString(url);
+
+                try
+                {
+                    foreach (string item in val)
+                    {
+                        if (item != string.Empty)
+                        {
+                            string txt = result.Substring(result.IndexOf("translatedText"), result.IndexOf("}") + 1 - result.IndexOf("translatedText"));
+                            result = result.Replace(txt, string.Empty);
+                            listResult.Add((txt.Substring(txt.IndexOf(": \"") + 3, txt.LastIndexOf("\n   }") - txt.IndexOf(": \"") - 4)).Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"));
+                        }
+                        else
+                        {
+                            listResult.Add(item);
+                        }
+                    }
+
+                }
+                catch (Exception ex) { }
                 #endregion
             }
-            catch (Exception ex) { return new List<string>(); }
+            //catch (Exception ex) { return new List<string>(); }
+            catch (Exception ex)
+            {
+                val[0] += ex.ToString();
+                return val;
+            }
             return listResult;
         }
         IWebDriver driver;

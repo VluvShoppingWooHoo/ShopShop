@@ -1,0 +1,10 @@
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Release\VloveImport.dal.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Release\VloveImport.dal.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Release\VloveImport.data.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Release\VloveImport.util.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Release\EncrypDLL.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Release\VloveImport.data.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Release\VloveImport.util.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Release\VloveImport.dal.csprojResolveAssemblyReference.cache
+D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Release\VloveImport.dal.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Release\VloveImport.dal.pdb

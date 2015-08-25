@@ -1,0 +1,5 @@
+D:\Work\ShopShop\VloveImport\VloveImport.data\bin\Release\VloveImport.data.dll
+D:\Work\ShopShop\VloveImport\VloveImport.data\bin\Release\VloveImport.data.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.data\obj\Release\VloveImport.data.csprojResolveAssemblyReference.cache
+D:\Work\ShopShop\VloveImport\VloveImport.data\obj\Release\VloveImport.data.dll
+D:\Work\ShopShop\VloveImport\VloveImport.data\obj\Release\VloveImport.data.pdb

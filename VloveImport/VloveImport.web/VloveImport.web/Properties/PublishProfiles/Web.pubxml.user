@@ -1,7 +1,684 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
 This file is used by the publish/package process of your Web project. You can customize the behavior of this process
 by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <File Include="Administrator/Encryp.aspx">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="Administrator/frmAdminLogin.aspx">
+      <publishTime>03/09/2015 22:59:15</publishTime>
+    </File>
+    <File Include="Administrator/frmCustomerList.aspx">
+      <publishTime>03/09/2015 22:59:15</publishTime>
+    </File>
+    <File Include="Administrator/frmOrderList.aspx">
+      <publishTime>04/16/2015 00:58:55</publishTime>
+    </File>
+    <File Include="Administrator/frmUser.aspx">
+      <publishTime>03/09/2015 22:59:15</publishTime>
+    </File>
+    <File Include="Administrator/frmUserList.aspx">
+      <publishTime>03/09/2015 22:59:15</publishTime>
+    </File>
+    <File Include="Administrator/page_ms_bank.aspx">
+      <publishTime>02/26/2015 20:32:29</publishTime>
+    </File>
+    <File Include="App_Themes/css/materialize.css">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="App_Themes/css/materialize.min.css">
+      <publishTime>03/13/2015 22:48:16</publishTime>
+    </File>
+    <File Include="App_Themes/font/flaticon/flaticon.css">
+      <publishTime>03/13/2015 01:30:43</publishTime>
+    </File>
+    <File Include="App_Themes/font/flaticon/flaticon.eot">
+      <publishTime>03/13/2015 01:30:43</publishTime>
+    </File>
+    <File Include="App_Themes/font/flaticon/flaticon.svg">
+      <publishTime>03/13/2015 01:30:43</publishTime>
+    </File>
+    <File Include="App_Themes/font/flaticon/flaticon.ttf">
+      <publishTime>03/13/2015 01:30:43</publishTime>
+    </File>
+    <File Include="App_Themes/font/flaticon/flaticon.woff">
+      <publishTime>03/13/2015 01:30:43</publishTime>
+    </File>
+    <File Include="App_Themes/font/material-design-icons/Material-Design-Icons.eot">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/font/material-design-icons/Material-Design-Icons.svg">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/font/material-design-icons/Material-Design-Icons.ttf">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/font/material-design-icons/Material-Design-Icons.woff">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/font/roboto/Roboto-Bold.ttf">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/font/roboto/Roboto-Light.ttf">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/font/roboto/Roboto-Medium.ttf">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/font/roboto/Roboto-Regular.ttf">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/font/roboto/Roboto-Thin.ttf">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="App_Themes/js/jquery-2.1.1.min.js">
+      <publishTime>03/22/2015 17:50:09</publishTime>
+    </File>
+    <File Include="App_Themes/js/jquery.cookie.js">
+      <publishTime>03/22/2015 17:50:09</publishTime>
+    </File>
+    <File Include="App_Themes/js/materialize.js">
+      <publishTime>03/02/2015 19:01:01</publishTime>
+    </File>
+    <File Include="App_Themes/js/materialize.min.js">
+      <publishTime>03/02/2015 19:01:01</publishTime>
+    </File>
+    <File Include="App_Themes/js/myscript.js">
+      <publishTime>04/28/2015 17:04:10</publishTime>
+    </File>
+    <File Include="App_Themes/th1/css.css">
+      <publishTime>04/23/2015 22:48:12</publishTime>
+    </File>
+    <File Include="App_Themes/th1/report.css">
+      <publishTime>08/18/2015 08:21:21</publishTime>
+    </File>
+    <File Include="App_Themes/th1/Skin1.skin">
+      <publishTime>02/18/2015 00:27:34</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/ar/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/cs/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/de/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/EncrypDLL.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/es/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/Facebook.dll">
+      <publishTime>08/24/2015 21:38:55</publishTime>
+    </File>
+    <File Include="bin/fr/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/Google.Apis.Core.dll">
+      <publishTime>08/24/2015 21:40:35</publishTime>
+    </File>
+    <File Include="bin/Google.Apis.dll">
+      <publishTime>08/24/2015 21:40:39</publishTime>
+    </File>
+    <File Include="bin/Google.Apis.PlatformServices.dll">
+      <publishTime>08/24/2015 21:40:39</publishTime>
+    </File>
+    <File Include="bin/Google.Apis.Translate.v2.dll">
+      <publishTime>08/24/2015 21:40:39</publishTime>
+    </File>
+    <File Include="bin/he/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/hi/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>08/06/2012 21:31:42</publishTime>
+    </File>
+    <File Include="bin/it/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>05/15/2015 00:03:31</publishTime>
+    </File>
+    <File Include="bin/itextsharp.xmlworker.dll">
+      <publishTime>07/14/2015 19:04:40</publishTime>
+    </File>
+    <File Include="bin/ja/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/ko/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>08/24/2015 21:40:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.dll">
+      <publishTime>08/24/2015 21:40:29</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.Extensions.Desktop.dll">
+      <publishTime>08/24/2015 21:40:29</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Threading.Tasks.Extensions.dll">
+      <publishTime>08/24/2015 21:40:29</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/24/2015 21:40:34</publishTime>
+    </File>
+    <File Include="bin/nl/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/pt/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/ru/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/Selenium.WebDriverBackedSelenium.dll">
+      <publishTime>08/24/2015 21:40:07</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Extensions.dll">
+      <publishTime>08/24/2015 21:40:32</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Primitives.dll">
+      <publishTime>08/24/2015 21:40:32</publishTime>
+    </File>
+    <File Include="bin/th-TH/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/ThoughtWorks.Selenium.Core.dll">
+      <publishTime>08/24/2015 21:39:04</publishTime>
+    </File>
+    <File Include="bin/tr-TR/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/VloveImport.biz.dll">
+      <publishTime>08/25/2015 20:52:09</publishTime>
+    </File>
+    <File Include="bin/VloveImport.dal.dll">
+      <publishTime>08/25/2015 20:52:02</publishTime>
+    </File>
+    <File Include="bin/VloveImport.data.dll">
+      <publishTime>08/25/2015 20:52:00</publishTime>
+    </File>
+    <File Include="bin/VloveImport.util.dll">
+      <publishTime>08/25/2015 20:52:01</publishTime>
+    </File>
+    <File Include="bin/VloveImport.web.dll">
+      <publishTime>08/26/2015 01:13:45</publishTime>
+    </File>
+    <File Include="bin/WebDriver.dll">
+      <publishTime>08/24/2015 21:38:10</publishTime>
+    </File>
+    <File Include="bin/WebDriver.Support.dll">
+      <publishTime>08/24/2015 21:39:07</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/AjaxControlToolkit.resources.dll">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="bin/Zlib.Portable.dll">
+      <publishTime>08/24/2015 21:40:38</publishTime>
+    </File>
+    <File Include="Customer/AboutUs.aspx">
+      <publishTime>04/08/2015 01:41:43</publishTime>
+    </File>
+    <File Include="Customer/Activate.aspx">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Customer/ContactUs.aspx">
+      <publishTime>08/25/2015 20:21:25</publishTime>
+    </File>
+    <File Include="Customer/ContentDetail.aspx">
+      <publishTime>04/18/2015 16:57:38</publishTime>
+    </File>
+    <File Include="Customer/ContentList.aspx">
+      <publishTime>04/29/2015 14:56:15</publishTime>
+    </File>
+    <File Include="Customer/CustomerAddress.aspx">
+      <publishTime>05/03/2015 10:27:37</publishTime>
+    </File>
+    <File Include="Customer/CustomerBank.aspx">
+      <publishTime>05/03/2015 10:27:37</publishTime>
+    </File>
+    <File Include="Customer/CustomerBasket.aspx">
+      <publishTime>08/20/2015 22:14:11</publishTime>
+    </File>
+    <File Include="Customer/CustomerChangePassword.aspx">
+      <publishTime>08/18/2015 08:21:01</publishTime>
+    </File>
+    <File Include="Customer/CustomerConfirmInfo.aspx">
+      <publishTime>08/20/2015 22:14:11</publishTime>
+    </File>
+    <File Include="Customer/CustomerFavoritShop.aspx">
+      <publishTime>04/02/2015 00:23:47</publishTime>
+    </File>
+    <File Include="Customer/CustomerForgot.aspx">
+      <publishTime>04/04/2015 23:50:20</publishTime>
+    </File>
+    <File Include="Customer/CustomerMyAccount.aspx">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Customer/CustomerOrder.aspx">
+      <publishTime>07/11/2015 15:14:10</publishTime>
+    </File>
+    <File Include="Customer/CustomerOrderDetail.aspx">
+      <publishTime>08/18/2015 08:21:01</publishTime>
+    </File>
+    <File Include="Customer/CustomerOrderDetailPrint.aspx">
+      <publishTime>05/05/2015 18:24:37</publishTime>
+    </File>
+    <File Include="Customer/CustomerOrderList.aspx">
+      <publishTime>04/29/2015 14:56:09</publishTime>
+    </File>
+    <File Include="Customer/CustomerPayment.aspx">
+      <publishTime>08/18/2015 08:21:01</publishTime>
+    </File>
+    <File Include="Customer/CustomerProfile.aspx">
+      <publishTime>05/01/2015 18:36:01</publishTime>
+    </File>
+    <File Include="Customer/CustomerTransOnly.aspx">
+      <publishTime>07/04/2015 08:48:20</publishTime>
+    </File>
+    <File Include="Customer/CustomerTransOnlyList.aspx">
+      <publishTime>04/29/2015 23:06:08</publishTime>
+    </File>
+    <File Include="Customer/CustomerTransport.aspx">
+      <publishTime>07/15/2015 23:29:27</publishTime>
+    </File>
+    <File Include="Customer/CustomerUploadPI.aspx">
+      <publishTime>05/23/2015 15:50:37</publishTime>
+    </File>
+    <File Include="Customer/CustomerUploadPIList.aspx">
+      <publishTime>04/29/2015 23:06:08</publishTime>
+    </File>
+    <File Include="Customer/dummyCustomer.aspx">
+      <publishTime>04/02/2015 00:23:47</publishTime>
+    </File>
+    <File Include="Customer/HowTo.aspx">
+      <publishTime>04/18/2015 01:08:02</publishTime>
+    </File>
+    <File Include="Customer/Login.aspx">
+      <publishTime>05/03/2015 14:27:08</publishTime>
+    </File>
+    <File Include="Customer/MyBasket.aspx">
+      <publishTime>04/02/2015 00:23:46</publishTime>
+    </File>
+    <File Include="Customer/Mywallet.aspx">
+      <publishTime>04/02/2015 00:23:46</publishTime>
+    </File>
+    <File Include="Customer/News.aspx">
+      <publishTime>04/02/2015 00:23:46</publishTime>
+    </File>
+    <File Include="Customer/Order.aspx">
+      <publishTime>08/07/2015 00:05:31</publishTime>
+    </File>
+    <File Include="Customer/Promotion.aspx">
+      <publishTime>04/02/2015 00:23:46</publishTime>
+    </File>
+    <File Include="Customer/Recommend.aspx">
+      <publishTime>04/02/2015 00:23:46</publishTime>
+    </File>
+    <File Include="Customer/Register.aspx">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Customer/TourMarket.aspx">
+      <publishTime>04/08/2015 01:41:43</publishTime>
+    </File>
+    <File Include="exe/chromedriver.exe">
+      <publishTime>05/05/2015 18:24:30</publishTime>
+    </File>
+    <File Include="exe/phantomjs.exe">
+      <publishTime>05/05/2015 18:24:31</publishTime>
+    </File>
+    <File Include="frmError.aspx">
+      <publishTime>07/11/2015 15:14:06</publishTime>
+    </File>
+    <File Include="Images/btn/confirm.gif">
+      <publishTime>05/14/2015 22:29:23</publishTime>
+    </File>
+    <File Include="Images/btn/Order.gif">
+      <publishTime>05/14/2015 22:29:23</publishTime>
+    </File>
+    <File Include="Images/demo/logo_all_company.png">
+      <publishTime>02/15/2015 20:36:33</publishTime>
+    </File>
+    <File Include="Images/HowTo/Basket1.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Basket2.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Basket3-1.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Basket3.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Basket4.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/ConfirmRegis1.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/ConfirmRegis2.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/ConfirmRegis3.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/Order1.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Order2.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Order3.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Order4.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Order5.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Order6.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/PI1-1.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/PI1.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/PI2.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/PI3.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/PI4.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/PI5.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/PI6.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/RegisStep1.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/RegisStep2.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/RegisStep3.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/RegisStep4.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/RegisStep5.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/RegisStep6.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/Topup1.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/Topup2.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/Topup3.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/Topup4.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/Topup5.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/Trans1-1.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Trans1.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Trans2.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Trans3.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Trans4.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Trans5.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Trans6.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/Trans7.png">
+      <publishTime>05/21/2015 07:05:09</publishTime>
+    </File>
+    <File Include="Images/HowTo/WithDraw1.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/WithDraw2.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/WithDraw3.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/HowTo/WithDraw4.png">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="Images/icon/b_edit.png">
+      <publishTime>02/18/2015 00:27:34</publishTime>
+    </File>
+    <File Include="Images/icon/check-icon.png">
+      <publishTime>04/19/2015 14:46:27</publishTime>
+    </File>
+    <File Include="Images/icon/Close-2-icon.png">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="Images/icon/close-icon.png">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="Images/icon/Close.png">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="Images/icon/c_box.png">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="Images/icon/delete.png">
+      <publishTime>06/04/2015 02:19:56</publishTime>
+    </File>
+    <File Include="Images/icon/Flag/China-Flag-icon.png">
+      <publishTime>03/22/2015 11:17:25</publishTime>
+    </File>
+    <File Include="Images/icon/Flag/Thailand-Flag-icon.png">
+      <publishTime>03/22/2015 11:17:25</publishTime>
+    </File>
+    <File Include="Images/icon/l_box.png">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="Images/icon/Payment.png">
+      <publishTime>03/18/2015 20:53:59</publishTime>
+    </File>
+    <File Include="Images/icon/Payment2.png">
+      <publishTime>03/18/2015 20:53:59</publishTime>
+    </File>
+    <File Include="Images/icon/r_box.png">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="Images/icon/sendemail.png">
+      <publishTime>04/21/2015 10:02:29</publishTime>
+    </File>
+    <File Include="Images/icon/Sign-Close-icon.png">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="Images/icon/Youtube1.png">
+      <publishTime>07/16/2015 22:56:17</publishTime>
+    </File>
+    <File Include="Images/pic/Banner/ILoveImport.jpg">
+      <publishTime>03/13/2015 22:02:56</publishTime>
+    </File>
+    <File Include="Images/pic/Banner/Sale.jpg">
+      <publishTime>03/13/2015 22:02:56</publishTime>
+    </File>
+    <File Include="Images/pic/Banner/Tour.jpg">
+      <publishTime>03/13/2015 22:02:56</publishTime>
+    </File>
+    <File Include="Images/pic/Banner/Tour1.jpg">
+      <publishTime>04/07/2015 23:23:00</publishTime>
+    </File>
+    <File Include="Images/pic/Banner1.png">
+      <publishTime>02/24/2015 20:52:00</publishTime>
+    </File>
+    <File Include="Images/pic/beautiful-art-of-chinese-new-year.jpg">
+      <publishTime>02/18/2015 01:06:24</publishTime>
+    </File>
+    <File Include="Images/pic/Logo/LOGO-01.jpg">
+      <publishTime>03/26/2015 22:25:56</publishTime>
+    </File>
+    <File Include="Images/pic/MapCargo.png">
+      <publishTime>08/25/2015 20:21:25</publishTime>
+    </File>
+    <File Include="Images/pic/RateImport-Q.gif">
+      <publishTime>02/19/2015 20:01:23</publishTime>
+    </File>
+    <File Include="Images/pic/RateImport-Q1.gif">
+      <publishTime>04/19/2015 14:46:27</publishTime>
+    </File>
+    <File Include="Images/pic/shop/1688.jpg">
+      <publishTime>03/15/2015 20:50:48</publishTime>
+    </File>
+    <File Include="Images/pic/shop/taobao.jpg">
+      <publishTime>03/15/2015 20:50:48</publishTime>
+    </File>
+    <File Include="Images/pic/shop/Tmall.jpg">
+      <publishTime>03/15/2015 20:50:48</publishTime>
+    </File>
+    <File Include="Images/pic/User.png">
+      <publishTime>04/18/2015 01:08:02</publishTime>
+    </File>
+    <File Include="Images/pic/Voucher500.png">
+      <publishTime>06/23/2015 22:57:05</publishTime>
+    </File>
+    <File Include="Index.aspx">
+      <publishTime>08/16/2015 20:23:58</publishTime>
+    </File>
+    <File Include="Logout.aspx">
+      <publishTime>03/28/2015 22:22:15</publishTime>
+    </File>
+    <File Include="MasterPage/MasterAdmin.Master">
+      <publishTime>03/10/2015 22:01:59</publishTime>
+    </File>
+    <File Include="MasterPage/master_page_batt.Master">
+      <publishTime>02/18/2015 00:27:34</publishTime>
+    </File>
+    <File Include="MasterPage/SiteMaster.Master">
+      <publishTime>08/25/2015 20:21:25</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/25/2015 20:21:35</publishTime>
+    </File>
+    <File Include="phantomjs-license.txt">
+      <publishTime>05/05/2015 18:24:31</publishTime>
+    </File>
+    <File Include="Print.html">
+      <publishTime>08/18/2015 08:21:21</publishTime>
+    </File>
+    <File Include="Report/ReportViewer.aspx">
+      <publishTime>04/15/2015 11:24:17</publishTime>
+    </File>
+    <File Include="Script/20150404.bak">
+      <publishTime>04/04/2015 23:50:20</publishTime>
+    </File>
+    <File Include="Script/20150411.bak">
+      <publishTime>04/11/2015 12:41:34</publishTime>
+    </File>
+    <File Include="Script/20150416.bak">
+      <publishTime>04/18/2015 01:08:02</publishTime>
+    </File>
+    <File Include="Script/20150420.bak">
+      <publishTime>04/21/2015 10:02:29</publishTime>
+    </File>
+    <File Include="Script/Script Init.sql">
+      <publishTime>02/17/2015 20:40:40</publishTime>
+    </File>
+    <File Include="TestPage.aspx">
+      <publishTime>08/16/2015 20:23:58</publishTime>
+    </File>
+    <File Include="UserControls/ucAccfuncMypoint.ascx">
+      <publishTime>06/24/2015 21:19:54</publishTime>
+    </File>
+    <File Include="UserControls/ucAccFuncTopup.ascx">
+      <publishTime>08/11/2015 00:03:30</publishTime>
+    </File>
+    <File Include="UserControls/ucAccfuncTransLog.ascx">
+      <publishTime>04/15/2015 19:58:01</publishTime>
+    </File>
+    <File Include="UserControls/ucAccfuncVoucher.ascx">
+      <publishTime>07/04/2015 08:48:20</publishTime>
+    </File>
+    <File Include="UserControls/ucAccfuncWithdraw.ascx">
+      <publishTime>08/11/2015 00:03:30</publishTime>
+    </File>
+    <File Include="UserControls/ucAdminMenu.ascx">
+      <publishTime>03/09/2015 22:59:16</publishTime>
+    </File>
+    <File Include="UserControls/ucAdminStatus.ascx">
+      <publishTime>03/09/2015 22:59:16</publishTime>
+    </File>
+    <File Include="UserControls/ucContent.ascx">
+      <publishTime>04/23/2015 22:48:12</publishTime>
+    </File>
+    <File Include="UserControls/ucCustomerMenuBar.ascx">
+      <publishTime>03/01/2015 18:49:44</publishTime>
+    </File>
+    <File Include="UserControls/ucCustomerStatus.ascx">
+      <publishTime>07/13/2015 23:25:42</publishTime>
+    </File>
+    <File Include="UserControls/ucEmail.ascx">
+      <publishTime>04/21/2015 10:02:29</publishTime>
+    </File>
+    <File Include="UserControls/ucIndexBox.ascx">
+      <publishTime>08/03/2015 21:16:14</publishTime>
+    </File>
+    <File Include="UserControls/ucIndexMenuBar.ascx">
+      <publishTime>04/19/2015 23:15:13</publishTime>
+    </File>
+    <File Include="UserControls/ucMenuBar.ascx">
+      <publishTime>05/20/2015 20:46:19</publishTime>
+    </File>
+    <File Include="UserControls/ucNewsFeed.ascx">
+      <publishTime>04/02/2015 22:11:30</publishTime>
+    </File>
+    <File Include="UserControls/ucRecommend.ascx">
+      <publishTime>04/23/2015 22:48:12</publishTime>
+    </File>
+    <File Include="UserControls/ucSeachBox.ascx">
+      <publishTime>07/14/2015 00:25:24</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/26/2015 01:13:47</publishTime>
+    </File>
+    <File Include="WebForm1.aspx">
+      <publishTime>02/15/2015 20:36:34</publishTime>
+    </File>
+  </ItemGroup>
 </Project>

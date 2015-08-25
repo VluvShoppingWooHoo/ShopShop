@@ -1,0 +1,6 @@
+D:\Work\ShopShop\VloveImport\VloveImport.util\bin\Release\VloveImport.util.dll
+D:\Work\ShopShop\VloveImport\VloveImport.util\bin\Release\VloveImport.util.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.util\bin\Release\EncrypDLL.dll
+D:\Work\ShopShop\VloveImport\VloveImport.util\obj\Release\VloveImport.util.csprojResolveAssemblyReference.cache
+D:\Work\ShopShop\VloveImport\VloveImport.util\obj\Release\VloveImport.util.dll
+D:\Work\ShopShop\VloveImport\VloveImport.util\obj\Release\VloveImport.util.pdb
