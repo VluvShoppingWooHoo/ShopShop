@@ -17,7 +17,7 @@
                         </asp:RadioButtonList>
 
                         <br />
-                        2. ขนส่งภายในประเทศ โดยวิธี
+                        2. ขนส่งภายในประเทศ โดยวิธี (ขนส่งเอกชนให้เลือก อื่นๆ)
                         <br />
                         <asp:RadioButtonList ID="rdbThai" CssClass="rdbThai" runat="server" DataTextField="STATUS_DESCRIPTION" DataValueField="STATUS_NAME">
                         </asp:RadioButtonList>
