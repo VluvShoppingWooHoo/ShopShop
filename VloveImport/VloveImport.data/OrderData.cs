@@ -26,6 +26,7 @@ namespace VloveImport.data
         public string ORDER_EMP_REMARK { get; set; }
         public int ORDER_TYPE { get; set; }        
         public string TRANSPORT_CUSTOMER_DETAIL { get; set; }
+        public string TRANSPORT_OTHER { get; set; }
         #endregion
 
         #region Optional

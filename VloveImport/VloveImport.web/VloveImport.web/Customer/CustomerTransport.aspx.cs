@@ -71,9 +71,10 @@ namespace VloveImport.web.Customer
             else
                 Address = rdbAddress.SelectedItem.Value + "|" + rdbAddress.SelectedItem.Text;
             
-            string Trans = China + "," + Thai + "," + Address;                          
+            string Trans = China + "," + Thai + "," + Address;
 
-            Session.Add("TRANS", Trans);                        
+            Session.Add("TRANS", Trans);
+            Session.Add("OTHER", Thai == "5|อื่นๆ" ? txtOther.Text : string.Empty);                       
             string Type = Request.QueryString["Type"] == null ? "" : DecryptData(Request.QueryString["Type"].ToString());
             Response.Redirect("CustomerConfirmInfo.aspx?Type=" + EncrypData(Type));
         }

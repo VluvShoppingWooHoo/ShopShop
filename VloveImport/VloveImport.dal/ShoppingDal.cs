@@ -226,6 +226,8 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
                 SqlCommandData.SetParameter_Input_INT("ORDER_TYPE", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TYPE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
+                SqlCommandData.SetParameter("TRANSPORT_OTHER", SqlDbType.NVarChar, ParameterDirection.Input, Data.TRANSPORT_OTHER);
+                SqlCommandData.SetParameter("CUS_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, Data.ORDER_EMP_REMARK);
 
                 SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);
 

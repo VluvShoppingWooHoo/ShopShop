@@ -96,7 +96,7 @@ namespace VloveImport.web.Customer
                 string[] spl = Trans.Split(',');
 
                 lbgroup1.Text = spl[0].Split('|')[1];
-                lbgroup2.Text = spl[1].Split('|')[1];
+                lbgroup2.Text = spl[1].Split('|')[1] + " " + Session["OTHER"].ToString();
                 lbgroup3.Text = spl[2].Split('|')[1];
             }
             else
@@ -192,6 +192,8 @@ namespace VloveImport.web.Customer
                 Data.TRANSPORT_CH_TH_METHOD = Convert.ToInt32(spl[0].Split('|')[0]);
                 Data.TRANSPORT_TH_CU_METHOD = Convert.ToInt32(spl[1].Split('|')[0]);
                 Data.ORDER_TYPE = 1; //Order
+                Data.ORDER_EMP_REMARK = txtCusRemark.Text;
+                Data.TRANSPORT_OTHER = Session["OTHER"].ToString();
                 Data.Create_User = User;
 
                 Result = Biz.MakeOrder(Data, dt, User, Rate);

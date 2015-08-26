@@ -40,6 +40,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.RadioButtonList rdbThai;
         
         /// <summary>
+        /// txtOther control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOther;
+        
+        /// <summary>
         /// divAddress control.
         /// </summary>
         /// <remarks>

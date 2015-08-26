@@ -5,9 +5,9 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="row">
-                <div class="col s12 m12 l12 TestBox1">                    
+                <div class="col s12 m12 l12 TestBox1">
                     <span class="bold FontHeader orange-text">ข้อมูลการขนส่ง</span>
-                <br />
+                    <br />
                     <br />
 
                     <div class="row s6 m6 l6 TestBox1">
@@ -15,20 +15,23 @@
                         <br />
                         <asp:RadioButtonList ID="rdbChina" runat="server" DataTextField="STATUS_DESCRIPTION" DataValueField="STATUS_NAME">
                         </asp:RadioButtonList>
-                
+
                         <br />
                         2. ขนส่งภายในประเทศ โดยวิธี
                         <br />
                         <asp:RadioButtonList ID="rdbThai" CssClass="rdbThai" runat="server" DataTextField="STATUS_DESCRIPTION" DataValueField="STATUS_NAME">
                         </asp:RadioButtonList>
-                
+                        
+                        <asp:TextBox ID="txtOther" CssClass="txtOther" runat="server"></asp:TextBox>
+                        
                         <br />
                         <div id="divAddress" class="divAddress" runat="server">
                             3. เลือกที่อยู่ในการจัดส่ง                            
-                            <br />                            
+                            <br />
                             <asp:RadioButtonList ID="rdbAddress" runat="server" DataTextField="ADDRESS_FULL" DataValueField="CUS_ADD_ID">
                             </asp:RadioButtonList>
                         </div>
+                        <br />
                         <asp:Label ID="lb1" runat="server" Text="ไม่มีการระบุที่อยู่ไว้ในระบบ กรุณาเพื่อที่อยู่ที่ใช้สำหรับการจัดส่ง" Visible="false"></asp:Label>
                         <br />
                         <br />
@@ -46,11 +49,12 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    
+
 
     <script type="text/javascript">
         $(function () {
             $('.divAddress').hide();
+            $('.txtOther').hide();
             SetFadeout();
             $('.rdbThai label').click(function (e) {
                 //alert(e.currentTarget.control.id);
@@ -60,6 +64,13 @@
                 }
                 else {
                     $('.divAddress').show();
+                }
+                
+                if (e.currentTarget.innnerHtml == "อื่นๆ" || e.currentTarget.control.value == 5) {
+                    $('.txtOther').show();
+                }
+                else {
+                    $('.txtOther').hide();
                 }
             });
             //$('select').material_select();
