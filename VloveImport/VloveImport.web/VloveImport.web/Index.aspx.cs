@@ -365,7 +365,10 @@ namespace VloveImport.web
 
         //    return l_strTranslation;
         //}
-
+        private string removeSpecial(string item)
+        {
+            return item.Replace("【", "").Replace("】", "").Replace("★", "").Replace("<", "").Replace(">", "").Replace("♥ ", "");
+        }
         private List<string> TranslateToEng(List<string> val)
         {
             List<string> listResult = new List<string>();
@@ -455,7 +458,7 @@ namespace VloveImport.web
                 {
                     if (item != string.Empty)
                     {
-                        url += "&q=" + item;
+                        url += "&q=" + removeSpecial(item);
                     }
                 }
                 string result = webClient.DownloadString(url);
