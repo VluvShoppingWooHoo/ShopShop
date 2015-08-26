@@ -198,6 +198,7 @@
     <Content Include="Customer\Recommend.aspx" />
     <Content Include="Customer\Register.aspx" />
     <Content Include="Customer\TourMarket.aspx" />
+    <Content Include="dll\HtmlAgilityPack.dll" />
     <Content Include="exe\chromedriver.exe" />
     <Content Include="exe\phantomjs.exe" />
     <Content Include="frmError.aspx" />
