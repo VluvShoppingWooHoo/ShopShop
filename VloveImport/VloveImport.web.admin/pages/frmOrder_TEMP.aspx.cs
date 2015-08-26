@@ -634,7 +634,6 @@ namespace VloveImport.web.admin.pages
             AppTextHeader.Append("ด้วยความขอบคุณ<br>");
             AppTextHeader.Append("(PWT trading) Phannee World Trading Co.,Ltd <br>");
             AppTextHeader.Append("<br>");
-            AppTextHeader.Append("Mobile : 087-435-3118, 092-672-8160 <br>");
             AppTextHeader.Append("Contract us : Wechat : arbow123 ,Line ID : arbow123 , QQ ID : 1484258255<br>");
             AppTextHeader.Append("Tel ; 087-4353118 , 088-3264117, 092-6728160<br>");
             AppTextHeader.Append("E-Maill : info@iloveimport.com<br>");
@@ -644,12 +643,14 @@ namespace VloveImport.web.admin.pages
             AppTextHeader.Append("ที่อยู่ในการรับสินค้า ซอยโชคชัย4 ถนนลาดพร้าว กทม 10230<br>");
             AppTextHeader.Append("<br>");
             AppTextHeader.Append("ติดต่อโกดังที่ไทย<br>");
-            AppTextHeader.Append("+6687-4353118 <br>");
-            AppTextHeader.Append("+6688-3264117<br>");
+            AppTextHeader.Append("+6691-556-5341<br>");
+            AppTextHeader.Append("+6692-350-5408<br>");
+            AppTextHeader.Append("+6687-435-3118<br>");
             AppTextHeader.Append("<br>");
             AppTextHeader.Append("ติดต่อโกดังที่จีน<br>");
             AppTextHeader.Append("+8615017510371<br>");
             AppTextHeader.Append("+8618523502489");
+            /*AppTextHeader.Append("<a href =\"http://www.iloveimport.com\" target = \"_blank\">www.iloveimport.com</a>");   http://www.iloveimport.com/Customer/ContactUs.aspx      */
             AppTextHeader.Append("</td>");
             AppTextHeader.Append("</tr>");
             AppTextHeader.Append("</table>");
