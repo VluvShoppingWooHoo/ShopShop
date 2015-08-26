@@ -27,9 +27,6 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using HtmlAgilityPack;
 using System.Data;
-using Google.Apis.Translate.v2.Data;
-using Google.Apis.Translate.v2;
-using Google.Apis.Services;
 using System.Collections.ObjectModel;
 
 //using iTextSharp.tool.xml;
