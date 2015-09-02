@@ -89,6 +89,7 @@ namespace VloveImport.web
             try
             {
                 int webMode = 1;
+                string realurl = txt;
                 #region for use
                 txt = txt.Replace("&amp;", "&");
                 #region branch web
@@ -144,6 +145,7 @@ namespace VloveImport.web
                     data.Web = webMode;
                     sc.InsertUpdateItemID(data, "INS");
                 }
+                data.URL = realurl;
                 #endregion
             }
             catch (Exception ex) { return ""; }
