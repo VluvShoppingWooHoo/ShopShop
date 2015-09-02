@@ -370,6 +370,12 @@ namespace VloveImport.web.Customer
                         gvr.Cells[0].ColumnSpan = gvr.Cells.Count;
                         gvr.CssClass = "gv-shopname";                     
                     }
+
+                    string ProdItemDetail = "";
+                    string ItemName = DataBinder.Eval(e.Row.DataItem, "CUS_BK_ITEMNAME").ToString();
+                    string ItemUrl = DataBinder.Eval(e.Row.DataItem, "CUS_BK_URL").ToString().Trim().Replace("amp;", "");
+                    ProdItemDetail = "<a href=\"" + ItemUrl + "\" target=\"_blank\">" + ItemName + "</a><br>";
+                    ((Label)e.Row.FindControl("lbItemName")).Text = ProdItemDetail;
                 }
             }            
         }
