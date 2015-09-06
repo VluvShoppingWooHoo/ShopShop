@@ -34,6 +34,14 @@ namespace VloveImport.web.Customer
             DataTable dt = Biz.GetBasketList(GetCusID());
             if (dt != null && dt.Rows.Count > 0)
             {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["CUS_BK_SHOPNAME"].ToString() != "")
+                    {
+                        dr["CUS_BK_SHOPNAME"] = ReplaceCharOut(dr["CUS_BK_SHOPNAME"].ToString());
+                        dr["CUS_BK_URL"] = ReplaceCharOut(dr["CUS_BK_URL"].ToString());
+                    }
+                }
                 dt = GenShopName(dt);
                 gvBasket.DataSource = dt;
                 ViewState["SOURCE"] = dt;                
@@ -61,6 +69,51 @@ namespace VloveImport.web.Customer
             }
 
             //GenShopname();
+        }
+
+        protected string ReplaceCharOut(string Input)
+        {
+            string Temp = Input;
+            Input = Input.Replace("<font>", "");
+            Input = Input.Replace("</font>", "");
+            if(Input.Contains("</span>"))
+            {
+                try 
+	            {
+                    int Len = 0;
+                    string[] spl, spl2;
+                    spl = Input.Split(new string[] { "span" }, StringSplitOptions.None);
+                    //spl = Input.Split(new string[] { "span" }, StringSplitOptions.None)[1].Split('>')[1].Remove(50 - 2);
+                    if (spl.Length > 0)
+                    {
+                        foreach (string str in spl)
+                        {
+                            if (str.Contains(">"))
+                            {
+                                spl2 = str.Split('>');
+                                if (spl2.Length > 0)
+                                {
+                                    foreach (string str2 in spl2)
+                                    {
+                                        if (str2.Contains("</"))
+                                        {
+                                            Len = str2.Length;
+                                            Input = str2.Remove(Len - 2);
+                                            return Input
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+	            }
+	            catch (Exception ex)
+	            {
+                    WriteLog(Page.Request.Url.AbsolutePath, "ReplaceCharOut", Temp);
+	            }
+                
+            }
+            return Input;
         }
 
         protected void BindSession()
