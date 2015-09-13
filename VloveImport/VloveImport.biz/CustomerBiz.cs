@@ -264,5 +264,22 @@ namespace VloveImport.biz
             return Result;
         }
         #endregion
+
+        #region Customer VIP
+        public string Regis_VIP(Int32 CUS_ID, Int32 VIP_ID, Int32 VIP_PERCENT)
+        {
+            string Result = "";
+            try
+            {
+                CustomerDal dal = new CustomerDal("LocalConnection");
+                Result = dal.Regis_VIP(CUS_ID, VIP_ID, VIP_PERCENT);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+        #endregion
     }
 }
