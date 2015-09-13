@@ -458,5 +458,30 @@ namespace VloveImport.dal
             }
         }
         #endregion
+
+        #region Customer VIP
+        public string Regis_VIP(Int32 CUS_ID, Int32 VIP_ID, Int32 VIP_PERCENT)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INSERT_REGIS_VIP");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+                SqlCommandData.SetParameter_Input_INT("VIP_ID", SqlDbType.Int, ParameterDirection.Input, VIP_ID);
+                SqlCommandData.SetParameter_Input_INT("VIP_PERCENT", SqlDbType.Int, ParameterDirection.Input, VIP_PERCENT);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("INSERT_REGIS_VIP -> msg : " + ex.Message);
+            }
+        }
+        #endregion
     }
 }

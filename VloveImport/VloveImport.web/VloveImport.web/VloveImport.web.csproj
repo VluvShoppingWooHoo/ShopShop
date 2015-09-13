@@ -120,6 +120,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\ContentDetail.aspx" />
     <Content Include="Customer\ContentList.aspx" />
+    <Content Include="Customer\CustomerVIP.aspx" />
     <Content Include="Customer\CustomerOrderDetailPrint.aspx" />
     <Content Include="Customer\CustomerTransOnlyList.aspx" />
     <Content Include="Customer\CustomerUploadPIList.aspx" />
@@ -313,6 +314,13 @@
     </Compile>
     <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerVIP.aspx.cs">
+      <DependentUpon>CustomerVIP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerVIP.aspx.designer.cs">
+      <DependentUpon>CustomerVIP.aspx</DependentUpon>
     </Compile>
     <Compile Include="PdfClass.cs" />
     <Compile Include="Customer\Activate.aspx.cs">
