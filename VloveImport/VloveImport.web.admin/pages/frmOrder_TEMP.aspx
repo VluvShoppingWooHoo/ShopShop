@@ -17,7 +17,7 @@
     <h3>ORDER DETAIL : <asp:Label ID="lbl_header_detail" Font-Size ="Large" runat="server" Text="" ForeColor ="RED"></asp:Label></h3>
     <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
 <div style ="min-height:550px;">
-<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="2">
+<asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="1">
     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
         <ContentTemplate>
             <fieldset>
@@ -339,7 +339,7 @@
                             </asp:FilteredTextBoxExtender>
                         </td>
                     </tr>
-                    <tr id="trTranCusPrice2" runat="server" visible="False">
+                    <tr id="trTranCusPrice2" runat="server">
                         <td id="Td3" runat="server">Service Charge :</td>
                         <td id="Td4" runat="server">
                             <asp:TextBox ID="txt_Service_Charge" runat="server" Width="300px"></asp:TextBox>
@@ -347,7 +347,7 @@
                             </asp:FilteredTextBoxExtender>
                         </td>
                     </tr>
-                    <tr id="trTranCusPrice3" runat="server" visible="False">
+                    <tr id="trTranCusPrice3" runat="server">
                         <td id="Td5" runat="server">Discount :</td>
                         <td id="Td6" runat="server">
                             <asp:TextBox ID="txt_Discount" runat="server" Width="300px"></asp:TextBox>
