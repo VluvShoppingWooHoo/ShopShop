@@ -98,6 +98,7 @@ namespace VloveImport.web.Customer
                 lbgroup1.Text = spl[0].Split('|')[1];
                 lbgroup2.Text = spl[1].Split('|')[1] + " " + Session["OTHER"].ToString();
                 lbgroup3.Text = spl[2].Split('|')[1];
+
             }
             else
             {
@@ -106,7 +107,8 @@ namespace VloveImport.web.Customer
         }
         protected void BindDataSummary(string Type)
         {
-            double Total_Amount = 0, Price = 0, Amount = 0, Transport_Amount = 0, Rate = 0, Charge = 0;
+            string Post = "";
+            double Total_Amount = 0, Price = 0, Amount = 0, Transport_Amount = 0, Rate = 0, Charge = 0, Post_d = 0;
             Rate = GetRateCurrency();            
 
             switch (Type)
@@ -120,9 +122,16 @@ namespace VloveImport.web.Customer
                         Total_Amount = Total_Amount + (Amount * (Price * Rate));
                     }
 
+                    string Trans = Session["TRANS"].ToString();
+                    string[] spl = Trans.Split(',');
+                    if (spl[1].Split('|')[1] == "ส่งไปรษณีย์")
+                    {
+                        Post = " + 250.00 ";
+                        Post_d = 250;
+                    }
                     Transport_Amount = Total_Amount * 10 / 100;
-                    lbPayOrder.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
-                        + " = " + (Total_Amount + Transport_Amount).ToString("###,##0.00") + " บาท";
+                    lbPayOrder.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00") + Post
+                        + " = " + (Total_Amount + Transport_Amount + Post_d).ToString("###,##0.00") + " บาท";
                     break;
 
                 case "PI":
@@ -181,6 +190,9 @@ namespace VloveImport.web.Customer
                 DataTable dt = (DataTable)Session["ORDER"];
                 string User = GetCusCode();
                 double Rate = GetRateCurrency();
+                double Post = 0;
+                if (spl[1].Split('|')[1] == "ส่งไปรษณีย์")
+                    Post = 250;
 
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
@@ -194,6 +206,8 @@ namespace VloveImport.web.Customer
                 Data.ORDER_TYPE = 1; //Order
                 Data.ORDER_EMP_REMARK = txtCusRemark.Text;
                 Data.TRANSPORT_OTHER = Session["OTHER"].ToString();
+                Data.VIP_DISCOUNT = GetCusSession().Cus_VIP_Percent;
+                Data.TRANSPORT_CUSTOMER_PRICE = Post;
                 Data.Create_User = User;
 
                 Result = Biz.MakeOrder(Data, dt, User, Rate);

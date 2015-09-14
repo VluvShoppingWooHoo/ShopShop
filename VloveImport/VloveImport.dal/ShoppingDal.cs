@@ -228,6 +228,8 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
                 SqlCommandData.SetParameter("TRANSPORT_OTHER", SqlDbType.NVarChar, ParameterDirection.Input, Data.TRANSPORT_OTHER);
                 SqlCommandData.SetParameter("CUS_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, Data.ORDER_EMP_REMARK);
+                SqlCommandData.SetParameter_Input_INT("VIP_DISCOUNT", SqlDbType.Int, ParameterDirection.Input, Data.VIP_DISCOUNT);
+                SqlCommandData.SetParameter("TRANSPORT_CUSTOMER_PRICE", SqlDbType.Float, ParameterDirection.Input, Data.TRANSPORT_CUSTOMER_PRICE);
 
                 SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);
 
