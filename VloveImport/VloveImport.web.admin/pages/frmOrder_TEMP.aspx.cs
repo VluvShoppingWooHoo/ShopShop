@@ -413,8 +413,8 @@ namespace VloveImport.web.admin.pages
                 tr_tb2_chk_email.Visible = false;
                 trTranCusPrice.Visible = true;
                 trTranCusPrice1.Visible = true;
-                trTranCusPrice2.Visible = true;
-                trTranCusPrice3.Visible = true;
+                //trTranCusPrice2.Visible = true;
+                //trTranCusPrice3.Visible = true;
                 btnUpdateShopDetail.Visible = false;
                 txt_Transport_Cus_Price.Text = Convert.ToDouble(dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
                 txt_Service_Charge.Text = Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE"].ToString()).ToString("N", new CultureInfo("en-US"));
@@ -466,16 +466,16 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 trTranCusPrice.Visible = true;
                 trTranCusPrice1.Visible = true;
-                trTranCusPrice2.Visible = true;
-                trTranCusPrice3.Visible = true;
+                //trTranCusPrice2.Visible = true;
+                //trTranCusPrice3.Visible = true;
             }
             else if (STS >= 8)
             {
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = true;
                 trTranCusPrice.Visible = false;
                 trTranCusPrice1.Visible = false;
-                trTranCusPrice2.Visible = false;
-                trTranCusPrice3.Visible = false;
+                //trTranCusPrice2.Visible = false;
+                //trTranCusPrice3.Visible = false;
             }
             else
             {
@@ -483,8 +483,8 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 trTranCusPrice.Visible = false;
                 trTranCusPrice1.Visible = false;
-                trTranCusPrice2.Visible = false;
-                trTranCusPrice3.Visible = false;
+                //trTranCusPrice2.Visible = false;
+                //trTranCusPrice3.Visible = false;
             }
         }
 
