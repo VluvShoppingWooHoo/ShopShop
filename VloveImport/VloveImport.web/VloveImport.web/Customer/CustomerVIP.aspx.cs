@@ -23,6 +23,7 @@ namespace VloveImport.web.Customer
             {
                 CheckSession();
                 GetMymoney();
+                BindHistoryVIP();
             }
         }
 
@@ -33,11 +34,29 @@ namespace VloveImport.web.Customer
             lbMymoney.Text = Mymoney.ToString("###,##0.00");
         }
 
+        protected void BindHistoryVIP()
+        {
+            CustomerBiz biz = new CustomerBiz();
+            DataTable dt = new DataTable();
+            dt = biz.GetHistoryVIP(GetCusID());
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                gvResult.DataSource = dt;
+                gvResult.DataBind();
+            }
+            else
+            {
+                gvResult.DataSource = null;
+                gvResult.DataBind();
+            }
+        }
+
         protected void btnSelect_ServerClick(object sender, EventArgs e)
         {
             CustomerBiz Biz = new CustomerBiz();
 
             //Get VIP Type
+            //Fix for test
             int VIP_ID = 1;
             int VIP_PERCENT = 15;
 

@@ -482,6 +482,22 @@ namespace VloveImport.dal
                 return ("INSERT_REGIS_VIP -> msg : " + ex.Message);
             }
         }
+
+        public DataSet GetHistoryVIP(int CUS_ID)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_CUSTOMER_HISTORY_VIP");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetHistoryVIP -> msg : " + ex.Message);
+            }
+        }
         #endregion
     }
 }

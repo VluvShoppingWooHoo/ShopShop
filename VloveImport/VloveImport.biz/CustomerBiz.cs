@@ -280,6 +280,17 @@ namespace VloveImport.biz
             }
             return Result;
         }
+
+        public DataTable GetHistoryVIP(int CUS_ID)
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.GetHistoryVIP(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
         #endregion
     }
 }

@@ -117,12 +117,12 @@ namespace VloveImport.web.Customer
             if (dtDetail != null && dtDetail.Rows.Count > 0)
             {
                 ViewState["ORDER_STATUS"] = dtDetail.Rows[0]["ORDER_STATUS"].ToString();
-                foreach (DataRow dr in dtDetail.Rows)
-                {
-                    Amount = dr["OD_AMOUNT_ACTIVE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_AMOUNT_ACTIVE"].ToString());
-                    Price = dr["OD_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_PRICE"].ToString());
-                    Total = Total + (Amount * Price);
-                }
+                //foreach (DataRow dr in dtDetail.Rows)
+                //{
+                //    Amount = dr["OD_AMOUNT_ACTIVE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_AMOUNT_ACTIVE"].ToString());
+                //    Price = dr["OD_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["OD_PRICE"].ToString());
+                //    Total = Total + (Amount * Price);
+                //}
                 Total = dtDetail.Rows[0]["ORDER_PAY"].ToString() == "" ? 0 : Convert.ToDouble(dtDetail.Rows[0]["ORDER_PAY"].ToString());
 
                 hlOrderCode.Text = dtDetail.Rows[0]["ORDER_CODE"].ToString().Trim();
