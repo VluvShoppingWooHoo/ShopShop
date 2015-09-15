@@ -565,6 +565,21 @@ namespace VloveImport.dal
 
         #endregion
 
+        #region VIP
+        public DataSet ADMIN_GET_VIP_TOTAL()
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_SUMMARY_VIP");
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ADMIN_GET_VIP_TOTAL -> msg : " + ex.Message);
+            }
+        }
+        #endregion
+
         public DataSet GetReportCustomerOrder(DateTime OrderDateStart, DateTime OrderDateEnd, string CustomerCode, string CUS_NAME)
         {
             try

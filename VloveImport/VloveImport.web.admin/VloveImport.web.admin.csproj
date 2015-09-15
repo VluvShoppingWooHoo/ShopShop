@@ -115,6 +115,7 @@
     <Content Include="img\icon\View.png" />
     <Content Include="img\logo\LOGO-01.jpg" />
     <Content Include="Logout.aspx" />
+    <Content Include="pages\frmSummaryVIP.aspx" />
     <Content Include="pages\Encryp.aspx" />
     <Content Include="pages\frmAdminSendMail.aspx" />
     <Content Include="pages\frmApprovePayment.aspx" />
@@ -181,6 +182,13 @@
     </Compile>
     <Compile Include="MasterPage\Site2.Master.designer.cs">
       <DependentUpon>Site2.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmSummaryVIP.aspx.cs">
+      <DependentUpon>frmSummaryVIP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmSummaryVIP.aspx.designer.cs">
+      <DependentUpon>frmSummaryVIP.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Encryp.aspx.cs">
       <DependentUpon>Encryp.aspx</DependentUpon>

@@ -284,6 +284,15 @@ namespace VloveImport.biz
         }
         #endregion
 
+        #region VIP
+        public DataSet ADMIN_GET_VIP_TOTAL()
+        {
+            DataSet ds = new DataSet();
+            AdminDal dal = new AdminDal("LocalConnection");
+            ds = dal.ADMIN_GET_VIP_TOTAL();
+            return ds;
+        }
+        #endregion
         public DataSet GetReportCustomerOrder(DateTime OrderDateStart, DateTime OrderDateEnd, string CustomerCode, string CUS_NAME)
         {
             DataSet ds = new DataSet();
