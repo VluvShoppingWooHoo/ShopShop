@@ -32,6 +32,7 @@ namespace VloveImport.web.admin.pages
                 ds = AddBiz.ADMIN_GET_VIP_TOTAL();
                 if (ds.Tables[0].Rows.Count > 0)
                 {
+                    Session["tblVIP"] = ds.Tables[0];
                     gv_detail.DataSource = ds.Tables[0];
                     gv_detail.DataBind();
                 }
@@ -42,6 +43,17 @@ namespace VloveImport.web.admin.pages
                 }
             }
             catch (Exception ex) { }
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            DataTable dt = (DataTable)Session["tblVIP"];
+            AdminBiz AddBiz = new AdminBiz();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dt.Rows[i]["VIP_PERCENT"] = ((TextBox)gv_detail.Rows[i].Cells[0].FindControl("txtPercent")).Text;
+            }
+            string Result = AddBiz.ADMIN_UPD_VIP_PERCENT(dt);
         }
     }
 }

@@ -231,6 +231,14 @@ namespace VloveImport.dal
             command.Parameters.Add(param);
         }
 
+        public void SetParameter_Input_DataTable(string parameterName, ParameterDirection direction, object vals)
+        {
+            SqlParameter param = new SqlParameter(parameterName, new DataTable());
+            param.Direction = direction;
+            param.Value = vals;
+            command.Parameters.Add(param);
+        }
+
         public void SetParameter(string parameterName, SqlDbType dbType, ParameterDirection direction, object vals)
         {
             SqlParameter param = new SqlParameter(parameterName, dbType);

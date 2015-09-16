@@ -578,6 +578,26 @@ namespace VloveImport.dal
                 throw new Exception("ADMIN_GET_VIP_TOTAL -> msg : " + ex.Message);
             }
         }
+        public string ADMIN_UPD_VIP_PERCENT(DataTable dt)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_UPD_VIP_PERCENT");
+
+                SqlCommandData.SetParameter_Input_DataTable("tbl", ParameterDirection.Input, dt);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("ADMIN_INS_UPD_CMS -> msg : " + ex.Message);
+            }
+        }
         #endregion
 
         public DataSet GetReportCustomerOrder(DateTime OrderDateStart, DateTime OrderDateEnd, string CustomerCode, string CUS_NAME)
