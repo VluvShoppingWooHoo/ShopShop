@@ -55,14 +55,24 @@ namespace VloveImport.web.Customer
         {
             CustomerBiz Biz = new CustomerBiz();
 
-            //Get VIP Type
-            //Fix for test
-            int VIP_ID = 1;
-            int VIP_PERCENT = 15;
+            double Bal = lbMymoney.Text == "" ? 0 : Convert.ToDouble(lbMymoney.Text);
+            double Price = 0; //get from selected Value
+            if (Bal >= Price)
+            {
+                //Get VIP Type, get from selected Value
+                //Fix for test
+                int VIP_ID = 1;
+                int VIP_PERCENT = 15;
 
-            //Insert Transaction
-            string Result = "";
-            Result = Biz.Regis_VIP(GetCusID(), VIP_ID, VIP_PERCENT);
+                //Insert Transaction
+                string Result = "";
+                Result = Biz.Regis_VIP(GetCusID(), VIP_ID, VIP_PERCENT);
+            }
+            else
+            {
+                ShowMessageBox("เงินในบัญชีไม่พอ กรุณาเติมเงินก่อนค่ะ");
+                return;
+            }
         }
     }
 } 

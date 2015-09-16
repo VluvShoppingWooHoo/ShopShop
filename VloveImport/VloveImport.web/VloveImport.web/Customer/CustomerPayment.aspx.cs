@@ -173,7 +173,7 @@ namespace VloveImport.web.Customer
             data.TRAN_TYPE = 2; //เงินออก
             data.TRAN_TABLE_TYPE = 3; //Order
             data.TRAN_STATUS = 2; //
-            data.TRAN_DETAIL = "ชำระเงินครั้งแรก";
+            data.TRAN_DETAIL = "ชำระเงิน";
             data.TRAN_AMOUNT = Convert.ToDouble(lbTotalAmount.Text);
             data.Cus_ID = GetCusID();
             data.ORDER_ID = OID == "" ? 0 : Convert.ToInt32(OID);
