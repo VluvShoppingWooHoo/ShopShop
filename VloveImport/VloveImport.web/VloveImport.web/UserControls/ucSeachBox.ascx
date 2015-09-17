@@ -142,6 +142,7 @@
     <div id="footer" class="modal-footer" style="max-height: 50px; padding: 0 5px 0 0;">
         <input type="hidden" id="hdWeb">
         <input type="hidden" id="hdPrice">
+        <input type="hidden" id="hdID">
         <input type="hidden" id="hdAmountRange">
         <input type="hidden" id="hdPriceRange">
         <button id="btnAddCart" type="button" class="btn waves-effect orange waves-light" name="action">
@@ -211,7 +212,7 @@
                 }
                 var param = {
                     "Name": $("#lblItemName").html(), "Desc": '', "Amount": $("#aQTY").val(), "Price": price, "Size": size,
-                    "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": Picture, "ShopName": ShopName
+                    "Color": color, "Remark": remark, "URL": $("#lblURL").html(), "Picture": Picture, "ShopName": ShopName, "ID": $("#hdID").val()
                 };
                 $.ajax({
                     type: 'POST',
@@ -336,6 +337,7 @@
         var firstSize = true;
         var firstColor = true;
         $("#hdPrice").val(obj.Price);
+        $("#hdID").val(obj.ID);
         $("#hdAmountRange").val(obj.AmountRange);
         $("#hdPriceRange").val(obj.PriceRange);
 

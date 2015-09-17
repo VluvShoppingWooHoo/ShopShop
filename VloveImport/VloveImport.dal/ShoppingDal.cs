@@ -40,6 +40,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("CUS_BK_STATUS", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_STATUS);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Shop.Create_User);
                 SqlCommandData.SetParameter("CUS_BK_SHOPNAME", SqlDbType.NVarChar, ParameterDirection.Input, Shop.CUS_BK_SHOPNAME);
+                SqlCommandData.SetParameter("ID", SqlDbType.NVarChar, ParameterDirection.Input, Shop.ID);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
@@ -154,6 +155,7 @@ namespace VloveImport.dal
                 {
                     model = new ScrapingData();
                     DataRow dr = ds.Tables[0].Rows[0];
+                    model.ID = dr["ID"].ToString();
                     model.ItemID = dr["ITEM_ID"].ToString();
                     model.Web = int.Parse(dr["WEB"].ToString());
                     model.ItemName = dr["ITEM_NAME"].ToString();
@@ -195,16 +197,18 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("URL", SqlDbType.NVarChar, ParameterDirection.Input, model.URL);
                 SqlCommandData.SetParameter("SHOPNAME", SqlDbType.NVarChar, ParameterDirection.Input, model.ShopName);
                 SqlCommandData.SetParameter("Act", SqlDbType.NVarChar, ParameterDirection.Input, Act);
+                SqlCommandData.SetParameter("retID", SqlDbType.Int, ParameterDirection.Output);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
-                return "";
+                return SqlCommandData.GetOutputStoreProcedure("retID"); ;
             }
             catch (Exception ex)
             {
                 //throw new Exception("AddtoCart -> msg : " + ex.Message);                
                 SqlCommandData.RollBack();
-                return ("InsertUpdateItemID -> msg : " + ex.Message);
+                return ("");
+                //return ("InsertUpdateItemID -> msg : " + ex.Message);
             }
         }
         #region Order

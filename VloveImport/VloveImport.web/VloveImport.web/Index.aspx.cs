@@ -143,7 +143,7 @@ namespace VloveImport.web
                     data = ix.Scrap(txt, webMode);
                     data.ItemID = id;
                     data.Web = webMode;
-                    sc.InsertUpdateItemID(data, "INS");
+                    data.ID = sc.InsertUpdateItemID(data, "INS");
                 }
                 data.URL = realurl;
                 #endregion
@@ -174,7 +174,7 @@ namespace VloveImport.web
         #region AddToCart
         [WebMethod]
         public static string btnSearch(string Name, string Desc, string Amount, string Price, string Size,
-            string Color, string Remark, string URL, string Picture, string ShopName)
+            string Color, string Remark, string URL, string Picture, string ShopName, string ID)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string Result = "";
@@ -193,6 +193,7 @@ namespace VloveImport.web
             Data.CUS_BK_STATUS = "BASKET";
             Data.Create_User = "";
             Data.CUS_BK_SHOPNAME = ShopName;
+            Data.ID = ID;
             Result = Index.AddToCart(Data);
             if (Result != "")
             {

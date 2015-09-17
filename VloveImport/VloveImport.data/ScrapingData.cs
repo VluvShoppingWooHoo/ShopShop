@@ -9,6 +9,7 @@ namespace VloveImport.data
     public class ScrapingData : CommonData
     {
         #region Scrapping
+        public string ID { get; set; }
         public string ItemID { get; set; }
         public string ItemName { get; set; }
         public string DESC { get; set; }
