@@ -373,6 +373,78 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.TextBox txt_Transport_Cus_Detail;
         
         /// <summary>
+        /// trTranCusPrice4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trTranCusPrice4;
+        
+        /// <summary>
+        /// Td7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td7;
+        
+        /// <summary>
+        /// Td8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td8;
+        
+        /// <summary>
+        /// lbl_tb2_Total_Transport_CH_TO_TH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb2_Total_Transport_CH_TO_TH;
+        
+        /// <summary>
+        /// Td9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td9;
+        
+        /// <summary>
+        /// Td10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td10;
+        
+        /// <summary>
+        /// txtDiscountC_T_TRANSPORT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDiscountC_T_TRANSPORT;
+        
+        /// <summary>
+        /// txtDiscountC_T_TRANSPORT_FilteredTextBoxExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txtDiscountC_T_TRANSPORT_FilteredTextBoxExtender;
+        
+        /// <summary>
         /// trTranCusPrice control.
         /// </summary>
         /// <remarks>
@@ -416,6 +488,42 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_Transport_Cus_Price_FilteredTextBoxExtender1;
+        
+        /// <summary>
+        /// Td11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td11;
+        
+        /// <summary>
+        /// Td12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td12;
+        
+        /// <summary>
+        /// txtDiscountCus_TRANSPORT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDiscountCus_TRANSPORT;
+        
+        /// <summary>
+        /// txtDiscountCus_TRANSPORT_FilteredTextBoxExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txtDiscountCus_TRANSPORT_FilteredTextBoxExtender;
         
         /// <summary>
         /// trTranCusPrice2 control.
@@ -463,6 +571,42 @@ namespace VloveImport.web.admin.pages {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_Service_Charge_FilteredTextBoxExtender1;
         
         /// <summary>
+        /// Td13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td13;
+        
+        /// <summary>
+        /// Td14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td14;
+        
+        /// <summary>
+        /// txtDiscountServiceCh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDiscountServiceCh;
+        
+        /// <summary>
+        /// txtDiscountServiceCh_FilteredTextBoxExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender txtDiscountServiceCh_FilteredTextBoxExtender;
+        
+        /// <summary>
         /// trTranCusPrice3 control.
         /// </summary>
         /// <remarks>
@@ -506,6 +650,24 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
+        
+        /// <summary>
+        /// Td15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td15;
+        
+        /// <summary>
+        /// Td16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell Td16;
         
         /// <summary>
         /// tr_tb2_chk_email control.
