@@ -460,7 +460,7 @@ namespace VloveImport.dal
         #endregion
 
         #region Customer VIP
-        public string Regis_VIP(Int32 CUS_ID, Int32 VIP_ID, Int32 VIP_PERCENT)
+        public string Regis_VIP(Int32 CUS_ID, Int32 VIP_ID)
         {
             try
             {
@@ -470,7 +470,6 @@ namespace VloveImport.dal
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, CUS_ID);
                 SqlCommandData.SetParameter_Input_INT("VIP_ID", SqlDbType.Int, ParameterDirection.Input, VIP_ID);
-                SqlCommandData.SetParameter_Input_INT("VIP_PERCENT", SqlDbType.Int, ParameterDirection.Input, VIP_PERCENT);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
@@ -496,6 +495,20 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 throw new Exception("GetHistoryVIP -> msg : " + ex.Message);
+            }
+        }
+
+        public DataSet GetMasterVIP()
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_MASTER_VIP");
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetMasterVIP -> msg : " + ex.Message);
             }
         }
         #endregion

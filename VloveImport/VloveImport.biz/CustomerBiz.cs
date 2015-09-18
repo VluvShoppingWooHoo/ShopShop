@@ -266,13 +266,13 @@ namespace VloveImport.biz
         #endregion
 
         #region Customer VIP
-        public string Regis_VIP(Int32 CUS_ID, Int32 VIP_ID, Int32 VIP_PERCENT)
+        public string Regis_VIP(Int32 CUS_ID, Int32 VIP_ID)
         {
             string Result = "";
             try
             {
                 CustomerDal dal = new CustomerDal("LocalConnection");
-                Result = dal.Regis_VIP(CUS_ID, VIP_ID, VIP_PERCENT);
+                Result = dal.Regis_VIP(CUS_ID, VIP_ID);
             }
             catch (Exception ex)
             {
@@ -286,6 +286,17 @@ namespace VloveImport.biz
             DataSet ds = new DataSet();
             CustomerDal dal = new CustomerDal("LocalConnection");
             ds = dal.GetHistoryVIP(CUS_ID);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+
+        public DataTable GetMasterVIP()
+        {
+            DataSet ds = new DataSet();
+            CustomerDal dal = new CustomerDal("LocalConnection");
+            ds = dal.GetMasterVIP();
             if (ds != null && ds.Tables.Count > 0)
                 return ds.Tables[0];
             else

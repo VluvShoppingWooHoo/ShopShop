@@ -31,48 +31,30 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.WebControls.GridView gvResult;
         
         /// <summary>
-        /// rdbVIP6 control.
+        /// div1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbVIP6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
         
         /// <summary>
-        /// rdbVIP12 control.
+        /// rdbList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbVIP12;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbList;
         
         /// <summary>
-        /// rdbSuperVIP6 control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbSuperVIP6;
-        
-        /// <summary>
-        /// rdbSuperVIP12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbSuperVIP12;
-        
-        /// <summary>
-        /// btnSelect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSelect;
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

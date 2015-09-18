@@ -62,7 +62,18 @@
                 ปรเภทของ VIP
             </div>
             <div class="col s1 m1 l1"></div>
-            <div class="col s8 m8 l8 paddingTop25">
+            <div class="col s8 m8 l8 paddingTop25" id="div1" runat="server">
+                <asp:RadioButtonList ID="rdbList" runat="server" CssClass="" >                    
+                </asp:RadioButtonList>              
+                <br />&nbsp;
+            </div>
+        </div>  
+        <%--<div class="row divRowBlock">
+            <div class="col s3 m3 l3 paddingTop25">
+                ปรเภทของ VIP
+            </div>
+            <div class="col s1 m1 l1"></div>
+            <div class="col s8 m8 l8 paddingTop25" id="divRadio" runat="server">
                 <asp:RadioButton ID="rdbVIP6" runat="server" GroupName="VIP" CssClass="Init"/>&nbsp;&nbsp;<span class="FontHeader black-text"> VIP 6 เดือน ลดค่าขนส่ง 15% ราคา 2,500 บาท</span>
                 <br />
                 <asp:RadioButton ID="rdbVIP12" runat="server" GroupName="VIP" CssClass="Init" />&nbsp;&nbsp;<span class="FontHeader black-text"> VIP 12 เดือน ลดค่าขนส่ง 20% ราคา 4,500 บาท</span>
@@ -72,20 +83,16 @@
                 <asp:RadioButton ID="rdbSuperVIP12" runat="server" GroupName="VIP" CssClass="Init" />&nbsp;&nbsp;<span class="FontHeader black-text"> Super VIP 12 เดือน ลดค่าขนส่ง 30% ราคา 6,000 บาท</span>
                 <br />&nbsp;
             </div>
-        </div>        
+        </div> --%>       
         <div class="row divRowBlock">
-            <div class="col s2 m2 l2 paddingTop25">
+            <div class="col s3 m3 l3 paddingTop25">
                 &nbsp;
             </div>
+            <div class="col s1 m1 l1"></div>
             <div class="col s8 m8 l8 paddingTop25">
-                <button id="btnSelect" runat="server" type="submit" onserverclick="btnSelect_ServerClick"
-                    name="action" class="btn waves-effect orange waves-light">
-                    สมัคร VIP                                
-                </button>
+                <asp:Button ID="btnSave" runat="server" CssClass="btn waves-effect orange waves-light TextMid" Text="สมัคร VIP" 
+                    OnClick="btnSave_Click" OnClientClick="return confirm('คุณกำลังสมัครบริการ VIP?')" />              
                 <%--<asp:Button ID="btnSelect" runat="server" Text="สมัครบริการ VIP" OnClick="btnSelect_Click" OnClientClick="return confirm('คุณกำลังสมัครบริการ VIP?')" />--%>
-            </div>
-            <div class="col s2 m2 l2 paddingTop25">
-                &nbsp;
             </div>
         </div>
     </div>
@@ -97,5 +104,11 @@
             SetFadeout();
         });
     </script>
+    <style>
+        .TextMid {
+            font-style: normal;
+            vertical-align: middle;
+        }
+    </style>
 </asp:Content>
 
