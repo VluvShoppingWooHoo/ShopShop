@@ -6,6 +6,41 @@
 <%@ Register Src="../UserControls/ucImage.ascx" TagName="ucImage" TagPrefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type ="text/javascript">
+        function CheckInputPercent(obj)
+        {
+            if (obj.value > 100)
+            {
+                obj.value = 0;
+                alert("Can not fill more than 100%");
+            }
+        }
+
+        function CheckInputDiscount(type)
+        {
+            //replace
+            if (type == "1") //Serveice Charge
+            {
+                var txt_Service_Charge = document.getElementById('<%=txt_Service_Charge.ClientID%>').value.replace(",","");
+                var txtDiscountServiceCh = document.getElementById('<%=txtDiscountServiceCh.ClientID%>').value.replace(",", "");
+                if (parseFloat(txtDiscountServiceCh) > parseFloat(txt_Service_Charge))
+                {
+                    alert("Can not fill discount  more than the service charge.");
+                    document.getElementById('<%=txtDiscountServiceCh.ClientID%>').value = "0";
+                }
+            }
+            else if (type == "2") //Transport Customer Price
+            { // 
+                var txt_Transport_Cus_Price = document.getElementById('<%=txt_Transport_Cus_Price.ClientID%>').value.replace(",", "");
+                var txtDiscountCus_TRANSPORT = document.getElementById('<%=txtDiscountCus_TRANSPORT.ClientID%>').value.replace(",", "");
+                if (parseFloat(txtDiscountCus_TRANSPORT) > parseFloat(txt_Transport_Cus_Price)) {
+                    alert("Can not fill discount  more than the transport customer price.");
+                    document.getElementById('<%=txtDiscountCus_TRANSPORT.ClientID%>').value = "0";
+                }
+            }
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -337,23 +372,23 @@
                                         </td>
                                         <td class ="width20" id="Td9" runat="server">Discount :</td>
                                         <td class ="width30" id="Td10" runat="server">
-                                            <asp:TextBox ID="txtDiscountC_T_TRANSPORT" runat="server" MaxLength="3" Width ="200px"></asp:TextBox>
+                                            <asp:TextBox ID="txtDiscountC_T_TRANSPORT" runat="server" MaxLength="3" Width ="200px" onKeyUp ="CheckInputPercent(this);"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender ID="txtDiscountC_T_TRANSPORT_FilteredTextBoxExtender" runat="server" Enabled="True" TargetControlID="txtDiscountC_T_TRANSPORT" ValidChars="0123456789">
                                             </asp:FilteredTextBoxExtender>
                                             &nbsp;%
                                         </td>
                                     </tr>
-                                    <tr id="trTranCusPrice" runat="server" visible="False">
+                                    <tr id="trTranCusPrice" runat="server">
                                         <td id="Td1" runat="server">Transport Customer Price :</td>
                                         <td id="Td2" runat="server">
-                                            <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="200px"></asp:TextBox>
+                                            <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="200px" onKeyUp = "CheckInputDiscount(2)"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                             </asp:FilteredTextBoxExtender>
                                         </td>
                                         <td id="Td11" runat="server">
                                             Discount :</td>
                                         <td id="Td12" runat="server">
-                                            <asp:TextBox ID="txtDiscountCus_TRANSPORT"  Width="200px" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtDiscountCus_TRANSPORT"  Width="200px" runat="server" onKeyUp = "CheckInputDiscount(2)"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender ID="txtDiscountCus_TRANSPORT_FilteredTextBoxExtender" runat="server" Enabled="True" TargetControlID="txtDiscountCus_TRANSPORT" ValidChars="0123456789.">
                                             </asp:FilteredTextBoxExtender>
                                             &nbsp;Bath
@@ -362,14 +397,14 @@
                                     <tr id="trTranCusPrice2" runat="server">
                                         <td id="Td3" runat="server">Service Charge :</td>
                                         <td id="Td4" runat="server">
-                                            <asp:TextBox ID="txt_Service_Charge" runat="server" Width="200px"></asp:TextBox>
+                                            <asp:TextBox ID="txt_Service_Charge" runat="server" Width="200px" onKeyUp = "CheckInputDiscount(1)"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Service_Charge" ID="txt_Service_Charge_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                             </asp:FilteredTextBoxExtender>
                                         </td>
                                         <td id="Td13" runat="server">
                                             Discount :</td>
                                         <td id="Td14" runat="server">
-                                            <asp:TextBox ID="txtDiscountServiceCh"  Width="200px" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtDiscountServiceCh"  Width="200px" runat="server" onKeyUp = "CheckInputDiscount(1)"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender ID="txtDiscountServiceCh_FilteredTextBoxExtender" runat="server" Enabled="True" TargetControlID="txtDiscountServiceCh" ValidChars="0123456789.">
                                             </asp:FilteredTextBoxExtender>
                                             &nbsp;Bath
@@ -392,10 +427,10 @@
                                         <td runat="server">
                                             <table>
                                                 <tr>
-                                                    <td class="width5">
+                                                    <td class="width15">
                                                         <asp:CheckBox ID="tb_2_chk_email" runat="server" />
                                                     </td>
-                                                    <td class="ItemStyle-left width95">Send Email TO Customer
+                                                    <td class="ItemStyle-left width85">Send Email TO Customer
                                                     </td>
                                                 </tr>
                                             </table>
@@ -620,8 +655,10 @@
                                         <td class="ItemStyle-right">
                                             <asp:Label ID="lbl_tb3_Total_Transport_CH_TO_TH" runat="server"></asp:Label>
                                         </td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>Discount :</td>
+                                        <td>
+                                            <asp:Label ID="lbl_tb3_Total_Transport_CH_TO_TH_DISCOUNT" runat="server"></asp:Label>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Total Transport To Customer :</td>
