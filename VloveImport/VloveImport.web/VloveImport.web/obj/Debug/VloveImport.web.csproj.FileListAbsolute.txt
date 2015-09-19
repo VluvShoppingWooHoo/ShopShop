@@ -232,3 +232,6 @@ D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\zh-CHS\AjaxCont
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\zh-CHT\AjaxControlToolkit.resources.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.pdb
+D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\VloveImport.web.csprojResolveAssemblyReference.cache
+D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\RdlCompile.cache
+D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web\VloveImport.web\obj\Debug\RdlCompile.compiled

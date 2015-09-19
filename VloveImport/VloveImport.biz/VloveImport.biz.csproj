@@ -34,10 +34,10 @@
       <HintPath>..\VloveImport.web\VloveImport.web\dll\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\packages\iTextSharp.5.5.6\lib\itextsharp.dll</HintPath>
+      <HintPath>..\packages\iTextSharp.5.5.7\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xmlworker">
-      <HintPath>..\packages\itextsharp.xmlworker.5.5.6\lib\itextsharp.xmlworker.dll</HintPath>
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.7\lib\itextsharp.xmlworker.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,9 +47,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebDriver">
-      <HintPath>..\packages\Selenium.WebDriver.2.47.0\lib\net40\WebDriver.dll</HintPath>
-    </Reference>
     <Reference Include="WebDriver.Support">
       <HintPath>..\packages\Selenium.Support.2.47.0\lib\net40\WebDriver.Support.dll</HintPath>
     </Reference>
