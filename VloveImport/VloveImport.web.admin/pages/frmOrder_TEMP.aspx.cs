@@ -557,7 +557,7 @@ namespace VloveImport.web.admin.pages
                     double Service_Charge = strToDouble(txt_Service_Charge.Text.Trim());
                     double Discount = strToDouble(txt_Discount.Text.Trim());
 
-                    if (TranCusPrice > 0)
+                    if (TranCusPrice > 0) //ตรงส่วนนี้ ต้องปรับเพิ่ม โดยดู จาก Column อื่นด้วย 21/09/2558
                     {
                         if ((_VS_CUS_BALANCE + _VS_ORDER_REFUND) >= (TranCusPrice + Service_Charge - Discount))
                         {
