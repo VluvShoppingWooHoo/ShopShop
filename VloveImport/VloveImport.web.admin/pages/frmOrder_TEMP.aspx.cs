@@ -554,7 +554,9 @@ namespace VloveImport.web.admin.pages
                         //return;
                     }
                     double TranCusPrice = strToDouble(txt_Transport_Cus_Price.Text.Trim());
+                    double TranCusPriceDiscount = strToDouble(txtDiscountCus_TRANSPORT.Text.Trim());
                     double Service_Charge = strToDouble(txt_Service_Charge.Text.Trim());
+                    double Service_ChargeDiscount = strToDouble(txtDiscountServiceCh.Text.Trim());
                     double Discount = strToDouble(txt_Discount.Text.Trim());
 
                     if (TranCusPrice > 0) //ตรงส่วนนี้ ต้องปรับเพิ่ม โดยดู จาก Column อื่นด้วย 21/09/2558
