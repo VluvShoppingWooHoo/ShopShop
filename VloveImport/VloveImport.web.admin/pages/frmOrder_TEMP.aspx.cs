@@ -303,14 +303,14 @@ namespace VloveImport.web.admin.pages
                 txtDiscountServiceCh.Text = Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE_DISCOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
             }
 
-            if (dt2.Rows.Count > 0)
-            {
-                double TRAN_CH_PRICE = Convert.ToDouble(dt2.Rows[0]["SUM_TRANSPORT_CHINA_PRICE"].ToString()); //Table 5
-                //double DISCOUNT_TRAN_CH_PRICE = Convert.ToDouble(dt2.Rows[0]["DICOUNT_TRANSPORT_THAI_PRICE"].ToString()); //Table 5
+            //if (dt2.Rows.Count > 0)
+            //{
+            //    double TRAN_CH_PRICE = Convert.ToDouble(dt2.Rows[0]["SUM_TRANSPORT_CHINA_PRICE"].ToString()); //Table 5
+            //    //double DISCOUNT_TRAN_CH_PRICE = Convert.ToDouble(dt2.Rows[0]["DICOUNT_TRANSPORT_THAI_PRICE"].ToString()); //Table 5
 
-                lbl_tb2_Total_Transport_CH_TO_TH.Text = TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
-                //txtDiscountC_T_TRANSPORT.Text = DISCOUNT_TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
-            }
+            //    lbl_tb2_Total_Transport_CH_TO_TH.Text = TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
+            //    //txtDiscountC_T_TRANSPORT.Text = DISCOUNT_TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
+            //}
 
         }
 
@@ -386,6 +386,11 @@ namespace VloveImport.web.admin.pages
                 ddl_ViewDetail_TRANSPORT_STATUS.Enabled = false;
                 btn_detail_update.Visible = true;
                 tr_tb2_chk_email.Visible = true;
+
+                trTranCusPrice.Visible = false;
+                trTranCusPrice2.Visible = false;
+                trTranCusPrice3.Visible = false;
+                trTranCusPrice4.Visible = false;
             }
             else if (_VS_ORDER_STS == "2" && _VS_ORDER_TYPE == "3")
             {
@@ -394,6 +399,11 @@ namespace VloveImport.web.admin.pages
                 btn_detail_update.Visible = true;
                 tr_tb2_chk_email.Visible = true;
                 btnUpdateShopDetail.Visible = true;
+
+                trTranCusPrice.Visible = false;
+                trTranCusPrice2.Visible = false;
+                trTranCusPrice3.Visible = false;
+                trTranCusPrice4.Visible = false;
             }
             else if (_VS_ORDER_STS == "3")
             {
@@ -402,6 +412,11 @@ namespace VloveImport.web.admin.pages
 
                 tr_tb2_chk_email.Visible = true;
                 btn_detail_update.Visible = true;
+
+                trTranCusPrice.Visible = false;
+                trTranCusPrice2.Visible = false;
+                trTranCusPrice3.Visible = false;
+                trTranCusPrice4.Visible = false;
             }
             else if (_VS_ORDER_STS == "4")
             {
@@ -476,6 +491,20 @@ namespace VloveImport.web.admin.pages
             return dou;
         }
 
+        public int strToInt(string val)
+        {
+            int v_int = 0;
+            try
+            {
+                v_int = Convert.ToInt32(val);
+            }
+            catch (Exception)
+            {
+                v_int = 0;
+            }
+            return v_int;
+        }
+
         #endregion
 
         #region Event Button
@@ -545,46 +574,46 @@ namespace VloveImport.web.admin.pages
                 }
 
 
-                if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
-                {
-                    if (txt_Transport_Cus_Price.Text.Trim() == "" || Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim()) == 0)
-                    {
-                        txt_Transport_Cus_Price.Text = "0.00";
-                        //ShowMessageBox("Please enter transport customer price", this.Page);
-                        //return;
-                    }
-                    double TranCusPrice = strToDouble(txt_Transport_Cus_Price.Text.Trim());
-                    double TranCusPriceDiscount = strToDouble(txtDiscountCus_TRANSPORT.Text.Trim());
-                    double Service_Charge = strToDouble(txt_Service_Charge.Text.Trim());
-                    double Service_ChargeDiscount = strToDouble(txtDiscountServiceCh.Text.Trim());
-                    double Discount = strToDouble(txt_Discount.Text.Trim());
+                //if (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "10")
+                //{
+                //    if (txt_Transport_Cus_Price.Text.Trim() == "" || Convert.ToDouble(txt_Transport_Cus_Price.Text.Trim()) == 0)
+                //    {
+                //        txt_Transport_Cus_Price.Text = "0.00";
+                //        //ShowMessageBox("Please enter transport customer price", this.Page);
+                //        //return;
+                //    }
+                //    double TranCusPrice = strToDouble(txt_Transport_Cus_Price.Text.Trim());
+                //    double TranCusPriceDiscount = strToDouble(txtDiscountCus_TRANSPORT.Text.Trim());
+                //    double Service_Charge = strToDouble(txt_Service_Charge.Text.Trim());
+                //    double Service_ChargeDiscount = strToDouble(txtDiscountServiceCh.Text.Trim());
+                //    double Discount = strToDouble(txt_Discount.Text.Trim());
 
-                    if (TranCusPrice > 0) //ตรงส่วนนี้ ต้องปรับเพิ่ม โดยดู จาก Column อื่นด้วย 21/09/2558
-                    {
-                        if ((_VS_CUS_BALANCE + _VS_ORDER_REFUND) >= (TranCusPrice + Service_Charge - Discount))
-                        {
-                            string ResultTran = "";
-                            TransactionData EnTran = new TransactionData();
-                            string Act = "INS_NON_PROD";
-                            AdminBiz AdBizTran = new AdminBiz();
+                //    if (TranCusPrice > 0) //ตรงส่วนนี้ ต้องปรับเพิ่ม โดยดู จาก Column อื่นด้วย 21/09/2558
+                //    {
+                //        if ((_VS_CUS_BALANCE + _VS_ORDER_REFUND) >= (TranCusPrice + Service_Charge - Discount))
+                //        {
+                //            string ResultTran = "";
+                //            TransactionData EnTran = new TransactionData();
+                //            string Act = "INS_NON_PROD";
+                //            AdminBiz AdBizTran = new AdminBiz();
 
-                            EnTran.EMP_ID_APPROVE = Convert.ToInt32(_VS_USER_EMP_ID);
-                            EnTran.TRAN_TYPE = 2;
-                            EnTran.TRAN_TABLE_TYPE = 3;
-                            EnTran.TRAN_STATUS = 2;
-                            EnTran.Cus_ID = _VS_CUS_ID;
-                            EnTran.TRAN_AMOUNT = (TranCusPrice + Service_Charge - Discount);
-                            EnTran.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
-                            EnTran.EMP_REMARK = "ตัดเงินรายการค่าขนส่งขั้นตอนสุดท้าย";
-                            ResultTran = AdBizTran.INS_UPD_TRANSACTION(EnTran, Act);
-                        }
-                        else
-                        {
-                            ShowMessageBox("Customer amount is not enough.Please check again", this.Page);
-                            return;
-                        }
-                    }
-                }
+                //            EnTran.EMP_ID_APPROVE = Convert.ToInt32(_VS_USER_EMP_ID);
+                //            EnTran.TRAN_TYPE = 2;
+                //            EnTran.TRAN_TABLE_TYPE = 3;
+                //            EnTran.TRAN_STATUS = 2;
+                //            EnTran.Cus_ID = _VS_CUS_ID;
+                //            EnTran.TRAN_AMOUNT = (TranCusPrice + Service_Charge - Discount);
+                //            EnTran.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
+                //            EnTran.EMP_REMARK = "ตัดเงินรายการค่าขนส่งขั้นตอนสุดท้าย";
+                //            ResultTran = AdBizTran.INS_UPD_TRANSACTION(EnTran, Act);
+                //        }
+                //        else
+                //        {
+                //            ShowMessageBox("Customer amount is not enough.Please check again", this.Page);
+                //            return;
+                //        }
+                //    }
+                //}
 
                 OrderData En = new OrderData();
                 AdminBiz AdBiz = new AdminBiz();
@@ -596,6 +625,10 @@ namespace VloveImport.web.admin.pages
                 En.ORDER_ID = Convert.ToInt32(_VS_ORDER_ID);
                 En.TRANSPORT_CUSTOMER_DETAIL = txt_Transport_Cus_Detail.Text.Trim();
                 En.ORDER_EMP_REMARK = txt_Update_STS_EMP_Remark.Text.Trim();
+
+                En.VIP_DISCOUNT = strToInt(txtDiscountC_T_TRANSPORT.Text.Trim());
+                En.SERVICE_CHARGE_DISCOUNT = strToDouble(txtDiscountServiceCh.Text.Trim());
+                En.TRANSPORT_CUSTOMER_PRICE_DIS = strToDouble(txtDiscountCus_TRANSPORT.Text.Trim());
 
                 //---------------------------------------------------------------------------
                 string Result_order = AdBiz.UPD_ADMIN_ORDER(En, "UPDATE_STS_ORDER");
@@ -1085,7 +1118,12 @@ namespace VloveImport.web.admin.pages
                 lbl_tb3_Transport_To_Customer_Date.Text = dt.Rows[0]["TRANSPORT_DATE"].ToString();
 
                 double TRAN_CH_PRICE = Convert.ToDouble(dt.Rows[0]["SUM_TRANSPORT_CHINA_PRICE"].ToString()); //Table 5
+
                 double DISCOUNT_TRAN_CH_PRICE = Convert.ToDouble(dt.Rows[0]["DICOUNT_TRANSPORT_THAI_PRICE"].ToString()); //Table 5
+                double DISCOUNT_SERVICE_CHARGE = Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE_DISCOUNT"].ToString());
+                double DISCOUNT_TRANSPORT_CUS_PRICE = Convert.ToDouble(dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE_DIS"].ToString());
+
+
                 double TRAN_TH_PRICE = Convert.ToDouble(dt.Rows[0]["SUM_TRANSPORT_THAI_PRICE"].ToString());
                 double TRAN_CUS_PRICE = Convert.ToDouble(dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE"].ToString());
                 double SERVICE_CHARGE = Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE"].ToString());
@@ -1093,10 +1131,27 @@ namespace VloveImport.web.admin.pages
                 lbl_tb3_Total_Transport_China_Price.Text = (TRAN_CH_PRICE * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Total_Transport_China_Price_CNY.Text = "<span style =\"color:red;\">" + TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(CNY)</span>";
                 lbl_tb3_Total_Transport_CH_TO_TH.Text = TRAN_TH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
-                lbl_tb3_Total_Transport_CH_TO_TH_DISCOUNT.Text = DISCOUNT_TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
+
                 lbl_tb3_Total_Transport_To_Customer.Text = TRAN_CUS_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Service_Charge.Text = SERVICE_CHARGE.ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Total_Transport.Text = ((TRAN_CH_PRICE * _VS_EXCH_RATE) + TRAN_TH_PRICE + TRAN_CUS_PRICE + SERVICE_CHARGE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+
+                //DISCOUNT
+                lbl_tb3_Total_Transport_To_Customer_DISCOUNT.Text = DISCOUNT_TRANSPORT_CUS_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
+                lbl_tb3_Service_Charge_DISCOUNT.Text = DISCOUNT_SERVICE_CHARGE.ToString("N", new CultureInfo("en-US")) + "(THB)";
+                lbl_tb3_Total_Transport_CH_TO_TH_DISCOUNT.Text = DISCOUNT_TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US")) + "(THB)";
+                lbl_tb3_Total_Transport_DISCOUNT.Text = (DISCOUNT_TRANSPORT_CUS_PRICE + DISCOUNT_SERVICE_CHARGE + DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+                
+                //Total
+                lbl_tb3_Total_Transport_China_Price_TOTAL.Text = lbl_tb3_Total_Transport_China_Price.Text;
+                lbl_tb3_Total_Transport_CH_TO_TH_TOTAL.Text = (TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+                //Tab 2
+                lbl_tb2_Total_Transport_CH_TO_TH.Text = (TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+
+                lbl_tb3_Total_Transport_To_Customer_TOTAL.Text = (TRAN_CUS_PRICE - DISCOUNT_TRANSPORT_CUS_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+                lbl_tb3_Service_Charge_TOTAL.Text = (SERVICE_CHARGE - DISCOUNT_SERVICE_CHARGE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+                lbl_tb3_Total_Transport_TOTAL.Text = ((TRAN_CH_PRICE * _VS_EXCH_RATE) + (TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE) + (TRAN_CUS_PRICE - DISCOUNT_TRANSPORT_CUS_PRICE) + (SERVICE_CHARGE - DISCOUNT_SERVICE_CHARGE)).ToString("N", new CultureInfo("en-US")) + "(THB)";
+
             }
             else
             {

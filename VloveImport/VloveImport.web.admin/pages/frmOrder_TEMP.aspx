@@ -16,6 +16,10 @@
             }
         }
 
+        function Fun_CalShopProduct_Detail() {
+            return true;
+        }
+
         function CheckInputDiscount(type)
         {
             //replace
@@ -439,7 +443,7 @@
                                     <tr>
                                         <td></td>
                                         <td>
-                                            <asp:Button ID="btn_detail_update" runat="server" Text="Update Status" CssClass="btnSave" OnClick="btn_detail_update_Click"></asp:Button>
+                                            <asp:Button ID="btn_detail_update" runat="server" Text="Update Order" CssClass="btnSave" OnClick="btn_detail_update_Click"></asp:Button>
                                         </td>
                                     </tr>
                                 </table>
@@ -641,33 +645,56 @@
                             <fieldset>
                                 <table>
                                     <tr>
-                                        <td class="width20">Total Transport China Price :</td>
-                                        <td class="width15 ItemStyle-right">
+                                        <td class="width20"></td>
+                                        <td class="width15 ItemStyle-center">
+                                            <b>Full Price</b>
+                                        </td>
+                                        <td class="width15 ItemStyle-center">
+                                            <b>Discount</b>
+                                        </td>
+                                        <td class="width15 ItemStyle-center">
+                                            <b>Total Price</b>
+                                        </td>
+                                        <td class="width35"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Transport China Price :</td>
+                                        <td class="ItemStyle-right">
                                             <asp:Label ID="lbl_tb3_Total_Transport_China_Price" runat="server"></asp:Label>
                                         </td>
-                                        <td class="width15">
+                                        <td>
                                             <asp:Label ID="lbl_tb3_Total_Transport_China_Price_CNY" runat="server"></asp:Label>
                                         </td>
-                                        <td class="width50"></td>
+                                        <td class="ItemStyle-right">
+                                            =&nbsp;<asp:Label ID="lbl_tb3_Total_Transport_China_Price_TOTAL" runat="server"></asp:Label>
+                                        </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>Total Transport China To Thai :</td>
                                         <td class="ItemStyle-right">
                                             <asp:Label ID="lbl_tb3_Total_Transport_CH_TO_TH" runat="server"></asp:Label>
                                         </td>
-                                        <td>Discount :</td>
-                                        <td>
+                                        <td class="width15 ItemStyle-right">
                                             <asp:Label ID="lbl_tb3_Total_Transport_CH_TO_TH_DISCOUNT" runat="server"></asp:Label>
                                         </td>
+                                        <td class="width15 ItemStyle-right">
+                                            =&nbsp;<asp:Label ID="lbl_tb3_Total_Transport_CH_TO_TH_TOTAL" runat="server"></asp:Label>
+                                        </td>
+                                        <td>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td>Total Transport To Customer :</td>
                                         <td class="ItemStyle-right">
                                             <asp:Label ID="lbl_tb3_Total_Transport_To_Customer" runat="server"></asp:Label>
                                         </td>
-                                        <td></td>
-                                        <td>
-                                          </td>
+                                        <td class="width15 ItemStyle-right">
+                                            <asp:Label ID="lbl_tb3_Total_Transport_To_Customer_DISCOUNT" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="width15 ItemStyle-right">
+                                            =&nbsp;<asp:Label ID="lbl_tb3_Total_Transport_To_Customer_TOTAL" runat="server"></asp:Label>
+                                        </td>
+                                        <td>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td>Service Charge :</td>
@@ -676,9 +703,18 @@
                                                 <asp:Label ID="lbl_tb3_Service_Charge" runat="server"></asp:Label>
                                             </u>
                                         </td>
-                                        <td></td>
-                                        <td>
-                                            </td>
+                                        <td class="width15 ItemStyle-right">
+                                            <u>
+                                                <asp:Label ID="lbl_tb3_Service_Charge_DISCOUNT" runat="server"></asp:Label>
+                                            </u>
+                                        </td>
+                                        <td class="width15 ItemStyle-right">
+                                            =&nbsp;
+                                            <u>
+                                                <asp:Label ID="lbl_tb3_Service_Charge_TOTAL" runat="server"></asp:Label>
+                                            </u>
+                                        </td>
+                                        <td>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td>Total Transport Price :</td>
@@ -687,8 +723,18 @@
                                                 <asp:Label ID="lbl_tb3_Total_Transport" runat="server"></asp:Label>
                                             </span>
                                         </td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class="width15 ItemStyle-right">
+                                            <span class="doubleUnderline">
+                                                <asp:Label ID="lbl_tb3_Total_Transport_DISCOUNT" runat="server"></asp:Label>
+                                            </span>
+                                        </td>
+                                        <td class="width15 ItemStyle-right">
+                                            =&nbsp;
+                                            <span class="doubleUnderline">
+                                                <asp:Label ID="lbl_tb3_Total_Transport_TOTAL" runat="server"></asp:Label>
+                                            </span>
+                                        </td>
+                                        <td>&nbsp;</td>
                                     </tr>
                                 </table>
                             </fieldset>

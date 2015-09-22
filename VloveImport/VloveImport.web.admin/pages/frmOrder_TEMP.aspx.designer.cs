@@ -787,6 +787,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_China_Price_CNY;
         
         /// <summary>
+        /// lbl_tb3_Total_Transport_China_Price_TOTAL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_China_Price_TOTAL;
+        
+        /// <summary>
         /// lbl_tb3_Total_Transport_CH_TO_TH control.
         /// </summary>
         /// <remarks>
@@ -805,6 +814,15 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_CH_TO_TH_DISCOUNT;
         
         /// <summary>
+        /// lbl_tb3_Total_Transport_CH_TO_TH_TOTAL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_CH_TO_TH_TOTAL;
+        
+        /// <summary>
         /// lbl_tb3_Total_Transport_To_Customer control.
         /// </summary>
         /// <remarks>
@@ -812,6 +830,24 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_To_Customer;
+        
+        /// <summary>
+        /// lbl_tb3_Total_Transport_To_Customer_DISCOUNT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_To_Customer_DISCOUNT;
+        
+        /// <summary>
+        /// lbl_tb3_Total_Transport_To_Customer_TOTAL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_To_Customer_TOTAL;
         
         /// <summary>
         /// lbl_tb3_Service_Charge control.
@@ -823,6 +859,24 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_tb3_Service_Charge;
         
         /// <summary>
+        /// lbl_tb3_Service_Charge_DISCOUNT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb3_Service_Charge_DISCOUNT;
+        
+        /// <summary>
+        /// lbl_tb3_Service_Charge_TOTAL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb3_Service_Charge_TOTAL;
+        
+        /// <summary>
         /// lbl_tb3_Total_Transport control.
         /// </summary>
         /// <remarks>
@@ -830,6 +884,24 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport;
+        
+        /// <summary>
+        /// lbl_tb3_Total_Transport_DISCOUNT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_DISCOUNT;
+        
+        /// <summary>
+        /// lbl_tb3_Total_Transport_TOTAL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb3_Total_Transport_TOTAL;
         
         /// <summary>
         /// btnCancleOrder control.

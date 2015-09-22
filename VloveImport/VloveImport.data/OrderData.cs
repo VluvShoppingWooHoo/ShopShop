@@ -27,7 +27,12 @@ namespace VloveImport.data
         public int ORDER_TYPE { get; set; }        
         public string TRANSPORT_CUSTOMER_DETAIL { get; set; }
         public string TRANSPORT_OTHER { get; set; }
-        public int VIP_DISCOUNT { get; set; }        
+        public int VIP_DISCOUNT { get; set; }
+
+        public double SERVICE_CHARGE_DISCOUNT { get; set; }
+        public double TRANSPORT_CUSTOMER_PRICE_DIS { get; set; } 
+
+
         #endregion
 
         #region Optional
