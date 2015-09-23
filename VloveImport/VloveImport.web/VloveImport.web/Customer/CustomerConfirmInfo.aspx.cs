@@ -124,7 +124,7 @@ namespace VloveImport.web.Customer
 
                     string Trans = Session["TRANS"].ToString();
                     string[] spl = Trans.Split(',');
-                    if (spl[1].Split('|')[1] == "ส่งไปรษณีย์")
+                    if (spl[1].Split('|')[1] == "ส่งไปรษณีย์" || spl[1].Split('|')[1] == "ส่งแบบลงทะเบียน" || spl[1].Split('|')[1] == "EMS")
                     {
                         Post = " + 250.00 ";
                         Post_d = 250;
@@ -190,9 +190,12 @@ namespace VloveImport.web.Customer
                 DataTable dt = (DataTable)Session["ORDER"];
                 string User = GetCusCode();
                 double Rate = GetRateCurrency();
-                double Post = 0;
-                if (spl[1].Split('|')[1] == "ส่งไปรษณีย์")
-                    Post = 250;
+                double Trans_price = 0, Service = 0;
+                if (spl[1].Split('|')[1] == "ส่งไปรษณีย์" || spl[1].Split('|')[1] == "ส่งแบบลงทะเบียน" || spl[1].Split('|')[1] == "EMS")
+                {
+                    Trans_price = 200;
+                    Service = 50;
+                }
 
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
@@ -207,7 +210,8 @@ namespace VloveImport.web.Customer
                 Data.ORDER_EMP_REMARK = txtCusRemark.Text;
                 Data.TRANSPORT_OTHER = Session["OTHER"].ToString();
                 Data.VIP_DISCOUNT = GetCusSession().Cus_VIP_Percent;
-                Data.TRANSPORT_CUSTOMER_PRICE = Post;
+                Data.TRANSPORT_CUSTOMER_PRICE = Trans_price;
+                Data.SERVICE_CHARGE = Service;
                 Data.Create_User = User;
 
                 Result = Biz.MakeOrder(Data, dt, User, Rate);
