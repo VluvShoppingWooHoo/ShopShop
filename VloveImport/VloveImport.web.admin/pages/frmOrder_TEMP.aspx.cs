@@ -121,7 +121,7 @@ namespace VloveImport.web.admin.pages
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckSession();
-            if (!IsPostBack)
+            if (!IsPostBack) 
             {
                 AdminUserData Data = new AdminUserData();
                 Data = (AdminUserData)(Session["AdminUser"]);
