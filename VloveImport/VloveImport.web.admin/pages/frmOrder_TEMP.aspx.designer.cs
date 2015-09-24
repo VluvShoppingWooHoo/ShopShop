@@ -211,6 +211,24 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label lbl_tb1_Customer_Point;
         
         /// <summary>
+        /// lbl_tb1_VIP_STATUS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb1_VIP_STATUS;
+        
+        /// <summary>
+        /// lbl_tb1_VIP_DATE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_tb1_VIP_DATE;
+        
+        /// <summary>
         /// lbl_tb1_Customer_Address control.
         /// </summary>
         /// <remarks>

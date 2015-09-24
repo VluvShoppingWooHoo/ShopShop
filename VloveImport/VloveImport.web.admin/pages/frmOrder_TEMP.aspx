@@ -155,6 +155,16 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>VIP Type :</td>
+                                        <td>
+                                            <asp:Label ID="lbl_tb1_VIP_STATUS" runat="server"></asp:Label>
+                                        </td>
+                                        <td>VIP Date :</td>
+                                        <td>
+                                            <asp:Label ID="lbl_tb1_VIP_DATE" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td>Customer Address :</td>
                                         <td colspan="3">
                                             <asp:Label ID="lbl_tb1_Customer_Address" runat="server"></asp:Label>
