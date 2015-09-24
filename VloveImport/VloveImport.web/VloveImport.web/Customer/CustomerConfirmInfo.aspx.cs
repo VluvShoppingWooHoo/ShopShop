@@ -129,9 +129,23 @@ namespace VloveImport.web.Customer
                         Post = " + 250.00 ";
                         Post_d = 250;
                     }
+
+                    
+
                     Transport_Amount = Total_Amount * 10 / 100;
-                    lbPayOrder.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00") + Post
-                        + " = " + (Total_Amount + Transport_Amount + Post_d).ToString("###,##0.00") + " บาท";
+                    lbPayOrder.Text = "ชำระเงินรอบแรก = " + Total_Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00") + Post;
+
+                    //VIP
+                    double DiscountVIP = 0;
+                    if (GetCusSession().Cus_VIP_Percent > 0)
+                    {
+                        DiscountVIP = 50;
+                        lbPayOrderVIP.Text = "ได้รับส่วนลดค่าบริการ 50.00 บาท จากการเป็นสมาชิก VIP ";
+                        lbPayOrder.Text = lbPayOrder.Text + " - 50.00";
+                    }
+
+                    lbPayOrder.Text = lbPayOrder.Text + " = " + (Total_Amount + Transport_Amount + Post_d - DiscountVIP).ToString("###,##0.00") + " บาท";
+                    
                     break;
 
                 case "PI":
@@ -144,7 +158,9 @@ namespace VloveImport.web.Customer
                     Amount = data.OD_PRICE * Rate;
                     Transport_Amount = Amount * 10 / 100;
                     lbPayPI.Text = "ชำระเงินรอบแรก = " + Amount.ToString("###,##0.00") + " + " + Transport_Amount.ToString("###,##0.00")
-                         + " + " + Charge.ToString("###,##0.00") + " = " + (Amount + Transport_Amount + Charge).ToString("###,##0.00") + " บาท";
+                         + " + " + Charge.ToString("###,##0.00");
+
+                    lbPayPI.Text = lbPayPI.Text + " = " + (Amount + Transport_Amount + Charge).ToString("###,##0.00") + " บาท";
                     break;
 
                 case "TRANS":
@@ -197,6 +213,15 @@ namespace VloveImport.web.Customer
                     Service = 50;
                 }
 
+                //VIP
+                double DiscountVIP = 0;
+                string VIP = "";
+                if (GetCusSession().Cus_VIP_Percent > 0)
+                {
+                    DiscountVIP = 50;
+                    VIP = "1";
+                }
+
                 ShoppingBiz Biz = new ShoppingBiz();
                 OrderData Data = new OrderData();
                 Data.ORDER_STATUS = 3; //รอชำระเงิน
@@ -212,6 +237,7 @@ namespace VloveImport.web.Customer
                 Data.VIP_DISCOUNT = GetCusSession().Cus_VIP_Percent;
                 Data.TRANSPORT_CUSTOMER_PRICE = Trans_price;
                 Data.SERVICE_CHARGE = Service;
+                Data.SERVICE_CHARGE_DISCOUNT = DiscountVIP;
                 Data.Create_User = User;
 
                 Result = Biz.MakeOrder(Data, dt, User, Rate);
@@ -219,7 +245,7 @@ namespace VloveImport.web.Customer
                 {
                     string Res = "";
                     Int32 OID = Result[1] == "" ? 0 : Convert.ToInt32(Result[1]);
-                    Res = Biz.UpdateOrderPricePIC(OID, "");
+                    Res = Biz.UpdateOrderPricePIC(OID, VIP);
                     if (Res == "")
                     {
                         DataTable dtDetail = new DataTable();

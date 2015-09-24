@@ -130,6 +130,15 @@ namespace VloveImport.web.Customer {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Order;
         
         /// <summary>
+        /// lbPayOrderVIP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbPayOrderVIP;
+        
+        /// <summary>
         /// lbPayOrder control.
         /// </summary>
         /// <remarks>

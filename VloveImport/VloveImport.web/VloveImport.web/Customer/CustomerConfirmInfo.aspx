@@ -118,7 +118,9 @@
                 3. ที่อยู่ในการจัดส่ง
             <asp:Label ID="lbgroup3" runat="server"></asp:Label>
                 <br />
-                หมายเหตุ : กรณีขนส่งไปรษณีย์, ส่งแบบลงทะเบียน, EMS ระบบจะคิดค่าขนล่วงหน้า 200 บาท และค่าบริการ 50 บาท
+                หมายเหตุ : กรณีขนส่งไปรษณีย์, ส่งแบบลงทะเบียน, EMS ระบบจะคิดค่าขนล่วงหน้า 200 บาท และค่าบริการ 50 บาท 
+                <br />
+                หมายเหตุ 2 : กรณีเป็นสมาชิก VIP จะได้รับส่วนลดค่าบริการ 50 บาท
                 <br />
             </div>
             <div id="Order" runat="server" visible="false">
@@ -126,8 +128,10 @@
                 <span class="bold FontHeader orange-text">สรุปยอดค่าใช้จ่าย</span>
                 <br />
                 <div class="row s6 m6 l6 TestBox1">
-                    <asp:Label ID="lbPayOrder" runat="server"></asp:Label>
+                    <asp:Label ID="lbPayOrderVIP" runat="server"></asp:Label>
                     <br />
+                    <asp:Label ID="lbPayOrder" runat="server"></asp:Label>
+                    <br />                    
                     <br />
                     <span class="bold FontHeader2 orange-text">วิธีคิดค่าใช้จ่าย</span>
                     <br />
