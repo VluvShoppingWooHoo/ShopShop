@@ -50,8 +50,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col l12 s12">
+<<<<<<< HEAD
                             <h5 class="">iLoveimport.com@2015 Phannee World Trading Co.,Ltd Email : Info@iloveimport.com</h5>
                             <p class="">V. 1.0</p>
+=======
+                            <h5 class=""> iLoveimport.com@2015 Phannee World Trading Co.,Ltd Email : Info@iloveimport.com</h5>
+                            <p class="">V. 1.0 : iloveImport จะแสดงผลการทำงานได้ดีที่สุดสำหรับ google chrome</p>
+>>>>>>> origin/master
                         </div>
                     </div>
                 </div>

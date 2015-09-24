@@ -121,7 +121,7 @@ namespace VloveImport.web.admin.pages
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckSession();
-            if (!IsPostBack)
+            if (!IsPostBack) 
             {
                 AdminUserData Data = new AdminUserData();
                 Data = (AdminUserData)(Session["AdminUser"]);
@@ -169,7 +169,7 @@ namespace VloveImport.web.admin.pages
 
             if (ds.Tables[0].Rows.Count > 0)
             {
-                _VS_VIP_TYPE = ds.Tables[6].Rows[0]["VIP_TYPE"].ToString();
+                _VS_VIP_TYPE = ds.Tables[0].Rows[0]["VIP_TYPE"].ToString();
 
                 BindData_Tab1(ds.Tables[0]);
                 BindData_Update_STS(ds.Tables[0]);
@@ -239,6 +239,9 @@ namespace VloveImport.web.admin.pages
                 lbl_tb1_Customer_Point.Text = dt.Rows[0]["CUS_POINT"].ToString();
                 lbl_tb1_Customer_Telephone.Text = dt.Rows[0]["CUS_TELEPHONE"].ToString() + " " + dt.Rows[0]["CUS_MOBILE"].ToString();
 
+                lbl_tb1_VIP_STATUS.Text = dt.Rows[0]["VIP_NAME"].ToString();
+                lbl_tb1_VIP_DATE.Text = dt.Rows[0]["VIP_START_DATE_TEXT"].ToString() == "" ? "-" : dt.Rows[0]["VIP_START_DATE_TEXT"].ToString() + " - " + dt.Rows[0]["VIP_END_DATE_TEXT"].ToString();
+                    
                 _VS_CUS_BALANCE = Convert.ToDouble(dt.Rows[0]["CUS_BALANCE"].ToString());
                 _VS_CUS_ID = Convert.ToInt32(dt.Rows[0]["CUS_ID"].ToString());
             }

@@ -46,6 +46,10 @@ namespace VloveImport.web.Customer
                 rdbAddress.DataBind();
                 rdbAddress.SelectedIndex = 0;
                 lb1.Visible = false;
+
+                //Check rdbthai ถ้ามีในกรุงเทพ เปิดให้เลือก "ให้ทางร้านจัดส่งที่บ้าน" ถ้าไม่มีให้ปิดไป
+                if (ds.Tables[0].Select("province_id=100000") == null || ds.Tables[0].Select("province_id=100000").Length == 0)
+                    rdbThai.Items.Remove(rdbThai.Items.FindByText("ให้ทางร้านจัดส่งที่บ้าน"));
             }
             else
             {
