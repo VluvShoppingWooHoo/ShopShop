@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
 
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/ucCustomerStatus.ascx" TagName="ucCustomerStatus" TagPrefix="uc2" %>
@@ -50,13 +50,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col l12 s12">
-<<<<<<< HEAD
-                            <h5 class="">iLoveimport.com@2015 Phannee World Trading Co.,Ltd Email : Info@iloveimport.com</h5>
-                            <p class="">V. 1.0</p>
-=======
+<%--                            <h5 class="">iLoveimport.com@2015 Phannee World Trading Co.,Ltd Email : Info@iloveimport.com</h5>
+                            <p class="">V. 1.0</p>--%>
                             <h5 class=""> iLoveimport.com@2015 Phannee World Trading Co.,Ltd Email : Info@iloveimport.com</h5>
-                            <p class="">V. 1.0 : iloveImport ���ʴ��š�÷ӧҹ��շ���ش����Ѻ google chrome</p>
->>>>>>> origin/master
+                            <p class="">V. 1.0 : iloveImport แสดงผลการทำงานได้ดีที่สุดบน google chrome</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +67,7 @@
         </div>
         <a href="#MastermodalItem" class="modal-trigger" id="Master_link" hidden>content</a>
         <span id="translateFact" hidden>good</span>
-        <%--<input id="translateFact" type="text" value="��" />--%>
+        <%--<input id="translateFact" type="text" value="´Õ" />--%>
         <div id="MastermodalItem" class="modal modal-fixed-footer row" style="background: transparent; box-shadow: none;">
             <div id="loadingMaster" class="preloader-wrapper big active center-Preload-Circle" style="background: transparent; box-shadow: none;">
                 <div class="spinner-layer spinner-yellow">
