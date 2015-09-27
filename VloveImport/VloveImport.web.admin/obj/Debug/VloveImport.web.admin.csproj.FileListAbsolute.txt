@@ -105,7 +105,6 @@ D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHS\AjaxControlToolkit
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHT\AjaxControlToolkit.resources.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.pdb
-D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.csprojResolveAssemblyReference.cache
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.web.admin.dll
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.web.admin.pdb
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\bin\AjaxControlToolkit.dll
@@ -141,5 +140,6 @@ D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\bin\th-TH\A
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\bin\tr-TR\AjaxControlToolkit.resources.dll
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHS\AjaxControlToolkit.resources.dll
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHT\AjaxControlToolkit.resources.dll
+D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.csprojResolveAssemblyReference.cache
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.dll
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.pdb

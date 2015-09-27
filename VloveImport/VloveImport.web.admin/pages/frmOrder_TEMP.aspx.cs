@@ -68,6 +68,12 @@ namespace VloveImport.web.admin.pages
             set { ViewState["__VS_TRANSPORT_CH_TH_METHOD"] = value; }
         }
 
+        public string _VS_TRANSPORT_TH_CU_METHOD
+        {
+            get { return ViewState["__VS_TRANSPORT_TH_CU_METHOD"].ToString(); }
+            set { ViewState["__VS_TRANSPORT_TH_CU_METHOD"] = value; }
+        }
+
         public string _VS_CAL_TRANSPORT_SHOP_RATE
         {
             get { return ViewState["__VS_CAL_TRANSPORT_SHOP_RATE"].ToString(); }
@@ -114,6 +120,12 @@ namespace VloveImport.web.admin.pages
         {
             get { return ViewState["__VS_VIP_TYPE"].ToString(); }
             set { ViewState["__VS_VIP_TYPE"] = value; }
+        }
+
+        public string _TRANSPORT_PROVINCE
+        {
+            get { return ViewState["__TRANSPORT_PROVINCE"].ToString(); }
+            set { ViewState["__TRANSPORT_PROVINCE"] = value; }
         }
 
         #endregion
@@ -170,6 +182,7 @@ namespace VloveImport.web.admin.pages
             if (ds.Tables[0].Rows.Count > 0)
             {
                 _VS_VIP_TYPE = ds.Tables[0].Rows[0]["VIP_TYPE"].ToString();
+                _TRANSPORT_PROVINCE = ds.Tables[0].Rows[0]["TRANSPORT_PROVINCE"].ToString();
 
                 BindData_Tab1(ds.Tables[0]);
                 BindData_Update_STS(ds.Tables[0]);
@@ -297,7 +310,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb2_Total_Prodcut_Active_Price.Text = (Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()) * _VS_EXCH_RATE).ToString("N", new CultureInfo("en-US")) + "(THB)<br><span style =\"color:red;\">(" + Convert.ToDouble(dt.Rows[0]["TOTAL_PRODUCT_PRICE_ACTIVE"].ToString()).ToString("N", new CultureInfo("en-US")) + ")(CNY)</span>";
 
                 lbl_tb2_Total_Transport_Active_Price.Text = Convert.ToDouble(dt.Rows[0]["TOTAL_TRANSPORT_PRICE"].ToString()).ToString("N", new CultureInfo("en-US"));
-                lbl_tb2_Service_Charge.Text = Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE"].ToString()).ToString("N", new CultureInfo("en-US"));
+                lbl_tb2_Service_Charge.Text = (strToDouble(dt.Rows[0]["SERVICE_CHARGE"].ToString()) - strToDouble(dt.Rows[0]["SERVICE_CHARGE_DISCOUNT"].ToString())).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Discount.Text = Convert.ToDouble(dt.Rows[0]["ORDER_DISCOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
                 lbl_tb2_Actually_Amounte.Text = Convert.ToDouble(dt.Rows[0]["ACTUALLY_AMOUNT"].ToString()).ToString("N", new CultureInfo("en-US"));
 
@@ -353,6 +366,7 @@ namespace VloveImport.web.admin.pages
             _VS_ORDER_STS = dt.Rows[0]["ORDER_STATUS"].ToString();
             _VS_ORDER_TRAN_STS = dt.Rows[0]["TRANSPORT_STATUS"].ToString();
             _VS_TRANSPORT_CH_TH_METHOD = dt.Rows[0]["TRANSPORT_CH_TH_METHOD"].ToString();
+            _VS_TRANSPORT_TH_CU_METHOD = dt.Rows[0]["TRANSPORT_TH_CU_METHOD"].ToString();
             _VS_EXCH_RATE = Convert.ToDouble(dt.Rows[0]["ORDER_CURRENCY"].ToString());
             _VS_ORDER_TYPE = dt.Rows[0]["ORDER_TYPE"].ToString();
 
@@ -1150,6 +1164,18 @@ namespace VloveImport.web.admin.pages
                 lbl_tb3_Total_Transport_CH_TO_TH_TOTAL.Text = (TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
                 //Tab 2
                 lbl_tb2_Total_Transport_CH_TO_TH.Text = (TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
+                if (strToDouble(txt_Transport_Cus_Price.Text.Trim()) <= 0 && _VS_TRANSPORT_TH_CU_METHOD == "7" && _TRANSPORT_PROVINCE == "100000")
+                {
+                    if ((TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE) < 5000)
+                    {
+                        txt_Transport_Cus_Price.Text = "200";
+                    }
+                    else
+                    {
+                        txt_Transport_Cus_Price.Text = "200";
+                        txtDiscountCus_TRANSPORT.Text = "200";
+                    }
+                }
 
                 lbl_tb3_Total_Transport_To_Customer_TOTAL.Text = (TRAN_CUS_PRICE - DISCOUNT_TRANSPORT_CUS_PRICE).ToString("N", new CultureInfo("en-US")) + "(THB)";
                 lbl_tb3_Service_Charge_TOTAL.Text = (SERVICE_CHARGE - DISCOUNT_SERVICE_CHARGE).ToString("N", new CultureInfo("en-US")) + "(THB)";
