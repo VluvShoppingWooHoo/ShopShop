@@ -60,6 +60,8 @@ namespace VloveImport.web.Customer
                 if (Status == "8" && Order_Pay <= 0)
                     btnPay.Visible = false;
 
+                lbRemark.Text = dt.Rows[0]["EMP_REMARK"].ToString() == "" ? "-" : dt.Rows[0]["EMP_REMARK"].ToString();
+
                 //Grid                          
                 gvOrder.DataSource = dt;   
                 gvOrder.DataBind();
@@ -165,7 +167,7 @@ namespace VloveImport.web.Customer
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 int Count = 0;
-                string ShopRemark = DataBinder.Eval(e.Row.DataItem, "SHOP_REMARK").ToString();   
+                string ShopRemark = DataBinder.Eval(e.Row.DataItem, "SHOP_REMARK").ToString() == "" ? "-" : DataBinder.Eval(e.Row.DataItem, "SHOP_REMARK").ToString();
                 string ShopName = DataBinder.Eval(e.Row.DataItem, "SHOPNAME").ToString();
                 if (ViewState["OldShopName"] == null || ViewState["OldShopName"].ToString() != ShopName)
                 {
@@ -190,15 +192,16 @@ namespace VloveImport.web.Customer
                     ShowShop += "ค่าขนส่งระหว่างประเทศ " + Thai.ToString("###,##0.00") + " บาท&nbsp;&nbsp;";
                     ShowShop += "ขนาด " + DataBinder.Eval(e.Row.DataItem, "WEIGHT").ToString() + "&nbsp;&nbsp;";
                     ShowShop += "น้ำหนัก " + DataBinder.Eval(e.Row.DataItem, "SIZE").ToString() + "&nbsp;&nbsp;";
+                    //ShowShop += "<br/>หมายเหตุ : " + DataBinder.Eval(e.Row.DataItem, "SHOP_REMARK").ToString() == "" ? "-" : DataBinder.Eval(e.Row.DataItem, "SHOP_REMARK").ToString();
 
                     lbShopName.Text = ShowShop;
                     cell.Controls.Add(lbShopName);
-                    if (ShopRemark != "")
-                    {
+                    //if (ShopRemark != "")
+                    //{
                         lbRemark.Visible = true;
-                        lbRemark.Text = "<br/>หมายเหตุ : <br/>" + ShopRemark;
+                        lbRemark.Text = "หมายเหตุ : " + ShopRemark;
                         cell.Controls.Add(lbRemark);
-                    }
+                    //}
 
                     row.Cells.Add(cell);
                     row.CssClass = "gv-shopname";

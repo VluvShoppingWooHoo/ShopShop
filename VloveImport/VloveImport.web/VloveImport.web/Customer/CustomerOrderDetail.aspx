@@ -76,6 +76,15 @@
             <asp:Label ID="lbPayAdd" runat="server" CssClass="lbCaption right-align" Width="150px"></asp:Label>
         </div>   
     </div>
+    <div class="row">
+        <div class="col s2 m2 l2">              
+            <span class="black-text FontHeader">หมายเหตุจากระบบ</span><br />            
+        </div>
+        <div class="col s10 m10 l10">             
+            <asp:Label ID="lbRemark" runat="server" CssClass="lbCaption"></asp:Label>
+        </div>  
+    </div>
+    <br />
     <div class="row">        
         <div class="col s12 m12 l12">           
             <span class="black-text FontHeader">ทั้งหมด </span> <asp:Label ID="lbOrderAmount" runat="server" CssClass="lbCaption"></asp:Label> 
