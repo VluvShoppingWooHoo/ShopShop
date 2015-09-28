@@ -45,6 +45,8 @@
             }
         }
 
+       
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -1032,11 +1034,19 @@
                 </table>
             </asp:Panel>
 
+            <script type ="text/javascript">
+                alert(document.getElementById('<%=lbl_tb2_Total_Refund.ClientID%>').innerText);
+            </script>
+
+
         </ContentTemplate>
         <Triggers>
             <asp:PostBackTrigger ControlID="btnUpload" />
         </Triggers>
     </asp:UpdatePanel>
+
+
+
 
 </asp:Content>
 
