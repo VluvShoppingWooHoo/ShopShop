@@ -51,7 +51,10 @@ namespace VloveImport.web.Customer
             CustomerData Cust = new CustomerData();
             Cust = Logon.LogonDBCustomer(UserName, Password, isFB);
             if (Cust != null)
+            {
                 Session["User"] = Cust;
+                Session["VipLevel"] = Cust.Cus_VIP_ID;
+            }
         }        
 
         [WebMethod]
