@@ -51,6 +51,7 @@ namespace VloveImport.biz
                         Cust.Activate_Date = Convert.ToDateTime(dt.Rows[0]["Activate_Date"].ToString());
 
                     //VIP
+                    Cust.Cus_VIP_ID = dt.Rows[0]["VIP_ID"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["VIP_ID"].ToString());
                     Cust.Cus_VIP_Percent = dt.Rows[0]["VIP_PERCENT"].ToString() == "" ? 0 : Convert.ToInt32(dt.Rows[0]["VIP_PERCENT"].ToString());
                     if (dt.Rows[0]["TRANS_DATE"].ToString() != "")
                         Cust.Cus_VIP_Trans_Date = Convert.ToDateTime(dt.Rows[0]["TRANS_DATE"].ToString());

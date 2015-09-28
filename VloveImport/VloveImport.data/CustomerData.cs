@@ -80,6 +80,7 @@ namespace VloveImport.data
         #endregion
 
         #region Customer VIP
+        public int Cus_VIP_ID { get; set; }
         public int Cus_VIP_Percent { get; set; }
         public DateTime Cus_VIP_Trans_Date { get; set; }
         public DateTime Cus_VIP_Start_Date { get; set; }
