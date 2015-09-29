@@ -105,7 +105,7 @@
             <div style="margin: 5px 0px 5px 0px;">
                 หมายเหตุ
             <br />
-                <asp:TextBox ID="txtCusRemark" runat="server" Rows="4" TextMode="MultiLine" Width="50%" Height="400px"></asp:TextBox>
+                <asp:TextBox ID="txtCusRemark" runat="server" Rows="4" TextMode="MultiLine" Width="70%" Height="200px"></asp:TextBox>
             </div>
             <br />
             <div class="row s6 m6 l6 TestBox1">
