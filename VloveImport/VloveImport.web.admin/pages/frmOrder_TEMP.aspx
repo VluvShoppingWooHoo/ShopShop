@@ -67,6 +67,7 @@
     }
 
     function CalPrice() {
+
         //Service_Charge Tab2
             var ServiceCh = parseFloat(document.getElementById('<%=txt_Service_Charge.ClientID%>').value.replace(",", ""));
         var ServiceCh_Dis = parseFloat(document.getElementById('<%=txtDiscountServiceCh.ClientID%>').value.replace(",", ""));
@@ -111,8 +112,10 @@
         var ProductPrice = parseFloat(document.getElementById('<%=lbl_tb2_Total_Prodcut_Active_Price.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
         var TotalInCome = parseFloat(document.getElementById('<%=lbl_tb2_Total_Income.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
 
+
+
             var Actually_Amount = ProductPrice + TotalTranSport_Total - OrderDiscount;
-            var OrderBalance = Actually_Amount - TotalInCome;
+            var OrderBalance = (Actually_Amount + 0) - TotalInCome; //ChargeTranSportPrice
             document.getElementById('<%=lbl_tb2_Actually_Amounte.ClientID%>').innerText = addCommas(Actually_Amount);
 
             if (OrderBalance > 0) {
@@ -438,7 +441,7 @@
                                     <tr>
                                         <td width="25%" class="auto-style1">Order Status :</td>
                                         <td width="75%" colspan="3" class="auto-style1">
-                                            <asp:DropDownList Width="300px" ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged">
+                                            <asp:DropDownList Width="300px" ID="ddl_ViewDetail_ORDER_STATUS" runat="server" AutoPostBack="True" onChange ="CalPrice();" OnSelectedIndexChanged="ddl_ViewDetail_ORDER_STATUS_SelectedIndexChanged">
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
