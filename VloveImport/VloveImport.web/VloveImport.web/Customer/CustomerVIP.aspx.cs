@@ -99,9 +99,27 @@ namespace VloveImport.web.Customer
 
                     //Insert Transaction
                     string Result = "";
+                    TransactionData data = GetDataTran(Price);
+                    CustomerBiz bizcus = new CustomerBiz();
+                    Result = bizcus.INS_UPD_TRANSACTION(data, "INS", 0);
+                    if (Result != "")
+                    {
+                        WriteLog(Page.Request.Url.AbsolutePath, "Regis VIP", Result);
+                        ShowMessageBox("สมัคร VIP ไม่สำเร็จ กรุณาติดต่อผู้ดูแลระบบ");
+                        return;
+                    }
                     Result = Biz.Regis_VIP(GetCusID(), VIP_ID);
                     if (Result == "")
+                    {
+                        LogonBiz biz = new LogonBiz();
+                        CustomerData Cust = new CustomerData();
+                        Cust = biz.LogonDBCustomer(GetCusEmail(), DecryptData(GetCusSession().Cus_Password), 0);
+                        if (Cust != null)
+                            Session["User"] = Cust;
+
+                        BindHistoryVIP();
                         ShowMessageBox("ลูกค้าเป็นสมาชิก VIP เรียบร้อยแล้ว");
+                    }
                     else
                     {
                         WriteLog(Page.Request.Url.AbsolutePath, "Regis VIP", Result);
@@ -120,6 +138,20 @@ namespace VloveImport.web.Customer
                 ShowMessageBox("กรุณาเลือกบริการ ViP ที่ลูกค้าต้องการ");
                 return;
             }
+        }
+
+        protected TransactionData GetDataTran(double Amount)
+        {
+            TransactionData data = new TransactionData();
+            data.TRAN_TYPE = 2; //เงินออก
+            data.TRAN_TABLE_TYPE = 5; //VIP
+            data.TRAN_STATUS = 2; //Approved
+            data.TRAN_DETAIL = "Regis VIP";
+            data.TRAN_AMOUNT = Amount;
+            data.Cus_ID = GetCusID();
+            //data.ORDER_ID = OID == "" ? 0 : Convert.ToInt32(OID);
+
+            return data;
         }
     }
 } 

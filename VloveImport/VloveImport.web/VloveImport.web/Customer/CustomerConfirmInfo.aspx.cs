@@ -207,18 +207,20 @@ namespace VloveImport.web.Customer
                 string User = GetCusCode();
                 double Rate = GetRateCurrency();
                 double Trans_price = 0, Service = 0;
+                double DiscountVIP = 0;
+                string VIP = "";
+
                 if (spl[1].Split('|')[1] == "ส่งไปรษณีย์" || spl[1].Split('|')[1] == "ส่งแบบลงทะเบียน" || spl[1].Split('|')[1] == "EMS")
                 {
                     Trans_price = 200;
                     Service = 50;
+                    if (GetCusSession().Cus_VIP_Percent > 0)              
+                        DiscountVIP = 50;
                 }
 
-                //VIP
-                double DiscountVIP = 0;
-                string VIP = "";
+                //VIP                
                 if (GetCusSession().Cus_VIP_Percent > 0)
                 {
-                    DiscountVIP = 50;
                     VIP = "1";
                 }
 
