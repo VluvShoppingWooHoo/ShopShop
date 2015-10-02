@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="VloveImport.web.admin.MasterPage.Site1" %>
+
+<%@ Register src="../UserControls/ucMenubar.ascx" tagname="ucMenubar" tagprefix="uc1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+<center>
+    <table style ="width:1200px;">
+        <tr>
+            <td style ="text-align:center;">
+                <table>
+                    <tr>
+                        <td class ="width55 ItemStyle-center">
+                            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/logo/LOGO-01.jpg" Width="95%" Height="100px" />
+                        </td>
+                        <td class ="width45" style ="vertical-align:middle;">
+                            <table>
+                                <tr>
+                                    <td class ="width55 ItemStyle-right">Employee name : </td>
+                                    <td class ="width45">
+                                        <asp:Label ID="lblEmpName" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class ="ItemStyle-right">Username : </td>
+                                    <td>
+                                        <asp:Label ID="lblUser" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class ="ItemStyle-right">User Group :</td>
+                                    <td>
+                                        <asp:Label ID="lblUserGroup" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <uc1:ucMenubar ID="ucMenubar1" runat="server" />              
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization ="true"></asp:ScriptManager>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+</center>
+    </form>
+</body>
+</html>

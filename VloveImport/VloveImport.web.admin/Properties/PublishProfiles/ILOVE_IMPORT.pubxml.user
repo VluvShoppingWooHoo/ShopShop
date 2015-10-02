@@ -1,7 +1,371 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
 This file is used by the publish/package process of your Web project. You can customize the behavior of this process
 by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Themes/v_th1/css.css">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/input-background-notice.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/input-background-readonly.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/input-background-warning.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/input-background.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_active.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_hover.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_Inactive.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_left_active.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_left_hover.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_left_inactive.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_right_active.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_right_hover.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/images/tab_right_inactive.gif">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/report.css">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="App_Themes/v_th1/Skin1.skin">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.pdb">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/App_Code.compiled">
+      <publishTime>10/02/2015 23:17:42</publishTime>
+    </File>
+    <File Include="bin/App_Code.dll">
+      <publishTime>10/02/2015 23:17:42</publishTime>
+    </File>
+    <File Include="bin/ar/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/cs/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/de/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/EncrypDLL.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/EPPlus.dll">
+      <publishTime>04/24/2015 09:37:40</publishTime>
+    </File>
+    <File Include="bin/es/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/fr/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/he/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/hi/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="bin/it/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>09/19/2015 22:01:49</publishTime>
+    </File>
+    <File Include="bin/itextsharp.xmlworker.dll">
+      <publishTime>09/19/2015 22:01:58</publishTime>
+    </File>
+    <File Include="bin/ja/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/ko/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/nl/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/pt/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/ru/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/th-TH/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/tr-TR/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/VloveImport.biz.dll">
+      <publishTime>09/28/2015 22:29:48</publishTime>
+    </File>
+    <File Include="bin/VloveImport.biz.pdb">
+      <publishTime>09/28/2015 22:29:48</publishTime>
+    </File>
+    <File Include="bin/VloveImport.dal.dll">
+      <publishTime>09/28/2015 22:29:47</publishTime>
+    </File>
+    <File Include="bin/VloveImport.dal.pdb">
+      <publishTime>09/28/2015 22:29:47</publishTime>
+    </File>
+    <File Include="bin/VloveImport.data.dll">
+      <publishTime>09/28/2015 22:29:47</publishTime>
+    </File>
+    <File Include="bin/VloveImport.data.pdb">
+      <publishTime>09/28/2015 22:29:47</publishTime>
+    </File>
+    <File Include="bin/VloveImport.util.dll">
+      <publishTime>09/28/2015 22:29:47</publishTime>
+    </File>
+    <File Include="bin/VloveImport.util.pdb">
+      <publishTime>09/28/2015 22:29:47</publishTime>
+    </File>
+    <File Include="bin/VloveImport.web.admin.dll">
+      <publishTime>10/02/2015 23:17:35</publishTime>
+    </File>
+    <File Include="bin/VloveImport.web.admin.pdb">
+      <publishTime>10/02/2015 23:17:35</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/AjaxControlToolkit.resources.dll">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="css/style.css">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="DB/db_batt_20150331.bak">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="frmAdminIndex.aspx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="frmError.aspx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="images/bg.jpg">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="images/bgf.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="images/icon/c_box.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="images/icon/l_box.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="images/icon/r_box.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="images/icons.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/attachment.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/b_edit.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/check-icon.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/Close-2-icon.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/close-icon.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/Close.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/c_box.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/date.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/icon_transport.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/l_box.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/nxt-checkbox-checked-not-ok-md.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/nxt-checkbox-checked-ok-md.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/r_box.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/sendemail.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/sendmailP.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/Sign-Close-icon.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/icon/View.png">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="img/logo/LOGO-01.jpg">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="Logout.aspx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="MasterPage/Site1.Master">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="MasterPage/Site2.Master">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/Encryp.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmAdminSendMail.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmApprovePayment.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmCms.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmCmsHeaderList.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmCmsList.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmConfig.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmConfigList.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmCustomerList.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmGroupUser.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmGroupUserList.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmIndex.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmMasterBank.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmOrder.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmOrderList.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmOrder_TEMP.aspx">
+      <publishTime>10/02/2015 23:05:32</publishTime>
+    </File>
+    <File Include="pages/frmProductOrderList.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmSummaryVIP.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmUser.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="pages/frmUserList.aspx">
+      <publishTime>09/17/2015 23:15:33</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>10/02/2015 23:17:39</publishTime>
+    </File>
+    <File Include="Properties/PublishProfiles/ILOVE_IMPORT.pubxml">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="Report/frmReportCustomerOrder.aspx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="Test.aspx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="UserControls/ucApprovePaymentDetail.ascx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="UserControls/ucCalendar.ascx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="UserControls/ucCustomerDetail.ascx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="UserControls/ucEmail.ascx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="UserControls/ucImage.ascx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="UserControls/ucMenubar.ascx">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="VloveImport.web.admin.csproj">
+      <publishTime>09/19/2015 22:03:29</publishTime>
+    </File>
+    <File Include="VloveImport.web.admin.csproj.user">
+      <publishTime>10/02/2015 23:17:34</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/02/2015 23:17:37</publishTime>
+    </File>
+    <File Include="Web.Debug.config">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+    <File Include="Web.Release.config">
+      <publishTime>09/17/2015 23:15:32</publishTime>
+    </File>
+  </ItemGroup>
 </Project>

@@ -109,20 +109,30 @@
             document.getElementById('<%=lbl_tb2_Total_Transport_Active_Price.ClientID%>').innerText = addCommas(TotalTranSport_Total); 
 
             //Tab 2 Header Cal
-        var ProductPrice = parseFloat(document.getElementById('<%=lbl_tb2_Total_Prodcut_Active_Price.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
-        var TotalInCome = parseFloat(document.getElementById('<%=lbl_tb2_Total_Income.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
+            var ProductPrice = parseFloat(document.getElementById('<%=lbl_tb2_Total_Prodcut_Active_Price.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
+            var TotalInCome = parseFloat(document.getElementById('<%=lbl_tb2_Total_Income.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
 
-
+            var Order_status = parseInt('<%=ddl_ViewDetail_ORDER_STATUS.SelectedValue%>');
+            var TranSport_Percent = parseFloat('<%=lbl_tb1_TranSport_Percent.Text.Replace("%","").Trim()%>');
+            var ChargeTranSportPrice = 0;
+            if (Order_status < 7) {
+                ChargeTranSportPrice = parseFloat(ProductPrice * (TranSport_Percent / 100.00));
+            }
 
             var Actually_Amount = ProductPrice + TotalTranSport_Total - OrderDiscount;
-            var OrderBalance = (Actually_Amount + 0) - TotalInCome; //ChargeTranSportPrice
+            
+            var OrderBalance = (Actually_Amount + ChargeTranSportPrice) - TotalInCome; //ChargeTranSportPrice
+
+            //alert(Actually_Amount + ":::::" + ChargeTranSportPrice + ":::-::" + TotalInCome);
             document.getElementById('<%=lbl_tb2_Actually_Amounte.ClientID%>').innerText = addCommas(Actually_Amount);
 
-            if (OrderBalance > 0) {
+        if (OrderBalance > 0) {
+            //alert(OrderBalance);
                 document.getElementById('<%=lbl_tb2_Total_Refund.ClientID%>').innerText = "0.00";
                 document.getElementById('<%=lbl_tb2_Additional_Amount.ClientID%>').innerText = addCommas(OrderBalance);
             }
             else if (OrderBalance < 0) {
+                //alert(OrderBalance);
                 document.getElementById('<%=lbl_tb2_Total_Refund.ClientID%>').innerText = addCommas((OrderBalance * -1));
                 document.getElementById('<%=lbl_tb2_Additional_Amount.ClientID%>').innerText = "0.00";
             }
@@ -833,6 +843,8 @@
             <table class="width100">
                 <tr>
                     <td class="ItemStyle-center">
+                        <asp:Button ID="btnPrint" runat="server" Text="Print Invoice" CssClass=" btnSave" OnClick="btnPrint_Click"></asp:Button>
+                        &nbsp;&nbsp;
                         <asp:Button ID="btnCancleOrder" runat="server" Text="Cancle Order" CssClass=" btnCancel" OnClick="btnCancleOrder_Click"></asp:Button>
                         &nbsp;&nbsp;
             <asp:Button ID="btnback" runat="server" Text="Back To Order List" CssClass="btnCancel" OnClick="btnback_Click"></asp:Button>
@@ -1111,6 +1123,7 @@
         </ContentTemplate>
         <Triggers>
             <asp:PostBackTrigger ControlID="btnUpload" />
+            <asp:PostBackTrigger ControlID="btnPrint" />
         </Triggers>
     </asp:UpdatePanel>
 
