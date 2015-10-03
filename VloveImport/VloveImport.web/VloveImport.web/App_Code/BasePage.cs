@@ -312,13 +312,18 @@ namespace VloveImport.web.App_Code
             }
             return dateSave;
         }
-        #endregion
+        #endregion        
 
         #region WriteLog
         public void WriteLog(string Page, string Function, string Error)
         {
+            Error = " || " + Request.Browser.Type;
             commonBiz biz = new commonBiz();
             biz.WriteLog(Page, Function, Error);
+            if (Function != "Login")
+            {
+                SendMail("eakkarat_5@hotmail.com", Page + " " + Function, Error + " " + DateTime.Now);
+            }
         }
         #endregion
 
