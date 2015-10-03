@@ -87,6 +87,8 @@ namespace VloveImport.biz
                 txt += "<tr><td></td><td></td><td>Total Transport Active Price : </td><td class=''valueCell''>" + String.Format("{0:N2}", dt3.Rows[0]["TOTAL_TRANSPORT_PRICE"]) + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Service Charge : </td><td class=''valueCell''>" + String.Format("{0:N2}", dt3.Rows[0]["SERVICE_CHARGE"]) + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Discount : </td><td class=''valueCell''>" + String.Format("{0:N2}", dt3.Rows[0]["ORDER_DISCOUNT"]) + "</td></tr>";
+                txt += "<tr><td></td><td></td><td>Vip Discount : </td><td class=''valueCell''>" + String.Format("{0:N2}", dt3.Rows[0]["TOTAL_VIP_DISCOUNT"]) + "</td></tr>";
+                txt += "<tr><td></td><td></td><td>Transport Discount: </td><td class=''valueCell''>" + String.Format("{0:N2}", dt3.Rows[0]["TRANSPORT_CUSTOMER_PRICE_DIS"]) + "</td></tr>";
                 txt += "<tr><td></td><td></td><td>Acually Amount : </td><td class=''valueCell''>" + String.Format("{0:N2}", dt3.Rows[0]["ACTUALLY_AMOUNT"]) + "</td></tr>";
                 txt += "</tbody></table></fieldset>";
                 #endregion
@@ -96,9 +98,9 @@ namespace VloveImport.biz
                 txt += "<tr><td>Transport Status : </td><td class=''''>" + dt4.Rows[0]["TRANSPORT_STATUS"] + "</td><td></td><td></td></tr>";
                 txt += "<tr><td>Remark : </td><td class=''''>" + dt4.Rows[0]["EMP_REMARK"] + "</td><td></td><td></td></tr>";
                 txt += "</tbody></table></fieldset>";
-                #endregion
-                #endregion
                 txt += "</body></html>";
+                #endregion
+                #endregion
             }
             catch (Exception ex)
             {
