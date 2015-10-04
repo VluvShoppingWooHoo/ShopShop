@@ -137,7 +137,7 @@ namespace VloveImport.web.Customer
 
                     //VIP
                     double DiscountVIP = 0;
-                    if (GetCusSession().Cus_VIP_Percent > 0)
+                    if (GetCusSession().Cus_VIP_Percent > 0 && (spl[1].Split('|')[1] == "ส่งไปรษณีย์" || spl[1].Split('|')[1] == "ส่งแบบลงทะเบียน" || spl[1].Split('|')[1] == "EMS"))
                     {
                         DiscountVIP = 50;
                         lbPayOrderVIP.Text = "ได้รับส่วนลดค่าบริการ 50.00 บาท จากการเป็นสมาชิก VIP ";

@@ -317,7 +317,7 @@ namespace VloveImport.web.App_Code
         #region WriteLog
         public void WriteLog(string Page, string Function, string Error)
         {
-            Error = " || " + Request.Browser.Type;
+            Error = Error + " || " + Request.Browser.Type.ToUpper().ToString();
             commonBiz biz = new commonBiz();
             biz.WriteLog(Page, Function, Error);
             if (Function != "Login")
