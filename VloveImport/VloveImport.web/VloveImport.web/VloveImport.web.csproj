@@ -103,8 +103,6 @@
     <Content Include="Administrator\Encryp.aspx" />
     <Content Include="Administrator\frmUserList.aspx" />
     <Content Include="Administrator\page_ms_bank.aspx" />
-    <Content Include="App_Themes\font\flaticon2\flaticon.css" />
-    <Content Include="App_Themes\font\flaticon2\flaticon.svg" />
     <Content Include="App_Themes\font\flaticon\flaticon.css" />
     <Content Include="App_Themes\css\materialize.css" />
     <Content Include="App_Themes\css\materialize.min.css" />
@@ -773,9 +771,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Themes\font\flaticon2\flaticon.eot" />
-    <Content Include="App_Themes\font\flaticon2\flaticon.ttf" />
-    <Content Include="App_Themes\font\flaticon2\flaticon.woff" />
     <None Include="Properties\PublishProfiles\Web.pubxml" />
     <Content Include="Script\20150404.bak" />
     <Content Include="Script\20150411.bak" />
