@@ -118,6 +118,7 @@ namespace VloveImport.web.Customer
                             Session["User"] = Cust;
 
                         BindHistoryVIP();
+                        GetMymoney();
                         ShowMessageBox("ลูกค้าเป็นสมาชิก VIP เรียบร้อยแล้ว");
                     }
                     else
