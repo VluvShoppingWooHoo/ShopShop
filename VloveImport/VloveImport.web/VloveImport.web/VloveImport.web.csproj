@@ -155,6 +155,7 @@
     <Content Include="exe\chromedriver.exe" />
     <Content Include="exe\phantomjs.exe" />
     <Content Include="frmError.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="Images\btn\confirm.gif" />
     <Content Include="Images\btn\Order.gif" />
     <Content Include="Images\demo\logo_all_company.png" />
@@ -224,6 +225,7 @@
     <Content Include="Images\pic\Banner\ILoveImport.jpg" />
     <Content Include="Images\pic\Logo\LOGO-01.jpg" />
     <Content Include="Images\pic\MapCargo.png" />
+    <Content Include="Images\pic\Under-construction.png" />
     <Content Include="Images\pic\User.png" />
     <Content Include="Images\pic\RateImport-Q.gif" />
     <Content Include="Images\pic\Banner\Sale.jpg" />
@@ -321,6 +323,9 @@
     </Compile>
     <Compile Include="Customer\CustomerVIP.aspx.designer.cs">
       <DependentUpon>CustomerVIP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="PdfClass.cs" />
     <Compile Include="Customer\Activate.aspx.cs">
