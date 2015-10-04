@@ -105,12 +105,14 @@ namespace VloveImport.web.admin.pages
                         string folder = Server.MapPath("~/Line_Attachment").Replace("admin.iloveimport.com", "Attachment\\IMG_CMS");
 
                         //lblERR2.Text = folder;
-
+                        string date = DateTime.Now.ToString("yyyyMMddHHmmss");
                         bool exists = System.IO.Directory.Exists(folder);
                         if (!exists)
                             System.IO.Directory.CreateDirectory(folder);
-                        FileUploadControl.SaveAs(folder + "\\" + Path.GetFileName(FileUploadControl.FileName));
-                        string filename = "Line_Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
+                        FileUploadControl.SaveAs(folder + "\\" + date);
+                        string filename = "Line_Attachment" + "\\" + date;
+                        //FileUploadControl.SaveAs(folder + "\\" + Path.GetFileName(FileUploadControl.FileName));
+                        //string filename = "Line_Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
 
                         //lblERR3.Text = filename;
 

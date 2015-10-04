@@ -18,7 +18,7 @@ namespace VloveImport.web.admin
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string OID = "109";
+            string OID = "170";
 
             ReportBiz report = new ReportBiz();
             DataSet ds = report.GetOrderDetail(int.Parse(OID));

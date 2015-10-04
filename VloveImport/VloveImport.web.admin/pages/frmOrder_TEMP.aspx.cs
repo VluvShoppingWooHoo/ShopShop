@@ -587,12 +587,12 @@ namespace VloveImport.web.admin.pages
             }
             else
             {
-                if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) > 0 && Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue) > 7)
-                {
-                    ShowMessageBox("Please select the items waiting for payment", this.Page);
-                    //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
-                    return;
-                }
+                //if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) > 0 && Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue) > 7)
+                //{
+                //    ShowMessageBox("Please select the items waiting for payment", this.Page);
+                //    //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
+                //    return;
+                //}
 
                 if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7"))
                 {

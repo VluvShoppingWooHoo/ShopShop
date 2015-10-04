@@ -112,16 +112,9 @@
             var ProductPrice = parseFloat(document.getElementById('<%=lbl_tb2_Total_Prodcut_Active_Price.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
             var TotalInCome = parseFloat(document.getElementById('<%=lbl_tb2_Total_Income.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
 
-            var Order_status = parseInt('<%=ddl_ViewDetail_ORDER_STATUS.SelectedValue%>');
-            var TranSport_Percent = parseFloat('<%=lbl_tb1_TranSport_Percent.Text.Replace("%","").Trim()%>');
-            var ChargeTranSportPrice = 0;
-            if (Order_status < 7) {
-                ChargeTranSportPrice = parseFloat(ProductPrice * (TranSport_Percent / 100.00));
-            }
-
             var Actually_Amount = ProductPrice + TotalTranSport_Total - OrderDiscount;
             
-            var OrderBalance = (Actually_Amount + ChargeTranSportPrice) - TotalInCome; //ChargeTranSportPrice
+            var OrderBalance = (Actually_Amount) - TotalInCome; //ChargeTranSportPrice
 
             //alert(Actually_Amount + ":::::" + ChargeTranSportPrice + ":::-::" + TotalInCome);
             document.getElementById('<%=lbl_tb2_Actually_Amounte.ClientID%>').innerText = addCommas(Actually_Amount);
@@ -129,7 +122,15 @@
         if (OrderBalance > 0) {
             //alert(OrderBalance);
                 document.getElementById('<%=lbl_tb2_Total_Refund.ClientID%>').innerText = "0.00";
-                document.getElementById('<%=lbl_tb2_Additional_Amount.ClientID%>').innerText = addCommas(OrderBalance);
+
+                var Order_status = parseInt('<%=ddl_ViewDetail_ORDER_STATUS.SelectedValue%>');
+                var TranSport_Percent = parseFloat('<%=lbl_tb1_TranSport_Percent.Text.Replace("%","").Trim()%>');
+                var ChargeTranSportPrice = 0;
+                if (Order_status < 7) {
+                    ChargeTranSportPrice = parseFloat(ProductPrice * (TranSport_Percent / 100.00));
+                }
+
+                document.getElementById('<%=lbl_tb2_Additional_Amount.ClientID%>').innerText = addCommas(OrderBalance + ChargeTranSportPrice);
             }
             else if (OrderBalance < 0) {
                 //alert(OrderBalance);

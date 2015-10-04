@@ -587,12 +587,12 @@ namespace VloveImport.web.admin.pages
             }
             else
             {
-                if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) > 0 && Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue) > 7)
-                {
-                    ShowMessageBox("Please select the items waiting for payment", this.Page);
-                    //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
-                    return;
-                }
+                //if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) > 0 && Convert.ToInt32(ddl_ViewDetail_ORDER_STATUS.SelectedValue) > 7)
+                //{
+                //    ShowMessageBox("Please select the items waiting for payment", this.Page);
+                //    //ไม่สามารถเลือก สถานะนี้ได้เนื่องจากยอดเงิน ไม่ต้องจ่ายเพิ่ม
+                //    return;
+                //}
 
                 if (Convert.ToDouble(lbl_tb2_Additional_Amount.Text) == 0 && (ddl_ViewDetail_ORDER_STATUS.SelectedValue == "5" || ddl_ViewDetail_ORDER_STATUS.SelectedValue == "7"))
                 {
@@ -643,7 +643,7 @@ namespace VloveImport.web.admin.pages
                 //    }
                 //}
 
-                if (strToDouble(txt_Transport_Cus_Price.Text.Trim()) <= 0 && _VS_TRANSPORT_TH_CU_METHOD == "7" && _TRANSPORT_PROVINCE == "100000")
+                if (strToDouble(txt_Transport_Cus_Price.Text.Trim()) <= 0 && _VS_TRANSPORT_TH_CU_METHOD == "7" && _TRANSPORT_PROVINCE == "100000" && _VS_VIP_TYPE == "1")
                 {
                     if (strToDouble(lbl_tb2_Total_Transport_CH_TO_TH.Text.Replace("(THB)", "").Trim()) < 5000)
                     {
@@ -1188,7 +1188,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb3_Total_Transport_CH_TO_TH_TOTAL.Text = (TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US"));
                 //Tab 2
                 lbl_tb2_Total_Transport_CH_TO_TH.Text = (TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US"));
-                if (strToDouble(txt_Transport_Cus_Price.Text.Trim()) <= 0 && _VS_TRANSPORT_TH_CU_METHOD == "7" && _TRANSPORT_PROVINCE == "100000")
+                if (strToDouble(txt_Transport_Cus_Price.Text.Trim()) <= 0 && _VS_TRANSPORT_TH_CU_METHOD == "7" && _TRANSPORT_PROVINCE == "100000" && _VS_VIP_TYPE == "1")
                 {
                     if ((TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE) < 5000)
                     {
@@ -1458,6 +1458,20 @@ namespace VloveImport.web.admin.pages
             {
                 ShowMessageBox("Error : " + ex.Message, this.Page);
             }
+        }
+
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+            ReportBiz report = new ReportBiz();
+            DataSet ds = report.GetOrderDetail(strToInt(_VS_ORDER_ID));
+            PdfClass pdf = new PdfClass();
+            byte[] bytes = pdf.PrintPdf(report.GetOrderDetailReport(ds));
+
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + lbl_tb1_order_code.Text + ".pdf");
+            Response.BinaryWrite(bytes);
+            Response.End();
         }
 
     }
