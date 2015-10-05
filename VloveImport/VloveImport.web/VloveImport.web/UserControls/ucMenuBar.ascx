@@ -25,6 +25,7 @@
     <a class="collection-item mOrder" data-id="mOR10">วิธีถอนเงินในระบบ</a>
     <a class="collection-item mOrder" data-id="mOR11">ตารางไซด์เครื่องแต่งกาย</a>
     <a class="collection-item mOrder" data-id="mOR12">วิธีการสมัครสมาชิก</a>
+    <a class="collection-item mOrder" data-id="mOR13">วิธีการสมัครสมาชิก VIP</a>
 
 
     <a class="collection-item mCus black" disabled>ข้อมูลทั่วไป</a>

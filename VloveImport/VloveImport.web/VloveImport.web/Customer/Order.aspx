@@ -1089,6 +1089,32 @@
             </div>
         </div>
     </div>
+    <div id="mOR13" class="mContent">
+        <div class="row">
+            <div class="s12 m12 l12 ContentTitle">
+                วิธีการสมัครสมาชิก VIP
+            </div>
+        </div>
+        <div class="row">
+            <div class="s12 m12 l12">
+                <br /><br />
+                <span class="bold">1. กดข้อมูลของฉัน</span>      <br />    
+                <img src="../Images/pic/VIP/1.png" /><br />
+                <br />
+                <br />
+                <span class="bold">2. กดที่ บริการ VIP</span>    <br />    
+                <img src="../Images/pic/VIP/2.png" /><br />
+                <br />
+                <br />
+                <span class="bold">3. ทำการเลือกประเภท VIP ที่ต้องการ</span>    <br />  
+                <img src="../Images/pic/VIP/3.png" /><br />
+                <br />
+                <br />
+                <span class="bold">4. สามารถตรวจสอบ รายละเอียด VIP ได้</span>    <br />  
+                <img src="../Images/pic/VIP/4.png" /><br />
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
         $(function () {
             SetFadeout();
