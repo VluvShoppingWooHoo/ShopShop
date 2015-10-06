@@ -119,7 +119,7 @@ namespace VloveImport.web.Customer
 
                         BindHistoryVIP();
                         GetMymoney();
-                        bizcus.UPDATE_Customer_Point(GetCusID(), GetCusCode(), 30);//Regis for get 30 point
+                        bizcus.UPDATE_Customer_Point(GetCusID(), 30, GetCusCode());//Regis for get 30 point
                         ShowMessageBox("ลูกค้าเป็นสมาชิก VIP เรียบร้อยแล้ว");
                     }
                     else

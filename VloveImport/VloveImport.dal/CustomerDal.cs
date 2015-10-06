@@ -96,7 +96,7 @@ namespace VloveImport.dal
                 throw new Exception("GET_CUSTOMER_PROFILE_BY_EMAIL -> msg : " + ex.Message);
             }
         }
-        public string UPDATE_Customer_Point(int Cus_id, string Cus_Code, int Point)
+        public string UPDATE_Customer_Point(int Cus_id, int Point, string Cus_Code)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetStoreProcedure("UPDATE_CUSTOMER_POINT");
 
                 SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, Cus_id);
-                SqlCommandData.SetParameter("POINT", SqlDbType.Int, ParameterDirection.Input, Point);
+                SqlCommandData.SetParameter_Input_INT("POINT", SqlDbType.Int, ParameterDirection.Input, Point);
                 SqlCommandData.SetParameter("UPDATE_USER", SqlDbType.VarChar, ParameterDirection.Input, Cus_Code);
 
                 SqlCommandData.ExecuteNonQuery();
@@ -115,7 +115,7 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 SqlCommandData.RollBack();
-                return ("Insert_Customer_Address -> msg : " + ex.Message);
+                return ("UPDATE_Customer_Point -> msg : " + ex.Message);
             }
         }
         #endregion

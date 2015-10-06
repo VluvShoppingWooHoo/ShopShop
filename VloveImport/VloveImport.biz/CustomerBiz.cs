@@ -58,13 +58,13 @@ namespace VloveImport.biz
             else
                 return null;
         }
-        public string UPDATE_Customer_Point(int Cus_id, string Cus_Code, int Point)
+        public string UPDATE_Customer_Point(int Cus_id, int Point, string Cus_Code)
         {
             string Result = "";
             try
             {
                 CustomerDal dal = new CustomerDal("LocalConnection");
-                Result = dal.UPDATE_Customer_Point(Cus_id, Cus_Code, Point);
+                Result = dal.UPDATE_Customer_Point(Cus_id, Point, Cus_Code);
             }
             catch (Exception ex)
             {
