@@ -96,6 +96,28 @@ namespace VloveImport.dal
                 throw new Exception("GET_CUSTOMER_PROFILE_BY_EMAIL -> msg : " + ex.Message);
             }
         }
+        public string UPDATE_Customer_Point(int Cus_id, string Cus_Code, int Point)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("UPDATE_CUSTOMER_POINT");
+
+                SqlCommandData.SetParameter_Input_INT("CUS_ID", SqlDbType.Int, ParameterDirection.Input, Cus_id);
+                SqlCommandData.SetParameter("POINT", SqlDbType.Int, ParameterDirection.Input, Point);
+                SqlCommandData.SetParameter("UPDATE_USER", SqlDbType.VarChar, ParameterDirection.Input, Cus_Code);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("Insert_Customer_Address -> msg : " + ex.Message);
+            }
+        }
         #endregion
 
         #region CUSTOMER ADDRESS
