@@ -143,7 +143,8 @@ namespace VloveImport.web
                     data = ix.Scrap(txt, webMode);
                     data.ItemID = id;
                     data.Web = webMode;
-                    data.ID = sc.InsertUpdateItemID(data, "INS");
+                    if (!data.ItemName.Contains("System.Net.WebException: The remote server"))
+                        data.ID = sc.InsertUpdateItemID(data, "INS");
                 }
                 data.URL = realurl;
                 #endregion
