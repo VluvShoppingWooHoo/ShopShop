@@ -143,7 +143,10 @@ namespace VloveImport.web
                     data = ix.Scrap(txt, webMode);
                     data.ItemID = id;
                     data.Web = webMode;
-                    data.ID = sc.InsertUpdateItemID(data, "INS");
+                    if (!data.ItemName.Contains("System.Net.WebException: The remote server"))
+                        data.ID = sc.InsertUpdateItemID(data, "INS");
+                    else
+                        return "";
                 }
                 data.URL = realurl;
                 #endregion
@@ -451,36 +454,76 @@ namespace VloveImport.web
                 //}
                 #endregion
                 #region V3
+                //List<string> items = new List<string>();
+                //string googlekey = WebConfigurationManager.AppSettings["GreaterGoods"];
+                //string url = String.Format("https://www.googleapis.com/language/translate/v2?key={0}&source=zh-CN&target=en", googlekey);
+                //foreach (string item in val)
+                //{
+                //    if (item != string.Empty)
+                //    {
+                //        url += "&q=" + removeSpecial(item);
+                //    }
+                //}
+                //string result = webClient.DownloadString(url);
+
+                //try
+                //{
+                //    foreach (string item in val)
+                //    {
+                //        if (item != string.Empty)
+                //        {
+                //            string txt = result.Substring(result.IndexOf("translatedText"), result.IndexOf("}") + 1 - result.IndexOf("translatedText"));
+                //            result = result.Replace(txt, string.Empty);
+                //            listResult.Add((txt.Substring(txt.IndexOf(": \"") + 3, txt.LastIndexOf("\n   }") - txt.IndexOf(": \"") - 4)).Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"));
+                //        }
+                //        else
+                //        {
+                //            listResult.Add(item);
+                //        }
+                //    }
+
+                //}
+                //catch (Exception ex) { }
+                #endregion
+                #region V4
                 List<string> items = new List<string>();
                 string googlekey = WebConfigurationManager.AppSettings["GreaterGoods"];
-                string url = String.Format("https://www.googleapis.com/language/translate/v2?key={0}&source=zh-CN&target=en", googlekey);
+                string url = string.Empty;
+                int i = 0;
                 foreach (string item in val)
                 {
                     if (item != string.Empty)
                     {
-                        url += "&q=" + removeSpecial(item);
-                    }
-                }
-                string result = webClient.DownloadString(url);
-
-                try
-                {
-                    foreach (string item in val)
-                    {
-                        if (item != string.Empty)
+                        if (i == 1 || i == 2)
                         {
-                            string txt = result.Substring(result.IndexOf("translatedText"), result.IndexOf("}") + 1 - result.IndexOf("translatedText"));
-                            result = result.Replace(txt, string.Empty);
-                            listResult.Add((txt.Substring(txt.IndexOf(": \"") + 3, txt.LastIndexOf("\n   }") - txt.IndexOf(": \"") - 4)).Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"));
+                            string finResult = string.Empty;
+                            string[] separators = { "||" };
+                            string[] spl = item.Split(separators, StringSplitOptions.None);
+                            foreach (string sp in spl)
+                            {
+                                url = String.Format("https://www.googleapis.com/language/translate/v2?key={0}&source=zh-CN&target=en", googlekey) + "&q=" + removeSpecial(sp);
+                                string result = webClient.DownloadString(url);
+                                string txt = result.Substring(result.IndexOf("translatedText"), result.IndexOf("}") + 1 - result.IndexOf("translatedText"));
+                                finResult += ((txt.Substring(txt.IndexOf(": \"") + 3, txt.LastIndexOf("\n   }") - txt.IndexOf(": \"") - 4)).Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^")) + "||";
+                            }
+                            if (finResult != string.Empty)
+                                finResult = finResult.Remove(finResult.Length - 2, 2);
+                            listResult.Add(finResult);
                         }
                         else
                         {
-                            listResult.Add(item);
+                            url = String.Format("https://www.googleapis.com/language/translate/v2?key={0}&source=zh-CN&target=en", googlekey) + "&q=" + removeSpecial(item);
+                            string result = webClient.DownloadString(url);
+                            string txt = result.Substring(result.IndexOf("translatedText"), result.IndexOf("}") + 1 - result.IndexOf("translatedText"));
+                            listResult.Add((txt.Substring(txt.IndexOf(": \"") + 3, txt.LastIndexOf("\n   }") - txt.IndexOf(": \"") - 4)).Replace(" ^ _p ^ ", "^_p^").Replace(" ^ _ p ^ ", "^_p^"));
                         }
                     }
-
+                    else
+                    {
+                        listResult.Add(item);
+                    }
+                    i++;
                 }
-                catch (Exception ex) { }
                 #endregion
             }
             //catch (Exception ex) { return new List<string>(); }

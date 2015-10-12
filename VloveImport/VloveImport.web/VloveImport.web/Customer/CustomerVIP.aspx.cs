@@ -118,6 +118,8 @@ namespace VloveImport.web.Customer
                             Session["User"] = Cust;
 
                         BindHistoryVIP();
+                        GetMymoney();
+                        bizcus.UPDATE_Customer_Point(GetCusID(), 30, GetCusCode());//Regis for get 30 point
                         ShowMessageBox("ลูกค้าเป็นสมาชิก VIP เรียบร้อยแล้ว");
                     }
                     else

@@ -59,7 +59,7 @@ namespace VloveImport.data
         public string Color { get; set; }
         public string Size { get; set; }
         public string URL { get; set; }
-        public string ShopName { get; set; }    
+        public string ShopName { get; set; }
         public int Web { get; set; }
         #endregion
 

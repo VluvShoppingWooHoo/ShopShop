@@ -97,13 +97,13 @@ namespace VloveImport.web.Customer
                         gvr.Cells[7].Visible = false;
                     }
 
-                    //4 = ชำระเงินแล้ว, 6 = ชำระเงินแล้ว(เพิ่ม)
-                    if (hdd.Value == "4" || hdd.Value == "6")
+                    //4 = ชำระเงินแล้ว, 6 = ชำระเงินแล้ว(เพิ่ม), 10 = ส่งสินค้าแล้ว
+                    if (hdd.Value == "4" || hdd.Value == "6" || hdd.Value == "10")
                         gvr.Cells[6].Visible = false;
 
                     Pay = hdd_Pay.Value == "" ? 0 : Convert.ToDouble(hdd_Pay.Value);
-                    //8 = ชำระเงินแล้ว(รอบ 2), 9 = กำลังดำเนินการจัดสั่ง, 10 = ส่งสินค้าแล้ว
-                    if ((hdd.Value == "8" || hdd.Value == "9" || hdd.Value == "10") && Pay <= 0)
+                    //8 = ชำระเงินแล้ว(รอบ 2), 9 = กำลังดำเนินการจัดสั่ง
+                    if ((hdd.Value == "8" || hdd.Value == "9") && Pay <= 0)
                     {
                         gvr.Cells[6].Visible = false;
                         gvr.Cells[7].Visible = false;

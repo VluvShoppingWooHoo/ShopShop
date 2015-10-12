@@ -103,8 +103,6 @@
     <Content Include="Administrator\Encryp.aspx" />
     <Content Include="Administrator\frmUserList.aspx" />
     <Content Include="Administrator\page_ms_bank.aspx" />
-    <Content Include="App_Themes\font\flaticon2\flaticon.css" />
-    <Content Include="App_Themes\font\flaticon2\flaticon.svg" />
     <Content Include="App_Themes\font\flaticon\flaticon.css" />
     <Content Include="App_Themes\css\materialize.css" />
     <Content Include="App_Themes\css\materialize.min.css" />
@@ -157,6 +155,7 @@
     <Content Include="exe\chromedriver.exe" />
     <Content Include="exe\phantomjs.exe" />
     <Content Include="frmError.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="Images\btn\confirm.gif" />
     <Content Include="Images\btn\Order.gif" />
     <Content Include="Images\demo\logo_all_company.png" />
@@ -226,6 +225,7 @@
     <Content Include="Images\pic\Banner\ILoveImport.jpg" />
     <Content Include="Images\pic\Logo\LOGO-01.jpg" />
     <Content Include="Images\pic\MapCargo.png" />
+    <Content Include="Images\pic\Under-construction.png" />
     <Content Include="Images\pic\User.png" />
     <Content Include="Images\pic\RateImport-Q.gif" />
     <Content Include="Images\pic\Banner\Sale.jpg" />
@@ -323,6 +323,9 @@
     </Compile>
     <Compile Include="Customer\CustomerVIP.aspx.designer.cs">
       <DependentUpon>CustomerVIP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="PdfClass.cs" />
     <Compile Include="Customer\Activate.aspx.cs">
@@ -773,9 +776,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Themes\font\flaticon2\flaticon.eot" />
-    <Content Include="App_Themes\font\flaticon2\flaticon.ttf" />
-    <Content Include="App_Themes\font\flaticon2\flaticon.woff" />
     <None Include="Properties\PublishProfiles\Web.pubxml" />
     <Content Include="Script\20150404.bak" />
     <Content Include="Script\20150411.bak" />
