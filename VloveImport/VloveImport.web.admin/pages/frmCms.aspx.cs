@@ -109,8 +109,8 @@ namespace VloveImport.web.admin.pages
                         bool exists = System.IO.Directory.Exists(folder);
                         if (!exists)
                             System.IO.Directory.CreateDirectory(folder);
-                        FileUploadControl.SaveAs(folder + "\\" + date);
-                        string filename = "Line_Attachment" + "\\" + date;
+                        FileUploadControl.SaveAs(folder + "\\" + date + ".jpg");
+                        string filename = "Line_Attachment" + "\\" + date + ".jpg";
                         //FileUploadControl.SaveAs(folder + "\\" + Path.GetFileName(FileUploadControl.FileName));
                         //string filename = "Line_Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
 
