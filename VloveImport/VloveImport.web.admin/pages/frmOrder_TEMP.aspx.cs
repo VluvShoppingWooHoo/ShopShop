@@ -1018,6 +1018,7 @@ namespace VloveImport.web.admin.pages
 
                     string OD_SIZE = DataBinder.Eval(e.Row.DataItem, "OD_SIZE").ToString();
                     string OD_COLOR = DataBinder.Eval(e.Row.DataItem, "OD_COLOR").ToString();
+                    string OD_REMARK = DataBinder.Eval(e.Row.DataItem, "OD_REMARK").ToString();
 
                     ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_pic")).ImageUrl = DataBinder.Eval(e.Row.DataItem, "OD_PICURL").ToString();
 
@@ -1046,6 +1047,10 @@ namespace VloveImport.web.admin.pages
                         {
                             ProdItemDetail += "Color : " + OD_COLOR;
                         }
+
+                        ProdItemDetail += "<br>";
+                        ProdItemDetail += "Remark : " + OD_REMARK;
+                        
                     }
                     else if (_VS_ORDER_TYPE == "2")
                     {
