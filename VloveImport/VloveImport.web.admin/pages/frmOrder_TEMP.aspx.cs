@@ -1018,7 +1018,7 @@ namespace VloveImport.web.admin.pages
 
                     string OD_SIZE = DataBinder.Eval(e.Row.DataItem, "OD_SIZE").ToString();
                     string OD_COLOR = DataBinder.Eval(e.Row.DataItem, "OD_COLOR").ToString();
-                    string OD_REMARK = DataBinder.Eval(e.Row.DataItem, "OD_REMARK").ToString();
+                    //string OD_REMARK = DataBinder.Eval(e.Row.DataItem, "OD_REMARK").ToString();
 
                     ((ImageButton)e.Row.FindControl("imgbtn_gv_prod_pic")).ImageUrl = DataBinder.Eval(e.Row.DataItem, "OD_PICURL").ToString();
 
@@ -1048,8 +1048,8 @@ namespace VloveImport.web.admin.pages
                             ProdItemDetail += "Color : " + OD_COLOR;
                         }
 
-                        ProdItemDetail += "<br>";
-                        ProdItemDetail += "Remark : " + OD_REMARK;
+                        //ProdItemDetail += "<br>";
+                        //ProdItemDetail += "Remark : " + OD_REMARK;
                         
                     }
                     else if (_VS_ORDER_TYPE == "2")
@@ -1098,12 +1098,19 @@ namespace VloveImport.web.admin.pages
 
                     }
 
+                    string OD_REMARK = DataBinder.Eval(e.Row.DataItem, "OD_REMARK").ToString();
                     string OD_TRANS_STAMP_TEXT = DataBinder.Eval(e.Row.DataItem, "OD_TRANS_STAMP_TEXT").ToString();
 
                     if (OD_TRANS_STAMP_TEXT != "")
                     {
                         ProdItemDetail += "<br>Transport Date : ";
                         ProdItemDetail += OD_TRANS_STAMP_TEXT;
+                    }
+
+                    if (OD_REMARK != "")
+                    {
+                        ProdItemDetail += "<br><span style =\"color:red;\">Remark : ";
+                        ProdItemDetail += OD_REMARK + "</span>";
                     }
 
                     ((Label)e.Row.FindControl("lbl_gv_prod_detail_Item")).Text = ProdItemDetail;
