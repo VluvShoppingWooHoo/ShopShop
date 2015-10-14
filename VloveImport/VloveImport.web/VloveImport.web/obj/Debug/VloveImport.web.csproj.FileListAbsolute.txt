@@ -192,8 +192,10 @@ D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\AjaxControlTool
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\EncrypDLL.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\Facebook.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\HtmlAgilityPack.dll
+D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\Ionic.Zip.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\itextsharp.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\itextsharp.xmlworker.dll
+D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\Newtonsoft.Json.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\Selenium.WebDriverBackedSelenium.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\ThoughtWorks.Selenium.Core.dll
 D:\Work\ShopShop\VloveImport\VloveImport.web\VloveImport.web\bin\VloveImport.biz.dll
