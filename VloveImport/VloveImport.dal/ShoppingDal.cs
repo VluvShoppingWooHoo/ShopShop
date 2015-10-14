@@ -413,6 +413,12 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
                 SqlCommandData.SetParameter_Input_INT("ORDER_TYPE", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TYPE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
+                SqlCommandData.SetParameter("TRANSPORT_OTHER", SqlDbType.NVarChar, ParameterDirection.Input, Data.TRANSPORT_OTHER);
+                SqlCommandData.SetParameter("CUS_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, Data.ORDER_EMP_REMARK);
+                SqlCommandData.SetParameter_Input_INT("VIP_DISCOUNT", SqlDbType.Int, ParameterDirection.Input, Data.VIP_DISCOUNT);
+                SqlCommandData.SetParameter("TRANSPORT_CUSTOMER_PRICE", SqlDbType.Float, ParameterDirection.Input, Data.TRANSPORT_CUSTOMER_PRICE);
+                SqlCommandData.SetParameter("SERVICE_CHARGE", SqlDbType.Float, ParameterDirection.Input, Data.SERVICE_CHARGE);
+                SqlCommandData.SetParameter("SERVICE_CHARGE_DISCOUNT", SqlDbType.Float, ParameterDirection.Input, Data.SERVICE_CHARGE_DISCOUNT);
 
                 SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);
 
@@ -489,6 +495,12 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter("ORDER_CURRENCY", SqlDbType.Float, ParameterDirection.Input, Data.ORDER_CURRENCY);
                 SqlCommandData.SetParameter_Input_INT("ORDER_TYPE", SqlDbType.Int, ParameterDirection.Input, Data.ORDER_TYPE);
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.NVarChar, ParameterDirection.Input, Data.Create_User);
+                SqlCommandData.SetParameter("TRANSPORT_OTHER", SqlDbType.NVarChar, ParameterDirection.Input, Data.TRANSPORT_OTHER);
+                SqlCommandData.SetParameter("CUS_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, Data.ORDER_EMP_REMARK);
+                SqlCommandData.SetParameter_Input_INT("VIP_DISCOUNT", SqlDbType.Int, ParameterDirection.Input, Data.VIP_DISCOUNT);
+                SqlCommandData.SetParameter("TRANSPORT_CUSTOMER_PRICE", SqlDbType.Float, ParameterDirection.Input, Data.TRANSPORT_CUSTOMER_PRICE);
+                SqlCommandData.SetParameter("SERVICE_CHARGE", SqlDbType.Float, ParameterDirection.Input, Data.SERVICE_CHARGE);
+                SqlCommandData.SetParameter("SERVICE_CHARGE_DISCOUNT", SqlDbType.Float, ParameterDirection.Input, Data.SERVICE_CHARGE_DISCOUNT);
 
                 SqlCommandData.SetParameter("ORDER_ID", SqlDbType.Int, ParameterDirection.Output);
 

@@ -268,6 +268,7 @@ namespace VloveImport.web.Customer
                 }
                 else
                 {
+                    WriteLog(Page.Request.Url.AbsolutePath, "SaveOrder", Result[0]);
                     //Error
                 }
             }
@@ -320,6 +321,7 @@ namespace VloveImport.web.Customer
                 }
                 else
                 {
+                    WriteLog(Page.Request.Url.AbsolutePath, "SavePI", Result[0]);
                     //Error
                 }
             }
@@ -363,6 +365,7 @@ namespace VloveImport.web.Customer
                 }
                 else
                 {
+                    WriteLog(Page.Request.Url.AbsolutePath, "SaveTrans", Result[0]);
                     //Error
                 }
             }
