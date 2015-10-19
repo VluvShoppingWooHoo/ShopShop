@@ -1082,7 +1082,7 @@ namespace VloveImport.web
                                     catch (Exception ex) { model.Size = string.Empty; }
                                     break;
                                 case Constant.ScrapModel.ShopName:
-                                    try { model.ShopName = driver.FindElement(By.ClassName("companyname")).FindElement(By.ClassName("has-tips")).Text; }
+                                    try { model.ShopName = driver.FindElement(By.ClassName("company-name")).FindElement(By.ClassName("has-tips")).Text; }
                                     catch (Exception ex) { model.ShopName = string.Empty; }
                                     break;
                                 default:
