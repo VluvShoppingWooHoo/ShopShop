@@ -185,7 +185,7 @@ namespace VloveImport.web.UserControls
 
                     Extension = Path.GetExtension(Ifile.PostedFile.FileName);
 
-                    if (Extension.ToUpper() == ".JPG" || Extension.ToUpper() == ".GIF" || Extension.ToUpper() == ".PNG")
+                    if (Extension.ToUpper() == ".JPEG" || Extension.ToUpper() == ".JPG" || Extension.ToUpper() == ".GIF" || Extension.ToUpper() == ".PNG")
                     {
                         string AttPath = Server.MapPath(@"~/Attachment/Topup");
                         FileName = bp.GetCusCode() + "_" + DateTime.Now.ToString("yyyyMMdd_hhmmss", new CultureInfo("en-US")) + Extension;
