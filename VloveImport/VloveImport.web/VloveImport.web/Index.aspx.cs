@@ -748,11 +748,18 @@ namespace VloveImport.web
                                     catch (Exception ex) { model.ItemName = string.Empty; }
                                     break;
                                 case Constant.ScrapModel.picURL:
-                                    try { model.picURL = driver.FindElement(By.Id("J_ImgBooth")).GetAttribute("data-src").ToString(); }
-                                    catch (Exception ex) { model.picURL = string.Empty; }
+                                    try
+                                    {
+                                        //model.picURL = driver.FindElement(By.Id("J_ImgBooth")).GetAttribute("data-src").ToString();
+                                        model.picURL = driver.FindElement(By.Id("J_ThumbView")).GetAttribute("src").ToString();
+                                    }
+                                    catch (Exception ex) { model.picURL = string.Empty; WriteLog("Popup Scraping", "GetTaobao", "picURL"); }
                                     break;
                                 case Constant.ScrapModel.Price:
-                                    try { model.Price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text; }
+                                    try 
+                                    { 
+                                        model.Price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;                                         
+                                    }
                                     catch (Exception ex) { model.Price = "0"; }
                                     break;
                                 case Constant.ScrapModel.ProPrice:
