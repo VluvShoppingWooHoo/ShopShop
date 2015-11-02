@@ -15,6 +15,7 @@ namespace VloveImport.web.admin.pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession();
             ucEmail1.ucEmail_OpenpopClick += new System.EventHandler(ucEmail_OpenpopClick);
             ucCustomerDetail1.ucCusDetail_OpenpopClick += new System.EventHandler(ucCusDetail_OpenpopClick);
             ucCustomerDetail1.ucCusDetail_ShowMessage += new System.EventHandler(ucCusDetail_ShowMessage);
