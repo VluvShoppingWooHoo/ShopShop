@@ -37,3 +37,6 @@
         });
     </script>
 </asp:Content>
+<%--<div>
+    <img src="Images/pic/Under-construction.png" /><br/>ปิดทำการปรับปรุงชั่วคราว ขอบคุณค่ะ 
+</div>--%>

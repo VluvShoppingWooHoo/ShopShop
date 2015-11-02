@@ -16,3 +16,19 @@ D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Release\WebDriver.xml
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.csprojResolveAssemblyReference.cache
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\VloveImport.biz.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\VloveImport.biz.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\HtmlAgilityPack.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\itextsharp.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\itextsharp.xmlworker.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\VloveImport.dal.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\VloveImport.data.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\VloveImport.util.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\EncrypDLL.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\VloveImport.dal.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\VloveImport.data.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\VloveImport.util.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Release\itextsharp.xml
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.csprojResolveAssemblyReference.cache
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.pdb

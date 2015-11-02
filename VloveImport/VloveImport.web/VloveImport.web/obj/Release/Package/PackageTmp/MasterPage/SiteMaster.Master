@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="VloveImport.web.MasterPage.SiteMaster" %>
 
 <%@ Register Src="~/UserControls/ucMenubar.ascx" TagName="ucMenubar" TagPrefix="uc1" %>
 <%@ Register Src="~/UserControls/ucCustomerStatus.ascx" TagName="ucCustomerStatus" TagPrefix="uc2" %>
@@ -32,7 +32,7 @@
     <form runat="server">
         <Ajax:ToolkitScriptManager ID="sm" runat="server"></Ajax:ToolkitScriptManager>
         <uc2:ucCustomerStatus ID="ucCustomerStatus" runat="server" />
-        <div id="divMain" class="row content white" style="margin-bottom: 0px; min-height: 768px;">
+        <div id="divMain" class="row content white" style="margin-bottom: 0px; min-height: 850px;">
             <div id="divMenubar" class="col s2 m2 l2">
                 <uc1:ucMenubar ID="ucMenubar1" runat="server" />
             </div>
@@ -49,22 +49,24 @@
                 <div class="container">
                     <div class="row">
                         <div class="col l12 s12">
+<%--                            <h5 class="">iLoveimport.com@2015 Phannee World Trading Co.,Ltd Email : Info@iloveimport.com</h5>
+                            <p class="">V. 1.0</p>--%>
                             <h5 class=""> iLoveimport.com@2015 Phannee World Trading Co.,Ltd Email : Info@iloveimport.com</h5>
-                            <p class="">V. 1.0</p>
+                            <p class="">V. 1.0 : iloveImport แสดงผลการทำงานได้ดีที่สุดบน google chrome</p>
                         </div>
                     </div>
                 </div>
                 <div class="footer-copyright grey lighten-3 black-text">
-                    <%--<div class="container" style="text-align: center;">
+                    <div class="container" style="text-align: center;">
                         Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
-                      
-                    </div>--%>
+
+                    </div>
                 </div>
             </footer>
         </div>
         <a href="#MastermodalItem" class="modal-trigger" id="Master_link" hidden>content</a>
         <span id="translateFact" hidden>good</span>
-        <%--<input id="translateFact" type="text" value="��" />--%>
+        <%--<input id="translateFact" type="text" value="´Õ" />--%>
         <div id="MastermodalItem" class="modal modal-fixed-footer row" style="background: transparent; box-shadow: none;">
             <div id="loadingMaster" class="preloader-wrapper big active center-Preload-Circle" style="background: transparent; box-shadow: none;">
                 <div class="spinner-layer spinner-yellow">
@@ -199,13 +201,13 @@
     function setHeight(h) {
         //var h = $("#divMain").height();
         if (h > $("#divMenubar").height()) {
-            if (h > 768)
+            if (h > 850)
                 $("#divMenubar").height(h);
             else
-                $("#divMenubar").height(768);
+                $("#divMenubar").height(850);
         }
         else {
-            $("#divMenubar").height(768);
+            $("#divMenubar").height(850);
         }
         //$("#divcontent").height(h);
         //$("#divcard").height(h);        

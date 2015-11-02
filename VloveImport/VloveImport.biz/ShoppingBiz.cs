@@ -176,7 +176,7 @@ namespace VloveImport.biz
         }
         #endregion
 
-        #region
+        #region voucher
         public DataTable GetMasterVoucher()
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
@@ -242,6 +242,20 @@ namespace VloveImport.biz
                 Result = ex.Message;
             }
             return Result;
+        }
+        #endregion
+
+
+        #region Tracking order shop
+        public DataTable GetOrderTracking(string TRACKINGNUMBER)
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetOrderTracking(TRACKINGNUMBER);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
         }
         #endregion
     }

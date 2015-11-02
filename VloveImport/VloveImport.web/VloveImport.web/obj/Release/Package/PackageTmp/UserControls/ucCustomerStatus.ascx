@@ -28,6 +28,12 @@
                 <asp:Label ID="lbCustomer" runat="server"></asp:Label>
             </li>
             <li>
+                <span id="spanVip">
+                    <i id="iVip" class="flaticon-business2" style="line-height: 30px"></i>
+                </span>
+
+            </li>
+            <li>
                 <asp:HyperLink ID="hlLogout" runat="server" NavigateUrl="~/Logout.aspx">ออกจากระบบ
                 </asp:HyperLink>
             </li>
@@ -74,6 +80,21 @@
     });
 </script>
 <script>
+    var User = '<%= Session["VipLevel"]%>';
+
+    if (User != '0' && User != '') {
+        if (User == '1')
+        { $('#iVip').addClass('brown-text text-lighten-1'); }
+        else if (User == '2')
+        { $('#iVip').addClass('red-text text-lighten-2'); }
+        else if (User == '3')
+        { $('#iVip').addClass('grey-text'); }
+        else if (User == '4')
+        { $('#iVip').addClass('yellow-text text-darken-1'); }
+        else
+        { $('#spanVip').hide(); }
+    }
+    else { $('#spanVip').hide(); }
     var chkFB = '0';
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {

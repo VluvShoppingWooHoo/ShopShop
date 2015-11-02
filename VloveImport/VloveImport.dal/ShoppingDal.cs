@@ -574,7 +574,7 @@ namespace VloveImport.dal
         }
         #endregion
 
-        #region 
+        #region Voucher
         public DataSet GetMasterVoucher()
         {
             try
@@ -683,6 +683,23 @@ namespace VloveImport.dal
                 //throw new Exception("AddtoCart -> msg : " + ex.Message);                
                 SqlCommandData.RollBack();
                 return "INS_TRAN_VOUCHER -> msg : " + ex.Message;
+            }
+        }
+        #endregion
+
+        #region Tracking order shop
+        public DataSet GetOrderTracking(string TRACKINGNUMBER)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("GET_ORDER_TRACKING");
+                SqlCommandData.SetParameter("TRACKINGNUMBER", SqlDbType.NVarChar, ParameterDirection.Input, TRACKINGNUMBER);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GET_ORDER_DETAIL -> msg : " + ex.Message);
             }
         }
         #endregion

@@ -125,6 +125,7 @@
     <Content Include="Customer\AboutUs.aspx" />
     <Content Include="Customer\ContentDetail.aspx" />
     <Content Include="Customer\ContentList.aspx" />
+    <Content Include="Customer\CheckTracking.aspx" />
     <Content Include="Customer\CustomerVIP.aspx" />
     <Content Include="Customer\CustomerOrderDetailPrint.aspx" />
     <Content Include="Customer\CustomerTransOnlyList.aspx" />
@@ -321,6 +322,13 @@
     </Compile>
     <Compile Include="App_Code\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CheckTracking.aspx.cs">
+      <DependentUpon>CheckTracking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CheckTracking.aspx.designer.cs">
+      <DependentUpon>CheckTracking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerVIP.aspx.cs">
       <DependentUpon>CustomerVIP.aspx</DependentUpon>

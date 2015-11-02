@@ -116,3 +116,19 @@ D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xml
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
 D:\Work\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.biz.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\HtmlAgilityPack.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xmlworker.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\EncrypDLL.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.dal.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.data.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\VloveImport.util.pdb
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin\Debug\itextsharp.xml
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.csprojResolveAssemblyReference.cache
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.dll
+D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Debug\VloveImport.biz.pdb

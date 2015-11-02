@@ -111,6 +111,7 @@
                     </button>--%>
                     <asp:ImageButton ID="imbOrder" runat="server" ImageUrl="~/Images/btn/Order.gif"
                         OnClick="imbOrder_Click" />
+                    <%--&nbsp;&nbsp; <span class="bold FontHeader red-text"> iloveImport จะแสดงผลการทำงานได้ดีที่สุดสำหรับ google chrome</span><br />                        --%>
                     <%--<button type="button" class="btn waves-effect orange waves-light" name="action">
                         <asp:Button ID="btnOrder" runat="server" OnClick="btnOrder_Click" Text="Order" />
                     </button>--%>

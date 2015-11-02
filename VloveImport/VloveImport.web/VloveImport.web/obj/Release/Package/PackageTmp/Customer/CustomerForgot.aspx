@@ -8,7 +8,7 @@
     </div>
     <div class="row divRowBlock">
         <br />
-        &nbsp;&nbsp; รหัสผ่านจะถูกตั้งค่า และส่งไปทางอีเมลล์ของผู้ใช้
+        &nbsp;&nbsp; รหัสผ่านจะถูกตั้งค่าใหม่ และส่งไปทางอีเมลล์ของผู้ใช้
         <br />   
         <div class="col s2 m2 l2 paddingTop25">
             Email
