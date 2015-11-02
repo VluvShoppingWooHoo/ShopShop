@@ -699,7 +699,7 @@ namespace VloveImport.dal
             }
             catch (Exception ex)
             {
-                throw new Exception("GET_ORDER_DETAIL -> msg : " + ex.Message);
+                throw new Exception("GET_ORDER_TRACKING -> msg : " + ex.Message);
             }
         }
         #endregion

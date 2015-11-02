@@ -34,6 +34,7 @@ namespace VloveImport.web.Customer
                 dt = biz.GetOrderTracking(txtTracking.Text);
                 if (dt != null && dt.Rows.Count > 0)
                 {
+                    lbOrderCode.Text = dt.Rows[0]["OrderCode"].ToString();
                     gv_detail.DataSource = dt;
                     gv_detail.DataBind();
                 }

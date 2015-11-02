@@ -9,15 +9,15 @@
         <div class="col s8 m8 l8">
             <%--<div class="row">
                 <img src="../Images/pic/Logo/LOGO-01.jpg" style="width:658px; height:200px;"/>                
-            </div>
-            <br />--%>
+            </div>--%>
+            <br />
             <div class="row">
                 <div class="col s1 m1 l1">&nbsp;</div>
-                <div class="col s2 m2 l2">
+                <div class="col s4 m4 l4">
                     <span class="orange-text bold">Tracking Number</span>
                 </div>
-                <div class="col s4 m4 l4">
-                    <asp:TextBox ID="txtTracking" runat="server" Width="400px"></asp:TextBox>
+                <div class="col s6 m6 l6">
+                    <asp:TextBox ID="txtTracking" runat="server" Width="250px" ></asp:TextBox>
                 </div>
                 <div class="col s1 m1 l1">&nbsp;</div>
             </div>
@@ -30,13 +30,21 @@
             <br />
             <div class="row">
                 <div class="col s1 m1 l1">&nbsp;</div>
+                <div class="col s4 m4 l4">
+                    <span class="orange-text bold">OrderCode</span>
+                </div>
                 <div class="col s6 m6 l6">
+                    <asp:Label ID="lbOrderCode" runat="server" ></asp:Label>
+                </div>
+                <div class="col s1 m1 l1">&nbsp;</div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col s1 m1 l1">&nbsp;</div>
+                <div class="col s10 m10 l10">
                     <asp:GridView ID="gv_detail" runat="server" CssClass="GridStyle" AutoGenerateColumns="False" Width ="90%" >
                         <Columns>
-                            <asp:BoundField HeaderText="ลำดับ" DataField="ROW_INDEX" >
-                            <ItemStyle HorizontalAlign="Right" Width="5%" />
-                            </asp:BoundField>
-                            <asp:TemplateField HeaderText="Date">
+                            <asp:TemplateField HeaderText="Date" HeaderStyle-HorizontalAlign="Center" ItemStyle-Width="35%">
                                 <ItemTemplate>
                                     <%--<asp:HiddenField ID="hdOrderID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' />   --%>
                                     <asp:HiddenField ID="hdShopID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "OT_OS_ID") %>' />   
@@ -44,7 +52,7 @@
                                 </ItemTemplate>
                                 <ItemStyle Width="10%" HorizontalAlign="Center" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Detail">
+                            <asp:TemplateField HeaderText="Detail" ItemStyle-Width="65%">
                                 <ItemTemplate>  
                                     <asp:Label ID="lbDetail" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OT_STATUS_DSEC").ToString() %>'></asp:Label>
                                 </ItemTemplate>
