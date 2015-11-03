@@ -57,16 +57,6 @@ D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveIm
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.csprojResolveAssemblyReference.cache
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.dll
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.dll
-D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.data.dll
-D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.util.dll
-D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\EncrypDLL.dll
-D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.data.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.util.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.csprojResolveAssemblyReference.cache
-D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.dll
-D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.pdb
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.dll
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.pdb
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.data.dll
@@ -77,3 +67,13 @@ D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.dal\bin
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.csprojResolveAssemblyReference.cache
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.dll
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.dal.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.data.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.util.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\EncrypDLL.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.data.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.dal\bin\Debug\VloveImport.util.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.csprojResolveAssemblyReference.cache
+D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.dll
+D:\Work\ShopShop\VloveImport\VloveImport.dal\obj\Debug\VloveImport.dal.pdb
