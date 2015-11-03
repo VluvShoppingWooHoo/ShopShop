@@ -42,6 +42,7 @@
     <Compile Include="AdminUserData.cs" />
     <Compile Include="CommonData.cs" />
     <Compile Include="ContentData.cs" />
+    <Compile Include="TrackingData.cs" />
     <Compile Include="JasonData.cs" />
     <Compile Include="OrderData.cs" />
     <Compile Include="ShoppingData.cs" />

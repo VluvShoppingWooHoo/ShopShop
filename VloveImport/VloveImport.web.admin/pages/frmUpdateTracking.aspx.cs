@@ -44,7 +44,8 @@ namespace VloveImport.web.admin.pages
 
             if (!IsPostBack)
             {
-                
+                ucCalendar1.SET_DATE(DateTime.Now.AddDays(-7));
+                ucCalendar2.SET_DATE_DEFAULT();
             }
 
             this.btnUpdate.Attributes.Add("onClick", "javascript:return confirm('Do you want to update data ?')");
@@ -68,7 +69,24 @@ namespace VloveImport.web.admin.pages
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            
+            DateTime From = ucCalendar1.GET_DATE_TO_DATE() == null ? DateTime.MinValue : ucCalendar1.GET_DATE_TO_DATE().Value;
+            DateTime To = ucCalendar2.GET_DATE_TO_DATE() == null ? DateTime.MaxValue : ucCalendar2.GET_DATE_TO_DATE().Value;
+            if (txtTracking.Text.Trim() != "" || From != null || To != null)
+            {
+                DataTable dt = new DataTable();
+                ShoppingBiz biz = new ShoppingBiz();
+                dt = biz.GetTrackingAdmin(txtTracking.Text.Trim(), From, To);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    gv_detail.DataSource = dt;
+                    gv_detail.DataBind();
+                }
+            }
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

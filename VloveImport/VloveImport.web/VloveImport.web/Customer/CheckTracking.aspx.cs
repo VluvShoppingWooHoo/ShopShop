@@ -31,10 +31,10 @@ namespace VloveImport.web.Customer
             {
                 DataTable dt = new DataTable();
                 ShoppingBiz biz = new ShoppingBiz();
-                dt = biz.GetOrderTracking(txtTracking.Text);
+                dt = biz.GetTracking(txtTracking.Text);
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    lbOrderCode.Text = dt.Rows[0]["OrderCode"].ToString();
+                    lbTrack.Text = dt.Rows[0]["T_TRACKING_NO"].ToString();
                     gv_detail.DataSource = dt;
                     gv_detail.DataBind();
                 }

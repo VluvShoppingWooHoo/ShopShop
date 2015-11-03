@@ -31,10 +31,10 @@
             <div class="row">
                 <div class="col s1 m1 l1">&nbsp;</div>
                 <div class="col s4 m4 l4">
-                    <span class="orange-text bold">OrderCode</span>
+                    <span class="orange-text bold">Tracking No.</span>
                 </div>
                 <div class="col s6 m6 l6">
-                    <asp:Label ID="lbOrderCode" runat="server" ></asp:Label>
+                    <asp:Label ID="lbTrack" runat="server" ></asp:Label>
                 </div>
                 <div class="col s1 m1 l1">&nbsp;</div>
             </div>
@@ -47,14 +47,14 @@
                             <asp:TemplateField HeaderText="Date" HeaderStyle-HorizontalAlign="Center" ItemStyle-Width="35%">
                                 <ItemTemplate>
                                     <%--<asp:HiddenField ID="hdOrderID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_ID") %>' />   --%>
-                                    <asp:HiddenField ID="hdShopID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "OT_OS_ID") %>' />   
-                                    <asp:Label ID="lbDate" runat="server" Text='<%# DateStringtoString(DataBinder.Eval(Container.DataItem, "OT_DATE").ToString()) %>'></asp:Label>
+                                    <asp:HiddenField ID="hdID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "T_ID") %>' />   
+                                    <asp:Label ID="lbDate" runat="server" Text='<%# DateStringtoString(DataBinder.Eval(Container.DataItem, "T_DATE").ToString()) %>'></asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle Width="10%" HorizontalAlign="Center" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Detail" ItemStyle-Width="65%">
                                 <ItemTemplate>  
-                                    <asp:Label ID="lbDetail" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OT_STATUS_DSEC").ToString() %>'></asp:Label>
+                                    <asp:Label ID="lbDetail" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "T_STATUS_DSEC").ToString() %>'></asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle Width="10%" HorizontalAlign="Center" />
                             </asp:TemplateField>

@@ -40,13 +40,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// txtOrderCode control.
+        /// txtTracking control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrderCode;
+        protected global::System.Web.UI.WebControls.TextBox txtTracking;
         
         /// <summary>
         /// Label2 control.
@@ -58,22 +58,22 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// txtTrackingNumber control.
+        /// ucCalendar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTrackingNumber;
+        protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar1;
         
         /// <summary>
-        /// trpassword control.
+        /// ucCalendar2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trpassword;
+        protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar2;
         
         /// <summary>
         /// btnSearch control.
@@ -92,6 +92,15 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResult;
+        
+        /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdd;
         
         /// <summary>
         /// gv_detail control.

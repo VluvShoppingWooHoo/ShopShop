@@ -19,22 +19,24 @@
                 <table>
                     <tr>
                         <td class="width15">
-                            <asp:Label ID="Label1" runat="server" Text="Order Code :"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="Tracking No. :"></asp:Label>
                         </td>
                         <td class="width35">
-                            <asp:TextBox ID="txtOrderCode" runat="server" Width="300px"></asp:TextBox>                            
+                            <asp:TextBox ID="txtTracking" runat="server" Width="300px"></asp:TextBox>                            
                         </td>
                         <td class="width15">
-                            <asp:Label ID="Label2" runat="server" Text="Tracking Number :"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="Date :"></asp:Label>
                         </td>
                         <td class="width35">
-                            <asp:TextBox ID="txtTrackingNumber" runat="server" Width="300px"></asp:TextBox>
+                            <uc1:ucCalendar ID="ucCalendar1" runat="server" />
+                            &nbsp;-&nbsp;
+                            <uc1:ucCalendar ID="ucCalendar2" runat="server" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4">&nbsp;</td>
                     </tr>
-                    <tr id ="trpassword" runat ="server">
+                    <tr>
                         <td colspan="4" style="text-align:center;">
                             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btnSearch" OnClick="btnSearch_Click" />&nbsp;&nbsp;
                         </td>
@@ -45,18 +47,24 @@
                 <tr>
                     <td style="text-align: left;">
                         <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
-                    </td>                    
+                    </td>  
+                    <td style="text-align: right;">
+                        <asp:Button ID="btnAdd" runat="server" Text="Add Groupuser" CssClass ="btnSave" OnClick="btnAdd_Click" />
+                    </td>                  
                 </tr>
             </table>
             <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="15" Width="100%">                
                 <Columns>
                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No.">
                         <HeaderStyle CssClass="width5" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="ORDERCODE" HeaderText="Order Code">
+                    </asp:BoundField> 
+                    <%--<asp:BoundField DataField="TRANS_NAME" HeaderText="Transport Name">
+                        <HeaderStyle CssClass="width15" />
+                    </asp:BoundField>    --%>               
+                    <asp:BoundField HeaderText="Tracking Number" DataField="TRACKING_NO">
                         <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="Tracking Number" DataField="TRACKING_NO">
+                    <%--<asp:BoundField DataField="ORDER_CODE" HeaderText="Order Code">
                         <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
                     <asp:BoundField HeaderText="Weight" DataField="WEIGHT">
@@ -64,7 +72,7 @@
                     </asp:BoundField>
                     <asp:BoundField DataField="SIZE" HeaderText="Size">
                         <HeaderStyle CssClass="width15" />
-                    </asp:BoundField>
+                    </asp:BoundField>--%>
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
                             <asp:HiddenField ID="hdOS_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_SHOP_ID") %>'/>

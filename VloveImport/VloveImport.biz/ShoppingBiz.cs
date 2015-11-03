@@ -246,12 +246,23 @@ namespace VloveImport.biz
         #endregion
 
 
-        #region Tracking order shop
-        public DataTable GetOrderTracking(string TRACKINGNUMBER)
+        #region Tracking order shop        
+        public DataTable GetTracking(string TRACKINGNO) //Customer
         {
             ShoppingDal dal = new ShoppingDal("LocalConnection");
             DataSet ds = new DataSet();
-            ds = dal.GetOrderTracking(TRACKINGNUMBER);
+            ds = dal.GetTracking(TRACKINGNO);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
+        }
+
+        public DataTable GetTrackingAdmin(string TRACKINGNO, DateTime From, DateTime To) //Admin
+        {
+            ShoppingDal dal = new ShoppingDal("LocalConnection");
+            DataSet ds = new DataSet();
+            ds = dal.GetTrackingAdmin(TRACKINGNO, From, To);
             if (ds != null && ds.Tables.Count > 0)
                 return ds.Tables[0];
             else

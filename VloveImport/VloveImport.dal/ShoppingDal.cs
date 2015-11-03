@@ -688,18 +688,34 @@ namespace VloveImport.dal
         #endregion
 
         #region Tracking order shop
-        public DataSet GetOrderTracking(string TRACKINGNUMBER)
+        public DataSet GetTracking(string TRACKINGNO)
         {
             try
             {
-                SqlCommandData.SetStoreProcedure("GET_ORDER_TRACKING");
-                SqlCommandData.SetParameter("TRACKINGNUMBER", SqlDbType.NVarChar, ParameterDirection.Input, TRACKINGNUMBER);
+                SqlCommandData.SetStoreProcedure("GET_TRACKING");
+                SqlCommandData.SetParameter("TRACKINGNUMBER", SqlDbType.NVarChar, ParameterDirection.Input, TRACKINGNO);
 
                 return SqlCommandData.ExecuteDataSet();
             }
             catch (Exception ex)
             {
-                throw new Exception("GET_ORDER_TRACKING -> msg : " + ex.Message);
+                throw new Exception("GetTracking -> msg : " + ex.Message);
+            }
+        }
+        public DataSet GetTrackingAdmin(string TRACKINGNO, DateTime From, DateTime To)
+        {
+            try
+            {
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_TRACKING");                
+                SqlCommandData.SetParameter("TRACKING_NO", SqlDbType.NVarChar, ParameterDirection.Input, TRACKINGNO);
+                SqlCommandData.SetParameter("DATEFROM", SqlDbType.Date, ParameterDirection.Input, From);
+                SqlCommandData.SetParameter("DATETO", SqlDbType.Date, ParameterDirection.Input, To);
+
+                return SqlCommandData.ExecuteDataSet();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetTrackingAdmin -> msg : " + ex.Message);
             }
         }
         #endregion

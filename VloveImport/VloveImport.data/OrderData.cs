@@ -93,14 +93,7 @@ namespace VloveImport.data
         public string OD_REF_BASKET { get; set; }
         #endregion
 
-        #region TB_ORDER_TRACKING
-        public int OT_ID { get; set; }
-        public int OT_OS_ID { get; set; }
-        public Nullable<DateTime> OT_DATE { get; set; }
-        public string OT_STATUS_ID { get; set; }
-        public string OT_STATUS_DESC { get; set; }
-        public string OT_ACTIVE { get; set; }
-        #endregion
+        
     }
 }
 
