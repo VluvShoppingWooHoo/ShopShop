@@ -313,5 +313,21 @@ namespace VloveImport.biz
             return ds;
         }
 
+        #region Tracking
+        public string ADMIN_INS_Tracking(TrackingData data)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                Result = dal.ADMIN_INS_Tracking(data);
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
+        #endregion
     }
 }

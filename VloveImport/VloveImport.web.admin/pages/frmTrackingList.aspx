@@ -49,7 +49,7 @@
                         <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
                     </td>  
                     <td style="text-align: right;">
-                        <asp:Button ID="btnAdd" runat="server" Text="Add Tracking" CssClass ="btnSave" OnClick="btnAdd_Click" />
+                        <asp:Button ID="btnAdd" runat="server" Text="Add Tracking" CssClass ="btnSave" PostBackUrl="~/pages/frmTracking.aspx" />
                     </td>                  
                 </tr>
             </table>

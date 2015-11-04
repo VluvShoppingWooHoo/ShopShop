@@ -42,41 +42,38 @@ namespace VloveImport.web.admin.pages
 
             if (!IsPostBack)
             {
-                if (_VS_USER_ID > 0)
-                {
-                    lbl_header.Text = "Edit User Data ";
-                    btnSave.Text = "Update";
-                    BindData();
-                }
-                else
-                {
-                    lbl_header.Text = "Add User Data ";
-                    btnSave.Text = "Save";
-                }
+                BindDDL();
+                //BindData();
+                
             }
 
             this.btnSave.Attributes.Add("onClick", "javascript:return confirm('Do you want to save data ?')");
-        }        
+        }
+
+        public void BindDDL()
+        {
+            ShoppingBiz Biz = new ShoppingBiz();            
+            DataTable dt = new DataTable();
+            dt = Biz.GetTransList("TRACKING_STS");
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl_TransportName.DataSource = dt;
+                ddl_TransportName.DataValueField = "STATUS_NAME";
+                ddl_TransportName.DataTextField = "DescRemark";
+                ddl_TransportName.DataBind();
+            }
+            else
+            {
+                ddl_TransportName.DataSource = null;
+                ddl_TransportName.DataBind();
+            }
+        }
 
         public void BindData()
         {
             AdminBiz AddBiz = new AdminBiz();
             DataSet ds = new DataSet();
-            ds = AddBiz.GET_ADMIN_GET_USER(_VS_USER_ID, "", "", -1, "BINDDATA_BYID");
-
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                trpassword.Visible = false;
-                txtusername.Enabled = false;
-                txtusername.CssClass = "textbox-readonly";
-
-                _VS_GROUP_ID = Convert.ToInt32(ds.Tables[0].Rows[0]["GROUP_ID"].ToString());
-
-                ddl_groupname.SelectedValue = ds.Tables[0].Rows[0]["GROUP_ID"].ToString();
-                txtusername.Text = ds.Tables[0].Rows[0]["USERNAME"].ToString();
-
-                ddl_Status.SelectedValue = ds.Tables[0].Rows[0]["EMP_STATUS"].ToString();
-            }
+            ds = AddBiz.GET_ADMIN_GET_USER(_VS_USER_ID, "", "", -1, "BINDDATA_BYID");            
 
         }
 
@@ -95,21 +92,51 @@ namespace VloveImport.web.admin.pages
                 ScriptManager.RegisterClientScriptBlock(currentPage, currentPage.GetType(), "msgboxScriptAJAX", msgboxScript + redirectPage, true);
             }
         }
+
+        public string Valid()
+        {
+            string Result = "";
+            if (txtTrackingNumber.Text == "")
+            {
+                Result = Result + "Tracking Number, ";
+            }
+            if (ucCalendar1.GET_DATE_TO_DATE() == null)
+            {
+                Result = Result + "Transport Date, ";
+            }
+            if (txtPackNo.Text == "")
+            {
+                Result = Result + "Pack Number, ";
+            }
+            return Result;
+        }
         
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            
-
-                //AdminBiz AddBiz = new AdminBiz();
-                //string Result = AddBiz.ADMIN_INS_USER(En, _VS_USER_ID > 0 ? "UPD" : "INS");
-                //if (Result == "")
-                //{
-                //    ShowMessageBox("Save success", this.Page, "frmUserList.aspx");
-                //}
-                //else
-                //{
-                //    ShowMessageBox(Server.HtmlEncode(Result), this.Page);
-                //}
+            string Val = Valid();
+            if (Val == "") //Insert
+            {
+                TrackingData data = new TrackingData();
+                data.T_TRANSPORT_NAME = ddl_TransportName.SelectedValue;
+                data.T_TRACKING_NO = txtTrackingNumber.Text;
+                data.T_DATE = ucCalendar1.GET_DATE_TO_DATE().Value;
+                data.T_WEIGHT = Convert.ToDouble(txtWeight.Text);
+                data.T_CUBIC = Convert.ToDouble(txtWeight.Text);
+                data.T_HEIGHT = Convert.ToDouble(txtWeight.Text);
+                data.T_WIDTH = Convert.ToDouble(txtWeight.Text);
+                data.T_HIGH = Convert.ToDouble(txtWeight.Text);
+                data.T_PACK_NO = Convert.ToDouble(txtWeight.Text);
+                data.T_REMARK = txtRemark.Text;
+                data.T_TYPE = txtType.Text;
+                AdminBiz biz = new AdminBiz();
+                biz.ADMIN_INS_Tracking(data);
+            }
+            else
+            {
+                Val = "Please key " + Val.Remove(Val.Length-2) + ".!!!";
+                ShowMessageBox(Val, this);
+                return;
+            }
             
         }
 

@@ -624,5 +624,36 @@ namespace VloveImport.dal
             }
         }
 
+        #region Tracking
+        public string ADMIN_INS_Tracking(TrackingData data)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_INS_DATA_TRACKING");
+
+                //SqlCommandData.SetParameter_Input_INT("EMP_ID", SqlDbType.Int, ParameterDirection.Input, data.);
+                //SqlCommandData.SetParameter("USERNAME", SqlDbType.VarChar, ParameterDirection.Input, data.USERNAME);
+                //SqlCommandData.SetParameter("EMP_PASSWORD", SqlDbType.VarChar, ParameterDirection.Input, data.EMP_PASSWORD);
+                //SqlCommandData.SetParameter("EMP_NAME", SqlDbType.VarChar, ParameterDirection.Input, data.EMP_NAME);
+                //SqlCommandData.SetParameter("EMP_LNAME", SqlDbType.VarChar, ParameterDirection.Input, dataEMP_LNAME);
+                //SqlCommandData.SetParameter("EMP_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, data.EMP_DETAIL);
+                //SqlCommandData.SetParameter_Input_INT("EMP_STATUS", SqlDbType.Int, ParameterDirection.Input, data.EMP_STATUS);
+                //SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, data.GROUP_ID);
+
+                //SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("ADMIN_INS_DATA_TRACKING -> msg : " + ex.Message);
+            }
+        }
+        #endregion
     }
 }

@@ -19,42 +19,67 @@
                 <table>
                     <tr>
                         <td class="width15">
-                            <asp:Label ID="Label1" runat="server" Text="Group Name :"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="Transport Name :"></asp:Label>
                         </td>
                         <td class="width35">
-                            <asp:DropDownList ID="ddl_groupname" runat="server" Width="300px"></asp:DropDownList>
+                            <asp:DropDownList ID="ddl_TransportName" runat="server" Width="300px"></asp:DropDownList>
                             <span style ="color:red;">*</span>
                         </td>
                         <td class="width15">
-                            <asp:Label ID="Label2" runat="server" Text="Username :"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="Tracking Number :"></asp:Label>
                         </td>
                         <td class="width35">
-                            <asp:TextBox ID="txtusername" runat="server" Width="300px"></asp:TextBox>
-                            <span style ="color:red;">*</span>
-                        </td>
-                    </tr>
-                    <tr id ="trpassword" runat ="server">
-                        <td><asp:Label ID="Label3" runat="server" Text="Password :"></asp:Label></td>
-                        <td>
-                            <asp:TextBox ID="txtpassword" Width ="300px" runat="server" TextMode ="Password"></asp:TextBox>
-                            <span style ="color:red;">*</span>
-                        </td>
-                        <td><asp:Label ID="Label5" runat="server" Text="Re Password :"></asp:Label></td>
-                        <td>
-                            <asp:TextBox ID="txtRepassword" Width ="300px" runat="server" TextMode ="Password"></asp:TextBox>
+                            <asp:TextBox ID="txtTrackingNumber" runat="server" Width="300px"></asp:TextBox>
                             <span style ="color:red;">*</span>
                         </td>
                     </tr>
                     <tr>
-                        <td><asp:Label ID="Label4" runat="server" Text="User Status :"></asp:Label></td>
+                        <td><asp:Label ID="Label3" runat="server" Text="Transport Date :"></asp:Label></td>
                         <td>
-                            <asp:DropDownList ID="ddl_Status" runat="server" Width="300px">
-                                <asp:ListItem Value="1">Active</asp:ListItem>
-                                <asp:ListItem Value="0">Inactive</asp:ListItem>
-                            </asp:DropDownList>
+                            <uc1:ucCalendar ID="ucCalendar1" runat="server" />                            
+                            <span style ="color:red;">*</span>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td><asp:Label ID="Label5" runat="server" Text="Pack No :"></asp:Label></td>
+                        <td>
+                            <asp:TextBox ID="txtPackNo" Width ="300px" runat="server"></asp:TextBox>
+                            <span style ="color:red;">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><asp:Label ID="Label4" runat="server" Text="Weight :"></asp:Label></td>
+                        <td>
+                            <asp:TextBox ID="txtWeight" Width ="300px" runat="server" TextMode="Number"></asp:TextBox>
+                        </td>
+                        <td><asp:Label ID="Label6" runat="server" Text="Size(Cubic) :"></asp:Label></td>
+                        <td>
+                            <asp:TextBox ID="txtSize" Width ="300px" runat="server" TextMode="Number"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>                        
+                        <td colspan="2">
+                            <asp:Label ID="Label7" runat="server" Text="Width :"></asp:Label> &nbsp;&nbsp;
+                            <asp:TextBox ID="txtWidth" Width ="80px" runat="server" TextMode="Number"></asp:TextBox>  &nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Label ID="Label8" runat="server" Text="Height :"></asp:Label>   &nbsp;&nbsp;
+                            <asp:TextBox ID="txtHeight" Width ="80px" runat="server" TextMode="Number"></asp:TextBox>  &nbsp;&nbsp;&nbsp;&nbsp;                  
+                            <asp:Label ID="Label9" runat="server" Text="High :"></asp:Label>   &nbsp;&nbsp;
+                            <asp:TextBox ID="txtHigh" Width ="80px" runat="server" TextMode="Number"></asp:TextBox>                       
+                        </td>
+                        <td><asp:Label ID="Label10" runat="server" Text="Type :"></asp:Label></td>
+                        <td>
+                            <asp:TextBox ID="txtType" Width ="300px" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>                        
+                        <td><asp:Label ID="Label11" runat="server" Text="Remark :"></asp:Label></td>
+                        <td>
+                            <asp:TextBox ID="txtRemark" Width ="300px" runat="server" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
                     </tr>
                 </table>
             </fieldset>

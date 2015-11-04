@@ -82,12 +82,7 @@ namespace VloveImport.web.admin.pages
                     gv_detail.DataBind();
                 }
             }
-        }
-
-        protected void btnAdd_Click(object sender, EventArgs e)
-        {
-
-        }        
+        }      
 
         protected void imgBtn_edit_Click(object sender, ImageClickEventArgs e)
         {
