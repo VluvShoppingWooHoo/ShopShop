@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="frmUpdateTracking.aspx.cs" Inherits="VloveImport.web.admin.pages.frmUpdateTracking" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="frmTrackingList.aspx.cs" Inherits="VloveImport.web.admin.pages.frmTrackingList" %>
 
 <%@ Register Src="../UserControls/ucCalendar.ascx" TagName="ucCalendar" TagPrefix="uc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
@@ -49,7 +49,7 @@
                         <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
                     </td>  
                     <td style="text-align: right;">
-                        <asp:Button ID="btnAdd" runat="server" Text="Add Groupuser" CssClass ="btnSave" OnClick="btnAdd_Click" />
+                        <asp:Button ID="btnAdd" runat="server" Text="Add Tracking" CssClass ="btnSave" OnClick="btnAdd_Click" />
                     </td>                  
                 </tr>
             </table>
@@ -58,67 +58,48 @@
                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No.">
                         <HeaderStyle CssClass="width5" />
                     </asp:BoundField> 
-                    <%--<asp:BoundField DataField="TRANS_NAME" HeaderText="Transport Name">
+                    <asp:BoundField DataField="T_TRANSPORT_NAME" HeaderText="Transport Name">
                         <HeaderStyle CssClass="width15" />
-                    </asp:BoundField>    --%>               
-                    <asp:BoundField HeaderText="Tracking Number" DataField="TRACKING_NO">
-                        <HeaderStyle CssClass="width15" />
-                    </asp:BoundField>
-                    <%--<asp:BoundField DataField="ORDER_CODE" HeaderText="Order Code">
+                    </asp:BoundField>              
+                    <asp:BoundField DataField="T_TRACKING_NO" HeaderText="Tracking Number" >
                         <HeaderStyle CssClass="width15" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="Weight" DataField="WEIGHT">
-                        <HeaderStyle CssClass="width15" />
-                    </asp:BoundField>
-                    <asp:BoundField DataField="SIZE" HeaderText="Size">
-                        <HeaderStyle CssClass="width15" />
-                    </asp:BoundField>--%>
-                    <asp:TemplateField HeaderText="Tools">
+                    <asp:TemplateField HeaderText="Transport Date">
                         <ItemTemplate>
-                            <asp:HiddenField ID="hdOS_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "ORDER_SHOP_ID") %>'/>
+                            <asp:Label ID="lbDate" runat="server" Text='<%# DateStringtoString(DataBinder.Eval(Container.DataItem, "T_DATE").ToString()) %>'></asp:Label>
+                        </ItemTemplate>
+                        <HeaderStyle CssClass="width15" />
+                        <ItemStyle CssClass="ItemStyle-center" />
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="T_WEIGHT" HeaderText="Weight">
+                        <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="T_CUBIC" HeaderText="Cubic">
+                        <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="T_HEIGHT" HeaderText="Height">
+                        <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="T_WIDTH" HeaderText="Width">
+                        <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="T_HIGH" HeaderText="High">
+                        <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="T_PACK_NO" HeaderText="Pack No">
+                        <HeaderStyle CssClass="width10" />
+                    </asp:BoundField>
+                    <asp:TemplateField HeaderText="Update">
+                        <ItemTemplate>
+                            <asp:HiddenField ID="hdT_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "T_ID") %>'/>
                             <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />&nbsp;&nbsp;                            
                         </ItemTemplate>
-                        <HeaderStyle CssClass="width5" />
+                        <HeaderStyle CssClass="width10" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-
-            <br />
-            <fieldset>
-                <legend>
-                    <asp:Label ID="Label6" runat="server" Text="Information"></asp:Label>
-                </legend>
-                <table>
-                    <tr>
-                        <td class="width15">Order Code :</td>
-                        <td class="width35">
-                            <asp:TextBox ID="txtFName" runat="server" Width="300px"></asp:TextBox>
-                            <span style ="color:red;">*</span>
-                        </td>
-                        <td class="width15">Last Name :</td>
-                        <td class="width35">
-                            <asp:TextBox ID="txtLName" runat="server" Width="300px"></asp:TextBox>
-                            <span style ="color:red;">*</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Detail :</td>
-                        <td colspan ="3">
-                            <asp:TextBox ID="txtDetail" runat="server" Width="95%"></asp:TextBox>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-            <br />
-            <table class = "width100">
-                <tr>
-                    <td class ="ItemStyle-center">
-                        <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btnSave" OnClick="btnUpdate_Click" />&nbsp;&nbsp;
-                        <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btnCancel" OnClick="btnReset_Click" />&nbsp;&nbsp;
-                    </td>
-                </tr>
-            </table>
+            
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

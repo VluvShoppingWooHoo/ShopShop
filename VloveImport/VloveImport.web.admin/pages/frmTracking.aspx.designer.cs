@@ -10,7 +10,7 @@
 namespace VloveImport.web.admin.pages {
     
     
-    public partial class frmUpdateTracking {
+    public partial class frmTracking {
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -40,13 +40,13 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// txtTracking control.
+        /// ddl_groupname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTracking;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_groupname;
         
         /// <summary>
         /// Label2 control.
@@ -58,103 +58,85 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// ucCalendar1 control.
+        /// txtusername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar1;
+        protected global::System.Web.UI.WebControls.TextBox txtusername;
         
         /// <summary>
-        /// ucCalendar2 control.
+        /// trpassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar2;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trpassword;
         
         /// <summary>
-        /// btnSearch control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// lblResult control.
+        /// txtpassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResult;
+        protected global::System.Web.UI.WebControls.TextBox txtpassword;
         
         /// <summary>
-        /// btnAdd control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// gv_detail control.
+        /// txtRepassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_detail;
+        protected global::System.Web.UI.WebControls.TextBox txtRepassword;
         
         /// <summary>
-        /// Label6 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// txtFName control.
+        /// ddl_Status control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFName;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Status;
         
         /// <summary>
-        /// txtLName control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLName;
-        
-        /// <summary>
-        /// txtDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetail;
-        
-        /// <summary>
-        /// btnUpdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
         /// btnReset control.

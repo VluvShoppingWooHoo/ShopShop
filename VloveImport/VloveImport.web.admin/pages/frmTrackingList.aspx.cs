@@ -12,7 +12,7 @@ using VloveImport.web.admin.App_Code;
 
 namespace VloveImport.web.admin.pages
 {
-    public partial class frmUpdateTracking : BasePage
+    public partial class frmTrackingList : BasePage
     {
 
         util.EncrypUtil Enc = new util.EncrypUtil();
@@ -48,7 +48,7 @@ namespace VloveImport.web.admin.pages
                 ucCalendar2.SET_DATE_DEFAULT();
             }
 
-            this.btnUpdate.Attributes.Add("onClick", "javascript:return confirm('Do you want to update data ?')");
+            //this.btnUpdate.Attributes.Add("onClick", "javascript:return confirm('Do you want to update data ?')");
         }       
 
         public void ShowMessageBox(string message, Page currentPage, string redirectNamePage = "")
@@ -87,17 +87,7 @@ namespace VloveImport.web.admin.pages
         protected void btnAdd_Click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-
-        }
+        }        
 
         protected void imgBtn_edit_Click(object sender, ImageClickEventArgs e)
         {

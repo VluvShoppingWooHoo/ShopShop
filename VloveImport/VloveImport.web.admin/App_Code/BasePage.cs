@@ -156,5 +156,16 @@ namespace VloveImport.web.admin.App_Code
             return Result;
         }
         #endregion
+
+        public string DateStringtoString(string Input)
+        {
+            string Result = "";
+            if (Input != "")
+            {
+                Result = Convert.ToDateTime(Input).ToString("dd/MM/yyyy");
+            }
+
+            return Result;
+        }
     }
 }

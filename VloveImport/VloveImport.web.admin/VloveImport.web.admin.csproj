@@ -116,7 +116,8 @@
     <Content Include="img\icon\View.png" />
     <Content Include="img\logo\LOGO-01.jpg" />
     <Content Include="Logout.aspx" />
-    <Content Include="pages\frmUpdateTracking.aspx" />
+    <Content Include="pages\frmTracking.aspx" />
+    <Content Include="pages\frmTrackingList.aspx" />
     <Content Include="pages\frmSummaryVIP.aspx" />
     <Content Include="pages\Encryp.aspx" />
     <Content Include="pages\frmAdminSendMail.aspx" />
@@ -185,12 +186,19 @@
     <Compile Include="MasterPage\Site2.Master.designer.cs">
       <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
-    <Compile Include="pages\frmUpdateTracking.aspx.cs">
-      <DependentUpon>frmUpdateTracking.aspx</DependentUpon>
+    <Compile Include="pages\frmTracking.aspx.cs">
+      <DependentUpon>frmTracking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\frmUpdateTracking.aspx.designer.cs">
-      <DependentUpon>frmUpdateTracking.aspx</DependentUpon>
+    <Compile Include="pages\frmTracking.aspx.designer.cs">
+      <DependentUpon>frmTracking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\frmTrackingList.aspx.cs">
+      <DependentUpon>frmTrackingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\frmTrackingList.aspx.designer.cs">
+      <DependentUpon>frmTrackingList.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\frmSummaryVIP.aspx.cs">
       <DependentUpon>frmSummaryVIP.aspx</DependentUpon>
