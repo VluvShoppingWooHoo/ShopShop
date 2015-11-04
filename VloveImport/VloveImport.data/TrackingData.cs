@@ -28,6 +28,7 @@ namespace VloveImport.data
         public Nullable<DateTime> TD_DATE { get; set; }
         public int TD_STATUS_ID { get; set; }
         public string TD_ACTIVE { get; set; }
+        public string TD_REMARK { get; set; }
         #endregion
 
     }

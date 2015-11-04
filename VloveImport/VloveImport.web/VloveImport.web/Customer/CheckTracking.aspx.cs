@@ -34,7 +34,7 @@ namespace VloveImport.web.Customer
                 dt = biz.GetTracking(txtTracking.Text);
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    lbTrack.Text = dt.Rows[0]["T_TRACKING_NO"].ToString();
+                    //lbTrack.Text = dt.Rows[0]["T_TRACKING_NO"].ToString();
                     gv_detail.DataSource = dt;
                     gv_detail.DataBind();
                 }
