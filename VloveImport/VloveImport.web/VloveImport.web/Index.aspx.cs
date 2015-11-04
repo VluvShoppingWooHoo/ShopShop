@@ -751,20 +751,23 @@ namespace VloveImport.web
                                     try
                                     {
                                         try
-                                        {
-                                            model.picURL = driver.FindElement(By.Id("J_ImgBooth")).GetAttribute("data-src").ToString();
-
-                                        }
+                                        { model.picURL = driver.FindElement(By.Id("J_ImgBooth")).GetAttribute("data-src").ToString(); }
                                         catch (Exception)
                                         {
                                             try
+                                            { model.picURL = driver.FindElement(By.Id("J_ThumbView")).GetAttribute("src").ToString(); }
+                                            catch (Exception)
                                             {
-                                                model.picURL = driver.FindElement(By.Id("J_ThumbView")).GetAttribute("src").ToString();
+                                                model.picURL = string.Empty;
+                                                //WriteLog("Popup Scraping", "GetTaobao", "picURL"); 
                                             }
-                                            catch (Exception) { model.picURL = string.Empty; WriteLog("Popup Scraping", "GetTaobao", "picURL"); }
                                         }
                                     }
-                                    catch (Exception) { model.picURL = string.Empty; WriteLog("Popup Scraping", "GetTaobao", "picURL"); }
+                                    catch (Exception)
+                                    {
+                                        model.picURL = string.Empty;
+                                        //WriteLog("Popup Scraping", "GetTaobao", "picURL"); 
+                                    }
                                     break;
                                 case Constant.ScrapModel.Price:
                                     try
