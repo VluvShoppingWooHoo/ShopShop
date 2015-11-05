@@ -48,6 +48,5 @@ D:\Work\ShopShop\VloveImport\VloveImport.util\obj\Debug\VloveImport.util.pdb
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.util\bin\Debug\VloveImport.util.dll
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.util\bin\Debug\VloveImport.util.pdb
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.util\bin\Debug\EncrypDLL.dll
-D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.util\obj\Debug\VloveImport.util.csprojResolveAssemblyReference.cache
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.util\obj\Debug\VloveImport.util.dll
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.util\obj\Debug\VloveImport.util.pdb

@@ -314,13 +314,17 @@ namespace VloveImport.biz
         }
 
         #region Tracking
-        public string ADMIN_INS_Tracking(TrackingData data)
+        public string ADMIN_INS_Tracking(List<TrackingData> LstData)
         {
             string Result = "";
             try
             {
                 AdminDal dal = new AdminDal("LocalConnection");
-                Result = dal.ADMIN_INS_Tracking(data);
+                foreach (TrackingData data in LstData)
+                {
+                    Result = Result + dal.ADMIN_INS_Tracking(data);
+                }
+                
             }
             catch (Exception ex)
             {

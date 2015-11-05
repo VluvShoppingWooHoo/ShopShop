@@ -157,6 +157,20 @@ namespace VloveImport.web.admin.App_Code
         }
         #endregion
 
+        #region WriteLog
+        public void WriteLog(string Page, string Function, string Error)
+        {
+            Error = Error + " || " + Request.Browser.Type.ToUpper().ToString();
+            commonBiz biz = new commonBiz();
+            biz.WriteLog(Page, Function, Error);
+            if (Function != "Login")
+            {
+                SendMail("eakkarat_5@hotmail.com", Page + " " + Function, Error + " " + DateTime.Now);
+            }
+        }
+        #endregion
+
+        #region Format
         public string DateStringtoString(string Input)
         {
             string Result = "";
@@ -167,5 +181,6 @@ namespace VloveImport.web.admin.App_Code
 
             return Result;
         }
+        #endregion
     }
 }

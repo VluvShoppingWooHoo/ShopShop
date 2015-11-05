@@ -8,10 +8,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
 using VloveImport.data;
+using VloveImport.web.admin.App_Code;
 
 namespace VloveImport.web.admin.pages
 {
-    public partial class frmTracking : System.Web.UI.Page
+    public partial class frmTracking : BasePage
     {
 
         util.EncrypUtil Enc = new util.EncrypUtil();
@@ -36,14 +37,16 @@ namespace VloveImport.web.admin.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession();
             AdminUserData Data = new AdminUserData();
             Data = (AdminUserData)(Session["AdminUser"]);
             _VS_USER_LOGIN = Data.USERNAME;
 
             if (!IsPostBack)
             {
+                ucCalendar1.SET_DATE_DEFAULT();
                 BindDDL();
-                //BindData();
+                BindData();
                 
             }
 
@@ -71,10 +74,17 @@ namespace VloveImport.web.admin.pages
 
         public void BindData()
         {
-            AdminBiz AddBiz = new AdminBiz();
-            DataSet ds = new DataSet();
-            ds = AddBiz.GET_ADMIN_GET_USER(_VS_USER_ID, "", "", -1, "BINDDATA_BYID");            
-
+            if (Session["T_GRID"] != null)
+            {
+                List<TrackingData> LstData = (List<TrackingData>)Session["T_GRID"];
+                gv_detail.DataSource = LstData;
+                gv_detail.DataBind();
+            }
+            else
+            {
+                gv_detail.DataSource = null;
+                gv_detail.DataBind();
+            }
         }
 
         public void ShowMessageBox(string message, Page currentPage, string redirectNamePage = "")
@@ -106,30 +116,73 @@ namespace VloveImport.web.admin.pages
             }
             if (txtPackNo.Text == "")
             {
-                Result = Result + "Pack Number, ";
+                Result = Result + "Pack No, ";
             }
             return Result;
         }
         
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string Val = Valid();
-            if (Val == "") //Insert
+            string Result = "";
+            if (Session["T_GRID"] != null)
             {
-                TrackingData data = new TrackingData();
-                data.T_TRANSPORT_NAME = ddl_TransportName.SelectedValue;
+                List<TrackingData> LstData = (List<TrackingData>)Session["T_GRID"]; 
+                AdminBiz biz = new AdminBiz();
+                Result = biz.ADMIN_INS_Tracking(LstData);
+                if (Result != "")
+                {
+                    ShowMessageBox("Save Error!!", this);
+                    WriteLog("Tracking.aspx", "btnSave", Result);
+                }
+                else
+                {
+                    ShowMessageBox("Save Success!!", this, "frmTrackingList.aspx");                    
+                }
+            }
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            if (Session["T_GRID"] != null)
+            {
+                Session["T_GRID"] = null;
+                ClearScreen();
+            }
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            string Val = Valid();
+            if (Val == "") //Insert Grid
+            {
+                List<TrackingData> LstData;
+                TrackingData data = new TrackingData();                
+                data.T_TRANSPORT_NAME = ddl_TransportName.SelectedItem.Text;
+                data.T_TRANSPORT_VALUE = ddl_TransportName.SelectedValue;
                 data.T_TRACKING_NO = txtTrackingNumber.Text;
                 data.T_DATE = ucCalendar1.GET_DATE_TO_DATE().Value;
                 data.T_WEIGHT = Convert.ToDouble(txtWeight.Text);
-                data.T_CUBIC = Convert.ToDouble(txtWeight.Text);
-                data.T_HEIGHT = Convert.ToDouble(txtWeight.Text);
-                data.T_WIDTH = Convert.ToDouble(txtWeight.Text);
-                data.T_HIGH = Convert.ToDouble(txtWeight.Text);
-                data.T_PACK_NO = Convert.ToDouble(txtWeight.Text);
+                data.T_CUBIC = Convert.ToDouble(txtCubic.Text);
+                data.T_WIDTH = Convert.ToDouble(txtWidth.Text);
+                data.T_HEIGHT = Convert.ToDouble(txtHeight.Text);                
+                data.T_HIGH = Convert.ToDouble(txtHigh.Text);
+                data.T_PACK_NO = Convert.ToDouble(txtPackNo.Text);
                 data.T_REMARK = txtRemark.Text;
                 data.T_TYPE = txtType.Text;
-                AdminBiz biz = new AdminBiz();
-                biz.ADMIN_INS_Tracking(data);
+
+                if (Session["T_GRID"] != null)
+                {
+                    LstData = (List<TrackingData>)Session["T_GRID"];                    
+                }
+                else
+                {
+                    LstData = new List<TrackingData>();                    
+                }
+                data.T_ID = LstData.Count() + 1;
+                LstData.Add(data);
+                Session["T_GRID"] = LstData;
+                BindData();
+                ClearScreen();
             }
             else
             {
@@ -140,10 +193,71 @@ namespace VloveImport.web.admin.pages
             
         }
 
-        protected void btnReset_Click(object sender, EventArgs e)
+        protected void ClearScreen()
         {
-            
+            ddl_TransportName.SelectedIndex = 0;
+            txtTrackingNumber.Text = "";
+            ucCalendar1.SET_DATE_DEFAULT();
+            txtPackNo.Text = "";
+            txtWeight.Text = "";
+            txtCubic.Text = "";
+            txtWidth.Text = "";
+            txtHeight.Text = "";
+            txtHigh.Text = "";
+            txtType.Text = "";
+            txtRemark.Text = "";
         }
 
+        protected void imgBtn_edit_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            HiddenField hdT_ID = (HiddenField)gv_detail.Rows[rowIndex].FindControl("hdT_ID");
+            if (Session["T_GRID"] != null && hdT_ID != null)
+            {
+                List<TrackingData> LstData = (List<TrackingData>)Session["T_GRID"];
+                if (LstData != null)
+                {
+                    TrackingData data = LstData.Find(s => s.T_ID.ToString().Equals(hdT_ID.Value));
+                    if (data != null)
+                    {
+                        ddl_TransportName.SelectedIndex = Convert.ToInt32(data.T_TRANSPORT_VALUE);
+                        txtTrackingNumber.Text = data.T_TRACKING_NO;
+                        ucCalendar1.SET_DATE(data.T_DATE);
+                        txtPackNo.Text = data.T_PACK_NO.ToString();
+                        txtWeight.Text = data.T_WEIGHT.ToString();
+                        txtCubic.Text = data.T_CUBIC.ToString();
+                        txtWidth.Text = data.T_WIDTH.ToString();
+                        txtHeight.Text = data.T_HEIGHT.ToString();
+                        txtHigh.Text = data.T_HIGH.ToString();
+                        txtType.Text = data.T_TYPE;
+                        txtRemark.Text = data.T_REMARK;
+                    }
+                }
+            }            
+        }
+
+        protected void imgBtn_Delete_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            HiddenField hdT_ID = (HiddenField)gv_detail.Rows[rowIndex].FindControl("hdT_ID");
+            if (Session["T_GRID"] != null && hdT_ID != null)
+            {
+                List<TrackingData> LstData = (List<TrackingData>)Session["T_GRID"];
+                if (LstData != null)
+                {
+                    TrackingData data = LstData.Find(s => s.T_ID.ToString().Equals(hdT_ID.Value));
+                    if (data != null)
+                        LstData.Remove(data);
+                }
+                Session["T_GRID"] = LstData;
+                ShowMessageBox("Delete Success!!", this);
+                BindData();
+            }
+            else
+            {
+                ShowMessageBox("Error Session Timeout!!", this);
+                return;
+            }
+        }
     }
 }
