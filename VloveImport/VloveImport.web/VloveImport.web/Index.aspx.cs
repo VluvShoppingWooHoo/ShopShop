@@ -743,6 +743,7 @@ namespace VloveImport.web
                                     try
                                     {
                                         model.ItemName = driver.FindElement(By.Id("J_Title")).FindElement(By.ClassName("tb-main-title")).Text;
+                                        if (model.ItemName == "") model.ItemName = driver.Title.Split('-')[0];
                                         if (model.ItemName.Contains("\r\n")) model.ItemName = model.ItemName.Substring(0, model.ItemName.IndexOf("\r\n"));
                                     }
                                     catch (Exception ex) { model.ItemName = string.Empty; }
@@ -755,11 +756,16 @@ namespace VloveImport.web
                                         catch (Exception)
                                         {
                                             try
-                                            { model.picURL = driver.FindElement(By.Id("J_ThumbView")).GetAttribute("src").ToString(); }
+                                            { model.picURL = driver.FindElement(By.Id("J_ImgBooth")).GetAttribute("src").ToString(); }
                                             catch (Exception)
                                             {
-                                                model.picURL = string.Empty;
-                                                //WriteLog("Popup Scraping", "GetTaobao", "picURL"); 
+                                                try
+                                                { model.picURL = driver.FindElement(By.Id("J_ThumbView")).GetAttribute("src").ToString(); }
+                                                catch (Exception)
+                                                {
+                                                    model.picURL = string.Empty;
+                                                    //WriteLog("Popup Scraping", "GetTaobao", "picURL"); 
+                                                }
                                             }
                                         }
                                     }
@@ -772,12 +778,17 @@ namespace VloveImport.web
                                 case Constant.ScrapModel.Price:
                                     try
                                     {
-                                        model.Price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text;
+                                        try { model.Price = driver.FindElement(By.Id("J_StrPrice")).FindElement(By.ClassName("tb-rmb-num")).Text; }
+                                        catch (Exception) { model.Price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tb-rmb-num")).Text; }
                                     }
                                     catch (Exception ex) { model.Price = "0"; }
                                     break;
                                 case Constant.ScrapModel.ProPrice:
-                                    try { model.ProPrice = driver.FindElement(By.Id("J_PromoPriceNum")).Text; }
+                                    try
+                                    {
+                                        try { model.ProPrice = driver.FindElement(By.Id("J_PromoPriceNum")).Text; }
+                                        catch (Exception) { model.Price = driver.FindElement(By.Id("J_PromoPrice")).FindElement(By.ClassName("tb-rmb-num")).Text; }
+                                    }
                                     catch (Exception ex) { model.ProPrice = "0"; }
                                     break;
                                 case Constant.ScrapModel.Color:
