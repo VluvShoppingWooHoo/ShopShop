@@ -20,6 +20,7 @@ namespace VloveImport.web.admin.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession();
             if (!IsPostBack)
             {
                 _VS_USER_LOGIN = "admin";
