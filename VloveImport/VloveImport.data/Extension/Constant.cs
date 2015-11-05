@@ -35,7 +35,7 @@ namespace VloveImport.data.Extension
         }
         public static class WebTemplate
         {
-            public const string Taobao = "http://item.taobao.com/item.htm?id=";
+            public const string Taobao = "https://item.taobao.com/item.htm?id=";
         }
         
         public static class Fact
