@@ -631,18 +631,21 @@ namespace VloveImport.dal
             {
                 SqlCommandData.OpenConnection();
                 SqlCommandData.BeginTransaction();
-                SqlCommandData.SetStoreProcedure("ADMIN_INS_DATA_TRACKING");
+                SqlCommandData.SetStoreProcedure("INS_TRACKING");
 
-                //SqlCommandData.SetParameter_Input_INT("EMP_ID", SqlDbType.Int, ParameterDirection.Input, data.);
-                //SqlCommandData.SetParameter("USERNAME", SqlDbType.VarChar, ParameterDirection.Input, data.USERNAME);
-                //SqlCommandData.SetParameter("EMP_PASSWORD", SqlDbType.VarChar, ParameterDirection.Input, data.EMP_PASSWORD);
-                //SqlCommandData.SetParameter("EMP_NAME", SqlDbType.VarChar, ParameterDirection.Input, data.EMP_NAME);
-                //SqlCommandData.SetParameter("EMP_LNAME", SqlDbType.VarChar, ParameterDirection.Input, dataEMP_LNAME);
-                //SqlCommandData.SetParameter("EMP_DETAIL", SqlDbType.VarChar, ParameterDirection.Input, data.EMP_DETAIL);
-                //SqlCommandData.SetParameter_Input_INT("EMP_STATUS", SqlDbType.Int, ParameterDirection.Input, data.EMP_STATUS);
-                //SqlCommandData.SetParameter_Input_INT("GROUP_ID", SqlDbType.Int, ParameterDirection.Input, data.GROUP_ID);
+                SqlCommandData.SetParameter("T_TRANSPORT_NAME", SqlDbType.NVarChar, ParameterDirection.Input, data.T_TRANSPORT_VALUE);
+                SqlCommandData.SetParameter("T_TRACKING_NO", SqlDbType.NVarChar, ParameterDirection.Input, data.T_TRACKING_NO);
+                SqlCommandData.SetParameter("T_DATE", SqlDbType.DateTime, ParameterDirection.Input, data.T_DATE);
+                SqlCommandData.SetParameter_Input_INT("T_WEIGHT", SqlDbType.Float, ParameterDirection.Input, data.T_WEIGHT);
+                SqlCommandData.SetParameter_Input_INT("T_CUBIC", SqlDbType.Float, ParameterDirection.Input, data.T_CUBIC);
+                SqlCommandData.SetParameter_Input_INT("T_WIDTH", SqlDbType.Float, ParameterDirection.Input, data.T_WIDTH);
+                SqlCommandData.SetParameter_Input_INT("T_HEIGHT", SqlDbType.Float, ParameterDirection.Input, data.T_HEIGHT);
+                SqlCommandData.SetParameter_Input_INT("T_HIGH", SqlDbType.Float, ParameterDirection.Input, data.T_HIGH);
+                SqlCommandData.SetParameter_Input_INT("T_PACK_NO", SqlDbType.Float, ParameterDirection.Input, data.T_PACK_NO);
+                SqlCommandData.SetParameter("T_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, data.T_REMARK);
+                SqlCommandData.SetParameter("T_TYPE", SqlDbType.NVarChar, ParameterDirection.Input, data.T_TYPE);
 
-                //SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, En.Create_User);
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, data.Create_User);
 
                 SqlCommandData.ExecuteNonQuery();
                 SqlCommandData.Commit();
@@ -651,7 +654,33 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 SqlCommandData.RollBack();
-                return ("ADMIN_INS_DATA_TRACKING -> msg : " + ex.Message);
+                return ("ADMIN_INS_Tracking -> msg : " + ex.Message);
+            }
+        }
+
+        public string ADMIN_INS_Tracking_Detail(TrackingData data)
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("INS_TRACKING_DETAIL");
+
+                SqlCommandData.SetParameter_Input_INT("T_ID", SqlDbType.Int, ParameterDirection.Input, data.T_ID);
+                SqlCommandData.SetParameter("TD_DATE", SqlDbType.DateTime, ParameterDirection.Input, data.TD_DATE);
+                SqlCommandData.SetParameter_Input_INT("TD_STATUS_ID", SqlDbType.Int, ParameterDirection.Input, data.TD_STATUS_ID);                
+                SqlCommandData.SetParameter("TD_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, data.TD_REMARK);
+
+                SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, data.Create_User);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("ADMIN_INS_Tracking_Detail -> msg : " + ex.Message);
             }
         }
         #endregion

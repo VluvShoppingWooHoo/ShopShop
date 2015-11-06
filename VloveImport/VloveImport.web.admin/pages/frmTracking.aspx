@@ -83,6 +83,7 @@
                     <tr>
                     <td class ="ItemStyle-center" colspan="4">
                         <asp:Button ID="btnAdd" runat="server" Text=" Add to Grid " CssClass="btnSave" OnClick="btnAdd_Click" />
+                        <asp:Button ID="btnUpdate" runat="server" Text=" Update to Grid " CssClass="btnSave" Visible="false" OnClick="btnUpdate_Click" />
                     </td>
                 </tr>
                 </table>

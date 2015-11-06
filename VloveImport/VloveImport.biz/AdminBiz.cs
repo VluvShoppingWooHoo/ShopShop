@@ -332,6 +332,24 @@ namespace VloveImport.biz
             }
             return Result;
         }
+        public string ADMIN_INS_Tracking_Detail(List<TrackingData> LstData)
+        {
+            string Result = "";
+            try
+            {
+                AdminDal dal = new AdminDal("LocalConnection");
+                foreach (TrackingData data in LstData)
+                {
+                    Result = Result + dal.ADMIN_INS_Tracking_Detail(data);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Result = ex.Message;
+            }
+            return Result;
+        }
         #endregion
     }
 }

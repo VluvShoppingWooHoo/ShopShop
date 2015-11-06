@@ -169,6 +169,7 @@ namespace VloveImport.web.admin.pages
                 data.T_PACK_NO = Convert.ToDouble(txtPackNo.Text);
                 data.T_REMARK = txtRemark.Text;
                 data.T_TYPE = txtType.Text;
+                data.Create_User = _VS_USER_LOGIN;
 
                 if (Session["T_GRID"] != null)
                 {
@@ -183,6 +184,8 @@ namespace VloveImport.web.admin.pages
                 Session["T_GRID"] = LstData;
                 BindData();
                 ClearScreen();
+                btnAdd.Visible = true;
+                btnUpdate.Visible = false;
             }
             else
             {
@@ -193,11 +196,59 @@ namespace VloveImport.web.admin.pages
             
         }
 
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string Val = Valid();
+            if (Val == "") //Insert Grid
+            {
+                if (Session["T_GRID"] != null)
+                {
+                    int rowIndex = Convert.ToInt32(lbl_header.Text.Remove(0, lbl_header.Text.Length - 2));
+                    List<TrackingData> LstData;
+                    LstData = (List<TrackingData>)Session["T_GRID"];
+                    TrackingData data = LstData.Find(s => s.T_ID.ToString().Equals(rowIndex.ToString()));
+                    //TrackingData data = new TrackingData();
+                    data.T_TRANSPORT_NAME = ddl_TransportName.SelectedItem.Text;
+                    data.T_TRANSPORT_VALUE = ddl_TransportName.SelectedValue;
+                    data.T_TRACKING_NO = txtTrackingNumber.Text;
+                    data.T_DATE = ucCalendar1.GET_DATE_TO_DATE().Value;
+                    data.T_WEIGHT = Convert.ToDouble(txtWeight.Text);
+                    data.T_CUBIC = Convert.ToDouble(txtCubic.Text);
+                    data.T_WIDTH = Convert.ToDouble(txtWidth.Text);
+                    data.T_HEIGHT = Convert.ToDouble(txtHeight.Text);
+                    data.T_HIGH = Convert.ToDouble(txtHigh.Text);
+                    data.T_PACK_NO = Convert.ToDouble(txtPackNo.Text);
+                    data.T_REMARK = txtRemark.Text;
+                    data.T_TYPE = txtType.Text;
+                    data.Create_User = _VS_USER_LOGIN;
+                    
+                    Session["T_GRID"] = LstData;
+                    BindData();
+                    ClearScreen();
+                    btnAdd.Visible = true;
+                    btnUpdate.Visible = false;
+                    lbl_header.Text = "Add Tracking";
+                }
+                else
+                {
+                    Val = "Session Timeout.!!!";
+                    ShowMessageBox(Val, this);
+                    return;
+                }
+            }
+            else
+            {
+                Val = "Please key " + Val.Remove(Val.Length - 2) + ".!!!";
+                ShowMessageBox(Val, this);
+                return;
+            }
+        }
+
         protected void ClearScreen()
         {
             ddl_TransportName.SelectedIndex = 0;
             txtTrackingNumber.Text = "";
-            ucCalendar1.SET_DATE_DEFAULT();
+            //ucCalendar1.SET_DATE_DEFAULT();
             txtPackNo.Text = "";
             txtWeight.Text = "";
             txtCubic.Text = "";
@@ -220,7 +271,7 @@ namespace VloveImport.web.admin.pages
                     TrackingData data = LstData.Find(s => s.T_ID.ToString().Equals(hdT_ID.Value));
                     if (data != null)
                     {
-                        ddl_TransportName.SelectedIndex = Convert.ToInt32(data.T_TRANSPORT_VALUE);
+                        ddl_TransportName.SelectedIndex = ddl_TransportName.Items.IndexOf(ddl_TransportName.Items.FindByValue(data.T_TRANSPORT_VALUE));
                         txtTrackingNumber.Text = data.T_TRACKING_NO;
                         ucCalendar1.SET_DATE(data.T_DATE);
                         txtPackNo.Text = data.T_PACK_NO.ToString();
@@ -231,6 +282,11 @@ namespace VloveImport.web.admin.pages
                         txtHigh.Text = data.T_HIGH.ToString();
                         txtType.Text = data.T_TYPE;
                         txtRemark.Text = data.T_REMARK;
+
+                        btnAdd.Visible = false;
+                        btnUpdate.Visible = true;
+                        lbl_header.Text = "Update Tracking : " + (rowIndex + 1).ToString();
+                        gv_detail.Rows[rowIndex].Cells[0].ForeColor = System.Drawing.Color.Yellow;
                     }
                 }
             }            
@@ -259,5 +315,7 @@ namespace VloveImport.web.admin.pages
                 return;
             }
         }
+
+        
     }
 }

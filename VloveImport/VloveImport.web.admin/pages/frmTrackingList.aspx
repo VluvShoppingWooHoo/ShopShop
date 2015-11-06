@@ -58,7 +58,7 @@
                     <asp:BoundField DataField="ROW_INDEX" HeaderText="No.">
                         <HeaderStyle CssClass="width5" />
                     </asp:BoundField> 
-                    <asp:BoundField DataField="T_TRANSPORT_NAME" HeaderText="Transport Name">
+                    <asp:BoundField DataField="TRACKING_TRANS_NAME" HeaderText="Transport Name">
                         <HeaderStyle CssClass="width15" />
                     </asp:BoundField>              
                     <asp:BoundField DataField="T_TRACKING_NO" HeaderText="Tracking Number" >
@@ -68,27 +68,49 @@
                         <ItemTemplate>
                             <asp:Label ID="lbDate" runat="server" Text='<%# DateStringtoString(DataBinder.Eval(Container.DataItem, "T_DATE").ToString()) %>'></asp:Label>
                         </ItemTemplate>
-                        <HeaderStyle CssClass="width15" />
+                        <HeaderStyle CssClass="width13" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Status">
+                        <ItemTemplate>
+                            <%# DataBinder.Eval(Container.DataItem, "STATUS_DESCRIPTION").ToString().Replace("||", "<br/>") %>                            
+                        </ItemTemplate>
+                        <HeaderStyle CssClass="width13" />
+                        <ItemStyle CssClass="ItemStyle-center" />
+                    </asp:TemplateField>
+                    <%--<asp:BoundField DataField="STATUS_DESCRIPTION" HeaderText="Status">
+                        <HeaderStyle CssClass="width15" />                        
+                    </asp:BoundField>--%>
                     <asp:BoundField DataField="T_WEIGHT" HeaderText="Weight">
-                        <HeaderStyle CssClass="width10" />
+                        <HeaderStyle CssClass="width7" />
+                        <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>
                     <asp:BoundField DataField="T_CUBIC" HeaderText="Cubic">
-                        <HeaderStyle CssClass="width10" />
+                        <HeaderStyle CssClass="width7" />
+                        <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>
                     <asp:BoundField DataField="T_HEIGHT" HeaderText="Height">
-                        <HeaderStyle CssClass="width10" />
+                        <HeaderStyle CssClass="width7" />
+                        <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>
                     <asp:BoundField DataField="T_WIDTH" HeaderText="Width">
-                        <HeaderStyle CssClass="width10" />
+                        <HeaderStyle CssClass="width7" />
+                        <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>
                     <asp:BoundField DataField="T_HIGH" HeaderText="High">
-                        <HeaderStyle CssClass="width10" />
+                        <HeaderStyle CssClass="width7" />
+                        <ItemStyle CssClass="ItemStyle-right" />
                     </asp:BoundField>
                     <asp:BoundField DataField="T_PACK_NO" HeaderText="Pack No">
-                        <HeaderStyle CssClass="width10" />
+                        <HeaderStyle CssClass="width8" />
+                        <ItemStyle CssClass="ItemStyle-center" />
                     </asp:BoundField>
+                    <asp:BoundField DataField="T_TYPE" HeaderText="Type">
+                            <HeaderStyle CssClass="width10" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="T_REMARK" HeaderText="Remark">
+                            <HeaderStyle CssClass="width15" />
+                        </asp:BoundField>
                     <asp:TemplateField HeaderText="Update">
                         <ItemTemplate>
                             <asp:HiddenField ID="hdT_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "T_ID") %>'/>
@@ -98,6 +120,28 @@
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
                 </Columns>
+                <EmptyDataTemplate>
+                    <table style="border: 1px solid black;">
+                        <tr>
+                            <td class="width5">No. </td>
+                            <td class="width15">Transport Name</td>
+                            <td class="width15">Transport Number</td>
+                            <td class="width15">Transport Date</td>
+                            <td class="width10">Weight</td>
+                            <td class="width10">Size(Cubic)</td>
+                            <td class="width10">Width</td>
+                            <td class="width10">Height</td>                                
+                            <td class="width10">High</td>
+                            <td class="width10">Pack No.</td>
+                            <td class="width10">Type</td>
+                            <td class="width15">Remark</td>
+                        </tr>
+                        <tr style="border: 1px solid black;">
+                            <td colspan="12"><br />Data empty.</td>
+                        </tr>
+                    </table>
+                        
+                </EmptyDataTemplate>
             </asp:GridView>
             
         </ContentTemplate>

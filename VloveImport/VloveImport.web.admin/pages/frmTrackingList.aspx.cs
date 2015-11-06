@@ -46,6 +46,7 @@ namespace VloveImport.web.admin.pages
             {
                 ucCalendar1.SET_DATE(DateTime.Now.AddDays(-7));
                 ucCalendar2.SET_DATE_DEFAULT();
+                BindData();
             }
 
             //this.btnUpdate.Attributes.Add("onClick", "javascript:return confirm('Do you want to update data ?')");
@@ -69,6 +70,20 @@ namespace VloveImport.web.admin.pages
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            BindData();
+        }      
+
+        protected void imgBtn_edit_Click(object sender, ImageClickEventArgs e)
+        {
+            //int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            //string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
+
+            //util.EncrypUtil En = new util.EncrypUtil();
+            //Response.Redirect("frmUser.aspx?UID=" + Server.UrlEncode(En.EncrypData(DataKeys_ID)));
+        }
+
+        protected void BindData()
+        {
             DateTime From = ucCalendar1.GET_DATE_TO_DATE() == null ? DateTime.MinValue : ucCalendar1.GET_DATE_TO_DATE().Value;
             DateTime To = ucCalendar2.GET_DATE_TO_DATE() == null ? DateTime.MaxValue : ucCalendar2.GET_DATE_TO_DATE().Value;
             if (txtTracking.Text.Trim() != "" || From != null || To != null)
@@ -81,16 +96,12 @@ namespace VloveImport.web.admin.pages
                     gv_detail.DataSource = dt;
                     gv_detail.DataBind();
                 }
+                else
+                {
+                    gv_detail.DataSource = null;
+                    gv_detail.DataBind();
+                }
             }
-        }      
-
-        protected void imgBtn_edit_Click(object sender, ImageClickEventArgs e)
-        {
-            //int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
-            //string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
-
-            //util.EncrypUtil En = new util.EncrypUtil();
-            //Response.Redirect("frmUser.aspx?UID=" + Server.UrlEncode(En.EncrypData(DataKeys_ID)));
         }
     }
 }
