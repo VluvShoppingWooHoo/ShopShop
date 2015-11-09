@@ -49,6 +49,8 @@
                         <asp:Label ID="lblResult" runat="server" Text="<b>Result Data</b>"></asp:Label>
                     </td>  
                     <td style="text-align: right;">
+                        <asp:Button ID="btnEdit" runat="server" Text="Edit Tracking" CssClass ="btnSearch" OnClick="btnEdit_Click"/>
+                        <asp:Button ID="btnSave" runat="server" Text="Save" CssClass ="btnSave" OnClick="btnSave_Click" Visible="false"/>
                         <asp:Button ID="btnAdd" runat="server" Text="Add Tracking" CssClass ="btnSave" PostBackUrl="~/pages/frmTracking.aspx" />
                     </td>                  
                 </tr>
@@ -60,27 +62,31 @@
                     </asp:BoundField> 
                     <asp:BoundField DataField="TRACKING_TRANS_NAME" HeaderText="Transport Name">
                         <HeaderStyle CssClass="width15" />
-                    </asp:BoundField>              
-                    <asp:BoundField DataField="T_TRACKING_NO" HeaderText="Tracking Number" >
+                    </asp:BoundField>                          
+                    <asp:TemplateField HeaderText="Tracking Number">
+                        <ItemTemplate>
+                            <asp:HiddenField ID="hdT_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "T_ID") %>'/>
+                            <asp:TextBox ID="txt_T_NO" runat="server" style="width:95%; background-color:white;" Text='<%# DataBinder.Eval(Container.DataItem, "T_TRACKING_NO") %>' Visible="false"/>   
+                            <asp:Label ID="lb_T_NO" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "T_TRACKING_NO") %>'/>                           
+                        </ItemTemplate>
                         <HeaderStyle CssClass="width15" />
-                    </asp:BoundField>
+                        <ItemStyle CssClass="ItemStyle-center" />
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Transport Date">
                         <ItemTemplate>
                             <asp:Label ID="lbDate" runat="server" Text='<%# DateStringtoString(DataBinder.Eval(Container.DataItem, "T_DATE").ToString()) %>'></asp:Label>
                         </ItemTemplate>
                         <HeaderStyle CssClass="width13" />
                         <ItemStyle CssClass="ItemStyle-center" />
-                    </asp:TemplateField>
+                    </asp:TemplateField>                                 
                     <asp:TemplateField HeaderText="Status">
                         <ItemTemplate>
-                            <%# DataBinder.Eval(Container.DataItem, "STATUS_DESCRIPTION").ToString().Replace("||", "<br/>") %>                            
+                            <asp:DropDownList ID="ddl_T_STATUS" runat="server" style="width:95%; background-color:white;" Visible="false"></asp:DropDownList>
+                            <asp:Label ID="lb_T_STATUS" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "STATUS_DESCRIPTION").ToString().Replace("||", "<br/>")  %>'/>                           
                         </ItemTemplate>
-                        <HeaderStyle CssClass="width13" />
+                        <HeaderStyle CssClass="width15" />
                         <ItemStyle CssClass="ItemStyle-center" />
                     </asp:TemplateField>
-                    <%--<asp:BoundField DataField="STATUS_DESCRIPTION" HeaderText="Status">
-                        <HeaderStyle CssClass="width15" />                        
-                    </asp:BoundField>--%>
                     <asp:BoundField DataField="T_WEIGHT" HeaderText="Weight">
                         <HeaderStyle CssClass="width7" />
                         <ItemStyle CssClass="ItemStyle-right" />
@@ -111,14 +117,14 @@
                         <asp:BoundField DataField="T_REMARK" HeaderText="Remark">
                             <HeaderStyle CssClass="width15" />
                         </asp:BoundField>
-                    <asp:TemplateField HeaderText="Update">
+<%--                    <asp:TemplateField HeaderText="Update">
                         <ItemTemplate>
                             <asp:HiddenField ID="hdT_ID" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "T_ID") %>'/>
                             <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />&nbsp;&nbsp;                            
                         </ItemTemplate>
                         <HeaderStyle CssClass="width10" />
                         <ItemStyle CssClass="ItemStyle-center" />
-                    </asp:TemplateField>
+                    </asp:TemplateField>--%>
                 </Columns>
                 <EmptyDataTemplate>
                     <table style="border: 1px solid black;">

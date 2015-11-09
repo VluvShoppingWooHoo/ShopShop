@@ -47,7 +47,6 @@ namespace VloveImport.web.admin.pages
                 ucCalendar1.SET_DATE_DEFAULT();
                 BindDDL();
                 BindData();
-                
             }
 
             this.btnSave.Attributes.Add("onClick", "javascript:return confirm('Do you want to save data ?')");
@@ -55,7 +54,7 @@ namespace VloveImport.web.admin.pages
 
         public void BindDDL()
         {
-            ShoppingBiz Biz = new ShoppingBiz();            
+            ShoppingBiz Biz = new ShoppingBiz();
             DataTable dt = new DataTable();
             dt = Biz.GetTransList("TRACKING_STS");
             if (dt != null && dt.Rows.Count > 0)
@@ -120,13 +119,13 @@ namespace VloveImport.web.admin.pages
             }
             return Result;
         }
-        
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             string Result = "";
             if (Session["T_GRID"] != null)
             {
-                List<TrackingData> LstData = (List<TrackingData>)Session["T_GRID"]; 
+                List<TrackingData> LstData = (List<TrackingData>)Session["T_GRID"];
                 AdminBiz biz = new AdminBiz();
                 Result = biz.ADMIN_INS_Tracking(LstData);
                 if (Result != "")
@@ -136,7 +135,8 @@ namespace VloveImport.web.admin.pages
                 }
                 else
                 {
-                    ShowMessageBox("Save Success!!", this, "frmTrackingList.aspx");                    
+                    Session.Remove("T_GRID");
+                    ShowMessageBox("Save Success!!", this, "frmTrackingList.aspx");
                 }
             }
         }
@@ -156,28 +156,28 @@ namespace VloveImport.web.admin.pages
             if (Val == "") //Insert Grid
             {
                 List<TrackingData> LstData;
-                TrackingData data = new TrackingData();                
+                TrackingData data = new TrackingData();
                 data.T_TRANSPORT_NAME = ddl_TransportName.SelectedItem.Text;
                 data.T_TRANSPORT_VALUE = ddl_TransportName.SelectedValue;
                 data.T_TRACKING_NO = txtTrackingNumber.Text;
                 data.T_DATE = ucCalendar1.GET_DATE_TO_DATE().Value;
-                data.T_WEIGHT = Convert.ToDouble(txtWeight.Text);
-                data.T_CUBIC = Convert.ToDouble(txtCubic.Text);
-                data.T_WIDTH = Convert.ToDouble(txtWidth.Text);
-                data.T_HEIGHT = Convert.ToDouble(txtHeight.Text);                
-                data.T_HIGH = Convert.ToDouble(txtHigh.Text);
-                data.T_PACK_NO = Convert.ToDouble(txtPackNo.Text);
+                data.T_WEIGHT = txtWeight.Text == "" ? 0 : Convert.ToDouble(txtWeight.Text);
+                data.T_CUBIC = txtCubic.Text == "" ? 0 : Convert.ToDouble(txtCubic.Text);
+                data.T_WIDTH = txtWidth.Text == "" ? 0 : Convert.ToDouble(txtWidth.Text);
+                data.T_HEIGHT = txtHeight.Text == "" ? 0 : Convert.ToDouble(txtHeight.Text);
+                data.T_HIGH = txtHigh.Text == "" ? 0 : Convert.ToDouble(txtHigh.Text);
+                data.T_PACK_NO = txtPackNo.Text == "" ? 0 : Convert.ToDouble(txtPackNo.Text);
                 data.T_REMARK = txtRemark.Text;
                 data.T_TYPE = txtType.Text;
                 data.Create_User = _VS_USER_LOGIN;
 
                 if (Session["T_GRID"] != null)
                 {
-                    LstData = (List<TrackingData>)Session["T_GRID"];                    
+                    LstData = (List<TrackingData>)Session["T_GRID"];
                 }
                 else
                 {
-                    LstData = new List<TrackingData>();                    
+                    LstData = new List<TrackingData>();
                 }
                 data.T_ID = LstData.Count() + 1;
                 LstData.Add(data);
@@ -189,11 +189,11 @@ namespace VloveImport.web.admin.pages
             }
             else
             {
-                Val = "Please key " + Val.Remove(Val.Length-2) + ".!!!";
+                Val = "Please key " + Val.Remove(Val.Length - 2) + ".!!!";
                 ShowMessageBox(Val, this);
                 return;
             }
-            
+
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -212,16 +212,16 @@ namespace VloveImport.web.admin.pages
                     data.T_TRANSPORT_VALUE = ddl_TransportName.SelectedValue;
                     data.T_TRACKING_NO = txtTrackingNumber.Text;
                     data.T_DATE = ucCalendar1.GET_DATE_TO_DATE().Value;
-                    data.T_WEIGHT = Convert.ToDouble(txtWeight.Text);
-                    data.T_CUBIC = Convert.ToDouble(txtCubic.Text);
-                    data.T_WIDTH = Convert.ToDouble(txtWidth.Text);
-                    data.T_HEIGHT = Convert.ToDouble(txtHeight.Text);
-                    data.T_HIGH = Convert.ToDouble(txtHigh.Text);
-                    data.T_PACK_NO = Convert.ToDouble(txtPackNo.Text);
+                    data.T_WEIGHT = txtWeight.Text == "" ? 0 : Convert.ToDouble(txtWeight.Text);
+                    data.T_CUBIC = txtCubic.Text == "" ? 0 : Convert.ToDouble(txtCubic.Text);
+                    data.T_WIDTH = txtWidth.Text == "" ? 0 : Convert.ToDouble(txtWidth.Text);
+                    data.T_HEIGHT = txtHeight.Text == "" ? 0 : Convert.ToDouble(txtHeight.Text);
+                    data.T_HIGH = txtHigh.Text == "" ? 0 : Convert.ToDouble(txtHigh.Text);
+                    data.T_PACK_NO = txtPackNo.Text == "" ? 0 : Convert.ToDouble(txtPackNo.Text);
                     data.T_REMARK = txtRemark.Text;
                     data.T_TYPE = txtType.Text;
                     data.Create_User = _VS_USER_LOGIN;
-                    
+
                     Session["T_GRID"] = LstData;
                     BindData();
                     ClearScreen();
@@ -289,7 +289,7 @@ namespace VloveImport.web.admin.pages
                         gv_detail.Rows[rowIndex].Cells[0].ForeColor = System.Drawing.Color.Yellow;
                     }
                 }
-            }            
+            }
         }
 
         protected void imgBtn_Delete_Click(object sender, ImageClickEventArgs e)
@@ -316,6 +316,6 @@ namespace VloveImport.web.admin.pages
             }
         }
 
-        
+
     }
 }

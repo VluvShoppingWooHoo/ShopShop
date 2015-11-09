@@ -657,14 +657,13 @@ namespace VloveImport.dal
                 return ("ADMIN_INS_Tracking -> msg : " + ex.Message);
             }
         }
-
-        public string ADMIN_INS_Tracking_Detail(TrackingData data)
+        public string ADMIN_INS_Tracking_Item(TrackingData data)
         {
             try
             {
                 SqlCommandData.OpenConnection();
                 SqlCommandData.BeginTransaction();
-                SqlCommandData.SetStoreProcedure("INS_TRACKING_DETAIL");
+                SqlCommandData.SetStoreProcedure("INS_Tracking_Item");
 
                 SqlCommandData.SetParameter_Input_INT("T_ID", SqlDbType.Int, ParameterDirection.Input, data.T_ID);
                 SqlCommandData.SetParameter("TD_DATE", SqlDbType.DateTime, ParameterDirection.Input, data.TD_DATE);
@@ -680,7 +679,51 @@ namespace VloveImport.dal
             catch (Exception ex)
             {
                 SqlCommandData.RollBack();
-                return ("ADMIN_INS_Tracking_Detail -> msg : " + ex.Message);
+                return ("ADMIN_INS_Tracking_Item -> msg : " + ex.Message);
+            }
+        }
+        public string ADMIN_UPD_Tracking(DataTable dt)        
+        {
+            try
+            {
+                SqlCommandData.OpenConnection();
+                SqlCommandData.BeginTransaction();
+                SqlCommandData.SetStoreProcedure("ADMIN_UPD_TRACKING");
+
+                SqlCommandData.SetParameter_Input_DataTable("tbl", ParameterDirection.Input, dt);
+
+                SqlCommandData.ExecuteNonQuery();
+                SqlCommandData.Commit();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                SqlCommandData.RollBack();
+                return ("ADMIN_UPD_TRACKING -> msg : " + ex.Message);
+            }
+        }
+
+        public List<TrackingData> ADMIN_GET_Tracking_Item(string TID)
+        {
+            try
+            {
+                List<TrackingData> lst = new List<TrackingData>();
+                SqlCommandData.SetStoreProcedure("ADMIN_GET_Tracking_Item");
+
+                SqlCommandData.SetParameter("TID", SqlDbType.VarChar, ParameterDirection.Input, TID);
+                DataSet ds = SqlCommandData.ExecuteDataSet();
+                if (ds != null)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        
+                    }
+                }
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetReportCustomerOrder -> msg : " + ex.Message);
             }
         }
         #endregion
