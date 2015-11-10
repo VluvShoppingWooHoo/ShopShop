@@ -121,24 +121,6 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trHtmlEditor;
         
         /// <summary>
-        /// txtContentDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContentDetail;
-        
-        /// <summary>
-        /// htmlExtend control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.HtmlEditorExtender htmlExtend;
-        
-        /// <summary>
         /// trURL control.
         /// </summary>
         /// <remarks>

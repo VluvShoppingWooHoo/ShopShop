@@ -3,6 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../Plugin/ckeditor/ckeditor.js"></script>
     <style type="text/css">
     </style>
 </asp:Content>
@@ -14,9 +15,9 @@
 
         </Triggers>
         <ContentTemplate>
-            <div style ="margin-top:10px;">
-                <h2 style ="color:#318DBF;">Content Managemaent</h2>
-                <hr style="width:100%; text-align:left; margin-top:-15px; background-color :#D1DBE0; height:5px; color: #D1DBE0; border :0;"/>  
+            <div style="margin-top: 10px;">
+                <h2 style="color: #318DBF;">Content Managemaent</h2>
+                <hr style="width: 100%; text-align: left; margin-top: -15px; background-color: #D1DBE0; height: 5px; color: #D1DBE0; border: 0;" />
             </div>
             <fieldset style="width: 95%;" hidden>
                 <%--<legend>Content Type
@@ -69,9 +70,14 @@
                     <tr id="trHtmlEditor" runat="server">
                         <td style="text-align: right;">Content Detail :</td>
                         <td colspan="4">
-                            <asp:TextBox ID="txtContentDetail" runat="server" Width="100%" Rows="20" TextMode="MultiLine"></asp:TextBox>
-                            <cc1:HtmlEditorExtender ID="htmlExtend" runat="server" TargetControlID="txtContentDetail">
-                            </cc1:HtmlEditorExtender>
+
+                            <textarea name="txtContentDetail" id="txtContentDetail" rows="10" cols="80"></textarea>
+                            <script>
+                                CKEDITOR.replace('txtContentDetail');
+                            </script>
+                            <%--<asp:TextBox ID="txtContentDetail" runat="server" Width="100%" Rows="20" TextMode="MultiLine"></asp:TextBox>--%>
+                            <%--<cc1:HtmlEditorExtender ID="htmlExtend" runat="server" TargetControlID="txtContentDetail">
+                            </cc1:HtmlEditorExtender>--%>
                         </td>
                     </tr>
                     <tr id="trURL" runat="server">
@@ -83,7 +89,7 @@
                     <tr>
                         <td style="text-align: right;">Active :</td>
                         <td colspan="4">
-                            <asp:CheckBox ID="chkIsActive" runat="server" Checked="true"/>
+                            <asp:CheckBox ID="chkIsActive" runat="server" Checked="true" />
                         </td>
                     </tr>
                     <tr></tr>
