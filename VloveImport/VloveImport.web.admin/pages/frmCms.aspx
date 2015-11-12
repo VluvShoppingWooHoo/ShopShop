@@ -71,9 +71,9 @@
                         <td style="text-align: right;">Content Detail :</td>
                         <td colspan="4">
 
-                            <textarea name="txtContentDetail" id="txtContentDetail" rows="10" cols="80"></textarea>
+                            <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
                             <script>
-                                CKEDITOR.replace('txtContentDetail');
+                                CKEDITOR.replace('editor1');
                             </script>
                             <%--<asp:TextBox ID="txtContentDetail" runat="server" Width="100%" Rows="20" TextMode="MultiLine"></asp:TextBox>--%>
                             <%--<cc1:HtmlEditorExtender ID="htmlExtend" runat="server" TargetControlID="txtContentDetail">
@@ -95,13 +95,42 @@
                     <tr></tr>
                     <tr style="margin-top: 20px;">
                         <td colspan="5" style="text-align: right;">
-                            <asp:Button ID="btnSave" runat="server" Text="Save " CssClass=" btnSave" OnClick="btnSave_Click"></asp:Button>
+                            <button class="btnSave" onclick="ClickSave()" style="height:25px;">Save </button>
+                            <asp:Button ID="btnSave" runat="server" Text="Save " CssClass=" btnSave" OnClick="btnSave_Click" style="display:none"></asp:Button>
                         </td>
                     </tr>
                 </table>
             </fieldset>
+            <asp:HiddenField ID="hdfContent" runat="server" />
             <asp:HiddenField ID="hdfContentType" runat="server" />
         </ContentTemplate>
     </asp:UpdatePanel>
+    <script type="text/javascript">
+        debugger
+        var hdfContent = document.getElementById('<%= hdfContent.ClientID %>');
+        CKEDITOR.instances.editor1.setData(hdfContent.value);
+
+        function ClickSave() {
+            debugger;
+            var hdfContent = document.getElementById('<%= hdfContent.ClientID %>');
+
+            if (hdfContent)//checking whether it is found on DOM, but not necessary
+            {
+                hdfContent.value = CKEDITOR.instances.editor1.getData();
+            }
+            document.getElementById('<%= btnSave.ClientID %>').click();
+        }
+
+        //textBox.onfocus = function () {
+        //    textBox.select();
+
+        //    // Work around Chrome's little problem
+        //    textBox.onmouseup = function () {
+        //        // Prevent further mouseup intervention
+        //        textBox.onmouseup = null;
+        //        return false;
+        //    };
+        //};
+    </script>
 </asp:Content>
 
