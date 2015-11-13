@@ -71,7 +71,8 @@ namespace VloveImport.web.admin.pages
                 {
                     txtContentTitle.Text = ds.Tables[0].Rows[0]["CONTENT_TITLE"].ToString();
                     //txtContentDetail.Text = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString().Replace('[', '<').Replace(']', '>');
-                    txtContentDetail.Text = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString();
+                    //txtContentDetail.Text = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString();
+                    hdfContent.Value = ds.Tables[0].Rows[0]["CONTENT_DETAIL"].ToString();
                     ddl_Content_Type.SelectedValue = ds.Tables[0].Rows[0]["CONTENT_TYPE"].ToString();
                     hdContentIMG.Value = ds.Tables[0].Rows[0]["CONTENT_IMG"].ToString();
                     if ((bool)ds.Tables[0].Rows[0]["IS_ACTIVE"]) chkIsActive.Checked = true;
@@ -109,8 +110,8 @@ namespace VloveImport.web.admin.pages
                         bool exists = System.IO.Directory.Exists(folder);
                         if (!exists)
                             System.IO.Directory.CreateDirectory(folder);
-                        FileUploadControl.SaveAs(folder + "\\" + date);
-                        string filename = "Line_Attachment" + "\\" + date;
+                        FileUploadControl.SaveAs(folder + "\\" + date + ".jpg");
+                        string filename = "Line_Attachment" + "\\" + date + ".jpg";
                         //FileUploadControl.SaveAs(folder + "\\" + Path.GetFileName(FileUploadControl.FileName));
                         //string filename = "Line_Attachment\\" + Path.GetFileName(FileUploadControl.FileName);
 
@@ -119,7 +120,7 @@ namespace VloveImport.web.admin.pages
                         cd.ContentImage = filename;
                     }
                     //cd.ContentDetail = (htmlObject(txtContentDetail.Text)).Replace('<', '[').Replace('>', ']');
-                    cd.ContentDetail = (htmlObject(txtContentDetail.Text));
+                    cd.ContentDetail = hdfContent.Value;
                     cd.ContentTitle = txtContentTitle.Text;
                 }
                 else

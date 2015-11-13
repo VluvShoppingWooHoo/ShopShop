@@ -32,3 +32,4 @@ D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\bin
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.csprojResolveAssemblyReference.cache
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.dll
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.biz\obj\Release\VloveImport.biz.pdb
+D:\Work\ShopShop\VloveImport\VloveImport.biz\bin\Release\WebDriver.Support.dll

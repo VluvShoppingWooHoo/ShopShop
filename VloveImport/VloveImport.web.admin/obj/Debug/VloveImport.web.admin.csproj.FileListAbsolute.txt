@@ -104,45 +104,6 @@ D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHT\
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.csprojResolveAssemblyReference.cache
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.dll
 D:\Work\V_I_IMPORT\shop21\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.web.admin.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.web.admin.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\AjaxControlToolkit.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\Facebook.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.biz.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.data.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.util.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\itextsharp.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\HtmlAgilityPack.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.dal.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\itextsharp.xmlworker.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\EncrypDLL.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.biz.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.data.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.util.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\AjaxControlToolkit.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\Facebook.xml
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\itextsharp.xml
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.dal.pdb
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\ar\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\cs\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\de\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\es\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\fr\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\he\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\hi\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\it\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\ja\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\ko\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\nl\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\pt\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\ru\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\th-TH\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\tr-TR\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHS\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\bin\zh-CHT\AjaxControlToolkit.resources.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.csprojResolveAssemblyReference.cache
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.dll
-D:\Work\ShopShop\VloveImport\VloveImport.web.admin\obj\Debug\VloveImport.web.admin.pdb
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.web.admin.dll
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.web.admin\bin\VloveImport.web.admin.pdb
 D:\Striker\Project\P'Bow\Phase 2\Source\ShopShop\VloveImport\VloveImport.web.admin\bin\AjaxControlToolkit.dll

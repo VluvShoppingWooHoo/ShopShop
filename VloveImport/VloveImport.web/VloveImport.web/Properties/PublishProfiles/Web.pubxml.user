@@ -33,19 +33,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/13/2015 22:48:16</publishTime>
     </File>
     <File Include="App_Themes/font/flaticon/flaticon.css">
-      <publishTime>03/13/2015 01:30:43</publishTime>
+      <publishTime>10/04/2015 22:11:33</publishTime>
     </File>
     <File Include="App_Themes/font/flaticon/flaticon.eot">
-      <publishTime>03/13/2015 01:30:43</publishTime>
+      <publishTime>10/03/2015 17:53:58</publishTime>
     </File>
     <File Include="App_Themes/font/flaticon/flaticon.svg">
-      <publishTime>03/13/2015 01:30:43</publishTime>
+      <publishTime>10/04/2015 22:11:33</publishTime>
     </File>
     <File Include="App_Themes/font/flaticon/flaticon.ttf">
-      <publishTime>03/13/2015 01:30:43</publishTime>
+      <publishTime>10/03/2015 17:53:58</publishTime>
     </File>
     <File Include="App_Themes/font/flaticon/flaticon.woff">
-      <publishTime>03/13/2015 01:30:43</publishTime>
+      <publishTime>10/03/2015 17:53:58</publishTime>
     </File>
     <File Include="App_Themes/font/material-design-icons/Material-Design-Icons.eot">
       <publishTime>02/15/2015 20:36:33</publishTime>
@@ -90,7 +90,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/28/2015 17:04:10</publishTime>
     </File>
     <File Include="App_Themes/th1/css.css">
-      <publishTime>04/23/2015 22:48:12</publishTime>
+      <publishTime>10/03/2015 17:53:58</publishTime>
     </File>
     <File Include="App_Themes/th1/report.css">
       <publishTime>08/18/2015 08:21:21</publishTime>
@@ -141,16 +141,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/15/2015 20:36:33</publishTime>
     </File>
     <File Include="bin/HtmlAgilityPack.dll">
-      <publishTime>08/06/2012 21:31:42</publishTime>
+      <publishTime>08/26/2015 22:40:09</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zip.dll">
+      <publishTime>08/24/2015 21:39:59</publishTime>
     </File>
     <File Include="bin/it/AjaxControlToolkit.resources.dll">
       <publishTime>02/15/2015 20:36:33</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
-      <publishTime>05/15/2015 00:03:31</publishTime>
+      <publishTime>10/14/2015 08:36:35</publishTime>
     </File>
     <File Include="bin/itextsharp.xmlworker.dll">
-      <publishTime>07/14/2015 19:04:40</publishTime>
+      <publishTime>10/14/2015 08:36:45</publishTime>
     </File>
     <File Include="bin/ja/AjaxControlToolkit.resources.dll">
       <publishTime>02/15/2015 20:36:33</publishTime>
@@ -171,7 +174,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2015 21:40:29</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/24/2015 21:40:34</publishTime>
+      <publishTime>08/24/2015 21:39:59</publishTime>
     </File>
     <File Include="bin/nl/AjaxControlToolkit.resources.dll">
       <publishTime>02/15/2015 20:36:33</publishTime>
@@ -201,19 +204,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/15/2015 20:36:33</publishTime>
     </File>
     <File Include="bin/VloveImport.biz.dll">
-      <publishTime>08/25/2015 20:52:09</publishTime>
+      <publishTime>11/13/2015 23:57:01</publishTime>
     </File>
     <File Include="bin/VloveImport.dal.dll">
-      <publishTime>08/25/2015 20:52:02</publishTime>
+      <publishTime>11/13/2015 23:56:55</publishTime>
     </File>
     <File Include="bin/VloveImport.data.dll">
-      <publishTime>08/25/2015 20:52:00</publishTime>
+      <publishTime>11/13/2015 23:56:53</publishTime>
     </File>
     <File Include="bin/VloveImport.util.dll">
-      <publishTime>08/25/2015 20:52:01</publishTime>
+      <publishTime>11/13/2015 23:56:53</publishTime>
     </File>
     <File Include="bin/VloveImport.web.dll">
-      <publishTime>08/26/2015 01:13:45</publishTime>
+      <publishTime>11/13/2015 23:57:19</publishTime>
     </File>
     <File Include="bin/WebDriver.dll">
       <publishTime>08/24/2015 21:38:10</publishTime>
@@ -236,6 +239,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Customer/Activate.aspx">
       <publishTime>05/20/2015 20:46:19</publishTime>
     </File>
+    <File Include="Customer/CheckTracking.aspx">
+      <publishTime>11/09/2015 18:52:18</publishTime>
+    </File>
     <File Include="Customer/ContactUs.aspx">
       <publishTime>08/25/2015 20:21:25</publishTime>
     </File>
@@ -252,19 +258,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/03/2015 10:27:37</publishTime>
     </File>
     <File Include="Customer/CustomerBasket.aspx">
-      <publishTime>08/20/2015 22:14:11</publishTime>
+      <publishTime>09/25/2015 00:51:16</publishTime>
     </File>
     <File Include="Customer/CustomerChangePassword.aspx">
       <publishTime>08/18/2015 08:21:01</publishTime>
     </File>
     <File Include="Customer/CustomerConfirmInfo.aspx">
-      <publishTime>08/20/2015 22:14:11</publishTime>
+      <publishTime>10/03/2015 17:53:43</publishTime>
     </File>
     <File Include="Customer/CustomerFavoritShop.aspx">
       <publishTime>04/02/2015 00:23:47</publishTime>
     </File>
     <File Include="Customer/CustomerForgot.aspx">
-      <publishTime>04/04/2015 23:50:20</publishTime>
+      <publishTime>09/13/2015 20:45:02</publishTime>
     </File>
     <File Include="Customer/CustomerMyAccount.aspx">
       <publishTime>05/20/2015 20:46:19</publishTime>
@@ -273,7 +279,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2015 15:14:10</publishTime>
     </File>
     <File Include="Customer/CustomerOrderDetail.aspx">
-      <publishTime>08/18/2015 08:21:01</publishTime>
+      <publishTime>10/03/2015 17:53:43</publishTime>
     </File>
     <File Include="Customer/CustomerOrderDetailPrint.aspx">
       <publishTime>05/05/2015 18:24:37</publishTime>
@@ -285,7 +291,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/18/2015 08:21:01</publishTime>
     </File>
     <File Include="Customer/CustomerProfile.aspx">
-      <publishTime>05/01/2015 18:36:01</publishTime>
+      <publishTime>10/03/2015 17:53:58</publishTime>
     </File>
     <File Include="Customer/CustomerTransOnly.aspx">
       <publishTime>07/04/2015 08:48:20</publishTime>
@@ -294,13 +300,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/29/2015 23:06:08</publishTime>
     </File>
     <File Include="Customer/CustomerTransport.aspx">
-      <publishTime>07/15/2015 23:29:27</publishTime>
+      <publishTime>09/02/2015 20:03:13</publishTime>
     </File>
     <File Include="Customer/CustomerUploadPI.aspx">
       <publishTime>05/23/2015 15:50:37</publishTime>
     </File>
     <File Include="Customer/CustomerUploadPIList.aspx">
       <publishTime>04/29/2015 23:06:08</publishTime>
+    </File>
+    <File Include="Customer/CustomerVIP.aspx">
+      <publishTime>10/03/2015 17:53:58</publishTime>
     </File>
     <File Include="Customer/dummyCustomer.aspx">
       <publishTime>04/02/2015 00:23:47</publishTime>
@@ -309,7 +318,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/18/2015 01:08:02</publishTime>
     </File>
     <File Include="Customer/Login.aspx">
-      <publishTime>05/03/2015 14:27:08</publishTime>
+      <publishTime>10/04/2015 22:11:48</publishTime>
     </File>
     <File Include="Customer/MyBasket.aspx">
       <publishTime>04/02/2015 00:23:46</publishTime>
@@ -321,7 +330,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/02/2015 00:23:46</publishTime>
     </File>
     <File Include="Customer/Order.aspx">
-      <publishTime>08/07/2015 00:05:31</publishTime>
+      <publishTime>10/05/2015 22:09:10</publishTime>
     </File>
     <File Include="Customer/Promotion.aspx">
       <publishTime>04/02/2015 00:23:46</publishTime>
@@ -335,6 +344,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Customer/TourMarket.aspx">
       <publishTime>04/08/2015 01:41:43</publishTime>
     </File>
+    <File Include="dll/HtmlAgilityPack.dll">
+      <publishTime>08/26/2015 22:40:09</publishTime>
+    </File>
     <File Include="exe/chromedriver.exe">
       <publishTime>05/05/2015 18:24:30</publishTime>
     </File>
@@ -343,6 +355,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="frmError.aspx">
       <publishTime>07/11/2015 15:14:06</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/04/2015 22:11:48</publishTime>
     </File>
     <File Include="Images/btn/confirm.gif">
       <publishTime>05/14/2015 22:29:23</publishTime>
@@ -572,6 +587,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/pic/shop/Tmall.jpg">
       <publishTime>03/15/2015 20:50:48</publishTime>
     </File>
+    <File Include="Images/pic/Under-construction.png">
+      <publishTime>03/15/2015 14:35:58</publishTime>
+    </File>
     <File Include="Images/pic/User.png">
       <publishTime>04/18/2015 01:08:02</publishTime>
     </File>
@@ -579,7 +597,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/23/2015 22:57:05</publishTime>
     </File>
     <File Include="Index.aspx">
-      <publishTime>08/16/2015 20:23:58</publishTime>
+      <publishTime>11/03/2015 22:07:40</publishTime>
     </File>
     <File Include="Logout.aspx">
       <publishTime>03/28/2015 22:22:15</publishTime>
@@ -591,10 +609,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/18/2015 00:27:34</publishTime>
     </File>
     <File Include="MasterPage/SiteMaster.Master">
-      <publishTime>08/25/2015 20:21:25</publishTime>
+      <publishTime>10/05/2015 22:13:20</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/25/2015 20:21:35</publishTime>
+      <publishTime>10/15/2015 00:24:03</publishTime>
     </File>
     <File Include="phantomjs-license.txt">
       <publishTime>05/05/2015 18:24:31</publishTime>
@@ -651,7 +669,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/01/2015 18:49:44</publishTime>
     </File>
     <File Include="UserControls/ucCustomerStatus.ascx">
-      <publishTime>07/13/2015 23:25:42</publishTime>
+      <publishTime>10/03/2015 17:53:58</publishTime>
     </File>
     <File Include="UserControls/ucEmail.ascx">
       <publishTime>04/21/2015 10:02:29</publishTime>
@@ -663,7 +681,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/19/2015 23:15:13</publishTime>
     </File>
     <File Include="UserControls/ucMenuBar.ascx">
-      <publishTime>05/20/2015 20:46:19</publishTime>
+      <publishTime>10/05/2015 21:49:31</publishTime>
     </File>
     <File Include="UserControls/ucNewsFeed.ascx">
       <publishTime>04/02/2015 22:11:30</publishTime>
@@ -672,10 +690,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/23/2015 22:48:12</publishTime>
     </File>
     <File Include="UserControls/ucSeachBox.ascx">
-      <publishTime>07/14/2015 00:25:24</publishTime>
+      <publishTime>09/17/2015 21:41:32</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/26/2015 01:13:47</publishTime>
+      <publishTime>11/13/2015 23:57:56</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>02/15/2015 20:36:34</publishTime>

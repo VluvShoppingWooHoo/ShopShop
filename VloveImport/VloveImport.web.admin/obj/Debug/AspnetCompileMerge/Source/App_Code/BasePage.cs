@@ -156,5 +156,31 @@ namespace VloveImport.web.admin.App_Code
             return Result;
         }
         #endregion
+
+        #region WriteLog
+        public void WriteLog(string Page, string Function, string Error)
+        {
+            Error = Error + " || " + Request.Browser.Type.ToUpper().ToString();
+            commonBiz biz = new commonBiz();
+            biz.WriteLog(Page, Function, Error);
+            if (Function != "Login")
+            {
+                SendMail("eakkarat_5@hotmail.com", Page + " " + Function, Error + " " + DateTime.Now);
+            }
+        }
+        #endregion
+
+        #region Format
+        public string DateStringtoString(string Input)
+        {
+            string Result = "";
+            if (Input != "")
+            {
+                Result = Convert.ToDateTime(Input).ToString("dd/MM/yyyy");
+            }
+
+            return Result;
+        }
+        #endregion
     }
 }

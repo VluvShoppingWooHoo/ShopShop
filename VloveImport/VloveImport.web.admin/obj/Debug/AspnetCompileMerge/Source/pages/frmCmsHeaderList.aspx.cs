@@ -6,10 +6,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VloveImport.biz;
+using VloveImport.web.admin.App_Code;
 
 namespace VloveImport.web.admin.pages
 {
-    public partial class frmCmsHeaderList : System.Web.UI.Page
+    public partial class frmCmsHeaderList : BasePage
     {
         public string _VS_USER_LOGIN
         {
@@ -19,6 +20,7 @@ namespace VloveImport.web.admin.pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckSession();
             if (!IsPostBack)
             {
                 _VS_USER_LOGIN = "admin";

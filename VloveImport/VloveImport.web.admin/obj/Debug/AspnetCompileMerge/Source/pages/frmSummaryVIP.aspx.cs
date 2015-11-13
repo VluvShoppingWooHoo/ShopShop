@@ -54,6 +54,7 @@ namespace VloveImport.web.admin.pages
                 dt.Rows[i]["VIP_PERCENT"] = ((TextBox)gv_detail.Rows[i].Cells[0].FindControl("txtPercent")).Text;
             }
             string Result = AddBiz.ADMIN_UPD_VIP_PERCENT(dt);
+            Response.Redirect("frmIndex.aspx");
         }
     }
 }
