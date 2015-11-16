@@ -17,7 +17,7 @@
                 <uc3:ucSeachBox runat="server" ID="ucSeachBox" />
                 <div style="text-align: center; width: 80%;">
                     <a class="red btn" style="min-width: 120px; margin-right: 10px;" target="_blank" href="http://www.kuaidi100.com/"><span>สถานะการขนส่งทางจีน<i class="mdi-maps-directions-car"></i></span></a>
-                    <a class="orange btn" style="min-width: 120px; margin-right: 10px;" target="_blank" href="http://localhost:1732/Customer/CheckTracking.aspx"><span>สถานะการขนส่งจีนถึงไทย<i class="mdi-maps-directions-ferry"></i></span></a>
+                    <a class="orange btn" style="min-width: 120px; margin-right: 10px;" target="_blank" href="http://www.iloveimport.com/Customer/CheckTracking.aspx"><span>สถานะการขนส่งจีนถึงไทย<i class="mdi-maps-directions-ferry"></i></span></a>
                     <%--http://localhost:1732/Customer/CheckTracking.aspx--%>
                     <a class="blue btn" style="min-width: 120px; margin-right: 10px;" target="_blank" href="http://track.thailandpost.co.th/tracking/default.aspx"><span>ตรวจสอบเลขพัสดุไปรษณีย์<i class="mdi-maps-local-post-office"></i></span></a>
                 </div>
