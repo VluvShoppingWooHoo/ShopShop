@@ -1486,5 +1486,10 @@ namespace VloveImport.web.admin.pages
             Response.End();
         }
 
+        protected void btnCalculate_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

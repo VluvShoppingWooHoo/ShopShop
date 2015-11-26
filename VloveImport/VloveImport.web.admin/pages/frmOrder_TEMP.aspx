@@ -941,7 +941,7 @@
                                 <td>
                                              
                                 </td>
-                            </tr>
+                            </tr>                            
                             <tr>
                                 <td>Transport Method :</td>
                                 <td>
@@ -965,6 +965,15 @@
                                             </asp:DropDownList>
                                         </asp:View>
                                     </asp:MultiView>
+                                </td>                                
+                            </tr>  
+                            <tr>
+                                <td>Calculate Rate :</td>
+                                <td>
+                                    <asp:TextBox ID="txt_Rate" runat="server" Width="80px"></asp:TextBox>
+                                    <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Rate" ID="FilteredTextBoxExtender2" ValidChars="1234567890.,">
+                                    </asp:FilteredTextBoxExtender>
+                                    <asp:Button ID="btnCalculate" runat="server" Text="Calculate" CssClass="btnSave" OnClick="btnCalculate_Click"></asp:Button>
                                 </td>
                                 <td>Transport thai price :</td>
                                 <td>
@@ -972,7 +981,7 @@
                                 <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_tran_thai_price" ID="txt_sd_tran_thai_price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                 </asp:FilteredTextBoxExtender>
                                 </td>
-                            </tr>
+                            </tr>                          
                             <tr>
                                 <td>Remark :</td>
                                 <td colspan ="3">
@@ -980,7 +989,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan ="4" class ="ItemStyle-center">
+                                <td colspan ="4" class ="ItemStyle-center">                                                                                                            
                                     <asp:Button ID="btnUpdateShopDetail" runat="server" Text="Update" CssClass="btnSave" OnClick="btnUpdateShopDetail_Click"></asp:Button>
                                 </td>
                             </tr>

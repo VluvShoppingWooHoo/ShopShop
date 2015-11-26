@@ -1138,6 +1138,33 @@ namespace VloveImport.web.admin.pages {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender txt_sd_tran_thai_price_FilteredTextBoxExtender1;
         
         /// <summary>
+        /// txt_Rate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_Rate;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
+        
+        /// <summary>
+        /// btnCalculate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCalculate;
+        
+        /// <summary>
         /// txt_sd_tran_remark control.
         /// </summary>
         /// <remarks>
