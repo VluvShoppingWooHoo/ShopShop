@@ -870,7 +870,7 @@
                         </td>
                         <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
                             <div style="text-align: right; margin-right: 10px; margin-top: 10px;">
-                                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" />
+                                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" OnClick="ImageButton2_Click" />
                             </div>
                         </td>
                     </tr>
