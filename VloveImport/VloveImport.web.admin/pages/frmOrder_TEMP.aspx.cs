@@ -1332,24 +1332,33 @@ namespace VloveImport.web.admin.pages
 
                 if (CAL_Q == true)
                 {
-                    string[] SizeArry = txt_sd_size.Text.Trim().Split('*');
-
-                    double? Q_NUM = ConvertTypeCls.ConvertToDouble(SizeArry[0].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[1].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[2].ToString()) / 1000000;
-                    txt_sd_tran_thai_price.Text = ((double)(Q_NUM * ConvertTypeCls.ConvertToDouble(config_value3))).ToString("N", new CultureInfo("en-US"));
+                    lblShopCalRate.Text = "Cubi range : " + config_value1 + " - " + config_value2 + " Rate : " + config_value3;
                 }
                 else
                 {
-                    double? txt_Weight = ConvertTypeCls.ConvertToDouble(txt_sd_weight.Text.Trim());
-
-                    if (CONFIG_GROUP.IndexOf("AIR_PLANE") != -1 && config_value2 != "")
-                    {
-                        txt_sd_tran_thai_price.Text = config_value3;
-                    }
-                    else
-                    {
-                        txt_sd_tran_thai_price.Text = ((double)(ConvertTypeCls.ConvertToDouble(config_value3) * txt_Weight)).ToString("N", new CultureInfo("en-US"));
-                    }
+                    lblShopCalRate.Text = "Weight range : " + config_value1 + " - " + config_value2 + " Rate : " + config_value3;
                 }
+
+                //if (CAL_Q == true)
+                //{
+                //    string[] SizeArry = txt_sd_size.Text.Trim().Split('*');
+
+                //    double? Q_NUM = ConvertTypeCls.ConvertToDouble(SizeArry[0].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[1].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[2].ToString()) / 1000000;
+                //    txt_sd_tran_thai_price.Text = ((double)(Q_NUM * ConvertTypeCls.ConvertToDouble(config_value3))).ToString("N", new CultureInfo("en-US"));
+                //}
+                //else
+                //{
+                //    double? txt_Weight = ConvertTypeCls.ConvertToDouble(txt_sd_weight.Text.Trim());
+
+                //    if (CONFIG_GROUP.IndexOf("AIR_PLANE") != -1 && config_value2 != "")
+                //    {
+                //        txt_sd_tran_thai_price.Text = config_value3;
+                //    }
+                //    else
+                //    {
+                //        txt_sd_tran_thai_price.Text = ((double)(ConvertTypeCls.ConvertToDouble(config_value3) * txt_Weight)).ToString("N", new CultureInfo("en-US"));
+                //    }
+                //}
             }
             return true;
         }

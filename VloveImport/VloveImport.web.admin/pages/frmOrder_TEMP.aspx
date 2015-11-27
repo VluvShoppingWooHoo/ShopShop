@@ -157,7 +157,7 @@
                 <asp:Label ID="lbl_header_detail" Font-Size="Large" runat="server" Text="" ForeColor="RED"></asp:Label></h3>
             <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
             <div style="min-height: 550px;">
-                <asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="0">
+                <asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="3">
                     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
                         <ContentTemplate>
                             <fieldset>
@@ -858,7 +858,7 @@
             <asp:ModalPopupExtender ID="Modal_ShopDetail" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel5" TargetControlID="lbl_modal_ShopDetail">
             </asp:ModalPopupExtender>
-            <asp:Panel ID="Panel5" Height="420px" Width="800px" runat="server" Style="display: none;">
+            <asp:Panel ID="Panel5" Height="420px" Width="800px" runat="server">
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -965,7 +965,10 @@
                                             </asp:DropDownList>
                                         </asp:View>
                                     </asp:MultiView>
-                                </td>                                
+                                </td> 
+                                <td colspan ="2">
+                                    <asp:Label ID="lblShopCalRate" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
+                                </td>                                                                    
                             </tr>  
                             <tr>
                                 <td>Calculate Rate :</td>
