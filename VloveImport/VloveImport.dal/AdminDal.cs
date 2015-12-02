@@ -644,6 +644,7 @@ namespace VloveImport.dal
                 SqlCommandData.SetParameter_Input_INT("T_PACK_NO", SqlDbType.Float, ParameterDirection.Input, data.T_PACK_NO);
                 SqlCommandData.SetParameter("T_REMARK", SqlDbType.NVarChar, ParameterDirection.Input, data.T_REMARK);
                 SqlCommandData.SetParameter("T_TYPE", SqlDbType.NVarChar, ParameterDirection.Input, data.T_TYPE);
+                SqlCommandData.SetParameter_Input_INT("TD_STATUS_ID", SqlDbType.Float, ParameterDirection.Input, data.TD_STATUS_ID);
 
                 SqlCommandData.SetParameter("CREATE_USER", SqlDbType.VarChar, ParameterDirection.Input, data.Create_User);
 
