@@ -867,6 +867,7 @@ namespace VloveImport.web.admin.pages
             txt_sd_tran_china_price.Text = Convert.ToDouble(this.gv_detail.DataKeys[rowIndex].Values[8].ToString()).ToString("N", new CultureInfo("en-US"));
             txt_sd_tran_thai_price.Text = Convert.ToDouble(this.gv_detail.DataKeys[rowIndex].Values[9].ToString()).ToString("N", new CultureInfo("en-US"));
             _VS_CAL_TRANSPORT_SHOP_RATE = this.gv_detail.DataKeys[rowIndex].Values[27].ToString();
+            txt_Rate.Text = this.gv_detail.DataKeys[rowIndex].Values[27].ToString();
             txt_sd_tran_remark.Text = this.gv_detail.DataKeys[rowIndex].Values[28].ToString();
 
             if (_VS_TRANSPORT_CH_TH_METHOD == "2")
@@ -1270,7 +1271,7 @@ namespace VloveImport.web.admin.pages
             txt_sd_tran_remark.Text = this.gv_detail_shopname.DataKeys[rowIndex].Values[22].ToString();
 
             _VS_CAL_TRANSPORT_SHOP_RATE = this.gv_detail_shopname.DataKeys[rowIndex].Values[14].ToString();
-
+            txt_Rate.Text = this.gv_detail.DataKeys[rowIndex].Values[27].ToString();
 
             if (_VS_TRANSPORT_CH_TH_METHOD == "2")
             {
@@ -1397,6 +1398,10 @@ namespace VloveImport.web.admin.pages
                 //    }
                 //}
             }
+            else
+            {
+                _CAL_Q = CAL_Q;
+            }
             return true;
         }
 
@@ -1473,10 +1478,13 @@ namespace VloveImport.web.admin.pages
                 //}
             }
 
-            if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
-            {
-                _VS_CAL_TRANSPORT_SHOP_RATE = txt_sd_tran_thai_price.Text.Trim();
-            }
+            //Comment แก้เรื่อง Rate คำนวนค่าขนส่ง
+            //if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
+            //{
+            //    _VS_CAL_TRANSPORT_SHOP_RATE = txt_sd_tran_thai_price.Text.Trim();
+            //}
+
+            _VS_CAL_TRANSPORT_SHOP_RATE = txt_Rate.Text.Trim();        
 
             AdminBiz AdBiz = new AdminBiz();
 
