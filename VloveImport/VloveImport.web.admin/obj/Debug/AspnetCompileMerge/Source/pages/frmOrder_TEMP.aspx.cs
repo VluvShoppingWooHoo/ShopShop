@@ -128,12 +128,30 @@ namespace VloveImport.web.admin.pages
             set { ViewState["__TRANSPORT_PROVINCE"] = value; }
         }
 
+        public bool _CAL_Q
+        {
+            get { return Convert.ToBoolean(ViewState["__CAL_Q"].ToString()); }
+            set { ViewState["__CAL_Q"] = value; }
+        }
+
+        public string _CONFIG_GROUP
+        {
+            get { return ViewState["__CONFIG_GROUP"].ToString(); }
+            set { ViewState["__CONFIG_GROUP"] = value; }
+        }
+
+        public string _CONFIG_VALUE2
+        {
+            get { return ViewState["__CONFIG_VALUE2"].ToString(); }
+            set { ViewState["__CONFIG_VALUE2"] = value; }
+        }
+
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
             CheckSession();
-            if (!IsPostBack) 
+            if (!IsPostBack)
             {
                 AdminUserData Data = new AdminUserData();
                 Data = (AdminUserData)(Session["AdminUser"]);
@@ -265,7 +283,7 @@ namespace VloveImport.web.admin.pages
 
                 lbl_tb1_VIP_STATUS.Text = dt.Rows[0]["VIP_NAME"].ToString();
                 lbl_tb1_VIP_DATE.Text = dt.Rows[0]["VIP_START_DATE_TEXT"].ToString() == "" ? "-" : dt.Rows[0]["VIP_START_DATE_TEXT"].ToString() + " - " + dt.Rows[0]["VIP_END_DATE_TEXT"].ToString();
-                    
+
                 _VS_CUS_BALANCE = Convert.ToDouble(dt.Rows[0]["CUS_BALANCE"].ToString());
                 _VS_CUS_ID = Convert.ToInt32(dt.Rows[0]["CUS_ID"].ToString());
             }
@@ -849,6 +867,7 @@ namespace VloveImport.web.admin.pages
             txt_sd_tran_china_price.Text = Convert.ToDouble(this.gv_detail.DataKeys[rowIndex].Values[8].ToString()).ToString("N", new CultureInfo("en-US"));
             txt_sd_tran_thai_price.Text = Convert.ToDouble(this.gv_detail.DataKeys[rowIndex].Values[9].ToString()).ToString("N", new CultureInfo("en-US"));
             _VS_CAL_TRANSPORT_SHOP_RATE = this.gv_detail.DataKeys[rowIndex].Values[27].ToString();
+            txt_Rate.Text = this.gv_detail.DataKeys[rowIndex].Values[27].ToString();
             txt_sd_tran_remark.Text = this.gv_detail.DataKeys[rowIndex].Values[28].ToString();
 
             if (_VS_TRANSPORT_CH_TH_METHOD == "2")
@@ -1050,7 +1069,7 @@ namespace VloveImport.web.admin.pages
 
                         //ProdItemDetail += "<br>";
                         //ProdItemDetail += "Remark : " + OD_REMARK;
-                        
+
                     }
                     else if (_VS_ORDER_TYPE == "2")
                     {
@@ -1194,7 +1213,7 @@ namespace VloveImport.web.admin.pages
                 lbl_tb3_Service_Charge_DISCOUNT.Text = DISCOUNT_SERVICE_CHARGE.ToString("N", new CultureInfo("en-US"));
                 lbl_tb3_Total_Transport_CH_TO_TH_DISCOUNT.Text = DISCOUNT_TRAN_CH_PRICE.ToString("N", new CultureInfo("en-US"));
                 lbl_tb3_Total_Transport_DISCOUNT.Text = (DISCOUNT_TRANSPORT_CUS_PRICE + DISCOUNT_SERVICE_CHARGE + DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US"));
-                
+
                 //Total
                 lbl_tb3_Total_Transport_China_Price_TOTAL.Text = lbl_tb3_Total_Transport_China_Price.Text;
                 lbl_tb3_Total_Transport_CH_TO_TH_TOTAL.Text = (TRAN_TH_PRICE - DISCOUNT_TRAN_CH_PRICE).ToString("N", new CultureInfo("en-US"));
@@ -1252,7 +1271,7 @@ namespace VloveImport.web.admin.pages
             txt_sd_tran_remark.Text = this.gv_detail_shopname.DataKeys[rowIndex].Values[22].ToString();
 
             _VS_CAL_TRANSPORT_SHOP_RATE = this.gv_detail_shopname.DataKeys[rowIndex].Values[14].ToString();
-
+            txt_Rate.Text = this.gv_detail.DataKeys[rowIndex].Values[27].ToString();
 
             if (_VS_TRANSPORT_CH_TH_METHOD == "2")
             {
@@ -1269,6 +1288,21 @@ namespace VloveImport.web.admin.pages
         #endregion
 
         #region Modal Shop
+
+        public void ClearShop()
+        {
+            txt_sd_trackingno.Text = "";
+            txt_sd_shoporder_id.Text = "";
+            txt_sd_size.Text = "";
+            txt_sd_weight.Text = "0";
+            txt_sd_tran_china_price.Text = "0";
+            ddl_TRANS_METHOD_AirPlane.SelectedIndex = 0;
+            ddl_TRANS_METHOD_OTHER.SelectedIndex = 0;
+            
+            txt_Rate.Text = "0";
+            txt_sd_tran_thai_price.Text = "0";
+            txt_sd_tran_remark.Text = "";
+        }
 
         public bool Calculation()
         {
@@ -1330,28 +1364,73 @@ namespace VloveImport.web.admin.pages
                 string config_value3 = ds.Tables[0].Rows[0]["CONFIG_VALUE3"].ToString();
                 _VS_CAL_TRANSPORT_SHOP_RATE = config_value3;
 
-                if (CAL_Q == true)
-                {
-                    string[] SizeArry = txt_sd_size.Text.Trim().Split('*');
+                txt_Rate.Text = config_value3;
+                _CAL_Q = CAL_Q;
+                _CONFIG_GROUP = CONFIG_GROUP;
+                _CONFIG_VALUE2 = config_value2;
+                //if (CAL_Q == true)
+                //{
+                //    lblShopCalRate.Text = "Cubi range : " + config_value1 + " - " + config_value2 + " Rate : " + config_value3;
+                //}
+                //else
+                //{
+                //    lblShopCalRate.Text = "Weight range : " + config_value1 + " - " + config_value2 + " Rate : " + config_value3;
+                //}
 
-                    double? Q_NUM = ConvertTypeCls.ConvertToDouble(SizeArry[0].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[1].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[2].ToString()) / 1000000;
-                    txt_sd_tran_thai_price.Text = ((double)(Q_NUM * ConvertTypeCls.ConvertToDouble(config_value3))).ToString("N", new CultureInfo("en-US"));
+                //if (CAL_Q == true)
+                //{
+                //    string[] SizeArry = txt_sd_size.Text.Trim().Split('*');
+
+                //    double? Q_NUM = ConvertTypeCls.ConvertToDouble(SizeArry[0].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[1].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[2].ToString()) / 1000000;
+                //    txt_sd_tran_thai_price.Text = ((double)(Q_NUM * ConvertTypeCls.ConvertToDouble(config_value3))).ToString("N", new CultureInfo("en-US"));
+                //}
+                //else
+                //{
+                //    double? txt_Weight = ConvertTypeCls.ConvertToDouble(txt_sd_weight.Text.Trim());
+
+                //    if (CONFIG_GROUP.IndexOf("AIR_PLANE") != -1 && config_value2 != "")
+                //    {
+                //        txt_sd_tran_thai_price.Text = config_value3;
+                //    }
+                //    else
+                //    {
+                //        txt_sd_tran_thai_price.Text = ((double)(ConvertTypeCls.ConvertToDouble(config_value3) * txt_Weight)).ToString("N", new CultureInfo("en-US"));
+                //    }
+                //}
+            }
+            else
+            {
+                _CAL_Q = CAL_Q;
+            }
+            return true;
+        }
+
+        protected void btnCalculate_Click(object sender, EventArgs e)
+        {
+            double? config_value3 = (txt_Rate.Text.Trim() == "" ? 0.00 : ConvertTypeCls.ConvertToDouble(txt_Rate.Text.Trim()));
+
+            if (_CAL_Q == true)
+            {
+                string[] SizeArry = txt_sd_size.Text.Trim().Split('*');
+
+                double? Q_NUM = ConvertTypeCls.ConvertToDouble(SizeArry[0].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[1].ToString()) * ConvertTypeCls.ConvertToDouble(SizeArry[2].ToString()) / 1000000;
+                txt_sd_tran_thai_price.Text = ((double)(Q_NUM * config_value3)).ToString("N", new CultureInfo("en-US"));
+            }
+            else
+            {
+                double? txt_Weight = ConvertTypeCls.ConvertToDouble(txt_sd_weight.Text.Trim());
+
+                if (_CONFIG_GROUP.IndexOf("AIR_PLANE") != -1 && _CONFIG_VALUE2 != "")
+                {
+                    txt_sd_tran_thai_price.Text = ((double)(config_value3)).ToString("N", new CultureInfo("en-US"));
                 }
                 else
                 {
-                    double? txt_Weight = ConvertTypeCls.ConvertToDouble(txt_sd_weight.Text.Trim());
-
-                    if (CONFIG_GROUP.IndexOf("AIR_PLANE") != -1 && config_value2 != "")
-                    {
-                        txt_sd_tran_thai_price.Text = config_value3;
-                    }
-                    else
-                    {
-                        txt_sd_tran_thai_price.Text = ((double)(ConvertTypeCls.ConvertToDouble(config_value3) * txt_Weight)).ToString("N", new CultureInfo("en-US"));
-                    }
+                    txt_sd_tran_thai_price.Text = ((double)(config_value3 * txt_Weight)).ToString("N", new CultureInfo("en-US"));
                 }
             }
-            return true;
+
+            Modal_ShopDetail.Show();
         }
 
         protected void ddl_TRANS_METHOD_AirPlane_SelectedIndexChanged(object sender, EventArgs e)
@@ -1399,10 +1478,13 @@ namespace VloveImport.web.admin.pages
                 //}
             }
 
-            if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
-            {
-                _VS_CAL_TRANSPORT_SHOP_RATE = txt_sd_tran_thai_price.Text.Trim();
-            }
+            //Comment แก้เรื่อง Rate คำนวนค่าขนส่ง
+            //if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
+            //{
+            //    _VS_CAL_TRANSPORT_SHOP_RATE = txt_sd_tran_thai_price.Text.Trim();
+            //}
+
+            _VS_CAL_TRANSPORT_SHOP_RATE = txt_Rate.Text.Trim();        
 
             AdminBiz AdBiz = new AdminBiz();
 
@@ -1434,7 +1516,13 @@ namespace VloveImport.web.admin.pages
                 ShowMessageBox(Server.HtmlEncode("ERROR ORDER : " + Result), this.Page);
                 Modal_ShopDetail.Show();
             }
+            ClearShop();
             BindData();
+        }
+
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+            ClearShop();
         }
 
         #endregion

@@ -49,22 +49,22 @@ namespace VloveImport.web.admin.pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_TransportName;
         
         /// <summary>
-        /// Label2 control.
+        /// Label12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
-        /// txtTrackingNumber control.
+        /// ddl_TransportStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTrackingNumber;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_TransportStatus;
         
         /// <summary>
         /// Label3 control.
@@ -85,22 +85,22 @@ namespace VloveImport.web.admin.pages {
         protected global::VloveImport.web.admin.UserControls.ucCalendar ucCalendar1;
         
         /// <summary>
-        /// Label5 control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// txtPackNo control.
+        /// txtTrackingNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPackNo;
+        protected global::System.Web.UI.WebControls.TextBox txtTrackingNumber;
         
         /// <summary>
         /// Label4 control.
@@ -130,31 +130,22 @@ namespace VloveImport.web.admin.pages {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
         
         /// <summary>
-        /// Label6 control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// txtCubic control.
+        /// txtPackNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCubic;
-        
-        /// <summary>
-        /// FilteredTextBoxExtender2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
+        protected global::System.Web.UI.WebControls.TextBox txtPackNo;
         
         /// <summary>
         /// Label7 control.
@@ -238,22 +229,31 @@ namespace VloveImport.web.admin.pages {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender5;
         
         /// <summary>
-        /// Label11 control.
+        /// Label6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label11;
+        protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// txtRemark control.
+        /// txtCubic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRemark;
+        protected global::System.Web.UI.WebControls.TextBox txtCubic;
+        
+        /// <summary>
+        /// FilteredTextBoxExtender2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
         
         /// <summary>
         /// Label10 control.
@@ -272,6 +272,24 @@ namespace VloveImport.web.admin.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtType;
+        
+        /// <summary>
+        /// Label11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label11;
+        
+        /// <summary>
+        /// txtRemark control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRemark;
         
         /// <summary>
         /// btnAdd control.

@@ -115,6 +115,20 @@ namespace VloveImport.web.admin.pages
             Response.Redirect("frmOrder_TEMP.aspx?OID=" + Server.UrlEncode(En.EncrypData(DataKeys_ID)));
         }
 
+        protected void imgBtn_change_Click(object sender, ImageClickEventArgs e)
+        {
+            int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
+            string DataKeys_ID = this.gv_detail.DataKeys[rowIndex].Values[0].ToString();
+            string OrderCode = this.gv_detail.DataKeys[rowIndex].Values[7].ToString();
+            string Status = this.gv_detail.DataKeys[rowIndex].Values[3].ToString();
+            
+            BindData_order_status(ddl_ViewDetail_ORDER_STATUS, "");
+            lbCurrent.Text = Status;
+            lbOrderCode.Text = OrderCode;
+            hddOrder_id.Value = DataKeys_ID;
+            ModalChange.Show();
+        }
+
         protected void imgBtn_delete_Click(object sender, ImageClickEventArgs e)
         {
             int rowIndex = ((GridViewRow)((ImageButton)sender).Parent.Parent).RowIndex;
@@ -374,6 +388,18 @@ namespace VloveImport.web.admin.pages
                     }
                 }
             }
+        }
+
+        protected void btnChange_Click(object sender, EventArgs e)
+        {
+            //Process 
+            ShowMessageBox("Change Status Success.", this.Page);
+            ModalChange.Hide();
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            ModalChange.Hide();
         }
         
     }

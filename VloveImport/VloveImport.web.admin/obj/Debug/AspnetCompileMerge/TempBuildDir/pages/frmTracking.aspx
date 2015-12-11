@@ -26,10 +26,10 @@
                             <span style ="color:red;">*</span>
                         </td>
                         <td class="width15">
-                            <asp:Label ID="Label2" runat="server" Text="Tracking Number :"></asp:Label>
+                            <asp:Label ID="Label12" runat="server" Text="Transport Status :"></asp:Label>
                         </td>
                         <td class="width35">
-                            <asp:TextBox ID="txtTrackingNumber" runat="server" Width="300px"></asp:TextBox>
+                            <asp:DropDownList ID="ddl_TransportStatus" runat="server" Width="300px"></asp:DropDownList>
                             <span style ="color:red;">*</span>
                         </td>
                     </tr>
@@ -39,9 +39,11 @@
                             <uc1:ucCalendar ID="ucCalendar1" runat="server" />                            
                             <span style ="color:red;">*</span>
                         </td>
-                        <td><asp:Label ID="Label5" runat="server" Text="Pack No :"></asp:Label></td>
                         <td>
-                            <asp:TextBox ID="txtPackNo" Width ="300px" runat="server"></asp:TextBox>
+                            <asp:Label ID="Label2" runat="server" Text="Tracking Number :"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtTrackingNumber" runat="server" Width="300px"></asp:TextBox>
                             <span style ="color:red;">*</span>
                         </td>
                     </tr>
@@ -51,10 +53,12 @@
                             <asp:TextBox ID="txtWeight" Width ="300px" runat="server"></asp:TextBox>
                             <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterMode="ValidChars" TargetControlID="txtWeight" ValidChars="0123456789."></asp:FilteredTextBoxExtender>
                         </td>
-                        <td><asp:Label ID="Label6" runat="server" Text="Size(Cubic) :"></asp:Label></td>
                         <td>
-                            <asp:TextBox ID="txtCubic" Width ="300px" runat="server"></asp:TextBox>
-                            <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterMode="ValidChars" TargetControlID="txtCubic" ValidChars="0123456789."></asp:FilteredTextBoxExtender>
+                            <asp:Label ID="Label5" runat="server" Text="Pack No :"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtPackNo" Width ="300px" runat="server"></asp:TextBox>
+                            <span style ="color:red;">*</span>
                         </td>
                     </tr>
                     <tr>                        
@@ -69,9 +73,12 @@
                             <asp:TextBox ID="txtHigh" Width ="80px" runat="server" ></asp:TextBox>                       
                             <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterMode="ValidChars" TargetControlID="txtHigh" ValidChars="0123456789."></asp:FilteredTextBoxExtender>
                         </td>
-                        <td rowspan="2"><asp:Label ID="Label11" runat="server" Text="Remark :"></asp:Label></td>
-                        <td rowspan="2">
-                            <asp:TextBox ID="txtRemark" Width ="300px" runat="server" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                        <td>
+                            <asp:Label ID="Label6" runat="server" Text="Size(Cubic) :"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtCubic" Width ="300px" runat="server"></asp:TextBox>
+                            <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterMode="ValidChars" TargetControlID="txtCubic" ValidChars="0123456789."></asp:FilteredTextBoxExtender>
                         </td>
                     </tr>
                     <tr>  
@@ -79,13 +86,19 @@
                         <td>
                             <asp:TextBox ID="txtType" Width ="300px" runat="server"></asp:TextBox>
                         </td> 
+                        <td>
+                            <asp:Label ID="Label11" runat="server" Text="Remark :"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtRemark" Width ="300px" runat="server" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                        </td>
                     </tr>
                     <tr>
-                    <td class ="ItemStyle-center" colspan="4">
-                        <asp:Button ID="btnAdd" runat="server" Text=" Add to Grid " CssClass="btnSave" OnClick="btnAdd_Click" />
-                        <asp:Button ID="btnUpdate" runat="server" Text=" Update to Grid " CssClass="btnSave" Visible="false" OnClick="btnUpdate_Click" />
-                    </td>
-                </tr>
+                        <td class ="ItemStyle-center" colspan="4">
+                            <asp:Button ID="btnAdd" runat="server" Text=" Add to Grid " CssClass="btnSave" OnClick="btnAdd_Click" />
+                            <asp:Button ID="btnUpdate" runat="server" Text=" Update to Grid " CssClass="btnSave" Visible="false" OnClick="btnUpdate_Click" />
+                        </td>
+                    </tr>
                 </table>
                 <asp:GridView ID="gv_detail" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="15" Width="100%">                
                     <Columns>

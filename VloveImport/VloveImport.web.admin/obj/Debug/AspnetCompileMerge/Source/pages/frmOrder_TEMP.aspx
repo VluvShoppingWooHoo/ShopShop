@@ -157,7 +157,7 @@
                 <asp:Label ID="lbl_header_detail" Font-Size="Large" runat="server" Text="" ForeColor="RED"></asp:Label></h3>
             <hr style="width: 100%; text-align: left; background-color: #8db0ef; height: 5px; color: #8db0ef; border: 0;" />
             <div style="min-height: 550px;">
-                <asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="0">
+                <asp:TabContainer ID="TabORDER" runat="server" Width="100%" ActiveTabIndex="3">
                     <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Order Detail">
                         <ContentTemplate>
                             <fieldset>
@@ -858,7 +858,7 @@
             <asp:ModalPopupExtender ID="Modal_ShopDetail" runat="server" BackgroundCssClass="modalBackground"
                 PopupControlID="Panel5" TargetControlID="lbl_modal_ShopDetail">
             </asp:ModalPopupExtender>
-            <asp:Panel ID="Panel5" Height="420px" Width="800px" runat="server" Style="display: none;">
+            <asp:Panel ID="Panel5" Height="420px" Width="800px" runat="server">
                 <%--Style="display: none;"--%>
                 <table width="800px" style="border-collapse: separate; border-spacing: 0px" cellpadding="0" cellspacing="0" border="0">
                     <tr>
@@ -870,7 +870,7 @@
                         </td>
                         <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
                             <div style="text-align: right; margin-right: 10px; margin-top: 10px;">
-                                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" />
+                                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" OnClick="ImageButton2_Click" />
                             </div>
                         </td>
                     </tr>
@@ -941,7 +941,7 @@
                                 <td>
                                              
                                 </td>
-                            </tr>
+                            </tr>                            
                             <tr>
                                 <td>Transport Method :</td>
                                 <td>
@@ -965,6 +965,18 @@
                                             </asp:DropDownList>
                                         </asp:View>
                                     </asp:MultiView>
+                                </td> 
+                                <td colspan ="2">
+                                    <asp:Label ID="lblShopCalRate" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
+                                </td>                                                                    
+                            </tr>  
+                            <tr>
+                                <td>Calculate Rate :</td>
+                                <td>
+                                    <asp:TextBox ID="txt_Rate" runat="server" Width="80px"></asp:TextBox>
+                                    <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Rate" ID="FilteredTextBoxExtender2" ValidChars="1234567890.,">
+                                    </asp:FilteredTextBoxExtender>
+                                    <asp:Button ID="btnCalculate" runat="server" Text="Calculate" CssClass="btnSave" OnClick="btnCalculate_Click"></asp:Button>
                                 </td>
                                 <td>Transport thai price :</td>
                                 <td>
@@ -972,7 +984,7 @@
                                 <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_sd_tran_thai_price" ID="txt_sd_tran_thai_price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                 </asp:FilteredTextBoxExtender>
                                 </td>
-                            </tr>
+                            </tr>                          
                             <tr>
                                 <td>Remark :</td>
                                 <td colspan ="3">
@@ -980,7 +992,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan ="4" class ="ItemStyle-center">
+                                <td colspan ="4" class ="ItemStyle-center">                                                                                                            
                                     <asp:Button ID="btnUpdateShopDetail" runat="server" Text="Update" CssClass="btnSave" OnClick="btnUpdateShopDetail_Click"></asp:Button>
                                 </td>
                             </tr>

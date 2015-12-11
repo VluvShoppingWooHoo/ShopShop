@@ -118,7 +118,8 @@
                     <asp:TemplateField HeaderText="Tools">
                         <ItemTemplate>
                             <asp:ImageButton ID="imgBtn_edit" runat="server" ImageUrl="~/img/icon/b_edit.png" OnClick="imgBtn_edit_Click" />
-                            <asp:ImageButton ID="imgBtn_delete" runat="server" Height="15px" ImageUrl="~/img/icon/Close-2-icon.png" Width="15px" OnClick="imgBtn_delete_Click" />
+                            <asp:ImageButton ID="imgBtn_change" runat="server" Height="15px" Width="15px" ImageUrl="~/img/icon/View.png" OnClick="imgBtn_change_Click" />
+                            <asp:ImageButton ID="imgBtn_delete" runat="server" Height="15px" Width="15px" ImageUrl="~/img/icon/Close-2-icon.png" OnClick="imgBtn_delete_Click" />
                         </ItemTemplate>
                         <HeaderStyle CssClass="width5" />
                         <ItemStyle CssClass="ItemStyle-center" />
@@ -229,6 +230,77 @@
                                     </asp:GridView>
                             </asp:Panel>
                         </center>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #CFCDCD;">
+                        <td height="15px" style="padding: 0px 0px;" align="center" colspan="3"></td>
+                    </tr>
+                </table>
+            </asp:Panel>
+
+            <asp:ModalPopupExtender ID="ModalChange" runat="server" BackgroundCssClass="modalBackground"
+                PopupControlID="Panl_ViewPic" TargetControlID="lbl_modal_Change">
+            </asp:ModalPopupExtender>
+            <asp:Panel ID="Panl_ViewPic" Height="300px" Width="900px" runat="server" Style="display: none;">
+                <%--Style="display: none;"--%>
+                <table width="800px" style="border-collapse: separate; border-spacing: 0px; height: 300px;" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_LEFT"></td>
+                        <td align="left" class="trLogin_CENTER" style="padding: 0px 0px;">
+                            <div style="margin-left: -40px; margin-top: 10px;">
+                                <asp:Label ID="lbl_modal_Change" runat="server" Text="Change Status"></asp:Label>
+                            </div>
+                        </td>
+                        <td align="right" width="52px" height="43px" style="padding: 0px 0px;" class="trLogin_RIGHT">
+                            <div style="text-align: right; margin-right: 10px; margin-top: 10px;">
+                                <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/img/icon/Close.png" Width="20px" Height="20px" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #CFCDCD;">
+                        <td style="text-align: center; padding: 0px 0px;" colspan="3">
+                            <center>
+                    <asp:Panel Width="96%" Height="230px" ID="Panel4" runat="server" BackColor="#FFFFFF">
+                        <br />
+                        <fieldset style ="width:95%;">
+                            <legend>
+                                Change Status
+                            </legend>
+                            <table>
+                                <tr>
+                                    <td class ="width15">Order Code :</td>
+                                    <td class ="width85">
+                                        <asp:Label ID="lbOrderCode" runat="server"></asp:Label>
+                                        <asp:HiddenField ID="hddOrder_id" runat="server" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class ="width15">Current Status :</td>
+                                    <td class ="width85">
+                                        <asp:Label ID="lbCurrent" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class ="width15">New Status :</td>
+                                    <td class ="width85">
+                                        <asp:DropDownList Width="300px" ID="ddl_ViewDetail_ORDER_STATUS" runat="server">
+                                            </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <asp:Button ID="btnChange" runat="server" Text="Change Status" CssClass ="btnSave" OnClick="btnChange_Click"></asp:Button>
+                                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass ="btnCancel" OnClick="btnCancel_Click"></asp:Button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>                           
+                    </asp:Panel>
+                </center>
                         </td>
                     </tr>
                     <tr style="background-color: #CFCDCD;">

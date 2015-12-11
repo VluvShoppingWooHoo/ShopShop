@@ -38,10 +38,11 @@ namespace VloveImport.web.UserControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            bp.CheckSession();
             if (!IsPostBack)
             {                
-                BasePage bp = new BasePage();
-                this._VS_CUS_ID = bp.GetCusID();
+                BasePage bpa = new BasePage();
+                this._VS_CUS_ID = bpa.GetCusID();
                 BindData_BANK();
                 GetMymoney();
                 
@@ -123,11 +124,11 @@ namespace VloveImport.web.UserControls
                 return;
             }
 
-            if (txt_remark.Text == "")
-            {
-                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('กรุณาระบุหมายเหตุ');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
-                return;
-            }
+            //if (txt_remark.Text == "")
+            //{
+            //    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", "<script>alert('กรุณาระบุหมายเหตุ');window.location = '/Customer/CustomerMyAccount.aspx';</script>", false);
+            //    return;
+            //}
 
             //Init & Set
             string Result = "", withdrawDB = "", withdrawDBEn = "", pwd = "";

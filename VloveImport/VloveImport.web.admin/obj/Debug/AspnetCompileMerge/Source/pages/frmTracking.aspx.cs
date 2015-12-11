@@ -56,18 +56,32 @@ namespace VloveImport.web.admin.pages
         {
             ShoppingBiz Biz = new ShoppingBiz();
             DataTable dt = new DataTable();
-            dt = Biz.GetTransList("TRACKING_STS");
+            dt = Biz.GetTransList("TRACKING_TRANS_NAME");
             if (dt != null && dt.Rows.Count > 0)
             {
                 ddl_TransportName.DataSource = dt;
                 ddl_TransportName.DataValueField = "STATUS_NAME";
-                ddl_TransportName.DataTextField = "DescRemark";
+                ddl_TransportName.DataTextField = "STATUS_DESCRIPTION";
                 ddl_TransportName.DataBind();
             }
             else
             {
                 ddl_TransportName.DataSource = null;
                 ddl_TransportName.DataBind();
+            }
+
+            dt = Biz.GetTransList("TRACKING_STS");
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                ddl_TransportStatus.DataSource = dt;    
+                ddl_TransportStatus.DataValueField = "STATUS_NAME";
+                ddl_TransportStatus.DataTextField = "DESCREMARK";
+                ddl_TransportStatus.DataBind();
+            }
+            else
+            {
+                ddl_TransportStatus.DataSource = null;
+                ddl_TransportStatus.DataBind();
             }
         }
 
@@ -157,8 +171,10 @@ namespace VloveImport.web.admin.pages
             {
                 List<TrackingData> LstData;
                 TrackingData data = new TrackingData();
-                data.T_TRANSPORT_NAME = ddl_TransportName.SelectedItem.Text;
-                data.T_TRANSPORT_VALUE = ddl_TransportName.SelectedValue;
+                data.T_TRANSPORT_NAME = ddl_TransportStatus.SelectedItem.Text;
+                data.T_TRANSPORT_VALUE = ddl_TransportStatus.SelectedValue;
+                data.TD_STATUS_ID = Convert.ToInt32(ddl_TransportStatus.SelectedValue);
+                data.TD_STATUS_NAME = ddl_TransportStatus.SelectedItem.Text;
                 data.T_TRACKING_NO = txtTrackingNumber.Text;
                 data.T_DATE = ucCalendar1.GET_DATE_TO_DATE().Value;
                 data.T_WEIGHT = txtWeight.Text == "" ? 0 : Convert.ToDouble(txtWeight.Text);
