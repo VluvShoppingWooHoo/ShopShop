@@ -17,7 +17,7 @@
                                     <b>รหัสสินค้าฝากจ่าย</b>
                                 </div>
                                 <div class="col s4 m4 l4 TestBox1">
-                                    <asp:Label ID="lbOrderCode" runat="server"></asp:Label>
+                                    <asp:Label ID="lbOrderCode" runat="server" CssClass="lbCaption right"></asp:Label>
                                 </div>
                             </div> 
                             <div class="row TestBox1" id="Trans1" runat="server">
@@ -57,7 +57,7 @@
                             </div>
                             <br />
                             <div class="row TestBox1">                                
-                                <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false" Width="400px" BorderColor="Orange" BorderWidth="2px">
+                                <asp:GridView ID="gvTrans" runat="server" AutoGenerateColumns="false" Width="500px" BorderColor="Orange" BorderWidth="2px">
                                     <HeaderStyle BackColor="Gray" />
                                     <Columns>
                                         <asp:TemplateField>
@@ -100,7 +100,7 @@
                                         <b>ค่าขนส่งในจีน</b>
                                     </div>
                                     <div class="col s4 m4 l4 TestBox1">
-                                        <asp:Label ID="lbChina" runat="server"></asp:Label>
+                                        <asp:Label ID="lbChina" runat="server" CssClass="lbCaption right"></asp:Label>
                                     </div>
                                 </div>   
                                 <br />                                                             
@@ -110,7 +110,7 @@
                                         <b>ค่าขนส่งระหว่างประเทศ</b>
                                     </div>
                                     <div class="col s4 m4 l4 TestBox1">
-                                        <asp:Label ID="lbThai" runat="server"></asp:Label>                                    
+                                        <asp:Label ID="lbThai" runat="server" CssClass="lbCaption right"></asp:Label>                                    
                                     </div>
                                 </div>
                                 <br />
@@ -120,7 +120,17 @@
                                         <b>ค่าขนส่งในไทย</b>
                                     </div>
                                     <div class="col s4 m4 l4 TestBox1">
-                                        <asp:Label ID="lbCustomer" runat="server"></asp:Label>
+                                        <asp:Label ID="lbCustomer" runat="server" CssClass="lbCaption right"></asp:Label>
+                                    </div>                                
+                                </div>
+                                <br />
+                                <div id="Div2" class="row TestBox1" runat="server">
+                                    <div class="col s2 m2 l2 TestBox1"
+                                        style="border: 2px solid #B7B2AF; background-color: #B7B2AF; vertical-align: middle; width: 200px; height: 50px;">
+                                        <b>ส่วนลด</b>
+                                    </div>
+                                    <div class="col s4 m4 l4 TestBox1">
+                                        <asp:Label ID="lbDiscount" runat="server" CssClass="lbCaption right"></asp:Label>
                                     </div>                                
                                 </div>
                             </div>

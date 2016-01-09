@@ -80,10 +80,43 @@ namespace VloveImport.web.Customer
                         btn3.Visible = false;
                     }
 
-                    //if (Stauts != "1")
-                    //{
-                    //    gvr.Cells[7].Visible = false;
-                    //}
+                    //Bind Payment
+                    double Item = 0, Cus = 0, Chi = 0, Thi = 0, Pay_Add = 0, Currency = 0, SV_Charge = 0, Dis_SV_Charge = 0, Dis_Cus = 0, VIP_Dis_Rate = 0;
+                    double TotalItem = 0, TotalTrans = 0, TotalTransThai = 0, VIP_Dis_Amount = 0, TotalCus = 0;
+                    string ShopName = "", OldShopName = "";
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        ShopName = dr["SHOPNAME"].ToString();
+                        if (ShopName != OldShopName)
+                        {
+                            Chi = dr["TRANSPORT_CHINA_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_CHINA_PRICE"].ToString());
+                            Thi = dr["TRANSPORT_THAI_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dr["TRANSPORT_THAI_PRICE"].ToString());
+
+                            TotalTrans = TotalTrans + (Chi * Currency);
+                            TotalTransThai = TotalTransThai + Thi;
+                        }
+
+                        Item = dr["TOTALITEMAMOUNT_TH"].ToString() == "" ? 0 : Convert.ToDouble(dr["TOTALITEMAMOUNT_TH"].ToString());
+                        TotalItem = TotalItem + Item;
+                        OldShopName = ShopName;
+                    }
+                    Cus = dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE"].ToString());
+                    Dis_Cus = dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE_DIS"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["TRANSPORT_CUSTOMER_PRICE_DIS"].ToString());
+
+                    SV_Charge = dt.Rows[0]["SERVICE_CHARGE"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE"].ToString());
+                    Dis_SV_Charge = dt.Rows[0]["SERVICE_CHARGE_DISCOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["SERVICE_CHARGE_DISCOUNT"].ToString());
+
+                    VIP_Dis_Rate = dt.Rows[0]["VIP_DISCOUNT"].ToString() == "" ? 0 : Convert.ToDouble(dt.Rows[0]["VIP_DISCOUNT"].ToString());
+                    if (VIP_Dis_Rate != 0)
+                    {
+                        VIP_Dis_Amount = TotalTransThai * VIP_Dis_Rate / 100;
+                    }
+                    TotalCus = Cus + SV_Charge;
+
+                    lbChina.Text = TotalTrans.ToString("###,##0.00");
+                    lbThai.Text = TotalTransThai.ToString("###,##0.00");
+                    lbCustomer.Text = TotalCus.ToString("###,##0.00");
+                    lbDiscount.Text = (Dis_Cus + Dis_SV_Charge + VIP_Dis_Amount).ToString("###,##0.00");
                 }
             }
 
