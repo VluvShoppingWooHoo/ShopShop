@@ -69,68 +69,68 @@
     function CalPrice() {
 
         //Service_Charge Tab2
-            var ServiceCh = parseFloat(document.getElementById('<%=txt_Service_Charge.ClientID%>').value.replace(",", ""));
+        var ServiceCh = parseFloat(document.getElementById('<%=txt_Service_Charge.ClientID%>').value.replace(",", ""));
         var ServiceCh_Dis = parseFloat(document.getElementById('<%=txtDiscountServiceCh.ClientID%>').value.replace(",", ""));
-            var ServiceCh_Total = ServiceCh - ServiceCh_Dis;
-            document.getElementById('<%=lbl_tb2_Service_Charge.ClientID%>').innerText = addCommas(ServiceCh_Total);
-            //Order Discount
-        var OrderDiscount = parseFloat(document.getElementById('<%=txt_Discount.ClientID%>').value.replace(",", ""));
-            document.getElementById('<%=lbl_tb2_Discount.ClientID%>').innerText = addCommas(OrderDiscount);
-            //Transport Price From Ch To Th
+        var ServiceCh_Total = ServiceCh - ServiceCh_Dis;
+        document.getElementById('<%=lbl_tb2_Service_Charge.ClientID%>').innerText = addCommas(ServiceCh_Total);
+        //Order Discount
+            var OrderDiscount = parseFloat(document.getElementById('<%=txt_Discount.ClientID%>').value.replace(",", ""));
+        document.getElementById('<%=lbl_tb2_Discount.ClientID%>').innerText = addCommas(OrderDiscount);
+        //Transport Price From Ch To Th
         var TranPriceCH_TO_TH_Percent = parseFloat(document.getElementById('<%=txtDiscountC_T_TRANSPORT.ClientID%>').value.replace(",", ""));
         var TranPriceCH_TO_TH = parseFloat(document.getElementById('<%=lbl_tb3_Total_Transport_CH_TO_TH.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
-            var TranPriceCH_TO_TH_Dis = TranPriceCH_TO_TH * (TranPriceCH_TO_TH_Percent / 100);
-            var TranPriceCH_TO_TH_Total = TranPriceCH_TO_TH - TranPriceCH_TO_TH_Dis;
+        var TranPriceCH_TO_TH_Dis = TranPriceCH_TO_TH * (TranPriceCH_TO_TH_Percent / 100);
+        var TranPriceCH_TO_TH_Total = TranPriceCH_TO_TH - TranPriceCH_TO_TH_Dis;
 
-            document.getElementById('<%=lbl_tb3_Total_Transport_CH_TO_TH_DISCOUNT.ClientID%>').innerText = addCommas(TranPriceCH_TO_TH_Dis);
+        document.getElementById('<%=lbl_tb3_Total_Transport_CH_TO_TH_DISCOUNT.ClientID%>').innerText = addCommas(TranPriceCH_TO_TH_Dis);
             document.getElementById('<%=lbl_tb3_Total_Transport_CH_TO_TH_TOTAL.ClientID%>').innerText = addCommas(TranPriceCH_TO_TH_Total);
-            //Transport Price From Shop To Customer
+        //Transport Price From Shop To Customer
         var TranPriceShopToCus = parseFloat(document.getElementById('<%=txt_Transport_Cus_Price.ClientID%>').value.replace(",", ""));
         var TranPriceShopToCus_Dis = parseFloat(document.getElementById('<%=txtDiscountCus_TRANSPORT.ClientID%>').value.replace(",", ""));
-            var TranPriceShopToCus_Total = TranPriceShopToCus - TranPriceShopToCus_Dis;
+        var TranPriceShopToCus_Total = TranPriceShopToCus - TranPriceShopToCus_Dis;
 
-            document.getElementById('<%=lbl_tb3_Total_Transport_To_Customer_DISCOUNT.ClientID%>').innerText = addCommas(TranPriceShopToCus);
+        document.getElementById('<%=lbl_tb3_Total_Transport_To_Customer.ClientID%>').innerText = addCommas(TranPriceShopToCus);
             document.getElementById('<%=lbl_tb3_Total_Transport_To_Customer_DISCOUNT.ClientID%>').innerText = addCommas(TranPriceShopToCus_Dis);
-            document.getElementById('<%=lbl_tb3_Total_Transport_To_Customer_TOTAL.ClientID%>').innerText = addCommas(TranPriceShopToCus_Total);
-            //Service_Charge Tab4
-            document.getElementById('<%=lbl_tb3_Service_Charge.ClientID%>').innerText = addCommas(ServiceCh);
-            document.getElementById('<%=lbl_tb3_Service_Charge_DISCOUNT.ClientID%>').innerText = addCommas(ServiceCh_Dis);
-            document.getElementById('<%=lbl_tb3_Service_Charge_TOTAL.ClientID%>').innerText = addCommas(ServiceCh_Total);
-            //Transport China Price
+        document.getElementById('<%=lbl_tb3_Total_Transport_To_Customer_TOTAL.ClientID%>').innerText = addCommas(TranPriceShopToCus_Total);
+        //Service_Charge Tab4
+        document.getElementById('<%=lbl_tb3_Service_Charge.ClientID%>').innerText = addCommas(ServiceCh);
+        document.getElementById('<%=lbl_tb3_Service_Charge_DISCOUNT.ClientID%>').innerText = addCommas(ServiceCh_Dis);
+        document.getElementById('<%=lbl_tb3_Service_Charge_TOTAL.ClientID%>').innerText = addCommas(ServiceCh_Total);
+        //Transport China Price
         var TranPriceCH = parseFloat(document.getElementById('<%=lbl_tb3_Total_Transport_China_Price.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
-            //Total Transport
-            var TotalTranSport = TranPriceCH + TranPriceCH_TO_TH + TranPriceShopToCus + ServiceCh;
-            var TotalTranSport_Dis = TranPriceCH_TO_TH_Dis + TranPriceShopToCus_Dis + ServiceCh_Dis;
-            var TotalTranSport_Total = TranPriceCH + TranPriceCH_TO_TH_Total + TranPriceShopToCus_Total + ServiceCh_Total;
+        //Total Transport
+        var TotalTranSport = TranPriceCH + TranPriceCH_TO_TH + TranPriceShopToCus + ServiceCh;
+        var TotalTranSport_Dis = TranPriceCH_TO_TH_Dis + TranPriceShopToCus_Dis + ServiceCh_Dis;
+        var TotalTranSport_Total = TranPriceCH + TranPriceCH_TO_TH_Total + TranPriceShopToCus_Total + ServiceCh_Total;
 
-            document.getElementById('<%=lbl_tb3_Total_Transport.ClientID%>').innerText = addCommas(TotalTranSport);
+        document.getElementById('<%=lbl_tb3_Total_Transport.ClientID%>').innerText = addCommas(TotalTranSport);
             document.getElementById('<%=lbl_tb3_Total_Transport_DISCOUNT.ClientID%>').innerText = addCommas(TotalTranSport_Dis);
-            document.getElementById('<%=lbl_tb3_Total_Transport_TOTAL.ClientID%>').innerText = addCommas(TotalTranSport_Total);
-            document.getElementById('<%=lbl_tb2_Total_Transport_Active_Price.ClientID%>').innerText = addCommas(TotalTranSport_Total); 
+        document.getElementById('<%=lbl_tb3_Total_Transport_TOTAL.ClientID%>').innerText = addCommas(TotalTranSport_Total);
+        document.getElementById('<%=lbl_tb2_Total_Transport_Active_Price.ClientID%>').innerText = addCommas(TotalTranSport_Total);
 
-            //Tab 2 Header Cal
-            var ProductPrice = parseFloat(document.getElementById('<%=lbl_tb2_Total_Prodcut_Active_Price.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
-            var TotalInCome = parseFloat(document.getElementById('<%=lbl_tb2_Total_Income.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
+        //Tab 2 Header Cal
+        var ProductPrice = parseFloat(document.getElementById('<%=lbl_tb2_Total_Prodcut_Active_Price.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
+        var TotalInCome = parseFloat(document.getElementById('<%=lbl_tb2_Total_Income.ClientID%>').innerText.replace(",", "").replace("(THB)", ""));
 
-            var Actually_Amount = ProductPrice + TotalTranSport_Total - OrderDiscount;
-            
-            var OrderBalance = (Actually_Amount) - TotalInCome; //ChargeTranSportPrice
+        var Actually_Amount = ProductPrice + TotalTranSport_Total - OrderDiscount;
 
-            //alert(Actually_Amount + ":::::" + ChargeTranSportPrice + ":::-::" + TotalInCome);
-            document.getElementById('<%=lbl_tb2_Actually_Amounte.ClientID%>').innerText = addCommas(Actually_Amount);
+        var OrderBalance = (Actually_Amount) - TotalInCome; //ChargeTranSportPrice
 
-        if (OrderBalance > 0) {
-            //alert(OrderBalance);
+        //alert(Actually_Amount + ":::::" + ChargeTranSportPrice + ":::-::" + TotalInCome);
+        document.getElementById('<%=lbl_tb2_Actually_Amounte.ClientID%>').innerText = addCommas(Actually_Amount);
+
+            if (OrderBalance > 0) {
+                //alert(OrderBalance);
                 document.getElementById('<%=lbl_tb2_Total_Refund.ClientID%>').innerText = "0.00";
 
-                var Order_status = parseInt('<%=ddl_ViewDetail_ORDER_STATUS.SelectedValue%>');
-                var TranSport_Percent = parseFloat('<%=lbl_tb1_TranSport_Percent.Text.Replace("%","").Trim()%>');
-                var ChargeTranSportPrice = 0;
-                if (Order_status < 7) {
-                    ChargeTranSportPrice = parseFloat(ProductPrice * (TranSport_Percent / 100.00));
-                }
+            var Order_status = parseInt('<%=ddl_ViewDetail_ORDER_STATUS.SelectedValue%>');
+            var TranSport_Percent = parseFloat('<%=lbl_tb1_TranSport_Percent.Text.Replace("%","").Trim()%>');
+            var ChargeTranSportPrice = 0;
+            if (Order_status < 7) {
+                ChargeTranSportPrice = parseFloat(ProductPrice * (TranSport_Percent / 100.00));
+            }
 
-                document.getElementById('<%=lbl_tb2_Additional_Amount.ClientID%>').innerText = addCommas(OrderBalance + ChargeTranSportPrice);
+            document.getElementById('<%=lbl_tb2_Additional_Amount.ClientID%>').innerText = addCommas(OrderBalance + ChargeTranSportPrice);
             }
             else if (OrderBalance < 0) {
                 //alert(OrderBalance);
@@ -141,7 +141,7 @@
                 document.getElementById('<%=lbl_tb2_Total_Refund.ClientID%>').innerText = "0.00";
                 document.getElementById('<%=lbl_tb2_Additional_Amount.ClientID%>').innerText = "0.00";
             }
-        }
+    }
 
     </script>
 </asp:Content>
@@ -471,8 +471,8 @@
                                         </td>
                                     </tr>
                                     <tr id="trTranCusPrice1" runat="server" visible="False">
-                                        <td runat="server">Transport Detail : </td>
-                                        <td colspan="3" runat="server">
+                                        <td id="Td1" runat="server">Transport Detail : </td>
+                                        <td id="Td2" colspan="3" runat="server">
                                             <asp:TextBox ID="txt_Transport_Cus_Detail" TextMode="MultiLine" Width="300px" Height="50px" runat="server"></asp:TextBox>
                                         </td>
                                     </tr>
@@ -491,8 +491,8 @@
                                         </td>
                                     </tr>
                                     <tr id="trTranCusPrice" runat="server">
-                                        <td id="Td1" runat="server">Transport Customer Price :</td>
-                                        <td id="Td2" runat="server">
+                                        <td id="Td3" runat="server">Transport Customer Price :</td>
+                                        <td id="Td4" runat="server">
                                             <asp:TextBox ID="txt_Transport_Cus_Price" runat="server" Width="200px" onKeyUp="CheckInputDiscount(2); CalPrice();"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Transport_Cus_Price" ID="txt_Transport_Cus_Price_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                             </asp:FilteredTextBoxExtender>
@@ -506,8 +506,8 @@
                                         </td>
                                     </tr>
                                     <tr id="trTranCusPrice2" runat="server">
-                                        <td id="Td3" runat="server">Service Charge :</td>
-                                        <td id="Td4" runat="server">
+                                        <td id="Td5" runat="server">Service Charge :</td>
+                                        <td id="Td6" runat="server">
                                             <asp:TextBox ID="txt_Service_Charge" runat="server" Width="200px" onKeyUp="CheckInputDiscount(1); CalPrice();"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Service_Charge" ID="txt_Service_Charge_FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                             </asp:FilteredTextBoxExtender>
@@ -521,18 +521,18 @@
                                         </td>
                                     </tr>
                                     <tr id="trTranCusPrice3" runat="server">
-                                        <td id="Td5" runat="server">Discount :</td>
-                                        <td id="Td6" runat="server">
+                                        <td id="Td15" runat="server">Discount :</td>
+                                        <td id="Td16" runat="server">
                                             <asp:TextBox ID="txt_Discount" runat="server" Width="200px" onKeyUp ="CalPrice();"></asp:TextBox>
                                             <asp:FilteredTextBoxExtender runat="server" Enabled="True" TargetControlID="txt_Discount" ID="FilteredTextBoxExtender1" ValidChars="1234567890.,">
                                             </asp:FilteredTextBoxExtender>
                                         </td>
-                                        <td id="Td15" runat="server"></td>
-                                        <td id="Td16" runat="server"></td>
+                                        <td id="Td17" runat="server"></td>
+                                        <td id="Td18" runat="server"></td>
                                     </tr>
                                     <tr id="tr_tb2_chk_email" runat="server" visible="False">
-                                        <td runat="server"></td>
-                                        <td runat="server">
+                                        <td id="Td19" runat="server"></td>
+                                        <td id="Td20" runat="server">
                                             <table>
                                                 <tr>
                                                     <td class="width15">

@@ -153,6 +153,7 @@ namespace VloveImport.web.admin.pages
             CheckSession();
             if (!IsPostBack)
             {
+                _CAL_Q = false;
                 AdminUserData Data = new AdminUserData();
                 Data = (AdminUserData)(Session["AdminUser"]);
                 _VS_USER_LOGIN = Data.USERNAME;
@@ -433,10 +434,10 @@ namespace VloveImport.web.admin.pages
                 btn_detail_update.Visible = true;
                 tr_tb2_chk_email.Visible = true;
 
-                trTranCusPrice.Visible = false;
-                trTranCusPrice2.Visible = false;
-                trTranCusPrice3.Visible = false;
-                trTranCusPrice4.Visible = false;
+                trTranCusPrice.Visible = true;
+                trTranCusPrice2.Visible = true;
+                trTranCusPrice3.Visible = true;
+                trTranCusPrice4.Visible = true;
             }
             else if (_VS_ORDER_STS == "2" && _VS_ORDER_TYPE == "3")
             {
@@ -446,10 +447,10 @@ namespace VloveImport.web.admin.pages
                 tr_tb2_chk_email.Visible = true;
                 btnUpdateShopDetail.Visible = true;
 
-                trTranCusPrice.Visible = false;
-                trTranCusPrice2.Visible = false;
-                trTranCusPrice3.Visible = false;
-                trTranCusPrice4.Visible = false;
+                trTranCusPrice.Visible = true;
+                trTranCusPrice2.Visible = true;
+                trTranCusPrice3.Visible = true;
+                trTranCusPrice4.Visible = true;
             }
             else if (_VS_ORDER_STS == "3")
             {
@@ -1298,13 +1299,13 @@ namespace VloveImport.web.admin.pages
             txt_sd_tran_china_price.Text = "0";
             ddl_TRANS_METHOD_AirPlane.SelectedIndex = 0;
             ddl_TRANS_METHOD_OTHER.SelectedIndex = 0;
-            
+
             txt_Rate.Text = "0";
             txt_sd_tran_thai_price.Text = "0";
             txt_sd_tran_remark.Text = "";
         }
 
-        public bool Calculation()
+        public bool Calculation(string ChangeTranSportType = "")
         {
             //if (ddl_TRANS_METHOD_OTHER.SelectedValue == "4" || ddl_TRANS_METHOD_AirPlane.SelectedValue == "4")
             //{
@@ -1364,7 +1365,14 @@ namespace VloveImport.web.admin.pages
                 string config_value3 = ds.Tables[0].Rows[0]["CONFIG_VALUE3"].ToString();
                 _VS_CAL_TRANSPORT_SHOP_RATE = config_value3;
 
-                txt_Rate.Text = config_value3;
+                if (ChangeTranSportType == "1")
+                {
+                    txt_Rate.Text = config_value3;
+                }
+                else
+                {
+                    txt_Rate.Text = (txt_Rate.Text == "" ? config_value3 : txt_Rate.Text);
+                }
                 _CAL_Q = CAL_Q;
                 _CONFIG_GROUP = CONFIG_GROUP;
                 _CONFIG_VALUE2 = config_value2;
@@ -1407,6 +1415,7 @@ namespace VloveImport.web.admin.pages
 
         protected void btnCalculate_Click(object sender, EventArgs e)
         {
+            Calculation();
             double? config_value3 = (txt_Rate.Text.Trim() == "" ? 0.00 : ConvertTypeCls.ConvertToDouble(txt_Rate.Text.Trim()));
 
             if (_CAL_Q == true)
@@ -1437,7 +1446,7 @@ namespace VloveImport.web.admin.pages
         {
             if (ddl_TRANS_METHOD_AirPlane.SelectedValue != "-1")
             {
-                if (!Calculation())
+                if (!Calculation("1"))
                 {
                     ddl_TRANS_METHOD_AirPlane.SelectedIndex = 0;
                 }
@@ -1449,7 +1458,7 @@ namespace VloveImport.web.admin.pages
         {
             if (ddl_TRANS_METHOD_OTHER.SelectedValue != "-1")
             {
-                if (!Calculation())
+                if (!Calculation("1"))
                 {
                     ddl_TRANS_METHOD_OTHER.SelectedIndex = 0;
                 }
@@ -1484,7 +1493,7 @@ namespace VloveImport.web.admin.pages
             //    _VS_CAL_TRANSPORT_SHOP_RATE = txt_sd_tran_thai_price.Text.Trim();
             //}
 
-            _VS_CAL_TRANSPORT_SHOP_RATE = txt_Rate.Text.Trim();        
+            _VS_CAL_TRANSPORT_SHOP_RATE = txt_Rate.Text.Trim();
 
             AdminBiz AdBiz = new AdminBiz();
 
