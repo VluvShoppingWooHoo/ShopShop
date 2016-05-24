@@ -88,6 +88,8 @@ namespace VloveImport.web.admin.pages
             }
             btnSave.Visible = true;
             btnAdd.Visible = false;
+
+            BindDDL();
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -117,7 +119,10 @@ namespace VloveImport.web.admin.pages
             }
             else
             {
-                ShowMessageBox("Save Success!!", this, "frmTrackingList.aspx");
+                ShowMessageBox("Save Success!!", this, "");
+                BindData();
+                btnSave.Visible = false;
+                btnAdd.Visible = true;
             }
         }
 

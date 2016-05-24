@@ -144,7 +144,7 @@ namespace VloveImport.web.Customer
                     data.CUS_ID = CusID;
                     data.TRACKING_NO = dr["TRACKING_NO"].ToString();
                     data.SHOP_ORDER_ID = dr["SHOP_ORDER_ID"].ToString();
-                    data.OD_PRICE = 1;
+                    data.OD_PRICE = 0;
                     data.OD_AMOUNT = 1;
                     data.OD_REMARK = dr["OD_REMARK"].ToString();
 
