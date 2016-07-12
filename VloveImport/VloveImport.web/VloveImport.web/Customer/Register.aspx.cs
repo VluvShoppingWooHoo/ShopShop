@@ -54,7 +54,7 @@ namespace VloveImport.web.Customer
                     {
                         URL = Page.Request.Url.ToString().Split('/');
                         //WriteLog(URL[URL.Length - 1], "btnRegis", Result);
-                        WriteLog(Page.Request.Url.AbsolutePath, "btnRegis/Sendmail", Result);
+                        WriteLog(Page.Request.Url.AbsolutePath, "btnRegis-Sendmail", Result);
                     }
 
                     //Success
@@ -66,7 +66,7 @@ namespace VloveImport.web.Customer
                     //WriteLog
                     URL = Page.Request.Url.ToString().Split('/');
                     //WriteLog(URL[URL.Length - 1], "btnRegis", Result);
-                    WriteLog(Page.Request.Url.AbsolutePath, "btnRegis/Insert", Result);
+                    WriteLog(Page.Request.Url.AbsolutePath, "btnRegis-Insert", Result);
                     lbMessage.Text = "Error";
                 }
 

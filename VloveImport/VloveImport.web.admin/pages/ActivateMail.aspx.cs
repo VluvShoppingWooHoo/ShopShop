@@ -44,6 +44,7 @@ namespace VloveImport.web.admin.pages
                     }
 
                     //Success
+                    Response.Redirect("ActivateMail.com");
                     //mView.ActiveViewIndex = 1;
                     //GoToIndex();
                 }

@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <br /><br />
         Email : 
         <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         <br /><br />
