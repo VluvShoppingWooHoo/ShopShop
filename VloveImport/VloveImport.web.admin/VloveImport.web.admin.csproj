@@ -115,6 +115,7 @@
     <Content Include="img\icon\View.png" />
     <Content Include="img\logo\LOGO-01.jpg" />
     <Content Include="Logout.aspx" />
+    <Content Include="pages\ActivateMail.aspx" />
     <Content Include="pages\frmTracking.aspx" />
     <Content Include="pages\frmTrackingList.aspx" />
     <Content Include="pages\frmSummaryVIP.aspx" />
@@ -482,6 +483,13 @@
     </Compile>
     <Compile Include="MasterPage\Site2.Master.designer.cs">
       <DependentUpon>Site2.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ActivateMail.aspx.cs">
+      <DependentUpon>ActivateMail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\ActivateMail.aspx.designer.cs">
+      <DependentUpon>ActivateMail.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\frmTracking.aspx.cs">
       <DependentUpon>frmTracking.aspx</DependentUpon>
